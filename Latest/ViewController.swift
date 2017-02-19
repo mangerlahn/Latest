@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, UpdateCheckerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,6 @@ class ViewController: NSViewController {
                 
                 if FileManager.default.fileExists(atPath: plistPath),
                     let plistData = NSDictionary(contentsOfFile: plistPath),
-                    let versionString = plistData["CFBundleShortVersionString"] as? String,
                     let urlString = plistData["SUFeedURL"] as? String,
                     let url = URL(string: urlString) {
                     
@@ -37,17 +36,30 @@ class ViewController: NSViewController {
                     
                     let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
                         if error == nil,
-                            let xmlData = data,
-                            let xml = String(data: xmlData, encoding: String.Encoding.utf8) {
+                            let xmlData = data {
                             
-                            if let newVersionString = self.version(for: "sparkle:shortVersionString=\"", in: xml) {
-                                if newVersionString != versionString {
-                                    print("App \(file) is not up to date. The new version is \(newVersionString), your version is \(versionString)")
-                                }
-                            } else if let newVersionString = self.version(for: "sparkle:version=\"", in: xml),
-                                versionString != newVersionString {
-                                print("App \(file) is not up to date. The new version is \(newVersionString), your version is \(versionString)")
-                            }
+                            let shortVersionString = plistData["CFBundleShortVersionString"] as? String
+                            let versionString = plistData["CFBundleVersion"] as? String
+                            
+                            let parser = XMLParser(data: xmlData)
+                            let checker = UpdateChecker(appName: file, shortVersion: shortVersionString, version: versionString)
+                            
+                            parser.delegate = checker
+                            checker.delegate = self
+                            
+                            parser.parse()
+                        
+                        
+                        
+                            
+//                            if let newVersionString = self.version(for: "sparkle:shortVersionString=\"", in: xml) {
+//                                if newVersionString != versionString {
+//                                    print("App \(file) is not up to date. The new version is \(newVersionString), your version is \(versionString)")
+//                                }
+//                            } else if let newVersionString = self.version(for: "sparkle:version=\"", in: xml),
+//                                versionString != newVersionString {
+//                                print("App \(file) is not up to date. The new version is \(newVersionString), your version is \(versionString)")
+//                            }
                         }
                     })
                     
@@ -63,26 +75,10 @@ class ViewController: NSViewController {
         }
     }
     
-    private func version(for query: String, in xml: String) -> String? {
-        var lowerBounds = [Range<String.Index>?]()
-        
-        var returnString : String?
-        
-        lowerBounds.append(xml.range(of: query))
-        
-        lowerBounds.forEach({ (element) in
-            if let lowerBound = element {
-                var newVersion = xml.substring(from: lowerBound.upperBound)
-                
-                if let upperBound = newVersion.range(of: "\"") {
-                    newVersion = newVersion.substring(to: upperBound.lowerBound)
-                    
-                    returnString = newVersion
-                }
-            }
-        })
-        
-        return returnString
+    func checkerDidFinishChecking(_ checker: UpdateChecker, versionBundle: Version) {
+        if versionBundle.currentVersion != versionBundle.newVersion {
+            print("\(checker.appName) is not up to date: \(versionBundle.currentVersion) vs \(versionBundle.newVersion)")
+        }
     }
 
 }
