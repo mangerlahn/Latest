@@ -88,25 +88,54 @@ class UpdateChecker: NSObject, XMLParserDelegate {
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
-        var foundItemWithDate = false
+        var foundItemWithDate = true
         
         self.versions.sort { (first, second) -> Bool in
-            guard let firstDate = first.date else { return false }
+            guard let firstDate = first.date else {
+                foundItemWithDate = false
+                return false
+            }
+            
             guard let secondDate = second.date else { return true }
             
             // Ok, we can sort after dates now
-            foundItemWithDate = true
             return firstDate.compare(secondDate) == .orderedDescending
         }
         
         if !foundItemWithDate && self.versions.count > 1 {
             // The feed did not provide proper dates, so we only can try to compare version numbers against each other
             // With this information, we might be able to find the newest item 
+            // I don't want this to be the default option, as there might be version formats I don't think of right now
+            // We will see how this plays out in the future
             
             self.versions.sort(by: { (first, second) -> Bool in
-                return true
+                guard let firstVersion = first.version, let secondVersion = second.version else { return false }
+                
+                let c1 = firstVersion.versionComponents()
+                let c2 = secondVersion.versionComponents()
+                
+                if c1.count > c2.count {
+                    for index in (0...c2.count) {
+                        if c1[index] > c2[index] {
+                            return true
+                        } else if c1[index] < c2[index] {
+                            return false
+                        }
+                    }
+                    
+                    return true
+                } else {
+                    for index in (0...c1.count - 1) {
+                        if c1[index] > c2[index] {
+                            return true
+                        } else if c1[index] < c2[index] {
+                            return false
+                        }
+                    }
+                    
+                    return false
+                }
             })
-            
         }
         
         if let version = self.versions.first {
@@ -126,5 +155,20 @@ class UpdateChecker: NSObject, XMLParserDelegate {
         print("Short version: \(shortVersion ?? "not given")")
         print("Version: \(version ?? "not given")")
         print("Number of versions parsed: \(versions.count)")
+    }
+}
+
+extension String {
+    func versionComponents() -> [Int] {
+        let components = self.components(separatedBy: ".")
+        var versionComponents = [Int]()
+        
+        components.forEach { (component) in
+            if let number = Int.init(component) {
+                versionComponents.append(number)
+            }
+        }
+        
+        return versionComponents
     }
 }
