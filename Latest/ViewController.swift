@@ -48,18 +48,6 @@ class ViewController: NSViewController, UpdateCheckerDelegate {
                             checker.delegate = self
                             
                             parser.parse()
-                        
-                        
-                        
-                            
-//                            if let newVersionString = self.version(for: "sparkle:shortVersionString=\"", in: xml) {
-//                                if newVersionString != versionString {
-//                                    print("App \(file) is not up to date. The new version is \(newVersionString), your version is \(versionString)")
-//                                }
-//                            } else if let newVersionString = self.version(for: "sparkle:version=\"", in: xml),
-//                                versionString != newVersionString {
-//                                print("App \(file) is not up to date. The new version is \(newVersionString), your version is \(versionString)")
-//                            }
                         }
                     })
                     
@@ -69,15 +57,9 @@ class ViewController: NSViewController, UpdateCheckerDelegate {
         })
     }
     
-    override var representedObject: Any? {
-        didSet {
-            // Update the view, if already loaded.
-        }
-    }
-    
-    func checkerDidFinishChecking(_ checker: UpdateChecker, versionBundle: Version) {
-        if versionBundle.currentVersion != versionBundle.newVersion {
-            print("\(checker.appName) is not up to date: \(versionBundle.currentVersion) vs \(versionBundle.newVersion)")
+    func checkerDidFinishChecking(_ checker: UpdateChecker, newestVersion: Version) {
+        if let currentVersion = checker.version, let newVersion = newestVersion.version, currentVersion != newVersion {
+            print("\(checker.appName) is not up to date: \(currentVersion) vs \(newVersion)")
         }
     }
 

@@ -9,16 +9,18 @@
 import Cocoa
 
 class Version {
-    var currentVersion = ""
-    var newVersion = ""
+    fileprivate var newVersion = ""
     
-    var version = ""
+    var version : String? {
+        return newVersion == "" ? nil : newVersion
+    }
+    
     var shortVersion = ""
     var date : Date?
 }
 
 protocol UpdateCheckerDelegate: class {
-    func checkerDidFinishChecking(_ checker: UpdateChecker, versionBundle: Version)
+    func checkerDidFinishChecking(_ checker: UpdateChecker, newestVersion: Version)
 }
 
 class UpdateChecker: NSObject, XMLParserDelegate {
@@ -51,7 +53,7 @@ class UpdateChecker: NSObject, XMLParserDelegate {
     
     private var parsingDate = false
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        if self.currentVersion == nil || elementName == "item" {
+        if elementName == "item" {
             self.createVersion()
         }
         
@@ -60,11 +62,7 @@ class UpdateChecker: NSObject, XMLParserDelegate {
         // Lets find the version number
         switch elementName {
         case "enclosure":
-            if let newVersion = attributeDict["sparkle:shortVersionString"], let shortVersion = self.shortVersion {
-                currentVersion.currentVersion = shortVersion
-                currentVersion.newVersion = newVersion
-            } else if let newVersion = attributeDict["sparkle:version"], let version = self.version  {
-                currentVersion.currentVersion = version
+            if let newVersion = attributeDict["sparkle:version"]  {
                 currentVersion.newVersion = newVersion
             }
         case "pubDate":
@@ -90,15 +88,29 @@ class UpdateChecker: NSObject, XMLParserDelegate {
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
+        var foundItemWithDate = false
+        
         self.versions.sort { (first, second) -> Bool in
             guard let firstDate = first.date else { return false }
             guard let secondDate = second.date else { return true }
             
+            // Ok, we can sort after dates now
+            foundItemWithDate = true
             return firstDate.compare(secondDate) == .orderedDescending
         }
         
-        if let version = self.versions.first, let _ = version.date {
-            delegate?.checkerDidFinishChecking(self, versionBundle: version)
+        if !foundItemWithDate && self.versions.count > 1 {
+            // The feed did not provide proper dates, so we only can try to compare version numbers against each other
+            // With this information, we might be able to find the newest item 
+            
+            self.versions.sort(by: { (first, second) -> Bool in
+                return true
+            })
+            
+        }
+        
+        if let version = self.versions.first {
+            delegate?.checkerDidFinishChecking(self, newestVersion: version)
         }
     }
     
@@ -107,5 +119,12 @@ class UpdateChecker: NSObject, XMLParserDelegate {
     
         self.currentVersion = version
         self.versions.append(version)
+    }
+    
+    func printDebugDescription() {
+        print("Debug description for app \(appName)")
+        print("Short version: \(shortVersion ?? "not given")")
+        print("Version: \(version ?? "not given")")
+        print("Number of versions parsed: \(versions.count)")
     }
 }
