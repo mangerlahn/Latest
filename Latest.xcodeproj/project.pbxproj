@@ -12,6 +12,7 @@
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
 		503616081E54E240007EE893 /* MLMUpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503616071E54E240007EE893 /* MLMUpdateChecker.swift */; };
+		5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		50290E7D1E53EB6A00133E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50290E831E53EB7900133E3D /* Latest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Latest.entitlements; sourceTree = "<group>"; };
 		503616071E54E240007EE893 /* MLMUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateChecker.swift; sourceTree = "<group>"; };
+		5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */,
+				5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503616081E54E240007EE893 /* MLMUpdateChecker.swift in Sources */,
+				5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */,
 				50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 			);
