@@ -27,9 +27,19 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: Table View Delegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self)
+        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) else {
+            return nil
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) else {
+            return 50
+        }
+        
+        return cell.frame.height
     }
     
     // MARK: Table View Data Source
