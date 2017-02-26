@@ -151,10 +151,16 @@ class UpdateChecker: NSObject, XMLParserDelegate {
     }
     
     func printDebugDescription() {
+        print("-----------------------")
         print("Debug description for app \(appName)")
         print("Short version: \(shortVersion ?? "not given")")
         print("Version: \(version ?? "not given")")
         print("Number of versions parsed: \(versions.count)")
+        
+        print("Versions found:")
+        for version in self.versions {
+            print(version.newVersion)
+        }
     }
 }
 
