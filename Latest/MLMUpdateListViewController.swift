@@ -27,9 +27,19 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: Table View Delegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) else {
+        
+        let app = self.apps[row]
+        
+        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) as? MLMUpdateCell,
+            let versionBundle = app.currentVersion,
+            let version = app.version,
+            let newVersion = versionBundle.version else {
             return nil
         }
+        
+        cell.textField?.stringValue = app.appName
+        cell.currentVersionTextField?.stringValue = NSLocalizedString("Current version: \(version)", comment: "Current Version String")
+        cell.newVersionTextField?.stringValue = NSLocalizedString("New version: \(newVersion)", comment: "New Version String")
         
         return cell
     }
@@ -50,9 +60,9 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Update Checker Delegate
     
-    func checkerDidFinishChecking(_ checker: MLMAppUpdater, newestVersion: Version) {
-        if let currentVersion = checker.version, let newVersion = newestVersion.version, currentVersion != newVersion {
-            self.apps.append(checker)
+    func checkerDidFinishChecking(_ app: MLMAppUpdater) {
+        if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
+            self.apps.append(app)
             self.tableView.reloadData()
         }
     }

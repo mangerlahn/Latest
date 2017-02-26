@@ -20,7 +20,7 @@ class Version {
 }
 
 protocol MLMAppUpdaterDelegate : class {
-    func checkerDidFinishChecking(_ checker: MLMAppUpdater, newestVersion: Version)
+    func checkerDidFinishChecking(_ app: MLMAppUpdater)
 }
 
 class MLMAppUpdater: NSObject, XMLParserDelegate {
@@ -140,8 +140,10 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
         
         if let version = self.versions.first {
             
+            self.currentVersion = version
+            
             DispatchQueue.main.async(execute: { //[weak self] in
-                self.delegate?.checkerDidFinishChecking(self, newestVersion: version)
+                self.delegate?.checkerDidFinishChecking(self)
             })
         }
     }
