@@ -77,9 +77,11 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             let applicationURL = applicationURLList.first,
             let apps = try? fileManager.contentsOfDirectory(atPath: applicationURL.path) else { return }
         
-        apps.forEach({ (file) in
-            if file.contains(".app") {
-                let plistPath = applicationURL.appendingPathComponent(file)
+        apps.forEach({ (f) in
+            let file = f as NSString
+            
+            if file.pathExtension == "app" {
+                let plistPath = applicationURL.appendingPathComponent(file as String)
                     .appendingPathComponent("Contents")
                     .appendingPathComponent("Info.plist").path
                 
@@ -98,7 +100,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                             let versionString = plistData["CFBundleVersion"] as? String
                             
                             let parser = XMLParser(data: xmlData)
-                            let checker = MLMAppUpdater(appName: file, shortVersion: shortVersionString, version: versionString)
+                            let checker = MLMAppUpdater(appName: file.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
                             
                             parser.delegate = checker
                             checker.delegate = self
