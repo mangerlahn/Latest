@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController, UpdateCheckerDelegate {
+class MLMUpdateListViewController: NSViewController, UpdateCheckerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
