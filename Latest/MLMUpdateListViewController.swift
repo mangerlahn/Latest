@@ -33,13 +33,17 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) as? MLMUpdateCell,
             let versionBundle = app.currentVersion,
             let version = app.version,
-            let newVersion = versionBundle.version else {
+            let newVersion = versionBundle.version,
+            let url = app.appURL else {
             return nil
         }
         
         cell.textField?.stringValue = app.appName
-        cell.currentVersionTextField?.stringValue = NSLocalizedString("Current version: \(version)", comment: "Current Version String")
+        cell.currentVersionTextField?.stringValue = NSLocalizedString("Your version: \(version)", comment: "Current Version String")
         cell.newVersionTextField?.stringValue = NSLocalizedString("New version: \(newVersion)", comment: "New Version String")
+        cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
+        
+        cell.appUrl = url
         
         return cell
     }
@@ -50,6 +54,23 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
         
         return cell.frame.height
+    }
+    
+    func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableRowActionEdge) -> [NSTableViewRowAction] {
+        if edge == .trailing {
+            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
+                guard let cell = tableView.view(atColumn: 0, row: row, makeIfNecessary: false) as? MLMUpdateCell,
+                let url = cell.appUrl else {
+                    return
+                }
+                
+                NSWorkspace.shared().open(url)
+            })
+            
+            return [action]
+        }
+        
+        return []
     }
     
     // MARK: Table View Data Source
@@ -77,11 +98,11 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             let applicationURL = applicationURLList.first,
             let apps = try? fileManager.contentsOfDirectory(atPath: applicationURL.path) else { return }
         
-        apps.forEach({ (f) in
-            let file = f as NSString
+        apps.forEach({ (file) in
+            let appName = file as NSString
             
-            if file.pathExtension == "app" {
-                let plistPath = applicationURL.appendingPathComponent(file as String)
+            if appName.pathExtension == "app" {
+                let plistPath = applicationURL.appendingPathComponent(file)
                     .appendingPathComponent("Contents")
                     .appendingPathComponent("Info.plist").path
                 
@@ -100,10 +121,11 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                             let versionString = plistData["CFBundleVersion"] as? String
                             
                             let parser = XMLParser(data: xmlData)
-                            let checker = MLMAppUpdater(appName: file.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
+                            let checker = MLMAppUpdater(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
                             
                             parser.delegate = checker
                             checker.delegate = self
+                            checker.appURL = applicationURL.appendingPathComponent(file)
                             
                             parser.parse()
                         }

@@ -742,7 +742,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-KW-d10">
-                                                                    <rect key="frame" x="5" y="5" width="207" height="51"/>
+                                                                    <rect key="frame" x="20" y="5" width="177" height="51"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oqi-sq-lFG">
                                                                             <rect key="frame" x="0.0" y="1" width="50" height="50"/>
@@ -750,16 +750,16 @@
                                                                                 <constraint firstAttribute="width" constant="50" id="OcP-jm-bZl"/>
                                                                                 <constraint firstAttribute="height" constant="50" id="gtH-0k-v5L"/>
                                                                             </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="mrm-RY-uqi"/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mrm-RY-uqi"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5b-Ys-0LZ">
-                                                                            <rect key="frame" x="58" y="3" width="128" height="45"/>
+                                                                            <rect key="frame" x="58" y="3" width="119" height="45"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1m-1T-h1l">
                                                                                     <rect key="frame" x="-2" y="28" width="70" height="17"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="App Name" id="SVA-bh-cUe">
                                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
-                                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
@@ -767,7 +767,7 @@
                                                                                     <rect key="frame" x="-2" y="14" width="87" height="14"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Current Version" id="h6g-FG-nGh">
                                                                                         <font key="font" metaFont="smallSystem"/>
-                                                                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
@@ -775,7 +775,7 @@
                                                                                     <rect key="frame" x="-2" y="0.0" width="70" height="14"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="New Version" id="6YS-DP-XWA">
                                                                                         <font key="font" metaFont="smallSystem"/>
-                                                                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
@@ -791,32 +791,20 @@
                                                                                 <real value="3.4028234663852886e+38"/>
                                                                             </customSpacing>
                                                                         </stackView>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ULD-Lw-23f">
-                                                                            <rect key="frame" x="194" y="15" width="13" height="21"/>
-                                                                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a2v-Ol-1dh">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <connections>
-                                                                                <action selector="openAppWithSender:" target="c4D-Nt-dk9" id="fzt-Qr-nHL"/>
-                                                                            </connections>
-                                                                        </button>
                                                                     </subviews>
                                                                     <visibilityPriorities>
-                                                                        <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                     </visibilityPriorities>
                                                                     <customSpacing>
                                                                         <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
-                                                                        <real value="3.4028234663852886e+38"/>
                                                                     </customSpacing>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="aYW-KW-d10" firstAttribute="leading" secondItem="c4D-Nt-dk9" secondAttribute="leading" constant="5" id="0Mk-1x-5cn"/>
-                                                                <constraint firstAttribute="trailing" secondItem="aYW-KW-d10" secondAttribute="trailing" constant="5" id="Hii-Pa-KcE"/>
+                                                                <constraint firstItem="aYW-KW-d10" firstAttribute="leading" secondItem="c4D-Nt-dk9" secondAttribute="leading" constant="20" id="0Mk-1x-5cn"/>
+                                                                <constraint firstAttribute="trailing" secondItem="aYW-KW-d10" secondAttribute="trailing" constant="20" id="Hii-Pa-KcE"/>
                                                                 <constraint firstAttribute="bottom" secondItem="aYW-KW-d10" secondAttribute="bottom" constant="5" id="gAG-7i-hvV"/>
                                                                 <constraint firstItem="aYW-KW-d10" firstAttribute="top" secondItem="c4D-Nt-dk9" secondAttribute="top" constant="5" id="tpr-ij-0gd"/>
                                                             </constraints>
@@ -877,7 +865,4 @@
             <point key="canvasLocation" x="344" y="1191"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
-    </resources>
 </document>

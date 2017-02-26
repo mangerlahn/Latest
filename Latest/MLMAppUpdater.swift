@@ -28,6 +28,7 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
     var shortVersion: String?
     var version: String?
     var appName = ""
+    var appURL: URL?
     
     weak var delegate : MLMAppUpdaterDelegate?
     

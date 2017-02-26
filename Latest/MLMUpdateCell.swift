@@ -21,10 +21,20 @@ class MLMUpdateCell: NSTableCellView {
         // Drawing code here.
     }
     
-    // MARK: Actions
-    
-    @IBAction func openApp(sender: NSButton) {
-        
+    override var backgroundStyle: NSBackgroundStyle {
+        didSet {
+            if self.backgroundStyle == .dark {
+                let color = NSColor.white
+                
+                self.currentVersionTextField?.textColor = color
+                self.newVersionTextField?.textColor = color
+            } else {
+                let color = NSColor.secondaryLabelColor
+                
+                self.currentVersionTextField?.textColor = color
+                self.newVersionTextField?.textColor = color
+            }
+        }
     }
     
 }
