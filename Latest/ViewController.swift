@@ -14,6 +14,21 @@ class ViewController: NSViewController, UpdateCheckerDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        self.checkForUpdates()
+    }
+    
+    // MARK: - UpdateCheckerDelegate
+    
+    func checkerDidFinishChecking(_ checker: UpdateChecker, newestVersion: Version) {
+        if let currentVersion = checker.version, let newVersion = newestVersion.version, currentVersion != newVersion {
+            print("\(checker.appName) is not up to date: \(currentVersion) vs \(newVersion)")
+        }
+    }
+    
+    // MARK: - Private Methods
+    
+    func checkForUpdates() {
         let fileManager = FileManager.default
         let applicationURLList = fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
         
@@ -57,11 +72,5 @@ class ViewController: NSViewController, UpdateCheckerDelegate {
         })
     }
     
-    func checkerDidFinishChecking(_ checker: UpdateChecker, newestVersion: Version) {
-        if let currentVersion = checker.version, let newVersion = newestVersion.version, currentVersion != newVersion {
-            print("\(checker.appName) is not up to date: \(currentVersion) vs \(newVersion)")
-        }
-    }
-
 }
 
