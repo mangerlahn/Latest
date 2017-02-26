@@ -734,7 +734,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="c4D-Nt-dk9" customClass="MLMUpdateCell" customModule="Latest" customModuleProvider="target">
+                                                        <tableCellView identifier="MLMUpdateCellIdentifier" id="c4D-Nt-dk9" customClass="MLMUpdateCell" customModule="Latest" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="215" height="58"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -827,6 +827,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="4DM-RB-IVI" id="RJE-i1-NYO"/>
+                                                <outlet property="delegate" destination="4DM-RB-IVI" id="auX-zx-Mnb"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -847,6 +851,9 @@
                             <constraint firstAttribute="bottom" secondItem="yos-E7-CDu" secondAttribute="bottom" id="ue4-dZ-PoH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
+                    </connections>
                 </viewController>
                 <customObject id="MxB-hL-adL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

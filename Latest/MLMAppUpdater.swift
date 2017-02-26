@@ -1,5 +1,5 @@
 //
-//  UpdateChecker.swift
+//  MLMAppUpdater.swift
 //  Latest
 //
 //  Created by Max Langer on 15.02.17.
@@ -19,17 +19,17 @@ class Version {
     var date : Date?
 }
 
-protocol UpdateCheckerDelegate: class {
-    func checkerDidFinishChecking(_ checker: UpdateChecker, newestVersion: Version)
+protocol MLMAppUpdaterDelegate : class {
+    func checkerDidFinishChecking(_ checker: MLMAppUpdater, newestVersion: Version)
 }
 
-class UpdateChecker: NSObject, XMLParserDelegate {
+class MLMAppUpdater: NSObject, XMLParserDelegate {
     
     var shortVersion: String?
     var version: String?
     var appName = ""
     
-    weak var delegate : UpdateCheckerDelegate?
+    weak var delegate : MLMAppUpdaterDelegate?
     
     private var versions = [Version]()
     var currentVersion: Version?
@@ -139,7 +139,10 @@ class UpdateChecker: NSObject, XMLParserDelegate {
         }
         
         if let version = self.versions.first {
-            delegate?.checkerDidFinishChecking(self, newestVersion: version)
+            
+            DispatchQueue.main.async(execute: { //[weak self] in
+                self.delegate?.checkerDidFinishChecking(self, newestVersion: version)
+            })
         }
     }
     

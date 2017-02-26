@@ -11,7 +11,7 @@
 		50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
-		503616081E54E240007EE893 /* MLMUpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503616071E54E240007EE893 /* MLMUpdateChecker.swift */; };
+		503616081E54E240007EE893 /* MLMAppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503616071E54E240007EE893 /* MLMAppUpdater.swift */; };
 		5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */; };
 		505843811E6382D200D21E86 /* MLMUpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505843801E6382D200D21E86 /* MLMUpdateCell.swift */; };
 /* End PBXBuildFile section */
@@ -24,7 +24,7 @@
 		50290E7B1E53EB6A00133E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50290E7D1E53EB6A00133E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50290E831E53EB7900133E3D /* Latest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Latest.entitlements; sourceTree = "<group>"; };
-		503616071E54E240007EE893 /* MLMUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateChecker.swift; sourceTree = "<group>"; };
+		503616071E54E240007EE893 /* MLMAppUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMAppUpdater.swift; sourceTree = "<group>"; };
 		5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateDetailsViewController.swift; sourceTree = "<group>"; };
 		505843801E6382D200D21E86 /* MLMUpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +82,7 @@
 		5058437B1E63809600D21E86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				503616071E54E240007EE893 /* MLMUpdateChecker.swift */,
+				503616071E54E240007EE893 /* MLMAppUpdater.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503616081E54E240007EE893 /* MLMUpdateChecker.swift in Sources */,
+				503616081E54E240007EE893 /* MLMAppUpdater.swift in Sources */,
 				5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */,
 				505843811E6382D200D21E86 /* MLMUpdateCell.swift in Sources */,
 				50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */,

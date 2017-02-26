@@ -8,8 +8,10 @@
 
 import Cocoa
 
-class MLMUpdateListViewController: NSViewController, UpdateCheckerDelegate {
+class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MLMAppUpdaterDelegate {
 
+    var apps = [MLMAppUpdater]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,11 +20,30 @@ class MLMUpdateListViewController: NSViewController, UpdateCheckerDelegate {
         self.checkForUpdates()
     }
     
-    // MARK: - UpdateCheckerDelegate
+    // MARK: - TableView Stuff
     
-    func checkerDidFinishChecking(_ checker: UpdateChecker, newestVersion: Version) {
+    @IBOutlet weak var tableView: NSTableView!
+    
+    // MARK: Table View Delegate
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self)
+        
+        return cell
+    }
+    
+    // MARK: Table View Data Source
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return self.apps.count
+    }
+    
+    // MARK: - Update Checker Delegate
+    
+    func checkerDidFinishChecking(_ checker: MLMAppUpdater, newestVersion: Version) {
         if let currentVersion = checker.version, let newVersion = newestVersion.version, currentVersion != newVersion {
-            print("\(checker.appName) is not up to date: \(currentVersion) vs \(newVersion)")
+            self.apps.append(checker)
+            self.tableView.reloadData()
         }
     }
     
@@ -57,7 +78,7 @@ class MLMUpdateListViewController: NSViewController, UpdateCheckerDelegate {
                             let versionString = plistData["CFBundleVersion"] as? String
                             
                             let parser = XMLParser(data: xmlData)
-                            let checker = UpdateChecker(appName: file, shortVersion: shortVersionString, version: versionString)
+                            let checker = MLMAppUpdater(appName: file, shortVersion: shortVersionString, version: versionString)
                             
                             parser.delegate = checker
                             checker.delegate = self
