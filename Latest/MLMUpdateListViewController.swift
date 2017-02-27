@@ -11,6 +11,9 @@ import Cocoa
 protocol MLMUpdateListViewControllerDelegate : class {
     func startChecking(numberOfApps: Int)
     func didCheckApp()
+    
+    func shouldExpandDetail()
+    func shouldCollapseDetail()
 }
 
 class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MLMAppUpdaterDelegate {
@@ -18,6 +21,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     var apps = [MLMAppUpdater]()
     
     weak var delegate : MLMUpdateListViewControllerDelegate?
+    
+    weak var detailViewController : MLMUpdateDetailsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +96,21 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
         
         return []
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let index = self.tableView.selectedRow
+        
+        if index == -1 {
+            return
+        }
+        
+        let app = self.apps[index]
+        
+        if let detailViewController = self.detailViewController, let url = app.currentVersion?.releaseNotes as? URL {
+            self.delegate?.shouldExpandDetail()
+            detailViewController.display(url: url)
+        }
     }
     
     // MARK: Table View Data Source

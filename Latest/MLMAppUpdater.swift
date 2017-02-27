@@ -17,6 +17,16 @@ class Version {
     
     var shortVersion = ""
     var date : Date?
+    
+    var releaseNotes: Any?
+}
+
+enum ParsingType {
+    case pubDate
+    case releaseNotesLink
+    case releaseNotesData
+    
+    case none
 }
 
 protocol MLMAppUpdaterDelegate : class {
@@ -52,7 +62,7 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
         self.dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
     }
     
-    private var parsingDate = false
+    private var currentlyParsing : ParsingType = .none
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         if elementName == "item" {
             self.createVersion()
@@ -67,7 +77,9 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
                 currentVersion.newVersion = newVersion
             }
         case "pubDate":
-            self.parsingDate = true
+            self.currentlyParsing = .pubDate
+        case "sparkle:releaseNotesLink":
+            self.currentlyParsing = .releaseNotesLink
         default:
             ()
         }
@@ -76,15 +88,22 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "pubDate" {
-            self.parsingDate = false
+            self.currentlyParsing = .none
         }
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        if parsingDate {
+        switch currentlyParsing {
+        case .pubDate:
             if let date = self.dateFormatter.date(from: string) {
-                currentVersion?.date = date
+                self.currentVersion?.date = date
             }
+        case .releaseNotesLink:
+            if self.currentVersion?.releaseNotes == nil {
+                self.currentVersion?.releaseNotes = URL(string: string)
+            }
+        default:
+            ()
         }
     }
     

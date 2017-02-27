@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="12106.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -742,7 +744,7 @@
                 <splitViewController id="RAb-Ag-jja" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="BiW-7m-NUy"/>
-                        <splitViewItem collapsed="YES" id="KSO-oE-QxW"/>
+                        <splitViewItem id="KSO-oE-QxW"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="u0E-Oa-Ty5">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -911,7 +913,7 @@
                 </viewController>
                 <customObject id="MxB-hL-adL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-66" y="1027.5"/>
+            <point key="canvasLocation" x="-94" y="1128"/>
         </scene>
         <!--Update Details View Controller-->
         <scene sceneID="zoJ-XZ-LEg">
@@ -920,7 +922,37 @@
                     <view key="view" id="d3c-S1-m3j">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="chL-FB-etX">
+                                <rect key="frame" x="0.0" y="265" width="450" height="35"/>
+                                <view key="contentView" id="GLp-nD-IS4">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="fillColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            </box>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hT1-h1-fvw">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="265"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hT1-h1-fvw" firstAttribute="top" secondItem="chL-FB-etX" secondAttribute="bottom" id="18l-M5-BOU"/>
+                            <constraint firstItem="chL-FB-etX" firstAttribute="top" secondItem="d3c-S1-m3j" secondAttribute="top" id="7NF-gl-SMo"/>
+                            <constraint firstAttribute="trailing" secondItem="hT1-h1-fvw" secondAttribute="trailing" id="c0s-Er-Yal"/>
+                            <constraint firstItem="chL-FB-etX" firstAttribute="leading" secondItem="d3c-S1-m3j" secondAttribute="leading" id="hxT-al-kgk"/>
+                            <constraint firstItem="hT1-h1-fvw" firstAttribute="leading" secondItem="d3c-S1-m3j" secondAttribute="leading" id="j2M-cn-Yqr"/>
+                            <constraint firstAttribute="trailing" secondItem="chL-FB-etX" secondAttribute="trailing" id="vZX-WD-caF"/>
+                            <constraint firstAttribute="bottom" secondItem="hT1-h1-fvw" secondAttribute="bottom" id="w9f-bs-ZWr"/>
+                            <constraint firstItem="hT1-h1-fvw" firstAttribute="top" secondItem="d3c-S1-m3j" secondAttribute="top" constant="35" placeholder="YES" id="ygS-ns-kNU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="hT1-h1-fvw" id="uIs-k7-d8W"/>
+                    </connections>
                 </viewController>
                 <customObject id="fhi-aa-PXT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

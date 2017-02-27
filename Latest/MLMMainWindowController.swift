@@ -19,6 +19,15 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         return firstItem
     }()
     
+    lazy var detailViewController : MLMUpdateDetailsViewController = {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController,
+            let secondItem = splitViewController.splitViewItems[1].viewController as? MLMUpdateDetailsViewController else {
+                return MLMUpdateDetailsViewController()
+        }
+        
+        return secondItem
+    }()
+    
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var reloadButton: NSButton!
     
@@ -29,8 +38,14 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         
         self.window?.titlebarAppearsTransparent = true
         self.window?.titleVisibility = .hidden
+        
+        if let splitViewController = self.contentViewController as? NSSplitViewController {
+            splitViewController.splitViewItems[1].isCollapsed = true
+        }
+        
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
+        self.listViewController.detailViewController = self.detailViewController
     }
 
     // MARK: - Action Methods
@@ -66,6 +81,8 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     
     // MARK: - MLMUpdateListViewController Delegate
     
+    // MARK: Checking
+    
     func startChecking(numberOfApps: Int) {
         self.reloadButton.isEnabled = false
     
@@ -79,6 +96,28 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
             self.reloadButton.isEnabled = true
         }
+    }
+    
+    // MARK: Visuals
+    
+    func shouldExpandDetail() {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return
+        }
+        
+        let detailItem = splitViewController.splitViewItems[1]
+        
+        detailItem.animator().isCollapsed = false
+    }
+    
+    func shouldCollapseDetail() {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return
+        }
+        
+        let detailItem = splitViewController.splitViewItems[1]
+        
+        detailItem.animator().isCollapsed = true
     }
     
     // MARK: - Private Methods
