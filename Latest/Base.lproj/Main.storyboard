@@ -687,6 +687,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="reload:" target="B8D-0N-5wS" id="rFX-tF-Prr"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="B7604B52-21C5-4F5C-958E-D519FDF63098" label="Open All Apps" paletteLabel="Open All Apps" image="NSIconViewTemplate" id="hSF-GV-qvH">
@@ -700,6 +703,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="openAll:" target="B8D-0N-5wS" id="Ol2-UK-k1u"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                             </allowedToolbarItems>

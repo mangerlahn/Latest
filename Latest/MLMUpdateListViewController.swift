@@ -108,6 +108,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: - Private Methods
     
     func checkForUpdates() {
+        self.apps = []
+        
         let fileManager = FileManager.default
         let applicationURLList = fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
         
