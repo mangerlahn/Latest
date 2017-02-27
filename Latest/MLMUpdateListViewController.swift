@@ -17,6 +17,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         // Do any additional setup after loading the view.
         
+        if let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) {
+            self.tableView.rowHeight = cell.frame.height
+        }
+        
         self.checkForUpdates()
     }
     
@@ -66,6 +70,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                 
                 NSWorkspace.shared().open(url)
             })
+            
+            action.backgroundColor = NSColor.gray
             
             return [action]
         }
