@@ -8,9 +8,16 @@
 
 import Cocoa
 
+protocol MLMUpdateListViewControllerDelegate : class {
+    func startChecking(numberOfApps: Int)
+    func didCheckApp()
+}
+
 class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MLMAppUpdaterDelegate {
 
     var apps = [MLMAppUpdater]()
+    
+    weak var delegate : MLMUpdateListViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +27,6 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         if let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
-        
-        self.checkForUpdates()
     }
     
     override func viewWillAppear() {
@@ -97,6 +102,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: - Update Checker Delegate
     
     func checkerDidFinishChecking(_ app: MLMAppUpdater) {
+        self.delegate?.didCheckApp()
+        
         if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
             self.apps.append(app)
             self.tableView.reloadData()
@@ -116,6 +123,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         guard applicationURLList.count > 0,
             let applicationURL = applicationURLList.first,
             let apps = try? fileManager.contentsOfDirectory(atPath: applicationURL.path) else { return }
+        
+        self.delegate?.startChecking(numberOfApps: apps.count)
         
         apps.forEach({ (file) in
             let appName = file as NSString
@@ -147,11 +156,17 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                             checker.appURL = applicationURL.appendingPathComponent(file)
                             
                             parser.parse()
+                        } else {
+                            self.delegate?.didCheckApp()
                         }
                     })
                     
                     task.resume()
+                } else {
+                    self.delegate?.didCheckApp()
                 }
+            } else {
+                self.delegate?.didCheckApp()
             }
         })
     }

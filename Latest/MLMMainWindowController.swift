@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MLMMainWindowController: NSWindowController {
+class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDelegate {
     
     lazy var listViewController : MLMUpdateListViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
@@ -19,6 +19,9 @@ class MLMMainWindowController: NSWindowController {
         return firstItem
     }()
     
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet weak var reloadButton: NSButton!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
     
@@ -26,8 +29,12 @@ class MLMMainWindowController: NSWindowController {
         
         self.window?.titlebarAppearsTransparent = true
         self.window?.titleVisibility = .hidden
+        self.listViewController.delegate = self
+        self.listViewController.checkForUpdates()
     }
 
+    // MARK: - Action Methods
+    
     @IBAction func reload(_ sender: NSButton) {
         self.listViewController.checkForUpdates()
     }
@@ -56,6 +63,25 @@ class MLMMainWindowController: NSWindowController {
             self.open(apps: apps)
         }
     }
+    
+    // MARK: - MLMUpdateListViewController Delegate
+    
+    func startChecking(numberOfApps: Int) {
+        self.reloadButton.isEnabled = false
+    
+        self.progressIndicator.doubleValue = 0
+        self.progressIndicator.maxValue = Double(numberOfApps)
+    }
+    
+    func didCheckApp() {
+        self.progressIndicator.increment(by: 1)
+        
+        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
+            self.reloadButton.isEnabled = true
+        }
+    }
+    
+    // MARK: - Private Methods
     
     private func open(apps: [MLMAppUpdater]) {
         for app in apps {

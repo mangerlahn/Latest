@@ -708,15 +708,27 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D9AB5F20-627A-43CB-BD49-21067730000F" label="Progress" paletteLabel="Progress" tag="-1" id="OLo-39-3Sm">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="16" height="16"/>
+                                    <size key="maxSize" width="16" height="16"/>
+                                    <progressIndicator key="view" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" controlSize="small" style="spinning" id="rtV-DA-Kd6">
+                                        <rect key="frame" x="19" y="14" width="16" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </progressIndicator>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="sgB-XA-UzA"/>
+                                <toolbarItem reference="OLo-39-3Sm"/>
                                 <toolbarItem reference="ZWx-q6-TJz"/>
                                 <toolbarItem reference="hSF-GV-qvH"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
                     <connections>
+                        <outlet property="progressIndicator" destination="rtV-DA-Kd6" id="70r-Sv-xjH"/>
+                        <outlet property="reloadButton" destination="FM4-aR-lhK" id="eb4-jN-US4"/>
                         <segue destination="RAb-Ag-jja" kind="relationship" relationship="window.shadowedContentViewController" id="8Lr-Po-xG2"/>
                     </connections>
                 </windowController>
