@@ -24,6 +24,15 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self.checkForUpdates()
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        guard let scrollView = self.tableView.enclosingScrollView else { return }
+        
+        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0.0)
+        topConstraint.isActive = true
+    }
+    
     // MARK: - TableView Stuff
     
     @IBOutlet weak var tableView: NSTableView!
@@ -91,6 +100,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
             self.apps.append(app)
             self.tableView.reloadData()
+            
+            NSApplication.shared().dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
         }
     }
     

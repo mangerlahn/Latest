@@ -665,13 +665,50 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MLMMainWindowController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="271"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="220" height="300"/>
+                        <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="6dc-Xr-FRW"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sgB-XA-UzA"/>
+                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" id="ZWx-q6-TJz">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="36" height="32"/>
+                                    <size key="maxSize" width="47" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="FM4-aR-lhK">
+                                        <rect key="frame" x="0.0" y="14" width="47" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="B7604B52-21C5-4F5C-958E-D519FDF63098" label="Open All Apps" paletteLabel="Open All Apps" image="NSIconViewTemplate" id="hSF-GV-qvH">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="36" height="32"/>
+                                    <size key="maxSize" width="47" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="TkS-CH-ikZ">
+                                        <rect key="frame" x="18" y="14" width="47" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bb4-uB-lVg">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="sgB-XA-UzA"/>
+                                <toolbarItem reference="ZWx-q6-TJz"/>
+                                <toolbarItem reference="hSF-GV-qvH"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                     </window>
                     <connections>
                         <segue destination="RAb-Ag-jja" kind="relationship" relationship="window.shadowedContentViewController" id="8Lr-Po-xG2"/>
@@ -707,20 +744,23 @@
             <objects>
                 <viewController id="4DM-RB-IVI" customClass="MLMUpdateListViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JKX-qd-RUY">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="173"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Umj-qk-DRP">
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="173"/>
+                            </visualEffectView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="63" horizontalPageScroll="10" verticalLineScroll="63" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yos-E7-CDu">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="153"/>
                                 <clipView key="contentView" drawsBackground="NO" id="sB5-n6-Pai">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="220" height="153"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="61" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="Aue-8r-EWw">
-                                            <rect key="frame" x="0.0" y="0.0" width="220" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="220" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
@@ -824,7 +864,7 @@
                                             </connections>
                                         </tableView>
                                     </subviews>
-                                    <nil key="backgroundColor"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fLN-t4-yd2">
                                     <rect key="frame" x="1" y="226" width="187" height="16"/>
@@ -837,9 +877,13 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" id="2vy-gP-JOj"/>
                             <constraint firstItem="yos-E7-CDu" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="ImF-sc-IlD"/>
+                            <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" constant="20" placeholder="YES" id="LKJ-AI-Pp1"/>
                             <constraint firstAttribute="trailing" secondItem="yos-E7-CDu" secondAttribute="trailing" id="QOn-lW-jBV"/>
+                            <constraint firstAttribute="trailing" secondItem="Umj-qk-DRP" secondAttribute="trailing" id="Rzb-gl-195"/>
+                            <constraint firstAttribute="bottom" secondItem="Umj-qk-DRP" secondAttribute="bottom" id="SKS-gr-Xxh"/>
+                            <constraint firstItem="Umj-qk-DRP" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="bAT-bb-GP1"/>
+                            <constraint firstItem="Umj-qk-DRP" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" id="eeW-LQ-b99"/>
                             <constraint firstAttribute="bottom" secondItem="yos-E7-CDu" secondAttribute="bottom" id="ue4-dZ-PoH"/>
                         </constraints>
                     </view>
@@ -849,7 +893,7 @@
                 </viewController>
                 <customObject id="MxB-hL-adL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-66" y="1191"/>
+            <point key="canvasLocation" x="-66" y="1027.5"/>
         </scene>
         <!--Update Details View Controller-->
         <scene sceneID="zoJ-XZ-LEg">
@@ -865,4 +909,8 @@
             <point key="canvasLocation" x="344" y="1191"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
 </document>
