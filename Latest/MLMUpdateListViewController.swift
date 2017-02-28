@@ -55,10 +55,20 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) as? MLMUpdateCell,
             let versionBundle = app.currentVersion,
-            let version = app.version,
-            let newVersion = versionBundle.version,
             let url = app.appURL else {
             return nil
+        }
+        
+        var version = ""
+        var newVersion = ""
+        
+        if let v = app.shortVersion, let nv = versionBundle.shortVersion {
+            version = v
+            newVersion = nv
+        } else if let v = app.version,
+            let nv = versionBundle.version {
+            version = v
+            newVersion = nv
         }
         
         cell.textField?.stringValue = app.appName

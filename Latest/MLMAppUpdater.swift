@@ -15,7 +15,8 @@ class Version {
         return newVersion == "" ? nil : newVersion
     }
     
-    var shortVersion = ""
+    var shortVersion : String?
+
     var date : Date?
     
     var releaseNotes: Any?
@@ -75,6 +76,10 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
         case "enclosure":
             if let newVersion = attributeDict["sparkle:version"]  {
                 currentVersion.newVersion = newVersion
+            }
+            
+            if let shortVersion = attributeDict["sparkle:shortVersionString"] {
+                currentVersion.shortVersion = shortVersion
             }
         case "pubDate":
             self.currentlyParsing = .pubDate
