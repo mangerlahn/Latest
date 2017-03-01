@@ -69,7 +69,11 @@
                                                 <action selector="openApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open All" keyEquivalent="O" id="tXI-mr-wws"/>
+                                        <menuItem title="Open All" keyEquivalent="O" id="tXI-mr-wws">
+                                            <connections>
+                                                <action selector="openAll:" target="Ady-hI-5gd" id="gFL-jg-4gq"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                                         <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                             <connections>
@@ -83,11 +87,15 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
-                                        <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0"/>
+                                        <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
+                                            <connections>
+                                                <action selector="reload:" target="Ady-hI-5gd" id="hPg-BA-6c8"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="dAw-76-qns"/>
                                         <menuItem title="Show Version Description" keyEquivalent="d" id="kIP-vf-haE">
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleDetail:" target="Ady-hI-5gd" id="Z20-de-nhz"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -226,8 +234,8 @@
             <objects>
                 <splitViewController id="RAb-Ag-jja" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="BiW-7m-NUy"/>
-                        <splitViewItem id="KSO-oE-QxW"/>
+                        <splitViewItem holdingPriority="260" behavior="sidebar" id="BiW-7m-NUy"/>
+                        <splitViewItem canCollapse="YES" id="KSO-oE-QxW"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="u0E-Oa-Ty5">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>

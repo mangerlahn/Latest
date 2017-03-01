@@ -50,11 +50,11 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
 
     // MARK: - Action Methods
     
-    @IBAction func reload(_ sender: NSButton) {
+    @IBAction func reload(_ sender: Any?) {
         self.listViewController.checkForUpdates()
     }
     
-    @IBAction func openAll(_ sender: NSButton) {
+    @IBAction func openAll(_ sender: Any?) {
         let apps = self.listViewController.apps
         
         if apps.count > 4 {
@@ -76,6 +76,45 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
             })
         } else {
             self.open(apps: apps)
+        }
+    }
+    
+    @IBAction func toggleDetail(_ sender: Any?) {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return
+        }
+        
+        let detailItem = splitViewController.splitViewItems[1]
+        
+        detailItem.animator().isCollapsed = !detailItem.isCollapsed
+    }
+    
+    // MARK: Menu Item Validation
+
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let action = menuItem.action else {
+            return super.validateMenuItem(menuItem)
+        }
+        
+        switch action {
+        case #selector(openAll(_:)):
+            return self.listViewController.apps.count != 0
+        case #selector(reload(_:)):
+            return self.reloadButton.isEnabled
+        case #selector(toggleDetail(_:)):
+            guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+                return false
+            }
+            
+            let detailItem = splitViewController.splitViewItems[1]
+            
+            menuItem.title = detailItem.isCollapsed ?
+                NSLocalizedString("Show Version Details", comment: "MenuItem Show Version Details") :
+                NSLocalizedString("Hide Version Details", comment: "MenuItem Hide Version Details")
+            
+            return self.listViewController.tableView.selectedRow != -1
+        default:
+            return super.validateMenuItem(menuItem)
         }
     }
     
