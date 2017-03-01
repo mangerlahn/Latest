@@ -21,7 +21,7 @@ class MLMUpdateDetailsViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        let constraint = NSLayoutConstraint(item: self.webView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
+        let constraint = NSLayoutConstraint(item: self.webView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 3)
         constraint.isActive = true
     }
     

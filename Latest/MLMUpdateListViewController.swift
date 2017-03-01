@@ -24,6 +24,11 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     weak var detailViewController : MLMUpdateDetailsViewController?
     
+    @IBOutlet weak var updatesLabel: NSTextField!
+    @IBOutlet weak var rightMarginConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var toolbarDivider: NSBox!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +37,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         if let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
+        
+        self.scrollViewDidScroll(nil)
     }
     
     override func viewWillAppear() {
@@ -39,13 +46,28 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         guard let scrollView = self.tableView.enclosingScrollView else { return }
         
-        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 3)
         topConstraint.isActive = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewDidScroll(_:)), name: Notification.Name.NSScrollViewDidLiveScroll, object: self.tableView.enclosingScrollView)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - TableView Stuff
     
     @IBOutlet weak var tableView: NSTableView!
+    
+    func scrollViewDidScroll(_ notification: Notification?) {
+        guard let scrollView = self.tableView.enclosingScrollView else {
+            return
+        }
+        
+        let pos = scrollView.contentView.bounds.origin.y
+        self.toolbarDivider.alphaValue = min(pos / 15, 1)
+    }
     
     // MARK: Table View Delegate
     
@@ -141,10 +163,12 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             self.tableView.reloadData()
             
             NSApplication.shared().dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
+            self.updatesLabel.stringValue = NSLocalizedString("\(self.apps.count) Updates Available", comment: "UpdatesAvailable Description")
         }
         
         if self.apps.count == 0 {
             NSApplication.shared().dockTile.badgeLabel = ""
+            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
         }
     }
     
