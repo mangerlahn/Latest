@@ -12,9 +12,7 @@ class MLMUpdateCell: NSTableCellView {
 
     @IBOutlet weak var currentVersionTextField: NSTextField?
     @IBOutlet weak var newVersionTextField: NSTextField?
-    
-    var appUrl: URL?
-    
+        
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 

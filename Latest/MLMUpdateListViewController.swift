@@ -76,8 +76,6 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         cell.newVersionTextField?.stringValue = NSLocalizedString("New version: \(newVersion)", comment: "New Version String")
         cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
         
-        cell.appUrl = url
-        
         return cell
     }
     
@@ -92,12 +90,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableRowActionEdge) -> [NSTableViewRowAction] {
         if edge == .trailing {
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
-                guard let cell = tableView.view(atColumn: 0, row: row, makeIfNecessary: false) as? MLMUpdateCell,
-                let url = cell.appUrl else {
-                    return
-                }
-                
-                NSWorkspace.shared().open(url)
+                self.openApp(atIndex: row)
             })
             
             action.backgroundColor = NSColor.gray
@@ -155,7 +148,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
     }
     
-    // MARK: - Private Methods
+    // MARK: - Public Methods
     
     func checkForUpdates() {
         self.apps = []
@@ -214,5 +207,33 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         })
     }
     
+    // MARK: - Menu Item Stuff
+    
+    @IBAction func openApp(_ sender: Any?) {
+        self.openApp(atIndex: self.tableView.selectedRow)
+    }
+    
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(openApp(_:)) {
+            return self.tableView.selectedRow != -1
+        }
+        
+        return super.validateMenuItem(menuItem)
+    }
+    
+    // MARK: - Private Methods
+
+    private func openApp(atIndex index: Int) {
+        if index < 0 || index >= self.apps.count {
+            return
+        }
+        
+        let app = self.apps[index]
+        guard let url = app.appURL else {
+            return
+        }
+        
+        NSWorkspace.shared().open(url)
+    }
 }
 
