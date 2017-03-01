@@ -85,6 +85,8 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
             self.currentlyParsing = .pubDate
         case "sparkle:releaseNotesLink":
             self.currentlyParsing = .releaseNotesLink
+        case "description":
+            self.currentlyParsing = .releaseNotesData
         default:
             ()
         }
@@ -106,6 +108,15 @@ class MLMAppUpdater: NSObject, XMLParserDelegate {
         case .releaseNotesLink:
             if self.currentVersion?.releaseNotes == nil {
                 self.currentVersion?.releaseNotes = URL(string: string)
+            }
+        case .releaseNotesData:
+            if self.currentVersion?.releaseNotes == nil {
+                self.currentVersion?.releaseNotes = ""
+            }
+            
+            if var releaseNotes = self.currentVersion?.releaseNotes as? String {
+                releaseNotes += string
+                self.currentVersion?.releaseNotes = releaseNotes
             }
         default:
             ()

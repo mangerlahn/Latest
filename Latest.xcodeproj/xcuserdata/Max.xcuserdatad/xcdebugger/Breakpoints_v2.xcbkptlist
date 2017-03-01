@@ -19,5 +19,84 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Latest/MLMUpdateListViewController.swift"
+            timestampString = "510025095.798058"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "tableViewSelectionDidChange(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Latest.MLMUpdateListViewController.tableViewSelectionDidChange (Foundation.Notification) -&gt; ()"
+                  moduleName = "Latest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Desktop/Latest/Latest/MLMUpdateListViewController.swift"
+                  timestampString = "510025161.165411"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "1204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Latest.MLMUpdateListViewController.tableViewSelectionDidChange (Foundation.Notification) -&gt; ()"
+                  moduleName = "Latest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Desktop/Latest/Latest/MLMUpdateListViewController.swift"
+                  timestampString = "510025161.168436"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "1343">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Latest.MLMUpdateListViewController.tableViewSelectionDidChange (Foundation.Notification) -&gt; ()"
+                  moduleName = "Latest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Desktop/Latest/Latest/MLMUpdateListViewController.swift"
+                  timestampString = "510025161.171437"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "1955">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Latest/MLMAppUpdater.swift"
+            timestampString = "510025135.257571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "parser(_:foundCharacters:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

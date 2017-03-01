@@ -30,10 +30,10 @@ class MLMUpdateDetailsViewController: NSViewController {
         self.webView.load(request)
     }
     
-    func display(data: Data) {
-        guard let html = String(data: data, encoding: String.Encoding.utf8) else {
-            return
-        }
+    func display(html: String) {
+//        guard let html = String(data: data, encoding: String.Encoding.utf8) else {
+//            return
+//        }
         
         self.webView.loadHTMLString(html, baseURL: nil)
     }

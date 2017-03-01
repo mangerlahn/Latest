@@ -117,9 +117,18 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         let app = self.apps[index]
         
-        if let detailViewController = self.detailViewController, let url = app.currentVersion?.releaseNotes as? URL {
+        guard let detailViewController = self.detailViewController else {
+            return
+        }
+        
+        if let url = app.currentVersion?.releaseNotes as? URL {
             self.delegate?.shouldExpandDetail()
             detailViewController.display(url: url)
+        } else if let string = app.currentVersion?.releaseNotes as? String {
+            self.delegate?.shouldExpandDetail()
+            detailViewController.display(html: string)
+            
+            print(string)
         }
     }
     
@@ -139,6 +148,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             self.tableView.reloadData()
             
             NSApplication.shared().dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
+        }
+        
+        if self.apps.count == 0 {
+            NSApplication.shared().dockTile.badgeLabel = ""
         }
     }
     
