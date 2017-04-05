@@ -15,6 +15,7 @@
 		504BA5911E643A2300B15275 /* MLMMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504BA5901E643A2300B15275 /* MLMMainWindowController.swift */; };
 		5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */; };
 		505843811E6382D200D21E86 /* MLMUpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505843801E6382D200D21E86 /* MLMUpdateCell.swift */; };
+		509E95231E95AC1300CB4FCE /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 509E95221E95AC1300CB4FCE /* Localizable.stringsdict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		504BA5901E643A2300B15275 /* MLMMainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMainWindowController.swift; sourceTree = "<group>"; };
 		5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateDetailsViewController.swift; sourceTree = "<group>"; };
 		505843801E6382D200D21E86 /* MLMUpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateCell.swift; sourceTree = "<group>"; };
+		509E95221E95AC1300CB4FCE /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,7 @@
 				5058437B1E63809600D21E86 /* Model */,
 				50290E781E53EB6A00133E3D /* Assets.xcassets */,
 				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
-				50290E7D1E53EB6A00133E3D /* Info.plist */,
+				509E95211E95ABED00CB4FCE /* Other */,
 			);
 			path = Latest;
 			sourceTree = "<group>";
@@ -113,6 +115,15 @@
 				505843801E6382D200D21E86 /* MLMUpdateCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		509E95211E95ABED00CB4FCE /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				50290E7D1E53EB6A00133E3D /* Info.plist */,
+				509E95221E95AC1300CB4FCE /* Localizable.stringsdict */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			files = (
 				50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */,
 				50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */,
+				509E95231E95AC1300CB4FCE /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -163,7 +163,9 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             self.tableView.reloadData()
             
             NSApplication.shared().dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
-            self.updatesLabel.stringValue = NSLocalizedString("\(self.apps.count) Updates Available", comment: "UpdatesAvailable Description")
+            
+            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
+            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, self.apps.count)
         }
         
         if self.apps.count == 0 {
