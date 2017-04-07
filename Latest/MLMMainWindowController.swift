@@ -133,7 +133,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     func didCheckApp() {
         self.progressIndicator.increment(by: 1)
         
-        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
+        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 2 {
             self.reloadButton.isEnabled = true
         }
     }

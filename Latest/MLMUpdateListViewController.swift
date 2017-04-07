@@ -154,7 +154,9 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Update Checker Delegate
     
-    func checkerDidFinishChecking(_ app: MLMAppUpdate) {        
+    func checkerDidFinishChecking(_ app: MLMAppUpdate) {
+        self.updateChecker.progressDelegate?.didCheckApp()
+        
         if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
             self.apps.append(app)
             self.tableView.reloadData()

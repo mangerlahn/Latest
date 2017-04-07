@@ -45,6 +45,10 @@ struct MLMUpdateChecker {
                 return !method(self)(file)
             })
         }
+        
+        for _ in apps {
+            self.progressDelegate?.didCheckApp()
+        }
     }
     
 }

@@ -38,7 +38,7 @@ extension MLMUpdateChecker {
                 let versionString = information["CFBundleVersion"] as? String
 
                 let parser = XMLParser(data: xmlData)
-                let checker = MLMAppUpdate(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
+                let checker = MLMSparkleAppUpdate(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
 
                 parser.delegate = checker
                 checker.delegate = self.appUpdateDelegate
