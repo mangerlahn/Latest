@@ -30,18 +30,18 @@ enum ParsingType {
     case none
 }
 
-protocol MLMAppUpdaterDelegate : class {
-    func checkerDidFinishChecking(_ app: MLMAppUpdater)
+protocol MLMAppUpdateDelegate : class {
+    func checkerDidFinishChecking(_ app: MLMAppUpdate)
 }
 
-class MLMAppUpdater: NSObject, XMLParserDelegate {
+class MLMAppUpdate: NSObject, XMLParserDelegate {
     
     var shortVersion: String?
     var version: String?
     var appName = ""
     var appURL: URL?
     
-    weak var delegate : MLMAppUpdaterDelegate?
+    weak var delegate : MLMAppUpdateDelegate?
     
     private var versions = [Version]()
     var currentVersion: Version?

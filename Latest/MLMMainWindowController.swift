@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDelegate {
+class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDelegate, MLMUpdateCheckerProgressDelegate {
     
     lazy var listViewController : MLMUpdateListViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
@@ -43,6 +43,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
             splitViewController.splitViewItems[1].isCollapsed = true
         }
         
+        self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.detailViewController = self.detailViewController
@@ -161,7 +162,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     
     // MARK: - Private Methods
     
-    private func open(apps: [MLMAppUpdater]) {
+    private func open(apps: [MLMAppUpdate]) {
         for app in apps {
             guard let url = app.appURL else {
                 continue

@@ -8,17 +8,14 @@
 
 import Cocoa
 
-protocol MLMUpdateListViewControllerDelegate : class {
-    func startChecking(numberOfApps: Int)
-    func didCheckApp()
-    
+protocol MLMUpdateListViewControllerDelegate : class {    
     func shouldExpandDetail()
     func shouldCollapseDetail()
 }
 
-class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MLMAppUpdaterDelegate {
+class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MLMAppUpdateDelegate {
 
-    var apps = [MLMAppUpdater]()
+    var apps = [MLMAppUpdate]()
     
     weak var delegate : MLMUpdateListViewControllerDelegate?
     
@@ -29,6 +26,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     @IBOutlet weak var toolbarDivider: NSBox!
     
+    var updateChecker = MLMUpdateChecker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +36,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         if let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
+        
+        self.updateChecker.appUpdateDelegate = self
         
         self.scrollViewDidScroll(nil)
     }
@@ -112,7 +113,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableRowActionEdge) -> [NSTableViewRowAction] {
         if edge == .trailing {
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
-                self.openApp(atIndex: row)
+                self._openApp(atIndex: row)
             })
             
             action.backgroundColor = NSColor.gray
@@ -142,8 +143,6 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         } else if let string = app.currentVersion?.releaseNotes as? String {
             self.delegate?.shouldExpandDetail()
             detailViewController.display(html: string)
-            
-            print(string)
         }
     }
     
@@ -155,9 +154,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Update Checker Delegate
     
-    func checkerDidFinishChecking(_ app: MLMAppUpdater) {
-        self.delegate?.didCheckApp()
-        
+    func checkerDidFinishChecking(_ app: MLMAppUpdate) {        
         if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
             self.apps.append(app)
             self.tableView.reloadData()
@@ -178,65 +175,13 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     func checkForUpdates() {
         self.apps = []
-        
-        let fileManager = FileManager.default
-        let applicationURLList = fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
-        
-        guard applicationURLList.count > 0,
-            let applicationURL = applicationURLList.first,
-            let apps = try? fileManager.contentsOfDirectory(atPath: applicationURL.path) else { return }
-        
-        self.delegate?.startChecking(numberOfApps: apps.count)
-        
-        apps.forEach({ (file) in
-            let appName = file as NSString
-            
-            if appName.pathExtension == "app" {
-                let plistPath = applicationURL.appendingPathComponent(file)
-                    .appendingPathComponent("Contents")
-                    .appendingPathComponent("Info.plist").path
-                
-                if FileManager.default.fileExists(atPath: plistPath),
-                    let plistData = NSDictionary(contentsOfFile: plistPath),
-                    let urlString = plistData["SUFeedURL"] as? String,
-                    let url = URL(string: urlString) {
-                    
-                    let session = URLSession(configuration: URLSessionConfiguration.default)
-                    
-                    let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
-                        if error == nil,
-                            let xmlData = data {
-                            
-                            let shortVersionString = plistData["CFBundleShortVersionString"] as? String
-                            let versionString = plistData["CFBundleVersion"] as? String
-                            
-                            let parser = XMLParser(data: xmlData)
-                            let checker = MLMAppUpdater(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
-                            
-                            parser.delegate = checker
-                            checker.delegate = self
-                            checker.appURL = applicationURL.appendingPathComponent(file)
-                            
-                            parser.parse()
-                        } else {
-                            self.delegate?.didCheckApp()
-                        }
-                    })
-                    
-                    task.resume()
-                } else {
-                    self.delegate?.didCheckApp()
-                }
-            } else {
-                self.delegate?.didCheckApp()
-            }
-        })
+        self.updateChecker.run()
     }
     
     // MARK: - Menu Item Stuff
     
     @IBAction func openApp(_ sender: Any?) {
-        self.openApp(atIndex: self.tableView.selectedRow)
+        self._openApp(atIndex: self.tableView.selectedRow)
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
@@ -249,7 +194,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Private Methods
 
-    private func openApp(atIndex index: Int) {
+    private func _openApp(atIndex index: Int) {
         if index < 0 || index >= self.apps.count {
             return
         }
@@ -261,5 +206,6 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         NSWorkspace.shared().open(url)
     }
+
 }
 
