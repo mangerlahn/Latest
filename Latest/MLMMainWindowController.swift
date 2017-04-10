@@ -127,13 +127,13 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         self.reloadButton.isEnabled = false
     
         self.progressIndicator.doubleValue = 0
-        self.progressIndicator.maxValue = Double(numberOfApps)
+        self.progressIndicator.maxValue = Double(numberOfApps - 1)
     }
     
     func didCheckApp() {
         self.progressIndicator.increment(by: 1)
         
-        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 2 {
+        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
             self.reloadButton.isEnabled = true
         }
     }
@@ -163,7 +163,18 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     // MARK: - Private Methods
     
     private func open(apps: [MLMAppUpdate]) {
+        var showedMacAppStore = false
+        
         for app in apps {
+            if app is MLMMacAppStoreAppUpdate {
+                if !showedMacAppStore {
+                    showedMacAppStore = true
+                    NSWorkspace.shared().open(URL(string: "macappstore://showUpdatesPage")!)
+                }
+                
+                continue
+            }
+            
             guard let url = app.appURL else {
                 continue
             }

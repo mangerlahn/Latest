@@ -64,12 +64,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Open" keyEquivalent="o" id="IAo-SY-fd9">
+                                        <menuItem title="Update" keyEquivalent="u" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open All" keyEquivalent="O" id="tXI-mr-wws">
+                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
                                             <connections>
                                                 <action selector="openAll:" target="Ady-hI-5gd" id="gFL-jg-4gq"/>
                                             </connections>

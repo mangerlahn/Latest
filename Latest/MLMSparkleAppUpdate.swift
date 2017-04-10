@@ -165,11 +165,11 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         if let version = self.versions.first {
             
             self.currentVersion = version
-            
-            DispatchQueue.main.async(execute: { //[weak self] in
-                self.delegate?.checkerDidFinishChecking(self)
-            })
         }
+        
+        DispatchQueue.main.async(execute: {
+            self.delegate?.checkerDidFinishChecking(self)
+        })
     }
     
 }

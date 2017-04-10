@@ -21,11 +21,46 @@ extension MLMUpdateChecker {
         let fileManager = FileManager.default
         
         guard let receiptPath = appBundle?.appStoreReceiptURL?.path,
-            fileManager.fileExists(atPath: receiptPath) else {
-            return false
-        }
+                  fileManager.fileExists(atPath: receiptPath) else { return false }
         
         // App is from Mac App Store
+        let languageCode = Locale.current.languageCode ?? "en"
+
+        guard let bundleIdentifier = appBundle?.bundleIdentifier,
+              let information = appBundle?.infoDictionary,
+              let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(languageCode)&entity=macSoftware&limit=1")
+              else { return false }
+        
+        if bundleIdentifier.contains("com.apple.InstallAssistant") {
+            self.progressDelegate?.didCheckApp()
+            return true
+        }
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let dataTask = session.dataTask(with: url) { (data, response, error) in
+            guard error == nil,
+                let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                let results = json?["results"] as? [Any],
+                results.count != 0,
+                let appData = results[0] as? [String: Any] else {
+                    DispatchQueue.main.async {
+                        self.progressDelegate?.didCheckApp()
+                    }
+                    
+                    return
+            }
+            
+            let shortVersionString = information["CFBundleShortVersionString"] as? String
+            let versionString = information["CFBundleVersion"] as? String
+            
+            let appUpdate = MLMMacAppStoreAppUpdate(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
+            appUpdate.delegate = self.appUpdateDelegate
+            appUpdate.parse(data: appData)
+            appUpdate.appURL = applicationURL.appendingPathComponent(app)
+        }
+        
+        dataTask.resume()
         
         return true
     }

@@ -45,6 +45,10 @@ extension MLMUpdateChecker {
                 checker.appURL = applicationURL.appendingPathComponent(app)
 
                 parser.parse()
+            } else {
+                DispatchQueue.main.async {
+                    self.progressDelegate?.didCheckApp()
+                }
             }
         })
         

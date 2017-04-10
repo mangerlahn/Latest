@@ -202,7 +202,13 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
         
         let app = self.apps[index]
-        guard let url = app.appURL else {
+        var appStoreURL : URL?
+        
+        if let appStoreApp = app as? MLMMacAppStoreAppUpdate {
+            appStoreURL = appStoreApp.appStoreURL
+        }
+
+        guard let url = appStoreURL ?? app.appURL else {
             return
         }
         

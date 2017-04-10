@@ -19,6 +19,7 @@
 		5081C98D1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C98C1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift */; };
 		5081C98F1E9781190014DE48 /* MLMSparkleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */; };
 		5081C9921E97877B0014DE48 /* MLMSparkleAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */; };
+		5081C9941E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */; };
 		509E95231E95AC1300CB4FCE /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 509E95221E95AC1300CB4FCE /* Localizable.stringsdict */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		5081C98C1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMacAppStoreExtension.swift; sourceTree = "<group>"; };
 		5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleExtension.swift; sourceTree = "<group>"; };
 		5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleAppUpdate.swift; sourceTree = "<group>"; };
+		5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMacAppStoreAppUpdate.swift; sourceTree = "<group>"; };
 		509E95221E95AC1300CB4FCE /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				5081C9901E9787630014DE48 /* App Updates */,
-				5081C9891E977C5F0014DE48 /* MLMUpdateChecker.swift */,
 				5081C98B1E9780D70014DE48 /* Update Checker Extensions */,
 			);
 			name = Model;
@@ -130,6 +131,7 @@
 		5081C98B1E9780D70014DE48 /* Update Checker Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5081C9891E977C5F0014DE48 /* MLMUpdateChecker.swift */,
 				5081C98C1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift */,
 				5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */,
 			);
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				503616071E54E240007EE893 /* MLMAppUpdate.swift */,
+				5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */,
 				5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */,
 			);
 			name = "App Updates";
@@ -239,6 +242,7 @@
 				5081C98D1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift in Sources */,
 				5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */,
 				505843811E6382D200D21E86 /* MLMUpdateCell.swift in Sources */,
+				5081C9941E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift in Sources */,
 				5081C98A1E977C5F0014DE48 /* MLMUpdateChecker.swift in Sources */,
 				50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
