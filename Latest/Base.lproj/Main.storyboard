@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="12120"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -411,10 +411,19 @@
                                     <constraint firstItem="C1U-Xt-po9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLf-Z1-wsn" secondAttribute="leading" constant="75" id="tNE-5l-z3i"/>
                                 </constraints>
                             </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-I6-M7r">
+                                <rect key="frame" x="96" y="76" width="177" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Updates Available" id="D2N-5U-W7Z">
+                                    <font key="font" size="18" name=".AppleSystemUIFont"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="RiJ-Vu-Eau" secondAttribute="trailing" id="6PB-2P-Maj"/>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" id="Ca2-sY-MWm"/>
+                            <constraint firstItem="gUd-I6-M7r" firstAttribute="centerY" secondItem="JKX-qd-RUY" secondAttribute="centerY" id="DiR-32-A8m"/>
                             <constraint firstItem="yos-E7-CDu" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="ImF-sc-IlD"/>
                             <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="zLf-Z1-wsn" secondAttribute="bottom" id="Jq7-4D-7BW"/>
                             <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" constant="20" placeholder="YES" id="LKJ-AI-Pp1"/>
@@ -422,11 +431,13 @@
                             <constraint firstAttribute="trailing" secondItem="yos-E7-CDu" secondAttribute="trailing" id="QOn-lW-jBV"/>
                             <constraint firstItem="RiJ-Vu-Eau" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="Sf2-YV-Qns"/>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="VRY-sw-t9v"/>
+                            <constraint firstItem="gUd-I6-M7r" firstAttribute="centerX" secondItem="JKX-qd-RUY" secondAttribute="centerX" id="cCh-9W-Z9S"/>
                             <constraint firstAttribute="trailing" secondItem="zLf-Z1-wsn" secondAttribute="trailing" id="gSz-1J-Go1"/>
                             <constraint firstAttribute="bottom" secondItem="yos-E7-CDu" secondAttribute="bottom" id="ue4-dZ-PoH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="noUpdatesAvailableLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
                         <outlet property="rightMarginConstraint" destination="8Nm-XF-Pyh" id="Ecv-gI-1DQ"/>
                         <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
                         <outlet property="toolbarDivider" destination="RiJ-Vu-Eau" id="B6I-8z-e4B"/>
@@ -455,6 +466,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                <font key="titleFont" metaFont="message" size="11"/>
                             </box>
                             <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hT1-h1-fvw">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="334"/>

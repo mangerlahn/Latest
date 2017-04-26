@@ -21,6 +21,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     weak var detailViewController : MLMUpdateDetailsViewController?
     
+    @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
     @IBOutlet weak var updatesLabel: NSTextField!
     @IBOutlet weak var rightMarginConstraint: NSLayoutConstraint!
     
@@ -149,7 +150,21 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: Table View Data Source
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.apps.count
+        let count = self.apps.count
+        
+        if count == 0 {
+            self.tableView.alphaValue = 0
+            self.tableView.isHidden = true
+            self.toolbarDivider.isHidden = true
+            self.noUpdatesAvailableLabel.isHidden = false
+        } else {
+            self.tableView.alphaValue = 1
+            self.tableView.isHidden = false
+            self.toolbarDivider.isHidden = false
+            self.noUpdatesAvailableLabel.isHidden = true
+        }
+        
+        return count
     }
     
     // MARK: - Update Checker Delegate
