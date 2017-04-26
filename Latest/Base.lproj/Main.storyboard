@@ -220,6 +220,7 @@
                         </toolbar>
                     </window>
                     <connections>
+                        <outlet property="openAllAppsButton" destination="TkS-CH-ikZ" id="TRP-32-v6t"/>
                         <outlet property="progressIndicator" destination="rtV-DA-Kd6" id="70r-Sv-xjH"/>
                         <outlet property="reloadButton" destination="FM4-aR-lhK" id="eb4-jN-US4"/>
                         <segue destination="RAb-Ag-jja" kind="relationship" relationship="window.shadowedContentViewController" id="8Lr-Po-xG2"/>

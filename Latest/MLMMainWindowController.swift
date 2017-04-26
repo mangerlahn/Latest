@@ -30,6 +30,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var reloadButton: NSButton!
+    @IBOutlet weak var openAllAppsButton: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -132,6 +133,8 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     
     func didCheckApp() {
         self.progressIndicator.increment(by: 1)
+        
+        self.openAllAppsButton.isEnabled = self.listViewController.apps.count != 0
         
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
             self.reloadButton.isEnabled = true
