@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501EA9821EB1BA4400D05821 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9841EB1BA4400D05821 /* Localizable.strings */; };
+		501EA9871EB1BA4500D05821 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9891EB1BA4500D05821 /* InfoPlist.strings */; };
+		501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */; };
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
 		50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
@@ -20,10 +23,14 @@
 		5081C98F1E9781190014DE48 /* MLMSparkleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */; };
 		5081C9921E97877B0014DE48 /* MLMSparkleAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */; };
 		5081C9941E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */; };
-		509E95231E95AC1300CB4FCE /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 509E95221E95AC1300CB4FCE /* Localizable.stringsdict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		501EA97F1EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		501EA9831EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		501EA9881EB1BA4500D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		501EA98B1EB1BD8B00D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		501EA98D1EB1BD9400D05821 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		50290E711E53EB6A00133E3D /* Latest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50290E741E53EB6A00133E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMUpdateListViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +47,6 @@
 		5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleExtension.swift; sourceTree = "<group>"; };
 		5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleAppUpdate.swift; sourceTree = "<group>"; };
 		5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMacAppStoreAppUpdate.swift; sourceTree = "<group>"; };
-		509E95221E95AC1300CB4FCE /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +157,10 @@
 		509E95211E95ABED00CB4FCE /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				501EA9891EB1BA4500D05821 /* InfoPlist.strings */,
+				501EA9841EB1BA4400D05821 /* Localizable.strings */,
 				50290E7D1E53EB6A00133E3D /* Info.plist */,
-				509E95221E95AC1300CB4FCE /* Localizable.stringsdict */,
+				501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -224,8 +232,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */,
+				501EA9821EB1BA4400D05821 /* Localizable.strings in Resources */,
 				50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */,
-				509E95231E95AC1300CB4FCE /* Localizable.stringsdict in Resources */,
+				501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */,
+				501EA9871EB1BA4500D05821 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,10 +263,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		501EA9841EB1BA4400D05821 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				501EA9831EB1BA4400D05821 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		501EA9891EB1BA4500D05821 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				501EA9881EB1BA4500D05821 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				501EA98B1EB1BD8B00D05821 /* de */,
+				501EA98D1EB1BD9400D05821 /* en */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		50290E7A1E53EB6A00133E3D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				50290E7B1E53EB6A00133E3D /* Base */,
+				501EA97F1EB1BA4400D05821 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

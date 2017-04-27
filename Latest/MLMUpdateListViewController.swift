@@ -96,8 +96,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
         
         cell.textField?.stringValue = app.appName
-        cell.currentVersionTextField?.stringValue = NSLocalizedString("Your version: \(version)", comment: "Current Version String")
-        cell.newVersionTextField?.stringValue = NSLocalizedString("New version: \(newVersion)", comment: "New Version String")
+        cell.currentVersionTextField?.stringValue = String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(version)")
+        cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
         cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
         
         return cell

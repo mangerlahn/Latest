@@ -1,0 +1,129 @@
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Latest";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
+"3GZ-aM-hwz.title" = "Text Cell";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "Vollbildmodus";
+
+/* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Latest beenden";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Über Latest";
+
+/* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "Neue Version";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Einstellungen… ";
+
+/* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
+"D2N-5U-W7Z.title" = "Keine Updates Verfügbar";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Schließen";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Hilfe";
+
+/* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Latest-Hilfe";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "Darstellung";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
+"HyV-fh-RgO.title" = "Darstellung";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "Aktualisieren";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Fenster";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Alle anzeigen";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Alle einblenden";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Dienste";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.label" = "Fortschritt";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.paletteLabel" = "Fortschritt";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimieren";
+
+/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Latest ausblenden";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoomen";
+
+/* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
+"SVA-bh-cUe.title" = "App Name";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Fenster";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Andere ausblenden";
+
+/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.label" = "Neu laden";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.paletteLabel" = "Neu laden";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Fenster";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Ablage";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
+"c4C-I9-Gd0.title" = "Auf Aktualisierungen prüfen… ";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "chL-FB-etX"; */
+"chL-FB-etX.title" = "Box";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Ablage";
+
+/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+"h6g-FG-nGh.title" = "Installierte Version";
+
+/* Class = "NSToolbarItem"; label = "Open All Apps"; ObjectID = "hSF-GV-qvH"; */
+"hSF-GV-qvH.label" = "Alle Apps öffnen";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Open All Apps"; ObjectID = "hSF-GV-qvH"; */
+"hSF-GV-qvH.paletteLabel" = "Alle Apps öffnen";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Dienste";
+
+/* Class = "NSMenuItem"; title = "Show Version Description"; ObjectID = "kIP-vf-haE"; */
+"kIP-vf-haE.title" = "Versionsdetails anzeigen";
+
+/* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
+"rK6-RZ-Ga6.title" = "5 Updates Available";
+
+/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
+"tXI-mr-wws.title" = "Alle aktualisieren";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Latest";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Hilfe";
+

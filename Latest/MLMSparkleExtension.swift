@@ -29,8 +29,8 @@ extension MLMUpdateChecker {
         }
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
-
-        let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             if error == nil,
                 let xmlData = data {
 

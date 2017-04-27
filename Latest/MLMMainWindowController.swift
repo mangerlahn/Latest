@@ -184,6 +184,6 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
             
             NSWorkspace.shared().open(url)
         }
-        
     }
+    
 }
