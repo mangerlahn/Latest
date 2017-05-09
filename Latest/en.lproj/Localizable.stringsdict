@@ -7,7 +7,7 @@
 		<key>value</key>
 		<dict>
 			<key>one</key>
-			<string>%d Update Available Habuch</string>
+			<string>%d Update Available</string>
 			<key>other</key>
 			<string>%d Updates Available</string>
 			<key>NSStringFormatValueTypeKey</key>

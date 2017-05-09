@@ -24,7 +24,7 @@ extension MLMUpdateChecker {
                   fileManager.fileExists(atPath: receiptPath) else { return false }
         
         // App is from Mac App Store
-        let languageCode = Locale.current.languageCode ?? "en"
+        let languageCode = Locale.current.regionCode ?? "US"
 
         guard let bundleIdentifier = appBundle?.bundleIdentifier,
               let information = appBundle?.infoDictionary,

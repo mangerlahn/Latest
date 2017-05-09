@@ -6,17 +6,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Latest/MLMUpdateListViewController.swift"
-            timestampString = "514965613.807168"
+            timestampString = "515079668.303256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "checkerDidFinishChecking(_:)"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "checkForUpdates()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Latest/MLMMacAppStoreExtension.swift"
+            timestampString = "515079763.808715"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "updatesThroughMacAppStore(app:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Latest/MLMMacAppStoreExtension.swift"
+            timestampString = "515079898.767085"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "updatesThroughMacAppStore(app:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Latest/MLMMacAppStoreExtension.swift"
+            timestampString = "515080090.46372"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "updatesThroughMacAppStore(app:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Latest.MLMUpdateChecker.(updatesThroughMacAppStore (app : Swift.String) -&gt; Swift.Bool).(closure #1)"
+                  moduleName = "Latest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Developer/External_Projects/Latest/Latest/MLMMacAppStoreExtension.swift"
+                  timestampString = "515080090.468813"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Latest.MLMUpdateChecker.(updatesThroughMacAppStore (app : Swift.String) -&gt; Swift.Bool).(closure #1)"
+                  moduleName = "Latest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Max/Developer/External_Projects/Latest/Latest/MLMMacAppStoreExtension.swift"
+                  timestampString = "515080090.471748"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "317">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
