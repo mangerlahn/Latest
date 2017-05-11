@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Latest/MLMUpdateListViewController.swift"
-            timestampString = "515079668.303256"
+            timestampString = "516221239.364052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "checkForUpdates()"
             landmarkType = "7">
          </BreakpointContent>

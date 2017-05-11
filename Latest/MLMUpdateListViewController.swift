@@ -41,6 +41,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self.updateChecker.appUpdateDelegate = self
         
         self.scrollViewDidScroll(nil)
+        
+        self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
     }
     
     override func viewWillAppear() {
