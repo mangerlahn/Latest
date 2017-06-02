@@ -23,7 +23,7 @@
 "Update" = "Aktualisieren";
 
 /* Open a lot of apps - informative text */
-"You are going to open (apps.count) apps." = "Du möchtest apps öffnen.";
+"You are going to open (apps.count) apps." = "Du möchtest (apps.count) Apps öffnen.";
 
 /* Current Version String */
 "Your version: %@" = "Installierte Version: %@";
