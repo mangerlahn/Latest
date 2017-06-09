@@ -1,7 +1,7 @@
 # Latest
 This is a small utility app for macOS to check whether all Sparkle enabled apps are up to date.
 
-![](http://mlanger.developmint.de/pics/latest.png)
+![](./latest.png)
 
 The app offers very basic functionality.
 
