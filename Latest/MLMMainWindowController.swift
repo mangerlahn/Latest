@@ -64,7 +64,8 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
             let alert = NSAlert()
             alert.alertStyle = .warning
             
-            alert.messageText = NSLocalizedString("You are going to open \(apps.count) apps.", comment: "Open a lot of apps - informative text")
+            alert.messageText = String.init(format: NSLocalizedString("You are going to open %d apps.", comment: "Open a lot of apps - informative text"), apps.count)
+            
             alert.informativeText = NSLocalizedString("This may slow down your Mac. Are you sure you want to open all apps at once?", comment: "Open a lot of apps - message text")
             
             alert.addButton(withTitle: NSLocalizedString("Open Apps", comment: "Open all apps button"))

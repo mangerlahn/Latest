@@ -11,7 +11,7 @@ import Foundation
 extension MLMUpdateChecker {
     func updatesThroughMacAppStore(app: String) -> Bool {
         let appName = app as NSString
-        
+
         guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
             return false
         }

@@ -39,14 +39,11 @@ struct MLMUpdateChecker {
         guard var apps = try? fileManager.contentsOfDirectory(atPath: _applicationPath) else { return }
         
         self.progressDelegate?.startChecking(numberOfApps: apps.count)
-        print("\(apps.count) left")
-
+        
         for method in _updateMethods {
             apps = apps.filter({ (file) -> Bool in
                 return !method(self)(file)
             })
-            
-            print("\(apps.count) left")
         }
         
         for _ in apps {
