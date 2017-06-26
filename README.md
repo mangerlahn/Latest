@@ -7,9 +7,11 @@ The app offers very basic functionality.
 
 • Check for updates of all apps in the /Applications/ folder
 
+• Currently supports Mac App Store apps and all Sparkle enabled apps.
+
 • View version description 
 
-• Ability to open an app from within Latest \n
+• Ability to open an app from within Latest
 
 • Ability to open all apps at once
 
