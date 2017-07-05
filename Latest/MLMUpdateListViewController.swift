@@ -91,8 +91,12 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         if let v = app.shortVersion, let nv = versionBundle.shortVersion {
             version = v
             newVersion = nv
-        } else if let v = app.version,
-            let nv = versionBundle.version {
+            
+            if version == newVersion, let v = app.version, let nv = versionBundle.version {
+                version += " (\(v))"
+                newVersion += " (\(nv))"
+            }
+        } else if let v = app.version, let nv = versionBundle.version {
             version = v
             newVersion = nv
         }
