@@ -17,13 +17,13 @@
 "6YS-DP-XWA.title" = "Neue Version";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+"AYu-sK-qS6.title" = "Hauptmenü";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Einstellungen… ";
 
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
-"D2N-5U-W7Z.title" = "Keine Updates Verfügbar";
+"D2N-5U-W7Z.title" = "Keine Updates verfügbar";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Schließen";
@@ -116,7 +116,7 @@
 "kIP-vf-haE.title" = "Versionsdetails anzeigen";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Updates Available";
+"rK6-RZ-Ga6.title" = "5 Updates verfügbar";
 
 /* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
 "tXI-mr-wws.title" = "Alle aktualisieren";
