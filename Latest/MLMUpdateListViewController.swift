@@ -92,6 +92,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             version = v
             newVersion = nv
             
+            // If the shortVersion string is identical, but the bundle version is different
+            // Show the Bundle version in brackets like: "1.3 (21)"
             if version == newVersion, let v = app.version, let nv = versionBundle.version {
                 version += " (\(v))"
                 newVersion += " (\(nv))"
