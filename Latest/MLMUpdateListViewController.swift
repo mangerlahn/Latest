@@ -220,22 +220,24 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: - Private Methods
 
     private func _openApp(atIndex index: Int) {
-        if index < 0 || index >= self.apps.count {
-            return
+        DispatchQueue.main.async {
+            if index < 0 || index >= self.apps.count {
+                return
+            }
+            
+            let app = self.apps[index]
+            var appStoreURL : URL?
+            
+            if let appStoreApp = app as? MLMMacAppStoreAppUpdate {
+                appStoreURL = appStoreApp.appStoreURL
+            }
+            
+            guard let url = appStoreURL ?? app.appURL else {
+                return
+            }
+            
+            NSWorkspace.shared().open(url)
         }
-        
-        let app = self.apps[index]
-        var appStoreURL : URL?
-        
-        if let appStoreApp = app as? MLMMacAppStoreAppUpdate {
-            appStoreURL = appStoreApp.appStoreURL
-        }
-
-        guard let url = appStoreURL ?? app.appURL else {
-            return
-        }
-        
-        NSWorkspace.shared().open(url)
     }
 
 }
