@@ -91,6 +91,9 @@
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "Ablage";
 
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
+"bm3-iR-6vZ.title" = "Im Finder zeigen";
+
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
 "c4C-I9-Gd0.title" = "Auf Aktualisierungen prüfen… ";
 

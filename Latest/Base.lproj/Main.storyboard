@@ -75,8 +75,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="6iT-9L-JOa"/>
-                                        <menuItem title="Show in Finder" id="bm3-iR-6vZ">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Show in Finder" keyEquivalent="R" id="bm3-iR-6vZ">
                                             <connections>
                                                 <action selector="showAppInFinder:" target="Ady-hI-5gd" id="WCT-RO-qvU"/>
                                             </connections>

@@ -13,6 +13,9 @@
 /* MenuItem Show Version Details */
 "Show Version Details" = "Versionsdetails anzeigen";
 
+/* Revea in Finder Row action */
+"Show in Finder" = "Im Finder zeigen";
+
 /* Open a lot of apps - message text */
 "This may slow down your Mac. Are you sure you want to open all apps at once?" = "Möchtest du wirklich alle Apps gleichzeitig öffnen? Das könnte deinen Mac verlangsamen.";
 

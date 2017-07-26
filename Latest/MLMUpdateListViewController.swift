@@ -132,7 +132,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             
             return [action]
         } else if edge == .leading {
-            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Reveal in Finder", comment: "Revea in Finder Row action"), handler: { (action, row) in
+            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Show in Finder", comment: "Revea in Finder Row action"), handler: { (action, row) in
                 self._showAppInFinder(at: row)
             })
             
