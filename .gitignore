@@ -19,6 +19,9 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+Latest.xcodeproj/xcuserdata/*
+Latest.xcodeproj/project.xcworkspace
+
 ## Other
 *.moved-aside
 *.xccheckout
