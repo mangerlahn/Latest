@@ -13,7 +13,7 @@ protocol MLMUpdateListViewControllerDelegate : class {
     func shouldCollapseDetail()
 }
 
-class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MLMAppUpdateDelegate {
+class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, MLMAppUpdateDelegate {
 
     var apps = [MLMAppUpdate]()
     
@@ -26,6 +26,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     @IBOutlet weak var rightMarginConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var toolbarDivider: NSBox!
+    
+    @IBOutlet weak var tableViewMenu: NSMenu!
     
     var updateChecker = MLMUpdateChecker()
     
@@ -41,6 +43,9 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self.updateChecker.appUpdateDelegate = self
         
         self.scrollViewDidScroll(nil)
+        
+        self.tableViewMenu.delegate = self
+        self.tableView.menu = self.tableViewMenu
         
         self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
     }
@@ -216,12 +221,12 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Menu Item Stuff
     
-    @IBAction func openApp(_ sender: Any?) {
-        self._openApp(atIndex: self.tableView.selectedRow)
+    @IBAction func openApp(_ sender: NSMenuItem?) {
+        self._openApp(atIndex: sender?.representedObject as? Int ?? self.tableView.selectedRow)
     }
     
-    @IBAction func showAppInFinder(_ sender: Any?) {
-        self._showAppInFinder(at: self.tableView.selectedRow)
+    @IBAction func showAppInFinder(_ sender: NSMenuItem?) {
+        self._showAppInFinder(at: sender?.representedObject as? Int ?? self.tableView.selectedRow)
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
@@ -232,9 +237,20 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         switch action {
         case #selector(openApp(_:)),
              #selector(showAppInFinder(_:)):
-            return self.tableView.selectedRow != -1
+            return menuItem.representedObject as? Int ?? self.tableView.selectedRow != -1
         default:
             return super.validateMenuItem(menuItem)
+        }
+    }
+    
+    // MARK: Delegate
+    
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        let row = self.tableView.clickedRow
+        
+        guard row != -1 else { return }
+        for item in menu.items {
+            item.representedObject = row
         }
     }
     

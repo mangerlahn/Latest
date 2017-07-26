@@ -1,5 +1,11 @@
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
+"00n-xr-jcQ.title" = "Aktualisieren";
+
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Latest";
+
+/* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
+"1Z9-ws-FMW.title" = "Menu";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
 "3GZ-aM-hwz.title" = "Text Cell";
@@ -18,6 +24,9 @@
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Hauptmenü";
+
+/* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
+"Ake-Tt-cX3.title" = "Menu";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Einstellungen… ";
@@ -106,6 +115,9 @@
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
 "h6g-FG-nGh.title" = "Installierte Version";
 
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
+"h9B-7u-6ru.title" = "Im Finder zeigen";
+
 /* Class = "NSToolbarItem"; label = "Open All Apps"; ObjectID = "hSF-GV-qvH"; */
 "hSF-GV-qvH.label" = "Alle Apps öffnen";
 
@@ -120,6 +132,9 @@
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
 "rK6-RZ-Ga6.title" = "5 Updates verfügbar";
+
+/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "seh-wV-XK9"; */
+"seh-wV-XK9.title" = "Alle aktualisieren";
 
 /* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
 "tXI-mr-wws.title" = "Alle aktualisieren";

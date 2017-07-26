@@ -159,7 +159,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="76" y="-68"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -447,11 +447,35 @@
                         <outlet property="noUpdatesAvailableLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
                         <outlet property="rightMarginConstraint" destination="8Nm-XF-Pyh" id="Ecv-gI-1DQ"/>
                         <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
+                        <outlet property="tableViewMenu" destination="Ake-Tt-cX3" id="9e8-6Q-FyL"/>
                         <outlet property="toolbarDivider" destination="RiJ-Vu-Eau" id="B6I-8z-e4B"/>
                         <outlet property="updatesLabel" destination="C1U-Xt-po9" id="gYG-qf-IaS"/>
                     </connections>
                 </viewController>
                 <customObject id="MxB-hL-adL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menuItem title="Menu" id="1Z9-ws-FMW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Menu" id="Ake-Tt-cX3">
+                        <items>
+                            <menuItem title="Update" keyEquivalent="u" id="00n-xr-jcQ">
+                                <connections>
+                                    <action selector="openApp:" target="MxB-hL-adL" id="1IZ-Ca-AKt"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Update All" keyEquivalent="U" id="seh-wV-XK9">
+                                <connections>
+                                    <action selector="openAll:" target="MxB-hL-adL" id="bbj-5x-90Z"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Sha-Xo-nI1"/>
+                            <menuItem title="Show in Finder" keyEquivalent="R" id="h9B-7u-6ru">
+                                <connections>
+                                    <action selector="showAppInFinder:" target="MxB-hL-adL" id="iar-Jd-EH1"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </objects>
             <point key="canvasLocation" x="-94" y="1127.5"/>
         </scene>
