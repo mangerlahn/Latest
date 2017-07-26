@@ -106,7 +106,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         cell.textField?.stringValue = app.appName
         cell.currentVersionTextField?.stringValue = String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(version)")
         cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
-        cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
+        
+        DispatchQueue.main.async {
+            cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
+        }
         
         return cell
     }
@@ -125,7 +128,15 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                 self._openApp(atIndex: row)
             })
             
-            action.backgroundColor = NSColor.gray
+            action.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+            
+            return [action]
+        } else if edge == .leading {
+            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Reveal in Finder", comment: "Revea in Finder Row action"), handler: { (action, row) in
+                self._showAppInFinder(at: row)
+            })
+            
+            action.backgroundColor = #colorLiteral(red: 0.6975218654, green: 0.6975218654, blue: 0.6975218654, alpha: 1)
             
             return [action]
         }
@@ -209,12 +220,22 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self._openApp(atIndex: self.tableView.selectedRow)
     }
     
+    @IBAction func showAppInFinder(_ sender: Any?) {
+        self._showAppInFinder(at: self.tableView.selectedRow)
+    }
+    
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        if menuItem.action == #selector(openApp(_:)) {
-            return self.tableView.selectedRow != -1
+        guard let action = menuItem.action else {
+            return super.validateMenuItem(menuItem)
         }
         
-        return super.validateMenuItem(menuItem)
+        switch action {
+        case #selector(openApp(_:)),
+             #selector(showAppInFinder(_:)):
+            return self.tableView.selectedRow != -1
+        default:
+            return super.validateMenuItem(menuItem)
+        }
     }
     
     // MARK: - Private Methods
@@ -240,5 +261,17 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
     }
 
+    private func _showAppInFinder(at index: Int) {
+        if index < 0 || index >= self.apps.count {
+            return
+        }
+        
+        let app = self.apps[index]
+        
+        guard let url = app.appURL else { return }
+        
+        NSWorkspace.shared().activateFileViewerSelecting([url])
+    }
+    
 }
 

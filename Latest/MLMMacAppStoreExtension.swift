@@ -46,6 +46,12 @@ extension MLMUpdateChecker {
                 results.count != 0,
                 let appData = results[0] as? [String: Any] else {
                     DispatchQueue.main.async {
+                        let appUpdate = MLMMacAppStoreAppUpdate(appName: appName.deletingPathExtension, shortVersion: "1.0", version: "1.0")
+                        appUpdate.currentVersion = Version()
+                        appUpdate.currentVersion?.newVersion = "1.1"
+                        appUpdate.appURL = applicationURL.appendingPathComponent(app)
+                        self.appUpdateDelegate?.checkerDidFinishChecking(appUpdate)
+                        
                         self.progressDelegate?.didCheckApp()
                     }
                     
@@ -57,8 +63,8 @@ extension MLMUpdateChecker {
             
             let appUpdate = MLMMacAppStoreAppUpdate(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
             appUpdate.delegate = self.appUpdateDelegate
-            appUpdate.parse(data: appData)
             appUpdate.appURL = applicationURL.appendingPathComponent(app)
+            appUpdate.parse(data: appData)
         }
         
         dataTask.resume()
