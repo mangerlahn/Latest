@@ -85,7 +85,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         let app = self.apps[row]
         
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? MLMUpdateCell,
-            let versionBundle = app.currentVersion,
+            let info = app.currentVersion,
             let url = app.appURL else {
             return nil
         }
@@ -93,17 +93,17 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         var version = ""
         var newVersion = ""
         
-        if let v = app.shortVersion, let nv = versionBundle.shortVersion {
+        if let v = app.version.versionNumber, let nv = info.version.versionNumber {
             version = v
             newVersion = nv
             
             // If the shortVersion string is identical, but the bundle version is different
             // Show the Bundle version in brackets like: "1.3 (21)"
-            if version == newVersion, let v = app.version, let nv = versionBundle.version {
+            if version == newVersion, let v = app.version?.buildNumber, let nv = info.version.buildNumber {
                 version += " (\(v))"
                 newVersion += " (\(nv))"
             }
-        } else if let v = app.version, let nv = versionBundle.version {
+        } else if let v = app.version.buildNumber, let nv = info.version.buildNumber {
             version = v
             newVersion = nv
         }
@@ -196,7 +196,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     func checkerDidFinishChecking(_ app: MLMAppUpdate) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
-        if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
+        if let versionBundle = app.currentVersion, versionBundle.version != app.version {
             self.apps.append(app)
             self.tableView.reloadData()
             

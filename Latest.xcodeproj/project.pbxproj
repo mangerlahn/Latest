@@ -23,6 +23,8 @@
 		5081C98F1E9781190014DE48 /* MLMSparkleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */; };
 		5081C9921E97877B0014DE48 /* MLMSparkleAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */; };
 		5081C9941E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */; };
+		509036C31FA9F206007A6CFD /* MLMVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036C21FA9F206007A6CFD /* MLMVersion.swift */; };
+		509036C51FA9F250007A6CFD /* MLMVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036C41FA9F250007A6CFD /* MLMVersionInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleExtension.swift; sourceTree = "<group>"; };
 		5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleAppUpdate.swift; sourceTree = "<group>"; };
 		5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMacAppStoreAppUpdate.swift; sourceTree = "<group>"; };
+		509036C21FA9F206007A6CFD /* MLMVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMVersion.swift; sourceTree = "<group>"; };
+		509036C41FA9F250007A6CFD /* MLMVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMVersionInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 			children = (
 				5081C9901E9787630014DE48 /* App Updates */,
 				5081C98B1E9780D70014DE48 /* Update Checker Extensions */,
+				509036C21FA9F206007A6CFD /* MLMVersion.swift */,
+				509036C41FA9F250007A6CFD /* MLMVersionInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 			files = (
 				5081C9921E97877B0014DE48 /* MLMSparkleAppUpdate.swift in Sources */,
 				503616081E54E240007EE893 /* MLMAppUpdate.swift in Sources */,
+				509036C51FA9F250007A6CFD /* MLMVersionInfo.swift in Sources */,
 				504BA5911E643A2300B15275 /* MLMMainWindowController.swift in Sources */,
 				5081C98D1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift in Sources */,
 				5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */,
@@ -257,6 +264,7 @@
 				5081C98A1E977C5F0014DE48 /* MLMUpdateChecker.swift in Sources */,
 				50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
+				509036C31FA9F206007A6CFD /* MLMVersion.swift in Sources */,
 				5081C98F1E9781190014DE48 /* MLMSparkleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

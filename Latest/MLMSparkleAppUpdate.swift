@@ -18,10 +18,10 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         case none
     }
 
-    private var versions = [Version]()
+    private var versionInfos = [MLMVersionInfo]()
 
-    override init(appName: String, shortVersion: String?, version: String?) {
-        super.init(appName: appName, shortVersion: shortVersion, version: version)
+    override init(appName: String, versionNumber: String?, buildNumber: String?) {
+        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber)
         
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale(identifier: "en_US")
@@ -34,19 +34,19 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
     override func printDebugDescription() {
         super.printDebugDescription()
         
-        print("Number of versions parsed: \(versions.count)")
+        print("Number of versions parsed: \(versionInfos.count)")
         
         print("Versions found:")
-        for version in self.versions {
-            print(version.newVersion)
+        for info in self.versionInfos {
+            print(info.version)
         }
     }
     
     private func createVersion() {
-        let version = Version()
+        let version = MLMVersionInfo()
         
         self.currentVersion = version
-        self.versions.append(version)
+        self.versionInfos.append(version)
     }
     
     // MARK: - XML Parser
@@ -57,17 +57,21 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
             self.createVersion()
         }
         
-        guard let currentVersion = self.currentVersion else { return }
+        guard var info = self.currentVersion else { return }
         
         // Lets find the version number
         switch elementName {
         case "enclosure":
-            if let newVersion = attributeDict["sparkle:version"]  {
-                currentVersion.newVersion = newVersion
-            }
+            let versionNumber = attributeDict["sparkle:shortVersionString"]
+            let buildNumber = attributeDict["sparkle:version"]
             
-            if let shortVersion = attributeDict["sparkle:shortVersionString"] {
-                currentVersion.shortVersion = shortVersion
+            if let vn = versionNumber, let bn = buildNumber {
+                info.version.versionNumber = vn
+                info.version.buildNumber = bn
+            } else if let vn = versionNumber {
+                info.version.versionNumber = vn
+            } else if let bn = buildNumber {
+                info.version.versionNumber = bn
             }
         case "pubDate":
             self.currentlyParsing = .pubDate
@@ -114,7 +118,7 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         var foundItemWithDate = true
         
-        self.versions.sort { (first, second) -> Bool in
+        self.versionInfos.sort { (first, second) -> Bool in
             guard let firstDate = first.date else {
                 foundItemWithDate = false
                 return false
@@ -126,43 +130,18 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
             return firstDate.compare(secondDate) == .orderedDescending
         }
         
-        if !foundItemWithDate && self.versions.count > 1 {
+        if !foundItemWithDate && self.versionInfos.count > 1 {
             // The feed did not provide proper dates, so we only can try to compare version numbers against each other
             // With this information, we might be able to find the newest item
             // I don't want this to be the default option, as there might be version formats I don't think of right now
             // We will see how this plays out in the future
             
-            self.versions.sort(by: { (first, second) -> Bool in
-                guard let firstVersion = first.version, let secondVersion = second.version else { return false }
-                
-                let c1 = firstVersion.versionComponents()
-                let c2 = secondVersion.versionComponents()
-                
-                if c1.count > c2.count {
-                    for index in (0...c2.count) {
-                        if c1[index] > c2[index] {
-                            return true
-                        } else if c1[index] < c2[index] {
-                            return false
-                        }
-                    }
-                    
-                    return true
-                } else {
-                    for index in (0...c1.count - 1) {
-                        if c1[index] > c2[index] {
-                            return true
-                        } else if c1[index] < c2[index] {
-                            return false
-                        }
-                    }
-                    
-                    return false
-                }
+            self.versionInfos.sort(by: { (first, second) -> Bool in
+                return first.version >= second.version
             })
         }
         
-        if let version = self.versions.first {
+        if let version = self.versionInfos.first {
             
             self.currentVersion = version
         }
@@ -172,19 +151,4 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         })
     }
     
-}
-
-extension String {
-    func versionComponents() -> [Int] {
-        let components = self.components(separatedBy: ".")
-        var versionComponents = [Int]()
-        
-        components.forEach { (component) in
-            if let number = Int.init(component) {
-                versionComponents.append(number)
-            }
-        }
-        
-        return versionComponents
-    }
 }

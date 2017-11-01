@@ -13,23 +13,23 @@ class MLMMacAppStoreAppUpdate: MLMAppUpdate {
     var appStoreURL : URL?
     
     func parse(data: [String : Any]) {
-        let version = Version()
+        var info = MLMVersionInfo()
         
         // Get newest version
         if let currentVersion = data["version"] as? String {
-            version.newVersion = currentVersion
+            info.version.versionNumber = currentVersion
         }
         
         // Get release notes
         if var releaseNotes = data["releaseNotes"] as? String {
             releaseNotes = releaseNotes.replacingOccurrences(of: "\n", with: "<br>")
-            version.releaseNotes = releaseNotes
+            info.releaseNotes = releaseNotes
         }
         
         // Get update date
         if let dateString = data["currentVersionReleaseDate"] as? String,
            let date = DateFormatter().date(from: dateString) {
-            version.date = date
+            info.date = date
         }
         
         // Get App Store Link
@@ -38,8 +38,7 @@ class MLMMacAppStoreAppUpdate: MLMAppUpdate {
             self.appStoreURL = URL(string: appURL)
         }
         
-        self.version = self.shortVersion
-        self.currentVersion = version
+        self.currentVersion = info
         
         DispatchQueue.main.async(execute: {
             self.delegate?.checkerDidFinishChecking(self)
