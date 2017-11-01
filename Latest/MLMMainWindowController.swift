@@ -72,7 +72,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
             alert.addButton(withTitle: NSLocalizedString("Cancel", comment: "Cancel button"))
             
             alert.beginSheetModal(for: self.window!, completionHandler: { (response) in
-                if response == 1000 {
+                if response.rawValue == 1000 {
                     // Open apps anyway
                     self.open(apps: apps)
                 }
@@ -173,7 +173,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
             if app is MLMMacAppStoreAppUpdate {
                 if !showedMacAppStore {
                     showedMacAppStore = true
-                    NSWorkspace.shared().open(URL(string: "macappstore://showUpdatesPage")!)
+                    NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
                 }
                 
                 continue
@@ -183,7 +183,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
                 continue
             }
             
-            NSWorkspace.shared().open(url)
+            NSWorkspace.shared.open(url)
         }
     }
     

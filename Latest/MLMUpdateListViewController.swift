@@ -36,7 +36,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         // Do any additional setup after loading the view.
         
-        if let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
         
@@ -58,7 +58,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 3)
         topConstraint.isActive = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewDidScroll(_:)), name: Notification.Name.NSScrollViewDidLiveScroll, object: self.tableView.enclosingScrollView)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: self.tableView.enclosingScrollView)
     }
     
     deinit {
@@ -69,7 +69,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     @IBOutlet weak var tableView: NSTableView!
     
-    func scrollViewDidScroll(_ notification: Notification?) {
+    @objc func scrollViewDidScroll(_ notification: Notification?) {
         guard let scrollView = self.tableView.enclosingScrollView else {
             return
         }
@@ -84,7 +84,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         let app = self.apps[row]
         
-        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) as? MLMUpdateCell,
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? MLMUpdateCell,
             let versionBundle = app.currentVersion,
             let url = app.appURL else {
             return nil
@@ -113,21 +113,21 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
         
         DispatchQueue.main.async {
-            cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
+            cell.imageView?.image = NSWorkspace.shared.icon(forFile: url.path)
         }
         
         return cell
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) else {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) else {
             return 50
         }
         
         return cell.frame.height
     }
     
-    func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableRowActionEdge) -> [NSTableViewRowAction] {
+    func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
         if edge == .trailing {
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
                 self._openApp(atIndex: row)
@@ -200,14 +200,14 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             self.apps.append(app)
             self.tableView.reloadData()
             
-            NSApplication.shared().dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
+            NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
             
             let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
             self.updatesLabel.stringValue = String.localizedStringWithFormat(format, self.apps.count)
         }
         
         if self.apps.count == 0 {
-            NSApplication.shared().dockTile.badgeLabel = ""
+            NSApplication.shared.dockTile.badgeLabel = ""
             self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
         }
     }
@@ -273,7 +273,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                 return
             }
             
-            NSWorkspace.shared().open(url)
+            NSWorkspace.shared.open(url)
         }
     }
 
@@ -286,7 +286,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         guard let url = app.appURL else { return }
         
-        NSWorkspace.shared().activateFileViewerSelecting([url])
+        NSWorkspace.shared.activateFileViewerSelecting([url])
     }
     
 }
