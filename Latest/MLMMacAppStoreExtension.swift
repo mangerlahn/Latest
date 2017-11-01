@@ -52,10 +52,10 @@ extension MLMUpdateChecker {
                     return
             }
             
-            let shortVersionString = information["CFBundleShortVersionString"] as? String
-            let versionString = information["CFBundleVersion"] as? String
+            let versionNumber = information["CFBundleShortVersionString"] as? String
+            let buildNumber = information["CFBundleVersion"] as? String
             
-            let appUpdate = MLMMacAppStoreAppUpdate(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
+            let appUpdate = MLMMacAppStoreAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
             appUpdate.delegate = self.appUpdateDelegate
             appUpdate.appURL = applicationURL.appendingPathComponent(app)
             appUpdate.parse(data: appData)
