@@ -35,4 +35,8 @@ class MLMAppUpdate : NSObject {
         print("Version number: \(version?.versionNumber ?? "not given")")
         print("Build number: \(version?.buildNumber ?? "not given")")
     }
+    
+    static func ==(lhs: MLMAppUpdate, rhs: MLMAppUpdate) -> Bool {
+        return lhs.appName == rhs.appName && lhs.appURL == rhs.appURL
+    }
 }

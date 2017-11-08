@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MLMVersion {
+struct MLMVersion : Equatable, Comparable {
     
     var versionNumber : String?
     var buildNumber : String?
@@ -86,6 +86,10 @@ struct MLMVersion {
             
             return true
         }
+    }
+    
+    static func <(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+        return lhs < rhs && lhs != rhs
     }
     
 }
