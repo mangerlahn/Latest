@@ -139,6 +139,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
             self.reloadButton.isEnabled = true
+            self.listViewController.finishedCheckingForUpdates()
         }
     }
     
