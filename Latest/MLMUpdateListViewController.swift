@@ -16,6 +16,7 @@ protocol MLMUpdateListViewControllerDelegate : class {
 class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, MLMAppUpdateDelegate {
 
     var apps = [MLMAppUpdate]()
+    private var _appsToDelete : [MLMAppUpdate]?
     
     weak var delegate : MLMUpdateListViewControllerDelegate?
     
@@ -48,6 +49,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self.tableView.menu = self.tableViewMenu
         
         self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+        
+        self._updateEmtpyStateVisibility()
     }
     
     override func viewWillAppear() {
@@ -174,21 +177,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: Table View Data Source
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        let count = self.apps.count
-        
-        if count == 0 {
-            self.tableView.alphaValue = 0
-            self.tableView.isHidden = true
-            self.toolbarDivider.isHidden = true
-            self.noUpdatesAvailableLabel.isHidden = false
-        } else {
-            self.tableView.alphaValue = 1
-            self.tableView.isHidden = false
-            self.toolbarDivider.isHidden = false
-            self.noUpdatesAvailableLabel.isHidden = true
-        }
-        
-        return count
+        return self.apps.count
     }
     
     // MARK: - Update Checker Delegate
@@ -196,26 +185,39 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     func checkerDidFinishChecking(_ app: MLMAppUpdate) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
-        if let versionBundle = app.currentVersion, versionBundle.version != app.version {
-            self.apps.append(app)
-            self.tableView.reloadData()
-            
-            NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
-            
-            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
-            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, self.apps.count)
+        if let index = self._appsToDelete?.index(where: { $0 == app }) {
+            self._appsToDelete?.remove(at: index)
         }
         
-        if self.apps.count == 0 {
-            NSApplication.shared.dockTile.badgeLabel = ""
-            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+        if let versionBundle = app.currentVersion, versionBundle.version != app.version {
+            self._add(app)
+        } else if let index = self.apps.index(where: { $0 == app }) {
+            self.apps.remove(at: index)
+            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
         }
+        
+        self._updateTitleAndBatch()
+        self._updateEmtpyStateVisibility()
+    }
+    
+    func finishedCheckingForUpdates() {
+        guard let apps = self._appsToDelete, apps.count != 0 else { return }
+        
+        apps.forEach { (app) in
+            guard let index = self.apps.index(where: { $0 == app }) else { return }
+            
+            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+            self.apps.remove(at: index)
+        }
+        
+        self._updateTitleAndBatch()
+        self._updateEmtpyStateVisibility()
     }
     
     // MARK: - Public Methods
     
     func checkForUpdates() {
-        self.apps = []
+        self._appsToDelete = self.apps
         self.updateChecker.run()
     }
     
@@ -256,6 +258,24 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Private Methods
 
+    private func _add(_ app: MLMAppUpdate) {
+        guard !self.apps.contains(where: { $0 == app }) else {
+            return
+        }
+        
+        self.apps.append(app)
+        
+        self.apps.sort { (first, second) -> Bool in
+            return first.appName < second.appName
+        }
+        
+        guard let index = self.apps.index(of: app) else {
+            return
+        }
+        
+        self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
+    }
+    
     private func _openApp(atIndex index: Int) {
         DispatchQueue.main.async {
             if index < 0 || index >= self.apps.count {
@@ -287,6 +307,34 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         guard let url = app.appURL else { return }
         
         NSWorkspace.shared.activateFileViewerSelecting([url])
+    }
+    
+    private func _updateEmtpyStateVisibility() {
+        if self.apps.count == 0 && !self.tableView.isHidden {
+            self.tableView.alphaValue = 0
+            self.tableView.isHidden = true
+            self.toolbarDivider.isHidden = true
+            self.noUpdatesAvailableLabel.isHidden = false
+        } else if self.apps.count != 0 && tableView.isHidden {
+            self.tableView.alphaValue = 1
+            self.tableView.isHidden = false
+            self.toolbarDivider.isHidden = false
+            self.noUpdatesAvailableLabel.isHidden = true
+        }
+    }
+    
+    private func _updateTitleAndBatch() {
+        let count = self.apps.count
+        
+        if count == 0 {
+            NSApplication.shared.dockTile.badgeLabel = ""
+            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+        } else {
+            NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: count as NSNumber)
+            
+            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
+            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, count)
+        }
     }
     
 }
