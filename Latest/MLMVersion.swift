@@ -34,27 +34,8 @@ struct MLMVersion : Equatable, Comparable {
             return false
         }
         
-        if c1.count > c2.count {
-            for index in (0...c2.count) {
-                if c1[index] > c2[index] {
-                    return false
-                } else if c1[index] < c2[index] {
-                    return true
-                }
-            }
-            
-            return true
-        } else {
-            for index in (0...c1.count - 1) {
-                if c1[index] > c2[index] {
-                    return false
-                } else if c1[index] < c2[index] {
-                    return true
-                }
-            }
-            
-            return true
-        }
+        let result = self._check(lhs: c1, rhs: c2)
+        return result == .equal || result == .older
     }
     
     static func >=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
@@ -65,33 +46,34 @@ struct MLMVersion : Equatable, Comparable {
             return false
         }
         
-        if c1.count > c2.count {
-            for index in (0...c2.count) {
-                if c1[index] > c2[index] {
-                    return true
-                } else if c1[index] < c2[index] {
-                    return false
-                }
-            }
-            
-            return true
-        } else {
-            for index in (0...c1.count - 1) {
-                if c1[index] > c2[index] {
-                    return true
-                } else if c1[index] < c2[index] {
-                    return false
-                }
-            }
-            
-            return true
-        }
+        let result = self._check(lhs: c1, rhs: c2)
+        return result == .equal || result == .newer
     }
     
     static func <(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
         return lhs < rhs && lhs != rhs
     }
     
+    
+    // MARK: - Private
+    
+    private enum CheckingResult {
+        case older, newer, equal
+    }
+    
+    private static func _check(lhs: [Int], rhs: [Int]) -> CheckingResult {
+        let upperBounds = lhs.count > rhs.count ? rhs.count : lhs.count
+        
+        for index in (0..<upperBounds) {
+            if lhs[index] > rhs[index] {
+                return .newer
+            } else if lhs[index] < rhs[index] {
+                return .older
+            }
+        }
+        
+        return lhs.count > rhs.count ? .older : .equal
+    }
 }
 
 extension String {
