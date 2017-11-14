@@ -19,7 +19,8 @@ struct MLMVersion : Equatable, Comparable {
     }
     
     static func ==(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        return (lhs >= rhs) && (lhs <= rhs)
+        let result = self._check(lhs, rhs)
+        return result == .equal
     }
     
     static func !=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
@@ -27,71 +28,58 @@ struct MLMVersion : Equatable, Comparable {
     }
     
     static func <=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        let v1 = lhs.versionNumber ?? lhs.buildNumber
-        let v2 = rhs.versionNumber ?? rhs.buildNumber
-        
-        guard let c1 = v1?.versionComponents(), let c2 = v2?.versionComponents() else {
-            return false
-        }
-        
-        if c1.count > c2.count {
-            for index in (0...c2.count) {
-                if c1[index] > c2[index] {
-                    return false
-                } else if c1[index] < c2[index] {
-                    return true
-                }
-            }
-            
-            return true
-        } else {
-            for index in (0...c1.count - 1) {
-                if c1[index] > c2[index] {
-                    return false
-                } else if c1[index] < c2[index] {
-                    return true
-                }
-            }
-            
-            return true
-        }
+        let result = self._check(lhs, rhs)
+        return result == .equal || result == .older
     }
     
     static func >=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        let v1 = lhs.versionNumber ?? lhs.buildNumber
-        let v2 = rhs.versionNumber ?? rhs.buildNumber
-        
-        guard let c1 = v1?.versionComponents(), let c2 = v2?.versionComponents() else {
-            return false
-        }
-        
-        if c1.count > c2.count {
-            for index in (0...c2.count) {
-                if c1[index] > c2[index] {
-                    return true
-                } else if c1[index] < c2[index] {
-                    return false
-                }
-            }
-            
-            return true
-        } else {
-            for index in (0...c1.count - 1) {
-                if c1[index] > c2[index] {
-                    return true
-                } else if c1[index] < c2[index] {
-                    return false
-                }
-            }
-            
-            return true
-        }
+        let result = self._check(lhs, rhs)
+        return result == .equal || result == .newer
     }
     
     static func <(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        return lhs < rhs && lhs != rhs
+        let result = self._check(lhs, rhs)
+        return result == .older
     }
     
+    static func >(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+        let result = self._check(lhs, rhs)
+        return result == .newer
+    }
+    
+    
+    // MARK: - Private
+    
+    private enum CheckingResult {
+        case older, newer, equal, undefined
+    }
+    
+    private static func _check(_ lhs: MLMVersion, _ rhs: MLMVersion) -> CheckingResult {
+        let v1 = lhs.versionNumber ?? lhs.buildNumber
+        let v2 = rhs.versionNumber ?? rhs.buildNumber
+        
+        guard var c1 = v1?.versionComponents(), var c2 = v2?.versionComponents() else {
+            return .undefined
+        }
+        
+        while c1.count < c2.count {
+            c1.append(0)
+        }
+        
+        while c1.count > c2.count {
+            c2.append(0)
+        }
+        
+        for index in (0..<c1.count) {
+            if c1[index] > c2[index] {
+                return .newer
+            } else if c1[index] < c2[index] {
+                return .older
+            }
+        }
+        
+        return .equal
+    }
 }
 
 extension String {
@@ -100,7 +88,8 @@ extension String {
         var versionComponents = [Int]()
         
         components.forEach { (component) in
-            if let number = Int.init(component) {
+            let digits = component.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
+            if let number = Int(digits) {
                 versionComponents.append(number)
             }
         }

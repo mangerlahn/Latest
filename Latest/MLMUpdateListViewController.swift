@@ -189,7 +189,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             self._appsToDelete?.remove(at: index)
         }
         
-        if let versionBundle = app.currentVersion, versionBundle.version != app.version {
+        if let versionBundle = app.currentVersion, versionBundle.version > app.version {
             self._add(app)
         } else if let index = self.apps.index(where: { $0 == app }) {
             self.apps.remove(at: index)
