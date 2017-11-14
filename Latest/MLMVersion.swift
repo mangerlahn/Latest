@@ -19,7 +19,8 @@ struct MLMVersion : Equatable, Comparable {
     }
     
     static func ==(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        return (lhs >= rhs) && (lhs <= rhs)
+        let result = self._check(lhs, rhs)
+        return result == .equal
     }
     
     static func !=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
@@ -27,52 +28,52 @@ struct MLMVersion : Equatable, Comparable {
     }
     
     static func <=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        let v1 = lhs.versionNumber ?? lhs.buildNumber
-        let v2 = rhs.versionNumber ?? rhs.buildNumber
-        
-        guard let c1 = v1?.versionComponents(), let c2 = v2?.versionComponents() else {
-            return false
-        }
-        
-        let result = self._check(lhs: c1, rhs: c2)
+        let result = self._check(lhs, rhs)
         return result == .equal || result == .older
     }
     
     static func >=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        let v1 = lhs.versionNumber ?? lhs.buildNumber
-        let v2 = rhs.versionNumber ?? rhs.buildNumber
-        
-        guard let c1 = v1?.versionComponents(), let c2 = v2?.versionComponents() else {
-            return false
-        }
-        
-        let result = self._check(lhs: c1, rhs: c2)
+        let result = self._check(lhs, rhs)
         return result == .equal || result == .newer
     }
     
     static func <(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
-        return lhs < rhs && lhs != rhs
+        let result = self._check(lhs, rhs)
+        return result == .older
     }
     
     
     // MARK: - Private
     
     private enum CheckingResult {
-        case older, newer, equal
+        case older, newer, equal, undefined
     }
     
-    private static func _check(lhs: [Int], rhs: [Int]) -> CheckingResult {
-        let upperBounds = lhs.count > rhs.count ? rhs.count : lhs.count
+    private static func _check(_ lhs: MLMVersion, _ rhs: MLMVersion) -> CheckingResult {
+        let v1 = lhs.versionNumber ?? lhs.buildNumber
+        let v2 = rhs.versionNumber ?? rhs.buildNumber
         
-        for index in (0..<upperBounds) {
-            if lhs[index] > rhs[index] {
+        guard var c1 = v1?.versionComponents(), var c2 = v2?.versionComponents() else {
+            return .undefined
+        }
+        
+        while c1.count < c2.count {
+            c1.append(0)
+        }
+        
+        while c1.count > c2.count {
+            c2.append(0)
+        }
+        
+        for index in (0..<c1.count) {
+            if c1[index] > c2[index] {
                 return .newer
-            } else if lhs[index] < rhs[index] {
+            } else if c1[index] < c2[index] {
                 return .older
             }
         }
         
-        return lhs.count > rhs.count ? .older : .equal
+        return .equal
     }
 }
 
