@@ -42,6 +42,11 @@ struct MLMVersion : Equatable, Comparable {
         return result == .older
     }
     
+    static func >(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+        let result = self._check(lhs, rhs)
+        return result == .newer
+    }
+    
     
     // MARK: - Private
     
@@ -83,7 +88,8 @@ extension String {
         var versionComponents = [Int]()
         
         components.forEach { (component) in
-            if let number = Int.init(component) {
+            let digits = component.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
+            if let number = Int(digits) {
                 versionComponents.append(number)
             }
         }
