@@ -57,7 +57,7 @@ class SparkleAppUpdate: AppUpdate, XMLParserDelegate {
             self.createVersion()
         }
         
-        guard var info = self.currentVersion else { return }
+        guard let info = self.currentVersion else { return }
         
         // Lets find the version number
         switch elementName {

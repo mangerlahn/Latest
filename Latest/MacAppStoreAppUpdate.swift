@@ -13,7 +13,7 @@ class MacAppStoreAppUpdate: AppUpdate {
     var appStoreURL : URL?
     
     func parse(data: [String : Any]) {
-        var info = VersionInfo()
+        let info = VersionInfo()
         
         // Get newest version
         if let currentVersion = data["version"] as? String {
