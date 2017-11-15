@@ -1,5 +1,5 @@
 //
-//  MLMMacAppStoreAppUpdate.swift
+//  MacAppStoreAppUpdate.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class MLMMacAppStoreAppUpdate: MLMAppUpdate {
+class MacAppStoreAppUpdate: AppUpdate {
 
     var appStoreURL : URL?
     
     func parse(data: [String : Any]) {
-        var info = MLMVersionInfo()
+        var info = VersionInfo()
         
         // Get newest version
         if let currentVersion = data["version"] as? String {

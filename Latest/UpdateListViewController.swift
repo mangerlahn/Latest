@@ -8,19 +8,19 @@
 
 import Cocoa
 
-protocol MLMUpdateListViewControllerDelegate : class {    
+protocol UpdateListViewControllerDelegate : class {    
     func shouldExpandDetail()
     func shouldCollapseDetail()
 }
 
-class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, MLMAppUpdateDelegate {
+class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, AppUpdateDelegate {
 
-    var apps = [MLMAppUpdate]()
-    private var _appsToDelete : [MLMAppUpdate]?
+    var apps = [AppUpdate]()
+    private var _appsToDelete : [AppUpdate]?
     
-    weak var delegate : MLMUpdateListViewControllerDelegate?
+    weak var delegate : UpdateListViewControllerDelegate?
     
-    weak var detailViewController : MLMUpdateDetailsViewController?
+    weak var detailViewController : UpdateDetailsViewController?
     
     @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
     @IBOutlet weak var updatesLabel: NSTextField!
@@ -30,7 +30,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     @IBOutlet weak var tableViewMenu: NSMenu!
     
-    var updateChecker = MLMUpdateChecker()
+    var updateChecker = UpdateChecker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         let app = self.apps[row]
         
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? MLMUpdateCell,
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
             let info = app.currentVersion,
             let url = app.appURL else {
             return nil
@@ -182,7 +182,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Update Checker Delegate
     
-    func checkerDidFinishChecking(_ app: MLMAppUpdate) {
+    func checkerDidFinishChecking(_ app: AppUpdate) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
         if let index = self._appsToDelete?.index(where: { $0 == app }) {
@@ -258,7 +258,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Private Methods
 
-    private func _add(_ app: MLMAppUpdate) {
+    private func _add(_ app: AppUpdate) {
         guard !self.apps.contains(where: { $0 == app }) else {
             return
         }
@@ -285,7 +285,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             let app = self.apps[index]
             var appStoreURL : URL?
             
-            if let appStoreApp = app as? MLMMacAppStoreAppUpdate {
+            if let appStoreApp = app as? MacAppStoreAppUpdate {
                 appStoreURL = appStoreApp.appStoreURL
             }
             

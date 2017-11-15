@@ -1,5 +1,5 @@
 //
-//  MLMUpdateCell.swift
+//  UpdateCell.swift
 //  Latest
 //
 //  Created by Max Langer on 26.02.17.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MLMUpdateCell: NSTableCellView {
+class UpdateCell: NSTableCellView {
 
     @IBOutlet weak var currentVersionTextField: NSTextField?
     @IBOutlet weak var newVersionTextField: NSTextField?

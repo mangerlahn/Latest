@@ -1,5 +1,5 @@
 //
-//  MLMAppUpdater.swift
+//  AppUpdater.swift
 //  Latest
 //
 //  Created by Max Langer on 15.02.17.
@@ -8,24 +8,24 @@
 
 import Cocoa
 
-protocol MLMAppUpdateDelegate : class {
-    func checkerDidFinishChecking(_ app: MLMAppUpdate)
+protocol AppUpdateDelegate : class {
+    func checkerDidFinishChecking(_ app: AppUpdate)
 }
 
-class MLMAppUpdate : NSObject {
+class AppUpdate : NSObject {
     
-    var version: MLMVersion!
+    var version: Version!
     var appName = ""
     var appURL: URL?
     
-    weak var delegate : MLMAppUpdateDelegate?
+    weak var delegate : AppUpdateDelegate?
     
-    var currentVersion: MLMVersionInfo?
+    var currentVersion: VersionInfo?
     
     var dateFormatter: DateFormatter!
     
     init(appName: String, versionNumber: String?, buildNumber: String?) {
-        self.version = MLMVersion(versionNumber ?? "", buildNumber ?? "")
+        self.version = Version(versionNumber ?? "", buildNumber ?? "")
         self.appName = appName
     }
     
@@ -36,7 +36,7 @@ class MLMAppUpdate : NSObject {
         print("Build number: \(version?.buildNumber ?? "not given")")
     }
     
-    static func ==(lhs: MLMAppUpdate, rhs: MLMAppUpdate) -> Bool {
+    static func ==(lhs: AppUpdate, rhs: AppUpdate) -> Bool {
         return lhs.appName == rhs.appName && lhs.appURL == rhs.appURL
     }
 }

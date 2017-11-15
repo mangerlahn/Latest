@@ -1,5 +1,5 @@
 //
-//  MLMUpdateChecker.swift
+//  UpdateChecker.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol MLMUpdateCheckerProgressDelegate : class {
+protocol UpdateCheckerProgress : class {
     func startChecking(numberOfApps: Int)
     func didCheckApp()
 }
 
-struct MLMUpdateChecker {
+struct UpdateChecker {
  
-    weak var progressDelegate : MLMUpdateCheckerProgressDelegate?
-    weak var appUpdateDelegate : MLMAppUpdateDelegate?
+    weak var progressDelegate : UpdateCheckerProgress?
+    weak var appUpdateDelegate : AppUpdateDelegate?
     
-    private let _updateMethods : [(MLMUpdateChecker) -> (String) -> Bool] = [
+    private let _updateMethods : [(UpdateChecker) -> (String) -> Bool] = [
         updatesThroughMacAppStore,
         updatesThroughSparkle
     ]

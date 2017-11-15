@@ -1,5 +1,5 @@
 //
-//  MLMMacAppStoreExtension.swift
+//  MacAppStoreExtension.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension MLMUpdateChecker {
+extension UpdateChecker {
     func updatesThroughMacAppStore(app: String) -> Bool {
         let appName = app as NSString
 
@@ -55,7 +55,7 @@ extension MLMUpdateChecker {
             let versionNumber = information["CFBundleShortVersionString"] as? String
             let buildNumber = information["CFBundleVersion"] as? String
             
-            let appUpdate = MLMMacAppStoreAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+            let appUpdate = MacAppStoreAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
             appUpdate.delegate = self.appUpdateDelegate
             appUpdate.appURL = applicationURL.appendingPathComponent(app)
             appUpdate.parse(data: appData)

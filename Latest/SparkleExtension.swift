@@ -1,5 +1,5 @@
 //
-//  MLMSparkleExtension.swift
+//  SparkleExtension.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension MLMUpdateChecker {
+extension UpdateChecker {
     
     func updatesThroughSparkle(app: String) -> Bool {
         let appName = app as NSString
@@ -38,7 +38,7 @@ extension MLMUpdateChecker {
                 let buildNumber = information["CFBundleVersion"] as? String
 
                 let parser = XMLParser(data: xmlData)
-                let checker = MLMSparkleAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+                let checker = SparkleAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
 
                 parser.delegate = checker
                 checker.delegate = self.appUpdateDelegate

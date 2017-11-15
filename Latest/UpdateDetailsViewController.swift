@@ -1,5 +1,5 @@
 //
-//  MLMUpdateDetailsViewController.swift
+//  UpdateDetailsViewController.swift
 //  Latest
 //
 //  Created by Max Langer on 26.02.17.
@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-class MLMUpdateDetailsViewController: NSViewController {
+class UpdateDetailsViewController: NSViewController {
 
     @IBOutlet weak var webView: WKWebView!
     

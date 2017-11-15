@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MLMVersion : Equatable, Comparable {
+struct Version : Equatable, Comparable {
     
     var versionNumber : String?
     var buildNumber : String?
@@ -18,31 +18,31 @@ struct MLMVersion : Equatable, Comparable {
         self.buildNumber = buildNumber
     }
     
-    static func ==(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func ==(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal
     }
     
-    static func !=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func !=(lhs: Version, rhs: Version) -> Bool {
         return !(lhs == rhs)
     }
     
-    static func <=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func <=(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal || result == .older
     }
     
-    static func >=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func >=(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal || result == .newer
     }
     
-    static func <(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func <(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .older
     }
     
-    static func >(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func >(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .newer
     }
@@ -54,7 +54,7 @@ struct MLMVersion : Equatable, Comparable {
         case older, newer, equal, undefined
     }
     
-    private static func _check(_ lhs: MLMVersion, _ rhs: MLMVersion) -> CheckingResult {
+    private static func _check(_ lhs: Version, _ rhs: Version) -> CheckingResult {
         let v1 = lhs.versionNumber ?? lhs.buildNumber
         let v2 = rhs.versionNumber ?? rhs.buildNumber
         

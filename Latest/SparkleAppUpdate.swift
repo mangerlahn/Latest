@@ -1,5 +1,5 @@
 //
-//  MLMSparkleAppUpdate.swift
+//  SparkleAppUpdate.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
+class SparkleAppUpdate: AppUpdate, XMLParserDelegate {
     
     private enum ParsingType {
         case pubDate
@@ -18,7 +18,7 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         case none
     }
 
-    private var versionInfos = [MLMVersionInfo]()
+    private var versionInfos = [VersionInfo]()
 
     override init(appName: String, versionNumber: String?, buildNumber: String?) {
         super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber)
@@ -43,7 +43,7 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
     }
     
     private func createVersion() {
-        let version = MLMVersionInfo()
+        let version = VersionInfo()
         
         self.currentVersion = version
         self.versionInfos.append(version)

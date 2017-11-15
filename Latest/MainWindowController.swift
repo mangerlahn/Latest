@@ -1,5 +1,5 @@
 //
-//  MLMMainWindowController.swift
+//  MainWindowController.swift
 //  Latest
 //
 //  Created by Max Langer on 27.02.17.
@@ -8,21 +8,21 @@
 
 import Cocoa
 
-class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDelegate, MLMUpdateCheckerProgressDelegate {
+class MainWindowController: NSWindowController, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
-    lazy var listViewController : MLMUpdateListViewController = {
+    lazy var listViewController : UpdateListViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let firstItem = splitViewController.splitViewItems[0].viewController as? MLMUpdateListViewController else {
-                return MLMUpdateListViewController()
+            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateListViewController else {
+                return UpdateListViewController()
         }
         
         return firstItem
     }()
     
-    lazy var detailViewController : MLMUpdateDetailsViewController = {
+    lazy var detailViewController : UpdateDetailsViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let secondItem = splitViewController.splitViewItems[1].viewController as? MLMUpdateDetailsViewController else {
-                return MLMUpdateDetailsViewController()
+            let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateDetailsViewController else {
+                return UpdateDetailsViewController()
         }
         
         return secondItem
@@ -121,7 +121,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         }
     }
     
-    // MARK: - MLMUpdateListViewController Delegate
+    // MARK: - UpdateListViewController Delegate
     
     // MARK: Checking
     
@@ -167,11 +167,11 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
     
     // MARK: - Private Methods
     
-    private func open(apps: [MLMAppUpdate]) {
+    private func open(apps: [AppUpdate]) {
         var showedMacAppStore = false
         
         for app in apps {
-            if app is MLMMacAppStoreAppUpdate {
+            if app is MacAppStoreAppUpdate {
                 if !showedMacAppStore {
                     showedMacAppStore = true
                     NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)

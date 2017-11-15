@@ -8,9 +8,9 @@
 
 import Foundation
 
-class MLMVersionInfo {
+class VersionInfo {
     
-    var version = MLMVersion()
+    var version = Version()
     
     var date : Date?
     
