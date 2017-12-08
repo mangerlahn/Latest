@@ -55,8 +55,15 @@ struct MLMVersion : Equatable, Comparable {
     }
     
     private static func _check(_ lhs: MLMVersion, _ rhs: MLMVersion) -> CheckingResult {
-        let v1 = lhs.versionNumber ?? lhs.buildNumber
-        let v2 = rhs.versionNumber ?? rhs.buildNumber
+        var v1 : String?
+        var v2 : String?
+        
+        if let b1 = lhs.buildNumber, let b2 = rhs.buildNumber {
+            return self._checkBundleVersion(b1, b2)
+        } else {
+            v1 = lhs.versionNumber
+            v2 = rhs.versionNumber
+        }
         
         guard var c1 = v1?.versionComponents(), var c2 = v2?.versionComponents() else {
             return .undefined
@@ -79,6 +86,19 @@ struct MLMVersion : Equatable, Comparable {
         }
         
         return .equal
+    }
+    
+    private static func _checkBundleVersion(_ b1: String, _ b2: String) -> CheckingResult {
+        let characterSet = CharacterSet.decimalDigits.inverted
+        
+        let d1 = String(String.UnicodeScalarView(b1.unicodeScalars.filter { !characterSet.contains($0) }))
+        let d2 = String(String.UnicodeScalarView(b2.unicodeScalars.filter { !characterSet.contains($0) }))
+        
+        if let i1 = Int(d1), let i2 = Int(d2) {
+            return i1 < i2 ? .older : i1 == i2 ? .equal : .newer
+        }
+ 
+        return .undefined
     }
 }
 
