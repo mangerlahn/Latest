@@ -66,6 +66,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        
+        self.apps.forEach { (app) in
+            NSFileCoordinator.removeFilePresenter(app)
+        }
     }
     
     // MARK: - TableView Stuff
@@ -208,10 +212,15 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
             self.apps.remove(at: index)
+            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
         self._updateEmtpyStateVisibility()
+    }
+    
+    func appDidUpdate(_ app: MLMAppUpdate) {
+        self.checkForUpdates()
     }
     
     // MARK: - Public Methods
@@ -272,6 +281,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         guard let index = self.apps.index(of: app) else {
             return
         }
+        
+        NSFileCoordinator.addFilePresenter(app)
         
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }
