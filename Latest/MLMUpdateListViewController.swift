@@ -16,6 +16,7 @@ protocol MLMUpdateListViewControllerDelegate : class {
 class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, MLMAppUpdateDelegate {
 
     var apps = [MLMAppUpdate]()
+    private var _appsToDelete : [MLMAppUpdate]?
     
     weak var delegate : MLMUpdateListViewControllerDelegate?
     
@@ -36,7 +37,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         // Do any additional setup after loading the view.
         
-        if let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
         
@@ -48,6 +49,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self.tableView.menu = self.tableViewMenu
         
         self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+        
+        self._updateEmtpyStateVisibility()
     }
     
     override func viewWillAppear() {
@@ -58,7 +61,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 3)
         topConstraint.isActive = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewDidScroll(_:)), name: Notification.Name.NSScrollViewDidLiveScroll, object: self.tableView.enclosingScrollView)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: self.tableView.enclosingScrollView)
     }
     
     deinit {
@@ -69,7 +72,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     @IBOutlet weak var tableView: NSTableView!
     
-    func scrollViewDidScroll(_ notification: Notification?) {
+    @objc func scrollViewDidScroll(_ notification: Notification?) {
         guard let scrollView = self.tableView.enclosingScrollView else {
             return
         }
@@ -84,8 +87,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         let app = self.apps[row]
         
-        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) as? MLMUpdateCell,
-            let versionBundle = app.currentVersion,
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? MLMUpdateCell,
+            let info = app.currentVersion,
             let url = app.appURL else {
             return nil
         }
@@ -93,17 +96,17 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         var version = ""
         var newVersion = ""
         
-        if let v = app.shortVersion, let nv = versionBundle.shortVersion {
+        if let v = app.version.versionNumber, let nv = info.version.versionNumber {
             version = v
             newVersion = nv
             
             // If the shortVersion string is identical, but the bundle version is different
             // Show the Bundle version in brackets like: "1.3 (21)"
-            if version == newVersion, let v = app.version, let nv = versionBundle.version {
+            if version == newVersion, let v = app.version?.buildNumber, let nv = info.version.buildNumber {
                 version += " (\(v))"
                 newVersion += " (\(nv))"
             }
-        } else if let v = app.version, let nv = versionBundle.version {
+        } else if let v = app.version.buildNumber, let nv = info.version.buildNumber {
             version = v
             newVersion = nv
         }
@@ -113,21 +116,21 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
         
         DispatchQueue.main.async {
-            cell.imageView?.image = NSWorkspace.shared().icon(forFile: url.path)
+            cell.imageView?.image = NSWorkspace.shared.icon(forFile: url.path)
         }
         
         return cell
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        guard let cell = tableView.make(withIdentifier: "MLMUpdateCellIdentifier", owner: self) else {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) else {
             return 50
         }
         
         return cell.frame.height
     }
     
-    func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableRowActionEdge) -> [NSTableViewRowAction] {
+    func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
         if edge == .trailing {
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
                 self._openApp(atIndex: row)
@@ -174,21 +177,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     // MARK: Table View Data Source
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        let count = self.apps.count
-        
-        if count == 0 {
-            self.tableView.alphaValue = 0
-            self.tableView.isHidden = true
-            self.toolbarDivider.isHidden = true
-            self.noUpdatesAvailableLabel.isHidden = false
-        } else {
-            self.tableView.alphaValue = 1
-            self.tableView.isHidden = false
-            self.toolbarDivider.isHidden = false
-            self.noUpdatesAvailableLabel.isHidden = true
-        }
-        
-        return count
+        return self.apps.count
     }
     
     // MARK: - Update Checker Delegate
@@ -196,26 +185,39 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     func checkerDidFinishChecking(_ app: MLMAppUpdate) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
-        if let versionBundle = app.currentVersion, let currentVersion = app.version, let newVersion = versionBundle.version, currentVersion != newVersion {
-            self.apps.append(app)
-            self.tableView.reloadData()
-            
-            NSApplication.shared().dockTile.badgeLabel = NumberFormatter().string(from: self.apps.count as NSNumber)
-            
-            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
-            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, self.apps.count)
+        if let index = self._appsToDelete?.index(where: { $0 == app }) {
+            self._appsToDelete?.remove(at: index)
         }
         
-        if self.apps.count == 0 {
-            NSApplication.shared().dockTile.badgeLabel = ""
-            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+        if let versionBundle = app.currentVersion, versionBundle.version > app.version {
+            self._add(app)
+        } else if let index = self.apps.index(where: { $0 == app }) {
+            self.apps.remove(at: index)
+            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
         }
+        
+        self._updateTitleAndBatch()
+        self._updateEmtpyStateVisibility()
+    }
+    
+    func finishedCheckingForUpdates() {
+        guard let apps = self._appsToDelete, apps.count != 0 else { return }
+        
+        apps.forEach { (app) in
+            guard let index = self.apps.index(where: { $0 == app }) else { return }
+            
+            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+            self.apps.remove(at: index)
+        }
+        
+        self._updateTitleAndBatch()
+        self._updateEmtpyStateVisibility()
     }
     
     // MARK: - Public Methods
     
     func checkForUpdates() {
-        self.apps = []
+        self._appsToDelete = self.apps
         self.updateChecker.run()
     }
     
@@ -256,6 +258,24 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Private Methods
 
+    private func _add(_ app: MLMAppUpdate) {
+        guard !self.apps.contains(where: { $0 == app }) else {
+            return
+        }
+        
+        self.apps.append(app)
+        
+        self.apps.sort { (first, second) -> Bool in
+            return first.appName < second.appName
+        }
+        
+        guard let index = self.apps.index(of: app) else {
+            return
+        }
+        
+        self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
+    }
+    
     private func _openApp(atIndex index: Int) {
         DispatchQueue.main.async {
             if index < 0 || index >= self.apps.count {
@@ -273,7 +293,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
                 return
             }
             
-            NSWorkspace.shared().open(url)
+            NSWorkspace.shared.open(url)
         }
     }
 
@@ -286,7 +306,35 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         guard let url = app.appURL else { return }
         
-        NSWorkspace.shared().activateFileViewerSelecting([url])
+        NSWorkspace.shared.activateFileViewerSelecting([url])
+    }
+    
+    private func _updateEmtpyStateVisibility() {
+        if self.apps.count == 0 && !self.tableView.isHidden {
+            self.tableView.alphaValue = 0
+            self.tableView.isHidden = true
+            self.toolbarDivider.isHidden = true
+            self.noUpdatesAvailableLabel.isHidden = false
+        } else if self.apps.count != 0 && tableView.isHidden {
+            self.tableView.alphaValue = 1
+            self.tableView.isHidden = false
+            self.toolbarDivider.isHidden = false
+            self.noUpdatesAvailableLabel.isHidden = true
+        }
+    }
+    
+    private func _updateTitleAndBatch() {
+        let count = self.apps.count
+        
+        if count == 0 {
+            NSApplication.shared.dockTile.badgeLabel = ""
+            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+        } else {
+            NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: count as NSNumber)
+            
+            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
+            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, count)
+        }
     }
     
 }

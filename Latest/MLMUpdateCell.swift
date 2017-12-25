@@ -19,7 +19,7 @@ class MLMUpdateCell: NSTableCellView {
         // Drawing code here.
     }
     
-    override var backgroundStyle: NSBackgroundStyle {
+    override var backgroundStyle: NSView.BackgroundStyle {
         didSet {
             if self.backgroundStyle == .dark {
                 let color = NSColor.white

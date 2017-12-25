@@ -34,11 +34,11 @@ extension MLMUpdateChecker {
             if error == nil,
                 let xmlData = data {
 
-                let shortVersionString = information["CFBundleShortVersionString"] as? String
-                let versionString = information["CFBundleVersion"] as? String
+                let versionNumber = information["CFBundleShortVersionString"] as? String
+                let buildNumber = information["CFBundleVersion"] as? String
 
                 let parser = XMLParser(data: xmlData)
-                let checker = MLMSparkleAppUpdate(appName: appName.deletingPathExtension, shortVersion: shortVersionString, version: versionString)
+                let checker = MLMSparkleAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
 
                 parser.delegate = checker
                 checker.delegate = self.appUpdateDelegate
