@@ -12,8 +12,6 @@ protocol MLMAppUpdateDelegate : class {
     
     func checkerDidFinishChecking(_ app: MLMAppUpdate)
     
-    func appDidUpdate(_ app: MLMAppUpdate)
-    
 }
 
 class MLMAppUpdate : NSObject, NSFilePresenter {
@@ -55,9 +53,15 @@ class MLMAppUpdate : NSObject, NSFilePresenter {
     }
     
     func presentedSubitemDidChange(at url: URL) {
-        guard url.pathExtension == "plist", let _ = NSDictionary(contentsOf: url) else { return }
+        guard url.pathExtension == "plist",
+            let infoDict = NSDictionary(contentsOf: url),
+            let version = infoDict["CFBundleShortVersionString"] as? String,
+            let buildNumber = infoDict["CFBundleVersion"] as? String else { return }
 
-        self.delegate?.appDidUpdate(self)
+        self.version.versionNumber = version
+        self.version.buildNumber = buildNumber
+        
+        self.delegate?.checkerDidFinishChecking(self)
     }
     
 }
