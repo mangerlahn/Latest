@@ -66,6 +66,10 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        
+        self.apps.forEach { (app) in
+            NSFileCoordinator.removeFilePresenter(app)
+        }
     }
     
     // MARK: - TableView Stuff
@@ -194,6 +198,8 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         } else if let index = self.apps.index(where: { $0 == app }) {
             self.apps.remove(at: index)
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+            
+            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
@@ -208,11 +214,13 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
             
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
             self.apps.remove(at: index)
+            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
         self._updateEmtpyStateVisibility()
     }
+
     
     // MARK: - Public Methods
     
@@ -220,6 +228,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         self._appsToDelete = self.apps
         self.updateChecker.run()
     }
+
     
     // MARK: - Menu Item Stuff
     
@@ -260,6 +269,10 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
 
     private func _add(_ app: AppUpdate) {
         guard !self.apps.contains(where: { $0 == app }) else {
+            guard let index = self.apps.index(of: app) else { return }
+            
+            self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+            
             return
         }
         
@@ -272,6 +285,8 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         guard let index = self.apps.index(of: app) else {
             return
         }
+        
+        NSFileCoordinator.addFilePresenter(app)
         
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }

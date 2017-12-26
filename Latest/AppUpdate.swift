@@ -12,7 +12,7 @@ protocol AppUpdateDelegate : class {
     func checkerDidFinishChecking(_ app: AppUpdate)
 }
 
-class AppUpdate : NSObject {
+class AppUpdate : NSObject, NSFilePresenter {
     
     var version: Version!
     var appName = ""
@@ -39,4 +39,27 @@ class AppUpdate : NSObject {
     static func ==(lhs: AppUpdate, rhs: AppUpdate) -> Bool {
         return lhs.appName == rhs.appName && lhs.appURL == rhs.appURL
     }
+    
+    // MARK: - NSFilePresenter
+    
+    var presentedItemURL: URL? {
+        return self.appURL
+    }
+    
+    var presentedItemOperationQueue: OperationQueue {
+        return .main
+    }
+    
+    func presentedSubitemDidChange(at url: URL) {
+        guard url.pathExtension == "plist",
+            let infoDict = NSDictionary(contentsOf: url),
+            let version = infoDict["CFBundleShortVersionString"] as? String,
+            let buildNumber = infoDict["CFBundleVersion"] as? String else { return }
+
+        self.version.versionNumber = version
+        self.version.buildNumber = buildNumber
+        
+        self.delegate?.checkerDidFinishChecking(self)
+    }
+    
 }
