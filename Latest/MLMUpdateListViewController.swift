@@ -221,10 +221,6 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self._updateEmtpyStateVisibility()
     }
     
-    func appDidUpdate(_ app: MLMAppUpdate) {
-        self.checkForUpdates()
-    }
-    
     // MARK: - Public Methods
     
     func checkForUpdates() {
