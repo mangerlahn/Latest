@@ -66,6 +66,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        
+        self.apps.forEach { (app) in
+            NSFileCoordinator.removeFilePresenter(app)
+        }
     }
     
     // MARK: - TableView Stuff
@@ -194,6 +198,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         } else if let index = self.apps.index(where: { $0 == app }) {
             self.apps.remove(at: index)
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+            
+            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
@@ -208,10 +214,15 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
             self.apps.remove(at: index)
+            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
         self._updateEmtpyStateVisibility()
+    }
+    
+    func appDidUpdate(_ app: MLMAppUpdate) {
+        self.checkForUpdates()
     }
     
     // MARK: - Public Methods
@@ -260,6 +271,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
 
     private func _add(_ app: MLMAppUpdate) {
         guard !self.apps.contains(where: { $0 == app }) else {
+            guard let index = self.apps.index(of: app) else { return }
+            
+            self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+            
             return
         }
         
@@ -272,6 +287,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         guard let index = self.apps.index(of: app) else {
             return
         }
+        
+        NSFileCoordinator.addFilePresenter(app)
         
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }

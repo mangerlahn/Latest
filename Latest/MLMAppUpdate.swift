@@ -9,10 +9,12 @@
 import Cocoa
 
 protocol MLMAppUpdateDelegate : class {
+    
     func checkerDidFinishChecking(_ app: MLMAppUpdate)
+    
 }
 
-class MLMAppUpdate : NSObject {
+class MLMAppUpdate : NSObject, NSFilePresenter {
     
     var version: MLMVersion!
     var appName = ""
@@ -39,4 +41,27 @@ class MLMAppUpdate : NSObject {
     static func ==(lhs: MLMAppUpdate, rhs: MLMAppUpdate) -> Bool {
         return lhs.appName == rhs.appName && lhs.appURL == rhs.appURL
     }
+    
+    // MARK: - NSFilePresenter
+    
+    var presentedItemURL: URL? {
+        return self.appURL
+    }
+    
+    var presentedItemOperationQueue: OperationQueue {
+        return .main
+    }
+    
+    func presentedSubitemDidChange(at url: URL) {
+        guard url.pathExtension == "plist",
+            let infoDict = NSDictionary(contentsOf: url),
+            let version = infoDict["CFBundleShortVersionString"] as? String,
+            let buildNumber = infoDict["CFBundleVersion"] as? String else { return }
+
+        self.version.versionNumber = version
+        self.version.buildNumber = buildNumber
+        
+        self.delegate?.checkerDidFinishChecking(self)
+    }
+    
 }
