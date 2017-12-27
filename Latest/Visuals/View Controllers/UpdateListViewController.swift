@@ -15,8 +15,8 @@ protocol UpdateListViewControllerDelegate : class {
 
 class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, AppUpdateDelegate {
 
-    var apps = [AppUpdate]()
-    private var _appsToDelete : [AppUpdate]?
+    var apps = [AppBundle]()
+    private var _appsToDelete : [AppBundle]?
     
     weak var delegate : UpdateListViewControllerDelegate?
     
@@ -92,7 +92,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         let app = self.apps[row]
         
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
-            let info = app.currentVersion,
+            let info = app.newestVersion,
             let url = app.appURL else {
             return nil
         }
@@ -169,10 +169,10 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
             return
         }
         
-        if let url = app.currentVersion?.releaseNotes as? URL {
+        if let url = app.newestVersion?.releaseNotes as? URL {
             self.delegate?.shouldExpandDetail()
             detailViewController.display(url: url)
-        } else if let string = app.currentVersion?.releaseNotes as? String {
+        } else if let string = app.newestVersion?.releaseNotes as? String {
             self.delegate?.shouldExpandDetail()
             detailViewController.display(html: string)
         }
@@ -186,14 +186,14 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     
     // MARK: - Update Checker Delegate
     
-    func appDidUpdateVersionInformation(_ app: AppUpdate) {
+    func appDidUpdateVersionInformation(_ app: AppBundle) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
         if let index = self._appsToDelete?.index(where: { $0 == app }) {
             self._appsToDelete?.remove(at: index)
         }
         
-        if let versionBundle = app.currentVersion, versionBundle.version > app.version {
+        if let versionBundle = app.newestVersion, versionBundle.version > app.version {
             self._add(app)
         } else if let index = self.apps.index(where: { $0 == app }) {
             self.apps.remove(at: index)
@@ -267,7 +267,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     
     // MARK: - Private Methods
 
-    private func _add(_ app: AppUpdate) {
+    private func _add(_ app: AppBundle) {
         guard !self.apps.contains(where: { $0 == app }) else {
             guard let index = self.apps.index(of: app) else { return }
             
@@ -300,7 +300,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
             let app = self.apps[index]
             var appStoreURL : URL?
             
-            if let appStoreApp = app as? MacAppStoreAppUpdate {
+            if let appStoreApp = app as? MacAppStoreAppBundle {
                 appStoreURL = appStoreApp.appStoreURL
             }
             

@@ -55,7 +55,7 @@ extension UpdateChecker {
             let versionNumber = information["CFBundleShortVersionString"] as? String
             let buildNumber = information["CFBundleVersion"] as? String
             
-            let appUpdate = MacAppStoreAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
             appUpdate.delegate = self.appUpdateDelegate
             appUpdate.appURL = applicationURL.appendingPathComponent(app)
             appUpdate.parse(data: appData)

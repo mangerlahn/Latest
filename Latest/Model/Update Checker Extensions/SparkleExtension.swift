@@ -38,7 +38,7 @@ extension UpdateChecker {
                 let buildNumber = information["CFBundleVersion"] as? String
 
                 let parser = XMLParser(data: xmlData)
-                let checker = SparkleAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
 
                 parser.delegate = checker
                 checker.delegate = self.appUpdateDelegate

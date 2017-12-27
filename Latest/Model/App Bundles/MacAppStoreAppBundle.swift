@@ -8,10 +8,19 @@
 
 import Cocoa
 
-class MacAppStoreAppUpdate: AppUpdate {
+/**
+ Mac App Store app bundle subclass, it handles the parsing of the iTunes JSON
+ */
+class MacAppStoreAppBundle: AppBundle {
 
+    /// The url of the app in the Mac App Store
     var appStoreURL : URL?
     
+    /**
+     Parses the data to extract information like release notes and version number
+ 
+     - parameter data: The JSON dictionary to be parsed
+     */
     func parse(data: [String : Any]) {
         let info = VersionInfo()
         
@@ -38,7 +47,7 @@ class MacAppStoreAppUpdate: AppUpdate {
             self.appStoreURL = URL(string: appURL)
         }
         
-        self.currentVersion = info
+        self.newestVersion = info
         
         DispatchQueue.main.async(execute: {
             self.delegate?.appDidUpdateVersionInformation(self)

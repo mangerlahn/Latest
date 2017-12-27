@@ -167,11 +167,11 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     
     // MARK: - Private Methods
     
-    private func open(apps: [AppUpdate]) {
+    private func open(apps: [AppBundle]) {
         var showedMacAppStore = false
         
         for app in apps {
-            if app is MacAppStoreAppUpdate {
+            if app is MacAppStoreAppBundle {
                 if !showedMacAppStore {
                     showedMacAppStore = true
                     NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
