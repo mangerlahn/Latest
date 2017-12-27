@@ -186,7 +186,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     
     // MARK: - Update Checker Delegate
     
-    func checkerDidFinishChecking(_ app: AppUpdate) {
+    func appDidUpdateVersionInformation(_ app: AppUpdate) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
         if let index = self._appsToDelete?.index(where: { $0 == app }) {

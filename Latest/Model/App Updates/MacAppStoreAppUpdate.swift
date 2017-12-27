@@ -41,7 +41,7 @@ class MacAppStoreAppUpdate: AppUpdate {
         self.currentVersion = info
         
         DispatchQueue.main.async(execute: {
-            self.delegate?.checkerDidFinishChecking(self)
+            self.delegate?.appDidUpdateVersionInformation(self)
         })
     }
 }

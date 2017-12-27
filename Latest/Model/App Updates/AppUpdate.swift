@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol AppUpdateDelegate : class {
-    func checkerDidFinishChecking(_ app: AppUpdate)
+    func appDidUpdateVersionInformation(_ app: AppUpdate)
 }
 
 class AppUpdate : NSObject, NSFilePresenter {
@@ -59,7 +59,7 @@ class AppUpdate : NSObject, NSFilePresenter {
         self.version.versionNumber = version
         self.version.buildNumber = buildNumber
         
-        self.delegate?.checkerDidFinishChecking(self)
+        self.delegate?.appDidUpdateVersionInformation(self)
     }
     
 }

@@ -147,7 +147,7 @@ class SparkleAppUpdate: AppUpdate, XMLParserDelegate {
         }
         
         DispatchQueue.main.async(execute: {
-            self.delegate?.checkerDidFinishChecking(self)
+            self.delegate?.appDidUpdateVersionInformation(self)
         })
     }
     
