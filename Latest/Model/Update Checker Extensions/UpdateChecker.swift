@@ -16,7 +16,7 @@ protocol UpdateCheckerProgress : class {
 struct UpdateChecker {
  
     weak var progressDelegate : UpdateCheckerProgress?
-    weak var appUpdateDelegate : AppUpdateDelegate?
+    weak var appUpdateDelegate : AppBundleDelegate?
     
     private let _updateMethods : [(UpdateChecker) -> (String) -> Bool] = [
         updatesThroughMacAppStore,

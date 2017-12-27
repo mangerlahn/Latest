@@ -11,7 +11,7 @@ import Cocoa
 /**
  Delegate Protocol defining functions for changes of an app update
  */
-protocol AppUpdateDelegate : class {
+protocol AppBundleDelegate : class {
     
     /**
      The version information of the AppUpdate changed. This can euther be the version or currentVersion parameter
@@ -36,7 +36,7 @@ class AppBundle : NSObject, NSFilePresenter {
     var appURL: URL?
     
     /// The delegate to be notified when app information changes
-    weak var delegate : AppUpdateDelegate?
+    weak var delegate : AppBundleDelegate?
     
     /// The newest information available for this app
     var newestVersion: VersionInfo?

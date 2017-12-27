@@ -13,7 +13,7 @@ protocol UpdateListViewControllerDelegate : class {
     func shouldCollapseDetail()
 }
 
-class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, AppUpdateDelegate {
+class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, AppBundleDelegate {
 
     var apps = [AppBundle]()
     private var _appsToDelete : [AppBundle]?
