@@ -39,7 +39,7 @@ class AppBundle : NSObject, NSFilePresenter {
     weak var delegate : AppBundleDelegate?
     
     /// The newest information available for this app
-    var newestVersion: VersionInfo?
+    var newestVersion: UpdateInfo?
     
     /**
      Convenience initializer for creating an app object

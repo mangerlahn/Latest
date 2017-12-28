@@ -22,7 +22,7 @@ class MacAppStoreAppBundle: AppBundle {
      - parameter data: The JSON dictionary to be parsed
      */
     func parse(data: [String : Any]) {
-        let info = VersionInfo()
+        let info = UpdateInfo()
         
         // Get newest version
         if let currentVersion = data["version"] as? String {

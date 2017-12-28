@@ -8,12 +8,18 @@
 
 import Foundation
 
-class VersionInfo {
+/**
+ A simple class holding the update information for a single update
+ */
+class UpdateInfo {
     
+    /// The version of the updated app
     var version = Version()
     
+    /// The release date of the update
     var date : Date?
     
+    /// The release notes of the update
     var releaseNotes: Any?
     
 }

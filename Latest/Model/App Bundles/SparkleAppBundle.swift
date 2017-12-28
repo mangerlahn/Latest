@@ -23,7 +23,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     }
 
     /// An array holding all versions of the app contained in the Sparkle feed
-    private var versionInfos = [VersionInfo]()
+    private var versionInfos = [UpdateInfo]()
 
     /// The date formatter used for parsing
     private var dateFormatter: DateFormatter!
@@ -149,7 +149,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     
     /// Creates version info object and appends it to the versionInfos array
     private func createVersion() {
-        let version = VersionInfo()
+        let version = UpdateInfo()
         
         self.newestVersion = version
         self.versionInfos.append(version)
