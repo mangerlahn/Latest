@@ -143,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				5095121F1FF36301003D2D7F /* AppBundle.swift */,
-				5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */,
 				5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */,
+				5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */,
 			);
 			path = "App Bundles";
 			sourceTree = "<group>";
@@ -152,12 +152,11 @@
 		509512231FF36306003D2D7F /* Update Checker Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */,
-				509512241FF3631D003D2D7F /* SparkleExtension.swift */,
 				509512251FF3631D003D2D7F /* UpdateChecker.swift */,
+				509512241FF3631D003D2D7F /* SparkleExtension.swift */,
+				509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */,
 			);
-			name = "Update Checker Extensions";
-			path = "App Updates";
+			path = "Update Checker Extensions";
 			sourceTree = "<group>";
 		};
 		5095122A1FF36326003D2D7F /* Visuals */ = {

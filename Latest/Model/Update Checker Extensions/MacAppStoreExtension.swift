@@ -8,7 +8,16 @@
 
 import Foundation
 
+/**
+ This is the Mac App Store Extension for update checking.
+ It checks for the presence an App Store receipt in the app bundle and then loads the iTunes feed, which will then be parsed.
+ */
 extension UpdateChecker {
+    
+    /**
+     Tries to update the app through the Mac App Store. In case of success, the app object is created and delegated.
+     - returns: A Boolean indicating if the app is updated through the Mac App Store
+     */
     func updatesThroughMacAppStore(app: String) -> Bool {
         let appName = app as NSString
 
