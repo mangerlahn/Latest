@@ -24,10 +24,10 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     }()
     
     /// The detail view controller holding the release notes
-    lazy var detailViewController : UpdateDetailsViewController = {
+    lazy var releaseNotesViewController : UpdateReleaseNotesViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateDetailsViewController else {
-                return UpdateDetailsViewController()
+            let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateReleaseNotesViewController else {
+                return UpdateReleaseNotesViewController()
         }
         
         return secondItem
@@ -57,7 +57,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
-        self.listViewController.detailViewController = self.detailViewController
+        self.listViewController.releaseNotesViewController = self.releaseNotesViewController
     }
 
     
@@ -137,8 +137,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     }
     
     
-    // MARK: - UpdateListViewController Delegate
-    // MARK: Checking
+    // MARK: - Update Checker Progress Delegate
     
     /// This implementation activates the progress indicator, sets its max value and disables the reload button
     func startChecking(numberOfApps: Int) {
@@ -161,8 +160,8 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     }
     
     
-    // MARK: Visuals
-    
+    // MARK: - Update List View Controller Delegate
+
     /// Expands the detail view of the main window
     func shouldExpandDetail() {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {

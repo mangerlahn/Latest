@@ -13,7 +13,7 @@ import WebKit
  This is a super rudimentary implementation of an release notes viewer.
  It can open urls or display HTML strings right away.
  */
-class UpdateDetailsViewController: NSViewController {
+class UpdateReleaseNotesViewController: NSViewController {
 
     /// The web view displaying the release notes
     @IBOutlet weak var webView: WKWebView!

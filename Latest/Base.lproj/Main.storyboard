@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13770"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -420,9 +420,8 @@
                                     <constraint firstItem="C1U-Xt-po9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zLf-Z1-wsn" secondAttribute="top" id="1Py-8e-xOv"/>
                                     <constraint firstItem="C1U-Xt-po9" firstAttribute="centerY" secondItem="zLf-Z1-wsn" secondAttribute="centerY" id="870-q9-7Dp"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C1U-Xt-po9" secondAttribute="trailing" constant="130" id="8Nm-XF-Pyh"/>
+                                    <constraint firstItem="C1U-Xt-po9" firstAttribute="centerX" secondItem="zLf-Z1-wsn" secondAttribute="centerX" priority="1" id="Kp3-2L-dJi"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C1U-Xt-po9" secondAttribute="bottom" id="UDt-Y9-IMk"/>
-                                    <constraint firstItem="C1U-Xt-po9" firstAttribute="centerX" secondItem="zLf-Z1-wsn" secondAttribute="centerX" priority="400" id="bCD-4N-n2r"/>
-                                    <constraint firstItem="C1U-Xt-po9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLf-Z1-wsn" secondAttribute="leading" constant="75" id="tNE-5l-z3i"/>
                                 </constraints>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-I6-M7r">
@@ -452,7 +451,6 @@
                     </view>
                     <connections>
                         <outlet property="noUpdatesAvailableLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
-                        <outlet property="rightMarginConstraint" destination="8Nm-XF-Pyh" id="Ecv-gI-1DQ"/>
                         <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
                         <outlet property="tableViewMenu" destination="Ake-Tt-cX3" id="9e8-6Q-FyL"/>
                         <outlet property="toolbarDivider" destination="RiJ-Vu-Eau" id="B6I-8z-e4B"/>
@@ -486,10 +484,10 @@
             </objects>
             <point key="canvasLocation" x="-94" y="1127.5"/>
         </scene>
-        <!--Update Details View Controller-->
+        <!--Update Release Notes View Controller-->
         <scene sceneID="zoJ-XZ-LEg">
             <objects>
-                <viewController id="diQ-yt-Gcs" customClass="UpdateDetailsViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="diQ-yt-Gcs" customClass="UpdateReleaseNotesViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="d3c-S1-m3j">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="369"/>
                         <autoresizingMask key="autoresizingMask"/>
