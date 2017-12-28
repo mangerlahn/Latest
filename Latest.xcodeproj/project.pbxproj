@@ -106,10 +106,9 @@
 		50290E731E53EB6A00133E3D /* Latest */ = {
 			isa = PBXGroup;
 			children = (
+				50290E741E53EB6A00133E3D /* AppDelegate.swift */,
 				5095122A1FF36326003D2D7F /* Visuals */,
 				5095120D1FF3626A003D2D7F /* Model */,
-				50290E831E53EB7900133E3D /* Latest.entitlements */,
-				50290E741E53EB6A00133E3D /* AppDelegate.swift */,
 				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
 				5095120C1FF3623B003D2D7F /* Other */,
 			);
@@ -119,11 +118,12 @@
 		5095120C1FF3623B003D2D7F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				50290E831E53EB7900133E3D /* Latest.entitlements */,
 				50290E781E53EB6A00133E3D /* Assets.xcassets */,
-				501EA9891EB1BA4500D05821 /* InfoPlist.strings */,
-				501EA9841EB1BA4400D05821 /* Localizable.strings */,
 				50290E7D1E53EB6A00133E3D /* Info.plist */,
+				501EA9891EB1BA4500D05821 /* InfoPlist.strings */,
 				501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */,
+				501EA9841EB1BA4400D05821 /* Localizable.strings */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -162,9 +162,9 @@
 		5095122A1FF36326003D2D7F /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
-				5095122B1FF36335003D2D7F /* Views */,
-				5095122D1FF36343003D2D7F /* View Controllers */,
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
+				5095122D1FF36343003D2D7F /* View Controllers */,
+				5095122B1FF36335003D2D7F /* Views */,
 			);
 			path = Visuals;
 			sourceTree = "<group>";
