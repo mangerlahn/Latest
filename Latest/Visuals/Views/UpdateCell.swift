@@ -8,16 +8,16 @@
 
 import Cocoa
 
+/**
+ The cell that is used in the list of available updates
+ */
 class UpdateCell: NSTableCellView {
 
+    /// The label displaying the current version of the app
     @IBOutlet weak var currentVersionTextField: NSTextField?
+    
+    /// The label displaying the newest version available for the app
     @IBOutlet weak var newVersionTextField: NSTextField?
-        
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
-    }
     
     override var backgroundStyle: NSView.BackgroundStyle {
         didSet {

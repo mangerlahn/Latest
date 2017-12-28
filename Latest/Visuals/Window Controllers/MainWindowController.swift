@@ -8,8 +8,12 @@
 
 import Cocoa
 
+/**
+ This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
+ */
 class MainWindowController: NSWindowController, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
+    /// The list view holding the apps
     lazy var listViewController : UpdateListViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
             let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateListViewController else {
@@ -19,6 +23,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         return firstItem
     }()
     
+    /// The detail view controller holding the release notes
     lazy var detailViewController : UpdateDetailsViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
             let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateDetailsViewController else {
@@ -28,8 +33,13 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         return secondItem
     }()
     
+    /// The progress indicator showing how many apps have been checked for updates
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    
+    /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadButton: NSButton!
+    
+    /// The button thats action opens all apps (or Mac App Store) to begin the update process
     @IBOutlet weak var openAllAppsButton: NSButton!
     
     override func windowDidLoad() {
@@ -50,12 +60,15 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         self.listViewController.detailViewController = self.detailViewController
     }
 
+    
     // MARK: - Action Methods
     
+    /// Reloads the list / checks for updates
     @IBAction func reload(_ sender: Any?) {
         self.listViewController.checkForUpdates()
     }
     
+    /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func openAll(_ sender: Any?) {
         let apps = self.listViewController.apps
         
@@ -82,6 +95,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         }
     }
     
+    /// Shows/hides the detailView which presents the release notes
     @IBAction func toggleDetail(_ sender: Any?) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -91,6 +105,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         
         detailItem.animator().isCollapsed = !detailItem.isCollapsed
     }
+    
     
     // MARK: Menu Item Validation
 
@@ -121,10 +136,11 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         }
     }
     
-    // MARK: - UpdateListViewController Delegate
     
+    // MARK: - UpdateListViewController Delegate
     // MARK: Checking
     
+    /// This implementation activates the progress indicator, sets its max value and disables the reload button
     func startChecking(numberOfApps: Int) {
         self.reloadButton.isEnabled = false
     
@@ -132,6 +148,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
     }
     
+    /// Update the progress indicator
     func didCheckApp() {
         self.progressIndicator.increment(by: 1)
         
@@ -143,8 +160,10 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         }
     }
     
+    
     // MARK: Visuals
     
+    /// Expands the detail view of the main window
     func shouldExpandDetail() {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -155,6 +174,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         detailItem.animator().isCollapsed = false
     }
     
+    /// Collapses the detail view of the main window
     func shouldCollapseDetail() {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -165,7 +185,13 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         detailItem.animator().isCollapsed = true
     }
     
+    
     // MARK: - Private Methods
+    
+    /**
+     Open all apps in the array
+     - parameter apps: The apps to be opened
+     */
     
     private func open(apps: [AppBundle]) {
         var showedMacAppStore = false
