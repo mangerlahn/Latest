@@ -1,5 +1,5 @@
 //
-//  MLMUpdateDetailsViewController.swift
+//  UpdateDetailsViewController.swift
 //  Latest
 //
 //  Created by Max Langer on 26.02.17.
@@ -9,14 +9,17 @@
 import Cocoa
 import WebKit
 
-class MLMUpdateDetailsViewController: NSViewController {
+/**
+ This is a super rudimentary implementation of an release notes viewer.
+ It can open urls or display HTML strings right away.
+ */
+class UpdateReleaseNotesViewController: NSViewController {
 
+    /// The web view displaying the release notes
     @IBOutlet weak var webView: WKWebView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
+    
+    // MARK: - View Lifecycle
     
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -25,11 +28,22 @@ class MLMUpdateDetailsViewController: NSViewController {
         constraint.isActive = true
     }
     
+    
+    // MARK: - Display Methods
+    
+    /**
+     Loads the content of the URL and displays them
+     - parameter url: The url to be displayed
+     */
     func display(url: URL) {
         let request = URLRequest(url: url)
         self.webView.load(request)
     }
     
+    /**
+     Displays the given HTML string. The HTML is currently not formatted in any way.
+     - parameter html: The html to be displayed
+     */
     func display(html: String) {
         self.webView.loadHTMLString(html, baseURL: nil)
     }

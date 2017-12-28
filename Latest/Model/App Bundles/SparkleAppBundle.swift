@@ -1,5 +1,5 @@
 //
-//  MLMSparkleAppUpdate.swift
+//  SparkleAppUpdate.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,8 +8,12 @@
 
 import Cocoa
 
-class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
+/**
+ Sparkle subclass of the app bundle. This handles the parsing of the sparkle feed.
+ */
+class SparkleAppBundle: AppBundle, XMLParserDelegate {
     
+    /// Enum reflecting the different parsing states
     private enum ParsingType {
         case pubDate
         case releaseNotesLink
@@ -18,7 +22,11 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         case none
     }
 
-    private var versionInfos = [MLMVersionInfo]()
+    /// An array holding all versions of the app contained in the Sparkle feed
+    private var versionInfos = [UpdateInfo]()
+
+    /// The date formatter used for parsing
+    private var dateFormatter: DateFormatter!
 
     override init(appName: String, versionNumber: String?, buildNumber: String?) {
         super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber)
@@ -31,33 +39,18 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         self.dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
     }
     
-    override func printDebugDescription() {
-        super.printDebugDescription()
-        
-        print("Number of versions parsed: \(versionInfos.count)")
-        
-        print("Versions found:")
-        for info in self.versionInfos {
-            print(info.version)
-        }
-    }
-    
-    private func createVersion() {
-        let version = MLMVersionInfo()
-        
-        self.currentVersion = version
-        self.versionInfos.append(version)
-    }
     
     // MARK: - XML Parser
     
+    /// Variable holding the current parsing state
     private var currentlyParsing : ParsingType = .none
+    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         if elementName == "item" {
             self.createVersion()
         }
         
-        guard var info = self.currentVersion else { return }
+        guard let info = self.newestVersion else { return }
         
         // Lets find the version number
         switch elementName {
@@ -95,20 +88,20 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         switch currentlyParsing {
         case .pubDate:
             if let date = self.dateFormatter.date(from: string) {
-                self.currentVersion?.date = date
+                self.newestVersion?.date = date
             }
         case .releaseNotesLink:
-            if self.currentVersion?.releaseNotes == nil {
-                self.currentVersion?.releaseNotes = URL(string: string)
+            if self.newestVersion?.releaseNotes == nil {
+                self.newestVersion?.releaseNotes = URL(string: string)
             }
         case .releaseNotesData:
-            if self.currentVersion?.releaseNotes == nil {
-                self.currentVersion?.releaseNotes = ""
+            if self.newestVersion?.releaseNotes == nil {
+                self.newestVersion?.releaseNotes = ""
             }
             
-            if var releaseNotes = self.currentVersion?.releaseNotes as? String {
+            if var releaseNotes = self.newestVersion?.releaseNotes as? String {
                 releaseNotes += string
-                self.currentVersion?.releaseNotes = releaseNotes
+                self.newestVersion?.releaseNotes = releaseNotes
             }
         default:
             ()
@@ -143,12 +136,37 @@ class MLMSparkleAppUpdate: MLMAppUpdate, XMLParserDelegate {
         
         if let version = self.versionInfos.first {
             
-            self.currentVersion = version
+            self.newestVersion = version
         }
         
         DispatchQueue.main.async(execute: {
-            self.delegate?.checkerDidFinishChecking(self)
+            self.delegate?.appDidUpdateVersionInformation(self)
         })
+    }
+    
+    
+    // MARK: - Helper Methods
+    
+    /// Creates version info object and appends it to the versionInfos array
+    private func createVersion() {
+        let version = UpdateInfo()
+        
+        self.newestVersion = version
+        self.versionInfos.append(version)
+    }
+
+    
+    // MARK: - Debug
+    
+    override func printDebugDescription() {
+        super.printDebugDescription()
+        
+        print("Number of versions parsed: \(versionInfos.count)")
+        
+        print("Versions found:")
+        for info in self.versionInfos {
+            print(info.version)
+        }
     }
     
 }

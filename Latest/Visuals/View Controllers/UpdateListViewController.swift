@@ -8,29 +8,48 @@
 
 import Cocoa
 
-protocol MLMUpdateListViewControllerDelegate : class {    
+/**
+ The delegate for handling the visibility of an detail view
+ */
+protocol UpdateListViewControllerDelegate : class {
+    /// Implementing class should show the detail view
     func shouldExpandDetail()
+    
+    /// Implementing class should hide the detail view
     func shouldCollapseDetail()
 }
 
-class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, MLMAppUpdateDelegate {
+/**
+ This is the class handling the update process and displaying its results
+ */
+class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, AppBundleDelegate {
 
-    var apps = [MLMAppUpdate]()
-    private var _appsToDelete : [MLMAppUpdate]?
+    /// The array holding the apps that have an update available
+    var apps = [AppBundle]()
     
-    weak var delegate : MLMUpdateListViewControllerDelegate?
+    /// The delegate for handling the visibility of the detail view
+    weak var delegate : UpdateListViewControllerDelegate?
     
-    weak var detailViewController : MLMUpdateDetailsViewController?
+    /// The detail view controller that shows the release notes
+    weak var releaseNotesViewController : UpdateReleaseNotesViewController?
     
+    /// The empty state label centered in the list view indicating that no updates are available
     @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
-    @IBOutlet weak var updatesLabel: NSTextField!
-    @IBOutlet weak var rightMarginConstraint: NSLayoutConstraint!
     
+    /// The label indicating how many updates are vailable
+    @IBOutlet weak var updatesLabel: NSTextField!
+    
+    /// The divider separating the toolbar from the list
     @IBOutlet weak var toolbarDivider: NSBox!
     
+    /// The menu displayed on secondary clicks on cells in the list
     @IBOutlet weak var tableViewMenu: NSMenu!
     
-    var updateChecker = MLMUpdateChecker()
+    /// The checker responsible for update checking
+    var updateChecker = UpdateChecker()
+    
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,8 +91,10 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
     }
     
+    
     // MARK: - TableView Stuff
     
+    /// The table view displaying the list
     @IBOutlet weak var tableView: NSTableView!
     
     @objc func scrollViewDidScroll(_ notification: Notification?) {
@@ -91,8 +112,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         let app = self.apps[row]
         
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? MLMUpdateCell,
-            let info = app.currentVersion,
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
+            let info = app.newestVersion,
             let url = app.appURL else {
             return nil
         }
@@ -165,14 +186,14 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         
         let app = self.apps[index]
         
-        guard let detailViewController = self.detailViewController else {
+        guard let detailViewController = self.releaseNotesViewController else {
             return
         }
         
-        if let url = app.currentVersion?.releaseNotes as? URL {
+        if let url = app.newestVersion?.releaseNotes as? URL {
             self.delegate?.shouldExpandDetail()
             detailViewController.display(url: url)
-        } else if let string = app.currentVersion?.releaseNotes as? String {
+        } else if let string = app.newestVersion?.releaseNotes as? String {
             self.delegate?.shouldExpandDetail()
             detailViewController.display(html: string)
         }
@@ -186,14 +207,17 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
     
     // MARK: - Update Checker Delegate
     
-    func checkerDidFinishChecking(_ app: MLMAppUpdate) {
+    /// An helper array indicating the apps that need to be removed from the list after the update process
+    private var _appsToDelete : [AppBundle]?
+
+    func appDidUpdateVersionInformation(_ app: AppBundle) {
         self.updateChecker.progressDelegate?.didCheckApp()
         
         if let index = self._appsToDelete?.index(where: { $0 == app }) {
             self._appsToDelete?.remove(at: index)
         }
         
-        if let versionBundle = app.currentVersion, versionBundle.version > app.version {
+        if let versionBundle = app.newestVersion, versionBundle.version > app.version {
             self._add(app)
         } else if let index = self.apps.index(where: { $0 == app }) {
             self.apps.remove(at: index)
@@ -220,20 +244,25 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self._updateTitleAndBatch()
         self._updateEmtpyStateVisibility()
     }
+
     
     // MARK: - Public Methods
     
+    /// Triggers the update checking mechanism
     func checkForUpdates() {
         self._appsToDelete = self.apps
         self.updateChecker.run()
     }
+
     
     // MARK: - Menu Item Stuff
     
+    /// Open a single app
     @IBAction func openApp(_ sender: NSMenuItem?) {
         self._openApp(atIndex: sender?.representedObject as? Int ?? self.tableView.selectedRow)
     }
     
+    /// Show the bundle of an app in Finder
     @IBAction func showAppInFinder(_ sender: NSMenuItem?) {
         self._showAppInFinder(at: sender?.representedObject as? Int ?? self.tableView.selectedRow)
     }
@@ -263,9 +292,11 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
     }
     
+    
     // MARK: - Private Methods
 
-    private func _add(_ app: MLMAppUpdate) {
+    /// Adds an item to the list of apps that have an update available. If the app is already in the list, the row in the table gets updated
+    private func _add(_ app: AppBundle) {
         guard !self.apps.contains(where: { $0 == app }) else {
             guard let index = self.apps.index(of: app) else { return }
             
@@ -289,6 +320,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }
     
+    /// Opens the app and a given index
     private func _openApp(atIndex index: Int) {
         DispatchQueue.main.async {
             if index < 0 || index >= self.apps.count {
@@ -298,7 +330,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             let app = self.apps[index]
             var appStoreURL : URL?
             
-            if let appStoreApp = app as? MLMMacAppStoreAppUpdate {
+            if let appStoreApp = app as? MacAppStoreAppBundle {
                 appStoreURL = appStoreApp.appStoreURL
             }
             
@@ -309,7 +341,8 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
             NSWorkspace.shared.open(url)
         }
     }
-
+    
+    /// Reveals the app at a given index in Finder
     private func _showAppInFinder(at index: Int) {
         if index < 0 || index >= self.apps.count {
             return
@@ -322,6 +355,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         NSWorkspace.shared.activateFileViewerSelecting([url])
     }
     
+    /// Updates the UI depending on available updates (show empty states or update list)
     private func _updateEmtpyStateVisibility() {
         if self.apps.count == 0 && !self.tableView.isHidden {
             self.tableView.alphaValue = 0
@@ -336,6 +370,7 @@ class MLMUpdateListViewController: NSViewController, NSTableViewDataSource, NSTa
         }
     }
     
+    /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func _updateTitleAndBatch() {
         let count = self.apps.count
         
