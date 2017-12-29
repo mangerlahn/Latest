@@ -13,6 +13,9 @@
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
+		5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; };
+		5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
@@ -38,6 +41,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5045842E1FF6CF2D00E15E9D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5046AFF11FF6CEBD00ABAA97 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		501EA97F1EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		501EA9831EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -50,6 +77,8 @@
 		50290E7B1E53EB6A00133E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50290E7D1E53EB6A00133E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50290E831E53EB7900133E3D /* Latest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Latest.entitlements; sourceTree = "<group>"; };
+		5045842B1FF6CF0F00E15E9D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
@@ -72,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +120,7 @@
 			children = (
 				50290E731E53EB6A00133E3D /* Latest */,
 				50C81D6A1FBADC5900324C2E /* Tests */,
+				5046AFF21FF6CECD00ABAA97 /* Frameworks */,
 				50290E721E53EB6A00133E3D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,6 +144,15 @@
 				5095120C1FF3623B003D2D7F /* Other */,
 			);
 			path = Latest;
+			sourceTree = "<group>";
+		};
+		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */,
+				5045842B1FF6CF0F00E15E9D /* Sparkle.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5095120C1FF3623B003D2D7F /* Other */ = {
@@ -213,6 +253,8 @@
 				50290E6D1E53EB6A00133E3D /* Sources */,
 				50290E6E1E53EB6A00133E3D /* Frameworks */,
 				50290E6F1E53EB6A00133E3D /* Resources */,
+				5046AFF11FF6CEBD00ABAA97 /* Embed Frameworks */,
+				5045842E1FF6CF2D00E15E9D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -502,6 +544,10 @@
 				CODE_SIGN_ENTITLEMENTS = Latest/Other/Latest.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VFABJ5RE5Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
@@ -518,6 +564,10 @@
 				CODE_SIGN_ENTITLEMENTS = Latest/Other/Latest.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VFABJ5RE5Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";

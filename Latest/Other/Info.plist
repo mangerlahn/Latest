@@ -33,5 +33,7 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://www.google.de</string>
 </dict>
 </plist>

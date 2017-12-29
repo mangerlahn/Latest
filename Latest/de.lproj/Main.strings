@@ -16,6 +16,9 @@
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Latest beenden";
 
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Auf Aktualisierungen prüfen… ";
+
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "Über Latest";
 
@@ -111,6 +114,9 @@
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "Ablage";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "fTN-EX-6Vz"; */
+"fTN-EX-6Vz.title" = "Box";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
 "h6g-FG-nGh.title" = "Installierte Version";
