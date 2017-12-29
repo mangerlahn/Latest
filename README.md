@@ -1,5 +1,6 @@
 <p align="center">
-<img src="icon.png">
+<img src="icon.png" alt="Latest Icon">
+  <br>
   <b>Latest</b>
 </p>
 
