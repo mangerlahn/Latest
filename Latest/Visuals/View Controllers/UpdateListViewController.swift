@@ -85,10 +85,6 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-        
-        self.apps.forEach { (app) in
-            NSFileCoordinator.removeFilePresenter(app)
-        }
     }
     
     
@@ -222,8 +218,6 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         } else if let index = self.apps.index(where: { $0 == app }) {
             self.apps.remove(at: index)
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
-            
-            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
@@ -231,6 +225,10 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     func finishedCheckingForUpdates() {
+        defer {
+            self._appsToDelete = self.apps
+        }
+        
         guard let apps = self._appsToDelete, apps.count != 0 else { return }
         
         apps.forEach { (app) in
@@ -238,7 +236,6 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
             
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
             self.apps.remove(at: index)
-            NSFileCoordinator.removeFilePresenter(app)
         }
         
         self._updateTitleAndBatch()
@@ -250,7 +247,6 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     
     /// Triggers the update checking mechanism
     func checkForUpdates() {
-        self._appsToDelete = self.apps
         self.updateChecker.run()
     }
 
@@ -314,9 +310,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         guard let index = self.apps.index(of: app) else {
             return
         }
-        
-        NSFileCoordinator.addFilePresenter(app)
-        
+                
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }
     

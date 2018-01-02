@@ -18,7 +18,7 @@ extension UpdateChecker {
      Tries to update the app through the Mac App Store. In case of success, the app object is created and delegated.
      - returns: A Boolean indicating if the app is updated through the Mac App Store
      */
-    func updatesThroughMacAppStore(app: String) -> Bool {
+    func updatesThroughMacAppStore(app: String, version: String, buildNumber: String) -> Bool {
         let appName = app as NSString
 
         guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
@@ -36,7 +36,6 @@ extension UpdateChecker {
         let languageCode = Locale.current.regionCode ?? "US"
 
         guard let bundleIdentifier = appBundle?.bundleIdentifier,
-              let information = appBundle?.infoDictionary,
               let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(languageCode)&entity=macSoftware&limit=1")
               else { return false }
         
@@ -61,10 +60,7 @@ extension UpdateChecker {
                     return
             }
             
-            let versionNumber = information["CFBundleShortVersionString"] as? String
-            let buildNumber = information["CFBundleVersion"] as? String
-            
-            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
             appUpdate.delegate = self.appUpdateDelegate
             appUpdate.appURL = applicationURL.appendingPathComponent(app)
             appUpdate.parse(data: appData)

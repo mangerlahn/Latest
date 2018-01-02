@@ -13,6 +13,7 @@
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
+		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
@@ -50,6 +51,7 @@
 		50290E7B1E53EB6A00133E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50290E7D1E53EB6A00133E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50290E831E53EB7900133E3D /* Latest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Latest.entitlements; sourceTree = "<group>"; };
+		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
 				509512101FF362A1003D2D7F /* Version.swift */,
 				509512111FF362A1003D2D7F /* UpdateInfo.swift */,
+				5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				509512141FF362A1003D2D7F /* Version.swift in Sources */,
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
 				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
+				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateListViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
