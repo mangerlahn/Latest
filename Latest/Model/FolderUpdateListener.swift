@@ -23,7 +23,7 @@ class FolderUpdateListener {
     lazy var listener : DispatchSourceFileSystemObject = {
         let descriptor = open((self.url as NSURL).fileSystemRepresentation, O_EVTONLY)
         let source = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor,
-                                                               eventMask: .all)
+                                                               eventMask: .write)
         
         source.setEventHandler(handler: self.folderContentsChanged)
         
@@ -40,9 +40,7 @@ class FolderUpdateListener {
     
     /// Resumes tracking if it is not already running
     func resumeTracking() {
-        if self.listener.isCancelled {
-            self.listener.resume()
-        }
+        self.listener.activate()
     }
     
     /// Triggers an update run
