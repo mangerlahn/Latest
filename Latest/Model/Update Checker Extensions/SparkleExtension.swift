@@ -1,5 +1,5 @@
 //
-//  MLMSparkleExtension.swift
+//  SparkleExtension.swift
 //  Latest
 //
 //  Created by Max Langer on 07.04.17.
@@ -8,9 +8,17 @@
 
 import Foundation
 
-extension MLMUpdateChecker {
+/**
+ This is the Sparkle Extension for update checking.
+ It reads the feed URL from the app bundle and then loads the sparkle feed, which will then be parsed.
+ */
+extension UpdateChecker {
     
-    func updatesThroughSparkle(app: String) -> Bool {
+    /**
+     Tries to update the app through the Sparkle mechanism. In case of success, the app object is created and delegated.
+     - returns: A Boolean indicating if the app is updated through Sparkle
+     */
+    func updatesThroughSparkle(app: String, version: String, buildNumber: String) -> Bool {
         let appName = app as NSString
         
         guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
@@ -34,11 +42,8 @@ extension MLMUpdateChecker {
             if error == nil,
                 let xmlData = data {
 
-                let versionNumber = information["CFBundleShortVersionString"] as? String
-                let buildNumber = information["CFBundleVersion"] as? String
-
                 let parser = XMLParser(data: xmlData)
-                let checker = MLMSparkleAppUpdate(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
 
                 parser.delegate = checker
                 checker.delegate = self.appUpdateDelegate

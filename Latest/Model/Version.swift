@@ -8,41 +8,59 @@
 
 import Foundation
 
-struct MLMVersion : Equatable, Comparable {
+/**
+ A Version represents a single version of an app. It contains both the version number and the build number to uniquely
+ identify an app (in theory).
+ Comparisons of versions results in an actual comparison. I.E. 1.4.2 > 1.3.5
+ Also, if the two versions are the same, or the strings are not parsable, the build numbers get compared.
+ This class is very much work in progress and needs some deep thoughts on edge cases and a more clever implementation
+ */
+struct Version : Equatable, Comparable {
     
+    /// The version number itself
     var versionNumber : String?
+    
+    /// The build number itself
     var buildNumber : String?
     
+    /**
+     Convenience initializer setting both version and build number
+     - parameter version: The version number
+     - parameter buildNumber: The build number
+     */
     init(_ version: String? = nil, _ buildNumber: String? = nil) {
         self.versionNumber = version
         self.buildNumber = buildNumber
     }
     
-    static func ==(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    
+    // MARK: - Comparisons
+    
+    static func ==(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal
     }
     
-    static func !=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func !=(lhs: Version, rhs: Version) -> Bool {
         return !(lhs == rhs)
     }
     
-    static func <=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func <=(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal || result == .older
     }
     
-    static func >=(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func >=(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal || result == .newer
     }
     
-    static func <(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func <(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .older
     }
     
-    static func >(lhs: MLMVersion, rhs: MLMVersion) -> Bool {
+    static func >(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .newer
     }
@@ -50,11 +68,16 @@ struct MLMVersion : Equatable, Comparable {
     
     // MARK: - Private
     
+    /// An enum describing the result of an comparison.
     private enum CheckingResult {
         case older, newer, equal, undefined
     }
     
-    private static func _check(_ lhs: MLMVersion, _ rhs: MLMVersion) -> CheckingResult {
+    /**
+     Performs the actual check. Currently, the build number is preferred for checking, as it is mostly easier to parse
+     Therefore the results are more accurate
+     */
+    private static func _check(_ lhs: Version, _ rhs: Version) -> CheckingResult {
         var v1 : String?
         var v2 : String?
         
@@ -88,6 +111,7 @@ struct MLMVersion : Equatable, Comparable {
         return .equal
     }
     
+    /// A very dumb bundle checking function. It currently only extracts the digits of the build number and compares them
     private static func _checkBundleVersion(_ b1: String, _ b2: String) -> CheckingResult {
         let characterSet = CharacterSet.decimalDigits.inverted
         
@@ -102,7 +126,14 @@ struct MLMVersion : Equatable, Comparable {
     }
 }
 
-extension String {
+/// An extension helping the version checking
+private extension String {
+    
+    /**
+     Returns the components of an version number.
+     "1.2.5" returns [1, 2, 5] and "v2.1" returns [2, 1]
+     There are still problems with other formats like "2.3.4 x86" that are currently not solved. This would return [2, 3]
+     */
     func versionComponents() -> [Int] {
         let components = self.components(separatedBy: ".")
         var versionComponents = [Int]()

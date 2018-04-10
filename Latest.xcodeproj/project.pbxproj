@@ -11,21 +11,22 @@
 		501EA9871EB1BA4500D05821 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9891EB1BA4500D05821 /* InfoPlist.strings */; };
 		501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */; };
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
-		50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
-		503616081E54E240007EE893 /* MLMAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503616071E54E240007EE893 /* MLMAppUpdate.swift */; };
-		504BA5911E643A2300B15275 /* MLMMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504BA5901E643A2300B15275 /* MLMMainWindowController.swift */; };
-		5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */; };
-		505843811E6382D200D21E86 /* MLMUpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505843801E6382D200D21E86 /* MLMUpdateCell.swift */; };
-		5081C98A1E977C5F0014DE48 /* MLMUpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9891E977C5F0014DE48 /* MLMUpdateChecker.swift */; };
-		5081C98D1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C98C1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift */; };
-		5081C98F1E9781190014DE48 /* MLMSparkleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */; };
-		5081C9921E97877B0014DE48 /* MLMSparkleAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */; };
-		5081C9941E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */; };
-		509036C31FA9F206007A6CFD /* MLMVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036C21FA9F206007A6CFD /* MLMVersion.swift */; };
-		509036C51FA9F250007A6CFD /* MLMVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509036C41FA9F250007A6CFD /* MLMVersionInfo.swift */; };
-		50C81D741FBADC9100324C2E /* MLMVersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* MLMVersionTest.swift */; };
+		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
+		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
+		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
+		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
+		509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */; };
+		509512221FF36301003D2D7F /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121F1FF36301003D2D7F /* AppBundle.swift */; };
+		509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512241FF3631D003D2D7F /* SparkleExtension.swift */; };
+		509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512251FF3631D003D2D7F /* UpdateChecker.swift */; };
+		509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */; };
+		509512301FF36378003D2D7F /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095122F1FF36378003D2D7F /* UpdateCell.swift */; };
+		509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */; };
+		509512341FF36380003D2D7F /* UpdateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateListViewController.swift */; };
+		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
+		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,25 +47,26 @@
 		501EA98D1EB1BD9400D05821 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		50290E711E53EB6A00133E3D /* Latest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50290E741E53EB6A00133E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMUpdateListViewController.swift; sourceTree = "<group>"; };
 		50290E781E53EB6A00133E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50290E7B1E53EB6A00133E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50290E7D1E53EB6A00133E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50290E831E53EB7900133E3D /* Latest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Latest.entitlements; sourceTree = "<group>"; };
-		503616071E54E240007EE893 /* MLMAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMAppUpdate.swift; sourceTree = "<group>"; };
-		504BA5901E643A2300B15275 /* MLMMainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMainWindowController.swift; sourceTree = "<group>"; };
-		5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateDetailsViewController.swift; sourceTree = "<group>"; };
-		505843801E6382D200D21E86 /* MLMUpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateCell.swift; sourceTree = "<group>"; };
-		5081C9891E977C5F0014DE48 /* MLMUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMUpdateChecker.swift; sourceTree = "<group>"; };
-		5081C98C1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMacAppStoreExtension.swift; sourceTree = "<group>"; };
-		5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleExtension.swift; sourceTree = "<group>"; };
-		5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMSparkleAppUpdate.swift; sourceTree = "<group>"; };
-		5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLMMacAppStoreAppUpdate.swift; sourceTree = "<group>"; };
-		509036C21FA9F206007A6CFD /* MLMVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMVersion.swift; sourceTree = "<group>"; };
-		509036C41FA9F250007A6CFD /* MLMVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMVersionInfo.swift; sourceTree = "<group>"; };
+		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
+		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
+		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
+		5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleAppBundle.swift; sourceTree = "<group>"; };
+		5095121F1FF36301003D2D7F /* AppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
+		509512241FF3631D003D2D7F /* SparkleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SparkleExtension.swift; path = "Latest/Model/Update Checker Extensions/SparkleExtension.swift"; sourceTree = SOURCE_ROOT; };
+		509512251FF3631D003D2D7F /* UpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateChecker.swift; path = "Latest/Model/Update Checker Extensions/UpdateChecker.swift"; sourceTree = SOURCE_ROOT; };
+		509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MacAppStoreExtension.swift; path = "Latest/Model/Update Checker Extensions/MacAppStoreExtension.swift"; sourceTree = SOURCE_ROOT; };
+		5095122F1FF36378003D2D7F /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
+		509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReleaseNotesViewController.swift; sourceTree = "<group>"; };
+		509512321FF36380003D2D7F /* UpdateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateListViewController.swift; sourceTree = "<group>"; };
+		509512351FF36388003D2D7F /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		50C81D691FBADC5900324C2E /* Latest Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latest Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C81D6D1FBADC5900324C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50C81D731FBADC9100324C2E /* MLMVersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMVersionTest.swift; sourceTree = "<group>"; };
+		50C81D731FBADC9100324C2E /* VersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,99 +108,100 @@
 		50290E731E53EB6A00133E3D /* Latest */ = {
 			isa = PBXGroup;
 			children = (
-				50290E831E53EB7900133E3D /* Latest.entitlements */,
 				50290E741E53EB6A00133E3D /* AppDelegate.swift */,
-				5058437A1E63808C00D21E86 /* Visuals */,
-				5058437B1E63809600D21E86 /* Model */,
-				50290E781E53EB6A00133E3D /* Assets.xcassets */,
+				5095122A1FF36326003D2D7F /* Visuals */,
+				5095120D1FF3626A003D2D7F /* Model */,
 				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
-				509E95211E95ABED00CB4FCE /* Other */,
+				5095120C1FF3623B003D2D7F /* Other */,
 			);
 			path = Latest;
 			sourceTree = "<group>";
 		};
-		504BA58F1E643A0700B15275 /* Window Controllers */ = {
+		5095120C1FF3623B003D2D7F /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				504BA5901E643A2300B15275 /* MLMMainWindowController.swift */,
-			);
-			name = "Window Controllers";
-			sourceTree = "<group>";
-		};
-		5058437A1E63808C00D21E86 /* Visuals */ = {
-			isa = PBXGroup;
-			children = (
-				5058437F1E6382C000D21E86 /* Views */,
-				5058437E1E6382B900D21E86 /* View Controllers */,
-				504BA58F1E643A0700B15275 /* Window Controllers */,
-			);
-			name = Visuals;
-			sourceTree = "<group>";
-		};
-		5058437B1E63809600D21E86 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5081C9901E9787630014DE48 /* App Updates */,
-				5081C98B1E9780D70014DE48 /* Update Checker Extensions */,
-				509036C21FA9F206007A6CFD /* MLMVersion.swift */,
-				509036C41FA9F250007A6CFD /* MLMVersionInfo.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		5058437E1E6382B900D21E86 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				50290E761E53EB6A00133E3D /* MLMUpdateListViewController.swift */,
-				5058437C1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		5058437F1E6382C000D21E86 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				505843801E6382D200D21E86 /* MLMUpdateCell.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		5081C98B1E9780D70014DE48 /* Update Checker Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5081C9891E977C5F0014DE48 /* MLMUpdateChecker.swift */,
-				5081C98C1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift */,
-				5081C98E1E9781190014DE48 /* MLMSparkleExtension.swift */,
-			);
-			name = "Update Checker Extensions";
-			sourceTree = "<group>";
-		};
-		5081C9901E9787630014DE48 /* App Updates */ = {
-			isa = PBXGroup;
-			children = (
-				503616071E54E240007EE893 /* MLMAppUpdate.swift */,
-				5081C9931E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift */,
-				5081C9911E97877B0014DE48 /* MLMSparkleAppUpdate.swift */,
-			);
-			name = "App Updates";
-			sourceTree = "<group>";
-		};
-		509E95211E95ABED00CB4FCE /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				501EA9891EB1BA4500D05821 /* InfoPlist.strings */,
-				501EA9841EB1BA4400D05821 /* Localizable.strings */,
+				50290E831E53EB7900133E3D /* Latest.entitlements */,
+				50290E781E53EB6A00133E3D /* Assets.xcassets */,
 				50290E7D1E53EB6A00133E3D /* Info.plist */,
+				501EA9891EB1BA4500D05821 /* InfoPlist.strings */,
 				501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */,
+				501EA9841EB1BA4400D05821 /* Localizable.strings */,
 			);
-			name = Other;
+			path = Other;
+			sourceTree = "<group>";
+		};
+		5095120D1FF3626A003D2D7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				509512161FF362D1003D2D7F /* App Bundles */,
+				509512231FF36306003D2D7F /* Update Checker Extensions */,
+				509512101FF362A1003D2D7F /* Version.swift */,
+				509512111FF362A1003D2D7F /* UpdateInfo.swift */,
+				5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		509512161FF362D1003D2D7F /* App Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				5095121F1FF36301003D2D7F /* AppBundle.swift */,
+				5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */,
+				5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */,
+			);
+			path = "App Bundles";
+			sourceTree = "<group>";
+		};
+		509512231FF36306003D2D7F /* Update Checker Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				509512251FF3631D003D2D7F /* UpdateChecker.swift */,
+				509512241FF3631D003D2D7F /* SparkleExtension.swift */,
+				509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */,
+			);
+			path = "Update Checker Extensions";
+			sourceTree = "<group>";
+		};
+		5095122A1FF36326003D2D7F /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				5095122E1FF3634E003D2D7F /* Window Controllers */,
+				5095122D1FF36343003D2D7F /* View Controllers */,
+				5095122B1FF36335003D2D7F /* Views */,
+			);
+			path = Visuals;
+			sourceTree = "<group>";
+		};
+		5095122B1FF36335003D2D7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5095122F1FF36378003D2D7F /* UpdateCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5095122D1FF36343003D2D7F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
+				509512321FF36380003D2D7F /* UpdateListViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5095122E1FF3634E003D2D7F /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				509512351FF36388003D2D7F /* MainWindowController.swift */,
+			);
+			path = "Window Controllers";
 			sourceTree = "<group>";
 		};
 		50C81D6A1FBADC5900324C2E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				50C81D6D1FBADC5900324C2E /* Info.plist */,
-				50C81D731FBADC9100324C2E /* MLMVersionTest.swift */,
+				50C81D731FBADC9100324C2E /* VersionTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -247,9 +250,9 @@
 		50290E691E53EB6A00133E3D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MLM;
+				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Max Langer";
 				TargetAttributes = {
 					50290E701E53EB6A00133E3D = {
@@ -259,7 +262,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -317,19 +320,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5081C9921E97877B0014DE48 /* MLMSparkleAppUpdate.swift in Sources */,
-				503616081E54E240007EE893 /* MLMAppUpdate.swift in Sources */,
-				509036C51FA9F250007A6CFD /* MLMVersionInfo.swift in Sources */,
-				504BA5911E643A2300B15275 /* MLMMainWindowController.swift in Sources */,
-				5081C98D1E9780EF0014DE48 /* MLMMacAppStoreExtension.swift in Sources */,
-				5058437D1E63811B00D21E86 /* MLMUpdateDetailsViewController.swift in Sources */,
-				505843811E6382D200D21E86 /* MLMUpdateCell.swift in Sources */,
-				5081C9941E97B9F70014DE48 /* MLMMacAppStoreAppUpdate.swift in Sources */,
-				5081C98A1E977C5F0014DE48 /* MLMUpdateChecker.swift in Sources */,
-				50290E771E53EB6A00133E3D /* MLMUpdateListViewController.swift in Sources */,
+				509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */,
+				509512141FF362A1003D2D7F /* Version.swift in Sources */,
+				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
+				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
+				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
+				509512341FF36380003D2D7F /* UpdateListViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
-				509036C31FA9F206007A6CFD /* MLMVersion.swift in Sources */,
-				5081C98F1E9781190014DE48 /* MLMSparkleExtension.swift in Sources */,
+				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
+				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
+				509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */,
+				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
+				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
+				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
+				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50C81D741FBADC9100324C2E /* MLMVersionTest.swift in Sources */,
+				50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +408,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -411,6 +416,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -461,6 +467,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -468,6 +475,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -499,14 +507,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Latest/Latest.entitlements;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Latest/Other/Latest.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VFABJ5RE5Q;
-				INFOPLIST_FILE = Latest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Latest/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -515,14 +524,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Latest/Latest.entitlements;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Latest/Other/Latest.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VFABJ5RE5Q;
-				INFOPLIST_FILE = Latest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Latest/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -532,6 +542,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -553,6 +564,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;

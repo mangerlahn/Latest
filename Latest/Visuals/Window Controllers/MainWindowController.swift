@@ -1,5 +1,5 @@
 //
-//  MLMMainWindowController.swift
+//  MainWindowController.swift
 //  Latest
 //
 //  Created by Max Langer on 27.02.17.
@@ -8,28 +8,38 @@
 
 import Cocoa
 
-class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDelegate, MLMUpdateCheckerProgressDelegate {
+/**
+ This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
+ */
+class MainWindowController: NSWindowController, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
-    lazy var listViewController : MLMUpdateListViewController = {
+    /// The list view holding the apps
+    lazy var listViewController : UpdateListViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let firstItem = splitViewController.splitViewItems[0].viewController as? MLMUpdateListViewController else {
-                return MLMUpdateListViewController()
+            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateListViewController else {
+                return UpdateListViewController()
         }
         
         return firstItem
     }()
     
-    lazy var detailViewController : MLMUpdateDetailsViewController = {
+    /// The detail view controller holding the release notes
+    lazy var releaseNotesViewController : UpdateReleaseNotesViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let secondItem = splitViewController.splitViewItems[1].viewController as? MLMUpdateDetailsViewController else {
-                return MLMUpdateDetailsViewController()
+            let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateReleaseNotesViewController else {
+                return UpdateReleaseNotesViewController()
         }
         
         return secondItem
     }()
     
+    /// The progress indicator showing how many apps have been checked for updates
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    
+    /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadButton: NSButton!
+    
+    /// The button thats action opens all apps (or Mac App Store) to begin the update process
     @IBOutlet weak var openAllAppsButton: NSButton!
     
     override func windowDidLoad() {
@@ -47,15 +57,18 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
-        self.listViewController.detailViewController = self.detailViewController
+        self.listViewController.releaseNotesViewController = self.releaseNotesViewController
     }
 
+    
     // MARK: - Action Methods
     
+    /// Reloads the list / checks for updates
     @IBAction func reload(_ sender: Any?) {
         self.listViewController.checkForUpdates()
     }
     
+    /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func openAll(_ sender: Any?) {
         let apps = self.listViewController.apps
         
@@ -82,6 +95,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         }
     }
     
+    /// Shows/hides the detailView which presents the release notes
     @IBAction func toggleDetail(_ sender: Any?) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -91,6 +105,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         
         detailItem.animator().isCollapsed = !detailItem.isCollapsed
     }
+    
     
     // MARK: Menu Item Validation
 
@@ -121,10 +136,10 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         }
     }
     
-    // MARK: - MLMUpdateListViewController Delegate
     
-    // MARK: Checking
+    // MARK: - Update Checker Progress Delegate
     
+    /// This implementation activates the progress indicator, sets its max value and disables the reload button
     func startChecking(numberOfApps: Int) {
         self.reloadButton.isEnabled = false
     
@@ -132,6 +147,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
     }
     
+    /// Update the progress indicator
     func didCheckApp() {
         self.progressIndicator.increment(by: 1)
         
@@ -143,8 +159,10 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         }
     }
     
-    // MARK: Visuals
     
+    // MARK: - Update List View Controller Delegate
+
+    /// Expands the detail view of the main window
     func shouldExpandDetail() {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -155,6 +173,7 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         detailItem.animator().isCollapsed = false
     }
     
+    /// Collapses the detail view of the main window
     func shouldCollapseDetail() {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -165,13 +184,19 @@ class MLMMainWindowController: NSWindowController, MLMUpdateListViewControllerDe
         detailItem.animator().isCollapsed = true
     }
     
+    
     // MARK: - Private Methods
     
-    private func open(apps: [MLMAppUpdate]) {
+    /**
+     Open all apps in the array
+     - parameter apps: The apps to be opened
+     */
+    
+    private func open(apps: [AppBundle]) {
         var showedMacAppStore = false
         
         for app in apps {
-            if app is MLMMacAppStoreAppUpdate {
+            if app is MacAppStoreAppBundle {
                 if !showedMacAppStore {
                     showedMacAppStore = true
                     NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
