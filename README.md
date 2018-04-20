@@ -1,10 +1,12 @@
 <p align="center">
 <img src="icon.png" alt="Latest Icon">
   <br>
-  <b>Latest</b>
+  <b>Latest</b><br>
+  <a href="https://max.codes/latest/Latest.zip">Download Here</a>
 </p>
 
  
+ 
 =
 
 This is a small utility app for macOS to check whether all Sparkle enabled apps are up to date.
