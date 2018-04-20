@@ -1,0 +1,11 @@
+{
+    "number_of_updates_available" =     {
+        NSStringLocalizedFormatKey = "%#@value@";
+        value =         {
+            NSStringFormatSpecTypeKey = NSStringPluralRuleType;
+            NSStringFormatValueTypeKey = d;
+            one = "%d Update verf\U00fcgbar";
+            other = "%d Updates verf\U00fcgbar";
+        };
+    };
+}

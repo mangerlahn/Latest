@@ -67,3 +67,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 *.xcbkptlist
+/Frameworks/Cartfile.resolved
+Frameworks/Carthage/Checkouts
