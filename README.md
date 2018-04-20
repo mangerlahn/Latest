@@ -1,4 +1,12 @@
-# Latest
+<p align="center">
+<img src="icon.png" alt="Latest Icon">
+  <br>
+  <b>Latest</b>
+</p>
+
+ 
+=
+
 This is a small utility app for macOS to check whether all Sparkle enabled apps are up to date.
 
 ![](./latest.png)

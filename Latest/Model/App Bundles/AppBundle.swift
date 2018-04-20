@@ -24,7 +24,7 @@ protocol AppBundleDelegate : class {
 /**
  The class containing information about one specific app. It holds information like its current version, name and path.
  */
-class AppBundle : NSObject, NSFilePresenter {
+class AppBundle : NSObject {
     
     /// The version currently present on the users computer
     var version: Version!
@@ -55,34 +55,6 @@ class AppBundle : NSObject, NSFilePresenter {
     /// Compares two apps on equality
     static func ==(lhs: AppBundle, rhs: AppBundle) -> Bool {
         return lhs.appName == rhs.appName && lhs.appURL == rhs.appURL
-    }
-    
-    
-    // MARK: - NSFilePresenter
-    
-    /// Returns the url of the file to be observed
-    var presentedItemURL: URL? {
-        return self.appURL
-    }
-    
-    /// The queue on which the change handlers should be delegated on
-    var presentedItemOperationQueue: OperationQueue {
-        return .main
-    }
-    
-    /// The app bundle changed in any way
-    func presentedSubitemDidChange(at url: URL) {
-        // Check, if the changed file was the Info.plist
-        guard url.pathExtension == "plist",
-            let infoDict = NSDictionary(contentsOf: url),
-            let version = infoDict["CFBundleShortVersionString"] as? String,
-            let buildNumber = infoDict["CFBundleVersion"] as? String else { return }
-
-        // Update the build and version number of the app with the new information from the plist file
-        self.version.versionNumber = version
-        self.version.buildNumber = buildNumber
-        
-        self.delegate?.appDidUpdateVersionInformation(self)
     }
     
     

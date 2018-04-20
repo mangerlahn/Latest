@@ -18,7 +18,7 @@ extension UpdateChecker {
      Tries to update the app through the Sparkle mechanism. In case of success, the app object is created and delegated.
      - returns: A Boolean indicating if the app is updated through Sparkle
      */
-    func updatesThroughSparkle(app: String) -> Bool {
+    func updatesThroughSparkle(app: String, version: String, buildNumber: String) -> Bool {
         let appName = app as NSString
         
         guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
@@ -42,11 +42,8 @@ extension UpdateChecker {
             if error == nil,
                 let xmlData = data {
 
-                let versionNumber = information["CFBundleShortVersionString"] as? String
-                let buildNumber = information["CFBundleVersion"] as? String
-
                 let parser = XMLParser(data: xmlData)
-                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: versionNumber, buildNumber: buildNumber)
+                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
 
                 parser.delegate = checker
                 checker.delegate = self.appUpdateDelegate

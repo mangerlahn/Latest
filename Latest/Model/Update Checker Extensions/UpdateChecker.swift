@@ -28,7 +28,7 @@ protocol UpdateCheckerProgress : class {
  Each new method of checking for updates should be implemented in its own extension and then included in the `updateMethods` array
  */
 struct UpdateChecker {
- 
+    
     /// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckerProgress?
     
@@ -36,14 +36,15 @@ struct UpdateChecker {
     weak var appUpdateDelegate : AppBundleDelegate?
     
     /// The methods that are executed upon each app
-    private let updateMethods : [(UpdateChecker) -> (String) -> Bool] = [
+    private let updateMethods : [(UpdateChecker) -> (String, String, String) -> Bool] = [
         updatesThroughMacAppStore,
         updatesThroughSparkle
     ]
     
+    private var folderListener : FolderUpdateListener?
+    
     /// The url of the /Applications folder on the users Mac
     var applicationURL : URL? {
-        let fileManager = FileManager.default
         let applicationURLList = fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
         
         return applicationURLList.first
@@ -53,17 +54,35 @@ struct UpdateChecker {
     private var applicationPath : String {
         return applicationURL?.path ?? "/Applications/"
     }
+    let fileManager = FileManager.default
     
     /// Starts the update checking process
-    func run() {
+    mutating func run() {
+        if self.folderListener == nil, let url = self.applicationURL {
+            self.folderListener = FolderUpdateListener(url: url, updateChecker: self)
+        }
+        
+        self.folderListener?.resumeTracking()
+        
         let fileManager = FileManager.default
-        guard var apps = try? fileManager.contentsOfDirectory(atPath: self.applicationPath) else { return }
+        guard var apps = try? fileManager.contentsOfDirectory(atPath: self.applicationPath), let url = self.applicationURL else { return }
         
         self.progressDelegate?.startChecking(numberOfApps: apps.count)
         
         for method in self.updateMethods {
             apps = apps.filter({ (file) -> Bool in
-                return !method(self)(file)
+                var contentURL = url.appendingPathComponent(file)
+                contentURL = contentURL.appendingPathComponent("Contents")
+                
+                // Check, if the changed file was the Info.plist
+                guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
+                    .filter({ $0.pathExtension == "plist" }),
+                    let plistURL = plists.first,
+                    let infoDict = NSDictionary(contentsOf: plistURL),
+                    let version = infoDict["CFBundleShortVersionString"] as? String,
+                    let buildNumber = infoDict["CFBundleVersion"] as? String else { return true }
+                
+                return !method(self)(file, version, buildNumber)
             })
         }
         
