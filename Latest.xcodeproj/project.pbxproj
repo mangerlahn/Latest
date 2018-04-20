@@ -143,7 +143,7 @@
 				5095122A1FF36326003D2D7F /* Visuals */,
 				5095120D1FF3626A003D2D7F /* Model */,
 				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
-				5095120C1FF3623B003D2D7F /* Other */,
+				5095120C1FF3623B003D2D7F /* Resources */,
 			);
 			path = Latest;
 			sourceTree = "<group>";
@@ -157,7 +157,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5095120C1FF3623B003D2D7F /* Other */ = {
+		5095120C1FF3623B003D2D7F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				50290E831E53EB7900133E3D /* Latest.entitlements */,
@@ -168,7 +168,7 @@
 				501EA9841EB1BA4400D05821 /* Localizable.strings */,
 				50C8C8542089F97D004FF5D5 /* dsa_pub.pem */,
 			);
-			path = Other;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		5095120D1FF3626A003D2D7F /* Model */ = {
@@ -551,7 +551,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Latest/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -570,7 +570,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Latest/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
