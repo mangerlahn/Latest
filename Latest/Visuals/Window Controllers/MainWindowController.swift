@@ -144,6 +144,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         self.reloadButton.isEnabled = false
     
         self.progressIndicator.doubleValue = 0
+        self.progressIndicator.isHidden = false
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
     }
     
@@ -155,6 +156,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
             self.reloadButton.isEnabled = true
+            self.progressIndicator.isHidden = true
             self.listViewController.finishedCheckingForUpdates()
         }
     }
