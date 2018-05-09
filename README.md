@@ -21,7 +21,7 @@ The app offers very basic functionality.
 
 • Ability to open all apps at once
 
-## Comming soon
+## Coming soon
 
 • Automatic periodic checking with notifications
 
