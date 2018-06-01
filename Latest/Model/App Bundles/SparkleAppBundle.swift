@@ -64,7 +64,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
             } else if let vn = versionNumber {
                 info.version.versionNumber = vn
             } else if let bn = buildNumber {
-                info.version.versionNumber = bn
+                info.version.buildNumber = bn
             }
         case "pubDate":
             self.currentlyParsing = .pubDate
