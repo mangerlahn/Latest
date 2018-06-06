@@ -55,17 +55,8 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
         // Lets find the version number
         switch elementName {
         case "enclosure":
-            let versionNumber = attributeDict["sparkle:shortVersionString"]
-            let buildNumber = attributeDict["sparkle:version"]
-            
-            if let vn = versionNumber, let bn = buildNumber {
-                info.version.versionNumber = vn
-                info.version.buildNumber = bn
-            } else if let vn = versionNumber {
-                info.version.versionNumber = vn
-            } else if let bn = buildNumber {
-                info.version.buildNumber = bn
-            }
+            info.version.versionNumber = attributeDict["sparkle:shortVersionString"]
+            info.version.buildNumber = attributeDict["sparkle:version"]
         case "pubDate":
             self.currentlyParsing = .pubDate
         case "sparkle:releaseNotesLink":
