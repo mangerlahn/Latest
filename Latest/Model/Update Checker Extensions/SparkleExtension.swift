@@ -71,7 +71,11 @@ extension UpdateChecker {
                 checker.delegate = self.appUpdateDelegate
                 checker.appURL = applicationURL.appendingPathComponent(app)
 
-                parser.parse()
+                if !parser.parse() {
+                    DispatchQueue.main.async {
+                        self.progressDelegate?.didCheckApp()
+                    }
+                }
             } else {
                 DispatchQueue.main.async {
                     self.progressDelegate?.didCheckApp()
