@@ -150,14 +150,14 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     
     /// Update the progress indicator
     func didCheckApp() {
-        self.progressIndicator.increment(by: 1)
-        
         self.openAllAppsButton.isEnabled = self.listViewController.apps.count != 0
         
-        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
+        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
             self.reloadButton.isEnabled = true
             self.progressIndicator.isHidden = true
             self.listViewController.finishedCheckingForUpdates()
+        } else {
+            self.progressIndicator.increment(by: 1)
         }
     }
     

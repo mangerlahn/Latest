@@ -54,6 +54,7 @@ struct UpdateChecker {
     private var applicationPath : String {
         return applicationURL?.path ?? "/Applications/"
     }
+    
     let fileManager = FileManager.default
     
     /// Starts the update checking process
@@ -66,6 +67,8 @@ struct UpdateChecker {
         
         let fileManager = FileManager.default
         guard var apps = try? fileManager.contentsOfDirectory(atPath: self.applicationPath), let url = self.applicationURL else { return }
+        
+        apps = apps.filter({ $0.contains(".app") })
         
         self.progressDelegate?.startChecking(numberOfApps: apps.count)
         
