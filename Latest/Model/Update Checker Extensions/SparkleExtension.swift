@@ -29,11 +29,33 @@ extension UpdateChecker {
 
         let bundle = Bundle(path: appPath)
         
+        guard let information = bundle?.infoDictionary else {
+            return false
+        }
         
-        guard let information = bundle?.infoDictionary,
-            let urlString = information["SUFeedURL"] as? String,
-            let url = URL(string: urlString) else {
+        var url: URL
+        
+        if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString)  {
+            url = feedURL
+        } else { // Maybe the app is built using DevMate
+            // Check for the DevMate framework
+            let frameworksURL = URL(fileURLWithPath: appPath, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
+            
+            let frameworks = try? self.fileManager.contentsOfDirectory(atPath: frameworksURL.path)
+            if !(frameworks?.contains(where: { $0.contains("DevMateKit") }) ?? false) {
                 return false
+            }
+            
+            // The app uses Devmate, so lets get the appcast from their servers
+            guard let identifier = bundle?.bundleIdentifier,
+                var feedURL = URL(string: "https://updates.devmate.com") else {
+                return false
+            }
+            
+            feedURL.appendPathComponent(identifier)
+            feedURL.appendPathExtension("xml")
+            
+            url = feedURL
         }
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
