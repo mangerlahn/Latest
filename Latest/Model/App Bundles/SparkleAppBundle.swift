@@ -155,9 +155,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
         print("Number of versions parsed: \(versionInfos.count)")
         
         print("Versions found:")
-        for info in self.versionInfos {
-            print(info.version)
-        }
+        self.versionInfos.forEach({ print($0.version) })
     }
     
 }

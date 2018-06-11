@@ -197,20 +197,14 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     private func open(apps: [AppBundle]) {
         var showedMacAppStore = false
         
-        for app in apps {
-            if app is MacAppStoreAppBundle {
-                if !showedMacAppStore {
-                    showedMacAppStore = true
-                    NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
-                }
-                
-                continue
+        apps.forEach { (app) in
+            if !showedMacAppStore, app is MacAppStoreAppBundle {
+                showedMacAppStore = true
+                NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
+                return
             }
             
-            guard let url = app.appURL else {
-                continue
-            }
-            
+            guard let url = app.appURL else { return }
             NSWorkspace.shared.open(url)
         }
     }

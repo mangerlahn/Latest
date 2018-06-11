@@ -72,25 +72,26 @@ struct UpdateChecker {
         
         self.progressDelegate?.startChecking(numberOfApps: apps.count)
         
-        for method in self.updateMethods {
-            apps = apps.filter({ (file) -> Bool in
-                var contentURL = url.appendingPathComponent(file)
-                contentURL = contentURL.appendingPathComponent("Contents")
-                
-                // Check, if the changed file was the Info.plist
-                guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
-                    .filter({ $0.pathExtension == "plist" }),
-                    let plistURL = plists.first,
-                    let infoDict = NSDictionary(contentsOf: plistURL),
-                    let version = infoDict["CFBundleShortVersionString"] as? String,
-                    let buildNumber = infoDict["CFBundleVersion"] as? String else { return true }
-                
-                return !method(self)(file, version, buildNumber)
-            })
-        }
         
-        for _ in apps {
-            self.progressDelegate?.didCheckApp()
+        apps.forEach { (app) in
+            var contentURL = url.appendingPathComponent(app)
+            contentURL = contentURL.appendingPathComponent("Contents")
+            
+            // Check, if the changed file was the Info.plist
+            guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
+                .filter({ $0.pathExtension == "plist" }),
+                let plistURL = plists.first,
+                let infoDict = NSDictionary(contentsOf: plistURL),
+                let version = infoDict["CFBundleShortVersionString"] as? String,
+                let buildNumber = infoDict["CFBundleVersion"] as? String else {
+                    self.progressDelegate?.didCheckApp()
+                    return
+            }
+            
+            // Perform check on whether the the app can be updated using the given method
+            if !self.updateMethods.contains(where: { $0(self)(app, version, buildNumber) }) {
+                self.progressDelegate?.didCheckApp()
+            }
         }
     }
     
