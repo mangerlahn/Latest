@@ -136,15 +136,8 @@ private extension String {
      */
     func versionComponents() -> [Int] {
         let components = self.components(separatedBy: ".")
-        var versionComponents = [Int]()
-        
-        components.forEach { (component) in
-            let digits = component.trimmingCharacters(in: CharacterSet.decimalDigits.inverted)
-            if let number = Int(digits) {
-                versionComponents.append(number)
-            }
-        }
-        
-        return versionComponents
+        return components.compactMap({ (component) -> Int? in
+            return Int(component.trimmingCharacters(in: CharacterSet.decimalDigits.inverted))
+        })
     }
 }

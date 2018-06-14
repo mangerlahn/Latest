@@ -74,8 +74,7 @@ struct UpdateChecker {
         
         
         apps.forEach { (app) in
-            var contentURL = url.appendingPathComponent(app)
-            contentURL = contentURL.appendingPathComponent("Contents")
+            let contentURL = url.appendingPathComponent(app).appendingPathComponent("Contents")
             
             // Check, if the changed file was the Info.plist
             guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
