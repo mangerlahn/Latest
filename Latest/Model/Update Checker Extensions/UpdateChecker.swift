@@ -70,10 +70,8 @@ struct UpdateChecker {
         
         apps = apps.filter({ $0.contains(".app") })
         
-        self.progressDelegate?.startChecking(numberOfApps: apps.count)
-        
-        
-        apps.forEach { (app) in
+        let count = apps.count
+        apps = apps.filter { (app) in
             let contentURL = url.appendingPathComponent(app).appendingPathComponent("Contents")
             
             // Check, if the changed file was the Info.plist
@@ -83,15 +81,14 @@ struct UpdateChecker {
                 let infoDict = NSDictionary(contentsOf: plistURL),
                 let version = infoDict["CFBundleShortVersionString"] as? String,
                 let buildNumber = infoDict["CFBundleVersion"] as? String else {
-                    self.progressDelegate?.didCheckApp()
-                    return
+                    return true
             }
             
             // Perform check on whether the the app can be updated using the given method
-            if !self.updateMethods.contains(where: { $0(self)(app, version, buildNumber) }) {
-                self.progressDelegate?.didCheckApp()
-            }
+            return !self.updateMethods.contains(where: { $0(self)(app, version, buildNumber) })
         }
+        
+        self.progressDelegate?.startChecking(numberOfApps: count - apps.count)
     }
     
 }
