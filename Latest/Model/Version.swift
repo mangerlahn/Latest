@@ -41,20 +41,6 @@ struct Version : Equatable, Comparable {
     static func ==(lhs: Version, rhs: Version) -> Bool {
         let result = self._check(lhs, rhs)
         return result == .equal
-    static func !=(lhs: Version, rhs: Version) -> Bool {
-        return !(lhs == rhs)
-    }
-    
-    static func <=(lhs: Version, rhs: Version) -> Bool {
-        let result = self._check(lhs, rhs)
-        return result == .equal || result == .older
-    }
-    
-    static func >=(lhs: Version, rhs: Version) -> Bool {
-        let result = self._check(lhs, rhs)
-        return result == .equal || result == .newer
-    }
-    
     }
     
     static func <(lhs: Version, rhs: Version) -> Bool {
