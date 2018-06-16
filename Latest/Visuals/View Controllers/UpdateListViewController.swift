@@ -283,9 +283,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         let row = self.tableView.clickedRow
         
         guard row != -1 else { return }
-        for item in menu.items {
-            item.representedObject = row
-        }
+        menu.items.forEach({ $0.representedObject = row })
     }
     
     

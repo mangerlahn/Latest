@@ -144,18 +144,20 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         self.reloadButton.isEnabled = false
     
         self.progressIndicator.doubleValue = 0
+        self.progressIndicator.isHidden = false
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
     }
     
     /// Update the progress indicator
     func didCheckApp() {
-        self.progressIndicator.increment(by: 1)
-        
         self.openAllAppsButton.isEnabled = self.listViewController.apps.count != 0
         
-        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue - 1 {
+        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
             self.reloadButton.isEnabled = true
+            self.progressIndicator.isHidden = true
             self.listViewController.finishedCheckingForUpdates()
+        } else {
+            self.progressIndicator.increment(by: 1)
         }
     }
     
@@ -195,20 +197,14 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     private func open(apps: [AppBundle]) {
         var showedMacAppStore = false
         
-        for app in apps {
-            if app is MacAppStoreAppBundle {
-                if !showedMacAppStore {
-                    showedMacAppStore = true
-                    NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
-                }
-                
-                continue
+        apps.forEach { (app) in
+            if !showedMacAppStore, app is MacAppStoreAppBundle {
+                showedMacAppStore = true
+                NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
+                return
             }
             
-            guard let url = app.appURL else {
-                continue
-            }
-            
+            guard let url = app.appURL else { return }
             NSWorkspace.shared.open(url)
         }
     }

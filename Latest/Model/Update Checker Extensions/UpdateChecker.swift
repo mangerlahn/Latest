@@ -54,6 +54,7 @@ struct UpdateChecker {
     private var applicationPath : String {
         return applicationURL?.path ?? "/Applications/"
     }
+    
     let fileManager = FileManager.default
     
     /// Starts the update checking process
@@ -67,28 +68,27 @@ struct UpdateChecker {
         let fileManager = FileManager.default
         guard var apps = try? fileManager.contentsOfDirectory(atPath: self.applicationPath), let url = self.applicationURL else { return }
         
-        self.progressDelegate?.startChecking(numberOfApps: apps.count)
+        apps = apps.filter({ $0.contains(".app") })
         
-        for method in self.updateMethods {
-            apps = apps.filter({ (file) -> Bool in
-                var contentURL = url.appendingPathComponent(file)
-                contentURL = contentURL.appendingPathComponent("Contents")
-                
-                // Check, if the changed file was the Info.plist
-                guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
-                    .filter({ $0.pathExtension == "plist" }),
-                    let plistURL = plists.first,
-                    let infoDict = NSDictionary(contentsOf: plistURL),
-                    let version = infoDict["CFBundleShortVersionString"] as? String,
-                    let buildNumber = infoDict["CFBundleVersion"] as? String else { return true }
-                
-                return !method(self)(file, version, buildNumber)
-            })
+        let count = apps.count
+        apps = apps.filter { (app) in
+            let contentURL = url.appendingPathComponent(app).appendingPathComponent("Contents")
+            
+            // Check, if the changed file was the Info.plist
+            guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
+                .filter({ $0.pathExtension == "plist" }),
+                let plistURL = plists.first,
+                let infoDict = NSDictionary(contentsOf: plistURL),
+                let version = infoDict["CFBundleShortVersionString"] as? String,
+                let buildNumber = infoDict["CFBundleVersion"] as? String else {
+                    return true
+            }
+            
+            // Perform check on whether the the app can be updated using the given method
+            return !self.updateMethods.contains(where: { $0(self)(app, version, buildNumber) })
         }
         
-        for _ in apps {
-            self.progressDelegate?.didCheckApp()
-        }
+        self.progressDelegate?.startChecking(numberOfApps: count - apps.count)
     }
     
 }
