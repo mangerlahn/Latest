@@ -38,9 +38,12 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     
     /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadButton: NSButton!
+    @IBOutlet weak var reloadTouchBarButton: NSButton!
+    
     
     /// The button thats action opens all apps (or Mac App Store) to begin the update process
     @IBOutlet weak var openAllAppsButton: NSButton!
+    @IBOutlet weak var openAllAppsTouchBarButton: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -142,6 +145,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     /// This implementation activates the progress indicator, sets its max value and disables the reload button
     func startChecking(numberOfApps: Int) {
         self.reloadButton.isEnabled = false
+        self.reloadTouchBarButton.isEnabled = false
     
         self.progressIndicator.doubleValue = 0
         self.progressIndicator.isHidden = false
@@ -151,9 +155,11 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     /// Update the progress indicator
     func didCheckApp() {
         self.openAllAppsButton.isEnabled = self.listViewController.apps.count != 0
+        self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
         
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
             self.reloadButton.isEnabled = true
+            self.reloadTouchBarButton.isEnabled = true
             self.progressIndicator.isHidden = true
             self.listViewController.finishedCheckingForUpdates()
         } else {
