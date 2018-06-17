@@ -1,2 +1,9 @@
 language: swift
 os: osx
+osx_image: xcode9.4
+xcode_project: Latest.xcodeproj
+before_install:
+  - bash update_carthage.sh 0.11
+  
+install: gem install xcpretty
+script: "xcodebuild -project Latest.xcodeproj -scheme 'Latest' | xcpretty -c && exit ${PIPESTATUS[0]}"
