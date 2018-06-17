@@ -8,3 +8,7 @@ fi
 curl -OlL "https://github.com/Carthage/Carthage/releases/download/$1/Carthage.pkg"
 sudo installer -pkg "Carthage.pkg" -target /
 rm "Carthage.pkg"
+
+cd $TRAVIS_BUILD_DIR
+cd Frameworks
+carthage bootstrap
