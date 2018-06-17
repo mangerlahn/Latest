@@ -9,6 +9,8 @@ This is a small utility app for macOS to check whether all Sparkle enabled apps 
 
 ![](./latest.png)
 
+[![Build Status](https://travis-ci.org/mangerlahn/Latest.svg?branch=master)](https://travis-ci.org/mangerlahn/Latest)
+
 The app offers very basic functionality.
 
 • Check for updates of all apps in the /Applications/ folder
