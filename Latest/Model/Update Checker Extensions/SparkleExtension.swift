@@ -58,9 +58,8 @@ extension UpdateChecker {
             url = feedURL
         }
 
-        let session = URLSession(configuration: URLSessionConfiguration.default)
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             if error == nil,
                 let xmlData = data {
 
@@ -68,18 +67,14 @@ extension UpdateChecker {
                 let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
 
                 parser.delegate = checker
-                checker.delegate = self.appUpdateDelegate
-                checker.appURL = applicationURL.appendingPathComponent(app)
+                checker.delegate = self
+                checker.url = applicationURL.appendingPathComponent(app)
 
                 if !parser.parse() {
-                    DispatchQueue.main.async {
-                        self.progressDelegate?.didCheckApp()
-                    }
+                    self.didFailToUpdateApp()
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.progressDelegate?.didCheckApp()
-                }
+                self.didFailToUpdateApp()
             }
         })
         

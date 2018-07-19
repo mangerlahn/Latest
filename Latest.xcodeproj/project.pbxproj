@@ -27,7 +27,7 @@
 		509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */; };
 		509512301FF36378003D2D7F /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095122F1FF36378003D2D7F /* UpdateCell.swift */; };
 		509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */; };
-		509512341FF36380003D2D7F /* UpdateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateListViewController.swift */; };
+		509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateTableViewController.swift */; };
 		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
 		50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */; };
@@ -92,7 +92,7 @@
 		509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MacAppStoreExtension.swift; path = "Latest/Model/Update Checker Extensions/MacAppStoreExtension.swift"; sourceTree = SOURCE_ROOT; };
 		5095122F1FF36378003D2D7F /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReleaseNotesViewController.swift; sourceTree = "<group>"; };
-		509512321FF36380003D2D7F /* UpdateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateListViewController.swift; sourceTree = "<group>"; };
+		509512321FF36380003D2D7F /* UpdateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewController.swift; sourceTree = "<group>"; };
 		509512351FF36388003D2D7F /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		50C81D691FBADC5900324C2E /* Latest Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latest Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C81D6D1FBADC5900324C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
-				509512321FF36380003D2D7F /* UpdateListViewController.swift */,
+				509512321FF36380003D2D7F /* UpdateTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
 				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
 				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
-				509512341FF36380003D2D7F /* UpdateListViewController.swift in Sources */,
+				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,

@@ -22,7 +22,7 @@ protocol UpdateListViewControllerDelegate : class {
 /**
  This is the class handling the update process and displaying its results
  */
-class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, AppBundleDelegate {
+class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
 
     /// The array holding the apps that have an update available
     var apps = [AppBundle]()
@@ -46,7 +46,11 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     @IBOutlet weak var tableViewMenu: NSMenu!
     
     /// The checker responsible for update checking
-    var updateChecker = UpdateChecker()
+    lazy var updateChecker: UpdateChecker = {
+        var checker = UpdateChecker()
+        checker.didFinishCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
+        return checker
+    }()
     
     
     // MARK: - View Lifecycle
@@ -59,9 +63,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
-        
-        self.updateChecker.appUpdateDelegate = self
-        
+                
         self.scrollViewDidScroll(nil)
         
         self.tableViewMenu.delegate = self
@@ -69,7 +71,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         
         self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
         
-        self._updateEmtpyStateVisibility()
+        self.updateEmtpyStateVisibility()
     }
     
     override func viewWillAppear() {
@@ -110,7 +112,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
             let info = app.newestVersion,
-            let url = app.appURL else {
+            let url = app.url else {
             return nil
         }
         
@@ -132,7 +134,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
             newVersion = nv
         }
         
-        cell.textField?.stringValue = app.appName
+        cell.textField?.stringValue = app.name
         cell.currentVersionTextField?.stringValue = String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(version)")
         cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
         
@@ -201,45 +203,47 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         return self.apps.count
     }
     
-    // MARK: - Update Checker Delegate
+    
+    // MARK: - Update Checker
     
     /// An helper array indicating the apps that need to be removed from the list after the update process
-    private var _appsToDelete : [AppBundle]?
-
-    func appDidUpdateVersionInformation(_ app: AppBundle) {
-        self.updateChecker.progressDelegate?.didCheckApp()
-        
-        if let index = self._appsToDelete?.index(where: { $0 == app }) {
-            self._appsToDelete?.remove(at: index)
+    private var appsToDelete : [AppBundle]?
+    
+    func updateCheckerDidFinishCheckingApp(_ newVersionAvailable: Bool, for app: AppBundle) {
+        if let index = self.appsToDelete?.index(where: { $0 == app }) {
+            self.appsToDelete?.remove(at: index)
         }
         
-        if let versionBundle = app.newestVersion, versionBundle.version > app.version {
-            self._add(app)
-        } else if let index = self.apps.index(where: { $0 == app }) {
-            self.apps.remove(at: index)
-            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+        self.tableView.beginUpdates()
+        
+        if newVersionAvailable {
+            self.add(app)
+        } else {
+            self.remove(app)
         }
         
-        self._updateTitleAndBatch()
-        self._updateEmtpyStateVisibility()
+        self.tableView.endUpdates()
+        
+        self.updateTitleAndBatch()
+        self.updateEmtpyStateVisibility()
     }
     
     func finishedCheckingForUpdates() {
         defer {
-            self._appsToDelete = self.apps
+            self.appsToDelete = self.apps
         }
         
-        guard let apps = self._appsToDelete, apps.count != 0 else { return }
-        
+        guard let apps = self.appsToDelete, apps.count != 0 else { return }
+
+        self.tableView.beginUpdates()
+
         apps.forEach { (app) in
-            guard let index = self.apps.index(where: { $0 == app }) else { return }
-            
-            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
-            self.apps.remove(at: index)
+            self.remove(app)
         }
-        
-        self._updateTitleAndBatch()
-        self._updateEmtpyStateVisibility()
+
+        self.tableView.endUpdates()
+
+        self.updateEmtpyStateVisibility()
     }
 
     
@@ -290,26 +294,29 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     // MARK: - Private Methods
 
     /// Adds an item to the list of apps that have an update available. If the app is already in the list, the row in the table gets updated
-    private func _add(_ app: AppBundle) {
+    private func add(_ app: AppBundle) {
         guard !self.apps.contains(where: { $0 == app }) else {
             guard let index = self.apps.index(of: app) else { return }
-            
             self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
-            
             return
         }
         
         self.apps.append(app)
-        
         self.apps.sort { (first, second) -> Bool in
-            return first.appName < second.appName
+            return first.name < second.name
         }
         
-        guard let index = self.apps.index(of: app) else {
-            return
-        }
+        guard let index = self.apps.index(of: app) else { return }
                 
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
+    }
+    
+    /// Removes the item from the list, if it exists
+    private func remove(_ app: AppBundle) {
+        guard let index = self.apps.index(where: { $0 == app }) else { return }
+        
+        self.apps.remove(at: index)
+        self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
     }
     
     /// Opens the app and a given index
@@ -326,7 +333,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
                 appStoreURL = appStoreApp.appStoreURL
             }
             
-            guard let url = appStoreURL ?? app.appURL else {
+            guard let url = appStoreURL ?? app.url else {
                 return
             }
             
@@ -342,13 +349,13 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
         
         let app = self.apps[index]
         
-        guard let url = app.appURL else { return }
+        guard let url = app.url else { return }
         
         NSWorkspace.shared.activateFileViewerSelecting([url])
     }
     
     /// Updates the UI depending on available updates (show empty states or update list)
-    private func _updateEmtpyStateVisibility() {
+    private func updateEmtpyStateVisibility() {
         if self.apps.count == 0 && !self.tableView.isHidden {
             self.tableView.alphaValue = 0
             self.tableView.isHidden = true
@@ -363,7 +370,7 @@ class UpdateListViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
-    private func _updateTitleAndBatch() {
+    private func updateTitleAndBatch() {
         let count = self.apps.count
         
         if count == 0 {
