@@ -14,10 +14,10 @@ import Cocoa
 class MainWindowController: NSWindowController, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
     /// The list view holding the apps
-    lazy var listViewController : UpdateListViewController = {
+    lazy var listViewController : UpdateTableViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateListViewController else {
-                return UpdateListViewController()
+            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateTableViewController else {
+                return UpdateTableViewController()
         }
         
         return firstItem
@@ -204,7 +204,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
                 return
             }
             
-            guard let url = app.appURL else { return }
+            guard let url = app.url else { return }
             NSWorkspace.shared.open(url)
         }
     }

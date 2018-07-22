@@ -40,29 +40,25 @@ extension UpdateChecker {
               else { return false }
         
         if bundleIdentifier.contains("com.apple.InstallAssistant") {
-            self.progressDelegate?.didCheckApp()
+            self.didFailToUpdateApp()
             return true
         }
         
-        let session = URLSession(configuration: URLSessionConfiguration.default)
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil,
                 let data = data,
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                 let results = json?["results"] as? [Any],
                 results.count != 0,
                 let appData = results[0] as? [String: Any] else {
-                    DispatchQueue.main.async {
-                        self.progressDelegate?.didCheckApp()
-                    }
-                    
+                    self.didFailToUpdateApp()
                     return
             }
             
             let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
-            appUpdate.delegate = self.appUpdateDelegate
-            appUpdate.appURL = applicationURL.appendingPathComponent(app)
+            appUpdate.delegate = self
+            appUpdate.url = applicationURL.appendingPathComponent(app)
             appUpdate.parse(data: appData)
         }
         
