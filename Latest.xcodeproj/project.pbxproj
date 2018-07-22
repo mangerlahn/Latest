@@ -31,6 +31,8 @@
 		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
 		50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */; };
+		50DAEF4021047E5100B32E8A /* TouchBarHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* TouchBarHandling.swift */; };
+		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		50C81D6D1FBADC5900324C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C81D731FBADC9100324C2E /* VersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTest.swift; sourceTree = "<group>"; };
 		50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		50DAEF3F21047E5100B32E8A /* TouchBarHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarHandling.swift; sourceTree = "<group>"; };
+		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,27 +213,10 @@
 			isa = PBXGroup;
 			children = (
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
-				5095122D1FF36343003D2D7F /* View Controllers */,
-				5095122B1FF36335003D2D7F /* Views */,
+				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
+				50DAEF3E21047E3B00B32E8A /* Update Table View */,
 			);
 			path = Visuals;
-			sourceTree = "<group>";
-		};
-		5095122B1FF36335003D2D7F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5095122F1FF36378003D2D7F /* UpdateCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		5095122D1FF36343003D2D7F /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
-				509512321FF36380003D2D7F /* UpdateTableViewController.swift */,
-			);
-			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		5095122E1FF3634E003D2D7F /* Window Controllers */ = {
@@ -247,6 +234,33 @@
 				50C81D731FBADC9100324C2E /* VersionTest.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		50DAEF3E21047E3B00B32E8A /* Update Table View */ = {
+			isa = PBXGroup;
+			children = (
+				50DAEF4121047EFF00B32E8A /* Controller */,
+				50DAEF4221047F1300B32E8A /* Views */,
+			);
+			path = "Update Table View";
+			sourceTree = "<group>";
+		};
+		50DAEF4121047EFF00B32E8A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				509512321FF36380003D2D7F /* UpdateTableViewController.swift */,
+				50DAEF3F21047E5100B32E8A /* TouchBarHandling.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		50DAEF4221047F1300B32E8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5095122F1FF36378003D2D7F /* UpdateCell.swift */,
+				50DAEF4321047FA900B32E8A /* UpdateItemView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +394,8 @@
 				509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */,
 				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
+				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
+				50DAEF4021047E5100B32E8A /* TouchBarHandling.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
 				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
 			);
