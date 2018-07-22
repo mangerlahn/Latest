@@ -111,7 +111,7 @@ extension UpdateChecker: AppBundleDelegate {
         self.progressDelegate?.didCheckApp()
         
         DispatchQueue.main.async {            
-            if let versionBundle = app.newestVersion, versionBundle.version < app.version {
+            if let versionBundle = app.newestVersion, versionBundle.version > app.version {
                 self.didFinishCheckingAppCallback?(true, app)
                 return
             }
