@@ -38,7 +38,7 @@ class UpdateChecker {
     weak var progressDelegate : UpdateCheckerProgress?
     
     /// The methods that are executed upon each app
-    private let updateMethods : [(UpdateChecker) -> (String, String, String) -> Bool] = [
+    private let updateMethods : [(UpdateChecker) -> (URL, String, String) -> Bool] = [
         updatesThroughMacAppStore,
         updatesThroughSparkle
     ]
@@ -75,12 +75,17 @@ class UpdateChecker {
         
         self.folderListener?.resumeTracking()
         
-        guard var apps = try? fileManager.contentsOfDirectory(atPath: self.applicationPath), let url = self.applicationURL else { return }
-        apps = apps.filter({ $0.contains(".app") })
+        guard let url = self.applicationURL, let enumerator = self.fileManager.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
         
-        let count = apps.count
-        apps = apps.filter { (app) in
-            let contentURL = url.appendingPathComponent(app).appendingPathComponent("Contents")
+        self.lock.lock()
+        self.remainingApps = 0
+        
+        while let appURL = enumerator.nextObject() as? URL {
+            guard let value = try? appURL.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
+                continue
+            }
+        
+            let contentURL = appURL.appendingPathComponent("Contents")
             
             // Check, if the changed file was the Info.plist
             guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
@@ -89,14 +94,17 @@ class UpdateChecker {
                 let infoDict = NSDictionary(contentsOf: plistURL),
                 let version = infoDict["CFBundleShortVersionString"] as? String,
                 let buildNumber = infoDict["CFBundleVersion"] as? String else {
-                    return true
+                    continue
             }
             
-            // Perform check on whether the the app can be updated using the given method
-            return !self.updateMethods.contains(where: { $0(self)(app, version, buildNumber) })
+            if self.updateMethods.contains(where: { $0(self)(appURL, version, buildNumber) }) {
+                self.remainingApps += 1
+            }
+            
+            enumerator.skipDescendants()
         }
         
-        self.remainingApps = count - apps.count
+        self.lock.unlock()
         self.progressDelegate?.startChecking(numberOfApps: self.remainingApps)
     }
     

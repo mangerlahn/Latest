@@ -18,16 +18,9 @@ extension UpdateChecker {
      Tries to update the app through the Sparkle mechanism. In case of success, the app object is created and delegated.
      - returns: A Boolean indicating if the app is updated through Sparkle
      */
-    func updatesThroughSparkle(app: String, version: String, buildNumber: String) -> Bool {
-        let appName = app as NSString
-        
-        guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
-            return false
-        }
-        
-        let appPath = applicationURL.appendingPathComponent(app).path
-
-        let bundle = Bundle(path: appPath)
+    func updatesThroughSparkle(app: URL, version: String, buildNumber: String) -> Bool {
+        let appName = app.lastPathComponent as NSString
+        let bundle = Bundle(path: app.path)
         
         guard let information = bundle?.infoDictionary else {
             return false
@@ -39,7 +32,7 @@ extension UpdateChecker {
             url = feedURL
         } else { // Maybe the app is built using DevMate
             // Check for the DevMate framework
-            let frameworksURL = URL(fileURLWithPath: appPath, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
+            let frameworksURL = URL(fileURLWithPath: app.path, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
             
             let frameworks = try? self.fileManager.contentsOfDirectory(atPath: frameworksURL.path)
             if !(frameworks?.contains(where: { $0.contains("DevMateKit") }) ?? false) {
@@ -68,7 +61,7 @@ extension UpdateChecker {
 
                 parser.delegate = checker
                 checker.delegate = self
-                checker.url = applicationURL.appendingPathComponent(app)
+                checker.url = app
 
                 if !parser.parse() {
                     self.didFailToUpdateApp()

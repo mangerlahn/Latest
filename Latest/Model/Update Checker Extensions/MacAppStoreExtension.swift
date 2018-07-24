@@ -18,15 +18,10 @@ extension UpdateChecker {
      Tries to update the app through the Mac App Store. In case of success, the app object is created and delegated.
      - returns: A Boolean indicating if the app is updated through the Mac App Store
      */
-    func updatesThroughMacAppStore(app: String, version: String, buildNumber: String) -> Bool {
-        let appName = app as NSString
+    func updatesThroughMacAppStore(app: URL, version: String, buildNumber: String) -> Bool {
+        let appName = app.lastPathComponent as NSString
 
-        guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
-            return false
-        }
-        
-        let appPath = applicationURL.appendingPathComponent(app).path
-        let appBundle = Bundle(path: appPath)
+        let appBundle = Bundle(path: app.path)
         let fileManager = FileManager.default
         
         guard let receiptPath = appBundle?.appStoreReceiptURL?.path,
@@ -58,7 +53,7 @@ extension UpdateChecker {
             
             let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
             appUpdate.delegate = self
-            appUpdate.url = applicationURL.appendingPathComponent(app)
+            appUpdate.url = app
             appUpdate.parse(data: appData)
         }
         
