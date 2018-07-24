@@ -214,11 +214,6 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         
         self.updateTitleAndBatch()
         self.updateEmtpyStateVisibility()
-        
-        if #available(OSX 10.12.2, *) {
-            // Reload the touchBar
-            self.touchBar = nil
-        }
     }
     
     func finishedCheckingForUpdates() {
@@ -235,9 +230,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         }
 
         self.tableView.endUpdates()
-
-
-        
+        self.updateTitleAndBatch()
         self.updateEmtpyStateVisibility()
     }
 
@@ -247,6 +240,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
     /// Triggers the update checking mechanism
     func checkForUpdates() {
         self.updateChecker.run()
+        self.becomeFirstResponder()
     }
 
     /// Selects the app at the given index
@@ -400,6 +394,10 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             
             let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
             self.updatesLabel.stringValue = String.localizedStringWithFormat(format, count)
+        }
+        
+        if #available(OSX 10.12.2, *) {
+            self.scrubber?.reloadData()
         }
     }
     

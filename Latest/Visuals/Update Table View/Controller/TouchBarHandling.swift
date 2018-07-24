@@ -51,6 +51,9 @@ extension UpdateTableViewController: NSTouchBarDelegate {
             scrubber.mode = .free
             scrubber.showsArrowButtons = true
             scrubber.selectionBackgroundStyle = .roundedBackground
+            scrubber.selectionOverlayStyle = .outlineOverlay
+            scrubber.backgroundColor = NSColor.controlColor
+            
             scrubber.dataSource = self
             scrubber.delegate = self
             
@@ -74,7 +77,11 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     // MARK: Data Source
     
     func numberOfItems(for scrubber: NSScrubber) -> Int {
-        return self.apps.count
+        let count = self.apps.count
+        
+        self.updateScrubberAppearance(with: count)
+        
+        return count
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
@@ -104,7 +111,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         
         let textRect = name.boundingRect(with: size, options: options, attributes: attributes)
         
-        var width = 6 // Spacing
+        var width = 16 // Spacing
         width += 30 // Image
         width += Int(textRect.size.width)
         
@@ -115,4 +122,8 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         self.selectApp(at: selectedIndex)
     }
     
+    private func updateScrubberAppearance(with count: Int) {
+        self.scrubber?.isHidden = count == 0
+        self.scrubber?.showsArrowButtons = count > 3
+    }
 }
