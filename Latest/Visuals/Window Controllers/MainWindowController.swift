@@ -57,6 +57,8 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
             splitViewController.splitViewItems[1].isCollapsed = true
         }
         
+        self.window?.makeFirstResponder(self.listViewController)
+        
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
