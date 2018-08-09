@@ -182,19 +182,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             return
         }
         
-        let app = self.apps[index]
-        
-        guard let detailViewController = self.releaseNotesViewController else {
-            return
-        }
-        
-        if let url = app.newestVersion?.releaseNotes as? URL {
-            self.delegate?.shouldExpandDetail()
-            detailViewController.display(url: url)
-        } else if let string = app.newestVersion?.releaseNotes as? String {
-            self.delegate?.shouldExpandDetail()
-            detailViewController.display(html: string)
-        }
+        self.selectApp(at: index)
     }
     
     // MARK: Table View Data Source
@@ -242,7 +230,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         }
 
         self.tableView.endUpdates()
-
+        self.updateTitleAndBatch()
         self.updateEmtpyStateVisibility()
     }
 
@@ -252,8 +240,34 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
     /// Triggers the update checking mechanism
     func checkForUpdates() {
         self.updateChecker.run()
+        self.becomeFirstResponder()
     }
 
+    /// Selects the app at the given index
+    func selectApp(at index: Int) {
+        if #available(OSX 10.12.2, *) {
+            self.scrubber?.animator().scrollItem(at: index, to: .center)
+            self.scrubber?.animator().selectedIndex = index
+        }
+        
+        self.tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        self.tableView.scrollRowToVisible(index)
+        
+        let app = self.apps[index]
+        
+        guard let detailViewController = self.releaseNotesViewController else {
+            return
+        }
+        
+        if let url = app.newestVersion?.releaseNotes as? URL {
+            self.delegate?.shouldExpandDetail()
+            detailViewController.display(url: url)
+        } else if let string = app.newestVersion?.releaseNotes as? String {
+            self.delegate?.shouldExpandDetail()
+            detailViewController.display(html: string)
+        }
+    }
+    
     
     // MARK: - Menu Item Stuff
     
@@ -382,7 +396,10 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
             self.updatesLabel.stringValue = String.localizedStringWithFormat(format, count)
         }
+        
+        if #available(OSX 10.12.2, *) {
+            self.scrubber?.reloadData()
+        }
     }
     
 }
-
