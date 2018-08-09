@@ -251,6 +251,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         }
         
         self.tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
+        self.tableView.scrollRowToVisible(index)
         
         let app = self.apps[index]
         
