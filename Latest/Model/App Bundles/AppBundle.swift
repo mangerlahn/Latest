@@ -58,6 +58,31 @@ class AppBundle : NSObject {
     }
     
     
+    // MARK: - Actions
+    
+    /// Opens the app and a given index
+    func open() {
+        var appStoreURL : URL?
+        
+        if let appStoreApp = self as? MacAppStoreAppBundle {
+            appStoreURL = appStoreApp.appStoreURL
+        }
+        
+        guard let url = appStoreURL ?? self.url else {
+            return
+        }
+        
+        NSWorkspace.shared.open(url)
+    }
+    
+    /// Reveals the app at a given index in Finder
+    func showInFinder() {
+        guard let url = self.url else { return }
+        
+        NSWorkspace.shared.activateFileViewerSelecting([url])
+    }
+    
+    
     // MARK: - Debug
     
     func printDebugDescription() {

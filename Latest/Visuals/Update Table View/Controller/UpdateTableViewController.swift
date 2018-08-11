@@ -340,18 +340,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
                 return
             }
             
-            let app = self.apps[index]
-            var appStoreURL : URL?
-            
-            if let appStoreApp = app as? MacAppStoreAppBundle {
-                appStoreURL = appStoreApp.appStoreURL
-            }
-            
-            guard let url = appStoreURL ?? app.url else {
-                return
-            }
-            
-            NSWorkspace.shared.open(url)
+            self.apps[index].open()
         }
     }
     
@@ -361,11 +350,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             return
         }
         
-        let app = self.apps[index]
-        
-        guard let url = app.url else { return }
-        
-        NSWorkspace.shared.activateFileViewerSelecting([url])
+        self.apps[index].showInFinder()
     }
     
     /// Updates the UI depending on available updates (show empty states or update list)
