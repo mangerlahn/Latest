@@ -259,12 +259,9 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             return
         }
         
-        if let url = app.newestVersion?.releaseNotes as? URL {
+        if let content = app.newestVersion?.releaseNotes {
             self.delegate?.shouldExpandDetail()
-            detailViewController.display(url: url)
-        } else if let string = app.newestVersion?.releaseNotes as? String {
-            self.delegate?.shouldExpandDetail()
-            detailViewController.display(html: string)
+            detailViewController.display(content: content, for: app)
         }
     }
     

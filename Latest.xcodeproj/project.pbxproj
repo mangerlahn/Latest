@@ -17,6 +17,7 @@
 		5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */; };
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
+		5058BA35211F8DB1003F332B /* ReleaseNotesClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
@@ -84,6 +85,7 @@
 		5045842B1FF6CF0F00E15E9D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
+		5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesClipView.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
 				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
+				5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */,
 				50DAEF3E21047E3B00B32E8A /* Update Table View */,
 			);
 			path = Visuals;
@@ -392,6 +395,7 @@
 				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
 				509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */,
+				5058BA35211F8DB1003F332B /* ReleaseNotesClipView.swift in Sources */,
 				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
