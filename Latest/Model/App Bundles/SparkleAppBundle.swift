@@ -78,12 +78,12 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentlyParsing {
         case .pubDate:
-            if let date = self.dateFormatter.date(from: string) {
+            if let date = self.dateFormatter.date(from: string.trimmingCharacters(in: .whitespacesAndNewlines)) {
                 self.newestVersion?.date = date
             }
         case .releaseNotesLink:
             if self.newestVersion?.releaseNotes == nil {
-                self.newestVersion?.releaseNotes = URL(string: string)
+                self.newestVersion?.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
             }
         case .releaseNotesData:
             if self.newestVersion?.releaseNotes == nil {
