@@ -16,6 +16,20 @@ class MacAppStoreAppBundle: AppBundle {
     /// The url of the app in the Mac App Store
     var appStoreURL : URL?
     
+    /// The date formatter used for parsing
+    private var dateFormatter: DateFormatter!
+    
+    override init(appName: String, versionNumber: String?, buildNumber: String?) {
+        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber)
+        
+        self.dateFormatter = DateFormatter()
+        self.dateFormatter.locale = Locale(identifier: "en_US")
+        
+        // Example of the date format: Mon, 28 Nov 2016 14:00:00 +0100
+        // This is problematic, because some developers use other date formats
+        self.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    }
+    
     /**
      Parses the data to extract information like release notes and version number
  
@@ -37,7 +51,7 @@ class MacAppStoreAppBundle: AppBundle {
         
         // Get update date
         if let dateString = data["currentVersionReleaseDate"] as? String,
-           let date = DateFormatter().date(from: dateString) {
+           let date = self.dateFormatter.date(from: dateString) {
             info.date = date
         }
         
