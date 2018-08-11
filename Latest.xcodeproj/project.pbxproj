@@ -165,6 +165,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5058BA36211F9F49003F332B /* Release Notes */ = {
+			isa = PBXGroup;
+			children = (
+				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
+				5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */,
+			);
+			path = "Release Notes";
+			sourceTree = "<group>";
+		};
 		5095120C1FF3623B003D2D7F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,9 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
-				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
-				5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */,
 				50DAEF3E21047E3B00B32E8A /* Update Table View */,
+				5058BA36211F9F49003F332B /* Release Notes */,
 			);
 			path = Visuals;
 			sourceTree = "<group>";
