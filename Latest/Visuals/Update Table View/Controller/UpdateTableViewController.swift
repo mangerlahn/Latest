@@ -119,8 +119,8 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         cell.currentVersionTextField?.stringValue = versionInformation.current
         cell.newVersionTextField?.stringValue = versionInformation.new
         
-        DispatchQueue.main.async {
-            cell.imageView?.image = NSWorkspace.shared.icon(forFile: app.url.path)
+        IconCache.shared.icon(for: app) { (image) in
+            cell.imageView?.image = image
         }
         
         return cell

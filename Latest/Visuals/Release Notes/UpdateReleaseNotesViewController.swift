@@ -112,8 +112,8 @@ class UpdateReleaseNotesViewController: NSViewController {
             self.appDateTextField.isHidden = true
         }
         
-        DispatchQueue.main.async {
-            self.appIconImageView.image = NSWorkspace.shared.icon(forFile: app.url.path)
+        IconCache.shared.icon(for: app) { (image) in
+            self.appIconImageView.image = image
         }
         
         self.updateInsets()
