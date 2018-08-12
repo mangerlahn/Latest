@@ -31,7 +31,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
     weak var delegate : UpdateListViewControllerDelegate?
     
     /// The detail view controller that shows the release notes
-    weak var releaseNotesViewController : UpdateReleaseNotesViewController?
+    weak var releaseNotesViewController : ReleaseNotesViewController?
     
     /// The empty state label centered in the list view indicating that no updates are available
     @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
@@ -111,35 +111,16 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         let app = self.apps[row]
         
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
-            let info = app.newestVersion,
-            let url = app.url else {
+            let versionInformation = app.localizedVersionInformation else {
             return nil
         }
         
-        var version = ""
-        var newVersion = ""
-        
-        if let v = app.version.versionNumber, let nv = info.version.versionNumber {
-            version = v
-            newVersion = nv
-            
-            // If the shortVersion string is identical, but the bundle version is different
-            // Show the Bundle version in brackets like: "1.3 (21)"
-            if version == newVersion, let v = app.version?.buildNumber, let nv = info.version.buildNumber {
-                version += " (\(v))"
-                newVersion += " (\(nv))"
-            }
-        } else if let v = app.version.buildNumber, let nv = info.version.buildNumber {
-            version = v
-            newVersion = nv
-        }
-        
         cell.textField?.stringValue = app.name
-        cell.currentVersionTextField?.stringValue = String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(version)")
-        cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
+        cell.currentVersionTextField?.stringValue = versionInformation.current
+        cell.newVersionTextField?.stringValue = versionInformation.new
         
-        DispatchQueue.main.async {
-            cell.imageView?.image = NSWorkspace.shared.icon(forFile: url.path)
+        IconCache.shared.icon(for: app) { (image) in
+            cell.imageView?.image = image
         }
         
         return cell
@@ -259,12 +240,9 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             return
         }
         
-        if let url = app.newestVersion?.releaseNotes as? URL {
+        if let content = app.newestVersion?.releaseNotes {
             self.delegate?.shouldExpandDetail()
-            detailViewController.display(url: url)
-        } else if let string = app.newestVersion?.releaseNotes as? String {
-            self.delegate?.shouldExpandDetail()
-            detailViewController.display(html: string)
+            detailViewController.display(content: content, for: app)
         }
     }
     
@@ -340,18 +318,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
                 return
             }
             
-            let app = self.apps[index]
-            var appStoreURL : URL?
-            
-            if let appStoreApp = app as? MacAppStoreAppBundle {
-                appStoreURL = appStoreApp.appStoreURL
-            }
-            
-            guard let url = appStoreURL ?? app.url else {
-                return
-            }
-            
-            NSWorkspace.shared.open(url)
+            self.apps[index].open()
         }
     }
     
@@ -361,11 +328,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
             return
         }
         
-        let app = self.apps[index]
-        
-        guard let url = app.url else { return }
-        
-        NSWorkspace.shared.activateFileViewerSelecting([url])
+        self.apps[index].showInFinder()
     }
     
     /// Updates the UI depending on available updates (show empty states or update list)

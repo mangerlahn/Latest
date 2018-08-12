@@ -13,10 +13,16 @@
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
+		502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502929EE2120621B00F00D1C /* ReleaseNotesTextViewController.swift */; };
+		502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502929F02120623100F00D1C /* ReleaseNotesErrorViewController.swift */; };
+		502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502929F42120624700F00D1C /* ReleaseNotesLoadingViewController.swift */; };
+		502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502929FA21206BC800F00D1C /* ReleaseNotesContentProtocol.swift */; };
 		5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; };
 		5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */; };
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
+		5058BA35211F8DB1003F332B /* ReleaseNotesClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */; };
+		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
@@ -26,7 +32,7 @@
 		509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512251FF3631D003D2D7F /* UpdateChecker.swift */; };
 		509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */; };
 		509512301FF36378003D2D7F /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095122F1FF36378003D2D7F /* UpdateCell.swift */; };
-		509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */; };
+		509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */; };
 		509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateTableViewController.swift */; };
 		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
@@ -81,9 +87,15 @@
 		50290E7B1E53EB6A00133E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50290E7D1E53EB6A00133E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50290E831E53EB7900133E3D /* Latest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Latest.entitlements; sourceTree = "<group>"; };
+		502929EE2120621B00F00D1C /* ReleaseNotesTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesTextViewController.swift; sourceTree = "<group>"; };
+		502929F02120623100F00D1C /* ReleaseNotesErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesErrorViewController.swift; sourceTree = "<group>"; };
+		502929F42120624700F00D1C /* ReleaseNotesLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesLoadingViewController.swift; sourceTree = "<group>"; };
+		502929FA21206BC800F00D1C /* ReleaseNotesContentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesContentProtocol.swift; sourceTree = "<group>"; };
 		5045842B1FF6CF0F00E15E9D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
+		5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesClipView.swift; sourceTree = "<group>"; };
+		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
@@ -93,7 +105,7 @@
 		509512251FF3631D003D2D7F /* UpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateChecker.swift; path = "Latest/Model/Update Checker Extensions/UpdateChecker.swift"; sourceTree = SOURCE_ROOT; };
 		509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MacAppStoreExtension.swift; path = "Latest/Model/Update Checker Extensions/MacAppStoreExtension.swift"; sourceTree = SOURCE_ROOT; };
 		5095122F1FF36378003D2D7F /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
-		509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateReleaseNotesViewController.swift; sourceTree = "<group>"; };
+		509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesViewController.swift; sourceTree = "<group>"; };
 		509512321FF36380003D2D7F /* UpdateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewController.swift; sourceTree = "<group>"; };
 		509512351FF36388003D2D7F /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		50C81D691FBADC5900324C2E /* Latest Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latest Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +166,26 @@
 			path = Latest;
 			sourceTree = "<group>";
 		};
+		502929F8212062A100F00D1C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */,
+				502929FA21206BC800F00D1C /* ReleaseNotesContentProtocol.swift */,
+				502929EE2120621B00F00D1C /* ReleaseNotesTextViewController.swift */,
+				502929F02120623100F00D1C /* ReleaseNotesErrorViewController.swift */,
+				502929F42120624700F00D1C /* ReleaseNotesLoadingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		502929F9212062B300F00D1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +193,15 @@
 				5045842B1FF6CF0F00E15E9D /* Sparkle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5058BA36211F9F49003F332B /* Release Notes */ = {
+			isa = PBXGroup;
+			children = (
+				502929F8212062A100F00D1C /* Controller */,
+				502929F9212062B300F00D1C /* Views */,
+			);
+			path = "Release Notes";
 			sourceTree = "<group>";
 		};
 		5095120C1FF3623B003D2D7F /* Resources */ = {
@@ -185,6 +226,7 @@
 				509512101FF362A1003D2D7F /* Version.swift */,
 				509512111FF362A1003D2D7F /* UpdateInfo.swift */,
 				5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */,
+				5058BA3921202BA7003F332B /* IconCache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,8 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
-				509512311FF36380003D2D7F /* UpdateReleaseNotesViewController.swift */,
 				50DAEF3E21047E3B00B32E8A /* Update Table View */,
+				5058BA36211F9F49003F332B /* Release Notes */,
 			);
 			path = Visuals;
 			sourceTree = "<group>";
@@ -387,13 +429,19 @@
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
 				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
 				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
+				5058BA3A21202BA7003F332B /* IconCache.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
-				509512331FF36380003D2D7F /* UpdateReleaseNotesViewController.swift in Sources */,
+				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
+				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
+				5058BA35211F8DB1003F332B /* ReleaseNotesClipView.swift in Sources */,
+				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
 				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
+				502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
+				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* TouchBarHandling.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,

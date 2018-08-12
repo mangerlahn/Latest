@@ -93,8 +93,8 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         
         view.textField.stringValue = app.name
         
-        if let url = app.url {
-            view.imageView.image = NSWorkspace.shared.icon(forFile: url.path)
+        IconCache.shared.icon(for: app) { (image) in
+            view.imageView.image = image
         }
         
         return view

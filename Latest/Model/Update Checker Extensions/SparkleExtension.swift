@@ -57,11 +57,10 @@ extension UpdateChecker {
                 let xmlData = data {
 
                 let parser = XMLParser(data: xmlData)
-                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
+                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
 
                 parser.delegate = checker
                 checker.delegate = self
-                checker.url = app
 
                 if !parser.parse() {
                     self.didFailToUpdateApp()

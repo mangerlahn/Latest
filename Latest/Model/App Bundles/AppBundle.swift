@@ -33,7 +33,7 @@ class AppBundle : NSObject {
     var name = ""
     
     /// The url of the app on the users computer
-    var url: URL?
+    var url: URL
     
     /// The delegate to be notified when app information changes
     var delegate : AppBundleDelegate?
@@ -47,14 +47,30 @@ class AppBundle : NSObject {
      - parameter versionNumber: The current version number of the app
      - parameter buildNumber: The current build number of the app
      */
-    init(appName: String, versionNumber: String?, buildNumber: String?) {
+    init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
         self.version = Version(versionNumber ?? "", buildNumber ?? "")
         self.name = appName
+        self.url = url
     }
     
-    /// Compares two apps on equality
-    static func ==(lhs: AppBundle, rhs: AppBundle) -> Bool {
-        return lhs.name == rhs.name && lhs.url == rhs.url
+    
+    // MARK: - Actions
+    
+    /// Opens the app and a given index
+    func open() {
+        var appStoreURL : URL?
+        
+        if let appStoreApp = self as? MacAppStoreAppBundle {
+            appStoreURL = appStoreApp.appStoreURL
+        }
+        
+        let url = appStoreURL ?? self.url
+        NSWorkspace.shared.open(url)
+    }
+    
+    /// Reveals the app at a given index in Finder
+    func showInFinder() {
+        NSWorkspace.shared.activateFileViewerSelecting([self.url])
     }
     
     
@@ -67,4 +83,55 @@ class AppBundle : NSObject {
         print("Build number: \(version?.buildNumber ?? "not given")")
     }
     
+}
+
+// Version String Handling
+extension AppBundle {
+    
+    /// A container holding the current and new version information
+    struct DisplayableVersionInformation {
+        
+        /// The localized version of the app present on the computer
+        var current: String {
+            return String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(self.rawCurrent)")
+        }
+        
+        /// The new available version of the app
+        var new: String {
+            return String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(self.rawNew)")
+        }
+        
+        fileprivate var rawCurrent: String
+        fileprivate var rawNew: String
+        
+    }
+    
+    var localizedVersionInformation: DisplayableVersionInformation? {
+        guard let info = self.newestVersion else { return nil }
+    
+        var versionInformation: DisplayableVersionInformation?
+        
+        if let v = self.version.versionNumber, let nv = info.version.versionNumber {
+            versionInformation = DisplayableVersionInformation(rawCurrent: v, rawNew: nv)
+        
+            // If the shortVersion string is identical, but the bundle version is different
+            // Show the Bundle version in brackets like: "1.3 (21)"
+            if v == nv, let v = self.version?.buildNumber, let nv = info.version.buildNumber {
+                versionInformation?.rawCurrent += " (\(v))"
+                versionInformation?.rawNew += " (\(nv))"
+            }
+        } else if let v = self.version.buildNumber, let nv = info.version.buildNumber {
+            versionInformation = DisplayableVersionInformation(rawCurrent: v, rawNew: nv)
+        }
+        
+        return versionInformation
+    }
+    
+}
+
+extension AppBundle {
+    /// Compares two apps on equality
+    static func ==(lhs: AppBundle, rhs: AppBundle) -> Bool {
+        return lhs.name == rhs.name && lhs.url == rhs.url
+    }
 }

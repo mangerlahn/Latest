@@ -24,10 +24,10 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     }()
     
     /// The detail view controller holding the release notes
-    lazy var releaseNotesViewController : UpdateReleaseNotesViewController = {
+    lazy var releaseNotesViewController : ReleaseNotesViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateReleaseNotesViewController else {
-                return UpdateReleaseNotesViewController()
+            let secondItem = splitViewController.splitViewItems[1].viewController as? ReleaseNotesViewController else {
+                return ReleaseNotesViewController()
         }
         
         return secondItem
@@ -212,8 +212,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
                 return
             }
             
-            guard let url = app.url else { return }
-            NSWorkspace.shared.open(url)
+            NSWorkspace.shared.open(app.url)
         }
     }
     
