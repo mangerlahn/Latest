@@ -174,7 +174,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="350" height="300"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
                             <allowedToolbarItems>
@@ -537,59 +537,14 @@
             </objects>
             <point key="canvasLocation" x="-136.5" y="1241.5"/>
         </scene>
-        <!--Update Release Notes View Controller-->
+        <!--Release Notes View Controller-->
         <scene sceneID="zoJ-XZ-LEg">
             <objects>
-                <viewController id="diQ-yt-Gcs" customClass="UpdateReleaseNotesViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="diQ-yt-Gcs" customClass="ReleaseNotesViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="d3c-S1-m3j">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="296"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="BjP-tb-2tf">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="296"/>
-                                <clipView key="contentView" id="bhq-dK-8mY" customClass="ReleaseNotesClipView" customModule="Latest" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="568" height="296"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="uFT-Km-PRD">
-                                            <rect key="frame" x="0.0" y="-9" width="568" height="305"/>
-                                            <subviews>
-                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRh-C9-1bB">
-                                                    <rect key="frame" x="5" y="0.0" width="558" height="300"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="300" placeholder="YES" id="NDZ-wt-4RJ"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" title="Multiline Label" drawsBackground="YES" allowsEditingTextAttributes="YES" id="iXy-Xv-c7k">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="dRh-C9-1bB" firstAttribute="leading" secondItem="uFT-Km-PRD" secondAttribute="leading" constant="5" id="Dhi-Sn-nSn"/>
-                                                <constraint firstItem="dRh-C9-1bB" firstAttribute="bottom" secondItem="uFT-Km-PRD" secondAttribute="bottom" id="Idw-LB-xqE"/>
-                                                <constraint firstItem="dRh-C9-1bB" firstAttribute="top" secondItem="uFT-Km-PRD" secondAttribute="top" constant="5" id="RSt-7X-OjU"/>
-                                                <constraint firstAttribute="trailing" secondItem="dRh-C9-1bB" secondAttribute="trailing" constant="5" id="WSI-Xo-paC"/>
-                                            </constraints>
-                                        </customView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="uFT-Km-PRD" firstAttribute="top" secondItem="bhq-dK-8mY" secondAttribute="top" id="QVd-rf-8ba"/>
-                                        <constraint firstItem="uFT-Km-PRD" firstAttribute="leading" secondItem="bhq-dK-8mY" secondAttribute="leading" id="Vtc-vr-ehT"/>
-                                        <constraint firstAttribute="trailing" secondItem="uFT-Km-PRD" secondAttribute="trailing" id="p4E-e5-owh"/>
-                                    </constraints>
-                                </clipView>
-                                <edgeInsets key="contentInsets" left="0.0" right="0.0" top="50" bottom="0.0"/>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cTN-Dh-qy6">
-                                    <rect key="frame" x="-100" y="-100" width="568" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qe6-oz-rbM">
-                                    <rect key="frame" x="552" y="50" width="16" height="246"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="eIJ-dI-FWU">
                                 <rect key="frame" x="0.0" y="177" width="568" height="119"/>
                                 <subviews>
@@ -703,16 +658,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="LmN-p8-kx5" firstAttribute="leading" secondItem="d3c-S1-m3j" secondAttribute="leading" id="2qy-ge-94U"/>
-                            <constraint firstItem="BjP-tb-2tf" firstAttribute="leading" secondItem="d3c-S1-m3j" secondAttribute="leading" id="AVg-mm-Oxo"/>
                             <constraint firstAttribute="trailing" secondItem="eIJ-dI-FWU" secondAttribute="trailing" id="VlB-WG-qXQ"/>
                             <constraint firstItem="eIJ-dI-FWU" firstAttribute="top" secondItem="d3c-S1-m3j" secondAttribute="top" id="Xg7-6s-qdr"/>
-                            <constraint firstItem="BjP-tb-2tf" firstAttribute="top" secondItem="d3c-S1-m3j" secondAttribute="top" id="bCh-EO-ITu"/>
                             <constraint firstAttribute="trailing" secondItem="LmN-p8-kx5" secondAttribute="trailing" id="ex8-P8-rJD"/>
                             <constraint firstItem="LmN-p8-kx5" firstAttribute="bottom" secondItem="eIJ-dI-FWU" secondAttribute="bottom" id="hV9-5q-3ll"/>
-                            <constraint firstAttribute="trailing" secondItem="BjP-tb-2tf" secondAttribute="trailing" id="nVs-Oh-aun"/>
-                            <constraint firstAttribute="bottom" secondItem="BjP-tb-2tf" secondAttribute="bottom" id="vPv-5W-4vS"/>
                             <constraint firstItem="eIJ-dI-FWU" firstAttribute="leading" secondItem="d3c-S1-m3j" secondAttribute="leading" id="wLv-0U-ihb"/>
-                            <constraint firstItem="dRh-C9-1bB" firstAttribute="top" secondItem="eIJ-dI-FWU" secondAttribute="top" priority="900" id="zxW-pH-OWG"/>
                         </constraints>
                     </view>
                     <connections>
@@ -728,7 +678,172 @@
                 </viewController>
                 <customObject id="fhi-aa-PXT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="338" y="1296"/>
+            <point key="canvasLocation" x="340" y="1254"/>
+        </scene>
+        <!--Release Notes Text View Controller-->
+        <scene sceneID="ckG-xB-c08">
+            <objects>
+                <viewController storyboardIdentifier="ReleaseNotesTextViewControllerIdentifier" id="HU9-NT-SZF" customClass="ReleaseNotesTextViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DEe-62-qVp">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="BjP-tb-2tf">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" id="bhq-dK-8mY" customClass="ReleaseNotesClipView" customModule="Latest" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="uFT-Km-PRD">
+                                            <rect key="frame" x="0.0" y="-5" width="450" height="305"/>
+                                            <subviews>
+                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRh-C9-1bB">
+                                                    <rect key="frame" x="5" y="0.0" width="440" height="300"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" placeholder="YES" id="NDZ-wt-4RJ"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" title="Multiline Label" drawsBackground="YES" allowsEditingTextAttributes="YES" id="iXy-Xv-c7k">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dRh-C9-1bB" firstAttribute="leading" secondItem="uFT-Km-PRD" secondAttribute="leading" constant="5" id="Dhi-Sn-nSn"/>
+                                                <constraint firstItem="dRh-C9-1bB" firstAttribute="bottom" secondItem="uFT-Km-PRD" secondAttribute="bottom" id="Idw-LB-xqE"/>
+                                                <constraint firstItem="dRh-C9-1bB" firstAttribute="top" secondItem="uFT-Km-PRD" secondAttribute="top" constant="5" id="RSt-7X-OjU"/>
+                                                <constraint firstAttribute="trailing" secondItem="dRh-C9-1bB" secondAttribute="trailing" constant="5" id="WSI-Xo-paC"/>
+                                            </constraints>
+                                        </customView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uFT-Km-PRD" firstAttribute="top" secondItem="bhq-dK-8mY" secondAttribute="top" id="QVd-rf-8ba"/>
+                                        <constraint firstItem="uFT-Km-PRD" firstAttribute="leading" secondItem="bhq-dK-8mY" secondAttribute="leading" id="Vtc-vr-ehT"/>
+                                        <constraint firstAttribute="trailing" secondItem="uFT-Km-PRD" secondAttribute="trailing" id="p4E-e5-owh"/>
+                                    </constraints>
+                                </clipView>
+                                <edgeInsets key="contentInsets" left="0.0" right="0.0" top="50" bottom="0.0"/>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cTN-Dh-qy6">
+                                    <rect key="frame" x="-100" y="-100" width="568" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qe6-oz-rbM">
+                                    <rect key="frame" x="434" y="50" width="16" height="250"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="BjP-tb-2tf" firstAttribute="top" secondItem="DEe-62-qVp" secondAttribute="top" id="Bb7-Og-zmw"/>
+                            <constraint firstAttribute="bottom" secondItem="BjP-tb-2tf" secondAttribute="bottom" id="HhL-ji-dO0"/>
+                            <constraint firstItem="BjP-tb-2tf" firstAttribute="leading" secondItem="DEe-62-qVp" secondAttribute="leading" id="i2w-rk-ESr"/>
+                            <constraint firstAttribute="trailing" secondItem="BjP-tb-2tf" secondAttribute="trailing" id="lFV-P4-can"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="dRh-C9-1bB" id="yjz-bD-mNR"/>
+                    </connections>
+                </viewController>
+                <customObject id="yi2-iX-w1s" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934" y="1256"/>
+        </scene>
+        <!--Release Notes Loading View Controller-->
+        <scene sceneID="jxn-d5-xH7">
+            <objects>
+                <viewController storyboardIdentifier="ReleaseNotesLoadingViewControllerIdentifier" id="ayd-kB-hcW" customClass="ReleaseNotesLoadingViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="8IN-hG-baJ">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="311"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="woV-Tf-kjt">
+                                <rect key="frame" x="165" y="127" width="120" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5Wc-mB-Bp9">
+                                        <rect key="frame" x="52" y="22" width="16" height="16"/>
+                                    </progressIndicator>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uuv-8K-WWB">
+                                        <rect key="frame" x="-2" y="0.0" width="124" height="14"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Release Notes" id="iLi-Yb-UfX">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="5Wc-mB-Bp9" id="BGc-yM-EfQ"/>
+                    </connections>
+                </viewController>
+                <customObject id="m9l-dv-2g9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934" y="1645.5"/>
+        </scene>
+        <!--Release Notes Error View Controller-->
+        <scene sceneID="vfl-LZ-teC">
+            <objects>
+                <viewController storyboardIdentifier="ReleaseNotesErrorViewControllerIdentifier" id="dC7-Ek-0B8" customClass="ReleaseNotesErrorViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DHC-mI-pfQ">
+                        <rect key="frame" x="0.0" y="0.0" width="523" height="322"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-Dy-v95">
+                                <rect key="frame" x="20" y="141" width="483" height="42"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="N0i-8s-eno">
+                                        <rect key="frame" x="137" y="25" width="209" height="17"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="center" title="Failed to load the release notes!" id="Cm3-IX-Kw4">
+                                            <font key="font" metaFont="systemSemibold" size="13"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-gR-w9f">
+                                        <rect key="frame" x="194" y="0.0" width="96" height="17"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="center" title="Multiline Label" id="spt-ns-lYo">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oLG-Dy-v95" firstAttribute="leading" secondItem="DHC-mI-pfQ" secondAttribute="leading" constant="20" symbolic="YES" id="Wlz-3q-X6v"/>
+                            <constraint firstItem="oLG-Dy-v95" firstAttribute="centerX" secondItem="DHC-mI-pfQ" secondAttribute="centerX" id="pUd-RP-VwU"/>
+                            <constraint firstAttribute="trailing" secondItem="oLG-Dy-v95" secondAttribute="trailing" constant="20" symbolic="YES" id="tf0-mz-bZh"/>
+                            <constraint firstItem="oLG-Dy-v95" firstAttribute="centerY" secondItem="DHC-mI-pfQ" secondAttribute="centerY" id="wgX-5c-PXr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="6Sb-gR-w9f" id="qYs-21-Xrd"/>
+                    </connections>
+                </viewController>
+                <customObject id="HnM-ej-DET" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="970.5" y="884"/>
         </scene>
     </scenes>
     <resources>

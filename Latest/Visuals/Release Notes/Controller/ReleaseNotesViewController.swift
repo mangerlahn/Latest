@@ -9,16 +9,62 @@
 import Cocoa
 import WebKit
 
+/// The possible values when loading release notes content
+fileprivate enum LoadReleaseNotesContent {
+    case loading
+    case error
+    case text
+}
+
+/// The container for release notes content
+fileprivate enum ReleaseNotesContent {
+    
+    /// The loading screen, presenting an activity indicator
+    case loading(ReleaseNotesLoadingViewController?)
+    
+    /// The error screen, explaining what went wrong
+    case error(ReleaseNotesErrorViewController?)
+    
+    /// The actual content
+    case text(ReleaseNotesTextViewController?)
+    
+    var textController: ReleaseNotesTextViewController? {
+        switch self {
+        case .text(let controller):
+            return controller
+        default:
+            return nil
+        }
+    }
+    
+    var errorController: ReleaseNotesErrorViewController? {
+        switch self {
+        case .error(let controller):
+            return controller
+        default:
+            return nil
+        }
+    }
+    
+    /// Returns the current view controller
+    var controller: NSViewController? {
+        switch self {
+        case .loading(let controller):
+            return controller
+        case .error(let controller):
+            return controller
+        case .text(let controller):
+            return controller
+        }
+    }
+}
+
+
 /**
  This is a super rudimentary implementation of an release notes viewer.
  It can open urls or display HTML strings right away.
  */
 class ReleaseNotesViewController: NSViewController {
-    
-    private(set) var app: AppBundle?
-    
-    /// The view displaying the release notes
-    @IBOutlet weak var textField: NSTextField!
     
     @IBOutlet weak var appInfoBackgroundView: NSVisualEffectView!
     @IBOutlet weak var appInfoContentView: NSStackView!
@@ -29,6 +75,12 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appNewVersionTextField: NSTextField!
     @IBOutlet weak var appIconImageView: NSImageView!
     
+    /// The app currently presented
+    private(set) var app: AppBundle?
+    
+    /// The current content presented on screen
+    private var content: ReleaseNotesContent?
+
     // MARK: - View Lifecycle
     
     override func viewWillAppear() {
@@ -36,6 +88,8 @@ class ReleaseNotesViewController: NSViewController {
         
         let constraint = NSLayoutConstraint(item: self.appInfoContentView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
         constraint.isActive = true
+        
+        self.loadContent(.loading)
     }
     
     
@@ -68,14 +122,22 @@ class ReleaseNotesViewController: NSViewController {
     }
     
     func display(url: URL, for app: AppBundle) {
+        // Delay the loading screen to avoid flickering
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
+            self.loadContent(.loading)
+        }
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            timer.invalidate()
             
-            if let data = data {
-                // Store the data
-                app.newestVersion?.releaseNotes = data
-                
-                DispatchQueue.main.async {
-                    self.update(with: data)
+            DispatchQueue.main.async {
+                if let data = data, !data.isEmpty {
+                    // Store the data
+                    app.newestVersion?.releaseNotes = data
+                    
+                        self.update(with: data)
+                } else if let error = error {
+                    self.show(error)
                 }
             }
         }
@@ -129,18 +191,69 @@ class ReleaseNotesViewController: NSViewController {
     private func update(with data: Data) {
         var options : [NSAttributedString.DocumentReadingOptionKey: Any] = [.documentType: NSAttributedString.DocumentType.html]
         
-        guard var string = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else { return }
-        
+        var string: NSAttributedString
+        do {
+            string = try NSAttributedString(data: data, options: options, documentAttributes: nil)
+        } catch let error {
+            self.show(error)
+            return
+        }
+
         // Having only one line means that the text was no HTML but plain text. Therefore we reinstantiate the attributed string as plain text
         // The initialization with HTML enabled removes all new lines
         // If anyone has a better idea for checking if the data is valid HTML or plain text, feel free to fix.
         if string.string.split(separator: "\n").count == 1 {
             options[.documentType] = NSAttributedString.DocumentType.plain
-            guard let tempString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else { return }
-            string = tempString
+            
+            do {
+                string = try NSAttributedString(data: data, options: options, documentAttributes: nil)
+            } catch let error {
+                self.show(error)
+                return
+            }
         }
         
         self.update(with: string)
+    }
+    
+    private func loadContent(_ type: LoadReleaseNotesContent) {
+        // Remove the old content
+        if let oldController = self.content?.controller {
+            oldController.view.removeFromSuperview()
+            oldController.removeFromParent()
+        }
+            
+        self.initializeContent(of: type)
+        
+        guard let controller = self.content?.controller else { return }
+        let view = controller.view
+        
+        self.addChild(controller)
+        self.view.addSubview(view, positioned: .below, relativeTo: self.view.subviews.first)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        var constraints = [NSLayoutConstraint]()
+        
+        constraints.append(self.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0))
+        constraints.append(self.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0))
+        constraints.append(self.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0))
+        constraints.append(self.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func initializeContent(of type: LoadReleaseNotesContent) {
+        switch type {
+        case .loading:
+            let controller = ReleaseNotesLoadingViewController.fromStoryboard()
+            self.content = .loading(controller)
+        case .error:
+            let controller = ReleaseNotesErrorViewController.fromStoryboard()
+            self.content = .error(controller)
+        case .text:
+            let controller = ReleaseNotesTextViewController.fromStoryboard()
+            self.content = .text(controller)
+        }
     }
     
     /**
@@ -148,47 +261,22 @@ class ReleaseNotesViewController: NSViewController {
      - parameter data: The data to be displayed. It has to be some text or HTML, other types of data will result in an error message displayed to the user
      */
     private func update(with string: NSAttributedString) {
-        self.textField.attributedStringValue = self.format(string)
+        self.loadContent(.text)
+        self.content?.textController?.set(string)
         self.updateInsets()
         self.view.layout()
-        self.textField.enclosingScrollView?.scrollToVisible(.zero)
-    }
-
-    /**
-     This method manipulates the release notes to make them look uniform.
-     All custom fonts and font sizes are removed for a more unified look. Specific styles like bold or italic parts as well as links are preserved.
-     - parameter attributedString: The string to be formatted
-     - returns: The formatted string
-     */
-    private func format(_ attributedString: NSAttributedString) -> NSAttributedString {
-        let string = NSMutableAttributedString(attributedString: attributedString)
-        let fullRange = NSMakeRange(0, attributedString.length)
-        let defaultFont = NSFont.systemFont(ofSize: NSFont.systemFontSize)
-        
-        /// Remove all color
-        string.removeAttribute(.foregroundColor, range: fullRange)
-        
-        /// Reset font
-        string.removeAttribute(.font, range: fullRange)
-        string.addAttribute(.font, value: defaultFont, range: fullRange)
-        
-        // Copy traits like italic and bold
-        attributedString.enumerateAttribute(NSAttributedString.Key.font, in: fullRange, options: .reverse) { (fontObject, range, stopPointer) in
-            guard let font = fontObject as? NSFont else { return }
-            
-            let traits = font.fontDescriptor.symbolicTraits
-            let fontDescriptor = defaultFont.fontDescriptor.withSymbolicTraits(traits)
-            
-            string.addAttribute(.font, value: NSFont(descriptor: fontDescriptor, size: defaultFont.pointSize)!, range: range)
-        }
-
-        return string
     }
     
     /// Updates the top inset of the release notes scrollView
     private func updateInsets() {
         let inset = self.appInfoBackgroundView.frame.size.height
-        self.textField.superview?.enclosingScrollView?.contentInsets.top = inset
+        self.content?.textController?.updateInsets(with: inset)
+    }
+    
+    /// Switches the content to error and displays the localized error
+    private func show(_ error: Error) {
+        self.loadContent(.error)
+        self.content?.errorController?.show(error)
     }
     
 }
