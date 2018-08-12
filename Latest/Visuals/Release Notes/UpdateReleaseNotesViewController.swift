@@ -86,7 +86,7 @@ class UpdateReleaseNotesViewController: NSViewController {
      */
     func display(html: String) {
         guard let data = html.data(using: .utf16) else { return }
-        self.update(with: data)
+        self.update(with: NSAttributedString(html: data, documentAttributes: nil)!)
     }
     
     
@@ -137,12 +137,31 @@ class UpdateReleaseNotesViewController: NSViewController {
     }
     
     /**
+     This method attempts to distinguish between HTML and Plain Text stored in the data. It converts the data to display it.
+     - parameter data: The data to display, either HTML or plain text
+     */
+    private func update(with data: Data) {
+        var options : [NSAttributedString.DocumentReadingOptionKey: Any] = [.documentType: NSAttributedString.DocumentType.html]
+        
+        guard var string = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else { return }
+        
+        // Having only one line means that the text was no HTML but plain text. Therefore we reinstantiate the attributed string as plain text
+        // The initialization with HTML enabled removes all new lines
+        // If anyone has a better idea for checking if the data is valid HTML or plain text, feel free to fix.
+        if string.string.split(separator: "\n").count == 1 {
+            options[.documentType] = NSAttributedString.DocumentType.plain
+            guard let tempString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else { return }
+            string = tempString
+        }
+        
+        self.update(with: string)
+    }
+    
+    /**
      This method unwraps the data into a string, that is then formatted and displayed.
      - parameter data: The data to be displayed. It has to be some text or HTML, other types of data will result in an error message displayed to the user
      */
-    private func update(with data: Data) {
-        guard let string = NSAttributedString(html: data, documentAttributes: nil) else { return }
-        
+    private func update(with string: NSAttributedString) {
         self.textField.attributedStringValue = self.format(string)
         self.updateInsets()
         self.view.layout()
@@ -180,6 +199,7 @@ class UpdateReleaseNotesViewController: NSViewController {
         return string
     }
     
+    /// Updates the top inset of the release notes scrollView
     private func updateInsets() {
         let inset = self.appInfoBackgroundView.frame.size.height
         self.textField.superview?.enclosingScrollView?.contentInsets.top = inset
