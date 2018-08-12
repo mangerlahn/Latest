@@ -31,7 +31,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
     weak var delegate : UpdateListViewControllerDelegate?
     
     /// The detail view controller that shows the release notes
-    weak var releaseNotesViewController : UpdateReleaseNotesViewController?
+    weak var releaseNotesViewController : ReleaseNotesViewController?
     
     /// The empty state label centered in the list view indicating that no updates are available
     @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
