@@ -111,7 +111,6 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         let app = self.apps[row]
         
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
-            let url = app.url,
             let versionInformation = app.localizedVersionInformation else {
             return nil
         }
@@ -121,7 +120,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         cell.newVersionTextField?.stringValue = versionInformation.new
         
         DispatchQueue.main.async {
-            cell.imageView?.image = NSWorkspace.shared.icon(forFile: url.path)
+            cell.imageView?.image = NSWorkspace.shared.icon(forFile: app.url.path)
         }
         
         return cell

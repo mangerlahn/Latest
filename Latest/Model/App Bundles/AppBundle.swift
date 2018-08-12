@@ -33,7 +33,7 @@ class AppBundle : NSObject {
     var name = ""
     
     /// The url of the app on the users computer
-    var url: URL?
+    var url: URL
     
     /// The delegate to be notified when app information changes
     var delegate : AppBundleDelegate?
@@ -47,9 +47,10 @@ class AppBundle : NSObject {
      - parameter versionNumber: The current version number of the app
      - parameter buildNumber: The current build number of the app
      */
-    init(appName: String, versionNumber: String?, buildNumber: String?) {
+    init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
         self.version = Version(versionNumber ?? "", buildNumber ?? "")
         self.name = appName
+        self.url = url
     }
     
     
@@ -63,18 +64,13 @@ class AppBundle : NSObject {
             appStoreURL = appStoreApp.appStoreURL
         }
         
-        guard let url = appStoreURL ?? self.url else {
-            return
-        }
-        
+        let url = appStoreURL ?? self.url
         NSWorkspace.shared.open(url)
     }
     
     /// Reveals the app at a given index in Finder
     func showInFinder() {
-        guard let url = self.url else { return }
-        
-        NSWorkspace.shared.activateFileViewerSelecting([url])
+        NSWorkspace.shared.activateFileViewerSelecting([self.url])
     }
     
     

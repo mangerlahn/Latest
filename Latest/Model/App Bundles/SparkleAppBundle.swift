@@ -28,8 +28,8 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     /// The date formatter used for parsing
     private var dateFormatter: DateFormatter!
 
-    override init(appName: String, versionNumber: String?, buildNumber: String?) {
-        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber)
+    override init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
+        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber, url: url)
         
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale(identifier: "en_US")

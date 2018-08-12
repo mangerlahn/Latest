@@ -212,8 +212,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
                 return
             }
             
-            guard let url = app.url else { return }
-            NSWorkspace.shared.open(url)
+            NSWorkspace.shared.open(app.url)
         }
     }
     

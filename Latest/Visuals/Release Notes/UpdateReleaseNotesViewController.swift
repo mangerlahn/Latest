@@ -113,7 +113,7 @@ class UpdateReleaseNotesViewController: NSViewController {
         }
         
         DispatchQueue.main.async {
-            self.appIconImageView.image = NSWorkspace.shared.icon(forFile: app.url!.path)
+            self.appIconImageView.image = NSWorkspace.shared.icon(forFile: app.url.path)
         }
         
         self.updateInsets()

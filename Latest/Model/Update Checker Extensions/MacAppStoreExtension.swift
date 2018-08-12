@@ -51,9 +51,8 @@ extension UpdateChecker {
                     return
             }
             
-            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
+            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
             appUpdate.delegate = self
-            appUpdate.url = app
             appUpdate.parse(data: appData)
         }
         
