@@ -57,7 +57,7 @@ class UpdateReleaseNotesViewController: NSViewController {
         
         switch content {
         case let url as URL:
-            self.display(url: url)
+            self.display(url: url, for: app)
         case let data as Data:
             self.update(with: data)
         case let html as String:
@@ -67,10 +67,13 @@ class UpdateReleaseNotesViewController: NSViewController {
         }
     }
     
-    func display(url: URL) {
+    func display(url: URL, for app: AppBundle) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let data = data {
+                // Store the data
+                app.newestVersion?.releaseNotes = data
+                
                 DispatchQueue.main.async {
                     self.update(with: data)
                 }
