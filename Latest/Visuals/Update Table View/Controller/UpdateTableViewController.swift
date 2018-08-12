@@ -111,32 +111,14 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         let app = self.apps[row]
         
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
-            let info = app.newestVersion,
-            let url = app.url else {
+            let url = app.url,
+            let versionInformation = app.localizedVersionInformation else {
             return nil
         }
         
-        var version = ""
-        var newVersion = ""
-        
-        if let v = app.version.versionNumber, let nv = info.version.versionNumber {
-            version = v
-            newVersion = nv
-            
-            // If the shortVersion string is identical, but the bundle version is different
-            // Show the Bundle version in brackets like: "1.3 (21)"
-            if version == newVersion, let v = app.version?.buildNumber, let nv = info.version.buildNumber {
-                version += " (\(v))"
-                newVersion += " (\(nv))"
-            }
-        } else if let v = app.version.buildNumber, let nv = info.version.buildNumber {
-            version = v
-            newVersion = nv
-        }
-        
         cell.textField?.stringValue = app.name
-        cell.currentVersionTextField?.stringValue = String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(version)")
-        cell.newVersionTextField?.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
+        cell.currentVersionTextField?.stringValue = versionInformation.current
+        cell.newVersionTextField?.stringValue = versionInformation.new
         
         DispatchQueue.main.async {
             cell.imageView?.image = NSWorkspace.shared.icon(forFile: url.path)

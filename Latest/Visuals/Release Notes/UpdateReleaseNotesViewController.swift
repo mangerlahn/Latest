@@ -96,27 +96,10 @@ class UpdateReleaseNotesViewController: NSViewController {
         self.app = app
         self.appNameTextField.stringValue = app.name
         
-        let info = app.newestVersion!
-        var version = ""
-        var newVersion = ""
+        guard let info = app.newestVersion, let versionInformation = app.localizedVersionInformation else { return }
         
-        if let v = app.version.versionNumber, let nv = info.version.versionNumber {
-            version = v
-            newVersion = nv
-            
-            // If the shortVersion string is identical, but the bundle version is different
-            // Show the Bundle version in brackets like: "1.3 (21)"
-            if version == newVersion, let v = app.version?.buildNumber, let nv = info.version.buildNumber {
-                version += " (\(v))"
-                newVersion += " (\(nv))"
-            }
-        } else if let v = app.version.buildNumber, let nv = info.version.buildNumber {
-            version = v
-            newVersion = nv
-        }
-        
-        self.appCurrentVersionTextField.stringValue = String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(version)")
-        self.appNewVersionTextField.stringValue = String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(newVersion)")
+        self.appCurrentVersionTextField.stringValue = versionInformation.current
+        self.appNewVersionTextField.stringValue = versionInformation.new
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
