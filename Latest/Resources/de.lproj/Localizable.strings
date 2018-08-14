@@ -7,14 +7,17 @@
 /* New Version String */
 "New version: %@" = "Neue Version: %@";
 
+/* number of updates available */
+"number_of_updates_available" = "number_of_updates_available";
+
 /* Open all apps button */
 "Open Apps" = "Apps öffnen";
 
-/* MenuItem Show Version Details */
-"Show Version Details" = "Versionsdetails anzeigen";
-
 /* Revea in Finder Row action */
 "Show in Finder" = "Im Finder zeigen";
+
+/* MenuItem Show Version Details */
+"Show Version Details" = "Versionsdetails anzeigen";
 
 /* Open a lot of apps - message text */
 "This may slow down your Mac. Are you sure you want to open all apps at once?" = "Möchtest du wirklich alle Apps gleichzeitig öffnen? Das könnte deinen Mac verlangsamen.";
@@ -30,7 +33,4 @@
 
 /* Current Version String */
 "Your version: %@" = "Installierte Version: %@";
-
-/* number of updates available */
-"number_of_updates_available" = "number_of_updates_available";
 
