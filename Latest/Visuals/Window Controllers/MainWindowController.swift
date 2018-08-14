@@ -11,7 +11,7 @@ import Cocoa
 /**
  This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
  */
-class MainWindowController: NSWindowController, UpdateListViewControllerDelegate, UpdateCheckerProgress {
+class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
@@ -114,9 +114,9 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     
     // MARK: Menu Item Validation
 
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else {
-            return super.validateMenuItem(menuItem)
+            return true
         }
         
         switch action {
@@ -137,7 +137,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
             
             return self.listViewController.tableView.selectedRow != -1
         default:
-            return super.validateMenuItem(menuItem)
+            return true
         }
     }
     

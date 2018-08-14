@@ -22,7 +22,7 @@ protocol UpdateListViewControllerDelegate : class {
 /**
  This is the class handling the update process and displaying its results
  */
-class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
+class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
 
     /// The array holding the apps that have an update available
     var apps = [AppBundle]()
@@ -259,9 +259,9 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
         self._showAppInFinder(at: sender?.representedObject as? Int ?? self.tableView.selectedRow)
     }
     
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else {
-            return super.validateMenuItem(menuItem)
+            return true
         }
         
         switch action {
@@ -269,7 +269,7 @@ class UpdateTableViewController: NSViewController, NSTableViewDataSource, NSTabl
              #selector(showAppInFinder(_:)):
             return menuItem.representedObject as? Int ?? self.tableView.selectedRow != -1
         default:
-            return super.validateMenuItem(menuItem)
+            return true
         }
     }
     
