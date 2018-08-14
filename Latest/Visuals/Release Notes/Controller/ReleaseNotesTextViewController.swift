@@ -17,12 +17,16 @@ class ReleaseNotesTextViewController: NSViewController {
     /// Sets the string in the text view
     func set(_ string: NSAttributedString) {
         self.textField.attributedStringValue = self.format(string)
-        self.textField.enclosingScrollView?.scrollToVisible(.zero)
     }
     
     /// Updates the text views scroll insets
     func updateInsets(with inset: CGFloat) {
         self.textField.superview?.enclosingScrollView?.contentInsets.top = inset
+        
+        self.view.layout()
+        
+        let view = self.textField.enclosingScrollView?.documentView
+        view?.scroll(CGPoint(x: 0, y: (view?.bounds.size.height ?? 0.0) + inset))
     }
     
     // MARK: - Private Methods

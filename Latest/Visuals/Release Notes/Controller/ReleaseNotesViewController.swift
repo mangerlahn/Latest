@@ -264,7 +264,6 @@ class ReleaseNotesViewController: NSViewController {
         self.loadContent(.text)
         self.content?.textController?.set(string)
         self.updateInsets()
-        self.view.layout()
     }
     
     /// Updates the top inset of the release notes scrollView
