@@ -53,6 +53,14 @@ class AppBundle : NSObject {
         self.url = url
     }
     
+    var updateAvailable: Bool {
+        if let version = self.newestVersion, version.version > self.version {
+            return true
+        }
+        
+        return false
+    }
+    
     
     // MARK: - Actions
     

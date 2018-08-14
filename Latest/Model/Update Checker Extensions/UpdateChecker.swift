@@ -29,7 +29,7 @@ protocol UpdateCheckerProgress : class {
  */
 class UpdateChecker {
     
-    typealias UpdateCheckerCallback = (_ newVersionAvailable: Bool, _ app: AppBundle) -> Void
+    typealias UpdateCheckerCallback = (_ app: AppBundle) -> Void
     
     /// The callback called after every update check
     var didFinishCheckingAppCallback: UpdateCheckerCallback?
@@ -118,13 +118,8 @@ extension UpdateChecker: AppBundleDelegate {
         self.remainingApps -= 1
         self.progressDelegate?.didCheckApp()
         
-        DispatchQueue.main.async {            
-            if let versionBundle = app.newestVersion, versionBundle.version > app.version {
-                self.didFinishCheckingAppCallback?(true, app)
-                return
-            }
-            
-            self.didFinishCheckingAppCallback?(false, app)
+        DispatchQueue.main.async {
+            self.didFinishCheckingAppCallback?(app)
         }
         
         self.lock.unlock()

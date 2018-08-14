@@ -178,14 +178,14 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// An helper array indicating the apps that need to be removed from the list after the update process
     private var appsToDelete : [AppBundle]?
     
-    func updateCheckerDidFinishCheckingApp(_ newVersionAvailable: Bool, for app: AppBundle) {
+    func updateCheckerDidFinishCheckingApp(for app: AppBundle) {
         if let index = self.appsToDelete?.index(where: { $0 == app }) {
             self.appsToDelete?.remove(at: index)
         }
         
         self.tableView.beginUpdates()
         
-        if newVersionAvailable {
+        if app.updateAvailable {
             self.add(app)
         } else {
             self.remove(app)
