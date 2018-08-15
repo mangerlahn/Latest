@@ -27,6 +27,14 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The array holding the apps that have an update available
     var apps = [AppBundle]()
     
+    var showInstalledUpdates = false {
+        didSet {
+            if oldValue != self.showInstalledUpdates {
+                self.checkForUpdates()
+            }
+        }
+    }
+    
     /// The delegate for handling the visibility of the detail view
     weak var delegate : UpdateListViewControllerDelegate?
     
@@ -119,6 +127,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         cell.currentVersionTextField?.stringValue = versionInformation.current
         cell.newVersionTextField?.stringValue = versionInformation.new
         
+        cell.newVersionTextField?.isHidden = !app.updateAvailable
+        
         IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
         }
@@ -185,7 +195,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         
         self.tableView.beginUpdates()
         
-        if app.updateAvailable {
+        if self.showInstalledUpdates || app.updateAvailable {
             self.add(app)
         } else {
             self.remove(app)
@@ -348,7 +358,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func updateTitleAndBatch() {
-        let count = self.apps.count
+        let count = self.apps.filter({ $0.updateAvailable }).count
         
         if count == 0 {
             NSApplication.shared.dockTile.badgeLabel = ""
