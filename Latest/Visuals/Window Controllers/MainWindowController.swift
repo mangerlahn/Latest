@@ -58,14 +58,14 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             splitViewController.splitViewItems[1].isCollapsed = true
         }
         
-        self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
-        
         self.window?.makeFirstResponder(self.listViewController)
         
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
+        
+        self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
     }
 
     
@@ -95,11 +95,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             alert.beginSheetModal(for: self.window!, completionHandler: { (response) in
                 if response.rawValue == 1000 {
                     // Open apps anyway
-                    self.open(apps: apps)
+                    self.open(apps)
                 }
             })
         } else {
-            self.open(apps: apps)
+            self.open(apps)
         }
     }
     
@@ -212,7 +212,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
      - parameter apps: The apps to be opened
      */
     
-    private func open(apps: [AppBundle]) {
+    private func open(_ apps: AppCollection) {
         var showedMacAppStore = false
         
         apps.forEach { (app) in
