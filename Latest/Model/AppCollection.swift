@@ -59,17 +59,9 @@ struct AppCollection {
 
     /// Returns the relative index of the element. This index may not reflect the internal position of the app due to section offsets
     func index(of element: Element) -> Index? {
-        guard element.updateAvailable || self.showInstalledUpdates, var index = self.data.firstIndex(of: element) else { return nil }
+        guard element.updateAvailable || self.showInstalledUpdates, let index = self.data.firstIndex(of: element) else { return nil }
         
-        if self.showInstalledUpdates {
-            index += self.countOfAvailableUpdates < index ? 2 : 1
-        }
-        
-        if self.isSectionHeader(at: index) {
-            index += 1
-        }
-        
-        return index
+        return self.align(index)
     }
     
     /// Removes the app from the collection
@@ -80,7 +72,7 @@ struct AppCollection {
         self.data.remove(at: index)
         self.updateCountOfAvailableUpdates()
         
-        return index
+        return self.align(index)
     }
     
     /// Returns whether there is a section at the given index
@@ -90,9 +82,24 @@ struct AppCollection {
         return [0, self.countOfAvailableUpdates + 1].contains(index)
     }
     
-    // This method counts all available updates. It assumes that the array is sorted with all updates at the beginning
+    /// This method counts all available updates. It assumes that the array is sorted with all updates at the beginning
     private mutating func updateCountOfAvailableUpdates() {
         self.countOfAvailableUpdates = self.data.firstIndex(where: { !$0.updateAvailable }) ?? self.data.count
+    }
+    
+    /// Aligns the index based on the section headers
+    private func align(_ index: Int) -> Int {
+        var index = index
+        
+        if self.showInstalledUpdates {
+            index += self.countOfAvailableUpdates < index ? 2 : 1
+        }
+        
+        if self.isSectionHeader(at: index) {
+            index += 1
+        }
+        
+        return index
     }
     
 }
