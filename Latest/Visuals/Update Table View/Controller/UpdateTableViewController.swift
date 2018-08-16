@@ -314,8 +314,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Adds an item to the list of apps that have an update available. If the app is already in the list, the row in the table gets updated
     private func add(_ app: AppBundle) {
         guard !self.apps.contains(where: { $0 == app }) else {
-            guard let index = self.apps.index(of: app) else { return }
-            self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+            self.reload(app)
             return
         }
         
@@ -323,6 +322,26 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         
         guard let index = self.apps.index(of: app) else { return }
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
+    }
+    
+    private func reload(_ app: AppBundle) {
+        guard let index = self.apps.firstIndex(where: { $0 == app }) else { return }
+        let oldApp = self.apps[index]
+        
+        self.apps.remove(oldApp)
+        self.apps.append(app)
+        
+        // The update state of that app changed
+        if self.apps[index].updateAvailable != app.updateAvailable, let newIndex = self.apps.index(of: app) {
+            self.tableView.beginUpdates()
+            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+            self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
+            self.tableView.endUpdates()
+            return
+        }
+        
+        // Just update the app information
+        self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
     }
     
     /// Removes the item from the list, if it exists
