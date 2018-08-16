@@ -1,11 +1,22 @@
-{
-    "number_of_updates_available" =     {
-        NSStringLocalizedFormatKey = "%#@value@";
-        value =         {
-            NSStringFormatSpecTypeKey = NSStringPluralRuleType;
-            NSStringFormatValueTypeKey = d;
-            one = "%d Update verf\U00fcgbar";
-            other = "%d Updates verf\U00fcgbar";
-        };
-    };
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>number_of_updates_available</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d Update verfügbar</string>
+			<key>other</key>
+			<string>%d Updates verfügbar</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

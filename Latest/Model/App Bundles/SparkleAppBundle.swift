@@ -28,8 +28,8 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     /// The date formatter used for parsing
     private var dateFormatter: DateFormatter!
 
-    override init(appName: String, versionNumber: String?, buildNumber: String?) {
-        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber)
+    override init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
+        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber, url: url)
         
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale(identifier: "en_US")
@@ -78,12 +78,12 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentlyParsing {
         case .pubDate:
-            if let date = self.dateFormatter.date(from: string) {
+            if let date = self.dateFormatter.date(from: string.trimmingCharacters(in: .whitespacesAndNewlines)) {
                 self.newestVersion?.date = date
             }
         case .releaseNotesLink:
             if self.newestVersion?.releaseNotes == nil {
-                self.newestVersion?.releaseNotes = URL(string: string)
+                self.newestVersion?.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
             }
         case .releaseNotesData:
             if self.newestVersion?.releaseNotes == nil {

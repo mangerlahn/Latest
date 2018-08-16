@@ -27,16 +27,18 @@ protocol UpdateCheckerProgress : class {
  UpdateChecker handles the logic for checking for updates.
  Each new method of checking for updates should be implemented in its own extension and then included in the `updateMethods` array
  */
-struct UpdateChecker {
+class UpdateChecker {
+    
+    typealias UpdateCheckerCallback = (_ app: AppBundle) -> Void
+    
+    /// The callback called after every update check
+    var didFinishCheckingAppCallback: UpdateCheckerCallback?
     
     /// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckerProgress?
     
-    /// The delegate that will be assigned to all AppBundles
-    weak var appUpdateDelegate : AppBundleDelegate?
-    
     /// The methods that are executed upon each app
-    private let updateMethods : [(UpdateChecker) -> (String, String, String) -> Bool] = [
+    private let updateMethods : [(UpdateChecker) -> (URL, String, String) -> Bool] = [
         updatesThroughMacAppStore,
         updatesThroughSparkle
     ]
@@ -45,7 +47,7 @@ struct UpdateChecker {
     
     /// The url of the /Applications folder on the users Mac
     var applicationURL : URL? {
-        let applicationURLList = fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
+        let applicationURLList = self.fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
         
         return applicationURLList.first
     }
@@ -55,24 +57,35 @@ struct UpdateChecker {
         return applicationURL?.path ?? "/Applications/"
     }
     
+    /// A number indicating the number of apps that remain to be checked
+    private var remainingApps = 0
+    
+    let lock = NSLock()
+    
+    /// A shared instance of the fileManager
     let fileManager = FileManager.default
     
     /// Starts the update checking process
-    mutating func run() {
+    func run() {
+        if self.remainingApps > 0 { return }
+        
         if self.folderListener == nil, let url = self.applicationURL {
             self.folderListener = FolderUpdateListener(url: url, updateChecker: self)
         }
         
         self.folderListener?.resumeTracking()
         
-        let fileManager = FileManager.default
-        guard var apps = try? fileManager.contentsOfDirectory(atPath: self.applicationPath), let url = self.applicationURL else { return }
+        guard let url = self.applicationURL, let enumerator = self.fileManager.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
         
-        apps = apps.filter({ $0.contains(".app") })
+        self.lock.lock()
+        self.remainingApps = 0
         
-        let count = apps.count
-        apps = apps.filter { (app) in
-            let contentURL = url.appendingPathComponent(app).appendingPathComponent("Contents")
+        while let appURL = enumerator.nextObject() as? URL {
+            guard let value = try? appURL.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
+                continue
+            }
+        
+            let contentURL = appURL.appendingPathComponent("Contents")
             
             // Check, if the changed file was the Info.plist
             guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
@@ -81,14 +94,42 @@ struct UpdateChecker {
                 let infoDict = NSDictionary(contentsOf: plistURL),
                 let version = infoDict["CFBundleShortVersionString"] as? String,
                 let buildNumber = infoDict["CFBundleVersion"] as? String else {
-                    return true
+                    continue
             }
             
-            // Perform check on whether the the app can be updated using the given method
-            return !self.updateMethods.contains(where: { $0(self)(app, version, buildNumber) })
+            if self.updateMethods.contains(where: { $0(self)(appURL, version, buildNumber) }) {
+                self.remainingApps += 1
+            }
+            
+            enumerator.skipDescendants()
         }
         
-        self.progressDelegate?.startChecking(numberOfApps: count - apps.count)
+        self.lock.unlock()
+        self.progressDelegate?.startChecking(numberOfApps: self.remainingApps)
+    }
+    
+}
+
+extension UpdateChecker: AppBundleDelegate {
+    
+    func appDidUpdateVersionInformation(_ app: AppBundle) {
+        self.lock.lock()
+        
+        self.remainingApps -= 1
+        self.progressDelegate?.didCheckApp()
+        
+        DispatchQueue.main.async {
+            self.didFinishCheckingAppCallback?(app)
+        }
+        
+        self.lock.unlock()
+    }
+    
+    func didFailToUpdateApp() {
+        DispatchQueue.main.async {
+            self.remainingApps -= 1
+            self.progressDelegate?.didCheckApp()
+        }
     }
     
 }

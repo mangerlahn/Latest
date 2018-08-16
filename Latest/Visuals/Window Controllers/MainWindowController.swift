@@ -11,23 +11,25 @@ import Cocoa
 /**
  This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
  */
-class MainWindowController: NSWindowController, UpdateListViewControllerDelegate, UpdateCheckerProgress {
+class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateListViewControllerDelegate, UpdateCheckerProgress {
+    
+    private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
     
     /// The list view holding the apps
-    lazy var listViewController : UpdateListViewController = {
+    lazy var listViewController : UpdateTableViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateListViewController else {
-                return UpdateListViewController()
+            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateTableViewController else {
+                return UpdateTableViewController()
         }
         
         return firstItem
     }()
     
     /// The detail view controller holding the release notes
-    lazy var releaseNotesViewController : UpdateReleaseNotesViewController = {
+    lazy var releaseNotesViewController : ReleaseNotesViewController = {
         guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let secondItem = splitViewController.splitViewItems[1].viewController as? UpdateReleaseNotesViewController else {
-                return UpdateReleaseNotesViewController()
+            let secondItem = splitViewController.splitViewItems[1].viewController as? ReleaseNotesViewController else {
+                return ReleaseNotesViewController()
         }
         
         return secondItem
@@ -38,9 +40,11 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     
     /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadButton: NSButton!
+    @IBOutlet weak var reloadTouchBarButton: NSButton!
     
     /// The button thats action opens all apps (or Mac App Store) to begin the update process
     @IBOutlet weak var openAllAppsButton: NSButton!
+    @IBOutlet weak var openAllAppsTouchBarButton: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -54,10 +58,14 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
             splitViewController.splitViewItems[1].isCollapsed = true
         }
         
+        self.window?.makeFirstResponder(self.listViewController)
+        
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
+        
+        self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
     }
 
     
@@ -87,11 +95,11 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
             alert.beginSheetModal(for: self.window!, completionHandler: { (response) in
                 if response.rawValue == 1000 {
                     // Open apps anyway
-                    self.open(apps: apps)
+                    self.open(apps)
                 }
             })
         } else {
-            self.open(apps: apps)
+            self.open(apps)
         }
     }
     
@@ -106,12 +114,16 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
         detailItem.animator().isCollapsed = !detailItem.isCollapsed
     }
     
+    @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
+        self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
+    }
+    
     
     // MARK: Menu Item Validation
 
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else {
-            return super.validateMenuItem(menuItem)
+            return true
         }
         
         switch action {
@@ -119,6 +131,9 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
+        case #selector(toggleShowInstalledUpdates(_:)):
+            menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
+            return true
         case #selector(toggleDetail(_:)):
             guard let splitViewController = self.contentViewController as? NSSplitViewController else {
                 return false
@@ -132,7 +147,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
             
             return self.listViewController.tableView.selectedRow != -1
         default:
-            return super.validateMenuItem(menuItem)
+            return true
         }
     }
     
@@ -142,6 +157,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     /// This implementation activates the progress indicator, sets its max value and disables the reload button
     func startChecking(numberOfApps: Int) {
         self.reloadButton.isEnabled = false
+        self.reloadTouchBarButton.isEnabled = false
     
         self.progressIndicator.doubleValue = 0
         self.progressIndicator.isHidden = false
@@ -151,9 +167,11 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
     /// Update the progress indicator
     func didCheckApp() {
         self.openAllAppsButton.isEnabled = self.listViewController.apps.count != 0
+        self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
         
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
             self.reloadButton.isEnabled = true
+            self.reloadTouchBarButton.isEnabled = true
             self.progressIndicator.isHidden = true
             self.listViewController.finishedCheckingForUpdates()
         } else {
@@ -194,7 +212,7 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
      - parameter apps: The apps to be opened
      */
     
-    private func open(apps: [AppBundle]) {
+    private func open(_ apps: AppCollection) {
         var showedMacAppStore = false
         
         apps.forEach { (app) in
@@ -204,9 +222,18 @@ class MainWindowController: NSWindowController, UpdateListViewControllerDelegate
                 return
             }
             
-            guard let url = app.appURL else { return }
-            NSWorkspace.shared.open(url)
+            NSWorkspace.shared.open(app.url)
         }
+    }
+    
+    private func updateShowInstalledUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
+        self.listViewController.showInstalledUpdates = newState
+    
+        if let sender = sender {
+            sender.state = newState ? .on : .off
+        }
+        
+        UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
     }
     
 }

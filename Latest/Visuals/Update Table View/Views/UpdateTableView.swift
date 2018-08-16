@@ -1,0 +1,17 @@
+//
+//  UpdateTableView.swift
+//  Latest
+//
+//  Created by Max Langer on 16.08.18.
+//  Copyright © 2018 Max Langer. All rights reserved.
+//
+
+import Cocoa
+
+/// The tableView behinf the updates list
+class UpdateTableView: NSTableView {
+
+    /// Only the separator lines for populated rows will be drawn
+    override func drawGrid(inClipRect clipRect: NSRect) {}
+    
+}

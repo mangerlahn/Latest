@@ -18,15 +18,10 @@ extension UpdateChecker {
      Tries to update the app through the Mac App Store. In case of success, the app object is created and delegated.
      - returns: A Boolean indicating if the app is updated through the Mac App Store
      */
-    func updatesThroughMacAppStore(app: String, version: String, buildNumber: String) -> Bool {
-        let appName = app as NSString
+    func updatesThroughMacAppStore(app: URL, version: String, buildNumber: String) -> Bool {
+        let appName = app.lastPathComponent as NSString
 
-        guard appName.pathExtension == "app", let applicationURL = self.applicationURL else {
-            return false
-        }
-        
-        let appPath = applicationURL.appendingPathComponent(app).path
-        let appBundle = Bundle(path: appPath)
+        let appBundle = Bundle(path: app.path)
         let fileManager = FileManager.default
         
         guard let receiptPath = appBundle?.appStoreReceiptURL?.path,
@@ -40,29 +35,24 @@ extension UpdateChecker {
               else { return false }
         
         if bundleIdentifier.contains("com.apple.InstallAssistant") {
-            self.progressDelegate?.didCheckApp()
+            self.didFailToUpdateApp()
             return true
         }
         
-        let session = URLSession(configuration: URLSessionConfiguration.default)
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard error == nil,
                 let data = data,
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                 let results = json?["results"] as? [Any],
                 results.count != 0,
                 let appData = results[0] as? [String: Any] else {
-                    DispatchQueue.main.async {
-                        self.progressDelegate?.didCheckApp()
-                    }
-                    
+                    self.didFailToUpdateApp()
                     return
             }
             
-            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber)
-            appUpdate.delegate = self.appUpdateDelegate
-            appUpdate.appURL = applicationURL.appendingPathComponent(app)
+            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
+            appUpdate.delegate = self
             appUpdate.parse(data: appData)
         }
         
