@@ -114,6 +114,10 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         var foundItemWithDate = true
         
+        self.versionInfos = self.versionInfos.filter { (info) -> Bool in
+            return !info.version.isEmpty
+        }
+        
         self.versionInfos.sort { (first, second) -> Bool in
             guard let firstDate = first.date else {
                 foundItemWithDate = false
