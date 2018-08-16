@@ -1,8 +1,14 @@
+/* No comment provided by engineer. */
+"Available" = "Verfügbar";
+
 /* Cancel button */
 "Cancel" = "Abbrechen";
 
 /* MenuItem Hide Version Details */
 "Hide Version Details" = "Versionsdetails ausblenden";
+
+/* No comment provided by engineer. */
+"Installed" = "Installiert";
 
 /* New Version String */
 "New version: %@" = "Neue Version: %@";

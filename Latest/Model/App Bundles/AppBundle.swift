@@ -53,6 +53,14 @@ class AppBundle : NSObject {
         self.url = url
     }
     
+    var updateAvailable: Bool {
+        if let version = self.newestVersion, version.version > self.version {
+            return true
+        }
+        
+        return false
+    }
+    
     
     // MARK: - Actions
     
@@ -116,7 +124,7 @@ extension AppBundle {
         
             // If the shortVersion string is identical, but the bundle version is different
             // Show the Bundle version in brackets like: "1.3 (21)"
-            if v == nv, let v = self.version?.buildNumber, let nv = info.version.buildNumber {
+            if self.updateAvailable, v == nv, let v = self.version?.buildNumber, let nv = info.version.buildNumber {
                 versionInformation?.rawCurrent += " (\(v))"
                 versionInformation?.rawNew += " (\(nv))"
             }

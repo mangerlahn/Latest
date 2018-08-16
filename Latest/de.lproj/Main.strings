@@ -121,6 +121,9 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Dienste";
 
+/* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
+"NNm-bC-QYz.title" = "Verfügbare Updates";
+
 /* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
 "OLo-39-3Sm.label" = "Fortschritt";
 
@@ -172,8 +175,14 @@
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
 "VX8-qg-UOL.title" = "Label";
 
+/* Class = "NSTextFieldCell"; title = "Installed Updates"; ObjectID = "w6X-s8-ohj"; */
+"w6X-s8-ohj.title" = "Installierte Updates";
+
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Hilfe";
+
+/* Class = "NSMenuItem"; title = "Show Installed Updates"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "Installierte Updates anzeigen";
 
 /* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.label" = "Neu laden";

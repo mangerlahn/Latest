@@ -166,6 +166,8 @@ class ReleaseNotesViewController: NSViewController {
         self.appCurrentVersionTextField.stringValue = versionInformation.current
         self.appNewVersionTextField.stringValue = versionInformation.new
         
+        self.appNewVersionTextField.isHidden = !app.updateAvailable
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none

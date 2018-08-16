@@ -97,6 +97,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
+                                        <menuItem title="Show Installed Updates" keyEquivalent="i" id="XVu-eG-PUK">
+                                            <connections>
+                                                <action selector="toggleShowInstalledUpdates:" target="Ady-hI-5gd" id="DiG-pc-JWl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="2cf-83-Jly"/>
                                         <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
                                             <connections>
                                                 <action selector="reload:" target="Ady-hI-5gd" id="hPg-BA-6c8"/>
@@ -115,6 +121,9 @@
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <connections>
+                                        <outlet property="delegate" destination="HQw-Wf-FaT" id="c5Y-Vy-0AT"/>
+                                    </connections>
                                 </menu>
                             </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
@@ -162,6 +171,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="ZIQ-oE-e1U" customClass="SUUpdater"/>
+                <customObject id="HQw-Wf-FaT" customClass="MainWindowController" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76" y="-68"/>
@@ -238,7 +248,7 @@
                             <touchBarItem id="F32-ki-hFv">
                                 <viewController key="viewController" id="vt9-Kt-f18">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-N5-XxD">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SMd-ka-re6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -254,7 +264,7 @@
                             <touchBarItem id="mTy-QU-Tio">
                                 <viewController key="viewController" id="Q6i-e8-TIE">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WAI-ZK-0O7">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                        <rect key="frame" x="0.0" y="-11" width="102" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Open All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ewt-FG-dUz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -316,16 +326,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="305" height="271"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="63" horizontalPageScroll="10" verticalLineScroll="63" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yos-E7-CDu">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="yos-E7-CDu">
                                 <rect key="frame" x="0.0" y="-1" width="305" height="257"/>
                                 <clipView key="contentView" drawsBackground="NO" id="sB5-n6-Pai">
                                     <rect key="frame" x="0.0" y="0.0" width="305" height="257"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="61" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="Aue-8r-EWw">
+                                        <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="27" rowSizeStyle="automatic" viewBased="YES" id="Aue-8r-EWw">
                                             <rect key="frame" x="0.0" y="0.0" width="305" height="257"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -344,7 +353,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="MLMUpdateCellIdentifier" id="c4D-Nt-dk9" customClass="UpdateCell" customModule="Latest" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="302" height="61"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="61"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-KW-d10">
@@ -411,6 +420,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="aYW-KW-d10" firstAttribute="leading" secondItem="c4D-Nt-dk9" secondAttribute="leading" constant="20" id="0Mk-1x-5cn"/>
                                                                 <constraint firstAttribute="trailing" secondItem="aYW-KW-d10" secondAttribute="trailing" constant="20" id="Hii-Pa-KcE"/>
+                                                                <constraint firstItem="aYW-KW-d10" firstAttribute="centerY" secondItem="c4D-Nt-dk9" secondAttribute="centerY" id="XgV-bZ-9fY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="aYW-KW-d10" secondAttribute="bottom" constant="5" id="gAG-7i-hvV"/>
                                                                 <constraint firstItem="aYW-KW-d10" firstAttribute="top" secondItem="c4D-Nt-dk9" secondAttribute="top" constant="5" id="tpr-ij-0gd"/>
                                                             </constraints>
@@ -420,6 +430,68 @@
                                                                 <outlet property="newVersionTextField" destination="JkL-bF-Me7" id="0rh-Zg-BpN"/>
                                                                 <outlet property="textField" destination="K1m-1T-h1l" id="V5Z-xy-78H"/>
                                                             </connections>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="MLMUpdateCellAvailableUpdatesIdentifier" id="ZtS-Z9-Cu9">
+                                                            <rect key="frame" x="0.0" y="61" width="302" height="27"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="DVj-Eq-QBv">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="302" height="27"/>
+                                                                    <subviews>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xhF-6m-YCA">
+                                                                            <rect key="frame" x="18" y="5" width="281" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Available Updates" id="NNm-bC-QYz">
+                                                                                <font key="font" metaFont="systemMedium" size="13"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="top" secondItem="DVj-Eq-QBv" secondAttribute="top" constant="5" id="BDD-WE-567"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="xhF-6m-YCA" secondAttribute="trailing" constant="5" id="EO7-Tw-OBW"/>
+                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="leading" secondItem="DVj-Eq-QBv" secondAttribute="leading" constant="20" id="WgZ-5m-bcs"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="xhF-6m-YCA" secondAttribute="bottom" constant="5" id="agg-dG-ras"/>
+                                                                    </constraints>
+                                                                </visualEffectView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="DVj-Eq-QBv" secondAttribute="trailing" id="QhD-5H-yqc"/>
+                                                                <constraint firstAttribute="bottom" secondItem="DVj-Eq-QBv" secondAttribute="bottom" id="chm-Rk-jh3"/>
+                                                                <constraint firstItem="DVj-Eq-QBv" firstAttribute="leading" secondItem="ZtS-Z9-Cu9" secondAttribute="leading" id="ltP-EW-8at"/>
+                                                                <constraint firstItem="DVj-Eq-QBv" firstAttribute="top" secondItem="ZtS-Z9-Cu9" secondAttribute="top" id="zDi-if-AoH"/>
+                                                            </constraints>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="MLMUpdateCellInstalledUpdatesIdentifier" id="zWs-xR-FEJ">
+                                                            <rect key="frame" x="0.0" y="88" width="302" height="27"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-ja-9Ty">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="302" height="27"/>
+                                                                    <subviews>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zix-Hu-ApM">
+                                                                            <rect key="frame" x="18" y="5" width="281" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Installed Updates" id="w6X-s8-ohj">
+                                                                                <font key="font" metaFont="systemMedium" size="13"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="zix-Hu-ApM" firstAttribute="top" secondItem="5FN-ja-9Ty" secondAttribute="top" constant="5" id="Awe-bl-1Wc"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="zix-Hu-ApM" secondAttribute="trailing" constant="5" id="GcQ-QU-iiQ"/>
+                                                                        <constraint firstItem="zix-Hu-ApM" firstAttribute="leading" secondItem="5FN-ja-9Ty" secondAttribute="leading" constant="20" id="jSJ-uT-lBO"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="zix-Hu-ApM" secondAttribute="bottom" constant="5" id="pgc-xt-Kbr"/>
+                                                                    </constraints>
+                                                                </visualEffectView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="5FN-ja-9Ty" secondAttribute="bottom" id="HQS-2I-iTe"/>
+                                                                <constraint firstItem="5FN-ja-9Ty" firstAttribute="top" secondItem="zWs-xR-FEJ" secondAttribute="top" id="ZDp-02-63T"/>
+                                                                <constraint firstItem="5FN-ja-9Ty" firstAttribute="leading" secondItem="zWs-xR-FEJ" secondAttribute="leading" id="kpt-g5-3XF"/>
+                                                                <constraint firstAttribute="trailing" secondItem="5FN-ja-9Ty" secondAttribute="trailing" id="oBO-KJ-TjJ"/>
+                                                            </constraints>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>

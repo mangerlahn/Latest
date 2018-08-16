@@ -11,7 +11,9 @@ import Cocoa
 /**
  This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
  */
-class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateListViewControllerDelegate, UpdateCheckerProgress {
+class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateListViewControllerDelegate, UpdateCheckerProgress {
+    
+    private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
@@ -40,7 +42,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
     @IBOutlet weak var reloadButton: NSButton!
     @IBOutlet weak var reloadTouchBarButton: NSButton!
     
-    
     /// The button thats action opens all apps (or Mac App Store) to begin the update process
     @IBOutlet weak var openAllAppsButton: NSButton!
     @IBOutlet weak var openAllAppsTouchBarButton: NSButton!
@@ -63,6 +64,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
+        
+        self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
     }
 
     
@@ -92,11 +95,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
             alert.beginSheetModal(for: self.window!, completionHandler: { (response) in
                 if response.rawValue == 1000 {
                     // Open apps anyway
-                    self.open(apps: apps)
+                    self.open(apps)
                 }
             })
         } else {
-            self.open(apps: apps)
+            self.open(apps)
         }
     }
     
@@ -109,6 +112,10 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
         let detailItem = splitViewController.splitViewItems[1]
         
         detailItem.animator().isCollapsed = !detailItem.isCollapsed
+    }
+    
+    @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
+        self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
     }
     
     
@@ -124,6 +131,9 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
+        case #selector(toggleShowInstalledUpdates(_:)):
+            menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
+            return true
         case #selector(toggleDetail(_:)):
             guard let splitViewController = self.contentViewController as? NSSplitViewController else {
                 return false
@@ -202,7 +212,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
      - parameter apps: The apps to be opened
      */
     
-    private func open(apps: [AppBundle]) {
+    private func open(_ apps: AppCollection) {
         var showedMacAppStore = false
         
         apps.forEach { (app) in
@@ -214,6 +224,16 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, UpdateList
             
             NSWorkspace.shared.open(app.url)
         }
+    }
+    
+    private func updateShowInstalledUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
+        self.listViewController.showInstalledUpdates = newState
+    
+        if let sender = sender {
+            sender.state = newState ? .on : .off
+        }
+        
+        UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
     }
     
 }

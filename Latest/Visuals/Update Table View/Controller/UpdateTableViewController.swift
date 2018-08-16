@@ -25,7 +25,16 @@ protocol UpdateListViewControllerDelegate : class {
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
 
     /// The array holding the apps that have an update available
-    var apps = [AppBundle]()
+    var apps = AppCollection()
+    
+    /// Flag indicating that all apps are displayed or only the ones with updates available
+    var showInstalledUpdates = false {
+        didSet {
+            if oldValue != self.showInstalledUpdates {
+                self.installedAppsVisibilityChanged()
+            }
+        }
+    }
     
     /// The delegate for handling the visibility of the detail view
     weak var delegate : UpdateListViewControllerDelegate?
@@ -69,6 +78,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
         
+        self.apps.showInstalledUpdates = self.showInstalledUpdates
         self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
         
         self.updateEmtpyStateVisibility()
@@ -96,7 +106,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     @IBOutlet weak var tableView: NSTableView!
     
     @objc func scrollViewDidScroll(_ notification: Notification?) {
-        guard let scrollView = self.tableView.enclosingScrollView else {
+        guard let scrollView = self.tableView.enclosingScrollView, !self.showInstalledUpdates else {
             return
         }
         
@@ -107,6 +117,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: Table View Delegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if self.apps.isSectionHeader(at: row) {
+            if row == 0 {
+                return tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellAvailableUpdatesIdentifier"), owner: self)
+            }
+            
+            return tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellInstalledUpdatesIdentifier"), owner: self)
+        }
         
         let app = self.apps[row]
         
@@ -119,6 +136,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         cell.currentVersionTextField?.stringValue = versionInformation.current
         cell.newVersionTextField?.stringValue = versionInformation.new
         
+        cell.newVersionTextField?.isHidden = !app.updateAvailable
+        
         IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
         }
@@ -126,12 +145,22 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         return cell
     }
     
+    func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        return self.apps.isSectionHeader(at: row) ? UpdateGroupRowView() : nil
+    }
+    
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        if self.apps.isSectionHeader(at: row) { return 27 }
+        
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) else {
             return 50
         }
         
         return cell.frame.height
+    }
+    
+    func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+        return self.apps.isSectionHeader(at: row)
     }
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
@@ -156,6 +185,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         return []
     }
     
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return !self.apps.isSectionHeader(at: row)
+    }
+    
     func tableViewSelectionDidChange(_ notification: Notification) {
         let index = self.tableView.selectedRow
         
@@ -176,21 +209,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: - Update Checker
     
     /// An helper array indicating the apps that need to be removed from the list after the update process
-    private var appsToDelete : [AppBundle]?
+    private var appsToDelete : AppCollection?
     
-    func updateCheckerDidFinishCheckingApp(_ newVersionAvailable: Bool, for app: AppBundle) {
-        if let index = self.appsToDelete?.index(where: { $0 == app }) {
-            self.appsToDelete?.remove(at: index)
-        }
+    func updateCheckerDidFinishCheckingApp(for app: AppBundle) {
+        self.appsToDelete?.remove(app)
         
         self.tableView.beginUpdates()
-        
-        if newVersionAvailable {
-            self.add(app)
-        } else {
-            self.remove(app)
-        }
-        
+        self.add(app)
         self.tableView.endUpdates()
         
         self.updateTitleAndBatch()
@@ -294,20 +319,14 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
         
         self.apps.append(app)
-        self.apps.sort { (first, second) -> Bool in
-            return first.name < second.name
-        }
         
         guard let index = self.apps.index(of: app) else { return }
-                
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }
     
     /// Removes the item from the list, if it exists
     private func remove(_ app: AppBundle) {
-        guard let index = self.apps.index(where: { $0 == app }) else { return }
-        
-        self.apps.remove(at: index)
+        guard let index = self.apps.remove(app) else { return }
         self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
     }
     
@@ -333,12 +352,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Updates the UI depending on available updates (show empty states or update list)
     private func updateEmtpyStateVisibility() {
-        if self.apps.count == 0 && !self.tableView.isHidden {
+        if self.apps.count == 0 && self.noUpdatesAvailableLabel.isHidden {
             self.tableView.alphaValue = 0
             self.tableView.isHidden = true
             self.toolbarDivider.isHidden = true
             self.noUpdatesAvailableLabel.isHidden = false
-        } else if self.apps.count != 0 && tableView.isHidden {
+        } else if self.apps.count != 0 && !self.noUpdatesAvailableLabel.isHidden {
             self.tableView.alphaValue = 1
             self.tableView.isHidden = false
             self.toolbarDivider.isHidden = false
@@ -348,7 +367,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func updateTitleAndBatch() {
-        let count = self.apps.count
+        let count = self.apps.countOfAvailableUpdates
         
         if count == 0 {
             NSApplication.shared.dockTile.badgeLabel = ""
@@ -363,6 +382,25 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         if #available(OSX 10.12.2, *) {
             self.scrubber?.reloadData()
         }
+    }
+    
+    /// Updates the table view to show all apps or only the ones who have an update available
+    private func installedAppsVisibilityChanged() {
+        let indexSet = self.apps.indexesOfInstalledApps
+        
+        self.tableView.beginUpdates()
+        
+        if self.showInstalledUpdates {
+            // Insert installed apps
+            self.apps.showInstalledUpdates = self.showInstalledUpdates
+            self.tableView.insertRows(at: indexSet, withAnimation: .slideDown)
+        } else {
+            // Remove installed apps
+            self.tableView.removeRows(at: indexSet, withAnimation: .slideUp)
+            self.apps.showInstalledUpdates = self.showInstalledUpdates
+        }
+        
+        self.tableView.endUpdates()
     }
     
 }

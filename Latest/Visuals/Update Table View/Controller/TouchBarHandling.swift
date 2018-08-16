@@ -85,6 +85,10 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
+        if self.apps.isSectionHeader(at: index) {
+            return self.textViewForSection(at: index)
+        }
+        
         guard let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
             return NSScrubberItemView()
         }
@@ -104,6 +108,10 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     // MARK: Delegate
     
     func scrubber(_ scrubber: NSScrubber, layout: NSScrubberFlowLayout, sizeForItemAt itemIndex: Int) -> NSSize {
+        if self.apps.isSectionHeader(at: itemIndex) {
+            return NSSize(width: 100, height: 30)
+        }
+        
         let size = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         let name = self.apps[itemIndex].name as NSString
         let options: NSString.DrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
@@ -119,6 +127,11 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
+        if self.apps.isSectionHeader(at: selectedIndex) {
+            self.scrubber?.selectedIndex = self.tableView.selectedRow
+            return
+        }
+        
         self.selectApp(at: selectedIndex)
     }
     
@@ -126,4 +139,11 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         self.scrubber?.isHidden = count == 0
         self.scrubber?.showsArrowButtons = count > 3
     }
+    
+    fileprivate func textViewForSection(at index: Int) -> NSScrubberTextItemView {
+        let view = NSScrubberTextItemView()
+        view.textField.stringValue = index == 0 ? NSLocalizedString("Available", comment: "") : NSLocalizedString("Installed", comment: "")
+        return view
+    }
+    
 }
