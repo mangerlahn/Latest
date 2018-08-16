@@ -80,7 +80,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     @IBAction func openAll(_ sender: Any?) {
         let apps = self.listViewController.apps
         
-        if apps.count > 4 {
+        if apps.countOfAvailableUpdates > 4 {
             // Display warning
             let alert = NSAlert()
             alert.alertStyle = .warning
@@ -166,7 +166,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Update the progress indicator
     func didCheckApp() {
-        self.openAllAppsButton.isEnabled = self.listViewController.apps.count != 0
+        self.openAllAppsButton.isEnabled = self.listViewController.apps.countOfAvailableUpdates != 0
         self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
         
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
@@ -216,6 +216,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         var showedMacAppStore = false
         
         apps.forEach { (app) in
+            if !app.updateAvailable { return }
             if !showedMacAppStore, app is MacAppStoreAppBundle {
                 showedMacAppStore = true
                 NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
