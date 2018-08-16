@@ -228,7 +228,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             self.appsToDelete = self.apps
         }
         
-        guard let apps = self.appsToDelete, apps.count != 0 else { return }
+        guard let apps = self.appsToDelete, !apps.isEmpty else { return }
 
         self.tableView.beginUpdates()
 
