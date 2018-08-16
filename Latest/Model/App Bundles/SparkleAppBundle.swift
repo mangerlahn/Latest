@@ -90,9 +90,9 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
                 self.newestVersion?.date = date
             }
         case .releaseNotesLink:
-            if self.newestVersion?.releaseNotes == nil {
-                self.newestVersion?.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
-            }
+            // Release Notes Link wins over other release notes types
+            if self.newestVersion?.releaseNotes is URL { return }
+            self.newestVersion?.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
         case .releaseNotesData:
             if self.newestVersion?.releaseNotes == nil {
                 self.newestVersion?.releaseNotes = ""
