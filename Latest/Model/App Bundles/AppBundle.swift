@@ -18,7 +18,14 @@ protocol AppBundleDelegate {
      
      - parameter app: The app update with updated information
      */
-    mutating func appDidUpdateVersionInformation(_ app: AppBundle)
+    func appDidUpdateVersionInformation(_ app: AppBundle)
+    
+    /**
+     The information provided by the app bundle was not sufficient. Therefore it makes no sense to further process this bundle.
+     
+     - parameter app: The app that failed to process
+     */
+    func didFailToProcess(_ app: AppBundle?)
 }
 
 /**

@@ -25,6 +25,11 @@ struct Version : Equatable, Comparable {
     /// The build number itself
     var buildNumber : String?
     
+    /// Flag whether both version number and build number are unavailable
+    var isEmpty: Bool {
+        return self.versionNumber == nil && self.buildNumber == nil
+    }
+    
     /**
      Convenience initializer setting both version and build number
      - parameter version: The version number

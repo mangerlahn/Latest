@@ -18,6 +18,8 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
         case pubDate
         case releaseNotesLink
         case releaseNotesData
+        case version
+        case shortVersion
         
         case none
     }
@@ -61,6 +63,10 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
             self.currentlyParsing = .pubDate
         case "sparkle:releaseNotesLink":
             self.currentlyParsing = .releaseNotesLink
+        case "sparkle:version":
+            self.currentlyParsing = .version
+        case "sparkle:shortVersionString":
+            self.currentlyParsing = .shortVersion
         case "description":
             self.currentlyParsing = .releaseNotesData
         default:
@@ -76,6 +82,8 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
+        guard let info = self.newestVersion else { return }
+
         switch currentlyParsing {
         case .pubDate:
             if let date = self.dateFormatter.date(from: string.trimmingCharacters(in: .whitespacesAndNewlines)) {
@@ -94,13 +102,21 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
                 releaseNotes += string
                 self.newestVersion?.releaseNotes = releaseNotes
             }
-        default:
+        case .version:
+            info.version.buildNumber = string
+        case .shortVersion:
+            info.version.versionNumber = string
+        case .none:
             ()
         }
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
         var foundItemWithDate = true
+        
+        self.versionInfos = self.versionInfos.filter { (info) -> Bool in
+            return !info.version.isEmpty
+        }
         
         self.versionInfos.sort { (first, second) -> Bool in
             guard let firstDate = first.date else {
@@ -125,10 +141,12 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
             })
         }
         
-        if let version = self.versionInfos.first {
-            
-            self.newestVersion = version
+        guard let version = self.versionInfos.first, !version.version.isEmpty else {
+            self.delegate?.didFailToProcess(self)
+            return
         }
+        
+        self.newestVersion = version
         
         DispatchQueue.main.async(execute: {
             self.delegate?.appDidUpdateVersionInformation(self)
