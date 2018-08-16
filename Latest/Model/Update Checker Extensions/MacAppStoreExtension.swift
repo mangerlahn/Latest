@@ -35,7 +35,7 @@ extension UpdateChecker {
               else { return false }
         
         if bundleIdentifier.contains("com.apple.InstallAssistant") {
-            self.didFailToUpdateApp()
+            self.didFailToProcess(nil)
             return true
         }
         
@@ -47,7 +47,7 @@ extension UpdateChecker {
                 let results = json?["results"] as? [Any],
                 results.count != 0,
                 let appData = results[0] as? [String: Any] else {
-                    self.didFailToUpdateApp()
+                    self.didFailToProcess(nil)
                     return
             }
             

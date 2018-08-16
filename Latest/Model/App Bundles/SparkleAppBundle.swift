@@ -125,10 +125,12 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
             })
         }
         
-        if let version = self.versionInfos.first {
-            
-            self.newestVersion = version
+        guard let version = self.versionInfos.first, !version.version.isEmpty else {
+            self.delegate?.didFailToProcess(self)
+            return
         }
+        
+        self.newestVersion = version
         
         DispatchQueue.main.async(execute: {
             self.delegate?.appDidUpdateVersionInformation(self)
