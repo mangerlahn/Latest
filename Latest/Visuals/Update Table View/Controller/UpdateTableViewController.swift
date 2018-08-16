@@ -32,6 +32,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         didSet {
             if oldValue != self.showInstalledUpdates {
                 self.installedAppsVisibilityChanged()
+                self.updateEmtpyStateVisibility()
             }
         }
     }
