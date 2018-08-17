@@ -19,6 +19,8 @@ class FolderUpdateListener {
     /// The update checker which should be run when the contents change
     var updateChecker : UpdateChecker
     
+    private var timer: Timer?
+    
     /// The file system listener
     lazy var listener : DispatchSourceFileSystemObject = {
         let descriptor = open((self.url as NSURL).fileSystemRepresentation, O_EVTONLY)
@@ -46,7 +48,14 @@ class FolderUpdateListener {
     /// Triggers an update run
     private func folderContentsChanged() {
         DispatchQueue.main.async {
-            self.updateChecker.run()
+            if !(self.timer?.isValid ?? false) {
+                
+                // Hide the run method behind a timer, so that multiple content changes can occur before we check for new updates
+                self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] (_) in
+                    self?.updateChecker.run()
+                    self?.timer?.invalidate()
+                }
+            }
         }
     }
     
