@@ -333,10 +333,16 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         
         // The update state of that app changed
         if self.apps[index].updateAvailable != app.updateAvailable, let newIndex = self.apps.index(of: app) {
+            let selected = self.tableView.selectedRow == index
+            
             self.tableView.beginUpdates()
             self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
             self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
             self.tableView.endUpdates()
+            
+            if selected {            
+                self.selectApp(at: newIndex)
+            }
             return
         }
         
@@ -347,6 +353,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Removes the item from the list, if it exists
     private func remove(_ app: AppBundle) {
         guard let index = self.apps.remove(app) else { return }
+        
+        // Close the detail view
+        if self.tableView.selectedRow == index {
+            self.tableView.deselectRow(index)
+            self.delegate?.shouldCollapseDetail()
+        }
+        
         self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
     }
     
