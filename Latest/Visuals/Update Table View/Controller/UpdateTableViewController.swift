@@ -304,7 +304,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func menuNeedsUpdate(_ menu: NSMenu) {
         let row = self.tableView.clickedRow
         
-        guard row != -1 else { return }
+        guard row != -1, !self.apps.isSectionHeader(at: row) else { return }
         menu.items.forEach({ $0.representedObject = row })
     }
     
