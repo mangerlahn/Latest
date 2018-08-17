@@ -228,7 +228,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             self.appsToDelete = self.apps
         }
         
-        guard let apps = self.appsToDelete, apps.count != 0 else { return }
+        guard let apps = self.appsToDelete, !apps.isEmpty else { return }
 
         self.tableView.beginUpdates()
 
@@ -304,7 +304,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func menuNeedsUpdate(_ menu: NSMenu) {
         let row = self.tableView.clickedRow
         
-        guard row != -1 else { return }
+        guard row != -1, !self.apps.isSectionHeader(at: row) else { return }
         menu.items.forEach({ $0.representedObject = row })
     }
     
@@ -314,8 +314,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Adds an item to the list of apps that have an update available. If the app is already in the list, the row in the table gets updated
     private func add(_ app: AppBundle) {
         guard !self.apps.contains(where: { $0 == app }) else {
-            guard let index = self.apps.index(of: app) else { return }
-            self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+            self.reload(app)
             return
         }
         
@@ -325,9 +324,42 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
     }
     
+    private func reload(_ app: AppBundle) {
+        guard let index = self.apps.firstIndex(where: { $0 == app }) else { return }
+        let oldApp = self.apps[index]
+        
+        self.apps.remove(oldApp)
+        self.apps.append(app)
+        
+        // The update state of that app changed
+        if self.apps[index].updateAvailable != app.updateAvailable, let newIndex = self.apps.index(of: app) {
+            let selected = self.tableView.selectedRow == index
+            
+            self.tableView.beginUpdates()
+            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+            self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
+            self.tableView.endUpdates()
+            
+            if selected {            
+                self.selectApp(at: newIndex)
+            }
+            return
+        }
+        
+        // Just update the app information
+        self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+    }
+    
     /// Removes the item from the list, if it exists
     private func remove(_ app: AppBundle) {
         guard let index = self.apps.remove(app) else { return }
+        
+        // Close the detail view
+        if self.tableView.selectedRow == index {
+            self.tableView.deselectRow(index)
+            self.delegate?.shouldCollapseDetail()
+        }
+        
         self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
     }
     

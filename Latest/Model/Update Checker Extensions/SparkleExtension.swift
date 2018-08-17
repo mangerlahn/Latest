@@ -63,10 +63,10 @@ extension UpdateChecker {
                 checker.delegate = self
 
                 if !parser.parse() {
-                    self.didFailToUpdateApp()
+                    self.didFailToProcess(checker)
                 }
             } else {
-                self.didFailToUpdateApp()
+                self.didFailToProcess(nil)
             }
         })
         

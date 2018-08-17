@@ -125,7 +125,7 @@ extension UpdateChecker: AppBundleDelegate {
         self.lock.unlock()
     }
     
-    func didFailToUpdateApp() {
+    func didFailToProcess(_ app: AppBundle?) {
         DispatchQueue.main.async {
             self.remainingApps -= 1
             self.progressDelegate?.didCheckApp()

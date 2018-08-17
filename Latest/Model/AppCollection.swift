@@ -69,10 +69,12 @@ struct AppCollection {
     mutating func remove(_ appBundle: AppBundle) -> Int? {
         guard let index = self.data.firstIndex(where: { $0 == appBundle }) else { return nil }
         
+        let returnedIndex = self.align(index)
+        
         self.data.remove(at: index)
         self.updateCountOfAvailableUpdates()
         
-        return self.align(index)
+        return returnedIndex
     }
     
     /// Returns whether there is a section at the given index
