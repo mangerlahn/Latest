@@ -68,8 +68,7 @@ struct AppCollection {
     @discardableResult
     mutating func remove(_ appBundle: AppBundle) -> Int? {
         guard let index = self.data.firstIndex(where: { $0 == appBundle }) else { return nil }
-        
-        let returnedIndex = self.align(index)
+        let returnedIndex = self.index(of: appBundle)
         
         self.data.remove(at: index)
         self.updateCountOfAvailableUpdates()

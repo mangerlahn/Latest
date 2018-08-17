@@ -326,28 +326,47 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     private func reload(_ app: AppBundle) {
         guard let index = self.apps.firstIndex(where: { $0 == app }) else { return }
+        
         let oldApp = self.apps[index]
+        let stateChanged = oldApp.updateAvailable != app.updateAvailable
         
-        self.apps.remove(oldApp)
-        self.apps.append(app)
-        
-        // The update state of that app changed
-        if self.apps[index].updateAvailable != app.updateAvailable, let newIndex = self.apps.index(of: app) {
-            let selected = self.tableView.selectedRow == index
-            
-            self.tableView.beginUpdates()
-            self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
-            self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
-            self.tableView.endUpdates()
-            
-            if selected {            
-                self.selectApp(at: newIndex)
-            }
+        if stateChanged && !self.showInstalledUpdates && !app.updateAvailable {
+            self.remove(oldApp)
             return
         }
         
+        self.apps.remove(oldApp)
+        
+        // The update state of that app changed
+        if stateChanged {
+            if self.showInstalledUpdates {
+                self.apps.append(app)
+                
+                guard let newIndex = self.apps.index(of: app) else { return }
+                let selected = self.tableView.selectedRow == index
+                
+                self.tableView.beginUpdates()
+                self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
+                self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
+                self.tableView.endUpdates()
+                
+                if selected {
+                    self.selectApp(at: newIndex)
+                }
+                
+                return
+            }
+            
+            self.add(app)
+            return
+        }
+        
+        self.apps.append(app)
+        
+        guard let newIndex = self.apps.index(of: app) else { return }
+        
         // Just update the app information
-        self.tableView.reloadData(forRowIndexes: IndexSet(integer: index), columnIndexes: IndexSet(integer: 0))
+        self.tableView.reloadData(forRowIndexes: IndexSet(integer: newIndex), columnIndexes: IndexSet(integer: 0))
     }
     
     /// Removes the item from the list, if it exists
