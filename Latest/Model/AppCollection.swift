@@ -51,7 +51,7 @@ struct AppCollection {
                 return bundle1.updateAvailable
             }
             
-            return bundle1.name < bundle2.name
+            return bundle1.name.lowercased() < bundle2.name.lowercased()
         }
         
         self.updateCountOfAvailableUpdates()
