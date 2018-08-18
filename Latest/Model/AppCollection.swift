@@ -51,7 +51,7 @@ struct AppCollection {
                 return bundle1.updateAvailable
             }
             
-            return bundle1.name < bundle2.name
+            return bundle1.name.lowercased() < bundle2.name.lowercased()
         }
         
         self.updateCountOfAvailableUpdates()
@@ -68,8 +68,7 @@ struct AppCollection {
     @discardableResult
     mutating func remove(_ appBundle: AppBundle) -> Int? {
         guard let index = self.data.firstIndex(where: { $0 == appBundle }) else { return nil }
-        
-        let returnedIndex = self.align(index)
+        let returnedIndex = self.index(of: appBundle)
         
         self.data.remove(at: index)
         self.updateCountOfAvailableUpdates()
