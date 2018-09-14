@@ -13,6 +13,9 @@
 /* New Version String */
 "New version: %@" = "Neue Version: %@";
 
+/* Error message that no release notes were found */
+"No release notes were found for this app." = "Zu dieser App wurden keine Release Notes gefunden.";
+
 /* number of updates available */
 "number_of_updates_available" = "number_of_updates_available";
 

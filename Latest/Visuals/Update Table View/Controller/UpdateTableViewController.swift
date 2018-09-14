@@ -58,7 +58,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The checker responsible for update checking
     lazy var updateChecker: UpdateChecker = {
         var checker = UpdateChecker()
+        
+        // We treat them equal, if an app fails to load its update info, we can still show the installed app
         checker.didFinishCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
+        checker.didFailCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
+        
         return checker
     }()
     

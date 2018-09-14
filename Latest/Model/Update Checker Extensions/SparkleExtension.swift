@@ -51,22 +51,24 @@ extension UpdateChecker {
             url = feedURL
         }
 
+        let appBundle = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
+        
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             if error == nil,
                 let xmlData = data {
 
                 let parser = XMLParser(data: xmlData)
-                let checker = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
 
-                parser.delegate = checker
-                checker.delegate = self
+                parser.delegate = appBundle
+                appBundle.delegate = self
 
                 if !parser.parse() {
-                    self.didFailToProcess(checker)
+                    self.didFailToProcess(appBundle)
                 }
             } else {
-                self.didFailToProcess(nil)
+                appBundle.newestVersion.releaseNotes = error
+                self.didFailToProcess(appBundle)
             }
         })
         

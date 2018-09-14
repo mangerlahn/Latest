@@ -106,7 +106,7 @@ class ReleaseNotesViewController: NSViewController {
      Loads the content of the URL and displays them
      - parameter content: The content to be displayed
      */
-    func display(content: Any, for app: AppBundle) {
+    func display(content: Any?, for app: AppBundle) {
         self.display(app)
         
         switch content {
@@ -116,8 +116,10 @@ class ReleaseNotesViewController: NSViewController {
             self.update(with: data)
         case let html as String:
             self.display(html: html)
+        case let error as Error:
+            self.show(error)
         default:
-            ()
+            self.displayUnavailableReleaseNotes()
         }
     }
     
@@ -133,7 +135,7 @@ class ReleaseNotesViewController: NSViewController {
             DispatchQueue.main.async {
                 if let data = data, !data.isEmpty {
                     // Store the data
-                    app.newestVersion?.releaseNotes = data
+                    app.newestVersion.releaseNotes = data
                     
                         self.update(with: data)
                 } else if let error = error {
@@ -161,7 +163,8 @@ class ReleaseNotesViewController: NSViewController {
         self.app = app
         self.appNameTextField.stringValue = app.name
         
-        guard let info = app.newestVersion, let versionInformation = app.localizedVersionInformation else { return }
+        let info = app.newestVersion
+        guard let versionInformation = app.localizedVersionInformation else { return }
         
         self.appCurrentVersionTextField.stringValue = versionInformation.current
         self.appNewVersionTextField.stringValue = versionInformation.new
@@ -242,6 +245,12 @@ class ReleaseNotesViewController: NSViewController {
         constraints.append(self.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func displayUnavailableReleaseNotes() {
+        let description = NSLocalizedString("No release notes were found for this app.", comment: "Error message that no release notes were found")
+        let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
+        self.show(error)
     }
     
     private func initializeContent(of type: LoadReleaseNotesContent) {

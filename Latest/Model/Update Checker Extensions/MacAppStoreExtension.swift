@@ -34,8 +34,10 @@ extension UpdateChecker {
               let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(languageCode)&entity=macSoftware&limit=1")
               else { return false }
         
+        let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
+
         if bundleIdentifier.contains("com.apple.InstallAssistant") {
-            self.didFailToProcess(nil)
+            self.didFailToProcess(appUpdate)
             return true
         }
         
@@ -47,11 +49,11 @@ extension UpdateChecker {
                 let results = json?["results"] as? [Any],
                 results.count != 0,
                 let appData = results[0] as? [String: Any] else {
-                    self.didFailToProcess(nil)
+                    appUpdate.newestVersion.releaseNotes = error
+                    self.didFailToProcess(appUpdate)
                     return
             }
             
-            let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
             appUpdate.delegate = self
             appUpdate.parse(data: appData)
         }
