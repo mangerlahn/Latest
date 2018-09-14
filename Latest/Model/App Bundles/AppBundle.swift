@@ -147,6 +147,6 @@ extension AppBundle {
 extension AppBundle {
     /// Compares two apps on equality
     static func ==(lhs: AppBundle, rhs: AppBundle) -> Bool {
-        return lhs.name == rhs.name && lhs.url == rhs.url
+        return lhs.url == rhs.url
     }
 }
