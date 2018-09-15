@@ -25,7 +25,8 @@ protocol AppBundleDelegate {
      
      - parameter app: The app that failed to process
      */
-    func didFailToProcess(_ app: AppBundle?)
+    func didFailToProcess(_ app: AppBundle)
+    
 }
 
 /**
@@ -34,7 +35,7 @@ protocol AppBundleDelegate {
 class AppBundle : NSObject {
     
     /// The version currently present on the users computer
-    var version: Version!
+    var version: Version
     
     /// The display name of the app
     var name = ""
@@ -46,7 +47,7 @@ class AppBundle : NSObject {
     var delegate : AppBundleDelegate?
     
     /// The newest information available for this app
-    var newestVersion: UpdateInfo?
+    var newestVersion: UpdateInfo
     
     /**
      Convenience initializer for creating an app object
@@ -56,12 +57,16 @@ class AppBundle : NSObject {
      */
     init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
         self.version = Version(versionNumber ?? "", buildNumber ?? "")
+        
+        self.newestVersion = UpdateInfo()
+        self.newestVersion.version = self.version
+        
         self.name = appName
         self.url = url
     }
     
     var updateAvailable: Bool {
-        if let version = self.newestVersion, version.version > self.version {
+        if self.newestVersion.version > self.version {
             return true
         }
         
@@ -94,8 +99,8 @@ class AppBundle : NSObject {
     func printDebugDescription() {
         print("-----------------------")
         print("Debug description for app \(name)")
-        print("Version number: \(version?.versionNumber ?? "not given")")
-        print("Build number: \(version?.buildNumber ?? "not given")")
+        print("Version number: \(self.version.versionNumber ?? "not given")")
+        print("Build number: \(self.version.buildNumber ?? "not given")")
     }
     
 }
@@ -122,8 +127,7 @@ extension AppBundle {
     }
     
     var localizedVersionInformation: DisplayableVersionInformation? {
-        guard let info = self.newestVersion else { return nil }
-    
+        let info = self.newestVersion
         var versionInformation: DisplayableVersionInformation?
         
         if let v = self.version.versionNumber, let nv = info.version.versionNumber {
@@ -131,7 +135,7 @@ extension AppBundle {
         
             // If the shortVersion string is identical, but the bundle version is different
             // Show the Bundle version in brackets like: "1.3 (21)"
-            if self.updateAvailable, v == nv, let v = self.version?.buildNumber, let nv = info.version.buildNumber {
+            if self.updateAvailable, v == nv, let v = self.version.buildNumber, let nv = info.version.buildNumber {
                 versionInformation?.rawCurrent += " (\(v))"
                 versionInformation?.rawNew += " (\(nv))"
             }
@@ -147,6 +151,6 @@ extension AppBundle {
 extension AppBundle {
     /// Compares two apps on equality
     static func ==(lhs: AppBundle, rhs: AppBundle) -> Bool {
-        return lhs.name == rhs.name && lhs.url == rhs.url
+        return lhs.url == rhs.url
     }
 }

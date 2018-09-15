@@ -135,4 +135,12 @@ extension AppCollection: Collection {
         return self.data.index(after: i)
     }
     
+    func firstIndex(where predicate: (AppCollection.DataType.Element) throws -> Bool) rethrows -> AppCollection.DataType.Index? {
+        guard let appIndex = try? self.data.firstIndex(where: predicate), var index = appIndex else { return nil }
+        
+        index = self.align(index)
+        
+        return index
+    }
+    
 }

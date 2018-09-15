@@ -52,7 +52,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
             self.createVersion()
         }
         
-        guard let info = self.newestVersion else { return }
+        let info = self.newestVersion
         
         // Lets find the version number
         switch elementName {
@@ -82,25 +82,25 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        guard let info = self.newestVersion else { return }
+        let info = self.newestVersion
 
         switch currentlyParsing {
         case .pubDate:
             if let date = self.dateFormatter.date(from: string.trimmingCharacters(in: .whitespacesAndNewlines)) {
-                self.newestVersion?.date = date
+                info.date = date
             }
         case .releaseNotesLink:
             // Release Notes Link wins over other release notes types
-            if self.newestVersion?.releaseNotes is URL { return }
-            self.newestVersion?.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
+            if info.releaseNotes is URL { return }
+            info.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
         case .releaseNotesData:
-            if self.newestVersion?.releaseNotes == nil {
-                self.newestVersion?.releaseNotes = ""
+            if info.releaseNotes == nil {
+                info.releaseNotes = ""
             }
             
-            if var releaseNotes = self.newestVersion?.releaseNotes as? String {
+            if var releaseNotes = info.releaseNotes as? String {
                 releaseNotes += string
-                self.newestVersion?.releaseNotes = releaseNotes
+                info.releaseNotes = releaseNotes
             }
         case .version:
             info.version.buildNumber = string

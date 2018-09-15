@@ -58,7 +58,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The checker responsible for update checking
     lazy var updateChecker: UpdateChecker = {
         var checker = UpdateChecker()
+        
+        // We treat them equal, if an app fails to load its update info, we can still show the installed app
         checker.didFinishCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
+        checker.didFailCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
+        
         return checker
     }()
     
@@ -213,8 +217,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     private var appsToDelete : AppCollection?
     
     func updateCheckerDidFinishCheckingApp(for app: AppBundle) {
-        self.appsToDelete?.remove(app)
-        
         self.tableView.beginUpdates()
         self.add(app)
         self.tableView.endUpdates()
@@ -228,8 +230,14 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             self.appsToDelete = self.apps
         }
         
-        guard let apps = self.appsToDelete, !apps.isEmpty else { return }
+        guard var apps = self.appsToDelete else { return }
 
+        self.apps.forEach { (app) in
+            apps.remove(app)
+        }
+        
+        guard !apps.isEmpty else { return }
+        
         self.tableView.beginUpdates()
 
         apps.forEach { (app) in
@@ -266,10 +274,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
-        if let content = app.newestVersion?.releaseNotes {
-            self.delegate?.shouldExpandDetail()
-            detailViewController.display(content: content, for: app)
-        }
+        self.delegate?.shouldExpandDetail()
+        detailViewController.display(content: app.newestVersion.releaseNotes, for: app)
     }
     
     

@@ -34,6 +34,9 @@ class UpdateChecker {
     /// The callback called after every update check
     var didFinishCheckingAppCallback: UpdateCheckerCallback?
     
+    /// The callback called after every failed update check
+    var didFailCheckingAppCallback: UpdateCheckerCallback?
+    
     /// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckerProgress?
     
@@ -113,23 +116,24 @@ class UpdateChecker {
 extension UpdateChecker: AppBundleDelegate {
     
     func appDidUpdateVersionInformation(_ app: AppBundle) {
+        self.didCheck(app, with: self.didFinishCheckingAppCallback)
+    }
+    
+    func didFailToProcess(_ app: AppBundle) {
+        self.didCheck(app, with: self.didFailCheckingAppCallback)
+    }
+    
+    private func didCheck(_ app: AppBundle, with callback: UpdateCheckerCallback?) {
         self.lock.lock()
         
         self.remainingApps -= 1
-        self.progressDelegate?.didCheckApp()
         
         DispatchQueue.main.async {
-            self.didFinishCheckingAppCallback?(app)
+            self.progressDelegate?.didCheckApp()
+            callback?(app)
         }
         
         self.lock.unlock()
-    }
-    
-    func didFailToProcess(_ app: AppBundle?) {
-        DispatchQueue.main.async {
-            self.remainingApps -= 1
-            self.progressDelegate?.didCheckApp()
-        }
     }
     
 }
