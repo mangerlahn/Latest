@@ -21,7 +21,6 @@
 		5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */; };
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
-		5058BA35211F8DB1003F332B /* ReleaseNotesClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */; };
 		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
 		506DF77621248F6200D792FC /* AppCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppCollection.swift */; };
 		506DF7782125580400D792FC /* UpdateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF7772125580400D792FC /* UpdateTableView.swift */; };
@@ -97,7 +96,6 @@
 		5045842B1FF6CF0F00E15E9D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
-		5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesClipView.swift; sourceTree = "<group>"; };
 		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
 		506DF77521248F6200D792FC /* AppCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollection.swift; sourceTree = "<group>"; };
 		506DF7772125580400D792FC /* UpdateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableView.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		502929F9212062B300F00D1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5058BA34211F8DB1003F332B /* ReleaseNotesClipView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
 				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
-				5058BA35211F8DB1003F332B /* ReleaseNotesClipView.swift in Sources */,
 				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
 				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
 				502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */,
