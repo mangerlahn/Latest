@@ -54,11 +54,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.window?.titlebarAppearsTransparent = true
         self.window?.titleVisibility = .hidden
         
-        if let splitViewController = self.contentViewController as? NSSplitViewController {
-            splitViewController.splitViewItems[1].isCollapsed = true
-        }
+        self.showReleaseNotes(false, animated: false)
         
         self.window?.makeFirstResponder(self.listViewController)
+        self.window?.delegate = self
+        self.setDefaultWindowPosition(for: self.window!)
         
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
@@ -105,13 +105,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Shows/hides the detailView which presents the release notes
     @IBAction func toggleDetail(_ sender: Any?) {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return
-        }
-        
-        let detailItem = splitViewController.splitViewItems[1]
-        
-        detailItem.animator().isCollapsed = !detailItem.isCollapsed
+        self.showReleaseNotes(!self.releaseNotesVisible, animated: true)
     }
     
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
@@ -131,23 +125,29 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
-        case #selector(toggleShowInstalledUpdates(_:)):
-            menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
-            return true
-        case #selector(toggleDetail(_:)):
-            guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-                return false
-            }
-            
-            let detailItem = splitViewController.splitViewItems[1]
-            
-            menuItem.title = detailItem.isCollapsed ?
-                NSLocalizedString("Show Version Details", comment: "MenuItem Show Version Details") :
-                NSLocalizedString("Hide Version Details", comment: "MenuItem Hide Version Details")
-            
-            return self.listViewController.tableView.selectedRow != -1
         default:
             return true
+        }
+    }
+    
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        menu.items.forEach { (menuItem) in
+            guard let action = menuItem.action else { return }
+            
+            switch action {
+            case #selector(toggleShowInstalledUpdates(_:)):
+                menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
+            case #selector(toggleDetail(_:)):
+                guard let splitViewController = self.contentViewController as? NSSplitViewController else { return }
+                
+                let detailItem = splitViewController.splitViewItems[1]
+                
+                menuItem.title = detailItem.isCollapsed ?
+                    NSLocalizedString("Show Version Details", comment: "MenuItem Show Version Details") :
+                    NSLocalizedString("Hide Version Details", comment: "MenuItem Hide Version Details")
+            default:
+                ()
+            }
         }
     }
     
@@ -184,24 +184,12 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 
     /// Expands the detail view of the main window
     func shouldExpandDetail() {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return
-        }
-        
-        let detailItem = splitViewController.splitViewItems[1]
-        
-        detailItem.animator().isCollapsed = false
+        self.showReleaseNotes(true, animated: true)
     }
     
     /// Collapses the detail view of the main window
     func shouldCollapseDetail() {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return
-        }
-        
-        let detailItem = splitViewController.splitViewItems[1]
-        
-        detailItem.animator().isCollapsed = true
+        self.showReleaseNotes(false, animated: true)
     }
     
     
@@ -235,6 +223,61 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         }
         
         UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
+    }
+    
+    private func showReleaseNotes(_ show: Bool, animated: Bool) {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return
+        }
+        
+        let detailItem = splitViewController.splitViewItems[1]
+        
+        if animated {
+            detailItem.animator().isCollapsed = !show
+        } else {
+            detailItem.isCollapsed = !show
+        }
+        
+        if !show {
+            // Deselect current app
+            self.listViewController.selectApp(at: nil)
+        }
+    }
+    
+    private var releaseNotesVisible: Bool {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return false
+        }
+        
+        return !splitViewController.splitViewItems[1].isCollapsed
+    }
+    
+}
+
+extension MainWindowController: NSWindowDelegate {
+    
+    private static let WindowSizeKey = "WindowSizeKey"
+    private static let ReleaseNotesVisible = "ReleaseNotesVisible"
+
+    // This will be called before decodeRestorableState
+    func setDefaultWindowPosition(for window: NSWindow) {
+        guard let screen = window.screen?.frame else { return }
+        
+        var rect = NSRect(x: 0, y: 0, width: 360, height: 500)
+        rect.origin.x = screen.width / 2 - rect.width / 2
+        rect.origin.y = screen.height / 2 - rect.height / 2
+        
+        window.setFrame(rect, display: true)
+    }
+    
+    func window(_ window: NSWindow, willEncodeRestorableState state: NSCoder) {
+        state.encode(window.frame, forKey: MainWindowController.WindowSizeKey)
+        state.encode(self.releaseNotesVisible, forKey: MainWindowController.ReleaseNotesVisible)
+    }
+    
+    func window(_ window: NSWindow, didDecodeRestorableState state: NSCoder) {
+        window.setFrame(state.decodeRect(forKey: MainWindowController.WindowSizeKey), display: true)
+        self.showReleaseNotes(state.decodeBool(forKey: MainWindowController.ReleaseNotesVisible), animated: false)
     }
     
 }

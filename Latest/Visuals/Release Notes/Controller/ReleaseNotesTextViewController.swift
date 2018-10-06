@@ -8,25 +8,31 @@
 
 import Cocoa
 
+fileprivate let ReleaseNotesTextParagraphCellIdentifier = NSUserInterfaceItemIdentifier(rawValue: "ReleaseNotesTextParagraphCellIdentifier")
+
 /// The controller displaying the actual release notes
 class ReleaseNotesTextViewController: NSViewController {
 
     /// The view displaying the release notes
-    @IBOutlet weak var textField: NSTextField!
+    @IBOutlet var textView: NSTextView!
     
-    /// Sets the string in the text view
+    /// Updates the view with the given release notes
     func set(_ string: NSAttributedString) {
-        self.textField.attributedStringValue = self.format(string)
+        // Format the release notes
+        let text = self.format(string)
+        
+        self.textView.textStorage?.setAttributedString(text)
     }
     
     /// Updates the text views scroll insets
     func updateInsets(with inset: CGFloat) {
-        self.textField.superview?.enclosingScrollView?.contentInsets.top = inset
+        let scrollView = self.textView.enclosingScrollView
+        
+        scrollView?.automaticallyAdjustsContentInsets = false
+        scrollView?.contentInsets.top = inset + 5 // 5 is some padding
         
         self.view.layout()
-        
-        let view = self.textField.enclosingScrollView?.documentView
-        view?.scroll(CGPoint(x: 0, y: (view?.bounds.size.height ?? 0.0) + inset))
+        scrollView?.documentView?.scroll(CGPoint(x: 0, y: -inset * 2))
     }
     
     // MARK: - Private Methods
@@ -44,6 +50,7 @@ class ReleaseNotesTextViewController: NSViewController {
         
         /// Remove all color
         string.removeAttribute(.foregroundColor, range: fullRange)
+        string.addAttribute(.foregroundColor, value: NSColor.labelColor, range: fullRange)
         
         /// Reset font
         string.removeAttribute(.font, range: fullRange)

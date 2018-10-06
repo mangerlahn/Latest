@@ -69,6 +69,8 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appInfoBackgroundView: NSVisualEffectView!
     @IBOutlet weak var appInfoContentView: NSStackView!
     
+    @IBOutlet weak var updateButton: NSButton!
+    
     @IBOutlet weak var appNameTextField: NSTextField!
     @IBOutlet weak var appDateTextField: NSTextField!
     @IBOutlet weak var appCurrentVersionTextField: NSTextField!
@@ -89,7 +91,14 @@ class ReleaseNotesViewController: NSViewController {
         let constraint = NSLayoutConstraint(item: self.appInfoContentView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
         constraint.isActive = true
         
-        self.loadContent(.loading)
+        // Prepare for empty state
+        let description = NSLocalizedString("Select an app from the list to read its release notes.", comment: "Description of release notes empty state")
+        let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
+        self.show(error)
+        self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("No app selected.", comment: "Title of release notes empty state")
+
+        self.appInfoBackgroundView.isHidden = true
+        self.updateButton.isHidden = true
     }
     
     
@@ -160,6 +169,7 @@ class ReleaseNotesViewController: NSViewController {
     // MARK: - User Interface Stuff
     
     private func display(_ app: AppBundle) {
+        self.appInfoBackgroundView.isHidden = false
         self.app = app
         self.appNameTextField.stringValue = app.name
         
@@ -170,6 +180,7 @@ class ReleaseNotesViewController: NSViewController {
         self.appNewVersionTextField.stringValue = versionInformation.new
         
         self.appNewVersionTextField.isHidden = !app.updateAvailable
+        self.updateButton.isHidden = !app.updateAvailable
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
