@@ -258,8 +258,20 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         self.becomeFirstResponder()
     }
 
-    /// Selects the app at the given index
-    func selectApp(at index: Int) {
+    /**
+    Selects the app at the given index.
+     - parameter index: The index of the given app. If nil, the currently selected app is deselected.
+     */
+    func selectApp(at index: Int?) {
+        guard let index = index else {
+            self.tableView.deselectAll(nil)
+            if #available(OSX 10.12.2, *) {
+                self.scrubber?.animator().selectedIndex = -1
+            }
+            
+            return
+        }
+        
         if #available(OSX 10.12.2, *) {
             self.scrubber?.animator().scrollItem(at: index, to: .center)
             self.scrubber?.animator().selectedIndex = index

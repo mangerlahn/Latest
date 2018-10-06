@@ -235,6 +235,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         } else {
             detailItem.isCollapsed = !show
         }
+        
+        if !show {
+            // Deselect current app
+            self.listViewController.selectApp(at: nil)
+        }
     }
     
     private var releaseNotesVisible: Bool {
