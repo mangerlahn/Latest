@@ -131,23 +131,29 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
-        case #selector(toggleShowInstalledUpdates(_:)):
-            menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
-            return true
-        case #selector(toggleDetail(_:)):
-            guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-                return false
-            }
-            
-            let detailItem = splitViewController.splitViewItems[1]
-            
-            menuItem.title = detailItem.isCollapsed ?
-                NSLocalizedString("Show Version Details", comment: "MenuItem Show Version Details") :
-                NSLocalizedString("Hide Version Details", comment: "MenuItem Hide Version Details")
-            
-            return self.listViewController.tableView.selectedRow != -1
         default:
             return true
+        }
+    }
+    
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        menu.items.forEach { (menuItem) in
+            guard let action = menuItem.action else { return }
+            
+            switch action {
+            case #selector(toggleShowInstalledUpdates(_:)):
+                menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
+            case #selector(toggleDetail(_:)):
+                guard let splitViewController = self.contentViewController as? NSSplitViewController else { return }
+                
+                let detailItem = splitViewController.splitViewItems[1]
+                
+                menuItem.title = detailItem.isCollapsed ?
+                    NSLocalizedString("Show Version Details", comment: "MenuItem Show Version Details") :
+                    NSLocalizedString("Hide Version Details", comment: "MenuItem Hide Version Details")
+            default:
+                ()
+            }
         }
     }
     
