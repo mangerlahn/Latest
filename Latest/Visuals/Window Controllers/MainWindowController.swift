@@ -54,9 +54,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.window?.titlebarAppearsTransparent = true
         self.window?.titleVisibility = .hidden
         
-        if let splitViewController = self.contentViewController as? NSSplitViewController {
-            splitViewController.splitViewItems[1].isCollapsed = true
-        }
+        self.showReleaseNotes(false, animated: false)
         
         self.window?.makeFirstResponder(self.listViewController)
         
@@ -105,13 +103,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Shows/hides the detailView which presents the release notes
     @IBAction func toggleDetail(_ sender: Any?) {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return
-        }
-        
-        let detailItem = splitViewController.splitViewItems[1]
-        
-        detailItem.animator().isCollapsed = !detailItem.isCollapsed
+        self.showReleaseNotes(!self.releaseNotesVisible, animated: true)
     }
     
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
@@ -190,24 +182,12 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 
     /// Expands the detail view of the main window
     func shouldExpandDetail() {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return
-        }
-        
-        let detailItem = splitViewController.splitViewItems[1]
-        
-        detailItem.animator().isCollapsed = false
+        self.showReleaseNotes(true, animated: true)
     }
     
     /// Collapses the detail view of the main window
     func shouldCollapseDetail() {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return
-        }
-        
-        let detailItem = splitViewController.splitViewItems[1]
-        
-        detailItem.animator().isCollapsed = true
+        self.showReleaseNotes(false, animated: true)
     }
     
     
@@ -243,4 +223,27 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
     }
     
+    private func showReleaseNotes(_ show: Bool, animated: Bool) {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return
+        }
+        
+        let detailItem = splitViewController.splitViewItems[1]
+        
+        if animated {
+            detailItem.animator().isCollapsed = !show
+        } else {
+            detailItem.isCollapsed = !show
+        }
+    }
+    
+    private var releaseNotesVisible: Bool {
+        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
+            return false
+        }
+        
+        return !splitViewController.splitViewItems[1].isCollapsed
+    }
+    
+}
 }
