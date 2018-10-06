@@ -11,6 +11,9 @@ import Cocoa
 /// The controller presenting errors to the user
 class ReleaseNotesErrorViewController: NSViewController {
 
+    /// The textField holding the error title
+    @IBOutlet weak var titleTextField: NSTextField!
+    
     /// The textField holding the error description
     @IBOutlet weak var descriptionTextField: NSTextField!
  
