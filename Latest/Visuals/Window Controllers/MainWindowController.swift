@@ -57,6 +57,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.showReleaseNotes(false, animated: false)
         
         self.window?.makeFirstResponder(self.listViewController)
+        self.window?.delegate = self
+        self.setDefaultWindowPosition(for: self.window!)
         
         self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
@@ -251,4 +253,31 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     }
     
 }
+
+extension MainWindowController: NSWindowDelegate {
+    
+    private static let WindowSizeKey = "WindowSizeKey"
+    private static let ReleaseNotesVisible = "ReleaseNotesVisible"
+
+    // This will be called before decodeRestorableState
+    func setDefaultWindowPosition(for window: NSWindow) {
+        guard let screen = window.screen?.frame else { return }
+        
+        var rect = NSRect(x: 0, y: 0, width: 360, height: 500)
+        rect.origin.x = screen.width / 2 - rect.width / 2
+        rect.origin.y = screen.height / 2 - rect.height / 2
+        
+        window.setFrame(rect, display: true)
+    }
+    
+    func window(_ window: NSWindow, willEncodeRestorableState state: NSCoder) {
+        state.encode(window.frame, forKey: MainWindowController.WindowSizeKey)
+        state.encode(self.releaseNotesVisible, forKey: MainWindowController.ReleaseNotesVisible)
+    }
+    
+    func window(_ window: NSWindow, didDecodeRestorableState state: NSCoder) {
+        window.setFrame(state.decodeRect(forKey: MainWindowController.WindowSizeKey), display: true)
+        self.showReleaseNotes(state.decodeBool(forKey: MainWindowController.ReleaseNotesVisible), animated: false)
+    }
+    
 }
