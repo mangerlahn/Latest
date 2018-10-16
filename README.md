@@ -15,6 +15,10 @@ The easiest way to install Latest is to [download](https://max.codes/latest/Late
 
 If you would like to check out earlier versions, head over to the [Releases](https://github.com/mangerlahn/Latest/releases) page to browse the history of Latest.
 
+### Homebrew Cask
+Latest can also be installed via [Homebrew Cask](https://github.com/Homebrew/homebrew-cask). If you have not installed Homebrew, follow the simple instructions [here](https://brew.sh).
+After that, run `brew cask install latest` to install the current version of Latest.
+
 ### Build from Source 
 [![Build Status](https://travis-ci.org/mangerlahn/Latest.svg?branch=master)](https://travis-ci.org/mangerlahn/Latest)
 
