@@ -10,7 +10,7 @@ I am thankful for contributions. Check out the section below for more informatio
 ## Installation 
 There are multiple ways to install the app.
 
-### Binary
+### Download the App
 The easiest way to install Latest is to [download](https://max.codes/latest/Latest.zip) the latest release as an app. You unzip the download by double clicking on it (if that does not happen automatically) and then move the `Latest.app` into the `Applications` folder.
 
 If you would like to check out earlier versions, head over to the [Releases](https://github.com/mangerlahn/Latest/releases) page to browse the history of Latest.
