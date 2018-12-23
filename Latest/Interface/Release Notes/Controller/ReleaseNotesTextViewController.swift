@@ -55,6 +55,9 @@ class ReleaseNotesTextViewController: NSViewController {
 		// Remove background color
 		string.removeAttribute(.backgroundColor, range: textRange)
         
+		// Remove shadows
+		string.removeAttribute(.shadow, range: textRange)
+		
         // Reset font
         string.removeAttribute(.font, range: textRange)
         string.addAttribute(.font, value: defaultFont, range: textRange)
