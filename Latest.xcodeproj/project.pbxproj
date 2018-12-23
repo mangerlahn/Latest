@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				50290E741E53EB6A00133E3D /* AppDelegate.swift */,
-				5095122A1FF36326003D2D7F /* Visuals */,
+				5095122A1FF36326003D2D7F /* Interface */,
 				5095120D1FF3626A003D2D7F /* Model */,
 				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
 				5095120C1FF3623B003D2D7F /* Resources */,
@@ -182,13 +182,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		502929F9212062B300F00D1C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				502929F8212062A100F00D1C /* Controller */,
-				502929F9212062B300F00D1C /* Views */,
 			);
 			path = "Release Notes";
 			sourceTree = "<group>";
@@ -255,14 +247,14 @@
 			path = "Update Checker Extensions";
 			sourceTree = "<group>";
 		};
-		5095122A1FF36326003D2D7F /* Visuals */ = {
+		5095122A1FF36326003D2D7F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
 				50DAEF3E21047E3B00B32E8A /* Update Table View */,
 				5058BA36211F9F49003F332B /* Release Notes */,
 			);
-			path = Visuals;
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		5095122E1FF3634E003D2D7F /* Window Controllers */ = {
