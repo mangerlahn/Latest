@@ -46,9 +46,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The empty state label centered in the list view indicating that no updates are available
     @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
 	
-	/// The search field used for filtering apps
-	@IBOutlet weak var searchField: NSSearchField!
-	
 	/// The label indicating how many updates are vailable
     @IBOutlet weak var updatesLabel: NSTextField!
     
@@ -326,6 +323,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         menu.items.forEach({ $0.representedObject = row })
     }
     
+	
+	// MARK: - Search
+	
+	/// The search field used for filtering apps
+	@IBOutlet weak var searchField: NSSearchField!
+	
     
     // MARK: - Private Methods
 
