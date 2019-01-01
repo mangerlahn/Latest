@@ -8,6 +8,15 @@
 
 import AppKit
 
+/// Custom search field subclass that resigns first responder on ESC
+class UpdateSearchField: NSSearchField {
+
+	override func cancelOperation(_ sender: Any?) {
+		self.window?.makeFirstResponder(nil)
+	}
+	
+}
+
 extension UpdateTableViewController {
 	
 	@IBAction func searchFieldTextDidChange(_ sender: NSSearchField) {
