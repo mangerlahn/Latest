@@ -136,7 +136,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return nil
         }
         
-        cell.textField?.stringValue = app.name
+        cell.nameTextField?.attributedStringValue = app.highlightedName(for: self.apps.filterQuery)
         cell.currentVersionTextField?.stringValue = versionInformation.current
         cell.newVersionTextField?.stringValue = versionInformation.new
         

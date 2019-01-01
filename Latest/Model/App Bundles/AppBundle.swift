@@ -93,7 +93,17 @@ class AppBundle : NSObject {
         NSWorkspace.shared.activateFileViewerSelecting([self.url])
     }
     
-    
+	func highlightedName(for query: String?) -> NSAttributedString {
+		let name = NSMutableAttributedString(string: self.name)
+		
+		if let queryString = query, let selectedRange = self.name.lowercased().range(of: queryString.lowercased()) {
+			name.addAttribute(.backgroundColor, value: NSColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.3), range: NSRange(selectedRange, in: self.name))
+		}
+		
+		return name
+	}
+	
+	
     // MARK: - Debug
     
     func printDebugDescription() {

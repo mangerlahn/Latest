@@ -21,7 +21,12 @@ extension UpdateTableViewController {
 	
 	@IBAction func searchFieldTextDidChange(_ sender: NSSearchField) {
 		self.apps.filterQuery = sender.stringValue
+		
+		// Reload all visible lists
 		self.tableView.reloadData()
+		if #available(OSX 10.12.2, *) {
+			self.scrubber?.reloadData()
+		}
 	}
 	
 }
