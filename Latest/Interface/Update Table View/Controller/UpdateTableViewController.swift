@@ -93,7 +93,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         super.viewWillAppear()
 		
 		// Setup search field
-        NSLayoutConstraint(item: self.searchField, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
+        NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
 		self.view.window?.makeFirstResponder(nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: self.tableView.enclosingScrollView)
