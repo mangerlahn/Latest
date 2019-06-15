@@ -12,6 +12,9 @@ import Cocoa
  The cell that is used in the list of available updates
  */
 class UpdateCell: NSTableCellView {
+	
+	/// The label displaying the current version of the app
+	@IBOutlet weak var nameTextField: NSTextField?
 
     /// The label displaying the current version of the app
     @IBOutlet weak var currentVersionTextField: NSTextField?

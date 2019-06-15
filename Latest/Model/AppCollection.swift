@@ -12,13 +12,31 @@ import Foundation
 /// This structure supports the following states:
 /// - All apps with updates available
 /// - All installed apps, separated from the ones with updates through sections
+/// - A filtered list of apps based on a given filter string
 struct AppCollection {
+	
+	/// Holds the apps
+	private var _rawData = [AppBundle]()
+	private var _filteredData: [AppBundle]?
     
-    /// Holds the apps
-    fileprivate var data = [AppBundle]()
+	/// Convenience Accessor to the data store
+	fileprivate var data: [AppBundle] {
+		return self._filteredData ?? self._rawData
+	}
     
     /// Flag indicating if all apps are presented
     var showInstalledUpdates = false
+	
+	/// The query after which apps can be filtered
+	var filterQuery: String? {
+		didSet {
+			if self.filterQuery?.isEmpty ?? false {
+				self.filterQuery = nil
+			}
+			
+			self.updateFilteredApps()
+		}
+	}
 
     /// The indexes of the sections as well as installed apps
     var indexesOfInstalledApps: IndexSet {
@@ -36,7 +54,8 @@ struct AppCollection {
         if !self.showInstalledUpdates {
             return self.data.filter({ $0.updateAvailable }).count
         }
-        
+		
+		// Append header row count
         return self.data.count + 2
     }
     
@@ -45,16 +64,16 @@ struct AppCollection {
     
     /// Adds a new app to the collection
     mutating func append(_ element: Element) {
-        self.data.append(element)
-        self.data.sort { (bundle1, bundle2) -> Bool in
+        self._rawData.append(element)
+        self._rawData.sort { (bundle1, bundle2) -> Bool in
             if bundle1.updateAvailable != bundle2.updateAvailable {
                 return bundle1.updateAvailable
             }
             
             return bundle1.name.lowercased() < bundle2.name.lowercased()
         }
-        
-        self.updateCountOfAvailableUpdates()
+		
+		self.updateFilteredApps()
     }
 
     /// Returns the relative index of the element. This index may not reflect the internal position of the app due to section offsets
@@ -70,8 +89,8 @@ struct AppCollection {
         guard let index = self.data.firstIndex(where: { $0 == appBundle }) else { return nil }
         let returnedIndex = self.index(of: appBundle)
         
-        self.data.remove(at: index)
-        self.updateCountOfAvailableUpdates()
+        self._rawData.remove(at: index)
+		self.updateFilteredApps()
         
         return returnedIndex
     }
@@ -143,4 +162,23 @@ extension AppCollection: Collection {
         return index
     }
     
+}
+
+// MARK: - Filtering
+extension AppCollection {
+	
+	mutating func updateFilteredApps() {
+		defer {
+			self.updateCountOfAvailableUpdates()
+		}
+		
+		guard let filterQuery = self.filterQuery?.lowercased() else {
+			self._filteredData = nil
+			return
+		}
+		
+		// Filter all available apps using the given query
+		self._filteredData = self._rawData.filter({ $0.name.lowercased().contains(filterQuery) })
+	}
+	
 }

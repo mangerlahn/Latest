@@ -95,7 +95,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         
         let app = self.apps[index]
         
-        view.textField.stringValue = app.name
+        view.textField.attributedStringValue = app.highlightedName(for: self.apps.filterQuery)
         
         IconCache.shared.icon(for: app) { (image) in
             view.imageView.image = image

@@ -45,8 +45,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// The empty state label centered in the list view indicating that no updates are available
     @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
-    
-    /// The label indicating how many updates are vailable
+	
+	/// The label indicating how many updates are vailable
     @IBOutlet weak var updatesLabel: NSTextField!
     
     /// The divider separating the toolbar from the list
@@ -91,11 +91,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        
-        guard let scrollView = self.tableView.enclosingScrollView else { return }
-        
-        let topConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1)
-        topConstraint.isActive = true
+		
+		// Setup search field
+        NSLayoutConstraint(item: self.searchField, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
+		self.view.window?.makeFirstResponder(nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: self.tableView.enclosingScrollView)
     }
@@ -137,7 +136,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return nil
         }
         
-        cell.textField?.stringValue = app.name
+        cell.nameTextField?.attributedStringValue = app.highlightedName(for: self.apps.filterQuery)
         cell.currentVersionTextField?.stringValue = versionInformation.current
         cell.newVersionTextField?.stringValue = versionInformation.new
         
@@ -326,6 +325,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         menu.items.forEach({ $0.representedObject = row })
     }
     
+	
+	// MARK: - Search
+	
+	/// The search field used for filtering apps
+	@IBOutlet weak var searchField: NSSearchField!
+	
     
     // MARK: - Private Methods
 

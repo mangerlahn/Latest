@@ -13,6 +13,9 @@
 /* New Version String */
 "New version: %@" = "Neue Version: %@";
 
+/* Title of release notes empty state */
+"No app selected." = "Keine App ausgewählt.";
+
 /* Error message that no release notes were found */
 "No release notes were found for this app." = "Zu dieser App wurden keine Release Notes gefunden.";
 
@@ -21,6 +24,9 @@
 
 /* Open all apps button */
 "Open Apps" = "Apps öffnen";
+
+/* Description of release notes empty state */
+"Select an app from the list to read its release notes." = "Wähle in der Seitenleiste eine App, um deren Release Notes zu lesen.";
 
 /* Revea in Finder Row action */
 "Show in Finder" = "Im Finder zeigen";
