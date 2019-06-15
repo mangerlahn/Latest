@@ -92,12 +92,14 @@ class AppBundle : NSObject {
     func showInFinder() {
         NSWorkspace.shared.activateFileViewerSelecting([self.url])
     }
-    
+	
+	/// Returns an attributed string that highlights a given search query within this app's name.
 	func highlightedName(for query: String?) -> NSAttributedString {
 		let name = NSMutableAttributedString(string: self.name)
 		
 		if let queryString = query, let selectedRange = self.name.lowercased().range(of: queryString.lowercased()) {
-			name.addAttribute(.backgroundColor, value: NSColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.3), range: NSRange(selectedRange, in: self.name))
+			name.addAttribute(.foregroundColor, value: NSColor.tertiaryLabelColor, range: NSMakeRange(0, name.length))
+			name.addAttribute(.foregroundColor, value: NSColor.labelColor, range: NSRange(selectedRange, in: self.name))
 		}
 		
 		return name
