@@ -67,6 +67,9 @@ class UpdateChecker {
     
     /// A shared instance of the fileManager
     let fileManager = FileManager.default
+	
+	/// Excluded subfolders that won't be checked.
+	let excludedSubfolders = Set(["Setapp"])
     
     /// Starts the update checking process
     func run() {
@@ -84,6 +87,12 @@ class UpdateChecker {
         self.remainingApps = 0
         
         while let appURL = enumerator.nextObject() as? URL {
+			// Check for subfolders that should be skipped
+			if self.excludedSubfolders.contains(appURL.lastPathComponent) {
+				enumerator.skipDescendants()
+				continue
+			}
+			
             guard let value = try? appURL.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
                 continue
             }

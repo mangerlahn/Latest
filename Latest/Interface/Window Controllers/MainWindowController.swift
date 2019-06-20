@@ -107,6 +107,10 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     @IBAction func toggleDetail(_ sender: Any?) {
         self.showReleaseNotes(!self.releaseNotesVisible, animated: true)
     }
+	
+	@IBAction func performFindPanelAction(_ sender: Any?) {
+		self.listViewController.searchField.becomeFirstResponder()
+	}
     
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
         self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
@@ -125,6 +129,9 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
+		case #selector(performFindPanelAction(_:)):
+			// Only allow the find item
+			return menuItem.tag == 1
         default:
             return true
         }

@@ -24,6 +24,7 @@ class UpdateItemView: NSScrubberItemView {
         self.textField.font = NSFont.systemFont(ofSize: 0)
         self.textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         self.textField.textColor = NSColor.white
+		self.textField.allowsEditingTextAttributes = true
 
         self.imageView.imageScaling = .scaleProportionallyDown
 

@@ -46,7 +46,7 @@ extension UpdateChecker {
             guard error == nil,
                 let data = data,
                 let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                let results = json?["results"] as? [Any],
+                let results = json["results"] as? [Any],
                 results.count != 0,
                 let appData = results[0] as? [String: Any] else {
                     appUpdate.newestVersion.releaseNotes = error

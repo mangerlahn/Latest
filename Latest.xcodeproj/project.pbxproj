@@ -36,10 +36,11 @@
 		509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */; };
 		509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateTableViewController.swift */; };
 		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
+		50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */; };
 		50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
 		50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */; };
-		50DAEF4021047E5100B32E8A /* TouchBarHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* TouchBarHandling.swift */; };
+		50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */; };
 		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,12 +112,13 @@
 		509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesViewController.swift; sourceTree = "<group>"; };
 		509512321FF36380003D2D7F /* UpdateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewController.swift; sourceTree = "<group>"; };
 		509512351FF36388003D2D7F /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+Search.swift"; sourceTree = "<group>"; };
 		50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupRowView.swift; sourceTree = "<group>"; };
 		50C81D691FBADC5900324C2E /* Latest Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latest Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C81D6D1FBADC5900324C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C81D731FBADC9100324C2E /* VersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTest.swift; sourceTree = "<group>"; };
 		50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		50DAEF3F21047E5100B32E8A /* TouchBarHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBarHandling.swift; sourceTree = "<group>"; };
+		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,9 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				50290E741E53EB6A00133E3D /* AppDelegate.swift */,
-				5095122A1FF36326003D2D7F /* Visuals */,
+				5095122A1FF36326003D2D7F /* Interface */,
 				5095120D1FF3626A003D2D7F /* Model */,
-				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
 				5095120C1FF3623B003D2D7F /* Resources */,
 			);
 			path = Latest;
@@ -182,13 +183,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		502929F9212062B300F00D1C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				502929F8212062A100F00D1C /* Controller */,
-				502929F9212062B300F00D1C /* Views */,
 			);
 			path = "Release Notes";
 			sourceTree = "<group>";
@@ -255,14 +248,15 @@
 			path = "Update Checker Extensions";
 			sourceTree = "<group>";
 		};
-		5095122A1FF36326003D2D7F /* Visuals */ = {
+		5095122A1FF36326003D2D7F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
 				50DAEF3E21047E3B00B32E8A /* Update Table View */,
 				5058BA36211F9F49003F332B /* Release Notes */,
 			);
-			path = Visuals;
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		5095122E1FF3634E003D2D7F /* Window Controllers */ = {
@@ -295,7 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				509512321FF36380003D2D7F /* UpdateTableViewController.swift */,
-				50DAEF3F21047E5100B32E8A /* TouchBarHandling.swift */,
+				50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */,
+				50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -323,6 +318,8 @@
 				50290E6F1E53EB6A00133E3D /* Resources */,
 				5046AFF11FF6CEBD00ABAA97 /* Embed Frameworks */,
 				5045842E1FF6CF2D00E15E9D /* CopyFiles */,
+				50EAB06122B51AA200685775 /* Update Build Number */,
+				50EAB06222B51EDC00685775 /* Sign Bundled Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,7 +362,7 @@
 					50290E701E53EB6A00133E3D = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = VFABJ5RE5Q;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -376,7 +373,7 @@
 					50C81D681FBADC5900324C2E = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = VFABJ5RE5Q;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 50290E701E53EB6A00133E3D;
 					};
@@ -387,6 +384,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				de,
@@ -425,6 +423,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		50EAB06122B51AA200685775 /* Update Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Update Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\ngit=$(sh /etc/profile; which git)\nnumber_of_commits=$(\"$git\" rev-list HEAD --count)\n\ntarget_plist=\"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\ndsym_plist=\"$DWARF_DSYM_FOLDER_PATH/$DWARF_DSYM_FILE_NAME/Contents/Info.plist\"\n\nfor plist in \"$target_plist\" \"$dsym_plist\"; do\nif [ -f \"$plist\" ]; then\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $number_of_commits\" \"$plist\"\nfi\ndone\n";
+			showEnvVarsInLog = 0;
+		};
+		50EAB06222B51EDC00685775 /* Sign Bundled Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sign Bundled Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\n\n# By default, use the configured code signing identity for the project/target\nIDENTITY=\"${CODE_SIGN_IDENTITY}\"\nif [ \"$IDENTITY\" == \"\" ]\nthen\n# If a code signing identity is not specified, use ad hoc signing\nIDENTITY=\"-\"\nfi\ncodesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\ncodesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50290E6D1E53EB6A00133E3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -441,6 +480,7 @@
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
+				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
 				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
 				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
@@ -450,7 +490,7 @@
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
 				506DF77621248F6200D792FC /* AppCollection.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
-				50DAEF4021047E5100B32E8A /* TouchBarHandling.swift in Sources */,
+				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,
 				506DF7782125580400D792FC /* UpdateTableView.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
 				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
@@ -629,8 +669,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Latest/Resources/Latest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = VFABJ5RE5Q;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
@@ -639,7 +682,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -649,8 +693,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Latest/Resources/Latest.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = VFABJ5RE5Q;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
@@ -659,7 +706,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -680,7 +728,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/Contents/MacOS/Latest";
 			};
 			name = Debug;
@@ -702,7 +750,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/Contents/MacOS/Latest";
 			};
 			name = Release;
