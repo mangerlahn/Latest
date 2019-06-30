@@ -20,6 +20,8 @@
 		5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; };
 		5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */; };
+		5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048573F22C81DCF00C52C48 /* CommerceKit.framework */; };
+		5048574222C81DF900C52C48 /* StoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048574122C81DF800C52C48 /* StoreFoundation.framework */; };
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
 		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
 		506DF77621248F6200D792FC /* AppCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppCollection.swift */; };
@@ -96,6 +98,36 @@
 		502929FA21206BC800F00D1C /* ReleaseNotesContentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesContentProtocol.swift; sourceTree = "<group>"; };
 		5045842B1FF6CF0F00E15E9D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		5048573F22C81DCF00C52C48 /* CommerceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommerceKit.framework; path = ../../../../../../System/Library/PrivateFrameworks/CommerceKit.framework; sourceTree = "<group>"; };
+		5048574122C81DF800C52C48 /* StoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreFoundation.framework; path = ../../../../../../System/Library/PrivateFrameworks/StoreFoundation.framework; sourceTree = "<group>"; };
+		5048574422C81FA600C52C48 /* SSPurchaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchaseResponse.h; sourceTree = "<group>"; };
+		5048574522C81FA600C52C48 /* ISURLOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISURLOperationDelegate.h; sourceTree = "<group>"; };
+		5048574622C81FA600C52C48 /* ISAuthenticationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationResponse.h; sourceTree = "<group>"; };
+		5048574722C81FA600C52C48 /* CKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUpdate.h; sourceTree = "<group>"; };
+		5048574822C81FA600C52C48 /* CKSoftwareProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareProduct.h; sourceTree = "<group>"; };
+		5048574922C81FA600C52C48 /* SSDownloadPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadPhase.h; sourceTree = "<group>"; };
+		5048574A22C81FA600C52C48 /* SSDownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadStatus.h; sourceTree = "<group>"; };
+		5048574B22C81FA600C52C48 /* ISServiceRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServiceRemoteObject.h; sourceTree = "<group>"; };
+		5048574C22C81FA600C52C48 /* SSDownloadMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadMetadata.h; sourceTree = "<group>"; };
+		5048574D22C81FA600C52C48 /* ISStoreAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreAccount.h; sourceTree = "<group>"; };
+		5048574E22C81FA600C52C48 /* SSDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownload.h; sourceTree = "<group>"; };
+		5048574F22C81FA600C52C48 /* ISAccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAccountService.h; sourceTree = "<group>"; };
+		5048575022C81FA600C52C48 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		5048575122C81FA600C52C48 /* ISOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISOperationDelegate.h; sourceTree = "<group>"; };
+		5048575222C81FA600C52C48 /* ISServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServiceProxy.h; sourceTree = "<group>"; };
+		5048575322C81FA600C52C48 /* ISAuthenticationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationContext.h; sourceTree = "<group>"; };
+		5048575422C81FA600C52C48 /* SSPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchase.h; sourceTree = "<group>"; };
+		5048575522C81FA600C52C48 /* ISStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreClient.h; sourceTree = "<group>"; };
+		5048575722C81FA600C52C48 /* CKDownloadQueueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueueObserver.h; sourceTree = "<group>"; };
+		5048575822C81FA600C52C48 /* CKDownloadDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadDirectory.h; sourceTree = "<group>"; };
+		5048575922C81FA600C52C48 /* CKSoftwareMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareMap.h; sourceTree = "<group>"; };
+		5048575A22C81FA600C52C48 /* CKPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPurchaseController.h; sourceTree = "<group>"; };
+		5048575B22C81FA600C52C48 /* CKAccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAccountStore.h; sourceTree = "<group>"; };
+		5048575C22C81FA600C52C48 /* CKUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUpdateController.h; sourceTree = "<group>"; };
+		5048575D22C81FA600C52C48 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		5048575E22C81FA600C52C48 /* CKServiceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKServiceInterface.h; sourceTree = "<group>"; };
+		5048575F22C81FA600C52C48 /* ISStoreURLOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreURLOperationDelegate.h; sourceTree = "<group>"; };
+		5048576022C81FA600C52C48 /* CKDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueue.h; sourceTree = "<group>"; };
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
 		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
 		506DF77521248F6200D792FC /* AppCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollection.swift; sourceTree = "<group>"; };
@@ -127,6 +159,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5048574222C81DF900C52C48 /* StoreFoundation.framework in Frameworks */,
+				5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */,
 				5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,10 +220,58 @@
 		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5048574122C81DF800C52C48 /* StoreFoundation.framework */,
+				5048573F22C81DCF00C52C48 /* CommerceKit.framework */,
 				5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */,
+				5048575622C81FA600C52C48 /* CommerceKit */,
+				5048574322C81FA600C52C48 /* StoreFoundation */,
 				5045842B1FF6CF0F00E15E9D /* Sparkle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5048574322C81FA600C52C48 /* StoreFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				5048574422C81FA600C52C48 /* SSPurchaseResponse.h */,
+				5048574522C81FA600C52C48 /* ISURLOperationDelegate.h */,
+				5048574622C81FA600C52C48 /* ISAuthenticationResponse.h */,
+				5048574722C81FA600C52C48 /* CKUpdate.h */,
+				5048574822C81FA600C52C48 /* CKSoftwareProduct.h */,
+				5048574922C81FA600C52C48 /* SSDownloadPhase.h */,
+				5048574A22C81FA600C52C48 /* SSDownloadStatus.h */,
+				5048574B22C81FA600C52C48 /* ISServiceRemoteObject.h */,
+				5048574C22C81FA600C52C48 /* SSDownloadMetadata.h */,
+				5048574D22C81FA600C52C48 /* ISStoreAccount.h */,
+				5048574E22C81FA600C52C48 /* SSDownload.h */,
+				5048574F22C81FA600C52C48 /* ISAccountService.h */,
+				5048575022C81FA600C52C48 /* module.modulemap */,
+				5048575122C81FA600C52C48 /* ISOperationDelegate.h */,
+				5048575222C81FA600C52C48 /* ISServiceProxy.h */,
+				5048575322C81FA600C52C48 /* ISAuthenticationContext.h */,
+				5048575422C81FA600C52C48 /* SSPurchase.h */,
+				5048575522C81FA600C52C48 /* ISStoreClient.h */,
+			);
+			name = StoreFoundation;
+			path = Frameworks/StoreFoundation;
+			sourceTree = "<group>";
+		};
+		5048575622C81FA600C52C48 /* CommerceKit */ = {
+			isa = PBXGroup;
+			children = (
+				5048575722C81FA600C52C48 /* CKDownloadQueueObserver.h */,
+				5048575822C81FA600C52C48 /* CKDownloadDirectory.h */,
+				5048575922C81FA600C52C48 /* CKSoftwareMap.h */,
+				5048575A22C81FA600C52C48 /* CKPurchaseController.h */,
+				5048575B22C81FA600C52C48 /* CKAccountStore.h */,
+				5048575C22C81FA600C52C48 /* CKUpdateController.h */,
+				5048575D22C81FA600C52C48 /* module.modulemap */,
+				5048575E22C81FA600C52C48 /* CKServiceInterface.h */,
+				5048575F22C81FA600C52C48 /* ISStoreURLOperationDelegate.h */,
+				5048576022C81FA600C52C48 /* CKDownloadQueue.h */,
+			);
+			name = CommerceKit;
+			path = Frameworks/CommerceKit;
 			sourceTree = "<group>";
 		};
 		5058BA36211F9F49003F332B /* Release Notes */ = {
@@ -366,7 +448,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -667,7 +749,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Latest/Resources/Latest.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -676,13 +757,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
+					/System/Library/PrivateFrameworks,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/CommerceKit $(SRCROOT)/Frameworks/StoreFoundation";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};
 			name = Debug;
 		};
@@ -691,7 +775,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Latest/Resources/Latest.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -700,13 +783,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
+					/System/Library/PrivateFrameworks,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/CommerceKit $(SRCROOT)/Frameworks/StoreFoundation";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};
 			name = Release;
 		};
