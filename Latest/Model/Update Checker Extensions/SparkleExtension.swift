@@ -22,7 +22,7 @@ extension UpdateChecker {
         let appName = app.lastPathComponent as NSString
         let bundle = Bundle(path: app.path)
         
-        guard let information = bundle?.infoDictionary else {
+        guard let information = bundle?.infoDictionary, let identifier = bundle?.bundleIdentifier else {
             return false
         }
         
@@ -40,8 +40,7 @@ extension UpdateChecker {
             }
             
             // The app uses Devmate, so lets get the appcast from their servers
-            guard let identifier = bundle?.bundleIdentifier,
-                var feedURL = URL(string: "https://updates.devmate.com") else {
+            guard var feedURL = URL(string: "https://updates.devmate.com") else {
                 return false
             }
             
@@ -51,7 +50,7 @@ extension UpdateChecker {
             url = feedURL
         }
 
-        let appBundle = SparkleAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
+        let appBundle = SparkleAppBundle(appName: appName.deletingPathExtension, bundleIdentifier: identifier, versionNumber: version, buildNumber: buildNumber, url: app)
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in

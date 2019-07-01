@@ -34,7 +34,7 @@ extension UpdateChecker {
               let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(languageCode)&entity=macSoftware&limit=1")
               else { return false }
         
-        let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, versionNumber: version, buildNumber: buildNumber, url: app)
+        let appUpdate = MacAppStoreAppBundle(appName: appName.deletingPathExtension, bundleIdentifier: bundleIdentifier, versionNumber: version, buildNumber: buildNumber, url: app)
 
         if bundleIdentifier.contains("com.apple.InstallAssistant") {
             self.didFailToProcess(appUpdate)

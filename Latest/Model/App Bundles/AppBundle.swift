@@ -40,6 +40,9 @@ class AppBundle : NSObject {
     /// The display name of the app
     var name = ""
     
+	/// The bundle identifier of the app
+	let bundleIdentifier: String
+	
     /// The url of the app on the users computer
     var url: URL
     
@@ -51,11 +54,12 @@ class AppBundle : NSObject {
     
     /**
      Convenience initializer for creating an app object
-     - parameter name: The name of the app
-     - parameter versionNumber: The current version number of the app
-     - parameter buildNumber: The current build number of the app
+	- parameter name: The name of the app
+	- parameter bundleIdentifier: The bundle identifier of the app
+    - parameter versionNumber: The current version number of the app
+    - parameter buildNumber: The current build number of the app
      */
-    init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
+	init(appName: String, bundleIdentifier: String, versionNumber: String?, buildNumber: String?, url: URL) {
         self.version = Version(versionNumber ?? "", buildNumber ?? "")
         
         self.newestVersion = UpdateInfo()
@@ -63,6 +67,8 @@ class AppBundle : NSObject {
         
         self.name = appName
         self.url = url
+		
+		self.bundleIdentifier = bundleIdentifier
     }
     
     var updateAvailable: Bool {

@@ -19,8 +19,8 @@ class MacAppStoreAppBundle: AppBundle {
     /// The date formatter used for parsing
     private var dateFormatter: DateFormatter!
     
-    override init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
-        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber, url: url)
+	override init(appName: String, bundleIdentifier: String, versionNumber: String?, buildNumber: String?, url: URL) {
+		super.init(appName: appName, bundleIdentifier: bundleIdentifier, versionNumber: versionNumber, buildNumber: buildNumber, url: url)
         
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale(identifier: "en_US")
