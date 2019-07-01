@@ -35,16 +35,16 @@ protocol AppBundleDelegate {
 class AppBundle : NSObject {
     
     /// The version currently present on the users computer
-    var version: Version
+    let version: Version
     
     /// The display name of the app
-    var name = ""
-    
+	let name: String
+	
 	/// The bundle identifier of the app
 	let bundleIdentifier: String
 	
     /// The url of the app on the users computer
-    var url: URL
+    let url: URL
     
     /// The delegate to be notified when app information changes
     var delegate : AppBundleDelegate?
