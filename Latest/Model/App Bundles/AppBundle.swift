@@ -84,15 +84,13 @@ class AppBundle : NSObject {
     
     /// Opens the app and a given index
     func open() {
-        var appStoreURL : URL?
-        
-        if let appStoreApp = self as? MacAppStoreAppBundle {
-            appStoreURL = appStoreApp.appStoreURL
-        }
-        
-        let url = appStoreURL ?? self.url
-        NSWorkspace.shared.open(url)
+        NSWorkspace.shared.open(self.url)
     }
+	
+	/// Updates the app. This is a subclassing hook. The default implementation opens the app.
+	func update() {
+		self.open()
+	}
     
     /// Reveals the app at a given index in Finder
     func showInFinder() {

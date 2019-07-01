@@ -67,4 +67,11 @@ class MacAppStoreAppBundle: AppBundle {
             self.delegate?.appDidUpdateVersionInformation(self)
         })
     }
+	// MARK: - Actions
+	
+	override func open() {
+		// Should preferably open the Mac App Store
+		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
+	}
+	
 }
