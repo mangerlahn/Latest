@@ -29,6 +29,43 @@ protocol AppBundleDelegate {
     
 }
 
+struct UpdateProgress {
+	
+	var error: Error? {
+		didSet {
+			self.notifyObservers()
+		}
+	}
+	
+	var state: UpdateOperation.ProgressState = .none {
+		didSet {
+			self.notifyObservers()
+		}
+	}
+	
+	typealias ObserverHandler = () -> Void
+	
+	private var observers = [NSObject: ObserverHandler]()
+	
+	mutating func addObserver(_ observer: NSObject, handler: @escaping ObserverHandler) {
+		self.observers[observer] = handler
+		
+		// Call handler immediately to propagate initial state
+		handler()
+	}
+	
+	mutating func removeObserver(_ observer: NSObject) {
+		self.observers.removeValue(forKey: observer)
+	}
+		
+	func notifyObservers() {
+		self.observers.forEach { (key: NSObject, handler: UpdateProgress.ObserverHandler) in
+			handler()
+		}
+	}
+	
+}
+
 /**
  The class containing information about one specific app. It holds information like its current version, name and path.
  */
@@ -51,7 +88,9 @@ class AppBundle : NSObject {
     
     /// The newest information available for this app
     var newestVersion: UpdateInfo
-    
+	
+	var updateProgress = UpdateProgress()
+	
     /**
      Convenience initializer for creating an app object
 	- parameter name: The name of the app

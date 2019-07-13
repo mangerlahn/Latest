@@ -11,6 +11,7 @@ import Foundation
 class UpdateOperation: StatefulOperation {
 	
 	enum ProgressState {
+		case none
 		case pending
 		case initializing
 		case downloading(Double)
@@ -40,11 +41,13 @@ class UpdateOperation: StatefulOperation {
 	}
 	
 	override func finish(with error: Error) {
+		self.progressHandler(.none)
 		self.completionHandler(error)
 		super.finish(with: error)
 	}
 	
 	override func finish() {
+		self.progressHandler(.none)
 		self.completionHandler(nil)
 		super.finish()
 	}

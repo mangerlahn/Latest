@@ -13,6 +13,23 @@ import Cocoa
  */
 class UpdateCell: NSTableCellView {
 	
+	var app: AppBundle? {
+		willSet {
+			// Remove observer from existing app
+			if let app = self.app {
+				app.updateProgress.removeObserver(self)
+			}
+		}
+		
+		didSet {
+			if let app = self.app {
+				app.updateProgress.addObserver(self, handler: { [weak self] in
+					
+				})
+			}
+		}
+	}
+	
 	/// The label displaying the current version of the app
 	@IBOutlet weak var nameTextField: NSTextField?
 
@@ -21,7 +38,11 @@ class UpdateCell: NSTableCellView {
     
     /// The label displaying the newest version available for the app
     @IBOutlet weak var newVersionTextField: NSTextField?
-    
+	
+	deinit {
+		self.app?.updateProgress.removeObserver(self)
+	}
+	
     override var backgroundStyle: NSView.BackgroundStyle {
         didSet {
             if self.backgroundStyle == .dark {
