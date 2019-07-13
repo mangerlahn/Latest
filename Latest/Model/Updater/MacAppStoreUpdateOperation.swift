@@ -76,8 +76,8 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 	}
 	
 }
-	// MARK: - Download Observer
-	
+
+// MARK: - Download Observer	
 extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, statusChangedFor download: SSDownload!) {
@@ -102,9 +102,8 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 	
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithAddition download: SSDownload!) {}
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithRemoval download: SSDownload!) {
-		guard download.metadata.itemIdentifier == purchase.itemIdentifier,
-			let status = download.status else {
-				return
+		guard download.metadata.itemIdentifier == self.purchase.itemIdentifier, let status = download.status else {
+			return
 		}
 		
 		if status.isFailed {
