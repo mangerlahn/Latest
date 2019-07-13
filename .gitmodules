@@ -1,0 +1,3 @@
+[submodule "Frameworks/mas-cli"]
+	path = Frameworks/mas-cli
+	url = git@github.com:mas-cli/mas.git

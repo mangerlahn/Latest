@@ -44,6 +44,48 @@
 		50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */; };
 		50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */; };
 		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
+		50F5433322D9C485004B3F8D /* StoreAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F542FF22D9C485004B3F8D /* StoreAccount.swift */; };
+		50F5433422D9C485004B3F8D /* ISStoreAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430022D9C485004B3F8D /* ISStoreAccount.swift */; };
+		50F5433522D9C485004B3F8D /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430122D9C485004B3F8D /* Downloader.swift */; };
+		50F5433622D9C485004B3F8D /* CKSoftwareProduct+SoftwareProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430222D9C485004B3F8D /* CKSoftwareProduct+SoftwareProduct.swift */; };
+		50F5433722D9C485004B3F8D /* SSPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430322D9C485004B3F8D /* SSPurchase.swift */; };
+		50F5433822D9C485004B3F8D /* PurchaseDownloadObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430422D9C485004B3F8D /* PurchaseDownloadObserver.swift */; };
+		50F5433922D9C485004B3F8D /* URLSession+NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430622D9C485004B3F8D /* URLSession+NetworkSession.swift */; };
+		50F5433A22D9C485004B3F8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430722D9C485004B3F8D /* NetworkManager.swift */; };
+		50F5433B22D9C485004B3F8D /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430822D9C485004B3F8D /* NetworkSession.swift */; };
+		50F5433C22D9C485004B3F8D /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430922D9C485004B3F8D /* NetworkResult.swift */; };
+		50F5433D22D9C485004B3F8D /* SearchResultFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430B22D9C485004B3F8D /* SearchResultFormatter.swift */; };
+		50F5433E22D9C485004B3F8D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430C22D9C485004B3F8D /* Utilities.swift */; };
+		50F5433F22D9C485004B3F8D /* AppInfoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430D22D9C485004B3F8D /* AppInfoFormatter.swift */; };
+		50F5434022D9C485004B3F8D /* SoftwareProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5430F22D9C485004B3F8D /* SoftwareProduct.swift */; };
+		50F5434122D9C485004B3F8D /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431022D9C485004B3F8D /* SearchResult.swift */; };
+		50F5434222D9C485004B3F8D /* SearchResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431122D9C485004B3F8D /* SearchResultList.swift */; };
+		50F5434322D9C485004B3F8D /* Dictionary+StringOrEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431322D9C485004B3F8D /* Dictionary+StringOrEmpty.swift */; };
+		50F5434422D9C485004B3F8D /* String+PercentEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431422D9C485004B3F8D /* String+PercentEncoding.swift */; };
+		50F5434522D9C485004B3F8D /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431622D9C485004B3F8D /* Vendor.swift */; };
+		50F5434622D9C485004B3F8D /* Outdated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431722D9C485004B3F8D /* Outdated.swift */; };
+		50F5434722D9C485004B3F8D /* Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431822D9C485004B3F8D /* Install.swift */; };
+		50F5434822D9C485004B3F8D /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431922D9C485004B3F8D /* Info.swift */; };
+		50F5434922D9C485004B3F8D /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431A22D9C485004B3F8D /* Version.swift */; };
+		50F5434A22D9C485004B3F8D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431B22D9C485004B3F8D /* Home.swift */; };
+		50F5434B22D9C485004B3F8D /* Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431C22D9C485004B3F8D /* Reset.swift */; };
+		50F5434C22D9C485004B3F8D /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431D22D9C485004B3F8D /* Upgrade.swift */; };
+		50F5434D22D9C485004B3F8D /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431E22D9C485004B3F8D /* List.swift */; };
+		50F5434E22D9C485004B3F8D /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5431F22D9C485004B3F8D /* SignOut.swift */; };
+		50F5434F22D9C485004B3F8D /* Open.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432022D9C485004B3F8D /* Open.swift */; };
+		50F5435022D9C485004B3F8D /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432122D9C485004B3F8D /* SignIn.swift */; };
+		50F5435122D9C485004B3F8D /* Lucky.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432222D9C485004B3F8D /* Lucky.swift */; };
+		50F5435222D9C485004B3F8D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432322D9C485004B3F8D /* Account.swift */; };
+		50F5435322D9C485004B3F8D /* Uninstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432422D9C485004B3F8D /* Uninstall.swift */; };
+		50F5435422D9C485004B3F8D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432522D9C485004B3F8D /* Search.swift */; };
+		50F5435522D9C485004B3F8D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F5432822D9C485004B3F8D /* Info.plist */; };
+		50F5435622D9C485004B3F8D /* MASError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432A22D9C485004B3F8D /* MASError.swift */; };
+		50F5435722D9C485004B3F8D /* OpenSystemCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432C22D9C485004B3F8D /* OpenSystemCommand.swift */; };
+		50F5435822D9C485004B3F8D /* ExternalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432D22D9C485004B3F8D /* ExternalCommand.swift */; };
+		50F5435922D9C485004B3F8D /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5432F22D9C485004B3F8D /* StoreSearch.swift */; };
+		50F5435A22D9C485004B3F8D /* AppLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5433022D9C485004B3F8D /* AppLibrary.swift */; };
+		50F5435B22D9C485004B3F8D /* MasStoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5433122D9C485004B3F8D /* MasStoreSearch.swift */; };
+		50F5435C22D9C485004B3F8D /* MasAppLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5433222D9C485004B3F8D /* MasAppLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,34 +142,6 @@
 		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		5048573F22C81DCF00C52C48 /* CommerceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommerceKit.framework; path = ../../../../../../System/Library/PrivateFrameworks/CommerceKit.framework; sourceTree = "<group>"; };
 		5048574122C81DF800C52C48 /* StoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreFoundation.framework; path = ../../../../../../System/Library/PrivateFrameworks/StoreFoundation.framework; sourceTree = "<group>"; };
-		5048574422C81FA600C52C48 /* SSPurchaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchaseResponse.h; sourceTree = "<group>"; };
-		5048574522C81FA600C52C48 /* ISURLOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISURLOperationDelegate.h; sourceTree = "<group>"; };
-		5048574622C81FA600C52C48 /* ISAuthenticationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationResponse.h; sourceTree = "<group>"; };
-		5048574722C81FA600C52C48 /* CKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUpdate.h; sourceTree = "<group>"; };
-		5048574822C81FA600C52C48 /* CKSoftwareProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareProduct.h; sourceTree = "<group>"; };
-		5048574922C81FA600C52C48 /* SSDownloadPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadPhase.h; sourceTree = "<group>"; };
-		5048574A22C81FA600C52C48 /* SSDownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadStatus.h; sourceTree = "<group>"; };
-		5048574B22C81FA600C52C48 /* ISServiceRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServiceRemoteObject.h; sourceTree = "<group>"; };
-		5048574C22C81FA600C52C48 /* SSDownloadMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadMetadata.h; sourceTree = "<group>"; };
-		5048574D22C81FA600C52C48 /* ISStoreAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreAccount.h; sourceTree = "<group>"; };
-		5048574E22C81FA600C52C48 /* SSDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownload.h; sourceTree = "<group>"; };
-		5048574F22C81FA600C52C48 /* ISAccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAccountService.h; sourceTree = "<group>"; };
-		5048575022C81FA600C52C48 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		5048575122C81FA600C52C48 /* ISOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISOperationDelegate.h; sourceTree = "<group>"; };
-		5048575222C81FA600C52C48 /* ISServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServiceProxy.h; sourceTree = "<group>"; };
-		5048575322C81FA600C52C48 /* ISAuthenticationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationContext.h; sourceTree = "<group>"; };
-		5048575422C81FA600C52C48 /* SSPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchase.h; sourceTree = "<group>"; };
-		5048575522C81FA600C52C48 /* ISStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreClient.h; sourceTree = "<group>"; };
-		5048575722C81FA600C52C48 /* CKDownloadQueueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueueObserver.h; sourceTree = "<group>"; };
-		5048575822C81FA600C52C48 /* CKDownloadDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadDirectory.h; sourceTree = "<group>"; };
-		5048575922C81FA600C52C48 /* CKSoftwareMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareMap.h; sourceTree = "<group>"; };
-		5048575A22C81FA600C52C48 /* CKPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPurchaseController.h; sourceTree = "<group>"; };
-		5048575B22C81FA600C52C48 /* CKAccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAccountStore.h; sourceTree = "<group>"; };
-		5048575C22C81FA600C52C48 /* CKUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUpdateController.h; sourceTree = "<group>"; };
-		5048575D22C81FA600C52C48 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		5048575E22C81FA600C52C48 /* CKServiceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKServiceInterface.h; sourceTree = "<group>"; };
-		5048575F22C81FA600C52C48 /* ISStoreURLOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreURLOperationDelegate.h; sourceTree = "<group>"; };
-		5048576022C81FA600C52C48 /* CKDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueue.h; sourceTree = "<group>"; };
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
 		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
 		506DF77521248F6200D792FC /* AppCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollection.swift; sourceTree = "<group>"; };
@@ -152,6 +166,77 @@
 		50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
+		50F542E022D9C41C004B3F8D /* CKDownloadQueueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueueObserver.h; sourceTree = "<group>"; };
+		50F542E122D9C41C004B3F8D /* CKDownloadDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadDirectory.h; sourceTree = "<group>"; };
+		50F542E222D9C41C004B3F8D /* CKSoftwareMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareMap.h; sourceTree = "<group>"; };
+		50F542E322D9C41C004B3F8D /* CKPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPurchaseController.h; sourceTree = "<group>"; };
+		50F542E422D9C41C004B3F8D /* CKAccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAccountStore.h; sourceTree = "<group>"; };
+		50F542E522D9C41C004B3F8D /* CKUpdateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUpdateController.h; sourceTree = "<group>"; };
+		50F542E622D9C41C004B3F8D /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		50F542E722D9C41C004B3F8D /* CKServiceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKServiceInterface.h; sourceTree = "<group>"; };
+		50F542E822D9C41C004B3F8D /* ISStoreURLOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreURLOperationDelegate.h; sourceTree = "<group>"; };
+		50F542E922D9C41C004B3F8D /* CKDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueue.h; sourceTree = "<group>"; };
+		50F542EB22D9C41D004B3F8D /* SSPurchaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchaseResponse.h; sourceTree = "<group>"; };
+		50F542EC22D9C41D004B3F8D /* ISURLOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISURLOperationDelegate.h; sourceTree = "<group>"; };
+		50F542ED22D9C41D004B3F8D /* ISAuthenticationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationResponse.h; sourceTree = "<group>"; };
+		50F542EE22D9C41D004B3F8D /* CKUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKUpdate.h; sourceTree = "<group>"; };
+		50F542EF22D9C41D004B3F8D /* CKSoftwareProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareProduct.h; sourceTree = "<group>"; };
+		50F542F022D9C41D004B3F8D /* SSDownloadPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadPhase.h; sourceTree = "<group>"; };
+		50F542F122D9C41D004B3F8D /* SSDownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadStatus.h; sourceTree = "<group>"; };
+		50F542F222D9C41D004B3F8D /* ISServiceRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServiceRemoteObject.h; sourceTree = "<group>"; };
+		50F542F322D9C41D004B3F8D /* SSDownloadMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownloadMetadata.h; sourceTree = "<group>"; };
+		50F542F422D9C41D004B3F8D /* ISStoreAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreAccount.h; sourceTree = "<group>"; };
+		50F542F522D9C41D004B3F8D /* SSDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDownload.h; sourceTree = "<group>"; };
+		50F542F622D9C41D004B3F8D /* ISAccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAccountService.h; sourceTree = "<group>"; };
+		50F542F722D9C41D004B3F8D /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		50F542F822D9C41D004B3F8D /* ISOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISOperationDelegate.h; sourceTree = "<group>"; };
+		50F542F922D9C41D004B3F8D /* ISServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServiceProxy.h; sourceTree = "<group>"; };
+		50F542FA22D9C41D004B3F8D /* ISAuthenticationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationContext.h; sourceTree = "<group>"; };
+		50F542FB22D9C41D004B3F8D /* SSPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchase.h; sourceTree = "<group>"; };
+		50F542FC22D9C41D004B3F8D /* ISStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreClient.h; sourceTree = "<group>"; };
+		50F542FF22D9C485004B3F8D /* StoreAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreAccount.swift; sourceTree = "<group>"; };
+		50F5430022D9C485004B3F8D /* ISStoreAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISStoreAccount.swift; sourceTree = "<group>"; };
+		50F5430122D9C485004B3F8D /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		50F5430222D9C485004B3F8D /* CKSoftwareProduct+SoftwareProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKSoftwareProduct+SoftwareProduct.swift"; sourceTree = "<group>"; };
+		50F5430322D9C485004B3F8D /* SSPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSPurchase.swift; sourceTree = "<group>"; };
+		50F5430422D9C485004B3F8D /* PurchaseDownloadObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDownloadObserver.swift; sourceTree = "<group>"; };
+		50F5430622D9C485004B3F8D /* URLSession+NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkSession.swift"; sourceTree = "<group>"; };
+		50F5430722D9C485004B3F8D /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		50F5430822D9C485004B3F8D /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		50F5430922D9C485004B3F8D /* NetworkResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		50F5430B22D9C485004B3F8D /* SearchResultFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultFormatter.swift; sourceTree = "<group>"; };
+		50F5430C22D9C485004B3F8D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		50F5430D22D9C485004B3F8D /* AppInfoFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoFormatter.swift; sourceTree = "<group>"; };
+		50F5430F22D9C485004B3F8D /* SoftwareProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareProduct.swift; sourceTree = "<group>"; };
+		50F5431022D9C485004B3F8D /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		50F5431122D9C485004B3F8D /* SearchResultList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultList.swift; sourceTree = "<group>"; };
+		50F5431322D9C485004B3F8D /* Dictionary+StringOrEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+StringOrEmpty.swift"; sourceTree = "<group>"; };
+		50F5431422D9C485004B3F8D /* String+PercentEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+PercentEncoding.swift"; sourceTree = "<group>"; };
+		50F5431622D9C485004B3F8D /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		50F5431722D9C485004B3F8D /* Outdated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outdated.swift; sourceTree = "<group>"; };
+		50F5431822D9C485004B3F8D /* Install.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Install.swift; sourceTree = "<group>"; };
+		50F5431922D9C485004B3F8D /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		50F5431A22D9C485004B3F8D /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		50F5431B22D9C485004B3F8D /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		50F5431C22D9C485004B3F8D /* Reset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reset.swift; sourceTree = "<group>"; };
+		50F5431D22D9C485004B3F8D /* Upgrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
+		50F5431E22D9C485004B3F8D /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		50F5431F22D9C485004B3F8D /* SignOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
+		50F5432022D9C485004B3F8D /* Open.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Open.swift; sourceTree = "<group>"; };
+		50F5432122D9C485004B3F8D /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		50F5432222D9C485004B3F8D /* Lucky.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lucky.swift; sourceTree = "<group>"; };
+		50F5432322D9C485004B3F8D /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		50F5432422D9C485004B3F8D /* Uninstall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uninstall.swift; sourceTree = "<group>"; };
+		50F5432522D9C485004B3F8D /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		50F5432722D9C485004B3F8D /* MasKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasKit.h; sourceTree = "<group>"; };
+		50F5432822D9C485004B3F8D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F5432A22D9C485004B3F8D /* MASError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MASError.swift; sourceTree = "<group>"; };
+		50F5432C22D9C485004B3F8D /* OpenSystemCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenSystemCommand.swift; sourceTree = "<group>"; };
+		50F5432D22D9C485004B3F8D /* ExternalCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalCommand.swift; sourceTree = "<group>"; };
+		50F5432F22D9C485004B3F8D /* StoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSearch.swift; sourceTree = "<group>"; };
+		50F5433022D9C485004B3F8D /* AppLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLibrary.swift; sourceTree = "<group>"; };
+		50F5433122D9C485004B3F8D /* MasStoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasStoreSearch.swift; sourceTree = "<group>"; };
+		50F5433222D9C485004B3F8D /* MasAppLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasAppLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,58 +305,15 @@
 		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50F542FD22D9C485004B3F8D /* MasKit */,
+				50F542DF22D9C41C004B3F8D /* CommerceKit */,
+				50F542EA22D9C41D004B3F8D /* StoreFoundation */,
 				5048574122C81DF800C52C48 /* StoreFoundation.framework */,
 				5048573F22C81DCF00C52C48 /* CommerceKit.framework */,
 				5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */,
-				5048575622C81FA600C52C48 /* CommerceKit */,
-				5048574322C81FA600C52C48 /* StoreFoundation */,
 				5045842B1FF6CF0F00E15E9D /* Sparkle.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5048574322C81FA600C52C48 /* StoreFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				5048574422C81FA600C52C48 /* SSPurchaseResponse.h */,
-				5048574522C81FA600C52C48 /* ISURLOperationDelegate.h */,
-				5048574622C81FA600C52C48 /* ISAuthenticationResponse.h */,
-				5048574722C81FA600C52C48 /* CKUpdate.h */,
-				5048574822C81FA600C52C48 /* CKSoftwareProduct.h */,
-				5048574922C81FA600C52C48 /* SSDownloadPhase.h */,
-				5048574A22C81FA600C52C48 /* SSDownloadStatus.h */,
-				5048574B22C81FA600C52C48 /* ISServiceRemoteObject.h */,
-				5048574C22C81FA600C52C48 /* SSDownloadMetadata.h */,
-				5048574D22C81FA600C52C48 /* ISStoreAccount.h */,
-				5048574E22C81FA600C52C48 /* SSDownload.h */,
-				5048574F22C81FA600C52C48 /* ISAccountService.h */,
-				5048575022C81FA600C52C48 /* module.modulemap */,
-				5048575122C81FA600C52C48 /* ISOperationDelegate.h */,
-				5048575222C81FA600C52C48 /* ISServiceProxy.h */,
-				5048575322C81FA600C52C48 /* ISAuthenticationContext.h */,
-				5048575422C81FA600C52C48 /* SSPurchase.h */,
-				5048575522C81FA600C52C48 /* ISStoreClient.h */,
-			);
-			name = StoreFoundation;
-			path = Frameworks/StoreFoundation;
-			sourceTree = "<group>";
-		};
-		5048575622C81FA600C52C48 /* CommerceKit */ = {
-			isa = PBXGroup;
-			children = (
-				5048575722C81FA600C52C48 /* CKDownloadQueueObserver.h */,
-				5048575822C81FA600C52C48 /* CKDownloadDirectory.h */,
-				5048575922C81FA600C52C48 /* CKSoftwareMap.h */,
-				5048575A22C81FA600C52C48 /* CKPurchaseController.h */,
-				5048575B22C81FA600C52C48 /* CKAccountStore.h */,
-				5048575C22C81FA600C52C48 /* CKUpdateController.h */,
-				5048575D22C81FA600C52C48 /* module.modulemap */,
-				5048575E22C81FA600C52C48 /* CKServiceInterface.h */,
-				5048575F22C81FA600C52C48 /* ISStoreURLOperationDelegate.h */,
-				5048576022C81FA600C52C48 /* CKDownloadQueue.h */,
-			);
-			name = CommerceKit;
-			path = Frameworks/CommerceKit;
 			sourceTree = "<group>";
 		};
 		5058BA36211F9F49003F332B /* Release Notes */ = {
@@ -388,6 +430,181 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		50F542DF22D9C41C004B3F8D /* CommerceKit */ = {
+			isa = PBXGroup;
+			children = (
+				50F542E022D9C41C004B3F8D /* CKDownloadQueueObserver.h */,
+				50F542E122D9C41C004B3F8D /* CKDownloadDirectory.h */,
+				50F542E222D9C41C004B3F8D /* CKSoftwareMap.h */,
+				50F542E322D9C41C004B3F8D /* CKPurchaseController.h */,
+				50F542E422D9C41C004B3F8D /* CKAccountStore.h */,
+				50F542E522D9C41C004B3F8D /* CKUpdateController.h */,
+				50F542E622D9C41C004B3F8D /* module.modulemap */,
+				50F542E722D9C41C004B3F8D /* CKServiceInterface.h */,
+				50F542E822D9C41C004B3F8D /* ISStoreURLOperationDelegate.h */,
+				50F542E922D9C41C004B3F8D /* CKDownloadQueue.h */,
+			);
+			name = CommerceKit;
+			path = "Frameworks/mas-cli/PrivateFrameworks/CommerceKit";
+			sourceTree = "<group>";
+		};
+		50F542EA22D9C41D004B3F8D /* StoreFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				50F542EB22D9C41D004B3F8D /* SSPurchaseResponse.h */,
+				50F542EC22D9C41D004B3F8D /* ISURLOperationDelegate.h */,
+				50F542ED22D9C41D004B3F8D /* ISAuthenticationResponse.h */,
+				50F542EE22D9C41D004B3F8D /* CKUpdate.h */,
+				50F542EF22D9C41D004B3F8D /* CKSoftwareProduct.h */,
+				50F542F022D9C41D004B3F8D /* SSDownloadPhase.h */,
+				50F542F122D9C41D004B3F8D /* SSDownloadStatus.h */,
+				50F542F222D9C41D004B3F8D /* ISServiceRemoteObject.h */,
+				50F542F322D9C41D004B3F8D /* SSDownloadMetadata.h */,
+				50F542F422D9C41D004B3F8D /* ISStoreAccount.h */,
+				50F542F522D9C41D004B3F8D /* SSDownload.h */,
+				50F542F622D9C41D004B3F8D /* ISAccountService.h */,
+				50F542F722D9C41D004B3F8D /* module.modulemap */,
+				50F542F822D9C41D004B3F8D /* ISOperationDelegate.h */,
+				50F542F922D9C41D004B3F8D /* ISServiceProxy.h */,
+				50F542FA22D9C41D004B3F8D /* ISAuthenticationContext.h */,
+				50F542FB22D9C41D004B3F8D /* SSPurchase.h */,
+				50F542FC22D9C41D004B3F8D /* ISStoreClient.h */,
+			);
+			name = StoreFoundation;
+			path = "Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
+			sourceTree = "<group>";
+		};
+		50F542FD22D9C485004B3F8D /* MasKit */ = {
+			isa = PBXGroup;
+			children = (
+				50F542FE22D9C485004B3F8D /* AppStore */,
+				50F5430522D9C485004B3F8D /* Network */,
+				50F5430A22D9C485004B3F8D /* Formatters */,
+				50F5430E22D9C485004B3F8D /* Models */,
+				50F5431222D9C485004B3F8D /* Extensions */,
+				50F5431522D9C485004B3F8D /* Commands */,
+				50F5432622D9C485004B3F8D /* SupportingFiles */,
+				50F5432922D9C485004B3F8D /* Errors */,
+				50F5432B22D9C485004B3F8D /* ExternalCommands */,
+				50F5432E22D9C485004B3F8D /* Controllers */,
+			);
+			name = MasKit;
+			path = "Frameworks/mas-cli/MasKit";
+			sourceTree = "<group>";
+		};
+		50F542FE22D9C485004B3F8D /* AppStore */ = {
+			isa = PBXGroup;
+			children = (
+				50F542FF22D9C485004B3F8D /* StoreAccount.swift */,
+				50F5430022D9C485004B3F8D /* ISStoreAccount.swift */,
+				50F5430122D9C485004B3F8D /* Downloader.swift */,
+				50F5430222D9C485004B3F8D /* CKSoftwareProduct+SoftwareProduct.swift */,
+				50F5430322D9C485004B3F8D /* SSPurchase.swift */,
+				50F5430422D9C485004B3F8D /* PurchaseDownloadObserver.swift */,
+			);
+			path = AppStore;
+			sourceTree = "<group>";
+		};
+		50F5430522D9C485004B3F8D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				50F5430622D9C485004B3F8D /* URLSession+NetworkSession.swift */,
+				50F5430722D9C485004B3F8D /* NetworkManager.swift */,
+				50F5430822D9C485004B3F8D /* NetworkSession.swift */,
+				50F5430922D9C485004B3F8D /* NetworkResult.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		50F5430A22D9C485004B3F8D /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				50F5430B22D9C485004B3F8D /* SearchResultFormatter.swift */,
+				50F5430C22D9C485004B3F8D /* Utilities.swift */,
+				50F5430D22D9C485004B3F8D /* AppInfoFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		50F5430E22D9C485004B3F8D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50F5430F22D9C485004B3F8D /* SoftwareProduct.swift */,
+				50F5431022D9C485004B3F8D /* SearchResult.swift */,
+				50F5431122D9C485004B3F8D /* SearchResultList.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		50F5431222D9C485004B3F8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				50F5431322D9C485004B3F8D /* Dictionary+StringOrEmpty.swift */,
+				50F5431422D9C485004B3F8D /* String+PercentEncoding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		50F5431522D9C485004B3F8D /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				50F5431622D9C485004B3F8D /* Vendor.swift */,
+				50F5431722D9C485004B3F8D /* Outdated.swift */,
+				50F5431822D9C485004B3F8D /* Install.swift */,
+				50F5431922D9C485004B3F8D /* Info.swift */,
+				50F5431A22D9C485004B3F8D /* Version.swift */,
+				50F5431B22D9C485004B3F8D /* Home.swift */,
+				50F5431C22D9C485004B3F8D /* Reset.swift */,
+				50F5431D22D9C485004B3F8D /* Upgrade.swift */,
+				50F5431E22D9C485004B3F8D /* List.swift */,
+				50F5431F22D9C485004B3F8D /* SignOut.swift */,
+				50F5432022D9C485004B3F8D /* Open.swift */,
+				50F5432122D9C485004B3F8D /* SignIn.swift */,
+				50F5432222D9C485004B3F8D /* Lucky.swift */,
+				50F5432322D9C485004B3F8D /* Account.swift */,
+				50F5432422D9C485004B3F8D /* Uninstall.swift */,
+				50F5432522D9C485004B3F8D /* Search.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		50F5432622D9C485004B3F8D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				50F5432722D9C485004B3F8D /* MasKit.h */,
+				50F5432822D9C485004B3F8D /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		50F5432922D9C485004B3F8D /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				50F5432A22D9C485004B3F8D /* MASError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		50F5432B22D9C485004B3F8D /* ExternalCommands */ = {
+			isa = PBXGroup;
+			children = (
+				50F5432C22D9C485004B3F8D /* OpenSystemCommand.swift */,
+				50F5432D22D9C485004B3F8D /* ExternalCommand.swift */,
+			);
+			path = ExternalCommands;
+			sourceTree = "<group>";
+		};
+		50F5432E22D9C485004B3F8D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50F5432F22D9C485004B3F8D /* StoreSearch.swift */,
+				50F5433022D9C485004B3F8D /* AppLibrary.swift */,
+				50F5433122D9C485004B3F8D /* MasStoreSearch.swift */,
+				50F5433222D9C485004B3F8D /* MasAppLibrary.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -492,6 +709,7 @@
 				50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */,
 				501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */,
 				501EA9871EB1BA4500D05821 /* InfoPlist.strings in Resources */,
+				50F5435522D9C485004B3F8D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,31 +768,72 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F5434222D9C485004B3F8D /* SearchResultList.swift in Sources */,
 				509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */,
 				509512141FF362A1003D2D7F /* Version.swift in Sources */,
+				50F5434122D9C485004B3F8D /* SearchResult.swift in Sources */,
+				50F5435722D9C485004B3F8D /* OpenSystemCommand.swift in Sources */,
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
+				50F5435422D9C485004B3F8D /* Search.swift in Sources */,
 				50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */,
+				50F5434E22D9C485004B3F8D /* SignOut.swift in Sources */,
+				50F5433422D9C485004B3F8D /* ISStoreAccount.swift in Sources */,
 				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
+				50F5433C22D9C485004B3F8D /* NetworkResult.swift in Sources */,
 				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
 				5058BA3A21202BA7003F332B /* IconCache.swift in Sources */,
+				50F5435322D9C485004B3F8D /* Uninstall.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
+				50F5435622D9C485004B3F8D /* MASError.swift in Sources */,
+				50F5433922D9C485004B3F8D /* URLSession+NetworkSession.swift in Sources */,
+				50F5433F22D9C485004B3F8D /* AppInfoFormatter.swift in Sources */,
+				50F5434722D9C485004B3F8D /* Install.swift in Sources */,
+				50F5435222D9C485004B3F8D /* Account.swift in Sources */,
 				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
+				50F5434D22D9C485004B3F8D /* List.swift in Sources */,
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
+				50F5433B22D9C485004B3F8D /* NetworkSession.swift in Sources */,
+				50F5434B22D9C485004B3F8D /* Reset.swift in Sources */,
+				50F5433822D9C485004B3F8D /* PurchaseDownloadObserver.swift in Sources */,
+				50F5435B22D9C485004B3F8D /* MasStoreSearch.swift in Sources */,
+				50F5433E22D9C485004B3F8D /* Utilities.swift in Sources */,
 				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
+				50F5434C22D9C485004B3F8D /* Upgrade.swift in Sources */,
+				50F5433A22D9C485004B3F8D /* NetworkManager.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
+				50F5435A22D9C485004B3F8D /* AppLibrary.swift in Sources */,
+				50F5433322D9C485004B3F8D /* StoreAccount.swift in Sources */,
 				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
+				50F5435C22D9C485004B3F8D /* MasAppLibrary.swift in Sources */,
 				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
+				50F5434A22D9C485004B3F8D /* Home.swift in Sources */,
+				50F5434022D9C485004B3F8D /* SoftwareProduct.swift in Sources */,
 				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
+				50F5434822D9C485004B3F8D /* Info.swift in Sources */,
+				50F5433D22D9C485004B3F8D /* SearchResultFormatter.swift in Sources */,
+				50F5434522D9C485004B3F8D /* Vendor.swift in Sources */,
 				502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
+				50F5435822D9C485004B3F8D /* ExternalCommand.swift in Sources */,
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
+				50F5435922D9C485004B3F8D /* StoreSearch.swift in Sources */,
 				506DF77621248F6200D792FC /* AppCollection.swift in Sources */,
+				50F5434F22D9C485004B3F8D /* Open.swift in Sources */,
+				50F5433522D9C485004B3F8D /* Downloader.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
+				50F5433622D9C485004B3F8D /* CKSoftwareProduct+SoftwareProduct.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,
+				50F5434322D9C485004B3F8D /* Dictionary+StringOrEmpty.swift in Sources */,
+				50F5435022D9C485004B3F8D /* SignIn.swift in Sources */,
+				50F5433722D9C485004B3F8D /* SSPurchase.swift in Sources */,
 				506DF7782125580400D792FC /* UpdateTableView.swift in Sources */,
+				50F5434622D9C485004B3F8D /* Outdated.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
 				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
+				50F5434922D9C485004B3F8D /* Version.swift in Sources */,
+				50F5435122D9C485004B3F8D /* Lucky.swift in Sources */,
+				50F5434422D9C485004B3F8D /* String+PercentEncoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +1023,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/CommerceKit $(SRCROOT)/Frameworks/StoreFoundation";
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/CommerceKit $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};
@@ -790,7 +1049,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/CommerceKit $(SRCROOT)/Frameworks/StoreFoundation";
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/CommerceKit $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};
