@@ -105,7 +105,7 @@ class ReleaseNotesViewController: NSViewController {
     // MARK: - Actions
     
     @IBAction func update(_ sender: NSButton) {
-        self.app?.open()
+        self.app?.update()
     }
     
     

@@ -412,7 +412,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                 return
             }
             
-            self.apps[index].open()
+            self.apps[index].update()
         }
     }
     

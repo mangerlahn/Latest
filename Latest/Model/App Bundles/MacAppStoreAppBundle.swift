@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CommerceKit
 
 /**
  Mac App Store app bundle subclass, it handles the parsing of the iTunes JSON
@@ -67,11 +68,25 @@ class MacAppStoreAppBundle: AppBundle {
             self.delegate?.appDidUpdateVersionInformation(self)
         })
     }
+	
+	var updateInformation: CKUpdate? {
+		return CKUpdateController.shared()?.availableUpdates().first(where: { $0.bundleID == self.bundleIdentifier })
+	}
+	
+	
 	// MARK: - Actions
 	
 	override func open() {
 		// Should preferably open the Mac App Store
 		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
+	}
+	
+	override func update() {
+		UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self, progressHandler: { (progress) in
+			print("Progress: \(progress)")
+		}, completionHandler: { (error) in
+			print("Completed with error: \(error)")
+		}))
 	}
 	
 }
