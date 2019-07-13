@@ -100,14 +100,7 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 		}
 	}
 	
-	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithAddition download: SSDownload!) {
-		guard let purchase = self.purchase, download.metadata.itemIdentifier == purchase.itemIdentifier else {
-			return
-		}
-		
-		progressHandler(.downloading(0))
-	}
-	
+	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithAddition download: SSDownload!) {}
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithRemoval download: SSDownload!) {
 		guard download.metadata.itemIdentifier == purchase.itemIdentifier,
 			let status = download.status else {
