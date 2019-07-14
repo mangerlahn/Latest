@@ -13,12 +13,18 @@ import Cocoa
  */
 class UpdateCell: NSTableCellView {
 	
+	let updateProgressViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "updateProgressViewControllerIdentifier") as! UpdateProgressViewController
 	var app: AppBundle? {
 		didSet {
-			guard let app = self.app else { return }
-
-			
+			self.updateProgressViewController.app = self.app
 		}
+	}
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		self.contentStackView?.addArrangedSubview(self.updateProgressViewController.view)
+		self.currentVersionTextField?.topAnchor.constraint(equalTo: self.updateProgressViewController.view.topAnchor).isActive = true
 	}
 		
 	/// The label displaying the current version of the app
@@ -29,6 +35,8 @@ class UpdateCell: NSTableCellView {
     
     /// The label displaying the newest version available for the app
     @IBOutlet weak var newVersionTextField: NSTextField?
+	
+	@IBOutlet weak var contentStackView: NSStackView?
 	
     override var backgroundStyle: NSView.BackgroundStyle {
         didSet {

@@ -141,6 +141,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         cell.newVersionTextField?.stringValue = versionInformation.new
         
         cell.newVersionTextField?.isHidden = !app.updateAvailable
+		cell.app = app
         
         IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
