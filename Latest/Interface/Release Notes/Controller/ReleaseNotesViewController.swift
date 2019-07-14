@@ -77,8 +77,14 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appNewVersionTextField: NSTextField!
     @IBOutlet weak var appIconImageView: NSImageView!
     
-    /// The app currently presented
-    private(set) var app: AppBundle?
+	/// The app currently presented
+	private(set) var app: AppBundle? {
+		didSet {
+			self.children.compactMap { controller -> UpdateProgressViewController? in
+				return controller as? UpdateProgressViewController
+			}.first?.app = self.app
+		}
+	}
     
     /// The current content presented on screen
     private var content: ReleaseNotesContent?
@@ -88,7 +94,7 @@ class ReleaseNotesViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
+        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: -5)
         constraint.isActive = true
         
         // Prepare for empty state

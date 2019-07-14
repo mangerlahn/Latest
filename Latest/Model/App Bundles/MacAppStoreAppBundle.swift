@@ -84,8 +84,8 @@ class MacAppStoreAppBundle: AppBundle {
 	override func update() {
 		UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self, progressHandler: { (progressState) in
 			self.updateProgress.state = progressState
-		}, completionHandler: { (error) in
-			self.updateProgress.error = error
+		}, completionHandler: {
+//			self.updateProgress.error = error
 		}))
 	}
 	

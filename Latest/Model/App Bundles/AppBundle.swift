@@ -43,7 +43,7 @@ struct UpdateProgress {
 		}
 	}
 	
-	typealias ObserverHandler = () -> Void
+	typealias ObserverHandler = (_: UpdateProgress) -> Void
 	
 	private var observers = [NSObject: ObserverHandler]()
 	
@@ -51,7 +51,7 @@ struct UpdateProgress {
 		self.observers[observer] = handler
 		
 		// Call handler immediately to propagate initial state
-		handler()
+		handler(self)
 	}
 	
 	mutating func removeObserver(_ observer: NSObject) {
@@ -59,8 +59,10 @@ struct UpdateProgress {
 	}
 		
 	func notifyObservers() {
-		self.observers.forEach { (key: NSObject, handler: UpdateProgress.ObserverHandler) in
-			handler()
+		DispatchQueue.main.async {
+			self.observers.forEach { (key: NSObject, handler: UpdateProgress.ObserverHandler) in
+				handler(self)
+			}
 		}
 	}
 	

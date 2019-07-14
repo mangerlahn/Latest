@@ -16,11 +16,12 @@ class UpdateOperation: StatefulOperation {
 		case initializing
 		case downloading(Double)
 		case installing
+		case error(Error)
 	}
 	
 	typealias ProgressHandler = (_: ProgressState) -> Void
 	
-	typealias CompletionHandler = (_: Error?) -> Void
+	typealias CompletionHandler = () -> Void
 	
 	let app: AppBundle
 	
@@ -41,14 +42,14 @@ class UpdateOperation: StatefulOperation {
 	}
 	
 	override func finish(with error: Error) {
-		self.progressHandler(.none)
-		self.completionHandler(error)
+		self.progressHandler(.error(error))
+		self.completionHandler()
 		super.finish(with: error)
 	}
 	
 	override func finish() {
 		self.progressHandler(.none)
-		self.completionHandler(nil)
+		self.completionHandler()
 		super.finish()
 	}
 	
