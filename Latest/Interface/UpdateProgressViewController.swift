@@ -62,10 +62,13 @@ class UpdateProgressViewController: NSViewController {
 		case .initializing:
 			self.updateInterface(with: .indeterminate)
 			self.progressLabel.stringValue = NSLocalizedString("Initializing", comment: "Update progress state of initializing a download")
-		case .downloading(let progress):
+		case .downloading(let progress, let loadedSize, let totalSize):
 			self.updateInterface(with: .update)
 			self.progressIndicator.doubleValue = progress
-			self.progressLabel.stringValue = NSLocalizedString("Downloading", comment: "Update progress state of initializing a download")
+			
+			let byteFormatter = ByteCountFormatter()
+			byteFormatter.countStyle = .file
+			self.progressLabel.stringValue = NSLocalizedString("Downloading ", comment: "Update progress state of initializing a download") + byteFormatter.string(fromByteCount: loadedSize) + " of " + byteFormatter.string(fromByteCount: totalSize)
 		case .installing:
 			self.updateInterface(with: .indeterminate)
 			self.progressLabel.stringValue = NSLocalizedString("Installing", comment: "Update progress state of initializing a download")

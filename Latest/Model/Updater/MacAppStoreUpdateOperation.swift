@@ -91,7 +91,7 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 		} else {
 			switch status.activePhase.phaseType {
 			case 0:
-				progressHandler(.downloading(Double(status.percentComplete)))
+				progressHandler(.downloading(progress: Double(status.percentComplete), loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue)))
 			case 1:
 				progressHandler(.installing)
 			default:
