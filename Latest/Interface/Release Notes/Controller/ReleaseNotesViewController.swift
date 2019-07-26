@@ -79,10 +79,22 @@ class ReleaseNotesViewController: NSViewController {
     
 	/// The app currently presented
 	private(set) var app: AppBundle? {
+		willSet {
+			self.app?.updateProgress.removeObserver(self)
+		}
+		
 		didSet {
 			self.children.compactMap { controller -> UpdateProgressViewController? in
 				return controller as? UpdateProgressViewController
 			}.first?.app = self.app
+			
+			self.app?.updateProgress.addObserver(self, handler: { progress in
+				if case .none = progress.state {
+					self.updateButton.isEnabled = true
+				} else {
+					self.updateButton.isEnabled = false
+				}
+			})
 		}
 	}
     
