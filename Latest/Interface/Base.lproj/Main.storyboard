@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14547"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14835.7"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14845"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -70,7 +70,7 @@
                                     <items>
                                         <menuItem title="Update" keyEquivalent="u" id="IAo-SY-fd9">
                                             <connections>
-                                                <action selector="openApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
+                                                <action selector="updateApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
@@ -550,7 +550,7 @@
                 </splitViewController>
                 <customObject id="z50-62-12c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="711"/>
+            <point key="canvasLocation" x="75" y="779"/>
         </scene>
         <!--Update Table View Controller-->
         <scene sceneID="MI7-Wt-ECv">
@@ -838,7 +838,7 @@
                         <items>
                             <menuItem title="Update" keyEquivalent="u" id="00n-xr-jcQ">
                                 <connections>
-                                    <action selector="openApp:" target="MxB-hL-adL" id="1IZ-Ca-AKt"/>
+                                    <action selector="updateApp:" target="MxB-hL-adL" id="1IZ-Ca-AKt"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Update All" keyEquivalent="U" id="seh-wV-XK9">

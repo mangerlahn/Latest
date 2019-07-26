@@ -171,7 +171,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
         if edge == .trailing {
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
-                self._openApp(atIndex: row)
+                self.updateApp(atIndex: row)
             })
             
             action.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
@@ -294,8 +294,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: - Menu Item Stuff
     
     /// Open a single app
-    @IBAction func openApp(_ sender: NSMenuItem?) {
-        self._openApp(atIndex: sender?.representedObject as? Int ?? self.tableView.selectedRow)
+    @IBAction func updateApp(_ sender: NSMenuItem?) {
+        self.updateApp(atIndex: sender?.representedObject as? Int ?? self.tableView.selectedRow)
     }
     
     /// Show the bundle of an app in Finder
@@ -309,9 +309,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
         
         switch action {
-        case #selector(openApp(_:)),
              #selector(showAppInFinder(_:)):
             return menuItem.representedObject as? Int ?? self.tableView.selectedRow != -1
+        case #selector(updateApp(_:))
         default:
             return true
         }
@@ -407,7 +407,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     /// Opens the app and a given index
-    private func _openApp(atIndex index: Int) {
+    private func updateApp(atIndex index: Int) {
         DispatchQueue.main.async {
             if index < 0 || index >= self.apps.count {
                 return
