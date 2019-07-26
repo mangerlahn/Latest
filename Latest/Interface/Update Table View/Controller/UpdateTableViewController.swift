@@ -308,10 +308,14 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return true
         }
         
-        switch action {
-             #selector(showAppInFinder(_:)):
-            return menuItem.representedObject as? Int ?? self.tableView.selectedRow != -1
+		let index = menuItem.representedObject as? Int ?? self.tableView.selectedRow
+		let hasIndex = index != -1
+		
+		switch action {
         case #selector(updateApp(_:))
+			return hasIndex && !UpdateQueue.shared.contains(self.apps[index])
+		case #selector(showAppInFinder(_:)):
+            return hasIndex
         default:
             return true
         }
