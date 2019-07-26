@@ -836,18 +836,15 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Menu" id="Ake-Tt-cX3">
                         <items>
-                            <menuItem title="Update" keyEquivalent="u" id="00n-xr-jcQ">
+                            <menuItem title="Update" id="00n-xr-jcQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="updateApp:" target="MxB-hL-adL" id="1IZ-Ca-AKt"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Update All" keyEquivalent="U" id="seh-wV-XK9">
-                                <connections>
-                                    <action selector="openAll:" target="MxB-hL-adL" id="bbj-5x-90Z"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="Sha-Xo-nI1"/>
-                            <menuItem title="Show in Finder" keyEquivalent="R" id="h9B-7u-6ru">
+                            <menuItem title="Show in Finder" id="h9B-7u-6ru">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showAppInFinder:" target="MxB-hL-adL" id="iar-Jd-EH1"/>
                                 </connections>

@@ -312,7 +312,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		let hasIndex = index != -1
 		
 		switch action {
-        case #selector(updateApp(_:))
+		case #selector(updateApp(_:)):
 			return hasIndex && !UpdateQueue.shared.contains(self.apps[index])
 		case #selector(showAppInFinder(_:)):
             return hasIndex
