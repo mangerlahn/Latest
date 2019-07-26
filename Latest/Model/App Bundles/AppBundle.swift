@@ -119,6 +119,11 @@ class AppBundle : NSObject {
         
         return false
     }
+	
+	/// Whether the app is currently being updated.
+	var isUpdating: Bool {
+		return UpdateQueue.shared.contains(self)
+	}
     
     
     // MARK: - Actions
@@ -131,6 +136,11 @@ class AppBundle : NSObject {
 	/// Updates the app. This is a subclassing hook. The default implementation opens the app.
 	func update() {
 		self.open()
+	}
+	
+	/// Cancels the scheduled update for this app.
+	func cancelUpdate() {
+		UpdateQueue.shared.cancelUpdate(for: self)
 	}
     
     /// Reveals the app at a given index in Finder

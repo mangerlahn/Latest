@@ -17,6 +17,7 @@ class UpdateOperation: StatefulOperation {
 		case downloading(progress: Double, loadedSize: Int64, totalSize: Int64)
 		case installing
 		case error(Error)
+		case cancelling
 	}
 	
 	typealias ProgressHandler = (_: ProgressState) -> Void
@@ -39,6 +40,11 @@ class UpdateOperation: StatefulOperation {
 	
 	override func execute() {
 		self.progressHandler(.initializing)
+	}
+	
+	override func cancel() {
+		super.cancel()
+		self.progressHandler(.cancelling)
 	}
 	
 	override func finish(with error: Error) {

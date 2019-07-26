@@ -1188,6 +1188,9 @@
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystemBold"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="cancelUpdate:" target="Enb-1J-Q4H" id="xjU-pC-B2u"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

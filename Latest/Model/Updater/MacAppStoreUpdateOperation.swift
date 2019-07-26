@@ -81,6 +81,13 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, statusChangedFor download: SSDownload!) {
+		// Cancel download if the operation has been cancelled
+		if self.isCancelled {
+			download.cancel(withStoreClient: ISStoreClient(storeClientType: 0))
+			self.finish()
+			return
+		}
+		
 		guard download.metadata.itemIdentifier == self.purchase.itemIdentifier,
 			let status = download.status else {
 				return

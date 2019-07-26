@@ -89,11 +89,7 @@ class ReleaseNotesViewController: NSViewController {
 			}.first?.app = self.app
 			
 			self.app?.updateProgress.addObserver(self, handler: { progress in
-				if case .none = progress.state {
-					self.updateButton.isEnabled = true
-				} else {
-					self.updateButton.isEnabled = false
-				}
+				self.updateButton.isEnabled = !(self.app?.isUpdating ?? true)
 			})
 		}
 	}

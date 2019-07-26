@@ -18,13 +18,13 @@ class UpdateQueue: OperationQueue {
 	
 	static let shared = UpdateQueue()
 	
+	func cancelUpdate(for app: AppBundle) {
+		guard let operation = self.operation(for: app) else { return }
+		operation.cancel()
+	}
+	
 	func contains(_ app: AppBundle) -> Bool {
-		guard let updateOperations = self.operations as? [UpdateOperation] else {
-			fatalError("Unknown operations in update queue")
-		}
-		
-		let identifier = app.bundleIdentifier
-		return updateOperations.contains(where: { $0.app.bundleIdentifier == identifier })
+		return self.operation(for: app) != nil
 	}
 	
 	override func addOperation(_ op: Operation) {
@@ -38,4 +38,17 @@ class UpdateQueue: OperationQueue {
 			super.addOperation(op)
 		}
 	}
+	
+	
+	// MARK: - Helper
+	
+	private func operation(for app: AppBundle) -> UpdateOperation? {
+		guard let updateOperations = self.operations as? [UpdateOperation] else {
+			fatalError("Unknown operations in update queue")
+		}
+				
+		let identifier = app.bundleIdentifier
+		return updateOperations.first(where: { $0.app.bundleIdentifier == identifier })
+	}
+		
 }
