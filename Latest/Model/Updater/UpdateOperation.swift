@@ -46,15 +46,14 @@ class UpdateOperation: StatefulOperation {
 		super.cancel()
 		self.progressHandler(.cancelling)
 	}
-	
-	override func finish(with error: Error) {
-		self.progressHandler(.error(error))
-		self.completionHandler()
-		super.finish(with: error)
-	}
-	
+		
 	override func finish() {
-		self.progressHandler(.none)
+		if let error = self.error {
+			self.progressHandler(.error(error))
+		} else {
+			self.progressHandler(.none)
+		}
+		
 		self.completionHandler()
 		super.finish()
 	}

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14845"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -400,7 +400,7 @@
             <objects>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainWindowController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" identifier="MainWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                    <window key="window" identifier="MainWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA" customClass="MainWindow" customModule="Latest" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="549" y="334" width="365" height="495"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -878,7 +878,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="gW4-ur-MIN"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="100" verticalStackHuggingPriority="100" horizontalHuggingPriority="100" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPR-BE-Awf">
-                                                <rect key="frame" x="84" y="6" width="296" height="52"/>
+                                                <rect key="frame" x="84" y="6" width="363" height="52"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-sB-6dK">
                                                         <rect key="frame" x="0.0" y="36" width="78" height="16"/>
@@ -940,23 +940,21 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="5" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="1000" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZL-Wg-j1U">
-                                                <rect key="frame" x="400" y="5" width="140" height="54"/>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pg1-8L-B7T">
+                                                <rect key="frame" x="467" y="5" width="73" height="54"/>
                                                 <subviews>
-                                                    <button horizontalHuggingPriority="253" verticalHuggingPriority="747" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-uh-6k2">
-                                                        <rect key="frame" x="-6" y="26" width="152" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gx9-Kd-cCq">
+                                                    <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-uh-6k2">
+                                                        <rect key="frame" x="-93" y="26" width="172" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="&lt;DO NOT LOCALIZE&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gx9-Kd-cCq">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
-                                                        <connections>
-                                                            <action selector="update:" target="diQ-yt-Gcs" id="ZSe-BC-qfc"/>
-                                                        </connections>
                                                     </button>
                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="FAl-Mg-Qz2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="28"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="LtZ-be-Wpv"/>
+                                                            <constraint firstAttribute="width" constant="73" placeholder="YES" id="u7Z-UV-1Od"/>
                                                         </constraints>
                                                         <connections>
                                                             <segue destination="Enb-1J-Q4H" kind="embed" id="5tA-rw-2iI"/>
@@ -964,17 +962,13 @@
                                                     </containerView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="XGh-uh-6k2" firstAttribute="width" secondItem="FAl-Mg-Qz2" secondAttribute="width" id="S6Z-J0-YMG"/>
+                                                    <constraint firstItem="FAl-Mg-Qz2" firstAttribute="top" secondItem="XGh-uh-6k2" secondAttribute="bottom" constant="5" id="ErP-Y2-9Jr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="FAl-Mg-Qz2" secondAttribute="bottom" id="Iwb-35-6OO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XGh-uh-6k2" secondAttribute="trailing" id="NUi-er-adt"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FAl-Mg-Qz2" secondAttribute="trailing" id="h1T-IT-hPl"/>
+                                                    <constraint firstItem="XGh-uh-6k2" firstAttribute="top" secondItem="Pg1-8L-B7T" secondAttribute="top" id="jTF-K9-b9E"/>
                                                 </constraints>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
+                                            </customView>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -1163,23 +1157,23 @@
             <objects>
                 <viewController storyboardIdentifier="updateProgressViewControllerIdentifier" id="Enb-1J-Q4H" customClass="UpdateProgressViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <stackView key="view" distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="lEG-sx-wRU">
-                        <rect key="frame" x="0.0" y="0.0" width="161" height="29"/>
+                        <rect key="frame" x="0.0" y="0.0" width="161" height="45"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wNT-Jc-LPm">
-                                <rect key="frame" x="0.0" y="0.0" width="161" height="29"/>
+                                <rect key="frame" x="0.0" y="8" width="146" height="29"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXC-aR-cAV">
-                                        <rect key="frame" x="50" y="11" width="111" height="18"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXC-aR-cAV">
+                                        <rect key="frame" x="32" y="11" width="114" height="18"/>
                                         <subviews>
                                             <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="JgH-K4-PdI">
                                                 <rect key="frame" x="0.0" y="-1" width="100" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="eOC-aw-UZe"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="eOC-aw-UZe"/>
                                                 </constraints>
                                             </progressIndicator>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wwH-FH-XMv">
-                                                <rect key="frame" x="101" y="3" width="10" height="11"/>
+                                                <rect key="frame" x="104" y="3" width="10" height="11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="wwH-FH-XMv" secondAttribute="height" multiplier="1:1" id="sa5-Tv-UMm"/>
                                                     <constraint firstAttribute="width" constant="10" id="uw8-Fa-R8g"/>
@@ -1205,9 +1199,9 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Av-7b-7AM">
-                                        <rect key="frame" x="108" y="0.0" width="44" height="11"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Installing" id="VO3-wO-IeA">
+                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0Av-7b-7AM">
+                                        <rect key="frame" x="-2" y="0.0" width="136" height="11"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Downloading 3,5MB of 123MB" id="VO3-wO-IeA">
                                             <font key="font" metaFont="miniSystem"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1226,16 +1220,19 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dA2-RB-fvr">
-                                <rect key="frame" x="0.0" y="13" width="16" height="16"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dA2-RB-fvr">
+                                <rect key="frame" x="146" y="15" width="15" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="e4r-hB-npd"/>
+                                    <constraint firstAttribute="width" constant="15" id="e4r-hB-npd"/>
                                     <constraint firstAttribute="width" secondItem="dA2-RB-fvr" secondAttribute="height" multiplier="1:1" id="wr1-Ty-Yhd"/>
                                 </constraints>
-                                <buttonCell key="cell" type="inline" bezelStyle="inline" image="NSCaution" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="nZz-e1-J7f">
+                                <buttonCell key="cell" type="inline" bezelStyle="inline" image="warning" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="nZz-e1-J7f">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="presentErrorModally:" target="Enb-1J-Q4H" id="eio-MD-Dfr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <visibilityPriorities>
@@ -1251,7 +1248,7 @@
                         <outlet property="cancelButton" destination="wwH-FH-XMv" id="zlV-0j-IJf"/>
                         <outlet property="progressIndicator" destination="JgH-K4-PdI" id="8Fm-Il-Vk7"/>
                         <outlet property="progressLabel" destination="0Av-7b-7AM" id="Ezj-ap-GQZ"/>
-                        <outlet property="progressSection" destination="oXC-aR-cAV" id="feL-Jy-box"/>
+                        <outlet property="progressSection" destination="oXC-aR-cAV" id="c3U-oG-dCZ"/>
                         <outlet property="warningButton" destination="dA2-RB-fvr" id="ciK-No-vVc"/>
                     </connections>
                 </viewController>
@@ -1261,12 +1258,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSCaution" width="32" height="32"/>
         <image name="NSIconViewTemplate" width="14" height="10"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="NSTouchBarIconViewTemplate" width="20" height="30"/>
         <image name="NSTouchBarRefreshTemplate" width="19" height="30"/>
         <image name="NSTouchBarSearchTemplate" width="19" height="30"/>
+        <image name="warning" width="15" height="15"/>
     </resources>
 </document>

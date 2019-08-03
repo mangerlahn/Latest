@@ -26,15 +26,13 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 		
 		// Verify update is available
 		guard let update = app.updateInformation else {
-			// TODO: Finish with error `noUpdate`
-			self.cancel()
+			self.finish(with: NSError.noUpdate)
 			return
 		}
 		
 		// Verify user is signed in
 		guard let account = ISStoreAccount.primaryAccount as? ISStoreAccount else {
-			// TODO: Finish with error `notSignedIn`
-			self.cancel()
+			self.finish(with: NSError.notSignedIn)
 			return
 		}
 		
@@ -53,8 +51,7 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 				self.purchase = purchase
 				self.observerIdentifier = CKDownloadQueue.shared().add(self)
 			} else {
-				// TODO: Finish with error `noUpdateFound`
-				self.cancel()
+				self.finish(with: NSError.noUpdate)
 			}
 		}
 	}
@@ -93,17 +90,19 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 				return
 		}
 		
-		if status.isFailed || status.isCancelled {
+		guard !status.isFailed && !status.isCancelled else {
 			downloadQueue.removeDownload(withItemIdentifier: download.metadata.itemIdentifier)
-		} else {
-			switch status.activePhase.phaseType {
-			case 0:
-				progressHandler(.downloading(progress: Double(status.percentComplete), loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue)))
-			case 1:
-				progressHandler(.installing)
-			default:
-				progressHandler(.initializing)
-			}
+			self.finish(with: status.error)
+			return
+		}
+		
+		switch status.activePhase.phaseType {
+		case 0:
+			progressHandler(.downloading(progress: Double(status.percentComplete), loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue)))
+		case 1:
+			progressHandler(.installing)
+		default:
+			progressHandler(.initializing)
 		}
 	}
 	
@@ -121,5 +120,27 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 			self.finish()
 		}
 	}
+	
+}
+
+private extension NSError {
+	
+	static var noUpdate: NSError {
+		let description = NSLocalizedString("No update was found for this app.", comment: "Error description when no update was found for a particular app.")
+		return NSError(latestErrorWithCode: NSError.LatestErrorCodes.noUpdate, localizedDescription: description)
+	}
+	
+	static var notSignedIn: NSError {
+		let description = NSLocalizedString("Please sign in to the Mac App Store to update this app.", comment: "Error description when no update was found for a particular app.")
+		return NSError(latestErrorWithCode: NSError.LatestErrorCodes.notSignedIn, localizedDescription: description)
+	}
+
+}
+
+extension NSError.LatestErrorCodes {
+	
+	static let noUpdate = 0
+	
+	static let notSignedIn = 1
 	
 }

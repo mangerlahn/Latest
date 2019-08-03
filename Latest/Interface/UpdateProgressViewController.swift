@@ -17,13 +17,24 @@ class UpdateProgressViewController: NSViewController {
 		case error
 	}
 	
-	@IBOutlet weak var progressSection: NSStackView!
-	@IBOutlet weak var warningButton: NSButton!
+	private enum AlertResponse: Int {
+		case retry = 1000
+		case cancel = 1001
+	}
 	
-	@IBOutlet weak var cancelButton: NSButton!
-	@IBOutlet weak var progressIndicator: NSProgressIndicator!
+	@IBOutlet private weak var progressSection: NSStackView!
+	@IBOutlet private weak var warningButton: NSButton!
 	
-	@IBOutlet weak var progressLabel: NSTextField!
+	@IBOutlet private weak var cancelButton: NSButton!
+	@IBOutlet private weak var progressIndicator: NSProgressIndicator!
+	
+	@IBOutlet private weak var progressLabel: NSTextField!
+	
+	var progressBarWidthAnchor: NSLayoutXAxisAnchor {
+		return self.progressIndicator.leadingAnchor
+	}
+	
+	var displayCancelButton = true
 	
 	var app: AppBundle? {
 		willSet {
@@ -85,10 +96,41 @@ class UpdateProgressViewController: NSViewController {
 		}
 	}
 	
+	@IBAction func presentErrorModally(_ sender: NSButton) {
+		if case .error(let error) = self.app?.updateProgress.state, let window = self.view.window {
+			self.alert(for: error).beginSheetModal(for: window) { (response) in
+				switch AlertResponse(rawValue: response.rawValue) {
+				case .retry:
+					self.app?.update()
+				case .cancel, .none:
+					()
+				}
+			}
+		}
+	}
+	
+	private func alert(for error: Error) -> NSAlert {
+		let alert = NSAlert()
+		alert.alertStyle = .informational
+		
+		let message = NSLocalizedString("An error occurred while updating %@.", comment: "Title of alert stating that an error occurred during an app update. %@ is the name of the app.")
+		alert.messageText = String.localizedStringWithFormat(message, self.app!.name)
+		
+		alert.informativeText = error.localizedDescription
+		
+		alert.addButton(withTitle: NSLocalizedString("Retry", comment: "Button to retry an update in an error dialogue"))
+		alert.addButton(withTitle: NSLocalizedString("Cancel", comment: "Cancel button in an update dialogue"))
+		
+		return alert
+	}
+	
 	private func updateInterface(with state: InterfaceState) {
 		self.view.isHidden = (state == .none)
 		self.warningButton.isHidden = (state != .error)
-		self.progressSection.isHidden = (state == .update && state == .indeterminate)
+		self.progressSection.isHidden = (state != .update && state != .indeterminate)
+		self.progressLabel.isHidden = self.progressSection.isHidden
+		
+		self.cancelButton.isHidden = !self.displayCancelButton
 		
 		if state == .indeterminate {
 			if (!self.progressIndicator.isIndeterminate) {

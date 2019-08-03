@@ -286,5 +286,10 @@ extension MainWindowController: NSWindowDelegate {
         window.setFrame(state.decodeRect(forKey: MainWindowController.WindowSizeKey), display: true)
         self.showReleaseNotes(state.decodeBool(forKey: MainWindowController.ReleaseNotesVisible), animated: false)
     }
+	
+	func window(_ window: NSWindow, willPositionSheet sheet: NSWindow, using rect: NSRect) -> NSRect {
+		// Always position sheets at the top of the window, ignoring toolbar insets
+		return NSRect(x: rect.minX, y: window.frame.height, width: rect.width, height: rect.height)
+	}
     
 }

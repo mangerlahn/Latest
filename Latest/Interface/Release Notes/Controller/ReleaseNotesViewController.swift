@@ -84,12 +84,12 @@ class ReleaseNotesViewController: NSViewController {
 		}
 		
 		didSet {
-			self.children.compactMap { controller -> UpdateProgressViewController? in
-				return controller as? UpdateProgressViewController
-			}.first?.app = self.app
+			// Forward app
+			self.progressViewController.app = self.app
 			
+			// Add ourselfs as observer to the app
 			self.app?.updateProgress.addObserver(self, handler: { progress in
-				self.updateButton.isEnabled = !(self.app?.isUpdating ?? true)
+				self.updateButtonAppearance()
 			})
 		}
 	}
@@ -113,14 +113,34 @@ class ReleaseNotesViewController: NSViewController {
 
         self.appInfoBackgroundView.isHidden = true
         self.updateButton.isHidden = true
-    }
+		
+		// Align progress view controller to update button
+		self.progressViewController.progressBarWidthAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
+		self.progressViewController.displayCancelButton = false
+	}
+	
+	func updateButtonAppearance() {
+		if self.app?.isUpdating ?? false {
+			self.updateButton.title = NSLocalizedString("Cancel", comment: "Cancel button title to cancel the update of an app")
+			self.updateButton.action = #selector(cancelUpdate(_:))
+		} else {
+			self.updateButton.title = NSLocalizedString("Update", comment: "Update button title to update an app")
+			self.updateButton.action = #selector(update(_:))
+		}
+		
+		self.updateButton.target = self
+	}
     
     
     // MARK: - Actions
     
-    @IBAction func update(_ sender: NSButton) {
+    @objc func update(_ sender: NSButton) {
         self.app?.update()
     }
+	
+	@objc func cancelUpdate(_ sender: NSButton) {
+		self.app?.cancelUpdate()
+	}
     
     
     // MARK: - Display Methods
@@ -313,5 +333,12 @@ class ReleaseNotesViewController: NSViewController {
         self.loadContent(.error)
         self.content?.errorController?.show(error)
     }
+	
+	/// The view controller displaying update progress
+	private var progressViewController: UpdateProgressViewController {
+		return self.children.compactMap { controller -> UpdateProgressViewController? in
+			return controller as? UpdateProgressViewController
+		}.first!
+	}
     
 }
