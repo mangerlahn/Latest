@@ -26,9 +26,8 @@
 		5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8622CA39C60088B39B /* UpdateOperation.swift */; };
 		5039DE8B22CA39ED0088B39B /* StatefulOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */; };
 		5039DE8D22CAA2790088B39B /* MacAppStoreUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */; };
-		5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; };
-		5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5045842B1FF6CF0F00E15E9D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */; };
+		503DCE9C22F8E16200A4FDCD /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503DCE9B22F8E16200A4FDCD /* Sparkle.framework */; };
+		503DCE9D22F8E16200A4FDCD /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 503DCE9B22F8E16200A4FDCD /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048573F22C81DCF00C52C48 /* CommerceKit.framework */; };
 		5048574222C81DF900C52C48 /* StoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048574122C81DF800C52C48 /* StoreFoundation.framework */; };
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
@@ -36,6 +35,7 @@
 		506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* NSError+Latest.swift */; };
 		506DF77621248F6200D792FC /* AppCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppCollection.swift */; };
 		506DF7782125580400D792FC /* UpdateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF7772125580400D792FC /* UpdateTableView.swift */; };
+		5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
@@ -73,7 +73,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				504584301FF6CF4F00E15E9D /* Sparkle.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +82,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5045842D1FF6CF0F00E15E9D /* Sparkle.framework in Embed Frameworks */,
+				503DCE9D22F8E16200A4FDCD /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,8 +114,7 @@
 		5039DE8622CA39C60088B39B /* UpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOperation.swift; sourceTree = "<group>"; };
 		5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulOperation.swift; sourceTree = "<group>"; };
 		5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppStoreUpdateOperation.swift; sourceTree = "<group>"; };
-		5045842B1FF6CF0F00E15E9D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
-		5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Frameworks/Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		503DCE9B22F8E16200A4FDCD /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		5048573F22C81DCF00C52C48 /* CommerceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommerceKit.framework; path = ../../../../../../System/Library/PrivateFrameworks/CommerceKit.framework; sourceTree = "<group>"; };
 		5048574122C81DF800C52C48 /* StoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreFoundation.framework; path = ../../../../../../System/Library/PrivateFrameworks/StoreFoundation.framework; sourceTree = "<group>"; };
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
@@ -124,6 +122,7 @@
 		506A8F6622EC14CC00C755AF /* NSError+Latest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Latest.swift"; sourceTree = "<group>"; };
 		506DF77521248F6200D792FC /* AppCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollection.swift; sourceTree = "<group>"; };
 		506DF7772125580400D792FC /* UpdateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableView.swift; sourceTree = "<group>"; };
+		5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateOperation.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
@@ -144,6 +143,13 @@
 		50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
+		50EEEABA22F6FD76000BA226 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		50EEEABB22F6FDB4000BA226 /* SUUpdateDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUUpdateDriver.h; sourceTree = "<group>"; };
+		50EEEABC22F6FDB4000BA226 /* SUBasicUpdateDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUBasicUpdateDriver.h; sourceTree = "<group>"; };
+		50EEEABE22F6FDF3000BA226 /* SPUDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUDownloader.h; sourceTree = "<group>"; };
+		50EEEABF22F6FE21000BA226 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUDownloaderProtocol.h; sourceTree = "<group>"; };
+		50EEEAC022F6FE36000BA226 /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUDownloaderDelegate.h; sourceTree = "<group>"; };
+		50EEEAC122F735A4000BA226 /* SUUpdater+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SUUpdater+Private.h"; sourceTree = "<group>"; };
 		50F542E022D9C41C004B3F8D /* CKDownloadQueueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueueObserver.h; sourceTree = "<group>"; };
 		50F542E122D9C41C004B3F8D /* CKDownloadDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadDirectory.h; sourceTree = "<group>"; };
 		50F542E222D9C41C004B3F8D /* CKSoftwareMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareMap.h; sourceTree = "<group>"; };
@@ -172,8 +178,6 @@
 		50F542FA22D9C41D004B3F8D /* ISAuthenticationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationContext.h; sourceTree = "<group>"; };
 		50F542FB22D9C41D004B3F8D /* SSPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchase.h; sourceTree = "<group>"; };
 		50F542FC22D9C41D004B3F8D /* ISStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreClient.h; sourceTree = "<group>"; };
-		50F5436422D9C772004B3F8D /* MasKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasKit.h; sourceTree = "<group>"; };
-		50F5436522D9C772004B3F8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,8 +186,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5048574222C81DF900C52C48 /* StoreFoundation.framework in Frameworks */,
+				503DCE9C22F8E16200A4FDCD /* Sparkle.framework in Frameworks */,
 				5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */,
-				5045842C1FF6CF0F00E15E9D /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +224,6 @@
 			children = (
 				50290E731E53EB6A00133E3D /* Latest */,
 				50C81D6A1FBADC5900324C2E /* Tests */,
-				50F5436322D9C772004B3F8D /* MasKit */,
 				5046AFF21FF6CECD00ABAA97 /* Frameworks */,
 				50290E721E53EB6A00133E3D /* Products */,
 			);
@@ -264,6 +267,7 @@
 				5039DE8422CA396F0088B39B /* UpdateQueue.swift */,
 				5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */,
 				5039DE8622CA39C60088B39B /* UpdateOperation.swift */,
+				5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */,
 				5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */,
 			);
 			path = Updater;
@@ -272,13 +276,13 @@
 		5046AFF21FF6CECD00ABAA97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				503DCE9B22F8E16200A4FDCD /* Sparkle.framework */,
+				50EEEAC422F8C722000BA226 /* Sparkle */,
 				50F5439E22D9CA35004B3F8D /* MasKit */,
 				50F542DF22D9C41C004B3F8D /* CommerceKit */,
 				50F542EA22D9C41D004B3F8D /* StoreFoundation */,
 				5048574122C81DF800C52C48 /* StoreFoundation.framework */,
 				5048573F22C81DCF00C52C48 /* CommerceKit.framework */,
-				5045842F1FF6CF4F00E15E9D /* Sparkle.framework.dSYM */,
-				5045842B1FF6CF0F00E15E9D /* Sparkle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,6 +305,7 @@
 				501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */,
 				501EA9841EB1BA4400D05821 /* Localizable.strings */,
 				50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */,
+				50EEEABA22F6FD76000BA226 /* BridgingHeader.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -400,6 +405,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		50EEEAC422F8C722000BA226 /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				50EEEAC522F8C733000BA226 /* Exposed Private Headers */,
+				50EEEAC122F735A4000BA226 /* SUUpdater+Private.h */,
+			);
+			path = Sparkle;
+			sourceTree = "<group>";
+		};
+		50EEEAC522F8C733000BA226 /* Exposed Private Headers */ = {
+			isa = PBXGroup;
+			children = (
+				50EEEABE22F6FDF3000BA226 /* SPUDownloader.h */,
+				50EEEABC22F6FDB4000BA226 /* SUBasicUpdateDriver.h */,
+				50EEEABB22F6FDB4000BA226 /* SUUpdateDriver.h */,
+				50EEEABF22F6FE21000BA226 /* SPUDownloaderProtocol.h */,
+				50EEEAC022F6FE36000BA226 /* SPUDownloaderDelegate.h */,
+			);
+			path = "Exposed Private Headers";
+			sourceTree = "<group>";
+		};
 		50F542DF22D9C41C004B3F8D /* CommerceKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,15 +468,6 @@
 			);
 			name = StoreFoundation;
 			path = "Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
-			sourceTree = "<group>";
-		};
-		50F5436322D9C772004B3F8D /* MasKit */ = {
-			isa = PBXGroup;
-			children = (
-				50F5436422D9C772004B3F8D /* MasKit.h */,
-				50F5436522D9C772004B3F8D /* Info.plist */,
-			);
-			path = MasKit;
 			sourceTree = "<group>";
 		};
 		50F5439E22D9CA35004B3F8D /* MasKit */ = {
@@ -658,6 +675,7 @@
 				506DF7782125580400D792FC /* UpdateTableView.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
 				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
+				5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */,
 				501497A722D9CC0800CFA8CE /* ISStoreAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,12 +855,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
 					/System/Library/PrivateFrameworks,
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -850,6 +869,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/CommerceKit $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Latest/Resources/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};
@@ -864,12 +884,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks/Carthage/Build/Mac",
 					/System/Library/PrivateFrameworks,
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -877,6 +898,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/CommerceKit $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Latest/Resources/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};

@@ -55,12 +55,7 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 			}
 		}
 	}
-	
-	override func finish(with error: Error) {
-		self.removeObserver()
-		super.finish(with: error)
-	}
-	
+		
 	override func finish() {
 		self.removeObserver()
 		super.finish()
@@ -98,7 +93,7 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 		
 		switch status.activePhase.phaseType {
 		case 0:
-			progressHandler(.downloading(progress: Double(status.percentComplete), loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue)))
+			progressHandler(.downloading(loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue)))
 		case 1:
 			progressHandler(.installing)
 		default:
@@ -124,11 +119,6 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 }
 
 private extension NSError {
-	
-	static var noUpdate: NSError {
-		let description = NSLocalizedString("No update was found for this app.", comment: "Error description when no update was found for a particular app.")
-		return NSError(latestErrorWithCode: NSError.LatestErrorCodes.noUpdate, localizedDescription: description)
-	}
 	
 	static var notSignedIn: NSError {
 		let description = NSLocalizedString("Please sign in to the Mac App Store to update this app.", comment: "Error description when no update was found for a particular app.")

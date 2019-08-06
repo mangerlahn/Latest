@@ -14,7 +14,7 @@ class UpdateOperation: StatefulOperation {
 		case none
 		case pending
 		case initializing
-		case downloading(progress: Double, loadedSize: Int64, totalSize: Int64)
+		case downloading(loadedSize: Int64, totalSize: Int64)
 		case installing
 		case error(Error)
 		case cancelling
@@ -58,4 +58,12 @@ class UpdateOperation: StatefulOperation {
 		super.finish()
 	}
 	
+}
+
+extension NSError {
+
+	static var noUpdate: NSError {
+		let description = NSLocalizedString("No update was found for this app.", comment: "Error description when no update was found for a particular app.")
+		return NSError(latestErrorWithCode: NSError.LatestErrorCodes.noUpdate, localizedDescription: description)
+	}
 }
