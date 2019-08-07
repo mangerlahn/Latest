@@ -12,7 +12,10 @@ import Sparkle
 class SparkleUpdateOperation: UpdateOperation {
 	
 	/// The updater used to update this app.
-	private var updater: SUUpdater?
+	private var updater: SPUUpdater?
+	
+	// Callback to be called when the operation has been cancelled
+	fileprivate var cancellationCallback: (() -> Void)?
 	
 	/// Initializes the operation with the given Sparkle app and handler
 	init(app: SparkleAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler, completionHandler: @escaping UpdateOperation.CompletionHandler) {
@@ -33,9 +36,15 @@ class SparkleUpdateOperation: UpdateOperation {
 		
 		DispatchQueue.main.async {
 			// Instantiate a new updater that performs the update
-			let updater = SingleUseUpdater(for: bundle)
-			updater?.delegate = self
-			updater?.installUpdates(with: self.progressHandler)
+			let updater = SPUUpdater(hostBundle: bundle, applicationBundle: bundle, userDriver: self, delegate: nil)
+			
+			do {
+				try updater.start()
+			} catch let error {
+				self.finish(with: error)
+			}
+			
+			updater.checkForUpdates()
 			
 			self.updater = updater
 		}
@@ -44,11 +53,18 @@ class SparkleUpdateOperation: UpdateOperation {
 	override func cancel() {
 		super.cancel()
 		
-		self.updater?.driver?.download.cancel()
-		self.updater?.driver?.abortUpdate()
-		
+		self.cancellationCallback?()		
 		self.finish()
 	}
+	
+	
+	// MARK: - Downloading
+	
+	/// The estimated total length of the downloaded app bundle.
+	fileprivate var expectedContentLength: UInt64 = 0
+
+	/// The length of already downloaded data.
+	fileprivate var receivedLength: UInt64 = 0
 	
 	
 	// MARK: - Installation
@@ -63,53 +79,106 @@ class SparkleUpdateOperation: UpdateOperation {
 
 }
 
-// MARK: - Download Observer	
-extension SparkleUpdateOperation: SUUpdaterDelegate {
 
-	// MARK: Customization
+// MARK: - Driver Implementation
+extension SparkleUpdateOperation: SPUUserDriver {
 	
-	func updaterShouldPromptForPermissionToCheck(forUpdates updater: SUUpdater) -> Bool {
-		// Don't show any Sparkle UI as we do that on our own
-		return false
+	// MARK: - Preparing Update
+	
+	func show(_ request: SPUUpdatePermissionRequest, reply: @escaping (SUUpdatePermissionResponse) -> Void) {
+		reply(.init(automaticUpdateChecks: false, sendSystemProfile: false))
 	}
 	
+	func showUserInitiatedUpdateCheck(completion updateCheckStatusCompletion: @escaping (SPUUserInitiatedCheckStatus) -> Void) {
+		self.progressHandler(.initializing)
+	}
 	
-	// MARK: Cancellation
+	func showUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUUpdateAlertChoice) -> Void) {
+		reply(self.isCancelled ? .installLaterChoice : .installUpdateChoice)
+	}
 	
-	func updaterDidNotFindUpdate(_ updater: SUUpdater) {
-		// No update was found, abort
+	func showDownloadedUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUUpdateAlertChoice) -> Void) {
+		reply(self.isCancelled ? .installLaterChoice : .installUpdateChoice)
+	}
+	
+	func showResumableUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUInstallUpdateStatus) -> Void) {
+		reply(self.isCancelled ? .dismissUpdateInstallation : .installAndRelaunchUpdateNow)
+	}
+	
+	func showInformationalUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUInformationalUpdateAlertChoice) -> Void) {
+		reply(.dismissInformationalNoticeChoice)
+	}
+	
+	func showUpdateNotFound(acknowledgement: @escaping () -> Void) {
 		self.finish(with: NSError.noUpdate)
+		acknowledgement()
 	}
 	
-	func userDidCancelDownload(_ updater: SUUpdater) {
-		self.finish()
+	func showUpdaterError(_ error: Error, acknowledgement: @escaping () -> Void) {
+		self.finish(with: error)
+		acknowledgement()
+	}
+	
+	func showDownloadInitiated(completion downloadUpdateStatusCompletion: @escaping (SPUDownloadUpdateStatus) -> Void) {
+		if self.isCancelled {
+			downloadUpdateStatusCompletion(.canceled)
+			return
+		}
+		
+		self.cancellationCallback = {
+			DispatchQueue.main.async {			
+				downloadUpdateStatusCompletion(.canceled)
+			}
+		}
 	}
 
-	func updater(_ updater: SUUpdater, didAbortWithError error: Error) {
-		self.finish(with: error)
+	
+	// MARK: - Downloading Update
+	
+	func showDownloadDidReceiveExpectedContentLength(_ expectedContentLength: UInt64) {
+		// This should be only called once per download. If it Uis called more than once, reset the progress
+		self.expectedContentLength = expectedContentLength
+		self.receivedLength = 0
+		
+		self.callProgressHandler()
 	}
 	
-	func updater(_ updater: SUUpdater, didCancelInstallUpdateOnQuit item: SUAppcastItem) {
-		self.finish()
+	func showDownloadDidReceiveData(ofLength length: UInt64) {
+		self.receivedLength += length
+
+		// Expected content length may be wrong, adjust if needed
+		self.expectedContentLength = max(self.expectedContentLength, self.receivedLength)
+		
+		self.callProgressHandler()
 	}
 	
+	private func callProgressHandler() {
+		self.progressHandler(.downloading(loadedSize: Int64(self.receivedLength), totalSize: Int64(self.expectedContentLength)))
+	}
+
 	
-	// MARK: Installation
+	// MARK: - Installing Update
 	
-	func updaterShouldRelaunchApplication(_ updater: SUUpdater) -> Bool {
-		return true
+	func showDownloadDidStartExtractingUpdate() {
+		self.progressHandler(.extracting(progress: 0))
 	}
 	
-	func updater(_ updater: SUUpdater, willInstallUpdate item: SUAppcastItem) {
+	func showExtractionReceivedProgress(_ progress: Double) {
+		self.progressHandler(.extracting(progress: progress))
+	}
+	
+	func showReady(toInstallAndRelaunch installUpdateHandler: @escaping (SPUInstallUpdateStatus) -> Void) {
+		// Check whether app is open
+		self.isAppOpen = self.runningApplication != nil
+		
+		installUpdateHandler(self.isCancelled ? .dismissUpdateInstallation : .installAndRelaunchUpdateNow)
+	}
+	
+	func showInstallingUpdate() {
 		self.progressHandler(.installing)
 	}
 	
-	func updaterWillRelaunchApplication(_ updater: SUUpdater) {
-		// Check whether app is open
-		self.isAppOpen = self.runningApplication != nil
-	}
-	
-	func updaterDidRelaunchApplication(_ updater: SUUpdater) {
+	func showUpdateInstallationDidFinish(acknowledgement: @escaping () -> Void) {
 		// Close the app after installation when it was not open before
 		if !self.isAppOpen, let runningApplication = self.runningApplication {
 			// Attempt to terminate app gracefully
@@ -117,92 +186,18 @@ extension SparkleUpdateOperation: SUUpdaterDelegate {
 		}
 		
 		self.finish()
+		
+		acknowledgement()
 	}
 	
-}
 
-/**
-A subclass that overrides update scheduling to do nothing.
-Each instance of `SUUpdater` is added to an internal static dictionary of updaters.
-We are not able to expose this dictionary in order to remove the updater after this operation finishes.
-Therefore one updater instance for each update check will be added to the dictionary.
-While this is not ideal, we can still prevent any automatic update checks (with UI prompts) from occurring.
-*/
-class SingleUseUpdater: SUUpdater {
+	// MARK: - Ignored Methods
 	
-	override func startUpdateCycle() {
-		// Prevent automatic update checking from taking place
-	}
-	
-	override func scheduleNextUpdateCheck() {
-		// Prevent automatic update checking from taking place
-	}
-	
-	override func checkForUpdatesInBackground() {
-		// This implementation should not check for updates
-	}
-	
-	func installUpdates(with handler: @escaping UpdateOperation.ProgressHandler) {
-		// Override the update driver to hide any form of UI
-		let driver = UpdateDriver(updater: self, progressHandler: handler)
-		
-		// Automatically install the downloaded update
-		driver.automaticallyInstallUpdates = true
-		
-		// Start the update process
-		self.checkForUpdates(with: driver)
-	}
-	
-}
-
-/// A custom update driver that overrides the drivers delegate methods.
-class UpdateDriver: SUBasicUpdateDriver {
-
-	/// The handler with which progress is reported.
-	let progressHandler: UpdateOperation.ProgressHandler
-	
-	/// Initializes the update driver with the given updater and progress handler.
-	init(updater: SUUpdater, progressHandler: @escaping UpdateOperation.ProgressHandler) {
-		self.progressHandler = progressHandler
-		super.init(updater: updater)
-	}
-	
-	
-	// MARK: - Download Delegate Overrides
-	
-	/// The estimated total length of the downloaded app bundle.
-	private var expectedContentLength: Int64 = 0
-	
-	/// The length of already downloaded data.
-	private var receivedLength: Int64 = 0
-	
-	override func downloaderDidReceiveExpectedContentLength(_ expectedContentLength: Int64) {
-		// This should be only called once per download. If it is called more than once, reset the progress
-		self.expectedContentLength = expectedContentLength
-		self.receivedLength = 0
-		
-		self.callProgressHandler()
-	}
-	
-	override func downloaderDidReceiveData(ofLength length: UInt64) {
-		self.receivedLength += Int64(length)
-		
-		// Expected content length may be wrong, adjust if needed
-		self.expectedContentLength = max(self.expectedContentLength, self.receivedLength)
-		
-		self.callProgressHandler()
-	}
-	
-	override func downloaderDidFinish(withTemporaryDownloadData downloadData: SPUDownloadData!) {
-		self.progressHandler(.installing)
-		super.downloaderDidFinish(withTemporaryDownloadData: downloadData)
-	}
-	
-	
-	// MARK: - Helper Methods
-	
-	private func callProgressHandler() {
-		self.progressHandler(.downloading(loadedSize: self.receivedLength, totalSize: self.expectedContentLength))
-	}
+	func showCanCheck(forUpdates canCheckForUpdates: Bool) {}
+	func dismissUserInitiatedUpdateCheck() {}
+	func showUpdateReleaseNotes(with downloadData: SPUDownloadData) {}
+	func showUpdateReleaseNotesFailedToDownloadWithError(_ error: Error) {}
+	func showSendingTerminationSignal() {}
+	func dismissUpdateInstallation() {}
 	
 }
