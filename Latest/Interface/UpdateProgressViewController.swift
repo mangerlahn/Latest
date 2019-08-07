@@ -84,6 +84,10 @@ class UpdateProgressViewController: NSViewController {
 			let byteFormatter = ByteCountFormatter()
 			byteFormatter.countStyle = .file
 			self.progressLabel.stringValue = NSLocalizedString("Downloading ", comment: "Update progress state of downloading an update") + byteFormatter.string(fromByteCount: loadedSize) + " of " + byteFormatter.string(fromByteCount: totalSize)
+		case .extracting(let progress):
+			self.updateInterface(with: .update)
+			self.progressIndicator.doubleValue = progress
+			self.progressLabel.stringValue = NSLocalizedString("Extracting Update", comment: "Update progress state of extracting the downloaded update")
 		case .installing:
 			self.updateInterface(with: .indeterminate)
 			self.progressLabel.stringValue = NSLocalizedString("Installing", comment: "Update progress state of installing an update")

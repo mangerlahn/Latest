@@ -15,6 +15,7 @@ class UpdateOperation: StatefulOperation {
 		case pending
 		case initializing
 		case downloading(loadedSize: Int64, totalSize: Int64)
+		case extracting(progress: Double)
 		case installing
 		case error(Error)
 		case cancelling
