@@ -15,7 +15,7 @@ class SparkleUpdateOperation: UpdateOperation {
 	private var updater: SPUUpdater?
 	
 	// Callback to be called when the operation has been cancelled
-	fileprivate var cancellationCallback: (() -> Void)?
+	fileprivate var cancellationCallback: ((SPUDownloadUpdateStatus) -> Void)?
 	
 	/// Initializes the operation with the given Sparkle app and handler
 	init(app: SparkleAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler, completionHandler: @escaping UpdateOperation.CompletionHandler) {
@@ -53,8 +53,13 @@ class SparkleUpdateOperation: UpdateOperation {
 	override func cancel() {
 		super.cancel()
 		
-		self.cancellationCallback?()		
+		self.cancellationCallback?(.canceled)
 		self.finish()
+	}
+	
+	override func finish() {
+		// Cleanup updater
+		self.updater = nil
 	}
 	
 	
@@ -125,11 +130,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 			return
 		}
 		
-		self.cancellationCallback = {
-			DispatchQueue.main.async {			
-				downloadUpdateStatusCompletion(.canceled)
-			}
-		}
+		self.cancellationCallback = downloadUpdateStatusCompletion
 	}
 
 	
