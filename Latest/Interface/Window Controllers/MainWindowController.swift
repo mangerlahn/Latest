@@ -97,6 +97,10 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
 		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
     }
+	
+	@IBAction func donate(_ sender: NSMenuItem?) {
+		NSWorkspace.shared.open(URL(string: "https://max.codes/latest/donate/")!)
+	}
     
     
     // MARK: Menu Item Validation

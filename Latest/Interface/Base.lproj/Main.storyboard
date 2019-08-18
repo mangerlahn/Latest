@@ -386,6 +386,12 @@
                                                 <action selector="visitWebsite:" target="HQw-Wf-FaT" id="n6y-Wl-rHx"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Donate" id="o46-Ym-MCY">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="donate:" target="HQw-Wf-FaT" id="UXo-7d-L2W"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
