@@ -77,30 +77,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     }
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
-    @IBAction func openAll(_ sender: Any?) {
-        let apps = self.listViewController.apps
-        
-        if apps.countOfAvailableUpdates > 4 {
-            // Display warning
-            let alert = NSAlert()
-            alert.alertStyle = .warning
-            
-            alert.messageText = String.init(format: NSLocalizedString("You are going to open %d apps.", comment: "Open a lot of apps - informative text"), apps.count)
-            
-            alert.informativeText = NSLocalizedString("This may slow down your Mac. Are you sure you want to open all apps at once?", comment: "Open a lot of apps - message text")
-            
-            alert.addButton(withTitle: NSLocalizedString("Open Apps", comment: "Open all apps button"))
-            alert.addButton(withTitle: NSLocalizedString("Cancel", comment: "Cancel button"))
-            
-            alert.beginSheetModal(for: self.window!, completionHandler: { (response) in
-                if response.rawValue == 1000 {
-                    // Open apps anyway
-                    self.open(apps)
-                }
-            })
-        } else {
-            self.open(apps)
-        }
+    @IBAction func updateAll(_ sender: Any?) {
+		self.listViewController.apps.filter({ $0.updateAvailable }).forEach({ $0.update() })
     }
     
     /// Shows/hides the detailView which presents the release notes
@@ -125,7 +103,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         }
         
         switch action {
-        case #selector(openAll(_:)):
+        case #selector(updateAll(_:)):
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
@@ -203,23 +181,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     // MARK: - Private Methods
     
     /**
-     Open all apps in the array
-     - parameter apps: The apps to be opened
+     Updates all apps in the array
+     - parameter apps: The apps to be updated.
      */
-    
-    private func open(_ apps: AppCollection) {
-        var showedMacAppStore = false
-        
-        apps.forEach { (app) in
-            if !app.updateAvailable { return }
-            if !showedMacAppStore, app is MacAppStoreAppBundle {
-                showedMacAppStore = true
-                NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
-                return
-            }
-            
-            NSWorkspace.shared.open(app.url)
-        }
+    private func update(_ apps: AppCollection) {
+		apps.forEach({ $0.update() })
     }
     
     private func updateShowInstalledUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {

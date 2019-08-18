@@ -75,7 +75,7 @@
                                         </menuItem>
                                         <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
                                             <connections>
-                                                <action selector="openAll:" target="Ady-hI-5gd" id="gFL-jg-4gq"/>
+                                                <action selector="updateAll:" target="HQw-Wf-FaT" id="qDE-F3-uuM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="6iT-9L-JOa"/>
@@ -437,7 +437,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openAll:" target="B8D-0N-5wS" id="Ol2-UK-k1u"/>
+                                            <action selector="updateAll:" target="B8D-0N-5wS" id="LPR-1Y-10O"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -1025,15 +1025,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" wantsLayer="YES" copiesOnScroll="NO" id="HmJ-8L-9ax">
-                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            <rect key="frame" x="0.0" y="0.0" width="435" height="300"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView wantsLayer="YES" editable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="D4s-i4-4ug">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="435" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="450" height="300"/>
+                                    <size key="minSize" width="435" height="300"/>
                                     <size key="maxSize" width="90000000" height="10000000"/>
                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -1044,7 +1044,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="qbD-8S-FfM">
-                            <rect key="frame" x="434" y="0.0" width="16" height="300"/>
+                            <rect key="frame" x="435" y="0.0" width="15" height="300"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
