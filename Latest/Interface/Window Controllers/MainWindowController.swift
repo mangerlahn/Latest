@@ -93,6 +93,14 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
         self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
     }
+	
+	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
+		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
+    }
+	
+	@IBAction func donate(_ sender: NSMenuItem?) {
+		NSWorkspace.shared.open(URL(string: "https://max.codes/latest/donate/")!)
+	}
     
     
     // MARK: Menu Item Validation
