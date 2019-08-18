@@ -60,6 +60,8 @@ class SparkleUpdateOperation: UpdateOperation {
 	override func finish() {
 		// Cleanup updater
 		self.updater = nil
+		
+		super.finish()
 	}
 	
 	
@@ -186,9 +188,8 @@ extension SparkleUpdateOperation: SPUUserDriver {
 			runningApplication.terminate()
 		}
 		
-		self.finish()
-		
 		acknowledgement()
+		self.finish()
 	}
 	
 
