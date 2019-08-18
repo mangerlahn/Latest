@@ -41,7 +41,13 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
         self.dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
     }
     
-    
+    override func update() {
+		UpdateQueue.shared.addOperation(SparkleUpdateOperation(app: self, progressHandler: { (progressState) in
+			self.updateProgress.state = progressState
+		}))
+	}
+	
+	
     // MARK: - XML Parser
     
     /// Variable holding the current parsing state
@@ -163,14 +169,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
         self.newestVersion = version
         self.versionInfos.append(version)
     }
-
-	override func update() {
-		UpdateQueue.shared.addOperation(SparkleUpdateOperation(app: self, progressHandler: { (progressState) in
-			self.updateProgress.state = progressState
-		}, completionHandler: {
-//			self.updateProgress.error = error
-		}))
-	}
+	
     
     // MARK: - Debug
     

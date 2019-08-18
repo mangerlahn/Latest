@@ -18,8 +18,8 @@ class SparkleUpdateOperation: UpdateOperation {
 	fileprivate var cancellationCallback: ((SPUDownloadUpdateStatus) -> Void)?
 	
 	/// Initializes the operation with the given Sparkle app and handler
-	init(app: SparkleAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler, completionHandler: @escaping UpdateOperation.CompletionHandler) {
-		super.init(app: app, progressHandler: progressHandler, completionHandler: completionHandler)
+	init(app: SparkleAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler) {
+		super.init(app: app, progressHandler: progressHandler)
 	}
 	
 	

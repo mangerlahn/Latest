@@ -9,15 +9,22 @@
 import CommerceKit
 import StoreFoundation
 
+/// The operation updating Mac App Store apps.
 class MacAppStoreUpdateOperation: UpdateOperation {
 	
-	init(app: MacAppStoreAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler, completionHandler: @escaping UpdateOperation.CompletionHandler) {
-		super.init(app: app, progressHandler: progressHandler, completionHandler: completionHandler)
+	/// Initializes the operation with the given Mac App Store app and progress handler.
+	init(app: MacAppStoreAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler) {
+		super.init(app: app, progressHandler: progressHandler)
 	}
 	
-	var purchase: SSPurchase!
+	/// The purchase associated with the to be updated app.
+	private var purchase: SSPurchase!
 	
-	var observerIdentifier: CKDownloadQueueObserver?
+	/// The observer that observes the Mac App Store updater.
+	private var observerIdentifier: CKDownloadQueueObserver?
+	
+	
+	// MARK: - Operation Overrides
 	
 	override func execute() {
 		super.execute()
@@ -57,19 +64,17 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 	}
 		
 	override func finish() {
-		self.removeObserver()
-		super.finish()
-	}
-	
-	private func removeObserver() {
 		if let observerIdentifier = self.observerIdentifier {
 			CKDownloadQueue.shared().remove(observerIdentifier)
 		}
+
+		super.finish()
 	}
 	
 }
 
-// MARK: - Download Observer	
+// MARK: - Download Observer
+
 extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, statusChangedFor download: SSDownload!) {
@@ -101,25 +106,27 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 		}
 	}
 	
-	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithAddition download: SSDownload!) {}
 	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithRemoval download: SSDownload!) {
 		guard download.metadata.itemIdentifier == self.purchase.itemIdentifier, let status = download.status else {
 			return
 		}
 		
+		// Cancel operation.
 		if status.isFailed {
 			self.finish(with: status.error)
-		} else if status.isCancelled {
-			self.finish()
 		} else {
 			self.finish()
 		}
 	}
 	
+	func downloadQueue(_ downloadQueue: CKDownloadQueue!, changedWithAddition download: SSDownload!) {}
+	
 }
 
+/// Error conveniences
 private extension NSError {
 	
+	/// The user is not signed in into the app store account with which the app was purchaised.
 	static var notSignedIn: NSError {
 		let description = NSLocalizedString("Please sign in to the Mac App Store to update this app.", comment: "Error description when no update was found for a particular app.")
 		return NSError(latestErrorWithCode: NSError.LatestErrorCodes.notSignedIn, localizedDescription: description)
@@ -127,9 +134,7 @@ private extension NSError {
 
 }
 
-extension NSError.LatestErrorCodes {
-	
-	static let noUpdate = 0
+private extension NSError.LatestErrorCodes {
 	
 	static let notSignedIn = 1
 	

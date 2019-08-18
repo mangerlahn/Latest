@@ -8,21 +8,29 @@
 
 import Foundation
 
+/// The queue where update operations are scheduled on.
 class UpdateQueue: OperationQueue {
 	
+	// MARK: - Initialization
 	private override init() {
 		super.init()
 		
 		self.maxConcurrentOperationCount = 3
 	}
 	
+	/// The shared instance of the queue.
 	static let shared = UpdateQueue()
 	
+	
+	// MARK: - Public Methods
+	
+	/// Cancels the update operation for the given app.
 	func cancelUpdate(for app: AppBundle) {
 		guard let operation = self.operation(for: app) else { return }
 		operation.cancel()
 	}
 	
+	/// Whether the queue contains an update operation for the given app.
 	func contains(_ app: AppBundle) -> Bool {
 		return self.operation(for: app) != nil
 	}
@@ -42,6 +50,7 @@ class UpdateQueue: OperationQueue {
 	
 	// MARK: - Helper
 	
+	/// Returns the operation for the given app.
 	private func operation(for app: AppBundle) -> UpdateOperation? {
 		guard let updateOperations = self.operations as? [UpdateOperation] else {
 			fatalError("Unknown operations in update queue")

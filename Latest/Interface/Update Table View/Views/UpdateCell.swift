@@ -13,20 +13,8 @@ import Cocoa
  */
 class UpdateCell: NSTableCellView {
 	
-	let updateProgressViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "updateProgressViewControllerIdentifier") as! UpdateProgressViewController
-	var app: AppBundle? {
-		didSet {
-			self.updateProgressViewController.app = self.app
-		}
-	}
+	// MARK: - View Lifecycle
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		
-		self.contentStackView?.addArrangedSubview(self.updateProgressViewController.view)
-		self.currentVersionTextField?.topAnchor.constraint(equalTo: self.updateProgressViewController.view.topAnchor).isActive = true
-	}
-		
 	/// The label displaying the current version of the app
 	@IBOutlet weak var nameTextField: NSTextField?
 
@@ -36,7 +24,15 @@ class UpdateCell: NSTableCellView {
     /// The label displaying the newest version available for the app
     @IBOutlet weak var newVersionTextField: NSTextField?
 	
-	@IBOutlet weak var contentStackView: NSStackView?
+	/// The stack view holding the cells contents.
+	@IBOutlet private weak var contentStackView: NSStackView?
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		self.contentStackView?.addArrangedSubview(self.updateProgressViewController.view)
+		self.currentVersionTextField?.topAnchor.constraint(equalTo: self.updateProgressViewController.view.topAnchor).isActive = true
+	}
 	
     override var backgroundStyle: NSView.BackgroundStyle {
         didSet {
@@ -53,5 +49,18 @@ class UpdateCell: NSTableCellView {
             }
         }
     }
-    
+		
+	
+	// MARK: - Update Progress
+	
+	/// The update progress controller that displays any progress made during app updates.
+	private let updateProgressViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "updateProgressViewControllerIdentifier") as! UpdateProgressViewController
+
+	/// The app represented by this cell
+	var app: AppBundle? {
+		didSet {
+			self.updateProgressViewController.app = self.app
+		}
+	}
+	    
 }

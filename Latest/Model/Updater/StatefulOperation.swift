@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An convenience operation adding state to Operations.
 class StatefulOperation: Operation {
 
     // MARK: State Management

@@ -115,7 +115,7 @@ class ReleaseNotesViewController: NSViewController {
         self.updateButton.isHidden = true
 		
 		// Align progress view controller to update button
-		self.progressViewController.progressBarWidthAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
+		self.progressViewController.leadingProgressAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
 		self.progressViewController.displayCancelButton = false
 	}
 	
