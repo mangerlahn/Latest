@@ -65,14 +65,8 @@ struct AppCollection {
     /// Adds a new app to the collection
     mutating func append(_ element: Element) {
         self._rawData.append(element)
-        self._rawData.sort { (bundle1, bundle2) -> Bool in
-            if bundle1.updateAvailable != bundle2.updateAvailable {
-                return bundle1.updateAvailable
-            }
-            
-            return bundle1.name.lowercased() < bundle2.name.lowercased()
-        }
-		
+
+		self.sortApps()
 		self.updateFilteredApps()
     }
 
@@ -94,6 +88,19 @@ struct AppCollection {
         
         return returnedIndex
     }
+	
+	/// Updates the contents of the given app
+	@discardableResult
+	mutating func update(_ app: AppBundle) -> Int? {
+		guard let index = self.data.firstIndex(where: { $0 == app }) else { return nil }
+		let originalApp = self._rawData[index]
+		originalApp.updateInformation(using: app)
+		
+		self.sortApps()
+		self.updateFilteredApps()
+		
+		return self.index(of: originalApp)
+	}
     
     /// Returns whether there is a section at the given index
     func isSectionHeader(at index: Int) -> Bool {
@@ -163,6 +170,16 @@ extension AppCollection: Collection {
 
 // MARK: - Filtering
 extension AppCollection {
+	
+	mutating func sortApps() {
+        self._rawData.sort { (bundle1, bundle2) -> Bool in
+            if bundle1.updateAvailable != bundle2.updateAvailable {
+                return bundle1.updateAvailable
+            }
+            
+            return bundle1.name.lowercased() < bundle2.name.lowercased()
+        }
+	}
 	
 	mutating func updateFilteredApps() {
 		defer {

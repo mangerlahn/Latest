@@ -363,16 +363,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
-        self.apps.remove(oldApp)
-        
+		guard let newIndex = self.apps.update(app) else { return }
+				
         // The update state of that app changed
-        if stateChanged {
+        if stateChanged || index != newIndex {
             if self.showInstalledUpdates {
-                self.apps.append(app)
                 
-                guard let newIndex = self.apps.index(of: app) else { return }
                 let selected = self.tableView.selectedRow == index
-                
                 self.tableView.beginUpdates()
                 self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
                 self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
@@ -385,16 +382,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                 return
             }
             
-            self.add(app)
+			self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
             return
         }
         
-        self.apps.append(app)
-        
-        guard let newIndex = self.apps.index(of: app) else { return }
-        
-        // Just update the app information
-        self.tableView.reloadData(forRowIndexes: IndexSet(integer: newIndex), columnIndexes: IndexSet(integer: 0))
+		// Just update the app information
+		self.tableView.reloadData(forRowIndexes: IndexSet(integer: newIndex), columnIndexes: IndexSet(integer: 0))
     }
     
     /// Removes the item from the list, if it exists

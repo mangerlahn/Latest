@@ -74,16 +74,16 @@ struct UpdateProgress {
 class AppBundle : NSObject {
     
     /// The version currently present on the users computer
-    let version: Version
+    private(set) var version: Version
     
     /// The display name of the app
-	let name: String
+	private(set) var name: String
 	
 	/// The bundle identifier of the app
-	let bundleIdentifier: String
+	private(set) var bundleIdentifier: String
 	
     /// The url of the app on the users computer
-    let url: URL
+    private(set) var url: URL
     
     /// The delegate to be notified when app information changes
     var delegate : AppBundleDelegate?
@@ -136,6 +136,14 @@ class AppBundle : NSObject {
 	/// Updates the app. This is a subclassing hook. The default implementation opens the app.
 	func update() {
 		self.open()
+	}
+	
+	func updateInformation(using app: AppBundle) {
+		self.bundleIdentifier = app.bundleIdentifier
+		self.name = app.name
+		self.version = app.version
+		self.newestVersion = app.newestVersion
+		self.url = app.url
 	}
 	
 	/// Cancels the scheduled update for this app.
