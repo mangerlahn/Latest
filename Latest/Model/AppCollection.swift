@@ -93,13 +93,13 @@ struct AppCollection {
 	@discardableResult
 	mutating func update(_ app: AppBundle) -> Int? {
 		guard let index = self.data.firstIndex(where: { $0 == app }) else { return nil }
-		let originalApp = self._rawData[index]
-		originalApp.updateInformation(using: app)
+		self._rawData.remove(at: index)
 		
+		self._rawData.append(app)
 		self.sortApps()
 		self.updateFilteredApps()
 		
-		return self.index(of: originalApp)
+		return self.index(of: app)
 	}
     
     /// Returns whether there is a section at the given index
