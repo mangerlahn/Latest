@@ -82,9 +82,7 @@ class MacAppStoreAppBundle: AppBundle {
 	}
 	
 	override func update() {
-		UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self, progressHandler: { (progressState) in
-			self.updateProgress.state = progressState
-		}))
+		UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self))
 	}
 	
 }

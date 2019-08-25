@@ -52,9 +52,6 @@ class AppBundle : NSObject {
     /// The newest information available for this app
     var newestVersion: UpdateInfo
 	
-	/// The information about the update progress for this app.
-	var updateProgress = UpdateProgress()
-	
     /**
      Convenience initializer for creating an app object
 	- parameter name: The name of the app

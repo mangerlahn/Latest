@@ -13,8 +13,8 @@ import StoreFoundation
 class MacAppStoreUpdateOperation: UpdateOperation {
 	
 	/// Initializes the operation with the given Mac App Store app and progress handler.
-	init(app: MacAppStoreAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler) {
-		super.init(app: app, progressHandler: progressHandler)
+	init(app: MacAppStoreAppBundle) {
+		super.init(app: app)
 	}
 	
 	/// The purchase associated with the to be updated app.
@@ -98,11 +98,11 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 		
 		switch status.activePhase.phaseType {
 		case 0:
-			progressHandler(.downloading(loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue)))
+			self.progressState = .downloading(loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue))
 		case 1:
-			progressHandler(.installing)
+			self.progressState = .installing
 		default:
-			progressHandler(.initializing)
+			self.progressState = .initializing
 		}
 	}
 	
