@@ -78,7 +78,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
-		self.listViewController.apps.filter({ $0.updateAvailable }).forEach({ $0.update() })
+		self.listViewController.dataStore.apps.filter({ $0.updateAvailable }).forEach({ $0.update() })
     }
     
     /// Shows/hides the detailView which presents the release notes
@@ -155,18 +155,20 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.progressIndicator.doubleValue = 0
         self.progressIndicator.isHidden = false
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
+		
+		self.listViewController.dataStore.beginUpdates()
     }
     
     /// Update the progress indicator
     func didCheckApp() {
-        self.openAllAppsButton.isEnabled = self.listViewController.apps.countOfAvailableUpdates != 0
-        self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
-        
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
+			self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
+			self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
+			
             self.reloadButton.isEnabled = true
             self.reloadTouchBarButton.isEnabled = true
             self.progressIndicator.isHidden = true
-            self.listViewController.finishedCheckingForUpdates()
+			self.listViewController.dataStore.endUpdates()
         } else {
             self.progressIndicator.increment(by: 1)
         }
@@ -187,14 +189,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     
     // MARK: - Private Methods
-    
-    /**
-     Updates all apps in the array
-     - parameter apps: The apps to be updated.
-     */
-    private func update(_ apps: AppCollection) {
-		apps.forEach({ $0.update() })
-    }
     
     private func updateShowInstalledUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
         self.listViewController.showInstalledUpdates = newState

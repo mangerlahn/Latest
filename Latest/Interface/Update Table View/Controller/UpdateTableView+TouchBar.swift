@@ -85,17 +85,16 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
-        if self.apps.isSectionHeader(at: index) {
+        if self.dataStore.isSectionHeader(at: index) {
             return self.textViewForSection(at: index)
         }
         
-        guard let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
+		guard let app = self.dataStore.app(at: index), let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
             return NSScrubberItemView()
         }
         
-        let app = self.apps[index]
         
-        view.textField.attributedStringValue = app.highlightedName(for: self.apps.filterQuery)
+        view.textField.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
         
         IconCache.shared.icon(for: app) { (image) in
             view.imageView.image = image
@@ -108,12 +107,12 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     // MARK: Delegate
     
     func scrubber(_ scrubber: NSScrubber, layout: NSScrubberFlowLayout, sizeForItemAt itemIndex: Int) -> NSSize {
-        if self.apps.isSectionHeader(at: itemIndex) {
+        if self.dataStore.isSectionHeader(at: itemIndex) {
             return NSSize(width: 100, height: 30)
         }
         
         let size = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-        let name = self.apps[itemIndex].name as NSString
+		let name = self.dataStore.app(at: itemIndex)!.name as NSString
         let options: NSString.DrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
         let attributes = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: 0)]
         
@@ -127,7 +126,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
-        if self.apps.isSectionHeader(at: selectedIndex) {
+        if self.dataStore.isSectionHeader(at: selectedIndex) {
             self.scrubber?.selectedIndex = self.tableView.selectedRow
             return
         }

@@ -31,7 +31,7 @@
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
 		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
 		506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* NSError+Latest.swift */; };
-		506DF77621248F6200D792FC /* AppCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppCollection.swift */; };
+		506DF77621248F6200D792FC /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppDataStore.swift */; };
 		506DF7782125580400D792FC /* UpdateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF7772125580400D792FC /* UpdateTableView.swift */; };
 		5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
@@ -231,7 +231,7 @@
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
 		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
 		506A8F6622EC14CC00C755AF /* NSError+Latest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Latest.swift"; sourceTree = "<group>"; };
-		506DF77521248F6200D792FC /* AppCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollection.swift; sourceTree = "<group>"; };
+		506DF77521248F6200D792FC /* AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
 		506DF7772125580400D792FC /* UpdateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableView.swift; sourceTree = "<group>"; };
 		5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateOperation.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
 				509512101FF362A1003D2D7F /* Version.swift */,
 				509512111FF362A1003D2D7F /* UpdateInfo.swift */,
-				506DF77521248F6200D792FC /* AppCollection.swift */,
+				506DF77521248F6200D792FC /* AppDataStore.swift */,
 				5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */,
 				5058BA3921202BA7003F332B /* IconCache.swift */,
 				506A8F6622EC14CC00C755AF /* NSError+Latest.swift */,
@@ -566,7 +566,7 @@
 			children = (
 				50F62EF822FA277D00A2F2AF /* Sparkle.framework */,
 				50B3984D2312CF1C00BAEC81 /* SparkleCore.framework */,
-				50F62F0022FA277D00A2F2AF /* Autoupdate.app */,
+				50F62F0022FA277D00A2F2AF /* Autoupdate */,
 				50B3984F2312CF1C00BAEC81 /* org.sparkle-project.InstallerLauncher.xpc */,
 				50B398512312CF1C00BAEC81 /* org.sparkle-project.InstallerConnection.xpc */,
 				50B398532312CF1C00BAEC81 /* org.sparkle-project.InstallerStatus.xpc */,
@@ -768,7 +768,7 @@
 			remoteRef = 50F62EFD22FA277D00A2F2AF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50F62F0022FA277D00A2F2AF /* Autoupdate.app */ = {
+		50F62F0022FA277D00A2F2AF /* Autoupdate */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = Autoupdate;
@@ -894,7 +894,7 @@
 				506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
-				506DF77621248F6200D792FC /* AppCollection.swift in Sources */,
+				506DF77621248F6200D792FC /* AppDataStore.swift in Sources */,
 				5039DE8522CA396F0088B39B /* UpdateQueue.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,
