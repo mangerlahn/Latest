@@ -240,12 +240,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         
     func updateCheckerDidFinishCheckingApp(for app: AppBundle) {
 		self.dataStore.update(app)
-//        self.tableView.beginUpdates()
-//        self.add(app)
-//        self.tableView.endUpdates()
-        
-//        self.updateTitleAndBatch()
-//        self.updateEmtpyStateVisibility()
     }
 
     
@@ -333,73 +327,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	/// The search field used for filtering apps
 	@IBOutlet weak var searchField: NSSearchField!
 	
-    
-    // MARK: - Private Methods
-
-//    /// Adds an item to the list of apps that have an update available. If the app is already in the list, the row in the table gets updated
-//    private func add(_ app: AppBundle) {
-//        guard !self.apps.contains(where: { $0 == app }) else {
-//            self.reload(app)
-//            return
-//        }
-//
-//        self.apps.append(app)
-//
-//        guard let index = self.apps.index(of: app) else { return }
-//        self.tableView.insertRows(at: IndexSet(integer: index), withAnimation: .slideDown)
-//    }
-//
-//    private func reload(_ app: AppBundle) {
-//        guard let index = self.apps.firstIndex(where: { $0 == app }) else { return }
-//
-//        let oldApp = self.apps[index]
-//        let stateChanged = oldApp.updateAvailable != app.updateAvailable
-//
-//        if stateChanged && !self.showInstalledUpdates && !app.updateAvailable {
-//            self.remove(oldApp)
-//            return
-//        }
-//
-//		guard let newIndex = self.apps.update(app) else { return }
-//
-//        // The update state of that app changed
-//        if stateChanged || index != newIndex {
-//            if self.showInstalledUpdates {
-//
-//                let selected = self.tableView.selectedRow == index
-//                self.tableView.beginUpdates()
-//                self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
-//                self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
-//                self.tableView.endUpdates()
-//
-//                if selected {
-//                    self.selectApp(at: newIndex)
-//                }
-//
-//                return
-//            }
-//
-//			self.tableView.insertRows(at: IndexSet(integer: newIndex), withAnimation: .slideDown)
-//            return
-//        }
-//
-//		// Just update the app information
-//		self.tableView.reloadData(forRowIndexes: IndexSet(integer: newIndex), columnIndexes: IndexSet(integer: 0))
-//    }
-//
-//    /// Removes the item from the list, if it exists
-//    private func remove(_ app: AppBundle) {
-//        guard let index = self.apps.remove(app) else { return }
-//
-//        // Close the detail view
-//        if self.tableView.selectedRow == index {
-//            self.tableView.deselectRow(index)
-//            self.delegate?.shouldCollapseDetail()
-//        }
-//
-//        self.tableView.removeRows(at: IndexSet(integer: index), withAnimation: .slideUp)
-//    }
-    
 	
 	// MARK: - Actions
 	
@@ -459,24 +386,5 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             self.scrubber?.reloadData()
         }
     }
-    
-//    /// Updates the table view to show all apps or only the ones who have an update available
-//    private func installedAppsVisibilityChanged() {
-//        let indexSet = self.dataStore.indexesOfInstalledApps
-//
-//        self.tableView.beginUpdates()
-//
-//        if self.showInstalledUpdates {
-//            // Insert installed apps
-//            self.apps.showInstalledUpdates = self.showInstalledUpdates
-//            self.tableView.insertRows(at: indexSet, withAnimation: .slideDown)
-//        } else {
-//            // Remove installed apps
-//            self.tableView.removeRows(at: indexSet, withAnimation: .slideUp)
-//            self.apps.showInstalledUpdates = self.showInstalledUpdates
-//        }
-//
-//        self.tableView.endUpdates()
-//    }
     
 }
