@@ -157,12 +157,16 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	}
 	
 	private func headerCell(of type: AppDataStore.Section) -> NSView? {
+		let view = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellSectionIdentifier"), owner: self) as? NSTableCellView
+		
 		switch type {
 		case .updateAvailable:
-			return self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellAvailableUpdatesIdentifier"), owner: self)
+			view?.textField?.stringValue = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
 		case .installed:
-			return self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellInstalledUpdatesIdentifier"), owner: self)
+			view?.textField?.stringValue = NSLocalizedString("Installed Updates", comment: "Table Section Header for already installed updates")
 		}
+		
+		return view
 	}
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -175,18 +179,19 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+		if self.dataStore.isSectionHeader(at: row) {
+			guard let view = tableView.rowView(atRow: row, makeIfNecessary: false) else {
+				return UpdateGroupRowView()
+			}
+			
+			return view
+		}
+		
 		return nil
-//        return self.dataStore.isSectionHeader(at: row) ? UpdateGroupRowView() : nil
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if self.dataStore.isSectionHeader(at: row) { return 27 }
-        
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) else {
-            return 50
-        }
-        
-        return cell.frame.height
+		return self.dataStore.isSectionHeader(at: row) ? 27 : 60
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
