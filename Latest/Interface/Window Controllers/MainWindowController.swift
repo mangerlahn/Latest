@@ -65,6 +65,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
         
+		// Restore state
         self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
     }
 

@@ -383,6 +383,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
     }
 	
+	/// Animates changes made to the apps list
 	private func updateTableView(with oldValue: [AppDataStore.Entry], with newValue: [AppDataStore.Entry]) {
 		self.tableView.beginUpdates()
 		
