@@ -17,12 +17,15 @@ class AppDataStore {
 	
 	// MARK: - Filtering
 	
+	/// The collection holding all apps that have been found.
 	private var apps = Set<AppBundle>()
 	
+	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updateableApps: [AppBundle] {
 		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) })
 	}
 	
+	/// The user-facable, sorted and filtered list of apps and sections. Observers of the data store will be notified, when this list changes.
 	private(set) var filteredApps = [Entry]() {
 		didSet {
 			self.notifyObservers(oldValue: oldValue, newValue: self.filteredApps)
@@ -43,6 +46,7 @@ class AppDataStore {
 		}
 	}
 	
+	/// Sorts and filters all available apps based on the given filter criteria.
 	private func filterApps() {
 		var visibleApps = self.apps
 		let ignoredApps = visibleApps.filter({ self.ignoredAppIdentifiers.contains($0.bundleIdentifier) })
@@ -63,37 +67,27 @@ class AppDataStore {
 		}
 		
 		// Sort apps
-		var filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
-			let ignored1 = ignoredApps.contains(app1)
-			let ignored2 = ignoredApps.contains(app2)
-			
-			if ignored1 != ignored2 {
-				return ignored2
-			}
-			
-			if !(ignored2 || ignored1) && app1.updateAvailable != app2.updateAvailable {
-				return app1.updateAvailable
-			}
-			
+		let filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
 			return app1.name.lowercased() < app2.name.lowercased()
-		}).map({ Entry.app($0) })
+		})
 		
-		// Add sections
-		if self.showInstalledUpdates || self.showIgnoredUpdates {
-			if self.showIgnoredUpdates && !ignoredApps.isEmpty {
-				filteredApps.insert(.section(.ignored), at: filteredApps.count - ignoredApps.count)
-			}
-			
-			if self.showInstalledUpdates && self.apps.count > self.countOfAvailableUpdates {
-				filteredApps.insert(.section(.installed), at: self.countOfAvailableUpdates)
-			}
-
-			if self.countOfAvailableUpdates > 0 {
-				filteredApps.insert(.section(.updateAvailable), at: 0)
-			}
+		// Build final list. This is a very inefficient solution. Find a better one
+		var availableUpdates = filteredApps.filter({ $0.updateAvailable && !self.isAppIgnored($0) }).map({ Entry.app($0) })
+		if !availableUpdates.isEmpty {
+			availableUpdates = [.section(.updateAvailable)] + availableUpdates
 		}
 		
-		self.filteredApps = filteredApps
+		var installedUpdates = filteredApps.filter({ !$0.updateAvailable && !self.isAppIgnored($0) }).map({ Entry.app($0) })
+		if !installedUpdates.isEmpty {
+			installedUpdates = [.section(.installed)] + installedUpdates
+		}
+		
+		var ignoredUpdates = filteredApps.filter({ self.isAppIgnored($0) }).map({ Entry.app($0) })
+		if !ignoredUpdates.isEmpty {
+			ignoredUpdates = [.section(.ignored)] + ignoredUpdates
+		}
+		
+		self.filteredApps = availableUpdates + installedUpdates + ignoredUpdates
 	}
 	
 	/// The cached count of apps with updates available
@@ -130,7 +124,7 @@ class AppDataStore {
 		}
 	}
 	
-	
+	/// Returns the app at the given index, if any.
 	func app(at index: Int) -> AppBundle? {
 		if case .app(let app) = self.filteredApps[index] {
 			return app
@@ -151,12 +145,15 @@ class AppDataStore {
 	
 	// MARK: - Ignoring Apps
 	
+	/// The key for storing a list of ignored apps.
 	private static let IgnoredAppsKey = "IgnoredAppsKey"
 
+	/// Whether the given app is ignored.
 	func isAppIgnored(_ app: AppBundle) -> Bool {
 		return self.ignoredAppIdentifiers.contains(app.bundleIdentifier)
 	}
 	
+	/// Sets the ignored state of the given app.
 	func setIgnored(_ ignored: Bool, for app: AppBundle) {
 		var ignoredApps = self.ignoredAppIdentifiers
 		
@@ -172,6 +169,7 @@ class AppDataStore {
 		self.filterApps()
 	}
 	
+	/// Returns the identifiers of ignored apps.
 	private var ignoredAppIdentifiers: Set<String> {
 		return Set((UserDefaults.standard.array(forKey: Self.IgnoredAppsKey) as? [String]) ?? [])
 	}
@@ -179,15 +177,20 @@ class AppDataStore {
 	
 	// MARK: - Update Process
 	
+	/// A temporare set of all apps that need to be updated in the current update pass.
 	private var pendingApps: Set<AppBundle>?
 	
+	/// Begins one update pass. Every app in the data store has to be marked as updated, otherwise it will be removed on `endUpdates`.
 	func beginUpdates() {
+		guard self.pendingApps == nil else { fatalError("Update is currently running.") }
+		
 		// Set our current state as pending
 		self.pendingApps = self.apps
 	}
 	
+	/// Ends current the update pass.
 	func endUpdates() {
-		guard let pendingApps = self.pendingApps else { return }
+		guard let pendingApps = self.pendingApps else { fatalError("No update was initiated previously.") }
 		
 		// Remove all apps that have not been updated
 		self.apps.subtract(pendingApps)
@@ -197,7 +200,8 @@ class AppDataStore {
 		self.filterApps()
 	}
 	
-	func updateCountOfAvailableApps() {
+	/// Updates the count of all available apps.
+	private func updateCountOfAvailableApps() {
 		self.countOfAvailableUpdates = self.apps.filter({ $0.updateAvailable && !self.ignoredAppIdentifiers.contains($0.bundleIdentifier) }).count
 	}
 	
@@ -236,34 +240,29 @@ class AppDataStore {
 }
 
 extension AppDataStore {
+	
+	/// Defines one entry in the filtered update.
 	enum Entry: Equatable, Hashable {
+		
+		/// Represents one app in the list.
 		case app(AppBundle)
+		
+		/// Represents one section header in the list.
 		case section(Section)
 		
-		static func ==(lhs: Entry, rhs: Entry) -> Bool {
-			switch (lhs, rhs) {
-			case (let .app(app1), let .app(app2)):
-				return app1.bundleIdentifier == app2.bundleIdentifier && app1.version == app2.version
-			case (let .section(section1), let .section(section2)):
-				return section1 == section2
-			default:
-				return false
-			}
-		}
-		
-		func hash(into hasher: inout Hasher) {
-			switch self {
-			case .app(let app):
-				hasher.combine(app.bundleIdentifier)
-			case .section(let section):
-				hasher.combine(section)
-			}
-		}
 	}
 	
+	/// Defines section headers.
 	enum Section {
+		
+		/// The section containing apps that have an update available.
 		case updateAvailable
+		
+		/// The section containing all apps that both don't have updates and are not ignored.
 		case installed
+		
+		/// The section containing apps that are ignored.
 		case ignored
+		
 	}
 }

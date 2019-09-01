@@ -18,12 +18,15 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateTableViewController else {
+		let splitViewController = self.contentViewController as? NSSplitViewController
+        guard let firstItem = splitViewController?.splitViewItems[0], let controller = firstItem.viewController as? UpdateTableViewController else {
                 return UpdateTableViewController()
         }
+		
+		// Override sidebar collapsing behavior
+		firstItem.canCollapse = false
         
-        return firstItem
+        return controller
     }()
     
     /// The detail view controller holding the release notes

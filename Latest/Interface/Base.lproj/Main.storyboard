@@ -321,7 +321,7 @@
                                                 <action selector="toggleShowInstalledUpdates:" target="Ady-hI-5gd" id="DiG-pc-JWl"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show Ignored Updates" keyEquivalent="I" id="Rh5-N3-X6H">
+                                        <menuItem title="Show Ignored Apps" keyEquivalent="I" id="Rh5-N3-X6H">
                                             <connections>
                                                 <action selector="toggleShowIgnoredUpdates:" target="Ady-hI-5gd" id="V8P-XQ-TjM"/>
                                             </connections>
@@ -485,7 +485,8 @@
                             <touchBarItem id="LKh-ep-17G">
                                 <viewController key="viewController" id="ivi-vL-a0q">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-aF-0Fk">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarSearchTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JIr-yU-jL8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -501,7 +502,8 @@
                             <touchBarItem id="F32-ki-hFv">
                                 <viewController key="viewController" id="vt9-Kt-f18">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-N5-XxD">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SMd-ka-re6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -516,7 +518,8 @@
                             <touchBarItem id="mTy-QU-Tio">
                                 <viewController key="viewController" id="Q6i-e8-TIE">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WAI-ZK-0O7">
-                                        <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ewt-FG-dUz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -540,7 +543,7 @@
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="76" y="245"/>
+            <point key="canvasLocation" x="76" y="336"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="oW6-ey-z8h">
@@ -548,7 +551,7 @@
                 <splitViewController id="RAb-Ag-jja" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="BiW-7m-NUy"/>
-                        <splitViewItem canCollapse="YES" id="KSO-oE-QxW"/>
+                        <splitViewItem id="KSO-oE-QxW"/>
                     </splitViewItems>
                     <splitView key="splitView" wantsLayer="YES" dividerStyle="thin" vertical="YES" id="u0E-Oa-Ty5">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -701,11 +704,10 @@
                                                                         </box>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="top" secondItem="DVj-Eq-QBv" secondAttribute="top" constant="5" id="BDD-WE-567"/>
+                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="centerY" secondItem="DVj-Eq-QBv" secondAttribute="centerY" id="2Rs-TS-xL1"/>
                                                                         <constraint firstAttribute="trailing" secondItem="xWm-N5-Zfl" secondAttribute="trailing" id="CtE-tU-pQ8"/>
                                                                         <constraint firstAttribute="trailing" secondItem="xhF-6m-YCA" secondAttribute="trailing" constant="20" id="EO7-Tw-OBW"/>
                                                                         <constraint firstItem="xhF-6m-YCA" firstAttribute="leading" secondItem="DVj-Eq-QBv" secondAttribute="leading" constant="20" id="WgZ-5m-bcs"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="xhF-6m-YCA" secondAttribute="bottom" constant="5" id="agg-dG-ras"/>
                                                                         <constraint firstItem="xWm-N5-Zfl" firstAttribute="leading" secondItem="DVj-Eq-QBv" secondAttribute="leading" id="lsN-yX-W9J"/>
                                                                         <constraint firstAttribute="bottom" secondItem="xWm-N5-Zfl" secondAttribute="bottom" id="xtm-sr-yLs"/>
                                                                     </constraints>
@@ -1205,8 +1207,8 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0Av-7b-7AM">
-                                        <rect key="frame" x="-2" y="0.0" width="136" height="11"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Downloading 3,5MB of 123MB" id="VO3-wO-IeA">
+                                        <rect key="frame" x="34" y="0.0" width="100" height="11"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;DO NOT LOCALIZE&gt;" id="VO3-wO-IeA">
                                             <font key="font" metaFont="miniSystem"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
