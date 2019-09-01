@@ -15,58 +15,17 @@ import Foundation
 /// - A filtered list of apps based on a given filter string
 class AppDataStore {
 	
-	enum Entry: Equatable, Hashable {
-		case app(AppBundle)
-		case section(Section)
-		
-		static func ==(lhs: Entry, rhs: Entry) -> Bool {
-			switch (lhs, rhs) {
-			case (let .app(app1), let .app(app2)):
-				return app1.bundleIdentifier == app2.bundleIdentifier && app1.version == app2.version
-			case (let .section(section1), let .section(section2)):
-				return section1 == section2
-			default:
-				return false
-			}
-		}
-		
-		func hash(into hasher: inout Hasher) {
-			switch self {
-			case .app(let app):
-				hasher.combine(app.bundleIdentifier)
-			case .section(let section):
-				hasher.combine(section)
-			}
-		}
-	}
+	// MARK: - Filtering
 	
-	enum Section {
-		case updateAvailable
-		case installed
+	private var apps = Set<AppBundle>()
+	
+	var updateableApps: [AppBundle] {
+		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) })
 	}
 	
 	private(set) var filteredApps = [Entry]() {
 		didSet {
 			self.notifyObservers(oldValue: oldValue, newValue: self.filteredApps)
-		}
-	}
-	
-	private(set) var apps = Set<AppBundle>()
-	
-	
-//	/// Holds the apps
-//	private var _rawData = [AppBundle]()
-//	private var _filteredData: [AppBundle]?
-//    
-//	/// Convenience Accessor to the data store
-//	fileprivate var data: [AppBundle] {
-//		return self._filteredData ?? self._rawData
-//	}
-//    
-    /// Flag indicating if all apps are presented
-	var showInstalledUpdates = false {
-		didSet {
-			self.filterApps()
 		}
 	}
 	
@@ -86,6 +45,7 @@ class AppDataStore {
 	
 	private func filterApps() {
 		var visibleApps = self.apps
+		let ignoredApps = visibleApps.filter({ self.ignoredAppIdentifiers.contains($0.bundleIdentifier) })
 		
 		// Filter installed updates
 		if !self.showInstalledUpdates {
@@ -97,9 +57,21 @@ class AppDataStore {
 			visibleApps = visibleApps.filter({ $0.name.lowercased().contains(filterQuery) })
 		}
 		
+		// Filter ignored apps
+		if !self.showIgnoredUpdates {
+			visibleApps = visibleApps.filter({ !ignoredApps.contains($0) })
+		}
+		
 		// Sort apps
 		var filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
-			if app1.updateAvailable != app2.updateAvailable {
+			let ignored1 = ignoredApps.contains(app1)
+			let ignored2 = ignoredApps.contains(app2)
+			
+			if ignored1 != ignored2 {
+				return ignored2
+			}
+			
+			if !(ignored2 || ignored1) && app1.updateAvailable != app2.updateAvailable {
 				return app1.updateAvailable
 			}
 			
@@ -107,8 +79,12 @@ class AppDataStore {
 		}).map({ Entry.app($0) })
 		
 		// Add sections
-		if self.showInstalledUpdates {
-			if self.apps.count > self.countOfAvailableUpdates {
+		if self.showInstalledUpdates || self.showIgnoredUpdates {
+			if self.showIgnoredUpdates && !ignoredApps.isEmpty {
+				filteredApps.insert(.section(.ignored), at: filteredApps.count - ignoredApps.count)
+			}
+			
+			if self.showInstalledUpdates && self.apps.count > self.countOfAvailableUpdates {
 				filteredApps.insert(.section(.installed), at: self.countOfAvailableUpdates)
 			}
 
@@ -137,12 +113,67 @@ class AppDataStore {
 		self.countOfAvailableUpdates += app.updateAvailable ? 1 : 0
     }
 	
+	
+	// MARK: - Accessors
+	
+    /// Whether installed apps should be visible
+	var showInstalledUpdates = false {
+		didSet {
+			self.filterApps()
+		}
+	}
+	
+	/// Whether ignored apps should be visible
+	var showIgnoredUpdates = false {
+		didSet {
+			self.filterApps()
+		}
+	}
+	
+	
 	func app(at index: Int) -> AppBundle? {
 		if case .app(let app) = self.filteredApps[index] {
 			return app
 		}
 		
 		return nil
+	}
+	
+    /// Returns whether there is a section at the given index
+    func isSectionHeader(at index: Int) -> Bool {
+		if case .section(_) = self.filteredApps[index] {
+			return true
+		}
+		
+		return false
+    }
+	
+	
+	// MARK: - Ignoring Apps
+	
+	private static let IgnoredAppsKey = "IgnoredAppsKey"
+
+	func isAppIgnored(_ app: AppBundle) -> Bool {
+		return self.ignoredAppIdentifiers.contains(app.bundleIdentifier)
+	}
+	
+	func setIgnored(_ ignored: Bool, for app: AppBundle) {
+		var ignoredApps = self.ignoredAppIdentifiers
+		
+		if ignored {
+			ignoredApps.insert(app.bundleIdentifier)
+		} else {
+			ignoredApps.remove(app.bundleIdentifier)
+		}
+
+		UserDefaults.standard.set(Array(ignoredApps), forKey: Self.IgnoredAppsKey)
+		
+		self.updateCountOfAvailableApps()
+		self.filterApps()
+	}
+	
+	private var ignoredAppIdentifiers: Set<String> {
+		return Set((UserDefaults.standard.array(forKey: Self.IgnoredAppsKey) as? [String]) ?? [])
 	}
 	
 	
@@ -161,9 +192,13 @@ class AppDataStore {
 		// Remove all apps that have not been updated
 		self.apps.subtract(pendingApps)
 		self.pendingApps = nil
-		
-		self.countOfAvailableUpdates = self.apps.filter({ $0.updateAvailable }).count
+	
+		self.updateCountOfAvailableApps()
 		self.filterApps()
+	}
+	
+	func updateCountOfAvailableApps() {
+		self.countOfAvailableUpdates = self.apps.filter({ $0.updateAvailable && !self.ignoredAppIdentifiers.contains($0.bundleIdentifier) }).count
 	}
 	
 	
@@ -198,96 +233,37 @@ class AppDataStore {
 		}
 	}
 
-//
-//    /// Returns the relative index of the element. This index may not reflect the internal position of the app due to section offsets
-//    func index(of element: Element) -> Index? {
-//        guard element.updateAvailable || self.showInstalledUpdates, let index = self.data.firstIndex(of: element) else { return nil }
-//        
-//        return self.align(index)
-//    }
-//    
-//    /// Removes the app from the collection
-//    @discardableResult
-//    mutating func remove(_ appBundle: AppBundle) -> Int? {
-//        guard let index = self.data.firstIndex(where: { $0 == appBundle }) else { return nil }
-//        let returnedIndex = self.index(of: appBundle)
-//        
-//        self._rawData.remove(at: index)
-//		self.updateFilteredApps()
-//        
-//        return returnedIndex
-//    }
-//	
-//	/// Updates the contents of the given app
-//	@discardableResult
-//	mutating func update(_ app: AppBundle) -> Int? {
-//		guard let index = self.data.firstIndex(where: { $0 == app }) else { return nil }
-//		self._rawData.remove(at: index)
-//		
-//		self._rawData.append(app)
-//		self.sortApps()
-//		self.updateFilteredApps()
-//		
-//		return self.index(of: app)
-//	}
-//    
-    /// Returns whether there is a section at the given index
-    func isSectionHeader(at index: Int) -> Bool {
-		if case .section(_) = self.filteredApps[index] {
-			return true
-		}
-		
-		return false
-    }
-//    
-//    /// This method counts all available updates. It assumes that the array is sorted with all updates at the beginning
-//    private mutating func updateCountOfAvailableUpdates() {
-//        self.countOfAvailableUpdates = self.data.firstIndex(where: { !$0.updateAvailable }) ?? self.data.count
-//    }
-//    
-//    /// Aligns the index based on the section headers
-//    private func align(_ index: Int) -> Int {
-//        var index = index
-//        
-//        if self.showInstalledUpdates {
-//            index += self.countOfAvailableUpdates < index ? 2 : 1
-//        }
-//        
-//        if self.isSectionHeader(at: index) {
-//            index += 1
-//        }
-//        
-//        return index
-//    }
-    
 }
 
-//
-//// MARK: - Filtering
-//extension AppCollection {
-//	
-//	mutating func sortApps() {
-//        self._rawData.sort { (bundle1, bundle2) -> Bool in
-//            if bundle1.updateAvailable != bundle2.updateAvailable {
-//                return bundle1.updateAvailable
-//            }
-//            
-//            return bundle1.name.lowercased() < bundle2.name.lowercased()
-//        }
-//	}
-//	
-//	mutating func updateFilteredApps() {
-//		defer {
-//			self.updateCountOfAvailableUpdates()
-//		}
-//		
-//		guard let filterQuery = self.filterQuery?.lowercased() else {
-//			self._filteredData = nil
-//			return
-//		}
-//		
-//		// Filter all available apps using the given query
-//		self._filteredData = self._rawData.filter({ $0.name.lowercased().contains(filterQuery) })
-//	}
+extension AppDataStore {
+	enum Entry: Equatable, Hashable {
+		case app(AppBundle)
+		case section(Section)
+		
+		static func ==(lhs: Entry, rhs: Entry) -> Bool {
+			switch (lhs, rhs) {
+			case (let .app(app1), let .app(app2)):
+				return app1.bundleIdentifier == app2.bundleIdentifier && app1.version == app2.version
+			case (let .section(section1), let .section(section2)):
+				return section1 == section2
+			default:
+				return false
+			}
+		}
+		
+		func hash(into hasher: inout Hasher) {
+			switch self {
+			case .app(let app):
+				hasher.combine(app.bundleIdentifier)
+			case .section(let section):
+				hasher.combine(section)
+			}
+		}
+	}
 	
-//}
+	enum Section {
+		case updateAvailable
+		case installed
+		case ignored
+	}
+}

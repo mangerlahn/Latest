@@ -39,6 +39,15 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             }
         }
     }
+	
+    /// Whether ignored apps should be visible
+    var showIgnoredUpdates = false {
+        didSet {
+            if oldValue != self.showIgnoredUpdates {
+				self.dataStore.showIgnoredUpdates = self.showIgnoredUpdates
+            }
+        }
+    }
     
     /// The delegate for handling the visibility of the detail view
     weak var delegate : UpdateListViewControllerDelegate?
@@ -155,6 +164,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			view?.textField?.stringValue = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
 		case .installed:
 			view?.textField?.stringValue = NSLocalizedString("Installed Updates", comment: "Table Section Header for already installed updates")
+		case .ignored:
+			view?.textField?.stringValue = NSLocalizedString("Ignored Apps", comment: "Table Section Header for ignored apps")
 		}
 		
 		return view
@@ -279,15 +290,27 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     
     // MARK: - Menu Item Stuff
+	
+	private func rowIndex(forMenuItem menuItem: NSMenuItem?) -> Int {
+		return menuItem?.representedObject as? Int ?? self.tableView.selectedRow
+	}
     
     /// Open a single app
     @IBAction func updateApp(_ sender: NSMenuItem?) {
-        self.updateApp(atIndex: sender?.representedObject as? Int ?? self.tableView.selectedRow)
+		self.updateApp(atIndex: self.rowIndex(forMenuItem: sender))
     }
+	
+	@IBAction func ignoreApp(_ sender: NSMenuItem?) {
+		self.setIgnored(true, forAppAt: self.rowIndex(forMenuItem: sender))
+	}
+	
+	@IBAction func unignoreApp(_ sender: NSMenuItem?) {
+		self.setIgnored(false, forAppAt: self.rowIndex(forMenuItem: sender))
+	}
     
     /// Show the bundle of an app in Finder
     @IBAction func showAppInFinder(_ sender: NSMenuItem?) {
-        self.showAppInFinder(at: sender?.representedObject as? Int ?? self.tableView.selectedRow)
+        self.showAppInFinder(at: self.rowIndex(forMenuItem: sender))
     }
     
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
@@ -295,17 +318,32 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return true
         }
         
-		let index = menuItem.representedObject as? Int ?? self.tableView.selectedRow
+		let index = self.rowIndex(forMenuItem: menuItem)
 		let hasIndex = index != -1
+		let app = self.dataStore.app(at: index)
 		
 		switch action {
 		case #selector(updateApp(_:)):
-			return hasIndex && !(self.dataStore.app(at: index)?.isUpdating ?? false)
+			return hasIndex && !(app?.isUpdating ?? false)
 		case #selector(showAppInFinder(_:)):
             return hasIndex
+		case #selector(ignoreApp(_:)):
+			if let app = app {
+				let isIgnored = self.dataStore.isAppIgnored(app)
+				menuItem.isHidden = isIgnored
+				return true
+			}
+		case #selector(unignoreApp(_:)):
+			if let app = app {
+				let isIgnored = self.dataStore.isAppIgnored(app)
+				menuItem.isHidden = !isIgnored
+				return true
+			}
         default:
-            return true
+            ()
         }
+		
+		return false
     }
     
     // MARK: Delegate
@@ -336,6 +374,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			self.dataStore.app(at: index)?.update()
         }
     }
+	
+	/// Sets the ignored state for the app at the given index
+	private func setIgnored(_ ignored: Bool, forAppAt index: Int) {
+		guard let app = self.dataStore.app(at: index) else { return }
+		self.dataStore.setIgnored(ignored, for: app)
+	}
     
     /// Reveals the app at a given index in Finder
     private func showAppInFinder(at index: Int) {
@@ -383,6 +427,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
     }
 	
+	/// Animates changes made to the apps list
 	private func updateTableView(with oldValue: [AppDataStore.Entry], with newValue: [AppDataStore.Entry]) {
 		self.tableView.beginUpdates()
 		
