@@ -17,13 +17,17 @@ class AppDataStore {
 	
 	// MARK: - Filtering
 	
+	private var apps = Set<AppBundle>()
+	
+	var updateableApps: [AppBundle] {
+		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) })
+	}
+	
 	private(set) var filteredApps = [Entry]() {
 		didSet {
 			self.notifyObservers(oldValue: oldValue, newValue: self.filteredApps)
 		}
 	}
-	
-	private(set) var apps = Set<AppBundle>()
 	
 	/// The query after which apps can be filtered
 	var filterQuery: String? {

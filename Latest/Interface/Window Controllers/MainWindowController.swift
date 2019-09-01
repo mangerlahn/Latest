@@ -81,7 +81,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
-		self.listViewController.dataStore.apps.filter({ $0.updateAvailable }).forEach({ $0.update() })
+		self.listViewController.dataStore.updateableApps.forEach({ $0.update() })
     }
     
     /// Shows/hides the detailView which presents the release notes
