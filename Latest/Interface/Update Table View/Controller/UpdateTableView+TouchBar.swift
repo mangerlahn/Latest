@@ -85,23 +85,13 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
-        if self.dataStore.isSectionHeader(at: index) {
-            return self.textViewForSection(at: index)
-        }
-        
-		guard let app = self.dataStore.app(at: index), let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
-            return NSScrubberItemView()
-        }
-        
-        
-        view.textField.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
-        
-        IconCache.shared.icon(for: app) { (image) in
-            view.imageView.image = image
-        }
-        
-        return view
-    }
+		switch self.apps[index] {
+		case .section(let section):
+			return self.view(for: section)
+		case .app(let app):
+			return self.view(for: app, in: scrubber)
+		}
+	}
     
     
     // MARK: Delegate
@@ -138,11 +128,34 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         self.scrubber?.isHidden = count == 0
         self.scrubber?.showsArrowButtons = count > 3
     }
-    
-    fileprivate func textViewForSection(at index: Int) -> NSScrubberTextItemView {
+	
+	private func view(for section: AppDataStore.Section) -> NSScrubberItemView {
         let view = NSScrubberTextItemView()
-        view.textField.stringValue = index == 0 ? NSLocalizedString("Available", comment: "") : NSLocalizedString("Installed", comment: "")
+		
+		switch section {
+		case .updateAvailable:
+			view.textField.stringValue = NSLocalizedString("Available", comment: "Touch Bar section title for available updates")
+		case .installed:
+			view.textField.stringValue = NSLocalizedString("Installed", comment: "Touch Bar section title for installed updates")
+		case .ignored:
+			view.textField.stringValue = NSLocalizedString("Ignored", comment: "Touch Bar section title for ignored apps")
+		}
+		
         return view
     }
+	
+	private func view(for app: AppBundle, in scrubber: NSScrubber) -> NSScrubberItemView {
+		guard let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
+            return NSScrubberItemView()
+        }
+        
+        view.textField.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
+        
+        IconCache.shared.icon(for: app) { (image) in
+            view.imageView.image = image
+        }
+        
+        return view
+	}
     
 }
