@@ -42,9 +42,7 @@ class SparkleAppBundle: AppBundle, XMLParserDelegate {
     }
     
     override func update() {
-		UpdateQueue.shared.addOperation(SparkleUpdateOperation(app: self, progressHandler: { (progressState) in
-			self.updateProgress.state = progressState
-		}))
+		UpdateQueue.shared.addOperation(SparkleUpdateOperation(app: self))
 	}
 	
 	

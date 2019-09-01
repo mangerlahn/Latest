@@ -12,7 +12,9 @@ import Cocoa
 class UpdateProgressViewController: NSViewController {
 	
 	deinit {
-		self.app?.updateProgress.removeObserver(self)
+		if let app = self.app {
+			UpdateQueue.shared.removeObserver(self, for: app)
+		}
 	}
 	
 	// MARK: - Accessors
@@ -30,15 +32,15 @@ class UpdateProgressViewController: NSViewController {
 		willSet {
 			// Remove observer from existing app
 			if let app = self.app {
-				app.updateProgress.removeObserver(self)
+				UpdateQueue.shared.removeObserver(self, for: app)
 			}
 		}
 		
 		didSet {
 			if let app = self.app {
-				app.updateProgress.addObserver(self, handler: { [weak self] progress in
+				UpdateQueue.shared.addObserver(self, to: app) { [weak self] progress in
 					self?.updateInterface(with: progress)
-				})
+				}
 			} else {
 				self.view.isHidden = true
 			}
@@ -84,8 +86,8 @@ class UpdateProgressViewController: NSViewController {
 	}
 	
 	/// Updates the UI state with the given progress definition.
-	private func updateInterface(with progress: UpdateProgress) {
-		switch progress.state {
+	private func updateInterface(with state: UpdateOperation.ProgressState) {
+		switch state {
 		case .none:
 			self.updateInterfaceVisibility(with: .none)
 		
@@ -163,7 +165,9 @@ private extension UpdateProgressViewController {
 	
 	/// Presents the stored error as modal alert.
 	@IBAction private func presentErrorModally(_ sender: NSButton) {
-		if case .error(let error) = self.app?.updateProgress.state, let window = self.view.window {
+		guard let app = self.app else { return }
+		
+		if case .error(let error) = UpdateQueue.shared.state(for: app), let window = self.view.window {
 			self.alert(for: error).beginSheetModal(for: window) { (response) in
 				switch ErrorAlertResponse(rawValue: response.rawValue) {
 				case .retry:

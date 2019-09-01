@@ -18,8 +18,8 @@ class SparkleUpdateOperation: UpdateOperation {
 	fileprivate var cancellationCallback: ((SPUDownloadUpdateStatus) -> Void)?
 	
 	/// Initializes the operation with the given Sparkle app and handler
-	init(app: SparkleAppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler) {
-		super.init(app: app, progressHandler: progressHandler)
+	init(app: SparkleAppBundle) {
+		super.init(app: app)
 	}
 	
 	
@@ -97,7 +97,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 	}
 	
 	func showUserInitiatedUpdateCheck(completion updateCheckStatusCompletion: @escaping (SPUUserInitiatedCheckStatus) -> Void) {
-		self.progressHandler(.initializing)
+		self.progressState = .initializing
 	}
 	
 	func showUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUUpdateAlertChoice) -> Void) {
@@ -156,18 +156,18 @@ extension SparkleUpdateOperation: SPUUserDriver {
 	}
 	
 	private func callProgressHandler() {
-		self.progressHandler(.downloading(loadedSize: Int64(self.receivedLength), totalSize: Int64(self.expectedContentLength)))
+		self.progressState = .downloading(loadedSize: Int64(self.receivedLength), totalSize: Int64(self.expectedContentLength))
 	}
 
 	
 	// MARK: - Installing Update
 	
 	func showDownloadDidStartExtractingUpdate() {
-		self.progressHandler(.extracting(progress: 0))
+		self.progressState = .extracting(progress: 0)
 	}
 	
 	func showExtractionReceivedProgress(_ progress: Double) {
-		self.progressHandler(.extracting(progress: progress))
+		self.progressState = .extracting(progress: progress)
 	}
 	
 	func showReady(toInstallAndRelaunch installUpdateHandler: @escaping (SPUInstallUpdateStatus) -> Void) {
@@ -178,7 +178,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 	}
 	
 	func showInstallingUpdate() {
-		self.progressHandler(.installing)
+		self.progressState = .installing
 	}
 	
 	func showUpdateInstallationDidFinish(acknowledgement: @escaping () -> Void) {

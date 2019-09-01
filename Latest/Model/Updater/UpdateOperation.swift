@@ -38,41 +38,42 @@ class UpdateOperation: StatefulOperation {
 		case cancelling
 	}
 	
-	
-	/// The handler forwarding the current progress state.
-	typealias ProgressHandler = (_: ProgressState) -> Void
-	
 	/// The app that is updated by this operation.
 	let app: AppBundle
 	
 	/// The handler forwarding the current progress state.
-	let progressHandler: UpdateOperation.ProgressHandler
+	var progressHandler: UpdateQueue.ProgressHandler?
+	
+		/// The current update state.
+	var progressState: UpdateOperation.ProgressState = .pending {
+		didSet {
+			self.progressHandler?(self.app)
+		}
+	}
+
 	
 	/// Initializes the operation with the given app and progress handler.
-	init(app: AppBundle, progressHandler: @escaping UpdateOperation.ProgressHandler) {
+	init(app: AppBundle) {
 		self.app = app
-		self.progressHandler = progressHandler
-		
-		self.progressHandler(.pending)
 	}
 	
 	
 	// MARK: - Operation subclassing
 	
 	override func execute() {
-		self.progressHandler(.initializing)
+		self.progressState = .initializing
 	}
 	
 	override func cancel() {
 		super.cancel()
-		self.progressHandler(.cancelling)
+		self.progressState = .cancelling
 	}
 		
 	override func finish() {
 		if let error = self.error {
-			self.progressHandler(.error(error))
+			self.progressState = .error(error)
 		} else {
-			self.progressHandler(.none)
+			self.progressState = .none
 		}
 		
 		super.finish()

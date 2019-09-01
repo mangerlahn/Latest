@@ -35,25 +35,22 @@ protocol AppBundleDelegate {
 class AppBundle : NSObject {
     
     /// The version currently present on the users computer
-    private(set) var version: Version
+    let version: Version
     
     /// The display name of the app
-	private(set) var name: String
+	let name: String
 	
 	/// The bundle identifier of the app
-	private(set) var bundleIdentifier: String
+	let bundleIdentifier: String
 	
     /// The url of the app on the users computer
-    private(set) var url: URL
+    let url: URL
     
     /// The delegate to be notified when app information changes
     var delegate : AppBundleDelegate?
     
     /// The newest information available for this app
     var newestVersion: UpdateInfo
-	
-	/// The information about the update progress for this app.
-	var updateProgress = UpdateProgress()
 	
     /**
      Convenience initializer for creating an app object
@@ -98,14 +95,6 @@ class AppBundle : NSObject {
 	/// Updates the app. This is a subclassing hook. The default implementation opens the app.
 	func update() {
 		self.open()
-	}
-	
-	func updateInformation(using app: AppBundle) {
-		self.bundleIdentifier = app.bundleIdentifier
-		self.name = app.name
-		self.version = app.version
-		self.newestVersion = app.newestVersion
-		self.url = app.url
 	}
 	
 	/// Cancels the scheduled update for this app.

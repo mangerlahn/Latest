@@ -31,10 +31,9 @@
 		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
 		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
 		506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* NSError+Latest.swift */; };
-		506DF77621248F6200D792FC /* AppCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppCollection.swift */; };
+		506DF77621248F6200D792FC /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppDataStore.swift */; };
 		506DF7782125580400D792FC /* UpdateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF7772125580400D792FC /* UpdateTableView.swift */; };
 		5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */; };
-		508E47B02309CE7900A37B4F /* UpdateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E47AF2309CE7900A37B4F /* UpdateProgress.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
@@ -58,33 +57,61 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		508E47C02309CE7900A37B4F /* PBXContainerItemProxy */ = {
+		50B3984C2312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 722954B41D04ADAF00ECF9CA;
-			remoteInfo = fileop;
+			remoteGlobalIDString = 72A5D59C1D6927730009E5AC;
+			remoteInfo = SparkleCore;
 		};
-		508E47C22309CE7900A37B4F /* PBXContainerItemProxy */ = {
+		50B3984E2312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 5AB8F19F214DA72000A1187F;
-			remoteInfo = generate_keys;
+			remoteGlobalIDString = 726E07AD1CAF08D6001A286B;
+			remoteInfo = SparkleInstallerLauncher;
 		};
-		508E47C42309CE7900A37B4F /* PBXContainerItemProxy */ = {
+		50B398502312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 5A5ADED7214EDE4900DF0099;
-			remoteInfo = sign_update;
+			remoteGlobalIDString = 724BB36C1D31D0B7005D534A;
+			remoteInfo = SparkleInstallerConnection;
 		};
-		508E47C62309CE7900A37B4F /* PBXContainerItemProxy */ = {
+		50B398522312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = EA4311A0229D5FBC00A5503D;
-			remoteInfo = ed25519;
+			remoteGlobalIDString = 724BB3931D333832005D534A;
+			remoteInfo = SparkleInstallerStatus;
+		};
+		50B398542312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 726E07EF1CAF37BD001A286B;
+			remoteInfo = SparkleDownloader;
+		};
+		50B398562312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 726E4A161C86C88F00C57C6A;
+			remoteInfo = TestAppHelper;
+		};
+		50B398582312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 72D9549E1CBB415B006F28BD;
+			remoteInfo = "sparkle-cli";
+		};
+		50B3985A2312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 721C24451CB753E6005440CB;
+			remoteInfo = "Installer Progress";
 		};
 		50C81D6E1FBADC5900324C2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -204,10 +231,9 @@
 		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
 		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
 		506A8F6622EC14CC00C755AF /* NSError+Latest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Latest.swift"; sourceTree = "<group>"; };
-		506DF77521248F6200D792FC /* AppCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollection.swift; sourceTree = "<group>"; };
+		506DF77521248F6200D792FC /* AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
 		506DF7772125580400D792FC /* UpdateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableView.swift; sourceTree = "<group>"; };
 		5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateOperation.swift; sourceTree = "<group>"; };
-		508E47AF2309CE7900A37B4F /* UpdateProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProgress.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
@@ -390,13 +416,12 @@
 		5095120D1FF3626A003D2D7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				508E47AF2309CE7900A37B4F /* UpdateProgress.swift */,
 				5039DE8322CA39630088B39B /* Updater */,
 				509512161FF362D1003D2D7F /* App Bundles */,
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
 				509512101FF362A1003D2D7F /* Version.swift */,
 				509512111FF362A1003D2D7F /* UpdateInfo.swift */,
-				506DF77521248F6200D792FC /* AppCollection.swift */,
+				506DF77521248F6200D792FC /* AppDataStore.swift */,
 				5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */,
 				5058BA3921202BA7003F332B /* IconCache.swift */,
 				506A8F6622EC14CC00C755AF /* NSError+Latest.swift */,
@@ -540,17 +565,21 @@
 			isa = PBXGroup;
 			children = (
 				50F62EF822FA277D00A2F2AF /* Sparkle.framework */,
+				50B3984D2312CF1C00BAEC81 /* SparkleCore.framework */,
+				50F62F0022FA277D00A2F2AF /* Autoupdate */,
+				50B3984F2312CF1C00BAEC81 /* org.sparkle-project.InstallerLauncher.xpc */,
+				50B398512312CF1C00BAEC81 /* org.sparkle-project.InstallerConnection.xpc */,
+				50B398532312CF1C00BAEC81 /* org.sparkle-project.InstallerStatus.xpc */,
+				50B398552312CF1C00BAEC81 /* org.sparkle-project.Downloader.xpc */,
 				50F62EFA22FA277D00A2F2AF /* Sparkle Test App.app */,
+				50B398572312CF1C00BAEC81 /* TestAppHelper.xpc */,
 				50F62EFC22FA277D00A2F2AF /* Sparkle Unit Tests.xctest */,
 				50F62EFE22FA277D00A2F2AF /* BinaryDelta */,
-				50F62F0022FA277D00A2F2AF /* Autoupdate.app */,
+				50B398592312CF1C00BAEC81 /* sparkle.app */,
+				50B3985B2312CF1C00BAEC81 /* Updater.app */,
 				50F62F0222FA277D00A2F2AF /* UI Tests.xctest */,
-				508E47C12309CE7900A37B4F /* fileop */,
 				50F62F0622FA277D00A2F2AF /* generate_appcast */,
-				508E47C32309CE7900A37B4F /* generate_keys */,
-				508E47C52309CE7900A37B4F /* sign_update */,
 				50F62F0C22FA277D00A2F2AF /* libbsdiff.a */,
-				508E47C72309CE7900A37B4F /* libed25519.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -655,32 +684,60 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		508E47C12309CE7900A37B4F /* fileop */ = {
+		50B3984D2312CF1C00BAEC81 /* SparkleCore.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = fileop;
-			remoteRef = 508E47C02309CE7900A37B4F /* PBXContainerItemProxy */;
+			fileType = wrapper.framework;
+			path = SparkleCore.framework;
+			remoteRef = 50B3984C2312CF1C00BAEC81 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		508E47C32309CE7900A37B4F /* generate_keys */ = {
+		50B3984F2312CF1C00BAEC81 /* org.sparkle-project.InstallerLauncher.xpc */ = {
 			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = generate_keys;
-			remoteRef = 508E47C22309CE7900A37B4F /* PBXContainerItemProxy */;
+			fileType = "wrapper.xpc-service";
+			path = "org.sparkle-project.InstallerLauncher.xpc";
+			remoteRef = 50B3984E2312CF1C00BAEC81 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		508E47C52309CE7900A37B4F /* sign_update */ = {
+		50B398512312CF1C00BAEC81 /* org.sparkle-project.InstallerConnection.xpc */ = {
 			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = sign_update;
-			remoteRef = 508E47C42309CE7900A37B4F /* PBXContainerItemProxy */;
+			fileType = "wrapper.xpc-service";
+			path = "org.sparkle-project.InstallerConnection.xpc";
+			remoteRef = 50B398502312CF1C00BAEC81 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		508E47C72309CE7900A37B4F /* libed25519.a */ = {
+		50B398532312CF1C00BAEC81 /* org.sparkle-project.InstallerStatus.xpc */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libed25519.a;
-			remoteRef = 508E47C62309CE7900A37B4F /* PBXContainerItemProxy */;
+			fileType = "wrapper.xpc-service";
+			path = "org.sparkle-project.InstallerStatus.xpc";
+			remoteRef = 50B398522312CF1C00BAEC81 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50B398552312CF1C00BAEC81 /* org.sparkle-project.Downloader.xpc */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.xpc-service";
+			path = "org.sparkle-project.Downloader.xpc";
+			remoteRef = 50B398542312CF1C00BAEC81 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50B398572312CF1C00BAEC81 /* TestAppHelper.xpc */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.xpc-service";
+			path = TestAppHelper.xpc;
+			remoteRef = 50B398562312CF1C00BAEC81 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50B398592312CF1C00BAEC81 /* sparkle.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = sparkle.app;
+			remoteRef = 50B398582312CF1C00BAEC81 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50B3985B2312CF1C00BAEC81 /* Updater.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Updater.app;
+			remoteRef = 50B3985A2312CF1C00BAEC81 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		50F62EF822FA277D00A2F2AF /* Sparkle.framework */ = {
@@ -711,10 +768,10 @@
 			remoteRef = 50F62EFD22FA277D00A2F2AF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50F62F0022FA277D00A2F2AF /* Autoupdate.app */ = {
+		50F62F0022FA277D00A2F2AF /* Autoupdate */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Autoupdate.app;
+			fileType = "compiled.mach-o.executable";
+			path = Autoupdate;
 			remoteRef = 50F62EFF22FA277D00A2F2AF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -833,12 +890,11 @@
 				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
 				501497A122D9CBEA00CFA8CE /* MASError.swift in Sources */,
 				502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */,
-				508E47B02309CE7900A37B4F /* UpdateProgress.swift in Sources */,
 				5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */,
 				506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
-				506DF77621248F6200D792FC /* AppCollection.swift in Sources */,
+				506DF77621248F6200D792FC /* AppDataStore.swift in Sources */,
 				5039DE8522CA396F0088B39B /* UpdateQueue.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,

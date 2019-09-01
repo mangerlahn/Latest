@@ -80,7 +80,9 @@ class ReleaseNotesViewController: NSViewController {
 	/// The app currently presented
 	private(set) var app: AppBundle? {
 		willSet {
-			self.app?.updateProgress.removeObserver(self)
+			if let app = self.app {
+				UpdateQueue.shared.removeObserver(self, for: app)
+			}
 		}
 		
 		didSet {
@@ -88,9 +90,11 @@ class ReleaseNotesViewController: NSViewController {
 			self.progressViewController.app = self.app
 			
 			// Add ourselfs as observer to the app
-			self.app?.updateProgress.addObserver(self, handler: { progress in
-				self.updateButtonAppearance()
-			})
+			if let app = self.app {
+				UpdateQueue.shared.addObserver(self, to: app) { _ in
+					self.updateButtonAppearance()
+				}
+			}
 		}
 	}
     
