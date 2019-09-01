@@ -320,7 +320,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         
 		let index = self.rowIndex(forMenuItem: menuItem)
 		let hasIndex = index != -1
-		let app = self.dataStore.app(at: index)
+		let app = (hasIndex ? self.dataStore.app(at: index) : nil)
 		
 		switch action {
 		case #selector(updateApp(_:)):
