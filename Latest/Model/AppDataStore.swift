@@ -67,37 +67,27 @@ class AppDataStore {
 		}
 		
 		// Sort apps
-		var filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
-			let ignored1 = ignoredApps.contains(app1)
-			let ignored2 = ignoredApps.contains(app2)
-			
-			if ignored1 != ignored2 {
-				return ignored2
-			}
-			
-			if !(ignored2 || ignored1) && app1.updateAvailable != app2.updateAvailable {
-				return app1.updateAvailable
-			}
-			
+		let filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
 			return app1.name.lowercased() < app2.name.lowercased()
-		}).map({ Entry.app($0) })
+		})
 		
-		// Add sections
-		if self.showInstalledUpdates || self.showIgnoredUpdates {
-			if self.showIgnoredUpdates && !ignoredApps.isEmpty {
-				filteredApps.insert(.section(.ignored), at: filteredApps.count - ignoredApps.count)
-			}
-			
-			if self.showInstalledUpdates && self.apps.count > self.countOfAvailableUpdates {
-				filteredApps.insert(.section(.installed), at: self.countOfAvailableUpdates)
-			}
-
-			if self.countOfAvailableUpdates > 0 {
-				filteredApps.insert(.section(.updateAvailable), at: 0)
-			}
+		// Build final list. This is a very inefficient solution. Find a better one
+		var availableUpdates = filteredApps.filter({ $0.updateAvailable && !self.isAppIgnored($0) }).map({ Entry.app($0) })
+		if !availableUpdates.isEmpty {
+			availableUpdates = [.section(.updateAvailable)] + availableUpdates
 		}
 		
-		self.filteredApps = filteredApps
+		var installedUpdates = filteredApps.filter({ !$0.updateAvailable && !self.isAppIgnored($0) }).map({ Entry.app($0) })
+		if !installedUpdates.isEmpty {
+			installedUpdates = [.section(.installed)] + installedUpdates
+		}
+		
+		var ignoredUpdates = filteredApps.filter({ self.isAppIgnored($0) }).map({ Entry.app($0) })
+		if !ignoredUpdates.isEmpty {
+			ignoredUpdates = [.section(.ignored)] + ignoredUpdates
+		}
+		
+		self.filteredApps = availableUpdates + installedUpdates + ignoredUpdates
 	}
 	
 	/// The cached count of apps with updates available
