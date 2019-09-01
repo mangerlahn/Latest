@@ -14,6 +14,7 @@ import Cocoa
 class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
     private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
+	private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
@@ -67,6 +68,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         
 		// Restore state
         self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
+        self.updateShowIgnoredUpdatesState(with: UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
     }
 
     
@@ -94,6 +96,10 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
         self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
     }
+	
+	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
+		 self.updateShowIgnoredUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey), from: sender)
+	 }
 	
 	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
 		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
@@ -201,6 +207,16 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
     }
     
+    private func updateShowIgnoredUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
+        self.listViewController.showIgnoredUpdates = newState
+    
+        if let sender = sender {
+            sender.state = newState ? .on : .off
+        }
+        
+        UserDefaults.standard.set(newState, forKey: ShowIgnoredUpdatesKey)
+    }
+	
     private func showReleaseNotes(_ show: Bool, animated: Bool) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return

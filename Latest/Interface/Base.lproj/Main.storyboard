@@ -321,6 +321,11 @@
                                                 <action selector="toggleShowInstalledUpdates:" target="Ady-hI-5gd" id="DiG-pc-JWl"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Show Ignored Updates" keyEquivalent="I" id="Rh5-N3-X6H">
+                                            <connections>
+                                                <action selector="toggleShowIgnoredUpdates:" target="Ady-hI-5gd" id="V8P-XQ-TjM"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2cf-83-Jly"/>
                                         <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
                                             <connections>
@@ -416,7 +421,7 @@
                     <window key="window" identifier="MainWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="549" y="334" width="365" height="495"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
                             <allowedToolbarItems>
@@ -828,6 +833,18 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="updateApp:" target="MxB-hL-adL" id="1IZ-Ca-AKt"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Ignore" id="PS4-wi-kF9" userLabel="Ignore">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="ignoreApp:" target="MxB-hL-adL" id="eZ6-zI-CeB"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Don't Ignore" id="Ljr-hV-usc" userLabel="Unignore">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unignoreApp:" target="MxB-hL-adL" id="oa9-yN-Xq6"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="Sha-Xo-nI1"/>
