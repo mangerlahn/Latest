@@ -104,7 +104,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         let size = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
 		let name = self.dataStore.app(at: itemIndex)!.name as NSString
         let options: NSString.DrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
-        let attributes = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: 0)]
+		let attributes = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: NSFont.systemFontSize)]
         
         let textRect = name.boundingRect(with: size, options: options, attributes: attributes)
         
@@ -131,6 +131,8 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
 	
 	private func view(for section: AppDataStore.Section) -> NSScrubberItemView {
         let view = NSScrubberTextItemView()
+		view.textField.font = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize(for: .small))
+		view.textField.textColor = NSColor.secondaryLabelColor
 		
 		switch section {
 		case .updateAvailable:
