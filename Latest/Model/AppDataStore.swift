@@ -77,7 +77,7 @@ class AppDataStore {
 		// Add sections
 		if self.showInstalledUpdates || self.showIgnoredUpdates {
 			if self.showIgnoredUpdates && !ignoredApps.isEmpty {
-				filteredApps.insert(.section(.ignored), at: self.apps.count - ignoredApps.count)
+				filteredApps.insert(.section(.ignored), at: filteredApps.count - ignoredApps.count)
 			}
 			
 			if self.showInstalledUpdates && self.apps.count > self.countOfAvailableUpdates {
