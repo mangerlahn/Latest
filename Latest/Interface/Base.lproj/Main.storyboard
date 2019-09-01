@@ -27,7 +27,7 @@
                                         <menuItem title="Check for Updates…" id="4vf-ia-dzo">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="checkForUpdates:" target="ZIQ-oE-e1U" id="wrG-jU-gAV"/>
+                                                <action selector="checkForUpdates:" target="ZIQ-oE-e1U" id="6ax-If-3sD"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -407,7 +407,7 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
-                <customObject id="ZIQ-oE-e1U" customClass="SUUpdater"/>
+                <customObject id="ZIQ-oE-e1U" customClass="SPUStandardUpdaterController"/>
                 <customObject id="HQw-Wf-FaT" customClass="MainWindowController" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
