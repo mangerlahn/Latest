@@ -1,14 +1,45 @@
-/* No comment provided by engineer. */
+/* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
+"An error occurred while updating %@." = "Ein Fehler ist während der Aktualisierung von %@ aufgetreten.";
+
+/* Touch Bar section title for available updates */
 "Available" = "Verfügbar";
 
-/* Cancel button */
+/* Table Section Header for available updates */
+"Available Updates" = "Verfügbare Updates";
+
+/* Cancel button in an update dialogue
+   Cancel button title to cancel the update of an app */
 "Cancel" = "Abbrechen";
+
+/* Update progress state of cancelling an update */
+"Cancelling" = "Abbrechen";
+
+/* Update progress state of downloading an update */
+"Downloading " = "Herunterladen";
+
+/* Update progress state of extracting the downloaded update */
+"Extracting Update" = "Update entpacken";
 
 /* MenuItem Hide Version Details */
 "Hide Version Details" = "Versionsdetails ausblenden";
 
-/* No comment provided by engineer. */
+/* Touch Bar section title for ignored apps */
+"Ignored" = "Ignoriert";
+
+/* Table Section Header for ignored apps */
+"Ignored Apps" = "Ignorierte Apps";
+
+/* Update progress state of initializing an update */
+"Initializing" = "Initialisieren";
+
+/* Touch Bar section title for installed updates */
 "Installed" = "Installiert";
+
+/* Table Section Header for already installed updates */
+"Installed Updates" = "Installierte Updates";
+
+/* Update progress state of installing an update */
+"Installing" = "Installieren";
 
 /* New Version String */
 "New version: %@" = "Neue Version: %@";
@@ -19,11 +50,17 @@
 /* Error message that no release notes were found */
 "No release notes were found for this app." = "Zu dieser App wurden keine Release Notes gefunden.";
 
+/* Error description when no update was found for a particular app. */
+"No update was found for this app." = "Es wurde kein Update für diese App gefunden.";
+
 /* number of updates available */
 "number_of_updates_available" = "number_of_updates_available";
 
-/* Open all apps button */
-"Open Apps" = "Apps öffnen";
+/* Error description when no update was found for a particular app. */
+"Please sign in to the Mac App Store to update this app." = "Bitte melde dich im Mac App Store an, um das Update für diese App zu laden.";
+
+/* Button to retry an update in an error dialogue */
+"Retry" = "Erneut versuchen";
 
 /* Description of release notes empty state */
 "Select an app from the list to read its release notes." = "Wähle in der Seitenleiste eine App, um deren Release Notes zu lesen.";
@@ -34,17 +71,15 @@
 /* MenuItem Show Version Details */
 "Show Version Details" = "Versionsdetails anzeigen";
 
-/* Open a lot of apps - message text */
-"This may slow down your Mac. Are you sure you want to open all apps at once?" = "Möchtest du wirklich alle Apps gleichzeitig öffnen? Das könnte deinen Mac verlangsamen.";
-
 /* No comment provided by engineer. */
 "Up to Date!" = "Alles aktuell!";
 
-/* Update String */
+/* Update button title to update an app
+   Update String */
 "Update" = "Aktualisieren";
 
-/* Open a lot of apps - informative text */
-"You are going to open %d apps." = "Du wirst %d Apps öffnen.";
+/* Update progress state of waiting to start an update */
+"Waiting" = "Warten";
 
 /* Current Version String */
 "Your version: %@" = "Installierte Version: %@";

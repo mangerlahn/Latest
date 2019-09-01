@@ -85,37 +85,26 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
-        if self.apps.isSectionHeader(at: index) {
-            return self.textViewForSection(at: index)
-        }
-        
-        guard let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
-            return NSScrubberItemView()
-        }
-        
-        let app = self.apps[index]
-        
-        view.textField.attributedStringValue = app.highlightedName(for: self.apps.filterQuery)
-        
-        IconCache.shared.icon(for: app) { (image) in
-            view.imageView.image = image
-        }
-        
-        return view
-    }
+		switch self.apps[index] {
+		case .section(let section):
+			return self.view(for: section)
+		case .app(let app):
+			return self.view(for: app, in: scrubber)
+		}
+	}
     
     
     // MARK: Delegate
     
     func scrubber(_ scrubber: NSScrubber, layout: NSScrubberFlowLayout, sizeForItemAt itemIndex: Int) -> NSSize {
-        if self.apps.isSectionHeader(at: itemIndex) {
+        if self.dataStore.isSectionHeader(at: itemIndex) {
             return NSSize(width: 100, height: 30)
         }
         
         let size = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-        let name = self.apps[itemIndex].name as NSString
+		let name = self.dataStore.app(at: itemIndex)!.name as NSString
         let options: NSString.DrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
-        let attributes = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: 0)]
+		let attributes = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: NSFont.systemFontSize)]
         
         let textRect = name.boundingRect(with: size, options: options, attributes: attributes)
         
@@ -127,7 +116,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
-        if self.apps.isSectionHeader(at: selectedIndex) {
+        if self.dataStore.isSectionHeader(at: selectedIndex) {
             self.scrubber?.selectedIndex = self.tableView.selectedRow
             return
         }
@@ -139,11 +128,36 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         self.scrubber?.isHidden = count == 0
         self.scrubber?.showsArrowButtons = count > 3
     }
-    
-    fileprivate func textViewForSection(at index: Int) -> NSScrubberTextItemView {
+	
+	private func view(for section: AppDataStore.Section) -> NSScrubberItemView {
         let view = NSScrubberTextItemView()
-        view.textField.stringValue = index == 0 ? NSLocalizedString("Available", comment: "") : NSLocalizedString("Installed", comment: "")
+		view.textField.font = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize(for: .small))
+		view.textField.textColor = NSColor.secondaryLabelColor
+		
+		switch section {
+		case .updateAvailable:
+			view.textField.stringValue = NSLocalizedString("Available", comment: "Touch Bar section title for available updates")
+		case .installed:
+			view.textField.stringValue = NSLocalizedString("Installed", comment: "Touch Bar section title for installed updates")
+		case .ignored:
+			view.textField.stringValue = NSLocalizedString("Ignored", comment: "Touch Bar section title for ignored apps")
+		}
+		
         return view
     }
+	
+	private func view(for app: AppBundle, in scrubber: NSScrubber) -> NSScrubberItemView {
+		guard let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
+            return NSScrubberItemView()
+        }
+        
+        view.textField.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
+        
+        IconCache.shared.icon(for: app) { (image) in
+            view.imageView.image = image
+        }
+        
+        return view
+	}
     
 }

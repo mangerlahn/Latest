@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CommerceKit
 
 /**
  Mac App Store app bundle subclass, it handles the parsing of the iTunes JSON
@@ -19,8 +20,8 @@ class MacAppStoreAppBundle: AppBundle {
     /// The date formatter used for parsing
     private var dateFormatter: DateFormatter!
     
-    override init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
-        super.init(appName: appName, versionNumber: versionNumber, buildNumber: buildNumber, url: url)
+	override init(appName: String, bundleIdentifier: String, versionNumber: String?, buildNumber: String?, url: URL) {
+		super.init(appName: appName, bundleIdentifier: bundleIdentifier, versionNumber: versionNumber, buildNumber: buildNumber, url: url)
         
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale(identifier: "en_US")
@@ -67,4 +68,21 @@ class MacAppStoreAppBundle: AppBundle {
             self.delegate?.appDidUpdateVersionInformation(self)
         })
     }
+	
+	var updateInformation: CKUpdate? {
+		return CKUpdateController.shared()?.availableUpdates().first(where: { $0.bundleID == self.bundleIdentifier })
+	}
+	
+	
+	// MARK: - Actions
+	
+	override func open() {
+		// Should preferably open the Mac App Store
+		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
+	}
+	
+	override func update() {
+		UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self))
+	}
+	
 }

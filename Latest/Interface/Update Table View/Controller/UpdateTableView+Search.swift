@@ -20,7 +20,7 @@ class UpdateSearchField: NSSearchField {
 extension UpdateTableViewController {
 	
 	@IBAction func searchFieldTextDidChange(_ sender: NSSearchField) {
-		self.apps.filterQuery = sender.stringValue
+		self.dataStore.filterQuery = sender.stringValue
 		
 		// Reload all visible lists
 		self.tableView.reloadData()

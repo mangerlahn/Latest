@@ -35,27 +35,31 @@ protocol AppBundleDelegate {
 class AppBundle : NSObject {
     
     /// The version currently present on the users computer
-    var version: Version
+    let version: Version
     
     /// The display name of the app
-    var name = ""
-    
+	let name: String
+	
+	/// The bundle identifier of the app
+	let bundleIdentifier: String
+	
     /// The url of the app on the users computer
-    var url: URL
+    let url: URL
     
     /// The delegate to be notified when app information changes
     var delegate : AppBundleDelegate?
     
     /// The newest information available for this app
     var newestVersion: UpdateInfo
-    
+	
     /**
      Convenience initializer for creating an app object
-     - parameter name: The name of the app
-     - parameter versionNumber: The current version number of the app
-     - parameter buildNumber: The current build number of the app
+	- parameter name: The name of the app
+	- parameter bundleIdentifier: The bundle identifier of the app
+    - parameter versionNumber: The current version number of the app
+    - parameter buildNumber: The current build number of the app
      */
-    init(appName: String, versionNumber: String?, buildNumber: String?, url: URL) {
+	init(appName: String, bundleIdentifier: String, versionNumber: String?, buildNumber: String?, url: URL) {
         self.version = Version(versionNumber ?? "", buildNumber ?? "")
         
         self.newestVersion = UpdateInfo()
@@ -63,6 +67,8 @@ class AppBundle : NSObject {
         
         self.name = appName
         self.url = url
+		
+		self.bundleIdentifier = bundleIdentifier
     }
     
     var updateAvailable: Bool {
@@ -72,21 +78,29 @@ class AppBundle : NSObject {
         
         return false
     }
+	
+	/// Whether the app is currently being updated.
+	var isUpdating: Bool {
+		return UpdateQueue.shared.contains(self)
+	}
     
     
     // MARK: - Actions
     
     /// Opens the app and a given index
     func open() {
-        var appStoreURL : URL?
-        
-        if let appStoreApp = self as? MacAppStoreAppBundle {
-            appStoreURL = appStoreApp.appStoreURL
-        }
-        
-        let url = appStoreURL ?? self.url
-        NSWorkspace.shared.open(url)
+        NSWorkspace.shared.open(self.url)
     }
+	
+	/// Updates the app. This is a subclassing hook. The default implementation opens the app.
+	func update() {
+		self.open()
+	}
+	
+	/// Cancels the scheduled update for this app.
+	func cancelUpdate() {
+		UpdateQueue.shared.cancelUpdate(for: self)
+	}
     
     /// Reveals the app at a given index in Finder
     func showInFinder() {

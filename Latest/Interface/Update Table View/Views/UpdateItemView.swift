@@ -21,10 +21,10 @@ class UpdateItemView: NSScrubberItemView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
-        self.textField.font = NSFont.systemFont(ofSize: 0)
+		// Pass 0 for default siue
+		self.textField.font = NSFont.systemFont(ofSize: NSFont.systemFontSize)
         self.textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         self.textField.textColor = NSColor.white
-		self.textField.allowsEditingTextAttributes = true
 
         self.imageView.imageScaling = .scaleProportionallyDown
 
@@ -48,14 +48,14 @@ class UpdateItemView: NSScrubberItemView {
         self.addSubview(stackView)
         
         let constraints = [
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -2),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
             stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0),
             imageView.widthAnchor.constraint(equalToConstant: 20),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            textField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -1)
+            textField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 1)
         ]
         
         NSLayoutConstraint.activate(constraints)

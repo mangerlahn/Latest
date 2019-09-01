@@ -14,15 +14,19 @@ import Cocoa
 class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
     private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
+	private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController,
-            let firstItem = splitViewController.splitViewItems[0].viewController as? UpdateTableViewController else {
+		let splitViewController = self.contentViewController as? NSSplitViewController
+        guard let firstItem = splitViewController?.splitViewItems[0], let controller = firstItem.viewController as? UpdateTableViewController else {
                 return UpdateTableViewController()
         }
+		
+		// Override sidebar collapsing behavior
+		firstItem.canCollapse = false
         
-        return firstItem
+        return controller
     }()
     
     /// The detail view controller holding the release notes
@@ -65,7 +69,9 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
         
+		// Restore state
         self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
+        self.updateShowIgnoredUpdatesState(with: UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
     }
 
     
@@ -77,30 +83,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     }
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
-    @IBAction func openAll(_ sender: Any?) {
-        let apps = self.listViewController.apps
-        
-        if apps.countOfAvailableUpdates > 4 {
-            // Display warning
-            let alert = NSAlert()
-            alert.alertStyle = .warning
-            
-            alert.messageText = String.init(format: NSLocalizedString("You are going to open %d apps.", comment: "Open a lot of apps - informative text"), apps.count)
-            
-            alert.informativeText = NSLocalizedString("This may slow down your Mac. Are you sure you want to open all apps at once?", comment: "Open a lot of apps - message text")
-            
-            alert.addButton(withTitle: NSLocalizedString("Open Apps", comment: "Open all apps button"))
-            alert.addButton(withTitle: NSLocalizedString("Cancel", comment: "Cancel button"))
-            
-            alert.beginSheetModal(for: self.window!, completionHandler: { (response) in
-                if response.rawValue == 1000 {
-                    // Open apps anyway
-                    self.open(apps)
-                }
-            })
-        } else {
-            self.open(apps)
-        }
+    @IBAction func updateAll(_ sender: Any?) {
+		self.listViewController.dataStore.updateableApps.forEach({ $0.update() })
     }
     
     /// Shows/hides the detailView which presents the release notes
@@ -115,6 +99,18 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
         self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
     }
+	
+	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
+		 self.updateShowIgnoredUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey), from: sender)
+	 }
+	
+	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
+		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
+    }
+	
+	@IBAction func donate(_ sender: NSMenuItem?) {
+		NSWorkspace.shared.open(URL(string: "https://max.codes/latest/donate/")!)
+	}
     
     
     // MARK: Menu Item Validation
@@ -125,7 +121,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         }
         
         switch action {
-        case #selector(openAll(_:)):
+        case #selector(updateAll(_:)):
             return self.listViewController.apps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
@@ -169,18 +165,20 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.progressIndicator.doubleValue = 0
         self.progressIndicator.isHidden = false
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
+		
+		self.listViewController.dataStore.beginUpdates()
     }
     
     /// Update the progress indicator
     func didCheckApp() {
-        self.openAllAppsButton.isEnabled = self.listViewController.apps.countOfAvailableUpdates != 0
-        self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
-        
         if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
+			self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
+			self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
+			
             self.reloadButton.isEnabled = true
             self.reloadTouchBarButton.isEnabled = true
             self.progressIndicator.isHidden = true
-            self.listViewController.finishedCheckingForUpdates()
+			self.listViewController.dataStore.endUpdates()
         } else {
             self.progressIndicator.increment(by: 1)
         }
@@ -202,26 +200,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     // MARK: - Private Methods
     
-    /**
-     Open all apps in the array
-     - parameter apps: The apps to be opened
-     */
-    
-    private func open(_ apps: AppCollection) {
-        var showedMacAppStore = false
-        
-        apps.forEach { (app) in
-            if !app.updateAvailable { return }
-            if !showedMacAppStore, app is MacAppStoreAppBundle {
-                showedMacAppStore = true
-                NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
-                return
-            }
-            
-            NSWorkspace.shared.open(app.url)
-        }
-    }
-    
     private func updateShowInstalledUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
         self.listViewController.showInstalledUpdates = newState
     
@@ -232,6 +210,16 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
     }
     
+    private func updateShowIgnoredUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
+        self.listViewController.showIgnoredUpdates = newState
+    
+        if let sender = sender {
+            sender.state = newState ? .on : .off
+        }
+        
+        UserDefaults.standard.set(newState, forKey: ShowIgnoredUpdatesKey)
+    }
+	
     private func showReleaseNotes(_ show: Bool, animated: Bool) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return
@@ -286,5 +274,10 @@ extension MainWindowController: NSWindowDelegate {
         window.setFrame(state.decodeRect(forKey: MainWindowController.WindowSizeKey), display: true)
         self.showReleaseNotes(state.decodeBool(forKey: MainWindowController.ReleaseNotesVisible), animated: false)
     }
+	
+	func window(_ window: NSWindow, willPositionSheet sheet: NSWindow, using rect: NSRect) -> NSRect {
+		// Always position sheets at the top of the window, ignoring toolbar insets
+		return NSRect(x: rect.minX, y: window.frame.height, width: rect.width, height: rect.height)
+	}
     
 }

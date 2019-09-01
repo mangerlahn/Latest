@@ -77,8 +77,26 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appNewVersionTextField: NSTextField!
     @IBOutlet weak var appIconImageView: NSImageView!
     
-    /// The app currently presented
-    private(set) var app: AppBundle?
+	/// The app currently presented
+	private(set) var app: AppBundle? {
+		willSet {
+			if let app = self.app {
+				UpdateQueue.shared.removeObserver(self, for: app)
+			}
+		}
+		
+		didSet {
+			// Forward app
+			self.progressViewController.app = self.app
+			
+			// Add ourselfs as observer to the app
+			if let app = self.app {
+				UpdateQueue.shared.addObserver(self, to: app) { _ in
+					self.updateButtonAppearance()
+				}
+			}
+		}
+	}
     
     /// The current content presented on screen
     private var content: ReleaseNotesContent?
@@ -88,7 +106,7 @@ class ReleaseNotesViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
+        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: -5)
         constraint.isActive = true
         
         // Prepare for empty state
@@ -99,14 +117,34 @@ class ReleaseNotesViewController: NSViewController {
 
         self.appInfoBackgroundView.isHidden = true
         self.updateButton.isHidden = true
-    }
+		
+		// Align progress view controller to update button
+		self.progressViewController.leadingProgressAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
+		self.progressViewController.displayCancelButton = false
+	}
+	
+	func updateButtonAppearance() {
+		if self.app?.isUpdating ?? false {
+			self.updateButton.title = NSLocalizedString("Cancel", comment: "Cancel button title to cancel the update of an app")
+			self.updateButton.action = #selector(cancelUpdate(_:))
+		} else {
+			self.updateButton.title = NSLocalizedString("Update", comment: "Update button title to update an app")
+			self.updateButton.action = #selector(update(_:))
+		}
+		
+		self.updateButton.target = self
+	}
     
     
     // MARK: - Actions
     
-    @IBAction func update(_ sender: NSButton) {
-        self.app?.open()
+    @objc func update(_ sender: NSButton) {
+        self.app?.update()
     }
+	
+	@objc func cancelUpdate(_ sender: NSButton) {
+		self.app?.cancelUpdate()
+	}
     
     
     // MARK: - Display Methods
@@ -299,5 +337,12 @@ class ReleaseNotesViewController: NSViewController {
         self.loadContent(.error)
         self.content?.errorController?.show(error)
     }
+	
+	/// The view controller displaying update progress
+	private var progressViewController: UpdateProgressViewController {
+		return self.children.compactMap { controller -> UpdateProgressViewController? in
+			return controller as? UpdateProgressViewController
+		}.first!
+	}
     
 }
