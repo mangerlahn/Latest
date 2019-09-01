@@ -321,7 +321,7 @@
                                                 <action selector="toggleShowInstalledUpdates:" target="Ady-hI-5gd" id="DiG-pc-JWl"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show Ignored Updates" keyEquivalent="I" id="Rh5-N3-X6H">
+                                        <menuItem title="Show Ignored Apps" keyEquivalent="I" id="Rh5-N3-X6H">
                                             <connections>
                                                 <action selector="toggleShowIgnoredUpdates:" target="Ady-hI-5gd" id="V8P-XQ-TjM"/>
                                             </connections>
@@ -543,14 +543,14 @@
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="76" y="245"/>
+            <point key="canvasLocation" x="76" y="336"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="oW6-ey-z8h">
             <objects>
                 <splitViewController id="RAb-Ag-jja" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem holdingPriority="800" behavior="sidebar" id="BiW-7m-NUy"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="BiW-7m-NUy"/>
                         <splitViewItem id="KSO-oE-QxW"/>
                     </splitViewItems>
                     <splitView key="splitView" wantsLayer="YES" dividerStyle="thin" vertical="YES" id="u0E-Oa-Ty5">
@@ -1207,8 +1207,8 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0Av-7b-7AM">
-                                        <rect key="frame" x="-2" y="0.0" width="136" height="11"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Downloading 3,5MB of 123MB" id="VO3-wO-IeA">
+                                        <rect key="frame" x="34" y="0.0" width="100" height="11"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;DO NOT LOCALIZE&gt;" id="VO3-wO-IeA">
                                             <font key="font" metaFont="miniSystem"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
