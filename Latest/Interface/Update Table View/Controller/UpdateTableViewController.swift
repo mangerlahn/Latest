@@ -71,8 +71,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     
     // MARK: - View Lifecycle
-	
-	let coalescingSource = DispatchSource.makeUserDataAddSource(queue: .main)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,19 +87,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         self.tableView.menu = self.tableViewMenu
         
 		self.dataStore.showInstalledUpdates = self.showInstalledUpdates
-        self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
         
-		self.coalescingSource.setEventHandler {
-			self.tableView.reloadData()
-		}
-		
-		self.coalescingSource.resume()
-
-		self.dataStore.addObserver(self) {
+		self.dataStore.addObserver(self) { oldValue, newValue in
 			self.updateEmtpyStateVisibility()
 			self.updateTitleAndBatch()
 			
-			self.coalescingSource.add(data: 1)
+			self.updateTableView(with: oldValue, with: newValue)
 		}
     }
     
@@ -391,5 +382,51 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             self.scrubber?.reloadData()
         }
     }
+	
+	private func updateTableView(with oldValue: [AppDataStore.Entry], with newValue: [AppDataStore.Entry]) {
+		self.tableView.beginUpdates()
+		
+		var state = oldValue
+		var i = 0, j = 0
+		
+		// Iterate both states
+		while i < state.count || j < newValue.count {
+			// Skip identical items
+			if i < state.count && j < newValue.count && state[i] == newValue[j] {
+				i += 1
+				j += 1
+				continue
+			}
+			
+			// Remove deleted elements
+			if i < state.count && !newValue.contains(state[i]) {
+				self.tableView.removeRows(at: IndexSet(integer: i), withAnimation: [.slideUp, .effectFade])
+				state.remove(at: i)
+				continue
+			}
+			
+			// Move existing elements
+			if let index = state.firstIndex(of: newValue[i]) {
+				let newIndex = i - (index < i ? 1 : 0)
+				self.tableView.moveRow(at: index, to: newIndex)
+				
+				state.remove(at: index)
+				state.insert(newValue[j], at: newIndex)
+				
+				i += 1
+				j += 1
+				continue
+			}
+			
+			// insert new elements
+			self.tableView.insertRows(at: IndexSet(integer: i), withAnimation: [.slideDown, .effectFade])
+			state.insert(newValue[j], at: i)
+			
+			i += 1
+			j += 1
+		}
+		
+		self.tableView.endUpdates()
+	}
     
 }

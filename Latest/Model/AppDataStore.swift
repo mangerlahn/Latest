@@ -15,9 +15,29 @@ import Foundation
 /// - A filtered list of apps based on a given filter string
 class AppDataStore {
 	
-	enum Entry {
+	enum Entry: Equatable, Hashable {
 		case app(AppBundle)
 		case section(Section)
+		
+		static func ==(lhs: Entry, rhs: Entry) -> Bool {
+			switch (lhs, rhs) {
+			case (let .app(app1), let .app(app2)):
+				return app1.bundleIdentifier == app2.bundleIdentifier && app1.version == app2.version
+			case (let .section(section1), let .section(section2)):
+				return section1 == section2
+			default:
+				return false
+			}
+		}
+		
+		func hash(into hasher: inout Hasher) {
+			switch self {
+			case .app(let app):
+				hasher.combine(app.bundleIdentifier)
+			case .section(let section):
+				hasher.combine(section)
+			}
+		}
 	}
 	
 	enum Section {
@@ -25,9 +45,14 @@ class AppDataStore {
 		case installed
 	}
 	
-	private(set) var filteredApps = [Entry]()
+	private(set) var filteredApps = [Entry]() {
+		didSet {
+			self.notifyObservers(oldValue: oldValue, newValue: self.filteredApps)
+		}
+	}
 	
 	private(set) var apps = Set<AppBundle>()
+	
 	
 //	/// Holds the apps
 //	private var _rawData = [AppBundle]()
@@ -73,7 +98,7 @@ class AppDataStore {
 		}
 		
 		// Sort apps
-		self.filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
+		var filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
 			if app1.updateAvailable != app2.updateAvailable {
 				return app1.updateAvailable
 			}
@@ -84,15 +109,15 @@ class AppDataStore {
 		// Add sections
 		if self.showInstalledUpdates {
 			if self.apps.count > self.countOfAvailableUpdates {
-				self.filteredApps.insert(.section(.installed), at: self.countOfAvailableUpdates)
+				filteredApps.insert(.section(.installed), at: self.countOfAvailableUpdates)
 			}
 
 			if self.countOfAvailableUpdates > 0 {
-				self.filteredApps.insert(.section(.updateAvailable), at: 0)
+				filteredApps.insert(.section(.updateAvailable), at: 0)
 			}
 		}
 		
-		self.notifyObservers()
+		self.filteredApps = filteredApps
 	}
 	
 	/// The cached count of apps with updates available
@@ -145,7 +170,7 @@ class AppDataStore {
 	// MARK: - Observer Handling
 	
 	/// The handler for notifying observers about changes to the update state.
-	typealias ObserverHandler = () -> Void
+	typealias ObserverHandler = (_ oldValue: [Entry], _ newValue: [Entry]) -> Void
 
 	/// A mapping of observers assotiated with apps.
 	private var observers = [NSObject: ObserverHandler]()
@@ -156,7 +181,7 @@ class AppDataStore {
 		self.observers[observer] = handler
 		
 		// Call handler immediately to propagate initial state
-		handler()
+		handler(self.filteredApps, self.filteredApps)
 	}
 	
 	/// Remvoes the observer.
@@ -165,10 +190,10 @@ class AppDataStore {
 	}
 		
 	/// Notifies observers about state changes.
-	private func notifyObservers() {
+	private func notifyObservers(oldValue: [Entry], newValue: [Entry]) {
 		DispatchQueue.main.async {
 			self.observers.forEach { (key: NSObject, handler: ObserverHandler) in
-				handler()
+				handler(oldValue, newValue)
 			}
 		}
 	}
