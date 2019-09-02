@@ -99,12 +99,16 @@ class AppDataStore {
 			self.apps.remove(oldApp)
 			self.pendingApps?.remove(oldApp)
 			
-			self.countOfAvailableUpdates -= oldApp.updateAvailable ? 1 : 0
+			if !self.isAppIgnored(oldApp) {
+				self.countOfAvailableUpdates -= oldApp.updateAvailable ? 1 : 0
+			}
 		}
 		
         self.apps.insert(app)
 		
-		self.countOfAvailableUpdates += app.updateAvailable ? 1 : 0
+		if !self.isAppIgnored(app) {
+			self.countOfAvailableUpdates += app.updateAvailable ? 1 : 0
+		}
     }
 	
 	
