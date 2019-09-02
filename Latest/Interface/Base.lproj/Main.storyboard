@@ -885,7 +885,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="gW4-ur-MIN"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="100" verticalStackHuggingPriority="100" horizontalHuggingPriority="100" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPR-BE-Awf">
-                                                <rect key="frame" x="84" y="6" width="363" height="52"/>
+                                                <rect key="frame" x="84" y="6" width="276" height="52"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-sB-6dK">
                                                         <rect key="frame" x="0.0" y="36" width="78" height="16"/>
@@ -948,17 +948,17 @@
                                                 </customSpacing>
                                             </stackView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pg1-8L-B7T">
-                                                <rect key="frame" x="467" y="5" width="73" height="54"/>
+                                                <rect key="frame" x="380" y="5" width="160" height="54"/>
                                                 <subviews>
                                                     <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-uh-6k2">
-                                                        <rect key="frame" x="-93" y="26" width="172" height="32"/>
+                                                        <rect key="frame" x="-6" y="26" width="172" height="32"/>
                                                         <buttonCell key="cell" type="push" title="&lt;DO NOT LOCALIZE&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gx9-Kd-cCq">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="FAl-Mg-Qz2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="28"/>
+                                                        <rect key="frame" x="87" y="0.0" width="73" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="LtZ-be-Wpv"/>
                                                             <constraint firstAttribute="width" constant="73" placeholder="YES" id="u7Z-UV-1Od"/>
@@ -970,10 +970,12 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="FAl-Mg-Qz2" firstAttribute="top" secondItem="XGh-uh-6k2" secondAttribute="bottom" constant="5" id="ErP-Y2-9Jr"/>
+                                                    <constraint firstItem="XGh-uh-6k2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pg1-8L-B7T" secondAttribute="leading" id="Gq0-T3-1iS"/>
                                                     <constraint firstAttribute="bottom" secondItem="FAl-Mg-Qz2" secondAttribute="bottom" id="Iwb-35-6OO"/>
                                                     <constraint firstAttribute="trailing" secondItem="XGh-uh-6k2" secondAttribute="trailing" id="NUi-er-adt"/>
                                                     <constraint firstAttribute="trailing" secondItem="FAl-Mg-Qz2" secondAttribute="trailing" id="h1T-IT-hPl"/>
                                                     <constraint firstItem="XGh-uh-6k2" firstAttribute="top" secondItem="Pg1-8L-B7T" secondAttribute="top" id="jTF-K9-b9E"/>
+                                                    <constraint firstItem="FAl-Mg-Qz2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pg1-8L-B7T" secondAttribute="leading" id="x9K-qh-DAR"/>
                                                 </constraints>
                                             </customView>
                                         </subviews>
@@ -998,6 +1000,7 @@
                                     <constraint firstAttribute="bottom" secondItem="LmN-p8-kx5" secondAttribute="bottom" id="EAM-Vu-Mjn"/>
                                     <constraint firstItem="eK7-6F-FDn" firstAttribute="top" secondItem="eIJ-dI-FWU" secondAttribute="top" constant="40" placeholder="YES" id="RMM-vi-4sB"/>
                                     <constraint firstItem="LmN-p8-kx5" firstAttribute="leading" secondItem="eIJ-dI-FWU" secondAttribute="leading" id="aqd-zt-no0"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="fnm-I8-FXw"/>
                                     <constraint firstAttribute="trailing" secondItem="eK7-6F-FDn" secondAttribute="trailing" constant="8" id="hkn-Gc-IzT"/>
                                     <constraint firstAttribute="bottom" secondItem="eK7-6F-FDn" secondAttribute="bottom" constant="15" id="qqs-K3-9Yl"/>
                                 </constraints>

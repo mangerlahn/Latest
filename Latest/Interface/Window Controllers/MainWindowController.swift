@@ -161,7 +161,9 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     func startChecking(numberOfApps: Int) {
         self.reloadButton.isEnabled = false
         self.reloadTouchBarButton.isEnabled = false
-    
+		self.openAllAppsButton.isEnabled = false
+		self.openAllAppsTouchBarButton.isEnabled = false
+
         self.progressIndicator.doubleValue = 0
         self.progressIndicator.isHidden = false
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
@@ -171,18 +173,19 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Update the progress indicator
     func didCheckApp() {
-        if self.progressIndicator.doubleValue == self.progressIndicator.maxValue {
-			self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
-			self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
-			
-            self.reloadButton.isEnabled = true
-            self.reloadTouchBarButton.isEnabled = true
-            self.progressIndicator.isHidden = true
-			self.listViewController.dataStore.endUpdates()
-        } else {
-            self.progressIndicator.increment(by: 1)
-        }
+		self.progressIndicator.increment(by: 1)
     }
+	
+	func didFinishCheckingForUpdates() {
+		print(self.listViewController.dataStore.countOfAvailableUpdates)
+		self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
+		self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
+		
+		self.reloadButton.isEnabled = true
+		self.reloadTouchBarButton.isEnabled = true
+		self.progressIndicator.isHidden = true
+		self.listViewController.dataStore.endUpdates()
+	}
     
     
     // MARK: - Update List View Controller Delegate

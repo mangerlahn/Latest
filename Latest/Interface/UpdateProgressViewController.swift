@@ -105,7 +105,9 @@ class UpdateProgressViewController: NSViewController {
 			
 			let byteFormatter = ByteCountFormatter()
 			byteFormatter.countStyle = .file
-			self.progressLabel.stringValue = NSLocalizedString("Downloading ", comment: "Update progress state of downloading an update") + byteFormatter.string(fromByteCount: loadedSize) + " of " + byteFormatter.string(fromByteCount: totalSize)
+			
+			let formatString = NSLocalizedString("Downloading %@ of %@", comment: "Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB'")
+			self.progressLabel.stringValue = String.localizedStringWithFormat(formatString, byteFormatter.string(fromByteCount: loadedSize), byteFormatter.string(fromByteCount: totalSize))
 		
 		case .extracting(let progress):
 			self.updateInterfaceVisibility(with: .progress)
