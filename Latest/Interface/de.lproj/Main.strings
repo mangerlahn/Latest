@@ -229,7 +229,7 @@
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
 "r6p-yM-qya.title" = "Bearbeiten";
 
-/* Class = "NSMenuItem"; title = "Show Ignored Updates"; ObjectID = "Rh5-N3-X6H"; */
+/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
 "Rh5-N3-X6H.title" = "Ignorierte Apps anzeigen";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */

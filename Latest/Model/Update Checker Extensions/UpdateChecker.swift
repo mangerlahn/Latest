@@ -21,6 +21,10 @@ protocol UpdateCheckerProgress : class {
     
     /// Indicates that a single app has been checked.
     func didCheckApp()
+	
+	/// Called after the update checker finished checking for updates.
+	func didFinishCheckingForUpdates()
+	
 }
 
 /**
@@ -140,6 +144,10 @@ extension UpdateChecker: AppBundleDelegate {
         DispatchQueue.main.async {
             self.progressDelegate?.didCheckApp()
             callback?(app)
+	
+			if self.remainingApps == 0 {
+				self.progressDelegate?.didFinishCheckingForUpdates()
+			}
         }
         
         self.lock.unlock()

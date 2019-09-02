@@ -14,8 +14,8 @@
 /* Update progress state of cancelling an update */
 "Cancelling" = "Abbrechen";
 
-/* Update progress state of downloading an update */
-"Downloading " = "Herunterladen";
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"Downloading %@ of %@" = "%1$@ von %2$@ herunterladen";
 
 /* Update progress state of extracting the downloaded update */
 "Extracting Update" = "Update entpacken";
