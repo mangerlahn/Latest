@@ -64,7 +64,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="dMs-cI-mzQ">
+                            <menuItem title="File" tag="1" id="dMs-cI-mzQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
@@ -73,11 +73,7 @@
                                                 <action selector="updateApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
-                                            <connections>
-                                                <action selector="updateAll:" target="HQw-Wf-FaT" id="qDE-F3-uuM"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws"/>
                                         <menuItem isSeparatorItem="YES" id="6iT-9L-JOa"/>
                                         <menuItem title="Show in Finder" keyEquivalent="R" id="bm3-iR-6vZ">
                                             <connections>
@@ -93,7 +89,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Edit" id="mTS-fP-YWg">
+                            <menuItem title="Edit" tag="2" id="mTS-fP-YWg">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Edit" id="r6p-yM-qya">
                                     <items>
@@ -312,7 +308,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="View" id="H8h-7b-M4v">
+                            <menuItem title="View" tag="3" id="H8h-7b-M4v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
@@ -345,12 +341,9 @@
                                             </connections>
                                         </menuItem>
                                     </items>
-                                    <connections>
-                                        <outlet property="delegate" destination="HQw-Wf-FaT" id="c5Y-Vy-0AT"/>
-                                    </connections>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Window" id="aUF-d1-5bR">
+                            <menuItem title="Window" tag="4" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
@@ -375,7 +368,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Help" id="wpr-3q-Mcd">
+                            <menuItem title="Help" tag="5" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
@@ -388,13 +381,13 @@
                                         <menuItem title="Visit Latest-Website" id="7c2-6r-Saw">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="visitWebsite:" target="HQw-Wf-FaT" id="n6y-Wl-rHx"/>
+                                                <action selector="visitWebsite:" target="Ady-hI-5gd" id="nmK-ds-F4f"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Donate" id="o46-Ym-MCY">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="donate:" target="HQw-Wf-FaT" id="UXo-7d-L2W"/>
+                                                <action selector="donate:" target="Ady-hI-5gd" id="k6J-4J-DNa"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -408,7 +401,6 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="ZIQ-oE-e1U" customClass="SPUStandardUpdaterController"/>
-                <customObject id="HQw-Wf-FaT" customClass="MainWindowController" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76" y="-68"/>

@@ -25,28 +25,32 @@ protocol UpdateListViewControllerDelegate : class {
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
 
     /// The array holding the apps that have an update available
-    var dataStore = AppDataStore()
+    let dataStore = AppDataStore()
 	
 	var apps: [AppDataStore.Entry] {
 		return self.dataStore.filteredApps
 	}
     
     /// Flag indicating that all apps are displayed or only the ones with updates available
-    var showInstalledUpdates = false {
-        didSet {
-            if oldValue != self.showInstalledUpdates {
-				self.dataStore.showInstalledUpdates = self.showInstalledUpdates
-            }
+	var showInstalledUpdates: Bool {
+        set {
+			self.dataStore.showInstalledUpdates = newValue
         }
+		
+		get {
+			return self.dataStore.showInstalledUpdates
+		}
     }
 	
     /// Whether ignored apps should be visible
-    var showIgnoredUpdates = false {
-        didSet {
-            if oldValue != self.showIgnoredUpdates {
-				self.dataStore.showIgnoredUpdates = self.showIgnoredUpdates
-            }
+	var showIgnoredUpdates: Bool {
+        set {
+			self.dataStore.showIgnoredUpdates = newValue
         }
+		
+		get {
+			return self.dataStore.showIgnoredUpdates
+		}
     }
     
     /// The delegate for handling the visibility of the detail view
