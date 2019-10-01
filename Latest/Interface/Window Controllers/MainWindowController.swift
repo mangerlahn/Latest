@@ -175,9 +175,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.progressIndicator.doubleValue = 0
         self.progressIndicator.isHidden = false
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
-		
-		self.listViewController.dataStore.beginUpdates()
-    }
+	}
     
     /// Update the progress indicator
     func didCheckApp() {

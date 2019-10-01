@@ -34,15 +34,12 @@ protocol UpdateCheckerProgress : class {
 class UpdateChecker {
     
     typealias UpdateCheckerCallback = (_ app: AppBundle) -> Void
-    
-    /// The callback called after every update check
-    var didFinishCheckingAppCallback: UpdateCheckerCallback?
-    
-    /// The callback called after every failed update check
-    var didFailCheckingAppCallback: UpdateCheckerCallback?
-    
+        
     /// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckerProgress?
+	
+	/// The data store updated apps should be passed to
+	let dataStore = AppDataStore()
     
     /// The methods that are executed upon each app
     private let updateMethods : [(UpdateChecker) -> (URL, String, String) -> Bool] = [
@@ -67,16 +64,22 @@ class UpdateChecker {
     /// A number indicating the number of apps that remain to be checked
     private var remainingApps = 0
     
-    let lock = NSLock()
+	/// The lock used when running an update check.
+    private let lock = NSLock()
+	
+	/// The queue update checks are processed on.
+	private let updateQueue = DispatchQueue(label: "UpdateChecker.updateQueue")
     
     /// A shared instance of the fileManager
     let fileManager = FileManager.default
 	
 	/// Excluded subfolders that won't be checked.
-	let excludedSubfolders = Set(["Setapp"])
+	private let excludedSubfolders = Set(["Setapp"])
     
-    /// Starts the update checking process
+	/// Starts the update checking process
     func run() {
+        self.lock.lock()
+		
         if self.remainingApps > 0 { return }
         
         if self.folderListener == nil, let url = self.applicationURL {
@@ -87,7 +90,6 @@ class UpdateChecker {
         
         guard let url = self.applicationURL, let enumerator = self.fileManager.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
         
-        self.lock.lock()
         self.remainingApps = 0
         
         while let appURL = enumerator.nextObject() as? URL {
@@ -120,8 +122,10 @@ class UpdateChecker {
             enumerator.skipDescendants()
         }
         
-        self.lock.unlock()
         self.progressDelegate?.startChecking(numberOfApps: self.remainingApps)
+		self.dataStore.beginUpdates()
+		
+		self.lock.unlock()
     }
     
 }
@@ -129,28 +133,26 @@ class UpdateChecker {
 extension UpdateChecker: AppBundleDelegate {
     
     func appDidUpdateVersionInformation(_ app: AppBundle) {
-        self.didCheck(app, with: self.didFinishCheckingAppCallback)
+		self.didCheck(app)
     }
     
     func didFailToProcess(_ app: AppBundle) {
-        self.didCheck(app, with: self.didFailCheckingAppCallback)
+		self.didCheck(app)
     }
     
-    private func didCheck(_ app: AppBundle, with callback: UpdateCheckerCallback?) {
-        self.lock.lock()
-        
-        self.remainingApps -= 1
-        
-        DispatchQueue.main.async {
-            self.progressDelegate?.didCheckApp()
-            callback?(app)
-	
-			if self.remainingApps == 0 {
-				self.progressDelegate?.didFinishCheckingForUpdates()
+    private func didCheck(_ app: AppBundle) {
+		self.updateQueue.sync {
+			self.remainingApps -= 1
+			self.dataStore.update(app)
+			
+			DispatchQueue.main.async {
+				self.progressDelegate?.didCheckApp()
+				
+				if self.remainingApps == 0 {
+					self.progressDelegate?.didFinishCheckingForUpdates()
+				}
 			}
-        }
-        
-        self.lock.unlock()
+		}
     }
     
 }
