@@ -46,7 +46,8 @@ class UpdateQueue: OperationQueue {
 	override func addOperation(_ op: Operation) {
 		// Abort if the operation is of an unknown type
 		guard let operation = op as? UpdateOperation else {
-			fatalError("Added unknown operation \(op.self) to update queue.")
+			assertionFailure("Added unknown operation \(op.self) to update queue.")
+			return
 		}
 		
 		// Abort if the app is already in the queue
