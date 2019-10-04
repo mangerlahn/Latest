@@ -24,9 +24,12 @@ protocol UpdateListViewControllerDelegate : class {
  */
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
 
-    /// The array holding the apps that have an update available
-    let dataStore = AppDataStore()
+    /// The array holding the apps that have an update available.
+	var dataStore: AppDataStore {
+		return UpdateChecker.shared.dataStore
+	}
 	
+	/// Convenience for accessing apps that should be displayed in the table.
 	var apps: [AppDataStore.Entry] {
 		return self.dataStore.filteredApps
 	}
@@ -70,17 +73,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// The menu displayed on secondary clicks on cells in the list
     @IBOutlet weak var tableViewMenu: NSMenu!
-    
-    /// The checker responsible for update checking
-    lazy var updateChecker: UpdateChecker = {
-        var checker = UpdateChecker()
-        
-        // We treat them equal, if an app fails to load its update info, we can still show the installed app
-        checker.didFinishCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
-        checker.didFailCheckingAppCallback = self.updateCheckerDidFinishCheckingApp
-        
-        return checker
-    }()
     
     
     // MARK: - View Lifecycle
@@ -247,18 +239,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     
-    // MARK: - Update Checker
-        
-    func updateCheckerDidFinishCheckingApp(for app: AppBundle) {
-		self.dataStore.update(app)
-    }
-
-    
     // MARK: - Public Methods
     
     /// Triggers the update checking mechanism
     func checkForUpdates() {
-        self.updateChecker.run()
+		UpdateChecker.shared.run()
         self.becomeFirstResponder()
     }
 

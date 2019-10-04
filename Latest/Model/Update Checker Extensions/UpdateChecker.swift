@@ -34,27 +34,36 @@ protocol UpdateCheckerProgress : class {
 class UpdateChecker {
     
     typealias UpdateCheckerCallback = (_ app: AppBundle) -> Void
-    
-    /// The callback called after every update check
-    var didFinishCheckingAppCallback: UpdateCheckerCallback?
-    
-    /// The callback called after every failed update check
-    var didFailCheckingAppCallback: UpdateCheckerCallback?
-    
+        
+	
+	// MARK: - Initialization
+	
+	/// The shared instance of the update checker.
+	static let shared = UpdateChecker()
+	
+	private init() {
+		// Instantiate the folder listener to track changes to the Applications folder
+		if let url = self.applicationURL {
+			self.folderListener = FolderUpdateListener(url: url)
+			self.folderListener?.resumeTracking()
+		}
+	}
+	
+	
+	// MARK: - Update Checking
+	
     /// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckerProgress?
+	
+	/// The data store updated apps should be passed to
+	let dataStore = AppDataStore()
     
-    /// The methods that are executed upon each app
-    private let updateMethods : [(UpdateChecker) -> (URL, String, String) -> Bool] = [
-        updatesThroughMacAppStore,
-        updatesThroughSparkle
-    ]
-    
+	/// Listens for changes in the Applications folder.
     private var folderListener : FolderUpdateListener?
     
     /// The url of the /Applications folder on the users Mac
     var applicationURL : URL? {
-        let applicationURLList = self.fileManager.urls(for: .applicationDirectory, in: .localDomainMask)
+		let applicationURLList = FileManager.default.urls(for: .applicationDirectory, in: .localDomainMask)
         
         return applicationURLList.first
     }
@@ -63,94 +72,103 @@ class UpdateChecker {
     private var applicationPath : String {
         return applicationURL?.path ?? "/Applications/"
     }
-    
-    /// A number indicating the number of apps that remain to be checked
-    private var remainingApps = 0
-    
-    let lock = NSLock()
-    
-    /// A shared instance of the fileManager
-    let fileManager = FileManager.default
+        	
+	/// The queue update checks are processed on.
+	private let updateQueue = DispatchQueue(label: "UpdateChecker.updateQueue")
 	
-	/// Excluded subfolders that won't be checked.
-	let excludedSubfolders = Set(["Setapp"])
+	/// The queue to run update checks on.
+	let updateOperationQueue: OperationQueue = {
+		let operationQueue = OperationQueue()
+		
+		// Allow 100 simultanious updates
+		operationQueue.maxConcurrentOperationCount = 100
+		
+		return operationQueue
+	}()
     
-    /// Starts the update checking process
+	/// Excluded subfolders that won't be checked.
+	private static let excludedSubfolders = Set(["Setapp"])
+	
+	/// Starts the update checking process
     func run() {
-        if self.remainingApps > 0 { return }
+		// An update check is still ongoing, skip another round
+		guard self.updateOperationQueue.operationCount == 0 else {
+			return
+		}
+                
+		guard let url = self.applicationURL, let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
+        		
+		var updateOperations = [Operation]()
         
-        if self.folderListener == nil, let url = self.applicationURL {
-            self.folderListener = FolderUpdateListener(url: url, updateChecker: self)
-        }
-        
-        self.folderListener?.resumeTracking()
-        
-        guard let url = self.applicationURL, let enumerator = self.fileManager.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
-        
-        self.lock.lock()
-        self.remainingApps = 0
-        
-        while let appURL = enumerator.nextObject() as? URL {
+        while let url = enumerator.nextObject() as? URL {
 			// Check for subfolders that should be skipped
-			if self.excludedSubfolders.contains(appURL.lastPathComponent) {
+			if Self.excludedSubfolders.contains(url.lastPathComponent) {
 				enumerator.skipDescendants()
 				continue
 			}
 			
-            guard let value = try? appURL.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
-                continue
-            }
-        
-            let contentURL = appURL.appendingPathComponent("Contents")
-            
-            // Check, if the changed file was the Info.plist
-            guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
-                .filter({ $0.pathExtension == "plist" }),
-                let plistURL = plists.first,
-                let infoDict = NSDictionary(contentsOf: plistURL),
-                let version = infoDict["CFBundleShortVersionString"] as? String,
-                let buildNumber = infoDict["CFBundleVersion"] as? String else {
-                    continue
-            }
-            
-            if self.updateMethods.contains(where: { $0(self)(appURL, version, buildNumber) }) {
-                self.remainingApps += 1
-            }
-            
+			// Verify the given url points to an app, otherwise investigate descendants
+			guard let value = try? url.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
+				continue
+			}
+			
+			// Create an update check operation from the url if possible
+			if let operation = self.updateCheckOperation(forAppAt: url) {
+				updateOperations.append(operation)
+			}
+			            
+			// Don't check an app-containers subfolders
             enumerator.skipDescendants()
         }
-        
-        self.lock.unlock()
-        self.progressDelegate?.startChecking(numberOfApps: self.remainingApps)
-    }
-    
-}
-
-extension UpdateChecker: AppBundleDelegate {
-    
-    func appDidUpdateVersionInformation(_ app: AppBundle) {
-        self.didCheck(app, with: self.didFinishCheckingAppCallback)
-    }
-    
-    func didFailToProcess(_ app: AppBundle) {
-        self.didCheck(app, with: self.didFailCheckingAppCallback)
-    }
-    
-    private func didCheck(_ app: AppBundle, with callback: UpdateCheckerCallback?) {
-        self.lock.lock()
-        
-        self.remainingApps -= 1
-        
-        DispatchQueue.main.async {
-            self.progressDelegate?.didCheckApp()
-            callback?(app)
+		
+		self.performUpdateCheck(with: updateOperations)
+	}
 	
-			if self.remainingApps == 0 {
+	private func updateCheckOperation(forAppAt url: URL) -> Operation? {
+		let contentURL = url.appendingPathComponent("Contents")
+		
+		// Check, if the changed file was the Info.plist
+		guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
+			.filter({ $0.pathExtension == "plist" }),
+			let plistURL = plists.first,
+			let infoDict = NSDictionary(contentsOf: plistURL),
+			let version = infoDict["CFBundleShortVersionString"] as? String,
+			let buildNumber = infoDict["CFBundleVersion"] as? String else {
+				return nil
+		}
+		
+		return ([MacAppStoreUpdateCheckerOperation.self, SparkleUpdateCheckerOperation.self] as [UpdateCheckerOperation.Type]).reduce(nil) { (result, operationType) -> Operation? in
+			if result == nil {
+				return operationType.init(withAppURL: url, version: version, buildNumber: buildNumber, completionBlock: self.didCheck)
+			}
+			
+			return result
+		}
+	}
+	
+	private func performUpdateCheck(with operations: [Operation]) {
+		self.progressDelegate?.startChecking(numberOfApps: operations.count)
+		self.dataStore.beginUpdates()
+
+		// Start update check
+		DispatchQueue.global().async {
+			self.updateOperationQueue.addOperations(operations, waitUntilFinished: true)
+			
+			DispatchQueue.main.async {
+				// Update Checks finished
 				self.progressDelegate?.didFinishCheckingForUpdates()
 			}
-        }
-        
-        self.lock.unlock()
-    }
+		}
+	}
     
+    private func didCheck(_ app: AppBundle) {
+		// Ensure serial access to the data store
+		self.updateQueue.sync {
+			self.dataStore.update(app)
+			
+			DispatchQueue.main.async {
+				self.progressDelegate?.didCheckApp()
+			}
+		}
+    }
 }
