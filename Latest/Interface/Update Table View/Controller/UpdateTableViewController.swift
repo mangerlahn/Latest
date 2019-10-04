@@ -24,12 +24,9 @@ protocol UpdateListViewControllerDelegate : class {
  */
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
 
-    /// The checker responsible for update checking.
-    let updateChecker = UpdateChecker()
-
     /// The array holding the apps that have an update available.
 	var dataStore: AppDataStore {
-		return self.updateChecker.dataStore
+		return UpdateChecker.shared.dataStore
 	}
 	
 	/// Convenience for accessing apps that should be displayed in the table.
@@ -246,7 +243,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Triggers the update checking mechanism
     func checkForUpdates() {
-        self.updateChecker.run()
+		UpdateChecker.shared.run()
         self.becomeFirstResponder()
     }
 

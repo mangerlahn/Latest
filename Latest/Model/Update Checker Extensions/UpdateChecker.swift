@@ -35,6 +35,23 @@ class UpdateChecker {
     
     typealias UpdateCheckerCallback = (_ app: AppBundle) -> Void
         
+	
+	// MARK: - Initialization
+	
+	/// The shared instance of the update checker.
+	static let shared = UpdateChecker()
+	
+	private init() {
+		// Instantiate the folder listener to track changes to the Applications folder
+		if let url = self.applicationURL {
+			self.folderListener = FolderUpdateListener(url: url)
+			self.folderListener?.resumeTracking()
+		}
+	}
+	
+	
+	// MARK: - Update Checking
+	
     /// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckerProgress?
 	
@@ -81,12 +98,6 @@ class UpdateChecker {
         self.lock.lock()
 		
         if self.remainingApps > 0 { return }
-        
-        if self.folderListener == nil, let url = self.applicationURL {
-            self.folderListener = FolderUpdateListener(url: url, updateChecker: self)
-        }
-        
-        self.folderListener?.resumeTracking()
         
         guard let url = self.applicationURL, let enumerator = self.fileManager.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
         

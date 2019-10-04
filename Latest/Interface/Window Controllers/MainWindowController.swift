@@ -64,13 +64,14 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		// Set ourselves as the view menu delegate
 		NSApplication.shared.mainMenu?.item(at: MainMenuItem.view.rawValue)?.submenu?.delegate = self
 		
-        self.showReleaseNotes(false, animated: false)
+		UpdateChecker.shared.progressDelegate = self
+
+		self.showReleaseNotes(false, animated: false)
         
         self.window?.makeFirstResponder(self.listViewController)
         self.window?.delegate = self
         self.setDefaultWindowPosition(for: self.window!)
         
-        self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
