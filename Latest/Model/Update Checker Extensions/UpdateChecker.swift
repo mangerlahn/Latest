@@ -109,6 +109,10 @@ class UpdateChecker {
 			
 			// Verify the given url points to an app, otherwise investigate descendants
 			guard let value = try? url.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
+				if !url.pathExtension.isEmpty {
+					enumerator.skipDescendants()
+				}
+				
 				continue
 			}
 			
