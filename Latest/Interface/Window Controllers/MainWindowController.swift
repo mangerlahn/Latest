@@ -165,16 +165,25 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     
     // MARK: - Update Checker Progress Delegate
-    
-    /// This implementation activates the progress indicator, sets its max value and disables the reload button
+	
+	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateChecker) {
+		// Disable UI
         self.reloadButton.isEnabled = false
         self.reloadTouchBarButton.isEnabled = false
 		self.openAllAppsButton.isEnabled = false
 		self.openAllAppsTouchBarButton.isEnabled = false
-
-        self.progressIndicator.doubleValue = 0
+		
+		// Setup indeterminate progress indicator
+		self.progressIndicator.isIndeterminate = true
         self.progressIndicator.isHidden = false
+		self.progressIndicator.startAnimation(updateChecker)
+	}
+    
+    /// This implementation activates the progress indicator, sets its max value and disables the reload button
 	func updateChecker(_ updateChecker: UpdateChecker, didStartCheckingApps numberOfApps: Int) {
+		// Setup progress indicator
+		self.progressIndicator.isIndeterminate = false
+        self.progressIndicator.doubleValue = 0
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
 	}
     

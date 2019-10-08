@@ -13,6 +13,9 @@ import Foundation
  */
 protocol UpdateCheckerProgress : class {
     
+	/// Indicates that the scan process has been started.
+	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateChecker)
+
 	/**
 	The process of checking apps for updates has started
 	- parameter numberOfApps: The number of apps that will be checked
@@ -90,12 +93,20 @@ class UpdateChecker {
 	private static let excludedSubfolders = Set(["Setapp"])
 	
 	/// Starts the update checking process
-    func run() {
+	func run() {
 		// An update check is still ongoing, skip another round
 		guard self.updateOperationQueue.operationCount == 0 else {
 			return
 		}
                 
+		self.progressDelegate?.updateCheckerDidStartScanningForApps(self)
+		
+		DispatchQueue.global().async {
+			self.runUpdateCheck()
+		}
+	}
+	
+    private func runUpdateCheck() {
 		guard let url = self.applicationURL, let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
         		
 		var updateOperations = [Operation]()
