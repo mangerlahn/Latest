@@ -159,7 +159,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		case .updateAvailable:
 			view?.textField?.stringValue = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
 		case .installed:
-			view?.textField?.stringValue = NSLocalizedString("Installed Updates", comment: "Table Section Header for already installed updates")
+			view?.textField?.stringValue = NSLocalizedString("Installed Apps", comment: "Table Section Header for already installed apps")
 		case .ignored:
 			view?.textField?.stringValue = NSLocalizedString("Ignored Apps", comment: "Table Section Header for ignored apps")
 		}

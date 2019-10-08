@@ -36,7 +36,7 @@
 "Installed" = "Installiert";
 
 /* Table Section Header for already installed updates */
-"Installed Updates" = "Installierte Updates";
+"Installed Apps" = "Installierte Apps";
 
 /* Update progress state of installing an update */
 "Installing" = "Installieren";

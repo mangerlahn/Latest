@@ -138,7 +138,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
 		case .updateAvailable:
 			view.textField.stringValue = NSLocalizedString("Available", comment: "Touch Bar section title for available updates")
 		case .installed:
-			view.textField.stringValue = NSLocalizedString("Installed", comment: "Touch Bar section title for installed updates")
+			view.textField.stringValue = NSLocalizedString("Installed", comment: "Touch Bar section title for installed apps")
 		case .ignored:
 			view.textField.stringValue = NSLocalizedString("Ignored", comment: "Touch Bar section title for ignored apps")
 		}
