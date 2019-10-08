@@ -165,25 +165,34 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     
     // MARK: - Update Checker Progress Delegate
-    
-    /// This implementation activates the progress indicator, sets its max value and disables the reload button
-    func startChecking(numberOfApps: Int) {
+	
+	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateChecker) {
+		// Disable UI
         self.reloadButton.isEnabled = false
         self.reloadTouchBarButton.isEnabled = false
 		self.openAllAppsButton.isEnabled = false
 		self.openAllAppsTouchBarButton.isEnabled = false
-
-        self.progressIndicator.doubleValue = 0
+		
+		// Setup indeterminate progress indicator
+		self.progressIndicator.isIndeterminate = true
         self.progressIndicator.isHidden = false
+		self.progressIndicator.startAnimation(updateChecker)
+	}
+    
+    /// This implementation activates the progress indicator, sets its max value and disables the reload button
+	func updateChecker(_ updateChecker: UpdateChecker, didStartCheckingApps numberOfApps: Int) {
+		// Setup progress indicator
+		self.progressIndicator.isIndeterminate = false
+        self.progressIndicator.doubleValue = 0
         self.progressIndicator.maxValue = Double(numberOfApps - 1)
 	}
     
     /// Update the progress indicator
-    func didCheckApp() {
+	func updateChecker(_ updateChecker: UpdateChecker, didCheckApp: AppBundle) {
 		self.progressIndicator.increment(by: 1)
     }
 	
-	func didFinishCheckingForUpdates() {
+	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateChecker) {
 		print(self.listViewController.dataStore.countOfAvailableUpdates)
 		self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
 		self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
