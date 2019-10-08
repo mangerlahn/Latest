@@ -13,17 +13,17 @@ import Foundation
  */
 protocol UpdateCheckerProgress : class {
     
-    /**
-     The process of checking apps for updates has started
-     - parameter numberOfApps: The number of apps that will be checked
-     */
-    func startChecking(numberOfApps: Int)
-    
-    /// Indicates that a single app has been checked.
-    func didCheckApp()
-	
+	/**
+	The process of checking apps for updates has started
+	- parameter numberOfApps: The number of apps that will be checked
+	*/
+	func updateChecker(_ updateChecker: UpdateChecker, didStartCheckingApps numberOfApps: Int)
+
+	/// Indicates that a single app has been checked.
+	func updateChecker(_ updateChecker: UpdateChecker, didCheckApp: AppBundle)
+
 	/// Called after the update checker finished checking for updates.
-	func didFinishCheckingForUpdates()
+	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateChecker)
 	
 }
 
@@ -151,17 +151,21 @@ class UpdateChecker {
 	}
 	
 	private func performUpdateCheck(with operations: [Operation]) {
-		self.progressDelegate?.startChecking(numberOfApps: operations.count)
+		assert(!Thread.current.isMainThread, "Must not be called on main thread.")
+		
+		// Inform delegate of update check
+		DispatchQueue.main.async {
+			self.progressDelegate?.updateChecker(self, didStartCheckingApps: operations.count)
+		}
+		
 		self.dataStore.beginUpdates()
 
 		// Start update check
-		DispatchQueue.global().async {
-			self.updateOperationQueue.addOperations(operations, waitUntilFinished: true)
+		self.updateOperationQueue.addOperations(operations, waitUntilFinished: true)
 			
-			DispatchQueue.main.async {
-				// Update Checks finished
-				self.progressDelegate?.didFinishCheckingForUpdates()
-			}
+		DispatchQueue.main.async {
+			// Update Checks finished
+			self.progressDelegate?.updateCheckerDidFinishCheckingForUpdates(self)
 		}
 	}
     
@@ -171,7 +175,7 @@ class UpdateChecker {
 			self.dataStore.update(app)
 			
 			DispatchQueue.main.async {
-				self.progressDelegate?.didCheckApp()
+				self.progressDelegate?.updateChecker(self, didCheckApp: app)
 			}
 		}
     }
