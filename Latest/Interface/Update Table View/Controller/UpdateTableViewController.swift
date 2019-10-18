@@ -30,7 +30,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	}
 	
 	/// Convenience for accessing apps that should be displayed in the table.
-	var apps = [AppDataStore.Entry]()
+	var apps: [AppDataStore.Entry] {
+		return self.dataStore.filteredApps
+	}
+	
+	/// Represents the last state of apps used for animating transitions.
+	var appSnapshot = [AppDataStore.Entry]()
     
     /// Flag indicating that all apps are displayed or only the ones with updates available
 	var showInstalledUpdates: Bool {
@@ -92,9 +97,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		self.dataStore.showInstalledUpdates = self.showInstalledUpdates
         
 		self.dataStore.addObserver(self) { newValue in
-			let oldValue = self.apps
-			self.apps = newValue
-			self.updateTableView(with: oldValue, with: newValue)
+			self.updateTableView(with: self.appSnapshot, with: newValue)
+			self.appSnapshot = newValue
 			
 			self.updateEmtpyStateVisibility()
 			self.updateTitleAndBatch()
