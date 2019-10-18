@@ -43,7 +43,7 @@ class AppDataStore {
 	
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updateableApps: [AppBundle] {
-		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) })
+		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) && !($0 is MacAppStoreAppBundle) })
 	}
 	
 	/// The user-facable, sorted and filtered list of apps and sections. Observers of the data store will be notified, when this list changes.

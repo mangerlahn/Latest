@@ -31,7 +31,9 @@ class MacAppStoreAppBundle: AppBundle {
 	}
 	
 	override func update() {
-		UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self))
+		// This is a temporary workaround to disable direct updates of Mac App Store apps, which does not work anymore.
+		self.open()
+		// UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self))
 	}
 	
 }
