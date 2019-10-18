@@ -50,6 +50,8 @@ class UpdateChecker {
 			self.folderListener = FolderUpdateListener(url: url)
 			self.folderListener?.resumeTracking()
 		}
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(self.runUpdateCheck), name: .NSMetadataQueryDidFinishGathering, object: self.appSearchQuery)
 	}
 	
 	
@@ -80,13 +82,21 @@ class UpdateChecker {
 	private let updateQueue = DispatchQueue(label: "UpdateChecker.updateQueue")
 	
 	/// The queue to run update checks on.
-	let updateOperationQueue: OperationQueue = {
+	private let updateOperationQueue: OperationQueue = {
 		let operationQueue = OperationQueue()
 		
 		// Allow 100 simultanious updates
 		operationQueue.maxConcurrentOperationCount = 100
 		
 		return operationQueue
+	}()
+	
+	/// The metadata query that gathers all apps.
+	private let appSearchQuery: NSMetadataQuery = {
+		let query = NSMetadataQuery()
+		query.predicate = NSPredicate(fromMetadataQueryString: "kMDItemContentTypeTree=com.apple.application")
+		
+		return query
 	}()
     
 	/// Excluded subfolders that won't be checked.
@@ -95,48 +105,36 @@ class UpdateChecker {
 	/// Starts the update checking process
 	func run() {
 		// An update check is still ongoing, skip another round
-		guard self.updateOperationQueue.operationCount == 0 else {
+		guard self.updateOperationQueue.operationCount == 0 || self.appSearchQuery.isStarted else {
 			return
 		}
                 
 		self.progressDelegate?.updateCheckerDidStartScanningForApps(self)
 		
-		DispatchQueue.global().async {
-			self.runUpdateCheck()
-		}
+		// Gather all apps
+		self.appSearchQuery.start()
 	}
 	
-    private func runUpdateCheck() {
-		guard let url = self.applicationURL, let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isApplicationKey]) else { return }
-        		
-		var updateOperations = [Operation]()
-        
-        while let url = enumerator.nextObject() as? URL {
-			// Check for subfolders that should be skipped
-			if Self.excludedSubfolders.contains(url.lastPathComponent) {
-				enumerator.skipDescendants()
-				continue
-			}
+	@objc private func runUpdateCheck() {
+		// Run metadata query to gather all apps
+		let operations = self.appSearchQuery.results.compactMap { item -> Operation? in
+			guard let newItem = item as? NSMetadataItem,
+				let path = newItem.value(forAttribute: NSMetadataItemPathKey) as? String else { return nil }
 			
-			// Verify the given url points to an app, otherwise investigate descendants
-			guard let value = try? url.resourceValues(forKeys: [.isApplicationKey]), value.isApplication ?? false else {
-				if !url.pathExtension.isEmpty {
-					enumerator.skipDescendants()
-				}
-				
-				continue
+			let url = URL(fileURLWithPath: path)
+			
+			// Only allow apps in the application folder and outside excluded subfolders
+			if !url.path.hasPrefix(self.applicationPath) || Self.excludedSubfolders.first(where: { url.path.contains($0) }) != nil {
+				return nil
 			}
 			
 			// Create an update check operation from the url if possible
-			if let operation = self.updateCheckOperation(forAppAt: url) {
-				updateOperations.append(operation)
-			}
-			            
-			// Don't check an app-containers subfolders
-            enumerator.skipDescendants()
-        }
-		
-		self.performUpdateCheck(with: updateOperations)
+			return self.updateCheckOperation(forAppAt: url)
+		}
+
+		DispatchQueue.global().async {
+			self.performUpdateCheck(with: operations)
+		}
 	}
 	
 	private func updateCheckOperation(forAppAt url: URL) -> Operation? {
@@ -177,6 +175,7 @@ class UpdateChecker {
 		DispatchQueue.main.async {
 			// Update Checks finished
 			self.progressDelegate?.updateCheckerDidFinishCheckingForUpdates(self)
+			self.appSearchQuery.stop()
 		}
 	}
     

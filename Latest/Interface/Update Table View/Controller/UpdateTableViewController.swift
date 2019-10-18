@@ -33,6 +33,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	var apps: [AppDataStore.Entry] {
 		return self.dataStore.filteredApps
 	}
+	
+	/// Represents the last state of apps used for animating transitions.
+	var appSnapshot = [AppDataStore.Entry]()
     
     /// Flag indicating that all apps are displayed or only the ones with updates available
 	var showInstalledUpdates: Bool {
@@ -93,11 +96,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         
 		self.dataStore.showInstalledUpdates = self.showInstalledUpdates
         
-		self.dataStore.addObserver(self) { oldValue, newValue in
+		self.dataStore.addObserver(self) { newValue in
+			self.updateTableView(with: self.appSnapshot, with: newValue)
+			self.appSnapshot = newValue
+			
 			self.updateEmtpyStateVisibility()
 			self.updateTitleAndBatch()
-			
-			self.updateTableView(with: oldValue, with: newValue)
 		}
     }
     
@@ -223,13 +227,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let index = self.tableView.selectedRow
-        
-        if index == -1 {
-            return
-        }
-        
-        self.selectApp(at: index)
+        self.selectApp(at: self.tableView.selectedRow)
     }
     
     // MARK: Table View Data Source
@@ -252,11 +250,17 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
      - parameter index: The index of the given app. If nil, the currently selected app is deselected.
      */
     func selectApp(at index: Int?) {
-        guard let index = index else {
+        guard let index = index, index >= 0 else {
             self.tableView.deselectAll(nil)
+			
             if #available(OSX 10.12.2, *) {
                 self.scrubber?.animator().selectedIndex = -1
             }
+			
+			// Clear release notes
+			if let detailViewController = self.releaseNotesViewController {
+				detailViewController.display(content: nil, for: nil)
+			}
             
             return
         }
@@ -269,12 +273,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         self.tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
         self.tableView.scrollRowToVisible(index)
 			
-		guard let app = self.dataStore.app(at: index), let detailViewController = self.releaseNotesViewController else {
+		guard let app = self.dataStore.app(at: index) else {
             return
         }
         
         self.delegate?.shouldExpandDetail()
-        detailViewController.display(content: app.newestVersion.releaseNotes, for: app)
+		self.releaseNotesViewController?.display(content: app.newestVersion.releaseNotes, for: app)
     }
     
     
