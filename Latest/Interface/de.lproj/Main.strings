@@ -304,8 +304,8 @@
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
 "Xng-11-x9Q.title" = "Großbuchstaben";
 
-/* Class = "NSMenuItem"; title = "Show Installed Updates"; ObjectID = "XVu-eG-PUK"; */
-"XVu-eG-PUK.title" = "Installierte Updates anzeigen";
+/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "Installierte Apps anzeigen";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
 "y5A-ib-gR6.title" = "Sprachausgabe";

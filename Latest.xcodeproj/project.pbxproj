@@ -39,9 +39,7 @@
 		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
 		509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */; };
 		509512221FF36301003D2D7F /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121F1FF36301003D2D7F /* AppBundle.swift */; };
-		509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512241FF3631D003D2D7F /* SparkleExtension.swift */; };
 		509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512251FF3631D003D2D7F /* UpdateChecker.swift */; };
-		509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */; };
 		509512301FF36378003D2D7F /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095122F1FF36378003D2D7F /* UpdateCell.swift */; };
 		509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */; };
 		509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateTableViewController.swift */; };
@@ -50,6 +48,9 @@
 		50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
 		50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */; };
+		50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */; };
+		50C9F10A2346386B00FD1802 /* MacAppStoreCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */; };
+		50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */; };
 		50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */; };
 		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
 		50F62F0F22FA27D300A2F2AF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F62EF822FA277D00A2F2AF /* Sparkle.framework */; };
@@ -239,9 +240,7 @@
 		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
 		5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleAppBundle.swift; sourceTree = "<group>"; };
 		5095121F1FF36301003D2D7F /* AppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
-		509512241FF3631D003D2D7F /* SparkleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SparkleExtension.swift; path = "Latest/Model/Update Checker Extensions/SparkleExtension.swift"; sourceTree = SOURCE_ROOT; };
 		509512251FF3631D003D2D7F /* UpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateChecker.swift; path = "Latest/Model/Update Checker Extensions/UpdateChecker.swift"; sourceTree = SOURCE_ROOT; };
-		509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MacAppStoreExtension.swift; path = "Latest/Model/Update Checker Extensions/MacAppStoreExtension.swift"; sourceTree = SOURCE_ROOT; };
 		5095122F1FF36378003D2D7F /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesViewController.swift; sourceTree = "<group>"; };
 		509512321FF36380003D2D7F /* UpdateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +251,9 @@
 		50C81D6D1FBADC5900324C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C81D731FBADC9100324C2E /* VersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTest.swift; sourceTree = "<group>"; };
 		50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheckerOperation.swift; sourceTree = "<group>"; };
+		50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppStoreCheckerOperation.swift; sourceTree = "<group>"; };
+		50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleCheckerOperation.swift; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
 		50F542E022D9C41C004B3F8D /* CKDownloadQueueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueueObserver.h; sourceTree = "<group>"; };
@@ -370,7 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				5039DE8422CA396F0088B39B /* UpdateQueue.swift */,
-				5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */,
 				5039DE8622CA39C60088B39B /* UpdateOperation.swift */,
 				5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */,
 				5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */,
@@ -416,6 +417,7 @@
 		5095120D1FF3626A003D2D7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */,
 				5039DE8322CA39630088B39B /* Updater */,
 				509512161FF362D1003D2D7F /* App Bundles */,
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
@@ -443,8 +445,9 @@
 			isa = PBXGroup;
 			children = (
 				509512251FF3631D003D2D7F /* UpdateChecker.swift */,
-				509512241FF3631D003D2D7F /* SparkleExtension.swift */,
-				509512261FF3631D003D2D7F /* MacAppStoreExtension.swift */,
+				50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */,
+				50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */,
+				50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */,
 			);
 			path = "Update Checker Extensions";
 			sourceTree = "<group>";
@@ -877,17 +880,18 @@
 				5058BA3A21202BA7003F332B /* IconCache.swift in Sources */,
 				501497A822D9CC0800CFA8CE /* StoreAccount.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
+				50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				5039DE8D22CAA2790088B39B /* MacAppStoreUpdateOperation.swift in Sources */,
-				509512271FF3631D003D2D7F /* SparkleExtension.swift in Sources */,
 				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
+				50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */,
 				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
 				501497AC22DB0C8100CFA8CE /* UpdateProgressViewController.swift in Sources */,
 				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
 				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
 				5039DE8B22CA39ED0088B39B /* StatefulOperation.swift in Sources */,
-				509512291FF3631D003D2D7F /* MacAppStoreExtension.swift in Sources */,
+				50C9F10A2346386B00FD1802 /* MacAppStoreCheckerOperation.swift in Sources */,
 				501497A122D9CBEA00CFA8CE /* MASError.swift in Sources */,
 				502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */,
 				5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */,
@@ -1091,7 +1095,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 0.6.1;
+				MARKETING_VERSION = 0.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1121,7 +1125,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 0.6.1;
+				MARKETING_VERSION = 0.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

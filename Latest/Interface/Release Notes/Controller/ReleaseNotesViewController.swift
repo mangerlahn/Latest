@@ -108,15 +108,8 @@ class ReleaseNotesViewController: NSViewController {
         
         let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: -5)
         constraint.isActive = true
-        
-        // Prepare for empty state
-        let description = NSLocalizedString("Select an app from the list to read its release notes.", comment: "Description of release notes empty state")
-        let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
-        self.show(error)
-        self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("No app selected.", comment: "Title of release notes empty state")
 
-        self.appInfoBackgroundView.isHidden = true
-        self.updateButton.isHidden = true
+		self.setEmptyState()
 		
 		// Align progress view controller to update button
 		self.progressViewController.leadingProgressAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
@@ -153,7 +146,12 @@ class ReleaseNotesViewController: NSViewController {
      Loads the content of the URL and displays them
      - parameter content: The content to be displayed
      */
-    func display(content: Any?, for app: AppBundle) {
+    func display(content: Any?, for app: AppBundle?) {
+		guard let app = app else {
+			self.setEmptyState()
+			return
+		}
+		
         self.display(app)
         
         switch content {
@@ -237,6 +235,17 @@ class ReleaseNotesViewController: NSViewController {
         
         self.updateInsets()
     }
+	
+	private func setEmptyState() {
+		// Prepare for empty state
+		let description = NSLocalizedString("Select an app from the list to read its release notes.", comment: "Description of release notes empty state")
+		let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
+		self.show(error)
+		self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("No app selected.", comment: "Title of release notes empty state")
+
+		self.appInfoBackgroundView.isHidden = true
+		self.updateButton.isHidden = true
+	}
     
     /**
      This method attempts to distinguish between HTML and Plain Text stored in the data. It converts the data to display it.

@@ -13,6 +13,11 @@ import Cocoa
  */
 class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateListViewControllerDelegate, UpdateCheckerProgress {
     
+	/// Encapsulates the main window items with their according tag identifiers
+	private enum MainMenuItem: Int {
+		case latest = 0, file, edit, view, window, help
+	}
+	
     private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 	private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
     
@@ -53,18 +58,20 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     override func windowDidLoad() {
         super.windowDidLoad()
     
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        
         self.window?.titlebarAppearsTransparent = true
         self.window?.titleVisibility = .hidden
         
-        self.showReleaseNotes(false, animated: false)
+		// Set ourselves as the view menu delegate
+		NSApplication.shared.mainMenu?.item(at: MainMenuItem.view.rawValue)?.submenu?.delegate = self
+		
+		UpdateChecker.shared.progressDelegate = self
+
+		self.showReleaseNotes(false, animated: false)
         
         self.window?.makeFirstResponder(self.listViewController)
         self.window?.delegate = self
         self.setDefaultWindowPosition(for: self.window!)
         
-        self.listViewController.updateChecker.progressDelegate = self
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
@@ -97,11 +104,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	}
     
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
-        self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey), from: sender)
+        self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
     }
 	
 	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
-		 self.updateShowIgnoredUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey), from: sender)
+		 self.updateShowIgnoredUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
 	 }
 	
 	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
@@ -140,6 +147,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             switch action {
             case #selector(toggleShowInstalledUpdates(_:)):
                 menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
+			case #selector(toggleShowIgnoredUpdates(_:)):
+                menuItem.state = self.listViewController.showIgnoredUpdates ? .on : .off
             case #selector(toggleDetail(_:)):
                 guard let splitViewController = self.contentViewController as? NSSplitViewController else { return }
                 
@@ -156,27 +165,34 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     
     // MARK: - Update Checker Progress Delegate
-    
-    /// This implementation activates the progress indicator, sets its max value and disables the reload button
-    func startChecking(numberOfApps: Int) {
+	
+	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateChecker) {
+		// Disable UI
         self.reloadButton.isEnabled = false
         self.reloadTouchBarButton.isEnabled = false
 		self.openAllAppsButton.isEnabled = false
 		self.openAllAppsTouchBarButton.isEnabled = false
-
-        self.progressIndicator.doubleValue = 0
-        self.progressIndicator.isHidden = false
-        self.progressIndicator.maxValue = Double(numberOfApps - 1)
 		
-		self.listViewController.dataStore.beginUpdates()
-    }
+		// Setup indeterminate progress indicator
+		self.progressIndicator.isIndeterminate = true
+        self.progressIndicator.isHidden = false
+		self.progressIndicator.startAnimation(updateChecker)
+	}
+    
+    /// This implementation activates the progress indicator, sets its max value and disables the reload button
+	func updateChecker(_ updateChecker: UpdateChecker, didStartCheckingApps numberOfApps: Int) {
+		// Setup progress indicator
+		self.progressIndicator.isIndeterminate = false
+        self.progressIndicator.doubleValue = 0
+        self.progressIndicator.maxValue = Double(numberOfApps - 1)
+	}
     
     /// Update the progress indicator
-    func didCheckApp() {
+	func updateChecker(_ updateChecker: UpdateChecker, didCheckApp: AppBundle) {
 		self.progressIndicator.increment(by: 1)
     }
 	
-	func didFinishCheckingForUpdates() {
+	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateChecker) {
 		print(self.listViewController.dataStore.countOfAvailableUpdates)
 		self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
 		self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
@@ -203,23 +219,13 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     // MARK: - Private Methods
     
-    private func updateShowInstalledUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
+    private func updateShowInstalledUpdatesState(with newState: Bool) {
         self.listViewController.showInstalledUpdates = newState
-    
-        if let sender = sender {
-            sender.state = newState ? .on : .off
-        }
-        
         UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
     }
     
-    private func updateShowIgnoredUpdatesState(with newState: Bool, from sender: NSMenuItem? = nil) {
+    private func updateShowIgnoredUpdatesState(with newState: Bool) {
         self.listViewController.showIgnoredUpdates = newState
-    
-        if let sender = sender {
-            sender.state = newState ? .on : .off
-        }
-        
         UserDefaults.standard.set(newState, forKey: ShowIgnoredUpdatesKey)
     }
 	

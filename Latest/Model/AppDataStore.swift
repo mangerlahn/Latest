@@ -15,6 +15,27 @@ import Foundation
 /// - A filtered list of apps based on a given filter string
 class AppDataStore {
 	
+	// MARK: - Delegate Scheduling
+		
+	/// Schedules an update notification.
+	private let notificationScheduler: DispatchSourceUserDataAdd
+	
+	init() {
+		let source = DispatchSource.makeUserDataAddSource(queue: .global())
+		self.notificationScheduler = source
+
+		// Delay notifying observers to only let that notification occur in a certain interval
+		source.setEventHandler() { [unowned self] in
+			self.notifyObservers(newValue: self.filteredApps)
+		
+			// Delay the next call for 0.6 seconds
+			Thread.sleep(forTimeInterval: 0.6)
+		}
+		
+		source.activate()
+	}
+	
+	
 	// MARK: - Filtering
 	
 	/// The collection holding all apps that have been found.
@@ -22,13 +43,14 @@ class AppDataStore {
 	
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updateableApps: [AppBundle] {
-		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) })
+		return self.apps.filter({ $0.updateAvailable && !self.isAppIgnored($0) && !($0 is MacAppStoreAppBundle) })
 	}
 	
 	/// The user-facable, sorted and filtered list of apps and sections. Observers of the data store will be notified, when this list changes.
 	private(set) var filteredApps = [Entry]() {
 		didSet {
-			self.notifyObservers(oldValue: oldValue, newValue: self.filteredApps)
+			// Schedule an update for observers
+			self.notificationScheduler.add(data: 1)
 		}
 	}
 	
@@ -109,6 +131,8 @@ class AppDataStore {
 		if !self.isAppIgnored(app) {
 			self.countOfAvailableUpdates += app.updateAvailable ? 1 : 0
 		}
+		
+		self.filterApps()
     }
 	
 	
@@ -213,7 +237,7 @@ class AppDataStore {
 	// MARK: - Observer Handling
 	
 	/// The handler for notifying observers about changes to the update state.
-	typealias ObserverHandler = (_ oldValue: [Entry], _ newValue: [Entry]) -> Void
+	typealias ObserverHandler = (_ newValue: [Entry]) -> Void
 
 	/// A mapping of observers assotiated with apps.
 	private var observers = [NSObject: ObserverHandler]()
@@ -224,7 +248,7 @@ class AppDataStore {
 		self.observers[observer] = handler
 		
 		// Call handler immediately to propagate initial state
-		handler(self.filteredApps, self.filteredApps)
+		handler(self.filteredApps)
 	}
 	
 	/// Remvoes the observer.
@@ -233,10 +257,10 @@ class AppDataStore {
 	}
 		
 	/// Notifies observers about state changes.
-	private func notifyObservers(oldValue: [Entry], newValue: [Entry]) {
+	private func notifyObservers(newValue: [Entry]) {
 		DispatchQueue.main.async {
 			self.observers.forEach { (key: NSObject, handler: ObserverHandler) in
-				handler(oldValue, newValue)
+				handler(newValue)
 			}
 		}
 	}

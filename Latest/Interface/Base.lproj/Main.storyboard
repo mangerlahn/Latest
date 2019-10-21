@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -64,7 +64,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="dMs-cI-mzQ">
+                            <menuItem title="File" tag="1" id="dMs-cI-mzQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
@@ -73,11 +73,7 @@
                                                 <action selector="updateApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
-                                            <connections>
-                                                <action selector="updateAll:" target="HQw-Wf-FaT" id="qDE-F3-uuM"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws"/>
                                         <menuItem isSeparatorItem="YES" id="6iT-9L-JOa"/>
                                         <menuItem title="Show in Finder" keyEquivalent="R" id="bm3-iR-6vZ">
                                             <connections>
@@ -93,7 +89,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Edit" id="mTS-fP-YWg">
+                            <menuItem title="Edit" tag="2" id="mTS-fP-YWg">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Edit" id="r6p-yM-qya">
                                     <items>
@@ -312,11 +308,11 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="View" id="H8h-7b-M4v">
+                            <menuItem title="View" tag="3" id="H8h-7b-M4v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
-                                        <menuItem title="Show Installed Updates" keyEquivalent="i" id="XVu-eG-PUK">
+                                        <menuItem title="Show Installed Apps" keyEquivalent="i" id="XVu-eG-PUK">
                                             <connections>
                                                 <action selector="toggleShowInstalledUpdates:" target="Ady-hI-5gd" id="DiG-pc-JWl"/>
                                             </connections>
@@ -345,12 +341,9 @@
                                             </connections>
                                         </menuItem>
                                     </items>
-                                    <connections>
-                                        <outlet property="delegate" destination="HQw-Wf-FaT" id="c5Y-Vy-0AT"/>
-                                    </connections>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Window" id="aUF-d1-5bR">
+                            <menuItem title="Window" tag="4" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
@@ -375,7 +368,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Help" id="wpr-3q-Mcd">
+                            <menuItem title="Help" tag="5" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
@@ -388,13 +381,13 @@
                                         <menuItem title="Visit Latest-Website" id="7c2-6r-Saw">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="visitWebsite:" target="HQw-Wf-FaT" id="n6y-Wl-rHx"/>
+                                                <action selector="visitWebsite:" target="Ady-hI-5gd" id="nmK-ds-F4f"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Donate" id="o46-Ym-MCY">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="donate:" target="HQw-Wf-FaT" id="UXo-7d-L2W"/>
+                                                <action selector="donate:" target="Ady-hI-5gd" id="k6J-4J-DNa"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -408,7 +401,6 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="ZIQ-oE-e1U" customClass="SPUStandardUpdaterController"/>
-                <customObject id="HQw-Wf-FaT" customClass="MainWindowController" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76" y="-68"/>
@@ -586,14 +578,14 @@
                                     <subviews>
                                         <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" viewBased="YES" id="Aue-8r-EWw" customClass="UpdateTableView" customModule="Latest" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="202"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn editable="NO" width="400" minWidth="40" maxWidth="1000" id="kmD-6A-dIK">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -633,7 +625,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NDE-WY-fgE">
                                                                                     <rect key="frame" x="-2" y="14" width="87" height="14"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Current Version" id="h6g-FG-nGh">
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="message" size="11"/>
                                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -641,7 +633,7 @@
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JkL-bF-Me7">
                                                                                     <rect key="frame" x="-2" y="0.0" width="70" height="14"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="New Version" id="6YS-DP-XWA">
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="message" size="11"/>
                                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -753,7 +745,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C1U-Xt-po9">
                                         <rect key="frame" x="144" y="6" width="112" height="14"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="5 Updates Available" id="rK6-RZ-Ga6">
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -781,7 +773,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-I6-M7r">
                                 <rect key="frame" x="112" y="125" width="176" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Updates Available" id="D2N-5U-W7Z">
-                                    <font key="font" size="18" name=".AppleSystemUIFont"/>
+                                    <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -922,7 +914,7 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Myo-SG-802">
                                                         <rect key="frame" x="-2" y="18" width="33" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="uWn-a0-oM2">
-                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <font key="font" metaFont="message" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -930,7 +922,7 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bCy-gi-UaH">
                                                         <rect key="frame" x="-2" y="0.0" width="33" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="6va-ld-AXD">
-                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <font key="font" metaFont="message" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -1083,7 +1075,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uuv-8K-WWB">
                                         <rect key="frame" x="-2" y="0.0" width="124" height="14"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Release Notes" id="iLi-Yb-UfX">
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>

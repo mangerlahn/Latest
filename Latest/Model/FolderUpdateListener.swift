@@ -16,9 +16,6 @@ class FolderUpdateListener {
     /// The url on which the listener reacts to changes on
     var url : URL
     
-    /// The update checker which should be run when the contents change
-    var updateChecker : UpdateChecker
-    
     private var timer: Timer?
     
     /// The file system listener
@@ -33,10 +30,8 @@ class FolderUpdateListener {
     }()
 
     /// Initializes the class and resumes the listener automatically
-    init(url: URL, updateChecker: UpdateChecker) {
+    init(url: URL) {
         self.url = url
-        self.updateChecker = updateChecker
-        
         self.resumeTracking()
     }
     
@@ -51,9 +46,8 @@ class FolderUpdateListener {
             if !(self.timer?.isValid ?? false) {
                 
                 // Hide the run method behind a timer, so that multiple content changes can occur before we check for new updates
-                self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] (_) in
-                    self?.updateChecker.run()
-                    self?.timer?.invalidate()
+				self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+					UpdateChecker.shared.run()
                 }
             }
         }
