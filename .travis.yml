@@ -2,4 +2,5 @@ language: swift
 os: osx
 osx_image: xcode11
 xcode_project: Latest.xcodeproj
-script: "xcodebuild -project Latest.xcodeproj -scheme 'Latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO"
+xcode_scheme: Latest
+script: xcodebuild -project Latest.xcodeproj -scheme 'Latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
