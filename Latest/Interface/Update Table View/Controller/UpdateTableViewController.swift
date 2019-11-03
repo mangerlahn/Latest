@@ -70,10 +70,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	/// The label indicating how many updates are vailable
     @IBOutlet weak var updatesLabel: NSTextField!
-    
-    /// The divider separating the toolbar from the list
-    @IBOutlet weak var toolbarDivider: NSBox!
-    
+        
     /// The menu displayed on secondary clicks on cells in the list
     @IBOutlet weak var tableViewMenu: NSMenu!
     
@@ -88,9 +85,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
-                
-        self.scrollViewDidScroll(nil)
-        
+                        
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
         
@@ -111,13 +106,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		// Setup search field
         NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
 		self.view.window?.makeFirstResponder(nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: self.tableView.enclosingScrollView)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+	}
     
     
     // MARK: - TableView Stuff
@@ -125,15 +114,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The table view displaying the list
     @IBOutlet weak var tableView: NSTableView!
     
-    @objc func scrollViewDidScroll(_ notification: Notification?) {
-        guard let scrollView = self.tableView.enclosingScrollView, !self.showInstalledUpdates else {
-            return
-        }
-        
-        let pos = scrollView.contentView.bounds.origin.y
-        self.toolbarDivider.alphaValue = min(pos / 15, 1)
-    }
-    
+	
     // MARK: Table View Delegate
 	
 	private func contentCell(for app: AppBundle) -> NSView? {
@@ -391,12 +372,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         if self.apps.count == 0 && self.noUpdatesAvailableLabel.isHidden {
             self.tableView.alphaValue = 0
             self.tableView.isHidden = true
-            self.toolbarDivider.isHidden = true
             self.noUpdatesAvailableLabel.isHidden = false
         } else if self.apps.count != 0 && !self.noUpdatesAvailableLabel.isHidden {
             self.tableView.alphaValue = 1
             self.tableView.isHidden = false
-            self.toolbarDivider.isHidden = false
             self.noUpdatesAvailableLabel.isHidden = true
         }
     }
