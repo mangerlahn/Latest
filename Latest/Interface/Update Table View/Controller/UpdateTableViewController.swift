@@ -420,6 +420,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
     }
 	
+	/// Updates the contents of the table view
+	func reloadTableView() {
+		// Update snapshot
+		self.appSnapshot = self.apps
+		self.tableView.reloadData()
+	}
+	
 	/// Animates changes made to the apps list
 	private func updateTableView(with oldValue: [AppDataStore.Entry], with newValue: [AppDataStore.Entry]) {
 		self.tableView.beginUpdates()
@@ -429,6 +436,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		
 		// Iterate both states
 		while i < state.count || j < newValue.count {
+			self.tableView.reloadData(forRowIndexes: IndexSet(integer: i), columnIndexes: IndexSet(integer: 0))
+			
 			// Skip identical items
 			if i < state.count && j < newValue.count && state[i] == newValue[j] {
 				i += 1
