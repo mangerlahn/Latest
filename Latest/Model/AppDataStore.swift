@@ -18,14 +18,15 @@ class AppDataStore {
 	// MARK: - Delegate Scheduling
 		
 	/// Schedules an update notification.
-	private let notificationScheduler: DispatchSourceUserDataAdd
+	private let filterScheduler: DispatchSourceUserDataAdd
 	
 	init() {
 		let source = DispatchSource.makeUserDataAddSource(queue: .global())
-		self.notificationScheduler = source
+		self.filterScheduler = source
 
 		// Delay notifying observers to only let that notification occur in a certain interval
 		source.setEventHandler() { [unowned self] in
+			self.filterApps()
 			self.notifyObservers(newValue: self.filteredApps)
 		
 			// Delay the next call for 0.6 seconds
@@ -47,12 +48,7 @@ class AppDataStore {
 	}
 	
 	/// The user-facable, sorted and filtered list of apps and sections. Observers of the data store will be notified, when this list changes.
-	private(set) var filteredApps = [Entry]() {
-		didSet {
-			// Schedule an update for observers
-			self.notificationScheduler.add(data: 1)
-		}
-	}
+	private(set) var filteredApps = [Entry]()
 	
 	/// The query after which apps can be filtered
 	var filterQuery: String? {
@@ -132,7 +128,8 @@ class AppDataStore {
 			self.countOfAvailableUpdates += app.updateAvailable ? 1 : 0
 		}
 		
-		self.filterApps()
+		// Schedule an update for observers
+		self.scheduleFilterUpdate()
     }
 	
 	
@@ -141,14 +138,14 @@ class AppDataStore {
     /// Whether installed apps should be visible
 	var showInstalledUpdates = false {
 		didSet {
-			self.filterApps()
+			self.scheduleFilterUpdate()
 		}
 	}
 	
 	/// Whether ignored apps should be visible
 	var showIgnoredUpdates = false {
 		didSet {
-			self.filterApps()
+			self.scheduleFilterUpdate()
 		}
 	}
 	
@@ -194,7 +191,7 @@ class AppDataStore {
 		UserDefaults.standard.set(Array(ignoredApps), forKey: Self.IgnoredAppsKey)
 		
 		self.updateCountOfAvailableApps()
-		self.filterApps()
+		self.scheduleFilterUpdate()
 	}
 	
 	/// Returns the identifiers of ignored apps.
@@ -225,7 +222,7 @@ class AppDataStore {
 		self.pendingApps = nil
 	
 		self.updateCountOfAvailableApps()
-		self.filterApps()
+		self.scheduleFilterUpdate()
 	}
 	
 	/// Updates the count of all available apps.
@@ -263,6 +260,11 @@ class AppDataStore {
 				handler(newValue)
 			}
 		}
+	}
+	
+	/// Schedules an filter update and notifies observers of the updated app list
+	private func scheduleFilterUpdate() {
+		self.filterScheduler.add(data: 1)
 	}
 
 }

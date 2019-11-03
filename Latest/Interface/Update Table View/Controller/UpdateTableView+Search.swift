@@ -23,7 +23,7 @@ extension UpdateTableViewController {
 		self.dataStore.filterQuery = sender.stringValue
 		
 		// Reload all visible lists
-		self.tableView.reloadData()
+		self.reloadTableView()
 		if #available(OSX 10.12.2, *) {
 			self.scrubber?.reloadData()
 		}
