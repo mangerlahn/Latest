@@ -18,14 +18,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        if !flag {
-            sender.windows.first(where: { $0.windowController as? MainWindowController != nil })?.makeKeyAndOrderFront(self)
-        }
-        
-        return !flag
-    }
+	
+	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+		// Always terminate the app if the main window is closed
+		return true
+	}
     
 }
 
