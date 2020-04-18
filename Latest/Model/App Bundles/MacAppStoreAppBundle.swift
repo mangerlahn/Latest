@@ -22,6 +22,11 @@ class MacAppStoreAppBundle: AppBundle {
 		return CKUpdateController.shared()?.availableUpdates().first(where: { $0.bundleID == self.bundleIdentifier })
 	}
 	
+	/// The icon representing the source of the app.
+	override class var sourceIcon: NSImage {
+		return NSImage(named: "appstore")!
+	}
+	
 	
 	// MARK: - Actions
 	

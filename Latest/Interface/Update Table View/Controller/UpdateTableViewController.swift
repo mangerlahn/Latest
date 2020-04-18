@@ -123,11 +123,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return nil
         }
         
-        cell.nameTextField?.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
-        cell.currentVersionTextField?.stringValue = versionInformation.current
-        cell.newVersionTextField?.stringValue = versionInformation.new
-        
-        cell.newVersionTextField?.isHidden = !app.updateAvailable
 		cell.app = app
         
         IconCache.shared.icon(for: app) { (image) in
