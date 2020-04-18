@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="14550"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="16002"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -585,7 +585,6 @@
                                             <tableColumns>
                                                 <tableColumn editable="NO" width="400" minWidth="40" maxWidth="1000" id="kmD-6A-dIK">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1050,8 +1049,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="311"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="woV-Tf-kjt">
-                                <rect key="frame" x="165" y="127" width="120" height="38"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="woV-Tf-kjt">
+                                <rect key="frame" x="165" y="137" width="120" height="38"/>
                                 <subviews>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5Wc-mB-Bp9">
                                         <rect key="frame" x="52" y="22" width="16" height="16"/>
@@ -1075,9 +1074,14 @@
                                 </customSpacing>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="woV-Tf-kjt" firstAttribute="centerY" secondItem="8IN-hG-baJ" secondAttribute="centerY" id="1Cp-nu-ZUc"/>
+                            <constraint firstItem="woV-Tf-kjt" firstAttribute="centerX" secondItem="8IN-hG-baJ" secondAttribute="centerX" id="ihD-oq-ZzD"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="5Wc-mB-Bp9" id="BGc-yM-EfQ"/>
+                        <outlet property="horizontalConstraint" destination="1Cp-nu-ZUc" id="NAK-tf-Yup"/>
                     </connections>
                 </viewController>
                 <customObject id="m9l-dv-2g9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
