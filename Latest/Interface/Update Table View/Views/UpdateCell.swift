@@ -16,17 +16,20 @@ class UpdateCell: NSTableCellView {
 	// MARK: - View Lifecycle
 	
 	/// The label displaying the current version of the app
-	@IBOutlet weak var nameTextField: NSTextField?
+	@IBOutlet private weak var nameTextField: NSTextField!
 
     /// The label displaying the current version of the app
-    @IBOutlet weak var currentVersionTextField: NSTextField?
+    @IBOutlet private weak var currentVersionTextField: NSTextField!
     
     /// The label displaying the newest version available for the app
-    @IBOutlet weak var newVersionTextField: NSTextField?
+    @IBOutlet private weak var newVersionTextField: NSTextField!
 	
 	/// The stack view holding the cells contents.
-	@IBOutlet private weak var contentStackView: NSStackView?
+	@IBOutlet private weak var contentStackView: NSStackView!
 
+	/// The image view holding the source icon of the app.
+	@IBOutlet weak var sourceIconImageView: NSImageView!
+	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
@@ -60,7 +63,33 @@ class UpdateCell: NSTableCellView {
 	var app: AppBundle? {
 		didSet {
 			self.updateProgressViewController.app = self.app
+			self.updateContents()
 		}
 	}
+	
+	var filterQuery: String? {
+		didSet {
+			self.updateContents()
+		}
+	}
+	
+	
+	// MARK: - Utilities
+	
+	private func updateContents() {
+		guard let app = self.app, let versionInformation = app.localizedVersionInformation else { return }
+		
+		self.updateTitle()
+		
+		// Update the contents of the cell
+        self.currentVersionTextField.stringValue = versionInformation.current
+        self.newVersionTextField.stringValue = versionInformation.new
+        self.newVersionTextField.isHidden = !app.updateAvailable
+		self.sourceIconImageView.image = type(of: app).sourceIcon
+	}
 	    
+	private func updateTitle() {
+		self.nameTextField.attributedStringValue = self.app?.highlightedName(for: self.filterQuery) ?? NSAttributedString()
+	}
+	
 }

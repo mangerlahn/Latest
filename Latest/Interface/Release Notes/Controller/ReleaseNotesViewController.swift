@@ -28,6 +28,7 @@ fileprivate enum ReleaseNotesContent {
     /// The actual content
     case text(ReleaseNotesTextViewController?)
     
+	/// Exposes the view controller holding the release notes, if available.
     var textController: ReleaseNotesTextViewController? {
         switch self {
         case .text(let controller):
@@ -37,6 +38,17 @@ fileprivate enum ReleaseNotesContent {
         }
     }
     
+	/// Exposes the view controller indicating a loading action, if available.
+	var loadingController: ReleaseNotesLoadingViewController? {
+        switch self {
+        case .loading(let controller):
+            return controller
+        default:
+            return nil
+        }
+	}
+	
+	/// Exposes the view controller holding an error, if available.
     var errorController: ReleaseNotesErrorViewController? {
         switch self {
         case .error(let controller):
@@ -303,6 +315,8 @@ class ReleaseNotesViewController: NSViewController {
         constraints.append(self.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
         
         NSLayoutConstraint.activate(constraints)
+		
+		self.updateInsets()
     }
     
     private func displayUnavailableReleaseNotes() {
@@ -339,6 +353,7 @@ class ReleaseNotesViewController: NSViewController {
     private func updateInsets() {
         let inset = self.appInfoBackgroundView.frame.size.height
         self.content?.textController?.updateInsets(with: inset)
+		self.content?.loadingController?.topInset = inset
     }
     
     /// Switches the content to error and displays the localized error

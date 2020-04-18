@@ -52,6 +52,12 @@ class AppBundle : NSObject {
     /// The newest information available for this app
     var newestVersion: UpdateInfo
 	
+	/// The icon representing the source of the app.
+	class var sourceIcon: NSImage {
+		assertionFailure("Must be overridden by subclasses.")
+		return NSImage()
+	}
+	
     /**
      Convenience initializer for creating an app object
 	- parameter name: The name of the app
