@@ -137,17 +137,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         return cell
 	}
 	
-	private func headerCell(of type: AppDataStore.Section) -> NSView? {
-		let view = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellSectionIdentifier"), owner: self) as? NSTableCellView
+	private func headerCell(of section: AppDataStore.Section) -> NSView? {
+		let view = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellSectionIdentifier"), owner: self) as? UpdateGroupCellView
 		
-		switch type {
-		case .updateAvailable:
-			view?.textField?.stringValue = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
-		case .installed:
-			view?.textField?.stringValue = NSLocalizedString("Installed Apps", comment: "Table Section Header for already installed apps")
-		case .ignored:
-			view?.textField?.stringValue = NSLocalizedString("Ignored Apps", comment: "Table Section Header for ignored apps")
-		}
+		view?.section = section
 		
 		return view
 	}
@@ -156,8 +149,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		switch self.apps[row] {
 		case .app(let app):
 			return self.contentCell(for: app)
-		case .section(let type):
-			return self.headerCell(of: type)
+		case .section(let section):
+			return self.headerCell(of: section)
 		}
     }
     
