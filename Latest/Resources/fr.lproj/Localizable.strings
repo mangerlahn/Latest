@@ -21,7 +21,7 @@
 "Extracting Update" = "Extraction des mises à jour";
 
 /* MenuItem Hide Version Details */
-"Hide Version Details" = "Cacher les détails de la version";
+"Hide Version Details" = "Cacher les détails de version";
 
 /* Touch Bar section title for ignored apps */
 "Ignored" = "Ignorer";
@@ -48,7 +48,7 @@
 "No app selected." = "Aucune application sélectionnée.";
 
 /* Error message that no release notes were found */
-"No release notes were found for this app." = "Aucun changelog n'a été trouvée pour cette application.";
+"No release notes were found for this app." = "Aucune note de version n'a été trouvée pour cette application.";
 
 /* Error description when no update was found for a particular app. */
 "No update was found for this app." = "Pas de mises à jour trouvées pour cette application";
@@ -63,10 +63,10 @@
 "Retry" = "Réessayer";
 
 /* Description of release notes empty state */
-"Select an app from the list to read its release notes." = "Sélectionnez une application dans la liste pour lire le changelog.";
+"Select an app from the list to read its release notes." = "Sélectionnez une application dans la liste pour lire les notes de version.";
 
 /* Revea in Finder Row action */
-"Show in Finder" = "Afficher dans le Finder";
+"Show in Finder" = "Révéler dans le Finder";
 
 /* MenuItem Show Version Details */
 "Show Version Details" = "Afficher les détails de version";
@@ -76,7 +76,7 @@
 
 /* Update button title to update an app
    Update String */
-"Update" = "Mise à jour";
+"Update" = "Mettre à jour";
 
 /* Update progress state of waiting to start an update */
 "Waiting" = "En attente";
