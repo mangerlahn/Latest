@@ -5,7 +5,7 @@
 "Available" = "Disponible";
 
 /* Table Section Header for available updates */
-"Available Updates" = "Mises à jour disponible";
+"Available Updates" = "Mises à jour disponibles";
 
 /* Cancel button in an update dialogue
    Cancel button title to cancel the update of an app */
@@ -72,7 +72,7 @@
 "Show Version Details" = "Afficher les détails de version";
 
 /* No comment provided by engineer. */
-"Up to Date!" = "A jour!";
+"Up to Date!" = "À jour!";
 
 /* Update button title to update an app
    Update String */

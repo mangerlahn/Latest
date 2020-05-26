@@ -27,7 +27,7 @@
 "5cs-kb-AQj.title" = "Copier";
 
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "A propos de Latest";
+"5kV-Vb-QxS.title" = "À propos de Latest";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
 "63s-Hc-NQY.title" = "Corriger l'orthographe automatiquement";
@@ -57,7 +57,7 @@
 "BOF-NM-1cW.title" = "Préférences…";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
-"Cm3-IX-Kw4.title" = "Impossible de charger les notes de version!";
+"Cm3-IX-Kw4.title" = "Impossible de charger les notes de version !";
 
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
 "D2N-5U-W7Z.title" = "Aucune mise à jour disponible";
@@ -135,7 +135,7 @@
 "OY7-WF-poV.title" = "Minimiser";
 
 /* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Cacher Latest";
+"Olw-nP-bQN.title" = "Masquer Latest";
 
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
 "PS4-wi-kF9.title" = "Ignorer";
@@ -282,7 +282,7 @@
 "r6p-yM-qya.title" = "Éditer";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Mises à jour disponible";
+"rK6-RZ-Ga6.title" = "5 Mises à jour disponibles";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Utiliser la sélection pour trouver";
