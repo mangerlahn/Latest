@@ -38,8 +38,8 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
         }
         
         var url: URL
-        
-        if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString)  {
+
+        if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString.unQuoted())  {
             url = feedURL
         } else { // Maybe the app is built using DevMate
             // Check for the DevMate framework
@@ -103,6 +103,12 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	/// An array holding all versions of the app contained in the Sparkle feed
     private var versionInfos = [UpdateInfo]()
 	
+}
+
+fileprivate extension String {
+    func unQuoted() -> String {
+        return NSString(string: self).trimmingCharacters(in: CharacterSet(charactersIn: "'\""))
+    }
 }
 
 extension SparkleUpdateCheckerOperation: XMLParserDelegate {

@@ -75,7 +75,12 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
-        
+
+        if let splitViewController = self.contentViewController as? NSSplitViewController {
+            let detailItem = splitViewController.splitViewItems[1]
+            detailItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
+        }
+
 		// Restore state
         self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
         self.updateShowIgnoredUpdatesState(with: UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
