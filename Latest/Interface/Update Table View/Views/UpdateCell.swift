@@ -86,6 +86,7 @@ class UpdateCell: NSTableCellView {
         self.newVersionTextField.stringValue = versionInformation.new
         self.newVersionTextField.isHidden = !app.updateAvailable
 		self.sourceIconImageView.image = type(of: app).sourceIcon
+		self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), type(of: app).sourceName)
 	}
 	    
 	private func updateTitle() {

@@ -58,6 +58,12 @@ class AppBundle : NSObject {
 		return NSImage()
 	}
 	
+	/// The name of the app's source.
+	class var sourceName: String {
+		assertionFailure("Must be overridden by subclasses.")
+		return ""
+	}
+	
     /**
      Convenience initializer for creating an app object
 	- parameter name: The name of the app

@@ -27,6 +27,11 @@ class MacAppStoreAppBundle: AppBundle {
 		return NSImage(named: "appstore")!
 	}
 	
+	/// The name of the app's source.
+	override class var sourceName: String {
+		return NSLocalizedString("Mac App Store", comment: "The source name of apps loaded from the App Store.")
+	}
+	
 	
 	// MARK: - Actions
 	

@@ -17,6 +17,11 @@ class SparkleAppBundle: AppBundle {
 	override class var sourceIcon: NSImage {
 		return NSImage(named: "sparkle")!
 	}
+	
+	/// The name of the app's source.
+	override class var sourceName: String {
+		return NSLocalizedString("Web", comment: "The source name for apps loaded from third-party websites.")
+	}
     
 	/// Provide Sparkle specifig update method.
     override func update() {
