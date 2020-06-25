@@ -13,6 +13,9 @@ fileprivate let ReleaseNotesTextParagraphCellIdentifier = NSUserInterfaceItemIde
 /// The controller displaying the actual release notes
 class ReleaseNotesTextViewController: NSViewController {
 
+	/// The inset of the text
+	let contentInset: CGFloat = 22.0
+	
     /// The view displaying the release notes
     @IBOutlet var textView: NSTextView!
     
@@ -29,7 +32,8 @@ class ReleaseNotesTextViewController: NSViewController {
         let scrollView = self.textView.enclosingScrollView
         
         scrollView?.automaticallyAdjustsContentInsets = false
-        scrollView?.contentInsets.top = inset + 5 // 5 is some padding
+        scrollView?.contentInsets = NSEdgeInsetsMake(inset + contentInset, contentInset, contentInset, contentInset)
+		scrollView?.scrollerInsets = NSEdgeInsetsMake(-contentInset, -contentInset, -contentInset, -contentInset)
         
         self.view.layout()
         scrollView?.documentView?.scroll(CGPoint(x: 0, y: -inset * 2))
