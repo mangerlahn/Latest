@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */; };
 		501497A122D9CBEA00CFA8CE /* MASError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A022D9CBEA00CFA8CE /* MASError.swift */; };
 		501497A722D9CC0800CFA8CE /* ISStoreAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A522D9CC0800CFA8CE /* ISStoreAccount.swift */; };
 		501497A822D9CC0800CFA8CE /* StoreAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A622D9CC0800CFA8CE /* StoreAccount.swift */; };
@@ -203,6 +204,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCellView.swift; sourceTree = "<group>"; };
 		501497A022D9CBEA00CFA8CE /* MASError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MASError.swift; path = "Frameworks/mas-cli/MasKit/Errors/MASError.swift"; sourceTree = "<group>"; };
 		501497A522D9CC0800CFA8CE /* ISStoreAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISStoreAccount.swift; path = "Frameworks/mas-cli/MasKit/AppStore/ISStoreAccount.swift"; sourceTree = "<group>"; };
 		501497A622D9CC0800CFA8CE /* StoreAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreAccount.swift; path = "Frameworks/mas-cli/MasKit/AppStore/StoreAccount.swift"; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 			children = (
 				5095122F1FF36378003D2D7F /* UpdateCell.swift */,
 				50DAEF4321047FA900B32E8A /* UpdateItemView.swift */,
+				50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */,
 				50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */,
 				506DF7772125580400D792FC /* UpdateTableView.swift */,
 			);
@@ -906,6 +909,7 @@
 				506DF77621248F6200D792FC /* AppDataStore.swift in Sources */,
 				5039DE8522CA396F0088B39B /* UpdateQueue.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
+				50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,
 				506DF7782125580400D792FC /* UpdateTableView.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
