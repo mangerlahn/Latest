@@ -118,13 +118,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: Table View Delegate
 	
 	private func contentCell(for app: AppBundle) -> NSView? {
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
-            let versionInformation = app.localizedVersionInformation else {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell else {
             return nil
         }
         
 		cell.app = app
-        
+		cell.filterQuery = self.dataStore.filterQuery
+		
         IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
         }

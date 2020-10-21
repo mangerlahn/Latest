@@ -78,7 +78,7 @@ class UpdateCell: NSTableCellView {
 	
 	var filterQuery: String? {
 		didSet {
-			self.updateContents()
+			self.updateTitle()
 		}
 	}
 	
