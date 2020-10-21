@@ -59,6 +59,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		50726ECD2540B45400FDF35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA1E285E22B66487004AA304;
+			remoteInfo = generate_keys;
+		};
+		50726ECF2540B45400FDF35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA1E287622B666EB004AA304;
+			remoteInfo = sign_update;
+		};
+		50726ED12540B45400FDF35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA1E282D22B660BE004AA304;
+			remoteInfo = ed25519;
+		};
 		50B3984C2312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
@@ -589,7 +610,10 @@
 				50B3985B2312CF1C00BAEC81 /* Updater.app */,
 				50F62F0222FA277D00A2F2AF /* UI Tests.xctest */,
 				50F62F0622FA277D00A2F2AF /* generate_appcast */,
+				50726ECE2540B45400FDF35E /* generate_keys */,
+				50726ED02540B45400FDF35E /* sign_update */,
 				50F62F0C22FA277D00A2F2AF /* libbsdiff.a */,
+				50726ED22540B45400FDF35E /* libed25519.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -695,6 +719,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		50726ECE2540B45400FDF35E /* generate_keys */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = generate_keys;
+			remoteRef = 50726ECD2540B45400FDF35E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50726ED02540B45400FDF35E /* sign_update */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = sign_update;
+			remoteRef = 50726ECF2540B45400FDF35E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50726ED22540B45400FDF35E /* libed25519.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libed25519.a;
+			remoteRef = 50726ED12540B45400FDF35E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		50B3984D2312CF1C00BAEC81 /* SparkleCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1108,6 +1153,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 0.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1138,6 +1184,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 0.6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
