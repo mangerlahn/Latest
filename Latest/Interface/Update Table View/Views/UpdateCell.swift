@@ -28,13 +28,22 @@ class UpdateCell: NSTableCellView {
 	@IBOutlet private weak var contentStackView: NSStackView!
 
 	/// The image view holding the source icon of the app.
-	@IBOutlet weak var sourceIconImageView: NSImageView!
+	@IBOutlet private weak var sourceIconImageView: NSImageView!
+	
+	/// The constraint defining the leading inset of the content.
+	@IBOutlet private weak var leadingConstraint: NSLayoutConstraint!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
 		self.contentStackView?.addArrangedSubview(self.updateProgressViewController.view)
 		self.currentVersionTextField?.topAnchor.constraint(equalTo: self.updateProgressViewController.view.topAnchor).isActive = true
+		
+		if #available(macOS 11.0, *) {
+			self.leadingConstraint.constant = 0;
+		} else {
+			self.leadingConstraint.constant = 20;
+		}
 	}
 	
     override var backgroundStyle: NSView.BackgroundStyle {
