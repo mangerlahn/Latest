@@ -14,7 +14,7 @@ fileprivate let ReleaseNotesTextParagraphCellIdentifier = NSUserInterfaceItemIde
 class ReleaseNotesTextViewController: NSViewController {
 
 	/// The inset of the text
-	let contentInset: CGFloat = 22.0
+	let contentInset: CGFloat = 14
 	
     /// The view displaying the release notes
     @IBOutlet var textView: NSTextView!

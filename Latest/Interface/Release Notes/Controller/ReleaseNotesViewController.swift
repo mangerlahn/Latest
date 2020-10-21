@@ -118,7 +118,7 @@ class ReleaseNotesViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: -5)
+        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
         constraint.isActive = true
 
 		self.setEmptyState()
