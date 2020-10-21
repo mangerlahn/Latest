@@ -58,8 +58,14 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     override func windowDidLoad() {
         super.windowDidLoad()
     
-        self.window?.titlebarAppearsTransparent = true
-        self.window?.titleVisibility = .hidden
+		self.window?.titlebarAppearsTransparent = true
+
+		if #available(macOS 11.0, *) {
+			self.window?.toolbarStyle = .unified
+			self.window?.title = NSLocalizedString("Latest", comment: "App name as title of the main window.")
+		} else {
+			self.window?.titleVisibility = .hidden
+		}
         
 		// Set ourselves as the view menu delegate
 		NSApplication.shared.mainMenu?.item(at: MainMenuItem.view.rawValue)?.submenu?.delegate = self

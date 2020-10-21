@@ -80,8 +80,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
@@ -97,6 +95,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			
 			self.updateEmtpyStateVisibility()
 			self.updateTitleAndBatch()
+		}
+		
+		if #available(macOS 11, *) {
+			self.updatesLabel.isHidden = true
 		}
     }
     
@@ -371,20 +373,25 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func updateTitleAndBatch() {
         let count = self.dataStore.countOfAvailableUpdates
-        
+		let statusText: String
+		
         if count == 0 {
             NSApplication.shared.dockTile.badgeLabel = ""
-            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+            statusText = NSLocalizedString("Up to Date!", comment: "")
         } else {
             NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: count as NSNumber)
             
             let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
-            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, count)
+            statusText = String.localizedStringWithFormat(format, count)
         }
         
-        if #available(OSX 10.12.2, *) {
-            self.scrubber?.reloadData()
-        }
+		self.scrubber?.reloadData()
+		
+		if #available(macOS 11, *) {
+			self.view.window?.subtitle = statusText
+		} else {
+			self.updatesLabel.stringValue = statusText
+		}
     }
 	
 	/// Updates the contents of the table view
