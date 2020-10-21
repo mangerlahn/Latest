@@ -111,7 +111,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     }
 	
 	@IBAction func performFindPanelAction(_ sender: Any?) {
-		self.listViewController.searchField.becomeFirstResponder()
+		self.window?.makeFirstResponder(self.listViewController.searchField)
 	}
     
     @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {

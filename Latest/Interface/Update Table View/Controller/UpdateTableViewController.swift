@@ -213,7 +213,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Triggers the update checking mechanism
     func checkForUpdates() {
 		UpdateChecker.shared.run()
-        self.becomeFirstResponder()
+		self.view.window?.makeFirstResponder(self)
     }
 
     /**
