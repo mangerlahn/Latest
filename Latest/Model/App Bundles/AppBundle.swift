@@ -124,7 +124,7 @@ class AppBundle : NSObject {
 		let name = NSMutableAttributedString(string: self.name)
 		
 		if let queryString = query, let selectedRange = self.name.lowercased().range(of: queryString.lowercased()) {
-			name.addAttribute(.foregroundColor, value: NSColor.tertiaryLabelColor, range: NSMakeRange(0, name.length))
+			name.addAttribute(.foregroundColor, value: NSColor(named: "FadedSearchText"), range: NSMakeRange(0, name.length))
 			name.addAttribute(.foregroundColor, value: NSColor.labelColor, range: NSRange(selectedRange, in: self.name))
 		}
 		
