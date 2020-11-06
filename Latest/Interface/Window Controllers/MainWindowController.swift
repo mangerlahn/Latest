@@ -50,11 +50,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadButton: NSButton!
     @IBOutlet weak var reloadTouchBarButton: NSButton!
-    
-    /// The button thats action opens all apps (or Mac App Store) to begin the update process
-    @IBOutlet weak var openAllAppsButton: NSButton!
-    @IBOutlet weak var openAllAppsTouchBarButton: NSButton!
-    
+        
     override func windowDidLoad() {
         super.windowDidLoad()
     
@@ -181,8 +177,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		// Disable UI
         self.reloadButton.isEnabled = false
         self.reloadTouchBarButton.isEnabled = false
-		self.openAllAppsButton.isEnabled = false
-		self.openAllAppsTouchBarButton.isEnabled = false
 		
 		// Setup indeterminate progress indicator
 		self.progressIndicator.isIndeterminate = true
@@ -204,10 +198,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     }
 	
 	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateChecker) {
-		print(self.listViewController.dataStore.countOfAvailableUpdates)
-		self.openAllAppsButton.isEnabled = self.listViewController.dataStore.countOfAvailableUpdates != 0
-		self.openAllAppsTouchBarButton.isEnabled = self.openAllAppsButton.isEnabled
-		
 		self.reloadButton.isEnabled = true
 		self.reloadTouchBarButton.isEnabled = true
 		self.progressIndicator.isHidden = true

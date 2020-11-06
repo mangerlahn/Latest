@@ -403,51 +403,35 @@
                 <customObject id="ZIQ-oE-e1U" customClass="SPUStandardUpdaterController"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="-68"/>
+            <point key="canvasLocation" x="75" y="-207"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainWindowController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" identifier="MainWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                    <window key="window" identifier="MainWindow" title="Latest" subtitle="3 Updates Found" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-                        <rect key="contentRect" x="549" y="334" width="365" height="495"/>
+                        <rect key="contentRect" x="549" y="334" width="1004" height="495"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="6dc-Xr-FRW"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sgB-XA-UzA"/>
-                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" id="ZWx-q6-TJz">
+                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="arrow.clockwise" catalog="system" id="ZWx-q6-TJz">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="36" height="32"/>
+                                    <size key="minSize" width="36" height="26"/>
                                     <size key="maxSize" width="47" height="32"/>
                                     <button key="view" toolTip="Reload" verticalHuggingPriority="750" id="FM4-aR-lhK">
-                                        <rect key="frame" x="0.0" y="14" width="47" height="32"/>
+                                        <rect key="frame" x="2" y="14" width="40" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="arrow.clockwise" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="reload:" target="B8D-0N-5wS" id="rFX-tF-Prr"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="B7604B52-21C5-4F5C-958E-D519FDF63098" label="Update All Apps" paletteLabel="Update All Apps" image="NSIconViewTemplate" id="hSF-GV-qvH">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="36" height="32"/>
-                                    <size key="maxSize" width="47" height="32"/>
-                                    <button key="view" toolTip="Update All Apps" verticalHuggingPriority="750" id="TkS-CH-ikZ">
-                                        <rect key="frame" x="23" y="14" width="47" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bb4-uB-lVg">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="updateAll:" target="B8D-0N-5wS" id="LPR-1Y-10O"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -465,7 +449,6 @@
                                 <toolbarItem reference="sgB-XA-UzA"/>
                                 <toolbarItem reference="OLo-39-3Sm"/>
                                 <toolbarItem reference="ZWx-q6-TJz"/>
-                                <toolbarItem reference="hSF-GV-qvH"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -526,7 +509,6 @@
                         </touchBarItems>
                     </touchBar>
                     <connections>
-                        <outlet property="openAllAppsButton" destination="TkS-CH-ikZ" id="TRP-32-v6t"/>
                         <outlet property="openAllAppsTouchBarButton" destination="WAI-ZK-0O7" id="5qH-NY-wDl"/>
                         <outlet property="progressIndicator" destination="rtV-DA-Kd6" id="70r-Sv-xjH"/>
                         <outlet property="reloadButton" destination="FM4-aR-lhK" id="eb4-jN-US4"/>
@@ -535,7 +517,7 @@
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="76" y="336"/>
+            <point key="canvasLocation" x="193" y="181"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="oW6-ey-z8h">
@@ -1254,13 +1236,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSIconViewTemplate" width="15" height="14"/>
-        <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
-        <image name="NSTouchBarIconViewTemplate" width="22" height="14"/>
+        <image name="NSTouchBarIconViewTemplate" width="23" height="14"/>
         <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
-        <image name="NSTouchBarSearchTemplate" width="15" height="15"/>
+        <image name="NSTouchBarSearchTemplate" width="14" height="15"/>
         <image name="appstore" width="16" height="16"/>
+        <image name="arrow.clockwise" catalog="system" width="14" height="16"/>
         <image name="warning" width="15" height="15"/>
     </resources>
 </document>
