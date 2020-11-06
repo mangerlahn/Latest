@@ -173,6 +173,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
         if edge == .trailing {
+			// Don't provide an update action if the app has no update available
+			if !(self.dataStore.app(at: row)?.updateAvailable ?? false) {
+				return []
+			}
+			
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
                 self.updateApp(atIndex: row)
             })
