@@ -214,10 +214,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func selectApp(at index: Int?) {
         guard let index = index, index >= 0 else {
             self.tableView.deselectAll(nil)
-			
-            if #available(OSX 10.12.2, *) {
-                self.scrubber?.animator().selectedIndex = -1
-            }
+			self.scrubber?.animator().selectedIndex = -1
 			
 			// Clear release notes
 			if let detailViewController = self.releaseNotesViewController {
@@ -227,10 +224,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
-        if #available(OSX 10.12.2, *) {
-            self.scrubber?.animator().scrollItem(at: index, to: .center)
-            self.scrubber?.animator().selectedIndex = index
-        }
+		self.scrubber?.animator().scrollItem(at: index, to: .center)
+		self.scrubber?.animator().selectedIndex = index
         
         self.tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
         self.tableView.scrollRowToVisible(index)

@@ -24,9 +24,7 @@ extension UpdateTableViewController {
 		
 		// Reload all visible lists
 		self.reloadTableView()
-		if #available(OSX 10.12.2, *) {
-			self.scrubber?.reloadData()
-		}
+		self.scrubber?.reloadData()
 	}
 	
 }
