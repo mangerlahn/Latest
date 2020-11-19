@@ -46,7 +46,7 @@ class UpdateChecker {
 	
 	private init() {
 		// Instantiate the folder listener to track changes to the Applications folder
-		if let url = self.applicationURL {
+		for url in Self.applicationURLs {
 			self.folderListener = FolderUpdateListener(url: url)
 			self.folderListener?.resumeTracking()
 		}
@@ -67,15 +67,15 @@ class UpdateChecker {
     private var folderListener : FolderUpdateListener?
     
     /// The url of the /Applications folder on the users Mac
-    var applicationURL : URL? {
-		let applicationURLList = FileManager.default.urls(for: .applicationDirectory, in: .localDomainMask)
-        
-        return applicationURLList.first
+    static var applicationURLs : [URL] {
+		return [FileManager.SearchPathDomainMask.localDomainMask, .userDomainMask].flatMap { (domainMask) -> [URL] in
+			return FileManager.default.urls(for: .applicationDirectory, in: domainMask)
+		}
     }
     
     /// The path of the users /Applications folder
-    private var applicationPath : String {
-        return applicationURL?.path ?? "/Applications/"
+    private static var applicationPaths : [String] {
+		return applicationURLs.map({ $0.path })
     }
         	
 	/// The queue update checks are processed on.
@@ -124,7 +124,7 @@ class UpdateChecker {
 			let url = URL(fileURLWithPath: path)
 			
 			// Only allow apps in the application folder and outside excluded subfolders
-			if !url.path.hasPrefix(self.applicationPath) || Self.excludedSubfolders.first(where: { url.path.contains($0) }) != nil {
+			if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
 				return nil
 			}
 			
