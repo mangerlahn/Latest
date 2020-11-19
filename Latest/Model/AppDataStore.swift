@@ -315,5 +315,18 @@ extension AppDataStore {
 		/// The number of apps this section encloses.
 		let numberOfApps: Int
 		
+		
+		// MARK: - Protocol Overrides
+		
+		/// Exclude the number of apps from the function
+		static func ==(lhs: Section, rhs: Section) -> Bool {
+			return lhs.title == rhs.title
+		}
+		
+		/// Exclude the number of apps from the function
+		func hash(into hasher: inout Hasher) {
+			hasher.combine(title)
+		}
+		
 	}
 }
