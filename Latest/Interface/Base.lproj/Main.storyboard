@@ -419,14 +419,14 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="6dc-Xr-FRW"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sgB-XA-UzA"/>
-                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="arrow.clockwise" catalog="system" id="ZWx-q6-TJz">
+                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" id="ZWx-q6-TJz">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="36" height="26"/>
                                     <size key="maxSize" width="47" height="32"/>
                                     <button key="view" toolTip="Reload" verticalHuggingPriority="750" id="FM4-aR-lhK">
                                         <rect key="frame" x="2" y="14" width="40" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="arrow.clockwise" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -1236,12 +1236,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
         <image name="NSTouchBarIconViewTemplate" width="23" height="14"/>
         <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
         <image name="NSTouchBarSearchTemplate" width="14" height="15"/>
         <image name="appstore" width="16" height="16"/>
-        <image name="arrow.clockwise" catalog="system" width="14" height="16"/>
         <image name="warning" width="15" height="15"/>
     </resources>
 </document>
