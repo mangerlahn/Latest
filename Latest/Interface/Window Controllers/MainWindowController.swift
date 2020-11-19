@@ -11,7 +11,7 @@ import Cocoa
 /**
  This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
  */
-class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateListViewControllerDelegate, UpdateCheckerProgress {
+class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateCheckerProgress {
     
 	/// Encapsulates the main window items with their according tag identifiers
 	private enum MainMenuItem: Int {
@@ -67,14 +67,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		NSApplication.shared.mainMenu?.item(at: MainMenuItem.view.rawValue)?.submenu?.delegate = self
 		
 		UpdateChecker.shared.progressDelegate = self
-
-		self.showReleaseNotes(false, animated: false)
         
         self.window?.makeFirstResponder(self.listViewController)
         self.window?.delegate = self
         self.setDefaultWindowPosition(for: self.window!)
         
-        self.listViewController.delegate = self
         self.listViewController.checkForUpdates()
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
 
@@ -100,12 +97,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     @IBAction func updateAll(_ sender: Any?) {
 		self.listViewController.dataStore.updateableApps.forEach({ $0.update() })
     }
-    
-    /// Shows/hides the detailView which presents the release notes
-    @IBAction func toggleDetail(_ sender: Any?) {
-        self.showReleaseNotes(!self.releaseNotesVisible, animated: true)
-    }
-	
+    	
 	@IBAction func performFindPanelAction(_ sender: Any?) {
 		self.window?.makeFirstResponder(self.listViewController.searchField)
 	}
@@ -156,14 +148,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
                 menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
 			case #selector(toggleShowIgnoredUpdates(_:)):
                 menuItem.state = self.listViewController.showIgnoredUpdates ? .on : .off
-            case #selector(toggleDetail(_:)):
-                guard let splitViewController = self.contentViewController as? NSSplitViewController else { return }
-                
-                let detailItem = splitViewController.splitViewItems[1]
-                
-                menuItem.title = detailItem.isCollapsed ?
-                    NSLocalizedString("Show Version Details", comment: "MenuItem Show Version Details") :
-                    NSLocalizedString("Hide Version Details", comment: "MenuItem Hide Version Details")
             default:
                 ()
             }
@@ -205,19 +189,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	}
     
     
-    // MARK: - Update List View Controller Delegate
-
-    /// Expands the detail view of the main window
-    func shouldExpandDetail() {
-        self.showReleaseNotes(true, animated: true)
-    }
-    
-    /// Collapses the detail view of the main window
-    func shouldCollapseDetail() {
-        self.showReleaseNotes(false, animated: true)
-    }
-    
-    
     // MARK: - Private Methods
     
     private func updateShowInstalledUpdatesState(with newState: Bool) {
@@ -248,21 +219,12 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             self.listViewController.selectApp(at: nil)
         }
     }
-    
-    private var releaseNotesVisible: Bool {
-        guard let splitViewController = self.contentViewController as? NSSplitViewController else {
-            return false
-        }
-        
-        return !splitViewController.splitViewItems[1].isCollapsed
-    }
-    
+	
 }
 
 extension MainWindowController: NSWindowDelegate {
     
     private static let WindowSizeKey = "WindowSizeKey"
-    private static let ReleaseNotesVisible = "ReleaseNotesVisible"
 
     // This will be called before decodeRestorableState
     func setDefaultWindowPosition(for window: NSWindow) {
@@ -277,12 +239,10 @@ extension MainWindowController: NSWindowDelegate {
     
     func window(_ window: NSWindow, willEncodeRestorableState state: NSCoder) {
         state.encode(window.frame, forKey: MainWindowController.WindowSizeKey)
-        state.encode(self.releaseNotesVisible, forKey: MainWindowController.ReleaseNotesVisible)
     }
     
     func window(_ window: NSWindow, didDecodeRestorableState state: NSCoder) {
         window.setFrame(state.decodeRect(forKey: MainWindowController.WindowSizeKey), display: true)
-        self.showReleaseNotes(state.decodeBool(forKey: MainWindowController.ReleaseNotesVisible), animated: false)
     }
 	
 	func window(_ window: NSWindow, willPositionSheet sheet: NSWindow, using rect: NSRect) -> NSRect {

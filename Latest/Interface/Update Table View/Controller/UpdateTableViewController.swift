@@ -9,17 +9,6 @@
 import Cocoa
 
 /**
- The delegate for handling the visibility of an detail view
- */
-protocol UpdateListViewControllerDelegate : class {
-    /// Implementing class should show the detail view
-    func shouldExpandDetail()
-    
-    /// Implementing class should hide the detail view
-    func shouldCollapseDetail()
-}
-
-/**
  This is the class handling the update process and displaying its results
  */
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
@@ -58,9 +47,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			return self.dataStore.showIgnoredUpdates
 		}
     }
-    
-    /// The delegate for handling the visibility of the detail view
-    weak var delegate : UpdateListViewControllerDelegate?
     
     /// The detail view controller that shows the release notes
     weak var releaseNotesViewController : ReleaseNotesViewController?
@@ -253,7 +239,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
-        self.delegate?.shouldExpandDetail()
 		self.releaseNotesViewController?.display(content: app.newestVersion.releaseNotes, for: app)
     }
     
