@@ -35,14 +35,9 @@ class MacAppStoreAppBundle: AppBundle {
 	
 	// MARK: - Actions
 	
-	override func open() {
-		// Should preferably open the Mac App Store
-		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
-	}
-	
 	override func update() {
 		// This is a temporary workaround to disable direct updates of Mac App Store apps, which does not work anymore.
-		self.open()
+		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
 		// UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self))
 	}
 	
