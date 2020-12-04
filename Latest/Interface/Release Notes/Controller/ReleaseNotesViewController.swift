@@ -81,7 +81,7 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appInfoBackgroundView: NSVisualEffectView!
     @IBOutlet weak var appInfoContentView: NSStackView!
     
-    @IBOutlet weak var updateButton: NSButton!
+    @IBOutlet weak var updateButton: UpdateButton!
     
     @IBOutlet weak var appNameTextField: NSTextField!
     @IBOutlet weak var appDateTextField: NSTextField!
@@ -91,22 +91,9 @@ class ReleaseNotesViewController: NSViewController {
     
 	/// The app currently presented
 	private(set) var app: AppBundle? {
-		willSet {
-			if let app = self.app {
-				UpdateQueue.shared.removeObserver(self, for: app)
-			}
-		}
-		
 		didSet {
 			// Forward app
-			self.progressViewController.app = self.app
-			
-			// Add ourselfs as observer to the app
-			if let app = self.app {
-				UpdateQueue.shared.addObserver(self, to: app) { _ in
-					self.updateButtonAppearance()
-				}
-			}
+			self.updateButton.app = self.app
 		}
 	}
     
@@ -122,23 +109,8 @@ class ReleaseNotesViewController: NSViewController {
         constraint.isActive = true
 
 		self.setEmptyState()
-		
-		// Align progress view controller to update button
-		self.progressViewController.leadingProgressAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
-		self.progressViewController.displayCancelButton = false
 	}
 	
-	func updateButtonAppearance() {
-		if self.app?.isUpdating ?? false {
-			self.updateButton.title = NSLocalizedString("Cancel", comment: "Cancel button title to cancel the update of an app")
-			self.updateButton.action = #selector(cancelUpdate(_:))
-		} else {
-			self.updateButton.title = NSLocalizedString("Update", comment: "Update button title to update an app")
-			self.updateButton.action = #selector(update(_:))
-		}
-		
-		self.updateButton.target = self
-	}
     
     
     // MARK: - Actions
@@ -228,7 +200,6 @@ class ReleaseNotesViewController: NSViewController {
         self.appNewVersionTextField.stringValue = versionInformation.new
         
         self.appNewVersionTextField.isHidden = !app.updateAvailable
-        self.updateButton.isHidden = !app.updateAvailable
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
@@ -256,7 +227,6 @@ class ReleaseNotesViewController: NSViewController {
 		self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("No app selected.", comment: "Title of release notes empty state")
 
 		self.appInfoBackgroundView.isHidden = true
-		self.updateButton.isHidden = true
 	}
     
     /**
@@ -361,12 +331,5 @@ class ReleaseNotesViewController: NSViewController {
         self.loadContent(.error)
         self.content?.errorController?.show(error)
     }
-	
-	/// The view controller displaying update progress
-	private var progressViewController: UpdateProgressViewController {
-		return self.children.compactMap { controller -> UpdateProgressViewController? in
-			return controller as? UpdateProgressViewController
-		}.first!
-	}
-    
+	    
 }

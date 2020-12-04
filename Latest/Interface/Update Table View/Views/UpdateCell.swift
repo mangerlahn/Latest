@@ -33,11 +33,11 @@ class UpdateCell: NSTableCellView {
 	/// The constraint defining the leading inset of the content.
 	@IBOutlet private weak var leadingConstraint: NSLayoutConstraint!
 	
+	/// The button handling the update of the app.
+	@IBOutlet private weak var updateButton: UpdateButton!
+	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		
-		self.contentStackView?.addArrangedSubview(self.updateProgressViewController.view)
-		self.currentVersionTextField?.topAnchor.constraint(equalTo: self.updateProgressViewController.view.topAnchor).isActive = true
 		
 		if #available(macOS 11.0, *) {
 			self.leadingConstraint.constant = 0;
@@ -65,13 +65,10 @@ class UpdateCell: NSTableCellView {
 	
 	// MARK: - Update Progress
 	
-	/// The update progress controller that displays any progress made during app updates.
-	private let updateProgressViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "updateProgressViewControllerIdentifier") as! UpdateProgressViewController
-
 	/// The app represented by this cell
 	var app: AppBundle? {
 		didSet {
-			self.updateProgressViewController.app = self.app
+			self.updateButton.app = self.app
 			self.updateContents()
 		}
 	}
