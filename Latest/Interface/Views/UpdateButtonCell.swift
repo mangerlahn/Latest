@@ -98,7 +98,7 @@ class UpdateButtonCell: NSButtonCell {
 		case .indeterminate:
 			self.drawIndeterminateActivityIndicator(withFrame: cellFrame)
 		case .progress:
-			self.drawProgressIndicator(withFrame: cellFrame)
+			self.drawProgressIndicator(withFrame: cellFrame, controlView: controlView)
 		}
 		
 		super.drawInterior(withFrame: cellFrame, in: controlView)
@@ -151,7 +151,7 @@ class UpdateButtonCell: NSButtonCell {
 		path.stroke()
 	}
 	
-	private func drawProgressIndicator(withFrame frame: NSRect) {
+	private func drawProgressIndicator(withFrame frame: NSRect, controlView: NSView) {
 		let radius = frame.height * 0.4
 		let center = CGPoint(x: frame.midX, y: frame.midY)
 		
@@ -164,14 +164,16 @@ class UpdateButtonCell: NSButtonCell {
 		
 		// Draw background circle
 		NSColor.tertiaryLabelColor.setStroke()
-		var path = NSBezierPath(ovalIn: NSInsetRect(NSRect(origin: center, size: .zero), -radius, -radius))
+		var alignedRect = controlView.backingAlignedRect(NSInsetRect(NSRect(origin: center, size: .zero), -radius, -radius), options: .alignAllEdgesOutward)
+		var path = NSBezierPath(ovalIn: alignedRect)
 		path.lineWidth = 2.5
 		path.stroke()
 		
 		
 		// Draw pause block
 		tintColor.set()
-		NSBezierPath(roundedRect: NSInsetRect(NSRect(origin: center, size: .zero), -3, -3), xRadius: 1, yRadius: 1).fill()
+		alignedRect = controlView.backingAlignedRect(NSInsetRect(NSRect(origin: center, size: .zero), -3, -3), options: .alignAllEdgesOutward)
+		NSBezierPath(roundedRect: alignedRect, xRadius: 2, yRadius: 2).fill()
 		
 		var progress = self.updateProgress
 		if let animationProgress = self.displayLink?.progress {
@@ -183,7 +185,7 @@ class UpdateButtonCell: NSButtonCell {
 		}
 		
 		
-		let start: CGFloat = 270//(CGFloat.pi * 3) / 2
+		let start: CGFloat = 270
 		let end = start + CGFloat(360 * progress)
 		
 		print(progress, start, end)
