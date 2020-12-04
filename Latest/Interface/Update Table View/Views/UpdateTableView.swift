@@ -18,7 +18,7 @@ class UpdateTableView: NSTableView {
         let clickedPoint = self.convert(event.locationInWindow, from: nil)
         let row = self.row(at: clickedPoint)
 
-        if self.delegate?.tableView!(self, isGroupRow: row) ?? false {
+        if row < 0 || self.delegate?.tableView!(self, isGroupRow: row) ?? false {
             return nil
         }
         
