@@ -158,6 +158,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
+		// Prevent section headers from displaying row actions
+		if self.dataStore.isSectionHeader(at: row) { return [] }
+		
         if edge == .trailing {
 			// Don't provide an update action if the app has no update available
 			if !(self.dataStore.app(at: row)?.updateAvailable ?? false) {
