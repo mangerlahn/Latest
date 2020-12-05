@@ -271,26 +271,23 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
         
 		let index = self.rowIndex(forMenuItem: menuItem)
-		let hasIndex = index != -1
-		let app = (hasIndex ? self.dataStore.app(at: index) : nil)
+		guard index >= 0, let app = self.dataStore.app(at: index) else {
+			return false
+		}
 		
 		switch action {
 		case #selector(updateApp(_:)):
-			return hasIndex && !(app?.isUpdating ?? false)
+			return app.updateAvailable && !app.isUpdating
 		case #selector(showAppInFinder(_:)):
-            return hasIndex
+            return true
 		case #selector(ignoreApp(_:)):
-			if let app = app {
-				let isIgnored = self.dataStore.isAppIgnored(app)
-				menuItem.isHidden = isIgnored
-				return true
-			}
+			let isIgnored = self.dataStore.isAppIgnored(app)
+			menuItem.isHidden = isIgnored
+			return true
 		case #selector(unignoreApp(_:)):
-			if let app = app {
-				let isIgnored = self.dataStore.isAppIgnored(app)
-				menuItem.isHidden = !isIgnored
-				return true
-			}
+			let isIgnored = self.dataStore.isAppIgnored(app)
+			menuItem.isHidden = !isIgnored
+			return true
         default:
             ()
         }
