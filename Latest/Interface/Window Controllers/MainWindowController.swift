@@ -84,6 +84,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		// Restore state
         self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
         self.updateShowIgnoredUpdatesState(with: UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
+		self.updateShowUnsupportedUpdatesState(with: UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey))
     }
 
     
