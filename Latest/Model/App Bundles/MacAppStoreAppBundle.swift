@@ -23,12 +23,12 @@ class MacAppStoreAppBundle: AppBundle {
 	}
 	
 	/// The icon representing the source of the app.
-	override class var sourceIcon: NSImage {
+	override class var sourceIcon: NSImage? {
 		return NSImage(named: "appstore")!
 	}
 	
 	/// The name of the app's source.
-	override class var sourceName: String {
+	override class var sourceName: String? {
 		return NSLocalizedString("Mac App Store", comment: "The source name of apps loaded from the App Store.")
 	}
 	

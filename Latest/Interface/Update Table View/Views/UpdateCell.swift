@@ -48,18 +48,8 @@ class UpdateCell: NSTableCellView {
 	
     override var backgroundStyle: NSView.BackgroundStyle {
         didSet {
-            if self.backgroundStyle == .dark {
-                let color = NSColor.white
-                
-                self.currentVersionTextField?.textColor = color
-                self.newVersionTextField?.textColor = color
-            } else {
-                let color = NSColor.secondaryLabelColor
-                
-                self.currentVersionTextField?.textColor = color
-                self.newVersionTextField?.textColor = color
-            }
-        }
+			self.updateTextColors()
+		}
     }
 		
 	
@@ -92,11 +82,33 @@ class UpdateCell: NSTableCellView {
         self.newVersionTextField.stringValue = versionInformation.new
         self.newVersionTextField.isHidden = !app.updateAvailable
 		self.sourceIconImageView.image = type(of: app).sourceIcon
-		self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), type(of: app).sourceName)
+		if let sourceName = type(of: app).sourceName {
+			self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), sourceName)
+		}
 	}
 	    
 	private func updateTitle() {
 		self.nameTextField.attributedStringValue = self.app?.highlightedName(for: self.filterQuery) ?? NSAttributedString()
 	}
 	
+	private func updateTextColors() {
+		if self.backgroundStyle == .emphasized {
+			self.nameTextField.textColor = .alternateSelectedControlTextColor
+				self.currentVersionTextField.textColor = .alternateSelectedControlTextColor
+				self.newVersionTextField.textColor = .alternateSelectedControlTextColor
+		} else {
+			// Tint the name if the app is not supported
+			let supported: Bool
+			if let app = self.app {
+				supported = type(of: app).supported
+			} else {
+				supported = false
+			}
+			
+			self.nameTextField.textColor = (supported ? .labelColor : .tertiaryLabelColor)
+			self.currentVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
+			self.newVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
+		}
+
+	}
 }

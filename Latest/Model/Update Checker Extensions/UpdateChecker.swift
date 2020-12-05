@@ -150,7 +150,7 @@ class UpdateChecker {
 				return nil
 		}
 		
-		return ([MacAppStoreUpdateCheckerOperation.self, SparkleUpdateCheckerOperation.self] as [UpdateCheckerOperation.Type]).reduce(nil) { (result, operationType) -> Operation? in
+		return ([MacAppStoreUpdateCheckerOperation.self, SparkleUpdateCheckerOperation.self, UnsupportedUpdateCheckerOperation.self] as [UpdateCheckerOperation.Type]).reduce(nil) { (result, operationType) -> Operation? in
 			if result == nil {
 				return operationType.init(withAppURL: url, version: version, buildNumber: buildNumber, completionBlock: self.didCheck)
 			}
