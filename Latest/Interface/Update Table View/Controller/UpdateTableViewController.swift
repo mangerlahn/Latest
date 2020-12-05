@@ -140,6 +140,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	}
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return nil }
+		
 		switch self.apps[row] {
 		case .app(let app):
 			return self.contentCell(for: app)
@@ -149,6 +152,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return nil }
+		
 		if self.dataStore.isSectionHeader(at: row) {
 			guard let view = tableView.rowView(atRow: row, makeIfNecessary: false) else {
 				return UpdateGroupRowView()
@@ -161,14 +167,21 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return 0 }
 		return self.dataStore.isSectionHeader(at: row) ? 27 : 60
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return false }
         return self.dataStore.isSectionHeader(at: row)
     }
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return [] }
+
 		// Prevent section headers from displaying row actions
 		if self.dataStore.isSectionHeader(at: row) { return [] }
 		
@@ -199,6 +212,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return false }
+
         return !self.dataStore.isSectionHeader(at: row)
     }
     
