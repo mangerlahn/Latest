@@ -622,16 +622,41 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mrm-RY-uqi"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5b-Ys-0LZ">
-                                                                            <rect key="frame" x="58" y="3" width="214" height="44"/>
+                                                                            <rect key="frame" x="58" y="3" width="238" height="44"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="K1m-1T-h1l">
-                                                                                    <rect key="frame" x="-2" y="28" width="70" height="16"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="App Name" allowsEditingTextAttributes="YES" id="SVA-bh-cUe">
-                                                                                        <font key="font" metaFont="systemSemibold" size="13"/>
-                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                    </textFieldCell>
-                                                                                </textField>
+                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5k-OB-vOj">
+                                                                                    <rect key="frame" x="0.0" y="28" width="82" height="16"/>
+                                                                                    <subviews>
+                                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="K1m-1T-h1l">
+                                                                                            <rect key="frame" x="-2" y="0.0" width="70" height="16"/>
+                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="App Name" allowsEditingTextAttributes="YES" id="SVA-bh-cUe">
+                                                                                                <font key="font" metaFont="systemSemibold" size="13"/>
+                                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </textFieldCell>
+                                                                                        </textField>
+                                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPZ-kv-iMp">
+                                                                                            <rect key="frame" x="70" y="2" width="12" height="12"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="12" id="V7n-nI-hVn"/>
+                                                                                                <constraint firstAttribute="width" secondItem="aPZ-kv-iMp" secondAttribute="height" multiplier="1:1" id="XDE-8O-Zuj"/>
+                                                                                            </constraints>
+                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="appstore" id="jrf-7f-NB8"/>
+                                                                                            <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </imageView>
+                                                                                    </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstItem="aPZ-kv-iMp" firstAttribute="centerY" secondItem="K1m-1T-h1l" secondAttribute="centerY" id="hMi-yN-4fM"/>
+                                                                                    </constraints>
+                                                                                    <visibilityPriorities>
+                                                                                        <integer value="1000"/>
+                                                                                        <integer value="1000"/>
+                                                                                    </visibilityPriorities>
+                                                                                    <customSpacing>
+                                                                                        <real value="3.4028234663852886e+38"/>
+                                                                                        <real value="3.4028234663852886e+38"/>
+                                                                                    </customSpacing>
+                                                                                </stackView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NDE-WY-fgE">
                                                                                     <rect key="frame" x="-2" y="14" width="87" height="14"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Current Version" id="h6g-FG-nGh">
@@ -660,14 +685,6 @@
                                                                                 <real value="3.4028234663852886e+38"/>
                                                                             </customSpacing>
                                                                         </stackView>
-                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPZ-kv-iMp">
-                                                                            <rect key="frame" x="280" y="17" width="16" height="16"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="16" id="V7n-nI-hVn"/>
-                                                                                <constraint firstAttribute="width" secondItem="aPZ-kv-iMp" secondAttribute="height" multiplier="1:1" id="XDE-8O-Zuj"/>
-                                                                            </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="appstore" id="jrf-7f-NB8"/>
-                                                                        </imageView>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hnT-Rb-bdR" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
                                                                             <rect key="frame" x="297" y="8" width="80" height="32"/>
                                                                             <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gw7-NE-1lh" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
@@ -684,10 +701,8 @@
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
-                                                                        <integer value="1000"/>
                                                                     </visibilityPriorities>
                                                                     <customSpacing>
-                                                                        <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
