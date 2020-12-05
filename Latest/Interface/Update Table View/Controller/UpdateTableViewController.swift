@@ -47,6 +47,17 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			return self.dataStore.showIgnoredUpdates
 		}
     }
+	
+	/// Whether unsupported apps should be visible
+	var showUnsupportedUpdates: Bool {
+		set {
+			self.dataStore.showUnsupportedUpdates = newValue
+		}
+		
+		get {
+			return self.dataStore.showUnsupportedUpdates
+		}
+	}
     
     /// The detail view controller that shows the release notes
     weak var releaseNotesViewController : ReleaseNotesViewController?

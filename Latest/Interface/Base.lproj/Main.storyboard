@@ -323,6 +323,12 @@
                                                 <action selector="toggleShowIgnoredUpdates:" target="Ady-hI-5gd" id="V8P-XQ-TjM"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Show Unsupported Apps" id="6Cd-Qc-3Xc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="toggleShowUnsupportedUpdates:" target="Ady-hI-5gd" id="URA-qk-ZAz"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2cf-83-Jly"/>
                                         <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
                                             <connections>

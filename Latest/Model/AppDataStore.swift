@@ -74,6 +74,11 @@ class AppDataStore {
 			visibleApps = visibleApps.filter({ $0.updateAvailable })
 		}
 		
+		// Filter unsupported apps
+		if !self.showUnsupportedUpdates {
+			visibleApps = visibleApps.filter({ type(of: $0).supported })
+		}
+		
 		// Apply filter query
 		if let filterQuery = self.filterQuery {
 			visibleApps = visibleApps.filter({ $0.name.lowercased().contains(filterQuery) })
@@ -144,6 +149,13 @@ class AppDataStore {
 	
 	/// Whether ignored apps should be visible
 	var showIgnoredUpdates = false {
+		didSet {
+			self.scheduleFilterUpdate()
+		}
+	}
+	
+	/// Whether unsupported apps should be visible
+	var showUnsupportedUpdates = false {
 		didSet {
 			self.scheduleFilterUpdate()
 		}

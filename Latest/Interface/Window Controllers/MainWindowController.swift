@@ -20,6 +20,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	
     private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 	private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
+	private let ShowUnsupportedUpdatesKey = "ShowUnsupportedUpdatesKey"
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
@@ -110,6 +111,10 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		 self.updateShowIgnoredUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
 	 }
 	
+	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
+		self.updateShowUnsupportedUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey))
+	}
+	
 	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
 		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
     }
@@ -119,7 +124,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	}
     
     
-    // MARK: Menu Item Validation
+    // MARK: Menu Item ShowIgnoredUpdatesKeytion
 
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else {
@@ -148,6 +153,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
                 menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
 			case #selector(toggleShowIgnoredUpdates(_:)):
                 menuItem.state = self.listViewController.showIgnoredUpdates ? .on : .off
+			case #selector(toggleShowUnsupportedUpdates(_:)):
+				menuItem.state = self.listViewController.showUnsupportedUpdates ? .on : .off
             default:
                 ()
             }
@@ -199,7 +206,12 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     private func updateShowIgnoredUpdatesState(with newState: Bool) {
         self.listViewController.showIgnoredUpdates = newState
         UserDefaults.standard.set(newState, forKey: ShowIgnoredUpdatesKey)
-    }
+	}
+	
+	private func updateShowUnsupportedUpdatesState(with newState: Bool) {
+		self.listViewController.showUnsupportedUpdates = newState
+		UserDefaults.standard.set(newState, forKey: ShowUnsupportedUpdatesKey)
+	}
 	
     private func showReleaseNotes(_ show: Bool, animated: Bool) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
