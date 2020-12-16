@@ -1,3 +1,6 @@
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"(%@)" = "(%@)";
+
 /* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
 "An error occurred while updating %@." = "Ein Fehler ist während der Aktualisierung von %@ aufgetreten.";
 
@@ -7,8 +10,7 @@
 /* Table Section Header for available updates */
 "Available Updates" = "Verfügbare Updates";
 
-/* Cancel button in an update dialogue
-   Cancel button title to cancel the update of an app */
+/* Cancel button in an update dialogue */
 "Cancel" = "Abbrechen";
 
 /* Update progress state of cancelling an update */
@@ -17,11 +19,11 @@
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
 "Downloading %@ of %@" = "%1$@ von %2$@ herunterladen";
 
+/* Description of button that opens an error dialogue. */
+"Error while updating app" = "App konnte nicht aktualisiert werden";
+
 /* Update progress state of extracting the downloaded update */
 "Extracting Update" = "Update entpacken";
-
-/* MenuItem Hide Version Details */
-"Hide Version Details" = "Versionsdetails ausblenden";
 
 /* Touch Bar section title for ignored apps */
 "Ignored" = "Ignoriert";
@@ -32,14 +34,20 @@
 /* Update progress state of initializing an update */
 "Initializing" = "Initialisieren";
 
-/* Touch Bar section title for installed updates */
+/* Touch Bar section title for installed apps */
 "Installed" = "Installiert";
 
-/* Table Section Header for already installed updates */
+/* Table Section Header for already installed apps */
 "Installed Apps" = "Installierte Apps";
 
 /* Update progress state of installing an update */
 "Installing" = "Installieren";
+
+/* App name as title of the main window. */
+"Latest" = "Latest";
+
+/* The source name of apps loaded from the App Store. */
+"Mac App Store" = "Mac App Store";
 
 /* New Version String */
 "New version: %@" = "Neue Version: %@";
@@ -56,6 +64,9 @@
 /* number of updates available */
 "NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
 
+/* Title of button that opens the app. Should be written uppercase if appropriate. */
+"OPEN" = "ÖFFNEN";
+
 /* Error description when no update was found for a particular app. */
 "Please sign in to the Mac App Store to update this app." = "Bitte melde dich im Mac App Store an, um das Update für diese App zu laden.";
 
@@ -68,18 +79,23 @@
 /* Revea in Finder Row action */
 "Show in Finder" = "Im Finder zeigen";
 
-/* MenuItem Show Version Details */
-"Show Version Details" = "Versionsdetails anzeigen";
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"Source: %@" = "Quelle: %@";
 
 /* No comment provided by engineer. */
 "Up to Date!" = "Alles aktuell!";
 
-/* Update button title to update an app
-   Update String */
+/* Update String */
 "Update" = "Aktualisieren";
+
+/* Title of button that updates the app. Should be written uppercase if appropriate. */
+"UPDATE" = "AKTUALISIEREN";
 
 /* Update progress state of waiting to start an update */
 "Waiting" = "Warten";
+
+/* The source name for apps loaded from third-party websites. */
+"Web" = "Web";
 
 /* Current Version String */
 "Your version: %@" = "Installierte Version: %@";
