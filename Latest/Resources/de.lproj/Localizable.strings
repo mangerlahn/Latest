@@ -54,7 +54,7 @@
 "No update was found for this app." = "Es wurde kein Update für diese App gefunden.";
 
 /* number of updates available */
-"number_of_updates_available" = "number_of_updates_available";
+"NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
 
 /* Error description when no update was found for a particular app. */
 "Please sign in to the Mac App Store to update this app." = "Bitte melde dich im Mac App Store an, um das Update für diese App zu laden.";

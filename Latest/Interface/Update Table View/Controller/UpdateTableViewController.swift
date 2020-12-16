@@ -393,7 +393,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         } else {
             NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: count as NSNumber)
             
-            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
+            let format = NSLocalizedString("NumberOfUpdatesAvailable", comment: "number of updates available")
             statusText = String.localizedStringWithFormat(format, count)
         }
         
