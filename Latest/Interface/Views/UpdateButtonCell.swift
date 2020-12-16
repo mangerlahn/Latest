@@ -185,11 +185,10 @@ class UpdateButtonCell: NSButtonCell {
 		}
 		
 		
+		// Draw the progress bar
 		let start: CGFloat = 270
 		let end = start + CGFloat(360 * progress)
 		
-		print(progress, start, end)
-
 		path = NSBezierPath()
 		path.appendArc(withCenter: center, radius: radius, startAngle: start, endAngle: end)
 				

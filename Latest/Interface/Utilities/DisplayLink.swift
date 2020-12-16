@@ -87,7 +87,7 @@ class DisplayLink: NSObject {
         
         DispatchQueue.main.async {
 			self.progress = self._currentFrame / self._frames
-			if let _ = self.duration, self.progress >= 1 {
+			if self.duration != nil, self.progress >= 1 {
                 self.completionHandler?()
                 self.stop()
             }
