@@ -138,25 +138,43 @@ class UpdateChecker {
 	}
 	
 	private func updateCheckOperation(forAppAt url: URL) -> Operation? {
-		let contentURL = url.appendingPathComponent("Contents")
-		
-		// Check, if the changed file was the Info.plist
-		guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
-			.filter({ $0.pathExtension == "plist" }),
-			let plistURL = plists.first,
-			let infoDict = NSDictionary(contentsOf: plistURL),
-			let version = infoDict["CFBundleShortVersionString"] as? String,
-			let buildNumber = infoDict["CFBundleVersion"] as? String else {
-				return nil
+		// Extract version information from the app
+		guard let versionInformation = self.versionInformation(forAppAt: url) else {
+			return nil
 		}
 		
 		return ([MacAppStoreUpdateCheckerOperation.self, SparkleUpdateCheckerOperation.self, UnsupportedUpdateCheckerOperation.self] as [UpdateCheckerOperation.Type]).reduce(nil) { (result, operationType) -> Operation? in
 			if result == nil {
-				return operationType.init(withAppURL: url, version: version, buildNumber: buildNumber, completionBlock: self.didCheck)
+				return operationType.init(withAppURL: url, version: versionInformation.version, buildNumber: versionInformation.buildNumber, completionBlock: self.didCheck)
 			}
 			
 			return result
 		}
+	}
+	
+	private func versionInformation(forAppAt url: URL) -> (version: String, buildNumber: String)? {
+		let versionInformation: (URL) -> (version: String, buildNumber: String)? = { url in
+			if let infoDict = NSDictionary(contentsOf: url.appendingPathComponent("Info").appendingPathExtension("plist")),
+			   let version = infoDict["CFBundleShortVersionString"] as? String,
+			   let buildNumber = infoDict["CFBundleVersion"] as? String {
+					return (version, buildNumber)
+			}
+			
+			return nil
+		}
+		
+		// Classic macOS bundle with Contents folder containing the Info.plist
+		if let info = versionInformation(url.appendingPathComponent("Contents")) {
+			return (info.version, info.buildNumber)
+		}
+
+		// Wrapped iOS bundle that can run on ARM Macs
+		else if let app = try? FileManager.default.contentsOfDirectory(at: url.appendingPathComponent("Wrapper"), includingPropertiesForKeys: nil).filter({ $0.pathExtension == "app" }).first,
+				let info = versionInformation(app) {
+			return (info.version, info.buildNumber)
+		}
+		
+		return nil
 	}
 	
 	private func performUpdateCheck(with operations: [Operation]) {
