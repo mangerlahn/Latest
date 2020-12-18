@@ -52,14 +52,19 @@ class AppBundle : NSObject {
     /// The newest information available for this app
     var newestVersion: UpdateInfo
 	
+	/// Whether the app can be updated within Latest.
+	class var supported: Bool {
+		return self.sourceIcon != nil
+	}
+	
 	/// The icon representing the source of the app.
-	class var sourceIcon: NSImage {
+	class var sourceIcon: NSImage? {
 		assertionFailure("Must be overridden by subclasses.")
 		return NSImage()
 	}
 	
 	/// The name of the app's source.
-	class var sourceName: String {
+	class var sourceName: String? {
 		assertionFailure("Must be overridden by subclasses.")
 		return ""
 	}
@@ -124,7 +129,7 @@ class AppBundle : NSObject {
 		let name = NSMutableAttributedString(string: self.name)
 		
 		if let queryString = query, let selectedRange = self.name.lowercased().range(of: queryString.lowercased()) {
-			name.addAttribute(.foregroundColor, value: NSColor.tertiaryLabelColor, range: NSMakeRange(0, name.length))
+			name.addAttribute(.foregroundColor, value: NSColor(named: "FadedSearchText")!, range: NSMakeRange(0, name.length))
 			name.addAttribute(.foregroundColor, value: NSColor.labelColor, range: NSRange(selectedRange, in: self.name))
 		}
 		

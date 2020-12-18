@@ -46,7 +46,7 @@ class UpdateChecker {
 	
 	private init() {
 		// Instantiate the folder listener to track changes to the Applications folder
-		if let url = self.applicationURL {
+		for url in Self.applicationURLs {
 			self.folderListener = FolderUpdateListener(url: url)
 			self.folderListener?.resumeTracking()
 		}
@@ -67,15 +67,15 @@ class UpdateChecker {
     private var folderListener : FolderUpdateListener?
     
     /// The url of the /Applications folder on the users Mac
-    var applicationURL : URL? {
-		let applicationURLList = FileManager.default.urls(for: .applicationDirectory, in: .localDomainMask)
-        
-        return applicationURLList.first
+    static var applicationURLs : [URL] {
+		return [FileManager.SearchPathDomainMask.localDomainMask, .userDomainMask].flatMap { (domainMask) -> [URL] in
+			return FileManager.default.urls(for: .applicationDirectory, in: domainMask)
+		}
     }
     
     /// The path of the users /Applications folder
-    private var applicationPath : String {
-        return applicationURL?.path ?? "/Applications/"
+    private static var applicationPaths : [String] {
+		return applicationURLs.map({ $0.path })
     }
         	
 	/// The queue update checks are processed on.
@@ -124,7 +124,7 @@ class UpdateChecker {
 			let url = URL(fileURLWithPath: path)
 			
 			// Only allow apps in the application folder and outside excluded subfolders
-			if !url.path.hasPrefix(self.applicationPath) || Self.excludedSubfolders.first(where: { url.path.contains($0) }) != nil {
+			if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
 				return nil
 			}
 			
@@ -138,25 +138,43 @@ class UpdateChecker {
 	}
 	
 	private func updateCheckOperation(forAppAt url: URL) -> Operation? {
-		let contentURL = url.appendingPathComponent("Contents")
-		
-		// Check, if the changed file was the Info.plist
-		guard let plists = try? FileManager.default.contentsOfDirectory(at: contentURL, includingPropertiesForKeys: nil)
-			.filter({ $0.pathExtension == "plist" }),
-			let plistURL = plists.first,
-			let infoDict = NSDictionary(contentsOf: plistURL),
-			let version = infoDict["CFBundleShortVersionString"] as? String,
-			let buildNumber = infoDict["CFBundleVersion"] as? String else {
-				return nil
+		// Extract version information from the app
+		guard let versionInformation = self.versionInformation(forAppAt: url) else {
+			return nil
 		}
 		
-		return ([MacAppStoreUpdateCheckerOperation.self, SparkleUpdateCheckerOperation.self] as [UpdateCheckerOperation.Type]).reduce(nil) { (result, operationType) -> Operation? in
+		return ([MacAppStoreUpdateCheckerOperation.self, SparkleUpdateCheckerOperation.self, UnsupportedUpdateCheckerOperation.self] as [UpdateCheckerOperation.Type]).reduce(nil) { (result, operationType) -> Operation? in
 			if result == nil {
-				return operationType.init(withAppURL: url, version: version, buildNumber: buildNumber, completionBlock: self.didCheck)
+				return operationType.init(withAppURL: url, version: versionInformation.version, buildNumber: versionInformation.buildNumber, completionBlock: self.didCheck)
 			}
 			
 			return result
 		}
+	}
+	
+	private func versionInformation(forAppAt url: URL) -> (version: String, buildNumber: String)? {
+		let versionInformation: (URL) -> (version: String, buildNumber: String)? = { url in
+			if let infoDict = NSDictionary(contentsOf: url.appendingPathComponent("Info").appendingPathExtension("plist")),
+			   let version = infoDict["CFBundleShortVersionString"] as? String,
+			   let buildNumber = infoDict["CFBundleVersion"] as? String {
+					return (version, buildNumber)
+			}
+			
+			return nil
+		}
+		
+		// Classic macOS bundle with Contents folder containing the Info.plist
+		if let info = versionInformation(url.appendingPathComponent("Contents")) {
+			return (info.version, info.buildNumber)
+		}
+
+		// Wrapped iOS bundle that can run on ARM Macs
+		else if let app = try? FileManager.default.contentsOfDirectory(at: url.appendingPathComponent("Wrapper"), includingPropertiesForKeys: nil).filter({ $0.pathExtension == "app" }).first,
+				let info = versionInformation(app) {
+			return (info.version, info.buildNumber)
+		}
+		
+		return nil
 	}
 	
 	private func performUpdateCheck(with operations: [Operation]) {

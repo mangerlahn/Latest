@@ -23,26 +23,21 @@ class MacAppStoreAppBundle: AppBundle {
 	}
 	
 	/// The icon representing the source of the app.
-	override class var sourceIcon: NSImage {
+	override class var sourceIcon: NSImage? {
 		return NSImage(named: "appstore")!
 	}
 	
 	/// The name of the app's source.
-	override class var sourceName: String {
+	override class var sourceName: String? {
 		return NSLocalizedString("Mac App Store", comment: "The source name of apps loaded from the App Store.")
 	}
 	
 	
 	// MARK: - Actions
 	
-	override func open() {
-		// Should preferably open the Mac App Store
-		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
-	}
-	
 	override func update() {
 		// This is a temporary workaround to disable direct updates of Mac App Store apps, which does not work anymore.
-		self.open()
+		NSWorkspace.shared.open(self.appStoreURL ?? self.url)
 		// UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(app: self))
 	}
 	
