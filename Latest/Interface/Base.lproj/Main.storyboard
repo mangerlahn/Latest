@@ -415,7 +415,7 @@
                     <window key="window" identifier="MainWindow" title="Latest" subtitle="3 Updates Found" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="549" y="334" width="1004" height="495"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
                             <allowedToolbarItems>
@@ -462,8 +462,7 @@
                             <touchBarItem id="LKh-ep-17G">
                                 <viewController key="viewController" id="ivi-vL-a0q">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-aF-0Fk">
-                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarSearchTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JIr-yU-jL8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -479,8 +478,7 @@
                             <touchBarItem id="F32-ki-hFv">
                                 <viewController key="viewController" id="vt9-Kt-f18">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-N5-XxD">
-                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SMd-ka-re6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -492,26 +490,9 @@
                                 </viewController>
                                 <size key="designTimeSize" width="72" height="30"/>
                             </touchBarItem>
-                            <touchBarItem id="mTy-QU-Tio">
-                                <viewController key="viewController" id="Q6i-e8-TIE">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WAI-ZK-0O7">
-                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ewt-FG-dUz">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="openAll:" target="Oky-zY-oP4" id="VUU-5K-pia"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                                <size key="designTimeSize" width="78" height="30"/>
-                            </touchBarItem>
                         </touchBarItems>
                     </touchBar>
                     <connections>
-                        <outlet property="openAllAppsTouchBarButton" destination="WAI-ZK-0O7" id="5qH-NY-wDl"/>
                         <outlet property="progressIndicator" destination="rtV-DA-Kd6" id="70r-Sv-xjH"/>
                         <outlet property="reloadButton" destination="FM4-aR-lhK" id="eb4-jN-US4"/>
                         <outlet property="reloadTouchBarButton" destination="XDV-N5-XxD" id="tCc-NF-xZ1"/>
@@ -1155,7 +1136,6 @@
     </scenes>
     <resources>
         <image name="NSRefreshTemplate" width="14" height="16"/>
-        <image name="NSTouchBarIconViewTemplate" width="23" height="14"/>
         <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
         <image name="NSTouchBarSearchTemplate" width="14" height="15"/>
         <image name="appstore" width="16" height="16"/>
