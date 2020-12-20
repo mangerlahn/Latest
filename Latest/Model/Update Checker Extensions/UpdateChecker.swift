@@ -68,8 +68,13 @@ class UpdateChecker {
     
     /// The url of the /Applications folder on the users Mac
     static var applicationURLs : [URL] {
-		return [FileManager.SearchPathDomainMask.localDomainMask, .userDomainMask].flatMap { (domainMask) -> [URL] in
-			return FileManager.default.urls(for: .applicationDirectory, in: domainMask)
+		let fileManager = FileManager.default
+		let urls = [FileManager.SearchPathDomainMask.localDomainMask, .userDomainMask].flatMap { (domainMask) -> [URL] in
+			return fileManager.urls(for: .applicationDirectory, in: domainMask)
+		}
+		
+		return urls.filter { url -> Bool in
+			return fileManager.fileExists(atPath: url.path)
 		}
     }
     
