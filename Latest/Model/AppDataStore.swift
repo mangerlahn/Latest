@@ -66,6 +66,7 @@ class AppDataStore {
 	
 	/// Sorts and filters all available apps based on the given filter criteria.
 	private func filterApps() {
+		objc_sync_enter(self);
 		var visibleApps = self.apps
 		let ignoredApps = visibleApps.filter({ self.ignoredAppIdentifiers.contains($0.bundleIdentifier) })
 		
@@ -111,6 +112,7 @@ class AppDataStore {
 		}
 		
 		self.filteredApps = availableUpdates + installedUpdates + ignoredUpdates
+		objc_sync_exit(self);
 	}
 	
 	/// The cached count of apps with updates available
