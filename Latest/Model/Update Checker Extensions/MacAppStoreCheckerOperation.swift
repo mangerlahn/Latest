@@ -35,8 +35,9 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
         let appBundle = Bundle(path: appURL.path)
         let fileManager = FileManager.default
         
+		// Mac Apps contain a receipt, iOS apps are wrapped inside a macOS bundle, but without an actual purchase receipt
         guard let receiptPath = appBundle?.appStoreReceiptURL?.path,
-                  fileManager.fileExists(atPath: receiptPath) else { return nil }
+			  fileManager.fileExists(atPath: receiptPath) || receiptPath.contains("WrappedBundle") else { return nil }
         
         // App is from Mac App Store
         let languageCode = Locale.current.regionCode ?? "US"

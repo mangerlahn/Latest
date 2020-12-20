@@ -9,17 +9,6 @@
 import Cocoa
 
 /**
- The delegate for handling the visibility of an detail view
- */
-protocol UpdateListViewControllerDelegate : class {
-    /// Implementing class should show the detail view
-    func shouldExpandDetail()
-    
-    /// Implementing class should hide the detail view
-    func shouldCollapseDetail()
-}
-
-/**
  This is the class handling the update process and displaying its results
  */
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
@@ -58,9 +47,17 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			return self.dataStore.showIgnoredUpdates
 		}
     }
-    
-    /// The delegate for handling the visibility of the detail view
-    weak var delegate : UpdateListViewControllerDelegate?
+	
+	/// Whether unsupported apps should be visible
+	var showUnsupportedUpdates: Bool {
+		set {
+			self.dataStore.showUnsupportedUpdates = newValue
+		}
+		
+		get {
+			return self.dataStore.showUnsupportedUpdates
+		}
+	}
     
     /// The detail view controller that shows the release notes
     weak var releaseNotesViewController : ReleaseNotesViewController?
@@ -80,8 +77,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
@@ -97,6 +92,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			
 			self.updateEmtpyStateVisibility()
 			self.updateTitleAndBatch()
+		}
+		
+		if #available(macOS 11, *) {
+			self.updatesLabel.isHidden = true
 		}
     }
     
@@ -118,18 +117,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: Table View Delegate
 	
 	private func contentCell(for app: AppBundle) -> NSView? {
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell,
-            let versionInformation = app.localizedVersionInformation else {
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell else {
             return nil
         }
         
-        cell.nameTextField?.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
-        cell.currentVersionTextField?.stringValue = versionInformation.current
-        cell.newVersionTextField?.stringValue = versionInformation.new
-        
-        cell.newVersionTextField?.isHidden = !app.updateAvailable
 		cell.app = app
-        
+		cell.filterQuery = self.dataStore.filterQuery
+		
         IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
         }
@@ -137,31 +131,30 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         return cell
 	}
 	
-	private func headerCell(of type: AppDataStore.Section) -> NSView? {
-		let view = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellSectionIdentifier"), owner: self) as? NSTableCellView
+	private func headerCell(of section: AppDataStore.Section) -> NSView? {
+		let view = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellSectionIdentifier"), owner: self) as? UpdateGroupCellView
 		
-		switch type {
-		case .updateAvailable:
-			view?.textField?.stringValue = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
-		case .installed:
-			view?.textField?.stringValue = NSLocalizedString("Installed Apps", comment: "Table Section Header for already installed apps")
-		case .ignored:
-			view?.textField?.stringValue = NSLocalizedString("Ignored Apps", comment: "Table Section Header for ignored apps")
-		}
+		view?.section = section
 		
 		return view
 	}
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return nil }
+		
 		switch self.apps[row] {
 		case .app(let app):
 			return self.contentCell(for: app)
-		case .section(let type):
-			return self.headerCell(of: type)
+		case .section(let section):
+			return self.headerCell(of: section)
 		}
     }
     
     func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return nil }
+		
 		if self.dataStore.isSectionHeader(at: row) {
 			guard let view = tableView.rowView(atRow: row, makeIfNecessary: false) else {
 				return UpdateGroupRowView()
@@ -174,15 +167,30 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return -1 }
 		return self.dataStore.isSectionHeader(at: row) ? 27 : 60
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return false }
         return self.dataStore.isSectionHeader(at: row)
     }
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return [] }
+
+		// Prevent section headers from displaying row actions
+		if self.dataStore.isSectionHeader(at: row) { return [] }
+		
         if edge == .trailing {
+			// Don't provide an update action if the app has no update available
+			if !(self.dataStore.app(at: row)?.updateAvailable ?? false) {
+				return []
+			}
+			
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
                 self.updateApp(atIndex: row)
             })
@@ -204,6 +212,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+		// Ensure the index is valid
+		guard row >= 0 && row < self.apps.count else { return false }
+
         return !self.dataStore.isSectionHeader(at: row)
     }
     
@@ -223,7 +234,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Triggers the update checking mechanism
     func checkForUpdates() {
 		UpdateChecker.shared.run()
-        self.becomeFirstResponder()
+		self.view.window?.makeFirstResponder(self)
     }
 
     /**
@@ -233,10 +244,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func selectApp(at index: Int?) {
         guard let index = index, index >= 0 else {
             self.tableView.deselectAll(nil)
-			
-            if #available(OSX 10.12.2, *) {
-                self.scrubber?.animator().selectedIndex = -1
-            }
+			self.scrubber?.animator().selectedIndex = -1
 			
 			// Clear release notes
 			if let detailViewController = self.releaseNotesViewController {
@@ -246,10 +254,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
-        if #available(OSX 10.12.2, *) {
-            self.scrubber?.animator().scrollItem(at: index, to: .center)
-            self.scrubber?.animator().selectedIndex = index
-        }
+		self.scrubber?.animator().scrollItem(at: index, to: .center)
+		self.scrubber?.animator().selectedIndex = index
         
         self.tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
         self.tableView.scrollRowToVisible(index)
@@ -258,7 +264,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
-        self.delegate?.shouldExpandDetail()
 		self.releaseNotesViewController?.display(content: app.newestVersion.releaseNotes, for: app)
     }
     
@@ -293,26 +298,23 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
         
 		let index = self.rowIndex(forMenuItem: menuItem)
-		let hasIndex = index != -1
-		let app = (hasIndex ? self.dataStore.app(at: index) : nil)
+		guard index >= 0, let app = self.dataStore.app(at: index) else {
+			return false
+		}
 		
 		switch action {
 		case #selector(updateApp(_:)):
-			return hasIndex && !(app?.isUpdating ?? false)
+			return app.updateAvailable && !app.isUpdating
 		case #selector(showAppInFinder(_:)):
-            return hasIndex
+            return true
 		case #selector(ignoreApp(_:)):
-			if let app = app {
-				let isIgnored = self.dataStore.isAppIgnored(app)
-				menuItem.isHidden = isIgnored
-				return true
-			}
+			let isIgnored = self.dataStore.isAppIgnored(app)
+			menuItem.isHidden = isIgnored
+			return true
 		case #selector(unignoreApp(_:)):
-			if let app = app {
-				let isIgnored = self.dataStore.isAppIgnored(app)
-				menuItem.isHidden = !isIgnored
-				return true
-			}
+			let isIgnored = self.dataStore.isAppIgnored(app)
+			menuItem.isHidden = !isIgnored
+			return true
         default:
             ()
         }
@@ -383,20 +385,25 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func updateTitleAndBatch() {
         let count = self.dataStore.countOfAvailableUpdates
-        
+		let statusText: String
+		
         if count == 0 {
             NSApplication.shared.dockTile.badgeLabel = ""
-            self.updatesLabel.stringValue = NSLocalizedString("Up to Date!", comment: "")
+            statusText = NSLocalizedString("Up to Date!", comment: "")
         } else {
             NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: count as NSNumber)
             
-            let format = NSLocalizedString("number_of_updates_available", comment: "number of updates available")
-            self.updatesLabel.stringValue = String.localizedStringWithFormat(format, count)
+            let format = NSLocalizedString("NumberOfUpdatesAvailable", comment: "number of updates available")
+            statusText = String.localizedStringWithFormat(format, count)
         }
         
-        if #available(OSX 10.12.2, *) {
-            self.scrubber?.reloadData()
-        }
+		self.scrubber?.reloadData()
+		
+		if #available(macOS 11, *) {
+			self.view.window?.subtitle = statusText
+		} else {
+			self.updatesLabel.stringValue = statusText
+		}
     }
 	
 	/// Updates the contents of the table view

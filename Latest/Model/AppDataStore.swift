@@ -66,12 +66,18 @@ class AppDataStore {
 	
 	/// Sorts and filters all available apps based on the given filter criteria.
 	private func filterApps() {
+		objc_sync_enter(self);
 		var visibleApps = self.apps
 		let ignoredApps = visibleApps.filter({ self.ignoredAppIdentifiers.contains($0.bundleIdentifier) })
 		
 		// Filter installed updates
 		if !self.showInstalledUpdates {
 			visibleApps = visibleApps.filter({ $0.updateAvailable })
+		}
+		
+		// Filter unsupported apps
+		if !self.showUnsupportedUpdates {
+			visibleApps = visibleApps.filter({ type(of: $0).supported })
 		}
 		
 		// Apply filter query
@@ -92,20 +98,21 @@ class AppDataStore {
 		// Build final list. This is a very inefficient solution. Find a better one
 		var availableUpdates = filteredApps.filter({ $0.updateAvailable && !self.isAppIgnored($0) }).map({ Entry.app($0) })
 		if !availableUpdates.isEmpty {
-			availableUpdates = [.section(.updateAvailable)] + availableUpdates
+			availableUpdates = [.section(Self.updatableAppsSection(withCount: availableUpdates.count))] + availableUpdates
 		}
 		
 		var installedUpdates = filteredApps.filter({ !$0.updateAvailable && !self.isAppIgnored($0) }).map({ Entry.app($0) })
 		if !installedUpdates.isEmpty {
-			installedUpdates = [.section(.installed)] + installedUpdates
+			installedUpdates = [.section(Self.updatedAppsSection(withCount: installedUpdates.count))] + installedUpdates
 		}
 		
 		var ignoredUpdates = filteredApps.filter({ self.isAppIgnored($0) }).map({ Entry.app($0) })
 		if !ignoredUpdates.isEmpty {
-			ignoredUpdates = [.section(.ignored)] + ignoredUpdates
+			ignoredUpdates = [.section(Self.ignoredAppsSection(withCount: ignoredUpdates.count))] + ignoredUpdates
 		}
 		
 		self.filteredApps = availableUpdates + installedUpdates + ignoredUpdates
+		objc_sync_exit(self);
 	}
 	
 	/// The cached count of apps with updates available
@@ -144,6 +151,13 @@ class AppDataStore {
 	
 	/// Whether ignored apps should be visible
 	var showIgnoredUpdates = false {
+		didSet {
+			self.scheduleFilterUpdate()
+		}
+	}
+	
+	/// Whether unsupported apps should be visible
+	var showUnsupportedUpdates = false {
 		didSet {
 			self.scheduleFilterUpdate()
 		}
@@ -266,6 +280,27 @@ class AppDataStore {
 	private func scheduleFilterUpdate() {
 		self.filterScheduler.add(data: 1)
 	}
+	
+	
+	// MARK: - Section Builder
+	
+	private static func updatableAppsSection(withCount numberOfApps: Int) -> Section {
+		let title = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
+		let shortTitle = NSLocalizedString("Available", comment: "Touch Bar section title for available updates")
+		return Section(title: title, shortTitle: shortTitle, numberOfApps: numberOfApps)
+	}
+	
+	private static func updatedAppsSection(withCount numberOfApps: Int) -> Section {
+		let title = NSLocalizedString("Installed Apps", comment: "Table Section Header for already installed apps")
+		let shortTitle = NSLocalizedString("Installed", comment: "Touch Bar section title for installed apps")
+		return Section(title: title, shortTitle: shortTitle, numberOfApps: numberOfApps)
+	}
+
+	private static func ignoredAppsSection(withCount numberOfApps: Int) -> Section {
+		let title = NSLocalizedString("Ignored Apps", comment: "Table Section Header for ignored apps")
+		let shortTitle = NSLocalizedString("Ignored", comment: "Touch Bar section title for ignored apps")
+		return Section(title: title, shortTitle: shortTitle, numberOfApps: numberOfApps)
+	}
 
 }
 
@@ -282,17 +317,30 @@ extension AppDataStore {
 		
 	}
 	
-	/// Defines section headers.
-	enum Section {
+	/// A section used for grouping multiple results.
+	struct Section: Equatable, Hashable {
 		
-		/// The section containing apps that have an update available.
-		case updateAvailable
+		/// The title of the section.
+		let title: String
 		
-		/// The section containing all apps that both don't have updates and are not ignored.
-		case installed
+		/// A shorter representation of the sections title.
+		let shortTitle: String
 		
-		/// The section containing apps that are ignored.
-		case ignored
+		/// The number of apps this section encloses.
+		let numberOfApps: Int
+		
+		
+		// MARK: - Protocol Overrides
+		
+		/// Exclude the number of apps from the function
+		static func ==(lhs: Section, rhs: Section) -> Bool {
+			return lhs.title == rhs.title
+		}
+		
+		/// Exclude the number of apps from the function
+		func hash(into hasher: inout Hasher) {
+			hasher.combine(title)
+		}
 		
 	}
 }

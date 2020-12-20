@@ -1,8 +1,8 @@
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
-"00n-xr-jcQ.title" = "Aktualisieren";
+"00n-xr-jcQ.title" = "Mise à jour";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
-"1Gu-Ep-ZWZ.title" = "Suchen und Ersetzen …";
+"1Gu-Ep-ZWZ.title" = "Rechercher et remplacer…";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Latest";
@@ -11,253 +11,253 @@
 "1Z9-ws-FMW.title" = "Menu";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Text Cell";
+"3GZ-aM-hwz.title" = "Cellule de texte";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
-"4J7-dP-txa.title" = "Vollbildmodus";
+"4J7-dP-txa.title" = "Activer le mode plein écran";
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Latest beenden";
+"4sb-4s-VLi.title" = "Quitter Latest";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
-"4vf-ia-dzo.title" = "Auf Aktualisierungen prüfen… ";
+"4vf-ia-dzo.title" = "Vérifier les mises à jour…";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
-"5cs-kb-AQj.title" = "Kopieren";
+"5cs-kb-AQj.title" = "Copier";
 
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "Über Latest";
+"5kV-Vb-QxS.title" = "À propos de Latest";
 
 /* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Nicht unterstützte Apps anzeigen";
+"6Cd-Qc-3Xc.title" = "Afficher les applications non prises en charge";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
 "6va-ld-AXD.title" = "Label";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Neue Version";
+"6YS-DP-XWA.title" = "Nouvelle version";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
-"7c2-6r-Saw.title" = "Latest-Website besuchen";
+"7c2-6r-Saw.title" = "Visiter le site web de Latest";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
-"63s-Hc-NQY.title" = "Rechtschreibung autom. korrigieren";
+"63s-Hc-NQY.title" = "Corriger l'orthographe automatiquement";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
-"65u-P1-4rd.title" = "Datenerkennung";
+"65u-P1-4rd.title" = "Détecteurs de données";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
-"aCF-1x-0c1.title" = "Suchen";
+"aCF-1x-0c1.title" = "Trouver";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
-"Ah1-jH-gCv.title" = "Widerrufen";
+"Ah1-jH-gCv.title" = "Annuler";
 
 /* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
 "Ake-Tt-cX3.title" = "Menu";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Fenster";
+"aUF-d1-5bR.title" = "Fenêtre";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Hauptmenü";
+"AYu-sK-qS6.title" = "Menu principal";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
-"bib-Uj-vzu.title" = "Ablage";
+"bib-Uj-vzu.title" = "Fichier";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
-"bm3-iR-6vZ.title" = "Im Finder zeigen";
+"bm3-iR-6vZ.title" = "Révéler dans le Finder";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Einstellungen… ";
+"BOF-NM-1cW.title" = "Préférences…";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
-"c4C-I9-Gd0.title" = "Auf Aktualisierungen prüfen… ";
+"c4C-I9-Gd0.title" = "Vérifier les mises à jour…";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
-"Cm3-IX-Kw4.title" = "Release Notes konnten nicht geladen werden!";
+"Cm3-IX-Kw4.title" = "Impossible de charger les notes de version !";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
-"cWB-Qy-jEV.title" = "Sprachausgabe";
+"cWB-Qy-jEV.title" = "Voix";
 
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
-"D2N-5U-W7Z.title" = "Keine Updates verfügbar";
+"D2N-5U-W7Z.title" = "Aucune mise à jour disponible";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "Ablage";
+"dMs-cI-mzQ.title" = "Fichier";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
-"DVo-aG-piG.title" = "Schließen";
+"DVo-aG-piG.title" = "Fermer";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
-"eIs-LJ-TQe.title" = "Dokument jetzt prüfen";
+"eIs-LJ-TQe.title" = "Vérifier le document maintenant";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
-"ES5-dd-1TR.title" = "Während der Texteingabe prüfen";
+"ES5-dd-1TR.title" = "Vérifier l'orthographe lors de la saisie";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
-"F2S-fz-NVQ.title" = "Hilfe";
+"F2S-fz-NVQ.title" = "Aide";
 
 /* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "Latest-Hilfe";
+"FKE-Sm-Kum.title" = "Aide de Latest";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
-"FM4-aR-lhK.ibShadowedToolTip" = "Neu laden";
+"FM4-aR-lhK.ibShadowedToolTip" = "Recharger";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
-"G1D-lo-gfr.title" = "Text ersetzen";
+"G1D-lo-gfr.title" = "Remplacer le texte";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
-"GMn-QE-qPC.title" = "Einsetzen";
+"GMn-QE-qPC.title" = "Coller";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
-"gU8-2v-afa.title" = "Weitersuchen (vorwärts)";
+"gU8-2v-afa.title" = "Trouver le suivant";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Aktualisieren";
+"Gw7-NE-1lh.title" = "Mise à jour";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
-"GZQ-fq-mFU.title" = "Großschreiben";
+"GZQ-fq-mFU.title" = "Capitaliser";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Installierte Version";
+"h6g-FG-nGh.title" = "Version actuelle";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
-"H8h-7b-M4v.title" = "Darstellung";
+"H8h-7b-M4v.title" = "Voir";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
-"h9B-7u-6ru.title" = "Im Finder zeigen";
+"h9B-7u-6ru.title" = "Révéler dans le Finder";
 
 /* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
-"hOB-nw-cIX.title" = "Suchen";
+"hOB-nw-cIX.title" = "Trouver";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
-"HyV-fh-RgO.title" = "Darstellung";
+"HyV-fh-RgO.title" = "Voir";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Dienste";
+"hz9-B4-Xy5.title" = "Services";
 
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
-"IAo-SY-fd9.title" = "Aktualisieren";
+"IAo-SY-fd9.title" = "Mise à jour";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
-"Id2-BS-gzO.title" = "Alle auswählen";
+"Id2-BS-gzO.title" = "Tout sélectionner";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
-"iis-Dj-0TB.title" = "Rechtschreib- und Grammatikprüfung";
+"iis-Dj-0TB.title" = "Vérifier la grammaire et l'orthographe";
 
 /* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
-"iLi-Yb-UfX.title" = "Lade Release Notes";
+"iLi-Yb-UfX.title" = "Chargement des notes de version";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Fenster";
+"IQv-IB-iLA.title" = "Fenêtre";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
-"iUE-OL-cvh.title" = "Intelligentes Kopieren/Einsetzen";
+"iUE-OL-cvh.title" = "Copier/Coller intelligent";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
-"J6q-tg-1G2.title" = "Transformationen";
+"J6q-tg-1G2.title" = "Transformations";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
-"jEo-hx-9Qp.title" = "Intelligente Anführungszeichen";
+"jEo-hx-9Qp.title" = "Guillemets intelligents";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Alle anzeigen";
+"Kd2-mp-pUS.title" = "Tout afficher";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
-"l11-q2-MLf.title" = "Ersetzungen";
+"l11-q2-MLf.title" = "Substitutions";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Alle einblenden";
+"LE2-aR-0XJ.title" = "Ramener en avant";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
-"Lga-BY-8RF.title" = "Ausschneiden";
+"Lga-BY-8RF.title" = "Couper";
 
 /* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
-"Ljr-hV-usc.title" = "Nicht mehr ignorieren";
+"Ljr-hV-usc.title" = "Ne pas ignorer";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
-"mS9-zq-Dvi.title" = "Löschen";
+"mS9-zq-Dvi.title" = "Supprimer";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
-"mTS-fP-YWg.title" = "Bearbeiten";
+"mTS-fP-YWg.title" = "Éditer";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
-"mu8-FK-tXI.title" = "Suchen …";
+"mu8-FK-tXI.title" = "Trouver…";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Dienste";
+"NMo-om-nkz.title" = "Services";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Verfügbare Updates";
+"NNm-bC-QYz.title" = "Mises à jour disponibles";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
-"Nnu-IS-gsC.title" = "Sprachausgabe starten";
+"Nnu-IS-gsC.title" = "Commencez à parler";
 
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
-"o46-Ym-MCY.title" = "Spenden";
+"o46-Ym-MCY.title" = "Faire un don";
 
 /* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
-"OLo-39-3Sm.label" = "Fortschritt";
+"OLo-39-3Sm.label" = "Progrès";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
-"OLo-39-3Sm.paletteLabel" = "Fortschritt";
+"OLo-39-3Sm.paletteLabel" = "Progrès";
 
 /* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Latest ausblenden";
+"Olw-nP-bQN.title" = "Masquer Latest";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimieren";
+"OY7-WF-poV.title" = "Minimiser";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
-"pDo-aP-nIF.title" = "Auswahl anzeigen";
+"pDo-aP-nIF.title" = "Sauter à la sélection";
 
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
-"PS4-wi-kF9.title" = "Ignorieren";
+"PS4-wi-kF9.title" = "Ignorer";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Aktualisieren";
+"QRR-k0-TZ4.title" = "Mise à jour";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
-"R4o-n2-Eq4.title" = "Zoomen";
+"R4o-n2-Eq4.title" = "Zoom";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
-"r6p-yM-qya.title" = "Bearbeiten";
+"r6p-yM-qya.title" = "Éditer";
 
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
-"Rh5-N3-X6H.title" = "Ignorierte Apps anzeigen";
+"Rh5-N3-X6H.title" = "Afficher les applications ignorées";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Updates verfügbar";
+"rK6-RZ-Ga6.title" = "5 Mises à jour disponibles";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
-"ryW-4P-l7k.title" = "Auswahl für Suche übernehmen";
+"ryW-4P-l7k.title" = "Utiliser la sélection pour trouver";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
-"SKi-gD-wYr.title" = "Kleinbuchstaben";
+"SKi-gD-wYr.title" = "En minuscule";
 
 /* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
-"spt-ns-lYo.title" = "Multiline Label";
+"spt-ns-lYo.title" = "Label multi-ligne";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "App Name";
+"SVA-bh-cUe.title" = "Nom de l'application";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
-"Td7-aD-5lo.title" = "Fenster";
+"Td7-aD-5lo.title" = "Fenêtre";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "Ersetzungen einblenden";
+"TKo-Xa-BjT.title" = "Afficher les substitutions";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
-"tw7-g1-6Wz.title" = "Intelligente Links";
+"tw7-g1-6Wz.title" = "Liens intelligents";
 
 /* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
-"tXI-mr-wws.title" = "Alle aktualisieren";
+"tXI-mr-wws.title" = "Tout mettre à jour";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
-"ucY-cy-GON.title" = "Rechtschreibung";
+"ucY-cy-GON.title" = "Orthographe";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
-"uGs-GF-i9Z.title" = "Sprachausgabe stoppen";
+"uGs-GF-i9Z.title" = "Arrêter de parler";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
 "UPY-HP-f2p.title" = "Label";
@@ -266,53 +266,53 @@
 "uQy-DD-JDr.title" = "Latest";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "Ersetzungen";
+"UVA-tb-pA9.title" = "Substitutions";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
-"uw5-pW-jNu.title" = "Intelligente Bindestriche";
+"uw5-pW-jNu.title" = "Tirets intelligents";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
 "uWn-a0-oM2.title" = "Label";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
-"Vdr-fp-XzO.title" = "Andere ausblenden";
+"Vdr-fp-XzO.title" = "Cacher les autres";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
 "VX8-qg-UOL.title" = "Label";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
-"wpr-3q-Mcd.title" = "Hilfe";
+"wpr-3q-Mcd.title" = "Aide";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
-"wtc-0j-cAV.title" = "Rechtschreibung und Grammatik";
+"wtc-0j-cAV.title" = "Orthographe et grammaire";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
-"WX3-Xi-vCY.title" = "Rechtschreibung und Grammatik einblenden";
+"WX3-Xi-vCY.title" = "Afficher l'orthographe et la grammaire";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
-"x6Q-gr-lO2.title" = "Einsetzen und Stil anpassen";
+"x6Q-gr-lO2.title" = "Coller et adapter le style";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
-"Xng-11-x9Q.title" = "Großbuchstaben";
+"Xng-11-x9Q.title" = "En majuscule";
 
 /* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
-"XVu-eG-PUK.title" = "Installierte Apps anzeigen";
+"XVu-eG-PUK.title" = "Afficher les applications installées";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
-"y5A-ib-gR6.title" = "Sprachausgabe";
+"y5A-ib-gR6.title" = "Parler";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
-"Yj4-SM-ocg.title" = "Wiederholen";
+"Yj4-SM-ocg.title" = "Refaire";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
-"yPN-rG-tgD.title" = "Weitersuchen (rückwärts)";
+"yPN-rG-tgD.title" = "Trouver précédent";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
-"YRo-LJ-qSP.title" = "Transformationen";
+"YRo-LJ-qSP.title" = "Transformations";
 
 /* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
-"ZWx-q6-TJz.label" = "Neu laden";
+"ZWx-q6-TJz.label" = "Recharger";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
-"ZWx-q6-TJz.paletteLabel" = "Neu laden";
+"ZWx-q6-TJz.paletteLabel" = "Recharger";
 

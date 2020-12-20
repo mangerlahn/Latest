@@ -28,6 +28,7 @@ fileprivate enum ReleaseNotesContent {
     /// The actual content
     case text(ReleaseNotesTextViewController?)
     
+	/// Exposes the view controller holding the release notes, if available.
     var textController: ReleaseNotesTextViewController? {
         switch self {
         case .text(let controller):
@@ -37,6 +38,17 @@ fileprivate enum ReleaseNotesContent {
         }
     }
     
+	/// Exposes the view controller indicating a loading action, if available.
+	var loadingController: ReleaseNotesLoadingViewController? {
+        switch self {
+        case .loading(let controller):
+            return controller
+        default:
+            return nil
+        }
+	}
+	
+	/// Exposes the view controller holding an error, if available.
     var errorController: ReleaseNotesErrorViewController? {
         switch self {
         case .error(let controller):
@@ -69,7 +81,7 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appInfoBackgroundView: NSVisualEffectView!
     @IBOutlet weak var appInfoContentView: NSStackView!
     
-    @IBOutlet weak var updateButton: NSButton!
+    @IBOutlet weak var updateButton: UpdateButton!
     
     @IBOutlet weak var appNameTextField: NSTextField!
     @IBOutlet weak var appDateTextField: NSTextField!
@@ -79,22 +91,9 @@ class ReleaseNotesViewController: NSViewController {
     
 	/// The app currently presented
 	private(set) var app: AppBundle? {
-		willSet {
-			if let app = self.app {
-				UpdateQueue.shared.removeObserver(self, for: app)
-			}
-		}
-		
 		didSet {
 			// Forward app
-			self.progressViewController.app = self.app
-			
-			// Add ourselfs as observer to the app
-			if let app = self.app {
-				UpdateQueue.shared.addObserver(self, to: app) { _ in
-					self.updateButtonAppearance()
-				}
-			}
+			self.updateButton.app = self.app
 		}
 	}
     
@@ -106,27 +105,12 @@ class ReleaseNotesViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: -5)
+        let constraint = NSLayoutConstraint(item: self.appInfoContentView!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0)
         constraint.isActive = true
 
 		self.setEmptyState()
-		
-		// Align progress view controller to update button
-		self.progressViewController.leadingProgressAnchor.constraint(equalTo: self.updateButton.leadingAnchor).isActive = true
-		self.progressViewController.displayCancelButton = false
 	}
 	
-	func updateButtonAppearance() {
-		if self.app?.isUpdating ?? false {
-			self.updateButton.title = NSLocalizedString("Cancel", comment: "Cancel button title to cancel the update of an app")
-			self.updateButton.action = #selector(cancelUpdate(_:))
-		} else {
-			self.updateButton.title = NSLocalizedString("Update", comment: "Update button title to update an app")
-			self.updateButton.action = #selector(update(_:))
-		}
-		
-		self.updateButton.target = self
-	}
     
     
     // MARK: - Actions
@@ -216,7 +200,6 @@ class ReleaseNotesViewController: NSViewController {
         self.appNewVersionTextField.stringValue = versionInformation.new
         
         self.appNewVersionTextField.isHidden = !app.updateAvailable
-        self.updateButton.isHidden = !app.updateAvailable
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
@@ -244,7 +227,6 @@ class ReleaseNotesViewController: NSViewController {
 		self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("No app selected.", comment: "Title of release notes empty state")
 
 		self.appInfoBackgroundView.isHidden = true
-		self.updateButton.isHidden = true
 	}
     
     /**
@@ -303,6 +285,8 @@ class ReleaseNotesViewController: NSViewController {
         constraints.append(self.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
         
         NSLayoutConstraint.activate(constraints)
+		
+		self.updateInsets()
     }
     
     private func displayUnavailableReleaseNotes() {
@@ -339,6 +323,7 @@ class ReleaseNotesViewController: NSViewController {
     private func updateInsets() {
         let inset = self.appInfoBackgroundView.frame.size.height
         self.content?.textController?.updateInsets(with: inset)
+		self.content?.loadingController?.topInset = inset
     }
     
     /// Switches the content to error and displays the localized error
@@ -346,12 +331,5 @@ class ReleaseNotesViewController: NSViewController {
         self.loadContent(.error)
         self.content?.errorController?.show(error)
     }
-	
-	/// The view controller displaying update progress
-	private var progressViewController: UpdateProgressViewController {
-		return self.children.compactMap { controller -> UpdateProgressViewController? in
-			return controller as? UpdateProgressViewController
-		}.first!
-	}
-    
+	    
 }

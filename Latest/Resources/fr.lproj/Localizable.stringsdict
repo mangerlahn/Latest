@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d Update verfügbar</string>
+			<string>%d mise à jour disponible</string>
 			<key>other</key>
-			<string>%d Updates verfügbar</string>
+			<string>%d mises à jour disponible</string>
 		</dict>
 	</dict>
 </dict>

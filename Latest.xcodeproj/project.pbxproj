@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */; };
 		501497A122D9CBEA00CFA8CE /* MASError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A022D9CBEA00CFA8CE /* MASError.swift */; };
 		501497A722D9CC0800CFA8CE /* ISStoreAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A522D9CC0800CFA8CE /* ISStoreAccount.swift */; };
 		501497A822D9CC0800CFA8CE /* StoreAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A622D9CC0800CFA8CE /* StoreAccount.swift */; };
 		501497AA22D9CC2C00CFA8CE /* SSPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497A922D9CC2C00CFA8CE /* SSPurchase.swift */; };
-		501497AC22DB0C8100CFA8CE /* UpdateProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501497AB22DB0C8100CFA8CE /* UpdateProgressViewController.swift */; };
 		501EA9821EB1BA4400D05821 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9841EB1BA4400D05821 /* Localizable.strings */; };
 		501EA9871EB1BA4500D05821 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9891EB1BA4500D05821 /* InfoPlist.strings */; };
 		501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */; };
@@ -33,6 +33,9 @@
 		506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* NSError+Latest.swift */; };
 		506DF77621248F6200D792FC /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppDataStore.swift */; };
 		506DF7782125580400D792FC /* UpdateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF7772125580400D792FC /* UpdateTableView.swift */; };
+		508323E3257824AA000BBA13 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E0257824A9000BBA13 /* DisplayLink.swift */; };
+		508323E4257824AA000BBA13 /* UpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E1257824A9000BBA13 /* UpdateButton.swift */; };
+		508323E5257824AA000BBA13 /* UpdateButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E2257824AA000BBA13 /* UpdateButtonCell.swift */; };
 		5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
@@ -44,6 +47,8 @@
 		509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */; };
 		509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateTableViewController.swift */; };
 		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
+		509B5D3F257BD57700690AAB /* UnsupportedAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B5D28257BD57700690AAB /* UnsupportedAppBundle.swift */; };
+		509B5D43257BD66200690AAB /* UnsupportedCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B5D42257BD66200690AAB /* UnsupportedCheckerOperation.swift */; };
 		50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */; };
 		50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
@@ -58,6 +63,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		50726ECD2540B45400FDF35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA1E285E22B66487004AA304;
+			remoteInfo = generate_keys;
+		};
+		50726ECF2540B45400FDF35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA1E287622B666EB004AA304;
+			remoteInfo = sign_update;
+		};
+		50726ED12540B45400FDF35E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA1E282D22B660BE004AA304;
+			remoteInfo = ed25519;
+		};
 		50B3984C2312CF1C00BAEC81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */;
@@ -203,11 +229,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCellView.swift; sourceTree = "<group>"; };
 		501497A022D9CBEA00CFA8CE /* MASError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MASError.swift; path = "Frameworks/mas-cli/MasKit/Errors/MASError.swift"; sourceTree = "<group>"; };
 		501497A522D9CC0800CFA8CE /* ISStoreAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISStoreAccount.swift; path = "Frameworks/mas-cli/MasKit/AppStore/ISStoreAccount.swift"; sourceTree = "<group>"; };
 		501497A622D9CC0800CFA8CE /* StoreAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreAccount.swift; path = "Frameworks/mas-cli/MasKit/AppStore/StoreAccount.swift"; sourceTree = "<group>"; };
 		501497A922D9CC2C00CFA8CE /* SSPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSPurchase.swift; path = "Frameworks/mas-cli/MasKit/AppStore/SSPurchase.swift"; sourceTree = "<group>"; };
-		501497AB22DB0C8100CFA8CE /* UpdateProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProgressViewController.swift; sourceTree = "<group>"; };
 		501EA97F1EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		501EA9831EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501EA9881EB1BA4500D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -234,6 +260,9 @@
 		506A8F6622EC14CC00C755AF /* NSError+Latest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Latest.swift"; sourceTree = "<group>"; };
 		506DF77521248F6200D792FC /* AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
 		506DF7772125580400D792FC /* UpdateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableView.swift; sourceTree = "<group>"; };
+		508323E0257824A9000BBA13 /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
+		508323E1257824A9000BBA13 /* UpdateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButton.swift; sourceTree = "<group>"; };
+		508323E2257824AA000BBA13 /* UpdateButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButtonCell.swift; sourceTree = "<group>"; };
 		5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateOperation.swift; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
@@ -245,6 +274,8 @@
 		509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesViewController.swift; sourceTree = "<group>"; };
 		509512321FF36380003D2D7F /* UpdateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewController.swift; sourceTree = "<group>"; };
 		509512351FF36388003D2D7F /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		509B5D28257BD57700690AAB /* UnsupportedAppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedAppBundle.swift; sourceTree = "<group>"; };
+		509B5D42257BD66200690AAB /* UnsupportedCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedCheckerOperation.swift; sourceTree = "<group>"; };
 		50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+Search.swift"; sourceTree = "<group>"; };
 		50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupRowView.swift; sourceTree = "<group>"; };
 		50C81D691FBADC5900324C2E /* Latest Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latest Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +287,10 @@
 		50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleCheckerOperation.swift; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
+		50E65CDD247A84BC00DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		50E65CDE247A84E700DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		50E65CDF247A84ED00DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50E65CE0247A84F300DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50F542E022D9C41C004B3F8D /* CKDownloadQueueObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadQueueObserver.h; sourceTree = "<group>"; };
 		50F542E122D9C41C004B3F8D /* CKDownloadDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKDownloadDirectory.h; sourceTree = "<group>"; };
 		50F542E222D9C41C004B3F8D /* CKSoftwareMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSoftwareMap.h; sourceTree = "<group>"; };
@@ -400,6 +435,23 @@
 			path = "Release Notes";
 			sourceTree = "<group>";
 		};
+		508323C825782483000BBA13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				508323E1257824A9000BBA13 /* UpdateButton.swift */,
+				508323E2257824AA000BBA13 /* UpdateButtonCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		508323DF25782490000BBA13 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				508323E0257824A9000BBA13 /* DisplayLink.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5095120C1FF3623B003D2D7F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +489,7 @@
 				5095121F1FF36301003D2D7F /* AppBundle.swift */,
 				5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */,
 				5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */,
+				509B5D28257BD57700690AAB /* UnsupportedAppBundle.swift */,
 			);
 			path = "App Bundles";
 			sourceTree = "<group>";
@@ -448,6 +501,7 @@
 				50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */,
 				50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */,
 				50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */,
+				509B5D42257BD66200690AAB /* UnsupportedCheckerOperation.swift */,
 			);
 			path = "Update Checker Extensions";
 			sourceTree = "<group>";
@@ -459,7 +513,8 @@
 				5095122E1FF3634E003D2D7F /* Window Controllers */,
 				50DAEF3E21047E3B00B32E8A /* Update Table View */,
 				5058BA36211F9F49003F332B /* Release Notes */,
-				501497AB22DB0C8100CFA8CE /* UpdateProgressViewController.swift */,
+				508323C825782483000BBA13 /* Views */,
+				508323DF25782490000BBA13 /* Utilities */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -505,6 +560,7 @@
 			children = (
 				5095122F1FF36378003D2D7F /* UpdateCell.swift */,
 				50DAEF4321047FA900B32E8A /* UpdateItemView.swift */,
+				50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */,
 				50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */,
 				506DF7772125580400D792FC /* UpdateTableView.swift */,
 			);
@@ -582,7 +638,10 @@
 				50B3985B2312CF1C00BAEC81 /* Updater.app */,
 				50F62F0222FA277D00A2F2AF /* UI Tests.xctest */,
 				50F62F0622FA277D00A2F2AF /* generate_appcast */,
+				50726ECE2540B45400FDF35E /* generate_keys */,
+				50726ED02540B45400FDF35E /* sign_update */,
 				50F62F0C22FA277D00A2F2AF /* libbsdiff.a */,
+				50726ED22540B45400FDF35E /* libed25519.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -637,7 +696,7 @@
 			attributes = {
 				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Max Langer";
 				TargetAttributes = {
 					50290E701E53EB6A00133E3D = {
@@ -668,6 +727,7 @@
 				en,
 				Base,
 				de,
+				fr,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			productRefGroup = 50290E721E53EB6A00133E3D /* Products */;
@@ -687,6 +747,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		50726ECE2540B45400FDF35E /* generate_keys */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = generate_keys;
+			remoteRef = 50726ECD2540B45400FDF35E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50726ED02540B45400FDF35E /* sign_update */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = sign_update;
+			remoteRef = 50726ECF2540B45400FDF35E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50726ED22540B45400FDF35E /* libed25519.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libed25519.a;
+			remoteRef = 50726ED12540B45400FDF35E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		50B3984D2312CF1C00BAEC81 /* SparkleCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -874,9 +955,11 @@
 				509512141FF362A1003D2D7F /* Version.swift in Sources */,
 				501497AA22D9CC2C00CFA8CE /* SSPurchase.swift in Sources */,
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
+				508323E4257824AA000BBA13 /* UpdateButton.swift in Sources */,
 				50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */,
 				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
 				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
+				508323E3257824AA000BBA13 /* DisplayLink.swift in Sources */,
 				5058BA3A21202BA7003F332B /* IconCache.swift in Sources */,
 				501497A822D9CC0800CFA8CE /* StoreAccount.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
@@ -887,7 +970,7 @@
 				50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */,
 				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
-				501497AC22DB0C8100CFA8CE /* UpdateProgressViewController.swift in Sources */,
+				508323E5257824AA000BBA13 /* UpdateButtonCell.swift in Sources */,
 				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
 				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
 				5039DE8B22CA39ED0088B39B /* StatefulOperation.swift in Sources */,
@@ -899,9 +982,12 @@
 				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
 				506DF77621248F6200D792FC /* AppDataStore.swift in Sources */,
+				509B5D43257BD66200690AAB /* UnsupportedCheckerOperation.swift in Sources */,
 				5039DE8522CA396F0088B39B /* UpdateQueue.swift in Sources */,
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
+				50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,
+				509B5D3F257BD57700690AAB /* UnsupportedAppBundle.swift in Sources */,
 				506DF7782125580400D792FC /* UpdateTableView.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
 				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
@@ -933,6 +1019,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				501EA9831EB1BA4400D05821 /* de */,
+				50E65CE0247A84F300DFEB47 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -941,6 +1028,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				501EA9881EB1BA4500D05821 /* de */,
+				50E65CDF247A84ED00DFEB47 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -950,6 +1038,7 @@
 			children = (
 				501EA98B1EB1BD8B00D05821 /* de */,
 				501EA98D1EB1BD9400D05821 /* en */,
+				50E65CDE247A84E700DFEB47 /* fr */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -959,6 +1048,7 @@
 			children = (
 				50290E7B1E53EB6A00133E3D /* Base */,
 				501EA97F1EB1BA4400D05821 /* de */,
+				50E65CDD247A84BC00DFEB47 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -992,6 +1082,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1016,7 +1107,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1051,6 +1142,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1069,7 +1161,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1095,7 +1187,8 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 0.6.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1125,7 +1218,8 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 0.6.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

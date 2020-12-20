@@ -131,17 +131,10 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
 	
 	private func view(for section: AppDataStore.Section) -> NSScrubberItemView {
         let view = NSScrubberTextItemView()
+		
 		view.textField.font = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize(for: .small))
 		view.textField.textColor = NSColor.secondaryLabelColor
-		
-		switch section {
-		case .updateAvailable:
-			view.textField.stringValue = NSLocalizedString("Available", comment: "Touch Bar section title for available updates")
-		case .installed:
-			view.textField.stringValue = NSLocalizedString("Installed", comment: "Touch Bar section title for installed apps")
-		case .ignored:
-			view.textField.stringValue = NSLocalizedString("Ignored", comment: "Touch Bar section title for ignored apps")
-		}
+		view.textField.stringValue = section.shortTitle
 		
         return view
     }

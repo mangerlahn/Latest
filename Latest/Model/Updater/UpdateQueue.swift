@@ -94,9 +94,9 @@ class UpdateQueue: OperationQueue {
 		
 	/// Notifies observers about state changes.
 	private func notifyObservers(for app: AppBundle) {
+		let state = self.state(for: app)
+		
 		DispatchQueue.main.async {
-			let state = self.state(for: app)
-			
 			self.observers[app.bundleIdentifier]?.forEach { (key: NSObject, handler: UpdateQueue.ObserverHandler) in
 				handler(state)
 			}
