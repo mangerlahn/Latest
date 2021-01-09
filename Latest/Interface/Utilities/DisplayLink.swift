@@ -85,15 +85,20 @@ class DisplayLink: NSObject {
         
         self._currentFrame += 1
         
-        DispatchQueue.main.async {
+		// Forward progress to the observer
+		DispatchQueue.main.sync {
 			self.progress = self._currentFrame / self._frames
 			if self.duration != nil, self.progress >= 1 {
                 self.completionHandler?()
-                self.stop()
             }
             
 			self.callback(self.progress)
         }
+		
+		// Must not be called on sync Main Thread, is therefore delayed until after the progress has been forwarded to the observer.
+		if self.duration != nil, self.progress >= 1 {
+			self.stop()
+		}
     }
     
 	
