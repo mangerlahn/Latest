@@ -17,9 +17,26 @@ class SparkleUpdateOperation: UpdateOperation {
 	// Callback to be called when the operation has been cancelled
 	fileprivate var cancellationCallback: ((SPUDownloadUpdateStatus) -> Void)?
 	
+	/// Schedules an progress update notification.
+	private let progressScheduler: DispatchSourceUserDataAdd
+	
 	/// Initializes the operation with the given Sparkle app and handler
 	init(app: SparkleAppBundle) {
+		self.progressScheduler = DispatchSource.makeUserDataAddSource(queue: .global())
 		super.init(app: app)
+
+		// Delay notifying observers to only let that notification occur in a certain interval
+		self.progressScheduler.setEventHandler() { [weak self] in
+			guard let self = self else { return }
+			
+			// Notify the progress state
+			self.progressState = .downloading(loadedSize: Int64(self.receivedLength), totalSize: Int64(self.expectedContentLength))
+
+			// Delay the next call for 1 second
+			Thread.sleep(forTimeInterval: 1)
+		}
+		
+		self.progressScheduler.activate()
 	}
 	
 	
@@ -143,7 +160,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		self.expectedContentLength = expectedContentLength
 		self.receivedLength = 0
 		
-		self.callProgressHandler()
+		self.scheduleProgressHandler()
 	}
 	
 	func showDownloadDidReceiveData(ofLength length: UInt64) {
@@ -152,11 +169,11 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		// Expected content length may be wrong, adjust if needed
 		self.expectedContentLength = max(self.expectedContentLength, self.receivedLength)
 		
-		self.callProgressHandler()
+		self.scheduleProgressHandler()
 	}
 	
-	private func callProgressHandler() {
-		self.progressState = .downloading(loadedSize: Int64(self.receivedLength), totalSize: Int64(self.expectedContentLength))
+	private func scheduleProgressHandler() {
+		self.progressScheduler.add(data: 1)
 	}
 
 	
