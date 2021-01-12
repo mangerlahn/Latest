@@ -109,12 +109,12 @@ class UpdateButton: NSButton {
 	
 	override var intrinsicContentSize: NSSize {
 		var size = super.intrinsicContentSize
-		size.height = 22
+		size.height = 21
 		
 		if (self.title.count > 0) {
-			size.width += 16
+			size.width += 12
 		} else {
-			size.height += 3
+			size.height += 4
 			size.width = size.height
 		}
 		

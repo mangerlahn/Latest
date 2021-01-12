@@ -110,7 +110,7 @@ class UpdateButtonCell: NSButtonCell {
 		
 		// Adjust the styling of the button
 		string.addAttribute(.foregroundColor, value: Self.tintColor, range: range)
-		string.addAttribute(.font, value: NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .medium), range: range)
+		string.addAttribute(.font, value: NSFont.systemFont(ofSize: self.font!.pointSize - 1, weight: .medium), range: range)
 				
 		return super.drawTitle(string, withFrame: frame, in: controlView)
 	}
