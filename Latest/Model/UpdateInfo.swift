@@ -11,7 +11,7 @@ import Foundation
 /**
  A simple class holding the update information for a single update
  */
-class UpdateInfo {
+class UpdateInfo: Equatable {
     
     /// The version of the updated app
     var version = Version()
@@ -22,4 +22,9 @@ class UpdateInfo {
     /// The release notes of the update
     var releaseNotes: Any?
     
+	/// Compares the equality of UpdateInfo objects
+	static func ==(lhs: UpdateInfo, rhs: UpdateInfo) -> Bool {
+		return lhs.version == rhs.version && lhs.date == rhs.date
+	}
+	
 }
