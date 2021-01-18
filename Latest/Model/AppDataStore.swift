@@ -79,6 +79,11 @@ class AppDataStore {
 		if !self.showUnsupportedUpdates {
 			visibleApps = visibleApps.filter({ type(of: $0).supported })
 		}
+        
+        // Filter in-app apps
+        if !self.showInAppUpdates {
+            visibleApps = visibleApps.filter({ !$0.url.path.contains(".app/") })
+        }
 		
 		// Apply filter query
 		if let filterQuery = self.filterQuery {
@@ -162,6 +167,13 @@ class AppDataStore {
 			self.scheduleFilterUpdate()
 		}
 	}
+    
+    /// Whether in-app apps should be visible
+    var showInAppUpdates = false {
+        didSet {
+            self.scheduleFilterUpdate()
+        }
+    }
 	
 	/// Returns the app at the given index, if any.
 	func app(at index: Int) -> AppBundle? {

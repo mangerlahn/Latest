@@ -329,6 +329,12 @@
                                                 <action selector="toggleShowUnsupportedUpdates:" target="Ady-hI-5gd" id="URA-qk-ZAz"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Show In-App Apps" keyEquivalent="i" id="JJd-a5-Jvj">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleShowInAppUpdates:" target="Ady-hI-5gd" id="TJi-ap-N1b"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2cf-83-Jly"/>
                                         <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
                                             <connections>

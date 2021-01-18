@@ -21,6 +21,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 	private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
 	private let ShowUnsupportedUpdatesKey = "ShowUnsupportedUpdatesKey"
+    private let ShowInAppUpdatesKey = "ShowInAppUpdatesKey"
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
@@ -85,6 +86,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
         self.updateShowIgnoredUpdatesState(with: UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
 		self.updateShowUnsupportedUpdatesState(with: UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey))
+        self.updateShowInAppUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInAppUpdatesKey))
     }
 
     
@@ -115,6 +117,10 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
 		self.updateShowUnsupportedUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey))
 	}
+    
+    @IBAction func toggleShowInAppUpdates(_ sender: NSMenuItem?) {
+        self.updateShowInAppUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInAppUpdatesKey))
+    }
 	
 	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
 		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
@@ -156,6 +162,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
                 menuItem.state = self.listViewController.showIgnoredUpdates ? .on : .off
 			case #selector(toggleShowUnsupportedUpdates(_:)):
 				menuItem.state = self.listViewController.showUnsupportedUpdates ? .on : .off
+            case #selector(toggleShowInAppUpdates(_:)):
+                menuItem.state = self.listViewController.showInAppUpdates ? .on : .off
             default:
                 ()
             }
@@ -213,6 +221,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		self.listViewController.showUnsupportedUpdates = newState
 		UserDefaults.standard.set(newState, forKey: ShowUnsupportedUpdatesKey)
 	}
+    
+    private func updateShowInAppUpdatesState(with newState: Bool) {
+        self.listViewController.showInAppUpdates = newState
+        UserDefaults.standard.set(newState, forKey: ShowInAppUpdatesKey)
+    }
 	
     private func showReleaseNotes(_ show: Bool, animated: Bool) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {

@@ -59,6 +59,17 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		}
 	}
     
+    /// Whether in-app apps should be visible
+    var showInAppUpdates: Bool {
+        set {
+            self.dataStore.showInAppUpdates = newValue
+        }
+        
+        get {
+            return self.dataStore.showInAppUpdates
+        }
+    }
+    
     /// The detail view controller that shows the release notes
     weak var releaseNotesViewController : ReleaseNotesViewController?
     
