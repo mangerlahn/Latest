@@ -85,16 +85,17 @@ class DisplayLink: NSObject {
         
         self._currentFrame += 1
         
-        DispatchQueue.main.async {
+		// Forward progress to the observer
+		DispatchQueue.main.sync {
 			self.progress = self._currentFrame / self._frames
 			if self.duration != nil, self.progress >= 1 {
                 self.completionHandler?()
-                self.stop()
+				self.stop()
             }
             
 			self.callback(self.progress)
         }
-    }
+	}
     
 	
 	// MARK: - Actions
@@ -117,7 +118,10 @@ class DisplayLink: NSObject {
         guard let displayLink = self.displayLink else { return }
         
         #if os(macOS)
-        CVDisplayLinkStop(displayLink)
+		// Must not be called on sync Main Thread, as it causes a deadlock there.
+		DispatchQueue.global().async {
+			CVDisplayLinkStop(displayLink)
+		}
         #else
         displayLink.isPaused = true
         #endif

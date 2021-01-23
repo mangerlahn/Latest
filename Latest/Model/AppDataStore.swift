@@ -120,7 +120,7 @@ class AppDataStore {
 	
     /// Adds a new app to the collection
 	func update(_ app: AppBundle) {
-		if let oldApp = self.apps.first(where: { $0.bundleIdentifier == app.bundleIdentifier }) {
+		if let oldApp = self.apps.first(where: { $0.url == app.url }) {
 			self.apps.remove(oldApp)
 			self.pendingApps?.remove(oldApp)
 			
@@ -131,6 +131,11 @@ class AppDataStore {
 		
         self.apps.insert(app)
 		
+		// Update the selected app if needed
+		if self.selectedApp?.url == app.url {
+			self.selectedApp = app
+		}
+		
 		if !self.isAppIgnored(app) {
 			self.countOfAvailableUpdates += app.updateAvailable ? 1 : 0
 		}
@@ -138,6 +143,24 @@ class AppDataStore {
 		// Schedule an update for observers
 		self.scheduleFilterUpdate()
     }
+	
+	/// The currently selected app within the UI.
+	var selectedApp: AppBundle? {
+		willSet {
+			if let appBundle = newValue, !self.apps.contains(appBundle) {
+				fatalError("Attempted to select app that is not available.")
+			}
+		}
+	}
+	
+	/// The index of the currently selected app within the UI.
+	var selectedAppIndex: Int? {
+		if let app = self.selectedApp {
+			return self.filteredApps.firstIndex(of: .app(app))
+		}
+		
+		return nil
+	}
 	
 	
 	// MARK: - Accessors

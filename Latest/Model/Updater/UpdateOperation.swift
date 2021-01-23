@@ -73,6 +73,7 @@ class UpdateOperation: StatefulOperation {
 		if let error = self.error {
 			self.progressState = .error(error)
 		} else {
+			self.app.completeUpdate()
 			self.progressState = .none
 		}
 		

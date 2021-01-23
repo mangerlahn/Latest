@@ -88,12 +88,9 @@ class AppBundle : NSObject {
 		self.bundleIdentifier = bundleIdentifier
     }
     
+	private var updateCompleted = false
     var updateAvailable: Bool {
-        if self.newestVersion.version > self.version {
-            return true
-        }
-        
-        return false
+		return self.newestVersion.version > self.version && !updateCompleted
     }
 	
 	/// Whether the app is currently being updated.
@@ -118,6 +115,15 @@ class AppBundle : NSObject {
 	func cancelUpdate() {
 		UpdateQueue.shared.cancelUpdate(for: self)
 	}
+	
+	/// Can be called by the update queue to mark this app as updated. Must only be called on apps with update available.
+	func completeUpdate() {
+		guard self.updateAvailable else {
+			fatalError("Update completion called on app without update available.")
+		}
+		
+		self.updateCompleted = true
+	}
     
     /// Reveals the app at a given index in Finder
     func showInFinder() {
@@ -139,6 +145,10 @@ class AppBundle : NSObject {
 	
     // MARK: - Debug
     
+	override var description: String {
+		return super.description + "Name: \(name), Version: \(version.versionNumber ?? "None"), Build: \(version.buildNumber ?? "None")"
+	}
+	
     func printDebugDescription() {
         print("-----------------------")
         print("Debug description for app \(name)")

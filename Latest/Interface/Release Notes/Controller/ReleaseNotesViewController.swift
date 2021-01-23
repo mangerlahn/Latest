@@ -88,6 +88,9 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appCurrentVersionTextField: NSTextField!
     @IBOutlet weak var appNewVersionTextField: NSTextField!
     @IBOutlet weak var appIconImageView: NSImageView!
+	
+	/// The image view holding the source icon of the app.
+	@IBOutlet private weak var sourceIconImageView: NSImageView!
     
 	/// The app currently presented
 	private(set) var app: AppBundle? {
@@ -200,6 +203,11 @@ class ReleaseNotesViewController: NSViewController {
         self.appNewVersionTextField.stringValue = versionInformation.new
         
         self.appNewVersionTextField.isHidden = !app.updateAvailable
+		
+		self.sourceIconImageView.image = type(of: app).sourceIcon
+		if let sourceName = type(of: app).sourceName {
+			self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), sourceName)
+		}
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long

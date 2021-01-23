@@ -105,7 +105,7 @@ class UpdateChecker {
 	}()
     
 	/// Excluded subfolders that won't be checked.
-	private static let excludedSubfolders = Set(["Setapp"])
+	private static let excludedSubfolders = Set(["Setapp/", ".app/"])
 	
 	/// Starts the update checking process
 	func run() {

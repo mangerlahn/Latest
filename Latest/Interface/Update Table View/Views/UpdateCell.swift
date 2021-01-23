@@ -26,9 +26,6 @@ class UpdateCell: NSTableCellView {
 	
 	/// The stack view holding the cells contents.
 	@IBOutlet private weak var contentStackView: NSStackView!
-
-	/// The image view holding the source icon of the app.
-	@IBOutlet private weak var sourceIconImageView: NSImageView!
 	
 	/// The constraint defining the leading inset of the content.
 	@IBOutlet private weak var leadingConstraint: NSLayoutConstraint!
@@ -81,10 +78,6 @@ class UpdateCell: NSTableCellView {
         self.currentVersionTextField.stringValue = versionInformation.current
         self.newVersionTextField.stringValue = versionInformation.new
         self.newVersionTextField.isHidden = !app.updateAvailable
-		self.sourceIconImageView.image = type(of: app).sourceIcon
-		if let sourceName = type(of: app).sourceName {
-			self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), sourceName)
-		}
 	}
 	    
 	private func updateTitle() {

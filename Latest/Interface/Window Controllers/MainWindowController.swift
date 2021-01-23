@@ -134,7 +134,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         
         switch action {
         case #selector(updateAll(_:)):
-            return self.listViewController.apps.count != 0
+			return self.listViewController.dataStore.updateableApps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
 		case #selector(performFindPanelAction(_:)):

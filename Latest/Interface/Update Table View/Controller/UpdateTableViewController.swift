@@ -84,14 +84,17 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
         
-		self.dataStore.showInstalledUpdates = self.showInstalledUpdates
-        
 		self.dataStore.addObserver(self) { newValue in
 			self.updateTableView(with: self.appSnapshot, with: newValue)
 			self.appSnapshot = newValue
 			
 			self.updateEmtpyStateVisibility()
 			self.updateTitleAndBatch()
+			
+			// Update selected app
+			if let index = self.dataStore.selectedAppIndex {
+				self.selectApp(at: index)
+			}
 		}
 		
 		if #available(macOS 11, *) {
@@ -243,6 +246,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
      */
     func selectApp(at index: Int?) {
         guard let index = index, index >= 0 else {
+			self.dataStore.selectedApp = nil
             self.tableView.deselectAll(nil)
 			self.scrubber?.animator().selectedIndex = -1
 			
@@ -264,6 +268,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return
         }
         
+		self.dataStore.selectedApp = app
 		self.releaseNotesViewController?.display(content: app.newestVersion.releaseNotes, for: app)
     }
     
