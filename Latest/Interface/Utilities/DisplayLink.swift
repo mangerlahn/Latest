@@ -90,10 +90,10 @@ class DisplayLink: NSObject {
 			self.progress = self._currentFrame / self._frames
 			if self.duration != nil, self.progress >= 1 {
                 self.completionHandler?()
+				self.stop()
             }
             
 			self.callback(self.progress)
-			self.stop()
         }
 	}
     
