@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17008"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -74,7 +74,11 @@
                                                 <action selector="updateApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws"/>
+                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
+                                            <connections>
+                                                <action selector="updateAll:" target="Ady-hI-5gd" id="krK-jh-4Gr"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="6iT-9L-JOa"/>
                                         <menuItem title="Show in Finder" keyEquivalent="R" id="bm3-iR-6vZ">
                                             <connections>
@@ -415,7 +419,7 @@
                     <window key="window" identifier="MainWindow" title="Latest" subtitle="3 Updates Found" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="549" y="334" width="1004" height="495"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
                             <allowedToolbarItems>
