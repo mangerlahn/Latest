@@ -17,7 +17,7 @@ If you would like to check out earlier versions, head over to the [Releases][3] 
 
 ### Homebrew Cask
 Latest can also be installed via [Homebrew Cask][4]. If you have not installed Homebrew, follow the simple instructions [here][5].
-After that, run `brew cask install latest` to install the current version of Latest.
+After that, run `brew install --cask latest` to install the current version of Latest.
 
 ### Build from Source
 [![Build Status][image-2]][6]
