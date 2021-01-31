@@ -21,9 +21,9 @@ class DisplayLink: NSObject {
 	private(set) var progress : Double = 0
     
     #if os(macOS)
-    private var displayLink : CVDisplayLink?
+    private var displayLink : CVDisplayLink!
     #else
-    private var displayLink : CADisplayLink?
+    private var displayLink : CADisplayLink!
     #endif
     
 	/// Frames used to calculate the animation progress
@@ -51,16 +51,19 @@ class DisplayLink: NSObject {
 		}
 		
 		CVDisplayLinkCreateWithActiveCGDisplays(&self.displayLink)
-		CVDisplayLinkSetOutputCallback(self.displayLink!, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
+		CVDisplayLinkSetOutputCallback(self.displayLink, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
 		#else
 		self.displayLink = CADisplayLink(target: self,
 									   selector: #selector(DisplayLink.displayTick))
-		self.displayLink!.add(to: .current, forMode: .common)
+		self.displayLink.add(to: .current, forMode: .common)
 		#endif
 	}
 	
 	deinit {
-		self.stop()
+		#if os(macOS)
+		// Immediately remove callback to avoid access to the deallocated access to this object from the callback on a background thread
+		CVDisplayLinkSetOutputCallback(self.displayLink, nil, nil)
+		#endif
 	}
 
 	
@@ -103,9 +106,7 @@ class DisplayLink: NSObject {
 	/// Starts the display link.
     func start() {
         self._currentFrame = 0
-        
-        guard let displayLink = self.displayLink else { return }
-        
+                
         #if os(macOS)
         CVDisplayLinkStart(displayLink)
         #else
@@ -115,12 +116,11 @@ class DisplayLink: NSObject {
     
 	/// Stops the display link.
     func stop() {
-        guard let displayLink = self.displayLink else { return }
-        
         #if os(macOS)
 		// Must not be called on sync Main Thread, as it causes a deadlock there.
-		DispatchQueue.global().async {
-			CVDisplayLinkStop(displayLink)
+		DispatchQueue.global().async { [weak self] in
+			guard let self = self else { return }
+			CVDisplayLinkStop(self.displayLink)
 		}
         #else
         displayLink.isPaused = true
@@ -129,8 +129,6 @@ class DisplayLink: NSObject {
     
 	/// Whether the display link is currently running.
     var isRunning : Bool {
-        guard let displayLink = self.displayLink else { return false }
-        
         #if os(macOS)
         return CVDisplayLinkIsRunning(displayLink)
         #else
