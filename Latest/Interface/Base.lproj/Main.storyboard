@@ -419,7 +419,7 @@
                     <window key="window" identifier="MainWindow" title="Latest" subtitle="3 Updates Found" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="549" y="334" width="1004" height="495"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
                             <allowedToolbarItems>
@@ -935,7 +935,7 @@
                                                 <rect key="frame" x="462" y="0.0" width="66" height="96"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                        <rect key="frame" x="-7" y="44" width="80" height="32"/>
+                                                        <rect key="frame" x="-7" y="43" width="80" height="32"/>
                                                         <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QRR-k0-TZ4" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -952,7 +952,7 @@
                                             </customView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="i3z-7y-cNC" firstAttribute="firstBaseline" secondItem="n5Y-7Z-cEd" secondAttribute="firstBaseline" id="fV4-tG-PJ0"/>
+                                            <constraint firstItem="i3z-7y-cNC" firstAttribute="top" secondItem="n5Y-7Z-cEd" secondAttribute="top" id="fV4-tG-PJ0"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
