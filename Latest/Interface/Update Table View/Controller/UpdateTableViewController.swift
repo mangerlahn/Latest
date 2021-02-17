@@ -92,9 +92,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			self.updateTitleAndBatch()
 			
 			// Update selected app
-			if let index = self.dataStore.selectedAppIndex {
-				self.selectApp(at: index)
-			}
+			self.selectApp(at: self.dataStore.selectedAppIndex)
 		}
 		
 		if #available(macOS 11, *) {
