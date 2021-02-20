@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17008"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="18009"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18121"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -425,10 +425,8 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="6dc-Xr-FRW"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sgB-XA-UzA"/>
-                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" id="ZWx-q6-TJz">
+                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" sizingBehavior="auto" id="ZWx-q6-TJz">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="36" height="26"/>
-                                    <size key="maxSize" width="47" height="32"/>
                                     <button key="view" toolTip="Reload" verticalHuggingPriority="750" id="FM4-aR-lhK">
                                         <rect key="frame" x="2" y="14" width="40" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -443,17 +441,15 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D9AB5F20-627A-43CB-BD49-21067730000F" label="Progress" paletteLabel="Progress" tag="-1" id="OLo-39-3Sm">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="16" height="16"/>
-                                    <size key="maxSize" width="16" height="16"/>
+                                    <size key="minSize" width="30" height="16"/>
+                                    <size key="maxSize" width="30" height="16"/>
                                     <progressIndicator key="view" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" controlSize="small" style="spinning" id="rtV-DA-Kd6">
                                         <rect key="frame" x="19" y="14" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </progressIndicator>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="5B354B41-598E-4279-9FD9-F493AEA477C5" label="Update All" paletteLabel="Update All" image="NSTouchBarDownloadTemplate" id="qS5-vO-h2j">
+                                <toolbarItem implicitItemIdentifier="5B354B41-598E-4279-9FD9-F493AEA477C5" label="Update All" paletteLabel="Update All" image="NSTouchBarDownloadTemplate" sizingBehavior="auto" id="qS5-vO-h2j">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="36" height="26"/>
-                                    <size key="maxSize" width="47" height="32"/>
                                     <button key="view" toolTip="Update All" verticalHuggingPriority="750" id="wmL-ks-XSr">
                                         <rect key="frame" x="11" y="14" width="40" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -484,6 +480,7 @@
                                 <viewController key="viewController" id="ivi-vL-a0q">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-aF-0Fk">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarSearchTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JIr-yU-jL8">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -500,6 +497,7 @@
                                 <viewController key="viewController" id="vt9-Kt-f18">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-N5-XxD">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SMd-ka-re6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
