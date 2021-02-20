@@ -92,9 +92,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			self.updateTitleAndBatch()
 			
 			// Update selected app
-			if let index = self.dataStore.selectedAppIndex {
-				self.selectApp(at: index)
-			}
+			self.selectApp(at: self.dataStore.selectedAppIndex)
 		}
 		
 		if #available(macOS 11, *) {
@@ -129,6 +127,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		
         IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
+            
+            // Tint the icon if the app is not supported
+            cell.imageView?.alphaValue = (type(of: app).supported ? 1 : 0.5)
         }
         
         return cell

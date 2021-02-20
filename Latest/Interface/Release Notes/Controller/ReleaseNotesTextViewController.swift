@@ -72,8 +72,9 @@ class ReleaseNotesTextViewController: NSViewController {
             
             let traits = font.fontDescriptor.symbolicTraits
             let fontDescriptor = defaultFont.fontDescriptor.withSymbolicTraits(traits)
-            
-            string.addAttribute(.font, value: NSFont(descriptor: fontDescriptor, size: defaultFont.pointSize)!, range: range)
+			if let font = NSFont(descriptor: fontDescriptor, size: defaultFont.pointSize) {
+				string.addAttribute(.font, value: font, range: range)
+			}
         }
         
         return string

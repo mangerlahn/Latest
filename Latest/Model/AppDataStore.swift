@@ -26,8 +26,10 @@ class AppDataStore {
 
 		// Delay notifying observers to only let that notification occur in a certain interval
 		source.setEventHandler() { [unowned self] in
-			self.filterApps()
-			self.notifyObservers(newValue: self.filteredApps)
+			DispatchQueue.main.async {
+				self.filterApps()
+				self.notifyObservers(newValue: self.filteredApps)
+			}
 		
 			// Delay the next call for 0.6 seconds
 			Thread.sleep(forTimeInterval: 0.6)
@@ -41,6 +43,9 @@ class AppDataStore {
 	
 	/// The collection holding all apps that have been found.
 	private var apps = Set<AppBundle>()
+	
+	/// A cached set of all available apps. Will be updated with every filter update. Input from the UI should be checked against this set rather than `apps`, because that one might update in the background.
+	private var cachedApps = Set<AppBundle>()
 	
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updateableApps: [AppBundle] {
@@ -60,13 +65,17 @@ class AppDataStore {
 			
 			// Always lowercase query
 			self.filterQuery = self.filterQuery?.lowercased()
-			self.filterApps()
+			self.scheduleFilterUpdate()
 		}
 	}
 	
 	/// Sorts and filters all available apps based on the given filter criteria.
 	private func filterApps() {
-		objc_sync_enter(self);
+		assert(Thread.current.isMainThread)
+
+		// Update cache
+		self.cachedApps = self.apps
+		
 		var visibleApps = self.apps
 		let ignoredApps = visibleApps.filter({ self.ignoredAppIdentifiers.contains($0.bundleIdentifier) })
 		
@@ -111,8 +120,11 @@ class AppDataStore {
 			ignoredUpdates = [.section(Self.ignoredAppsSection(withCount: ignoredUpdates.count))] + ignoredUpdates
 		}
 		
+		if let proposedSelection = self.proposedSelectedApp {
+			self.selectedApp = proposedSelection
+			self.proposedSelectedApp = nil
+		}
 		self.filteredApps = availableUpdates + installedUpdates + ignoredUpdates
-		objc_sync_exit(self);
 	}
 	
 	/// The cached count of apps with updates available
@@ -133,7 +145,7 @@ class AppDataStore {
 		
 		// Update the selected app if needed
 		if self.selectedApp?.url == app.url {
-			self.selectedApp = app
+			self.proposedSelectedApp = Optional(app)
 		}
 		
 		if !self.isAppIgnored(app) {
@@ -152,6 +164,9 @@ class AppDataStore {
 			}
 		}
 	}
+	
+	/// A placeholder to set the selected app on the next cache update. Can be used by the background operations to update the selected app independently from the UI.
+	private var proposedSelectedApp: AppBundle??
 	
 	/// The index of the currently selected app within the UI.
 	var selectedAppIndex: Int? {
@@ -258,6 +273,11 @@ class AppDataStore {
 		self.apps.subtract(pendingApps)
 		self.pendingApps = nil
 	
+		// Remove the selection
+		if let selectedApp = self.selectedApp, pendingApps.contains(selectedApp) {
+			self.proposedSelectedApp = Optional(nil)
+		}
+	
 		self.updateCountOfAvailableApps()
 		self.scheduleFilterUpdate()
 	}
@@ -292,10 +312,9 @@ class AppDataStore {
 		
 	/// Notifies observers about state changes.
 	private func notifyObservers(newValue: [Entry]) {
-		DispatchQueue.main.async {
-			self.observers.forEach { (key: NSObject, handler: ObserverHandler) in
-				handler(newValue)
-			}
+		assert(Thread.current.isMainThread)
+		self.observers.forEach { (key: NSObject, handler: ObserverHandler) in
+			handler(newValue)
 		}
 	}
 	
