@@ -51,6 +51,9 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadButton: NSButton!
     @IBOutlet weak var reloadTouchBarButton: NSButton!
+    
+    /// The button that triggers all available updates to be done
+    @IBOutlet weak var updateAllButton: NSButton!
         
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -193,6 +196,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		self.reloadButton.isEnabled = true
 		self.reloadTouchBarButton.isEnabled = true
 		self.progressIndicator.isHidden = true
+        self.updateAllButton.isEnabled = self.listViewController.dataStore.updateableApps.count != 0
 		self.listViewController.dataStore.endUpdates()
 	}
     
