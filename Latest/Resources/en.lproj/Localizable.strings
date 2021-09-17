@@ -1,0 +1,102 @@
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"(%@)" = "(%@)";
+
+/* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
+"An error occurred while updating %@." = "An error occurred while updating %@.";
+
+/* Touch Bar section title for available updates */
+"Available" = "Available";
+
+/* Table Section Header for available updates */
+"Available Updates" = "Available Updates";
+
+/* Cancel button in an update dialogue */
+"Cancel" = "Cancel";
+
+/* Update progress state of cancelling an update */
+"Cancelling" = "Cancelling";
+
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"Downloading %@ of %@" = "Downloading %@ of %@";
+
+/* Description of button that opens an error dialogue. */
+"Error while updating app" = "Error while updating app";
+
+/* Update progress state of extracting the downloaded update */
+"Extracting Update" = "Extracting Update";
+
+/* Touch Bar section title for ignored apps */
+"Ignored" = "Ignored";
+
+/* Table Section Header for ignored apps */
+"Ignored Apps" = "Ignored Apps";
+
+/* Update progress state of initializing an update */
+"Initializing" = "Initializing";
+
+/* Touch Bar section title for installed apps */
+"Installed" = "Installed";
+
+/* Table Section Header for already installed apps */
+"Installed Apps" = "Installed Apps";
+
+/* Update progress state of installing an update */
+"Installing" = "Installing";
+
+/* App name as title of the main window. */
+"Latest" = "Latest";
+
+/* The source name of apps loaded from the App Store. */
+"Mac App Store" = "Mac App Store";
+
+/* New Version String */
+"New version: %@" = "New version: %@";
+
+/* Title of release notes empty state */
+"No app selected." = "No app selected.";
+
+/* Error message that no release notes were found */
+"No release notes were found for this app." = "No release notes were found for this app.";
+
+/* Error description when no update was found for a particular app. */
+"No update was found for this app." = "No update was found for this app.";
+
+/* number of updates available */
+"NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
+
+/* Title of button that opens the app. Should be written uppercase if appropriate. */
+"OPEN" = "OPEN";
+
+/* Error description when no update was found for a particular app. */
+"Please sign in to the Mac App Store to update this app." = "Please sign in to the Mac App Store to update this app.";
+
+/* Button to retry an update in an error dialogue */
+"Retry" = "Retry";
+
+/* Description of release notes empty state */
+"Select an app from the list to read its release notes." = "Select an app from the list to read its release notes.";
+
+/* Revea in Finder Row action */
+"Show in Finder" = "Show in Finder";
+
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"Source: %@" = "Source: %@";
+
+/* No comment provided by engineer. */
+"Up to Date!" = "Up to Date!";
+
+/* Update String */
+"Update" = "Update";
+
+/* Title of button that updates the app. Should be written uppercase if appropriate. */
+"UPDATE" = "UPDATE";
+
+/* Update progress state of waiting to start an update */
+"Waiting" = "Waiting";
+
+/* The source name for apps loaded from third-party websites. */
+"Web" = "Web";
+
+/* Current Version String */
+"Your version: %@" = "Your version: %@";
+
