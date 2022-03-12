@@ -147,20 +147,13 @@ class UpdateButtonCell: NSButtonCell {
 		path.lineCapStyle = .round
 		path.lineWidth = 2.5
 		
-		NSColor.tertiaryLabelColor.setStroke()
+		self.indicatorColor(for: NSColor.tertiaryLabelColor).setStroke()
 		path.stroke()
 	}
 	
 	private func drawProgressIndicator(withFrame frame: NSRect, controlView: NSView) {
 		let radius = frame.height * 0.4
 		let center = CGPoint(x: frame.midX, y: frame.midY)
-		
-		var tintColor: NSColor = (self.backgroundStyle == .emphasized ? .alternateSelectedControlTextColor : Self.tintColor)
-		if #available(OSX 10.14, *) {
-			tintColor = (self.isHighlighted ? tintColor.withSystemEffect(.pressed) : tintColor)
-		} else {
-			tintColor = (self.isHighlighted ? tintColor.shadow(withLevel: 0.8)! : tintColor)
-		}
 		
 		// Draw background circle
 		NSColor.tertiaryLabelColor.setStroke()
@@ -169,9 +162,8 @@ class UpdateButtonCell: NSButtonCell {
 		path.lineWidth = 2.5
 		path.stroke()
 		
-		
 		// Draw pause block
-		tintColor.set()
+		self.indicatorColor(for: Self.tintColor).set()
 		alignedRect = controlView.backingAlignedRect(NSInsetRect(NSRect(origin: center, size: .zero), -3, -3), options: .alignAllEdgesOutward)
 		NSBezierPath(roundedRect: alignedRect, xRadius: 2, yRadius: 2).fill()
 		
@@ -198,4 +190,13 @@ class UpdateButtonCell: NSButtonCell {
 		path.stroke()
 	}
 		
+	private func indicatorColor(for color: NSColor) -> NSColor {
+		let tintColor: NSColor = (self.backgroundStyle == .emphasized ? .alternateSelectedControlTextColor : color)
+		if #available(OSX 10.14, *) {
+			return (self.isHighlighted ? tintColor.withSystemEffect(.pressed) : tintColor)
+		} else {
+			return (self.isHighlighted ? tintColor.shadow(withLevel: 0.8)! : tintColor)
+		}
+	}
+	
 }

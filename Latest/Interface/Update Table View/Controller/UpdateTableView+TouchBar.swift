@@ -11,7 +11,6 @@ import Cocoa
 /// The identifier used for the update item view
 fileprivate let UpdateItemViewIdentifier = NSUserInterfaceItemIdentifier(rawValue: "com.max-langer.latest.update-item-identifier")
 
-@available(OSX 10.12.2, *)
 fileprivate extension NSTouchBarItem.Identifier {
     
     /// The identifier for the update scrubber bar
@@ -19,7 +18,6 @@ fileprivate extension NSTouchBarItem.Identifier {
     
 }
 
-@available(OSX 10.12.2, *)
 /// An extension of the Updates Table View that handles the touchbar related methods
 extension UpdateTableViewController: NSTouchBarDelegate {
  
@@ -70,7 +68,6 @@ extension UpdateTableViewController: NSTouchBarDelegate {
     
 }
 
-@available(OSX 10.12.2, *)
 /// An extension of the Updates Table View that handles the scrubber bar that displays all available updates
 extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, NSScrubberFlowLayoutDelegate {
     
@@ -97,12 +94,12 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     // MARK: Delegate
     
     func scrubber(_ scrubber: NSScrubber, layout: NSScrubberFlowLayout, sizeForItemAt itemIndex: Int) -> NSSize {
-        if self.dataStore.isSectionHeader(at: itemIndex) {
+        if self.snapshot.isSectionHeader(at: itemIndex) {
             return NSSize(width: 100, height: 30)
         }
         
         let size = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-		let name = self.dataStore.app(at: itemIndex)!.name as NSString
+		let name = self.snapshot.app(at: itemIndex)!.name as NSString
         let options: NSString.DrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
 		let attributes = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: NSFont.systemFontSize)]
         
@@ -116,7 +113,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
     }
     
     func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
-        if self.dataStore.isSectionHeader(at: selectedIndex) {
+        if self.snapshot.isSectionHeader(at: selectedIndex) {
             self.scrubber?.selectedIndex = self.tableView.selectedRow
             return
         }
@@ -129,7 +126,7 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         self.scrubber?.showsArrowButtons = count > 3
     }
 	
-	private func view(for section: AppDataStore.Section) -> NSScrubberItemView {
+	private func view(for section: AppListSnapshot.Section) -> NSScrubberItemView {
         let view = NSScrubberTextItemView()
 		
 		view.textField.font = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize(for: .small))
@@ -139,12 +136,12 @@ extension UpdateTableViewController: NSScrubberDataSource, NSScrubberDelegate, N
         return view
     }
 	
-	private func view(for app: AppBundle, in scrubber: NSScrubber) -> NSScrubberItemView {
+	private func view(for app: App, in scrubber: NSScrubber) -> NSScrubberItemView {
 		guard let view = scrubber.makeItem(withIdentifier: UpdateItemViewIdentifier, owner: nil) as? UpdateItemView else {
             return NSScrubberItemView()
         }
         
-        view.textField.attributedStringValue = app.highlightedName(for: self.dataStore.filterQuery)
+        view.textField.attributedStringValue = app.highlightedName(for: self.snapshot.filterQuery)
         
         IconCache.shared.icon(for: app) { (image) in
             view.imageView.image = image

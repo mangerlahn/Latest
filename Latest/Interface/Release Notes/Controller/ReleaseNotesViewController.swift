@@ -9,15 +9,32 @@
 import Cocoa
 import WebKit
 
-/// The possible values when loading release notes content
-fileprivate enum LoadReleaseNotesContent {
-    case loading
-    case error
-    case text
-}
-
 /// The container for release notes content
 fileprivate enum ReleaseNotesContent {
+	
+	/// The possible values when loading release notes content
+	enum ContentType {
+		
+		/// The release notes view should display a loading indicator.
+		case loading
+		
+		/// The release notes should display an error.
+		case error
+		
+		/// Release notes contents should be displayed.
+		case text
+		
+		/// Whether the currently displayed content is scrollable.
+		var isScrollable: Bool {
+			switch self {
+				case .loading, .error:
+					return false
+					
+				case .text:
+					return true
+			}
+		}
+	}
     
     /// The loading screen, presenting an activity indicator
     case loading(ReleaseNotesLoadingViewController?)
@@ -91,9 +108,11 @@ class ReleaseNotesViewController: NSViewController {
 	
 	/// The image view holding the source icon of the app.
 	@IBOutlet private weak var sourceIconImageView: NSImageView!
+	
+	private let releaseNotesProvider = ReleaseNotesProvider()
     
 	/// The app currently presented
-	private(set) var app: AppBundle? {
+	private(set) var app: App? {
 		didSet {
 			// Forward app
 			self.updateButton.app = self.app
@@ -119,7 +138,7 @@ class ReleaseNotesViewController: NSViewController {
     // MARK: - Actions
     
     @objc func update(_ sender: NSButton) {
-        self.app?.update()
+        self.app?.performUpdate()
     }
 	
 	@objc func cancelUpdate(_ sender: NSButton) {
@@ -133,79 +152,47 @@ class ReleaseNotesViewController: NSViewController {
      Loads the content of the URL and displays them
      - parameter content: The content to be displayed
      */
-    func display(content: Any?, for app: AppBundle?) {
+	func display(releaseNotesFor app: App?) {
 		guard let app = app else {
 			self.setEmptyState()
 			return
 		}
 		
         self.display(app)
-        
-        switch content {
-        case let url as URL:
-            self.display(url: url, for: app)
-        case let data as Data:
-            self.update(with: data)
-        case let html as String:
-            self.display(html: html)
-        case let error as Error:
-            self.show(error)
-        default:
-            self.displayUnavailableReleaseNotes()
-        }
+
+		// Delay the loading screen to avoid flickering
+		let timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
+			self.loadContent(.loading)
+		}
+		releaseNotesProvider.releaseNotes(for: app) { result in
+			timer.invalidate()
+
+			switch result {
+				case .success(let releaseNotes):
+					self.update(with: releaseNotes)
+				case .failure(let error):
+					self.show(error)
+			}
+		}
     }
-    
-    func display(url: URL, for app: AppBundle) {
-        // Delay the loading screen to avoid flickering
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
-            self.loadContent(.loading)
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            timer.invalidate()
-            
-            DispatchQueue.main.async {
-                if let data = data, !data.isEmpty {
-                    // Store the data
-                    app.newestVersion.releaseNotes = data
-                    
-                        self.update(with: data)
-                } else if let error = error {
-                    self.show(error)
-                }
-            }
-        }
-        
-        task.resume()
-    }
-    
-    /**
-     Displays the given HTML string. The HTML is currently not formatted in any way.
-     - parameter html: The html to be displayed
-     */
-    func display(html: String) {
-        guard let data = html.data(using: .utf16) else { return }
-        self.update(with: NSAttributedString(html: data, documentAttributes: nil)!)
-    }
-    
+	
     
     // MARK: - User Interface Stuff
     
-    private func display(_ app: AppBundle) {
+    private func display(_ app: App) {
         self.appInfoBackgroundView.isHidden = false
         self.app = app
         self.appNameTextField.stringValue = app.name
         
-        let info = app.newestVersion
-        guard let versionInformation = app.localizedVersionInformation else { return }
-        
-        self.appCurrentVersionTextField.stringValue = versionInformation.current
-        self.appNewVersionTextField.stringValue = versionInformation.new
-        
+        if let versionInformation = app.localizedVersionInformation {
+			self.appCurrentVersionTextField.stringValue = versionInformation.current
+			self.appNewVersionTextField.stringValue = versionInformation.new ?? ""
+		}
         self.appNewVersionTextField.isHidden = !app.updateAvailable
 		
-		self.sourceIconImageView.image = type(of: app).sourceIcon
-		if let sourceName = type(of: app).sourceName {
+		self.sourceIconImageView.image = app.source.sourceIcon
+		self.sourceIconImageView.toolTip = nil
+		if let sourceName = app.source.sourceName {
 			self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), sourceName)
 		}
         
@@ -213,7 +200,7 @@ class ReleaseNotesViewController: NSViewController {
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
         
-        if let date = info.date {
+		if let date = app.latestUpdateDate {
             self.appDateTextField.stringValue = dateFormatter.string(from: date)
             self.appDateTextField.isHidden = false
         } else {
@@ -228,6 +215,8 @@ class ReleaseNotesViewController: NSViewController {
     }
 	
 	private func setEmptyState() {
+		self.app = nil
+		
 		// Prepare for empty state
 		let description = NSLocalizedString("Select an app from the list to read its release notes.", comment: "Description of release notes empty state")
 		let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
@@ -236,40 +225,8 @@ class ReleaseNotesViewController: NSViewController {
 
 		self.appInfoBackgroundView.isHidden = true
 	}
-    
-    /**
-     This method attempts to distinguish between HTML and Plain Text stored in the data. It converts the data to display it.
-     - parameter data: The data to display, either HTML or plain text
-     */
-    private func update(with data: Data) {
-        var options : [NSAttributedString.DocumentReadingOptionKey: Any] = [.documentType: NSAttributedString.DocumentType.html]
         
-        var string: NSAttributedString
-        do {
-            string = try NSAttributedString(data: data, options: options, documentAttributes: nil)
-        } catch let error {
-            self.show(error)
-            return
-        }
-
-        // Having only one line means that the text was no HTML but plain text. Therefore we reinstantiate the attributed string as plain text
-        // The initialization with HTML enabled removes all new lines
-        // If anyone has a better idea for checking if the data is valid HTML or plain text, feel free to fix.
-        if string.string.split(separator: "\n").count == 1 {
-            options[.documentType] = NSAttributedString.DocumentType.plain
-            
-            do {
-                string = try NSAttributedString(data: data, options: options, documentAttributes: nil)
-            } catch let error {
-                self.show(error)
-                return
-            }
-        }
-        
-        self.update(with: string)
-    }
-    
-    private func loadContent(_ type: LoadReleaseNotesContent) {
+	private func loadContent(_ type: ReleaseNotesContent.ContentType) {
         // Remove the old content
         if let oldController = self.content?.controller {
             oldController.view.removeFromSuperview()
@@ -285,9 +242,11 @@ class ReleaseNotesViewController: NSViewController {
         self.view.addSubview(view, positioned: .below, relativeTo: self.view.subviews.first)
         view.translatesAutoresizingMaskIntoConstraints = false
         
+		let topAnchor = type.isScrollable || self.app == nil ? self.view.topAnchor : appInfoBackgroundView.bottomAnchor
+		
         var constraints = [NSLayoutConstraint]()
         
-        constraints.append(self.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0))
+        constraints.append(topAnchor.constraint(equalTo: view.topAnchor, constant: 0))
         constraints.append(self.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0))
         constraints.append(self.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0))
         constraints.append(self.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
@@ -296,14 +255,8 @@ class ReleaseNotesViewController: NSViewController {
 		
 		self.updateInsets()
     }
-    
-    private func displayUnavailableReleaseNotes() {
-        let description = NSLocalizedString("No release notes were found for this app.", comment: "Error message that no release notes were found")
-        let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
-        self.show(error)
-    }
-    
-    private func initializeContent(of type: LoadReleaseNotesContent) {
+        
+    private func initializeContent(of type: ReleaseNotesContent.ContentType) {
         switch type {
         case .loading:
             let controller = ReleaseNotesLoadingViewController.fromStoryboard()

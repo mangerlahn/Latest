@@ -11,16 +11,12 @@ import Cocoa
 /**
  This class controls the main window of the app. It includes the list of apps that have an update available as well as the release notes for the specific update.
  */
-class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateCheckerProgress {
+class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDelegate, UpdateCheckProgressReporting {
     
 	/// Encapsulates the main window items with their according tag identifiers
 	private enum MainMenuItem: Int {
 		case latest = 0, file, edit, view, window, help
 	}
-	
-    private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
-	private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
-	private let ShowUnsupportedUpdatesKey = "ShowUnsupportedUpdatesKey"
     
     /// The list view holding the apps
     lazy var listViewController : UpdateTableViewController = {
@@ -70,7 +66,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		// Set ourselves as the view menu delegate
 		NSApplication.shared.mainMenu?.item(at: MainMenuItem.view.rawValue)?.submenu?.delegate = self
 		
-		UpdateChecker.shared.progressDelegate = self
+		UpdateCheckCoordinator.shared.progressDelegate = self
         
         self.window?.makeFirstResponder(self.listViewController)
         self.window?.delegate = self
@@ -83,11 +79,6 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             let detailItem = splitViewController.splitViewItems[1]
             detailItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
         }
-
-		// Restore state
-        self.updateShowInstalledUpdatesState(with: UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
-        self.updateShowIgnoredUpdatesState(with: UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
-		self.updateShowUnsupportedUpdatesState(with: UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey))
     }
 
     
@@ -100,25 +91,13 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
-		self.listViewController.dataStore.updateableApps.forEach({ $0.update() })
+		UpdateCheckCoordinator.shared.appProvider.updatableApps.forEach({ $0.performUpdate() })
     }
     	
 	@IBAction func performFindPanelAction(_ sender: Any?) {
 		self.window?.makeFirstResponder(self.listViewController.searchField)
 	}
     
-    @IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
-        self.updateShowInstalledUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey))
-    }
-	
-	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
-		 self.updateShowIgnoredUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowIgnoredUpdatesKey))
-	 }
-	
-	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
-		self.updateShowUnsupportedUpdatesState(with: !UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey))
-	}
-	
 	@IBAction func visitWebsite(_ sender: NSMenuItem?) {
 		NSWorkspace.shared.open(URL(string: "https://max.codes/latest")!)
     }
@@ -137,7 +116,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         
         switch action {
         case #selector(updateAll(_:)):
-			return self.listViewController.dataStore.updateableApps.count != 0
+			return UpdateCheckCoordinator.shared.appProvider.updatableApps.count != 0
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
 		case #selector(performFindPanelAction(_:)):
@@ -153,12 +132,12 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             guard let action = menuItem.action else { return }
             
             switch action {
-            case #selector(toggleShowInstalledUpdates(_:)):
-                menuItem.state = self.listViewController.showInstalledUpdates ? .on : .off
+			case #selector(toggleShowInstalledUpdates(_:)):
+                menuItem.state = AppListSettings.shared.showInstalledUpdates ? .on : .off
 			case #selector(toggleShowIgnoredUpdates(_:)):
-                menuItem.state = self.listViewController.showIgnoredUpdates ? .on : .off
+                menuItem.state = AppListSettings.shared.showIgnoredUpdates ? .on : .off
 			case #selector(toggleShowUnsupportedUpdates(_:)):
-				menuItem.state = self.listViewController.showUnsupportedUpdates ? .on : .off
+				menuItem.state = AppListSettings.shared.showUnsupportedUpdates ? .on : .off
             default:
                 ()
             }
@@ -168,7 +147,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     // MARK: - Update Checker Progress Delegate
 	
-	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateChecker) {
+	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateCheckCoordinator) {
 		// Disable UI
         self.reloadButton.isEnabled = false
         self.reloadTouchBarButton.isEnabled = false
@@ -180,7 +159,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	}
     
     /// This implementation activates the progress indicator, sets its max value and disables the reload button
-	func updateChecker(_ updateChecker: UpdateChecker, didStartCheckingApps numberOfApps: Int) {
+	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didStartCheckingApps numberOfApps: Int) {
 		// Setup progress indicator
 		self.progressIndicator.isIndeterminate = false
         self.progressIndicator.doubleValue = 0
@@ -188,36 +167,35 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	}
     
     /// Update the progress indicator
-	func updateChecker(_ updateChecker: UpdateChecker, didCheckApp: AppBundle) {
+	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didCheckApp: App) {
 		self.progressIndicator.increment(by: 1)
     }
 	
-	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateChecker) {
+	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateCheckCoordinator) {
 		self.reloadButton.isEnabled = true
 		self.reloadTouchBarButton.isEnabled = true
 		self.progressIndicator.isHidden = true
-        self.updateAllButton.isEnabled = self.listViewController.dataStore.updateableApps.count != 0
-		self.listViewController.dataStore.endUpdates()
+        self.updateAllButton.isEnabled = UpdateCheckCoordinator.shared.appProvider.updatableApps.count != 0
 	}
     
+	
+	// MARK: - Actions
+	
+	@IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showInstalledUpdates = !AppListSettings.shared.showInstalledUpdates
+	}
+	
+	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showIgnoredUpdates = !AppListSettings.shared.showIgnoredUpdates
+	 }
+	
+	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showUnsupportedUpdates = !AppListSettings.shared.showUnsupportedUpdates
+	}
+
     
     // MARK: - Private Methods
-    
-    private func updateShowInstalledUpdatesState(with newState: Bool) {
-        self.listViewController.showInstalledUpdates = newState
-        UserDefaults.standard.set(newState, forKey: ShowInstalledUpdatesKey)
-    }
-    
-    private func updateShowIgnoredUpdatesState(with newState: Bool) {
-        self.listViewController.showIgnoredUpdates = newState
-        UserDefaults.standard.set(newState, forKey: ShowIgnoredUpdatesKey)
-	}
-	
-	private func updateShowUnsupportedUpdatesState(with newState: Bool) {
-		self.listViewController.showUnsupportedUpdates = newState
-		UserDefaults.standard.set(newState, forKey: ShowUnsupportedUpdatesKey)
-	}
-	
+    	
     private func showReleaseNotes(_ show: Bool, animated: Bool) {
         guard let splitViewController = self.contentViewController as? NSSplitViewController else {
             return

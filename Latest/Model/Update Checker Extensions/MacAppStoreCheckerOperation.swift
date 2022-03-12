@@ -8,121 +8,231 @@
 
 import Cocoa
 
+let MalformedURLError = NSError(domain: NSURLErrorDomain, code: NSURLErrorUnsupportedURL, userInfo: nil)
+
 /// The operation for checking for updates for a Mac App Store app.
 class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	
-	private static let dateFormatter: DateFormatter = {
-		// Setup date formatter
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
-        // Example of the date format: Mon, 28 Nov 2016 14:00:00 +0100
-        // This is problematic, because some developers use other date formats
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-		
-		return dateFormatter
-	}()
+	// MARK: - Update Check
 	
-	/// The bundle to be checked for updates.
-	private let app: MacAppStoreAppBundle
+	static var sourceType: App.Bundle.Source {
+		return .appStore
+	}
 	
-	/// The url to check for updates.
-	private let url: URL
+	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
+		let bundle = Bundle(path: url.path)
+		let fileManager = FileManager.default
 		
-	required init?(withAppURL appURL: URL, version: String, buildNumber: String, completionBlock: @escaping UpdateCheckerCompletionBlock) {
-        let appName = appURL.lastPathComponent as NSString
-
-        let appBundle = Bundle(path: appURL.path)
-        let fileManager = FileManager.default
-        
 		// Mac Apps contain a receipt, iOS apps are wrapped inside a macOS bundle, but without an actual purchase receipt
-        guard let receiptPath = appBundle?.appStoreReceiptURL?.path,
-			  fileManager.fileExists(atPath: receiptPath) || receiptPath.contains("WrappedBundle") else { return nil }
-        
-        // App is from Mac App Store
-        let languageCode = Locale.current.regionCode ?? "US"
-
-        guard let bundleIdentifier = appBundle?.bundleIdentifier,
-              let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(bundleIdentifier)&country=\(languageCode)&entity=macSoftware&limit=1")
-              else { return nil }
-
-		// The requirements are met, the url points to a Mac App Store app. Initialize the operation.
-		self.url = url
-		self.app = MacAppStoreAppBundle(appName: appName.deletingPathExtension, bundleIdentifier: bundleIdentifier, versionNumber: version, buildNumber: buildNumber, url: appURL)
+		guard let receiptPath = bundle?.appStoreReceiptURL?.path,
+			  fileManager.fileExists(atPath: receiptPath) || receiptPath.contains("WrappedBundle") else { return false }
+		
+		return true
+	}
+	
+	required init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock) {
+		self.app = app
 		
 		super.init()
 
 		self.completionBlock = {
-			completionBlock(self.app)
+			if let update = self.update {
+				completionBlock(.success(update))
+			} else {
+				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+			}
 		}
 	}
 
+	/// The bundle to be checked for updates.
+	fileprivate let app: App.Bundle
+
+	/// The update fetched during this operation.
+	fileprivate var update: App.Update?
+
+	
+	// MARK: - Operation
+	
 	override func execute() {
 		if self.app.bundleIdentifier.contains("com.apple.InstallAssistant") {
 			self.finish()
-            return
-        }
-        
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil,
-                let data = data,
-                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                let results = json["results"] as? [Any],
-                results.count != 0,
-                let appData = results[0] as? [String: Any] else {
-					self.app.newestVersion.releaseNotes = error
-					self.finish()
-                    return
-            }
-            
-			self.parse(data: appData)
-        }
-        
-        dataTask.resume()
+			return
+		}
+		
+		self.fetchAppInfo { result in
+			switch result {
+			// Process fetched info
+			case .success(let entry):
+				self.update = self.update(from: entry)
+				self.finish()
 
+			// Forward fetch error
+			case .failure(let error):
+				self.finish(with: error)
+
+			}
+		}
 	}
 	
 }
 
-// MARK: - Parsing
-
 extension MacAppStoreUpdateCheckerOperation {
 	
-   /**
-	Parses the data to extract information like release notes and version number
-
-	- parameter data: The JSON dictionary to be parsed
-	*/
-	func parse(data: [String : Any]) {
-		let info = UpdateInfo()
-
-		// Get newest version
-		if let currentVersion = data["version"] as? String {
-			info.version.versionNumber = currentVersion
+	/// Returns a proper update object from the given app store entry.
+	private func update(from entry: AppStoreEntry) -> App.Update {
+		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
+		return App.Update(app: self.app, remoteVersion: version, date: entry.date, releaseNotes: entry.releaseNotes) { app in
+			// Update: Open App Store page where the user can update manually
+			NSWorkspace.shared.open(entry.pageURL)
 		}
-
-		// Get release notes
-		if var releaseNotes = data["releaseNotes"] as? String {
-			releaseNotes = releaseNotes.replacingOccurrences(of: "\n", with: "<br>")
-			info.releaseNotes = releaseNotes
-		}
-
-		// Get update date
-		if let dateString = data["currentVersionReleaseDate"] as? String,
-			let date = Self.dateFormatter.date(from: dateString) {
-			info.date = date
-		}
-
-		// Get App Store Link
-		if var appURL = data["trackViewUrl"] as? String {
-			appURL = appURL.replacingOccurrences(of: "https", with: "macappstore")
-			self.app.appStoreURL = URL(string: appURL)
-		}
-		   
-		self.app.newestVersion = info
-		   
-		self.finish()
 	}
+	
+	/// Fetches update info and returns the result in the given completion handler.
+	private func fetchAppInfo(completion: @escaping (_ result: Result<AppStoreEntry, Error>) -> ()) {
+		// We need a two-level fetch process. `desktopSoftware` delivers metadata for mac-native software. `macSoftware` seems to be more broad, also includes Catalyst and iOS-only software. The former however is more accurate, as `macSoftware` might return iPad metadata for certain apps. We therefore prefer `desktopSoftware` and fall back to `macSoftware` if no info was found.
+		self.fetchAppInfo(with: "desktopSoftware") { result in
+			switch result {
+			case .success(let entry):
+				// Success, forward data
+				completion(.success(entry))
+				
+			case .failure(_):
+				// Data could not be fetched, try the broader entity type
+				self.fetchAppInfo(with: "macSoftware", completion: completion)
+			}
+		}
+	}
+	
+	/// Fetches update info and returns the result in the given completion handler.
+	///
+	/// The entity describes the kind of app which will be looked for.
+	private func fetchAppInfo(with entityType: String, completion: @escaping (_ result: Result<AppStoreEntry, Error>) -> ()) {
+		// Build URL
+		guard let endpoint = URL(string: "https://itunes.apple.com/lookup") else {
+			completion(.failure(MalformedURLError))
+			return
+		}
+
+		// Add parameters
+		let languageCode = Locale.current.regionCode ?? "US"
+		var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false)
+		components?.queryItems = [
+			URLQueryItem(name: "limit", value: "1"),
+			URLQueryItem(name: "entity", value: entityType),
+			URLQueryItem(name: "country", value: languageCode),
+			URLQueryItem(name: "bundleId", value: self.app.bundleIdentifier)
+		]
+		guard let url = components?.url else {
+			completion(.failure(MalformedURLError))
+			return
+		}
+		
+		// Perform request
+		let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+		let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+			guard error == nil, let data = data else {
+				completion(.failure(MalformedURLError))
+				return
+			}
+			
+			do {
+				guard let entry = try JSONDecoder().decode(EntryList.self, from: data).results.first else {
+					completion(.failure(LatestError.updateInfoNotFound))
+					return
+				}
+				
+				completion(.success(entry))
+			}
+			
+			catch let error {
+				completion(.failure(error))
+			}
+		}
+		
+		dataTask.resume()
+	}
+		
+}
+
+
+// MARK: - Decoding
+
+/// Object containing a list of App Store entries.
+fileprivate struct EntryList: Decodable {
+	
+	/// The list of entries found while fetching information from the app store.
+	let results: [AppStoreEntry]
+	
+}
+
+/// Object representing a single entry in fetched information from the app store.
+fileprivate struct AppStoreEntry: Decodable {
+	
+	/// The version number of the entry.
+	let versionNumber: String
+	
+	/// The release notes associated with the entry.
+	let releaseNotesContent: String?
+	
+	/// The release date of the entry.
+	let date: Date?
+	
+	/// The link to the app store page.
+	let pageURL: URL
+	
+	
+	// MARK: - Decoding
+	
+	enum CodingKeys: String, CodingKey {
+		case versionNumber = "version"
+		case releaseNotes = "releaseNotes"
+		case date = "currentVersionReleaseDate"
+		case pageURL = "trackViewUrl"
+	}
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		
+		self.versionNumber = try container.decode(String.self, forKey: .versionNumber)
+		
+		let releaseNotes = try container.decodeIfPresent(String.self, forKey: .releaseNotes)
+		self.releaseNotesContent = releaseNotes?.replacingOccurrences(of: "\n", with: "<br>")
+		
+		if let date = try container.decodeIfPresent(String.self, forKey: .date) {
+			self.date = Self.dateFormatter.date(from: date)
+		} else {
+			self.date = nil
+		}
+		
+		let pageURL = try container.decode(String.self, forKey: .pageURL)
+		guard let url = URL(string: pageURL.replacingOccurrences(of: "https", with: "macappstore")) else {
+			throw MalformedURLError
+		}
+		self.pageURL = url
+	}
+	
+	
+	// MARK: - Utilities
+	
+	// The release notes object derived from fetched texts.
+	var releaseNotes: App.Update.ReleaseNotes? {
+		if let releaseNotesContent = releaseNotesContent {
+			return .html(string: releaseNotesContent)
+		}
+		
+		return nil
+	}
+	
+	private static let dateFormatter: DateFormatter = {
+		// Setup date formatter
+		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "en_US")
+		
+		// Example of the date format: Mon, 28 Nov 2016 14:00:00 +0100
+		// This is problematic, because some developers use other date formats
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		
+		return dateFormatter
+	}()
 	
 }

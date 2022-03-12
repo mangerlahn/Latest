@@ -49,17 +49,17 @@ class UpdateButton: NSButton {
 	@IBInspectable var showActionButton: Bool = true
 	
 	/// The app for which update progress should be displayed.
-	var app: AppBundle? {
+	var app: App? {
 		willSet {
 			// Remove observer from existing app
 			if let app = self.app {
-				UpdateQueue.shared.removeObserver(self, for: app)
+				UpdateQueue.shared.removeObserver(self, for: app.identifier)
 			}
 		}
 		
 		didSet {
 			if let app = self.app {
-				UpdateQueue.shared.addObserver(self, to: app) { [weak self] progress in
+				UpdateQueue.shared.addObserver(self, to: app.identifier) { [weak self] progress in
 					self?.updateInterface(with: progress)
 				}
 			} else {
@@ -100,7 +100,7 @@ class UpdateButton: NSButton {
 	
 	deinit {
 		if let app = self.app {
-			UpdateQueue.shared.removeObserver(self, for: app)
+			UpdateQueue.shared.removeObserver(self, for: app.identifier)
 		}
 	}
 
@@ -210,7 +210,7 @@ class UpdateButton: NSButton {
 	@objc func performAction(_ sender: UpdateButton) {
 		switch self.interfaceState {
 		case .update:
-			self.app?.update()
+			self.app?.performUpdate()
 		case .open:
 			self.app?.open()
 		case .progress:
@@ -246,7 +246,7 @@ private extension UpdateButton {
 			self.alert(for: error).beginSheetModal(for: window) { (response) in
 				switch ErrorAlertResponse(rawValue: response.rawValue) {
 				case .retry:
-					self.app?.update()
+					self.app?.performUpdate()
 				case .cancel, .none:
 					()
 				}

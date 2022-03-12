@@ -6,6 +6,7 @@
 //  Copyright © 2019 Max Langer. All rights reserved.
 //
 
+import AppKit
 import Sparkle
 
 /// The operation updating Sparkle apps.
@@ -15,15 +16,15 @@ class SparkleUpdateOperation: UpdateOperation {
 	private var updater: SPUUpdater?
 	
 	// Callback to be called when the operation has been cancelled
-	fileprivate var cancellationCallback: ((SPUDownloadUpdateStatus) -> Void)?
+	fileprivate var cancellationCallback: (() -> Void)?
 	
 	/// Schedules an progress update notification.
 	private let progressScheduler: DispatchSourceUserDataAdd
 	
 	/// Initializes the operation with the given Sparkle app and handler
-	init(app: SparkleAppBundle) {
+	override init(bundleIdentifier: String, appIdentifier: App.Bundle.Identifier) {
 		self.progressScheduler = DispatchSource.makeUserDataAddSource(queue: .global())
-		super.init(app: app)
+		super.init(bundleIdentifier: bundleIdentifier, appIdentifier: appIdentifier)
 
 		// Delay notifying observers to only let that notification occur in a certain interval
 		self.progressScheduler.setEventHandler() { [weak self] in
@@ -46,8 +47,8 @@ class SparkleUpdateOperation: UpdateOperation {
 		super.execute()
 		
 		// Gather app and app bundle
-		guard let app = self.app as? SparkleAppBundle, let bundle = Bundle(identifier: app.bundleIdentifier) else {
-			self.finish(with: NSError.noUpdate)
+		guard let bundle = Bundle(identifier: self.bundleIdentifier) else {
+			self.finish(with: LatestError.updateInfoNotFound)
 			return
 		}
 		
@@ -70,7 +71,7 @@ class SparkleUpdateOperation: UpdateOperation {
 	override func cancel() {
 		super.cancel()
 		
-		self.cancellationCallback?(.canceled)
+		self.cancellationCallback?()
 		self.finish()
 	}
 	
@@ -98,7 +99,7 @@ class SparkleUpdateOperation: UpdateOperation {
 	
 	/// One instance of the currently updating application.
 	fileprivate var runningApplication: NSRunningApplication? {
-		return NSWorkspace.shared.runningApplications.first(where: { $0.bundleIdentifier == self.app.bundleIdentifier })
+		return NSWorkspace.shared.runningApplications.first(where: { $0.bundleIdentifier == self.bundleIdentifier })
 	}
 
 }
@@ -113,28 +114,16 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		reply(.init(automaticUpdateChecks: false, sendSystemProfile: false))
 	}
 	
-	func showUserInitiatedUpdateCheck(completion updateCheckStatusCompletion: @escaping (SPUUserInitiatedCheckStatus) -> Void) {
+	func showUserInitiatedUpdateCheck(cancellation: @escaping () -> Void) {
 		self.progressState = .initializing
 	}
 	
-	func showUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUUpdateAlertChoice) -> Void) {
-		reply(self.isCancelled ? .installLaterChoice : .installUpdateChoice)
+	func showUpdateFound(with appcastItem: SUAppcastItem, state: SPUUserUpdateState, reply: @escaping (SPUUserUpdateChoice) -> Void) {
+		reply(self.isCancelled ? .dismiss : .install)
 	}
-	
-	func showDownloadedUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUUpdateAlertChoice) -> Void) {
-		reply(self.isCancelled ? .installLaterChoice : .installUpdateChoice)
-	}
-	
-	func showResumableUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUInstallUpdateStatus) -> Void) {
-		reply(self.isCancelled ? .dismissUpdateInstallation : .installAndRelaunchUpdateNow)
-	}
-	
-	func showInformationalUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUInformationalUpdateAlertChoice) -> Void) {
-		reply(.dismissInformationalNoticeChoice)
-	}
-	
-	func showUpdateNotFound(acknowledgement: @escaping () -> Void) {
-		self.finish(with: NSError.noUpdate)
+		
+	func showUpdateNotFoundWithError(_ error: Error, acknowledgement: @escaping () -> Void) {
+		self.finish(with: LatestError.updateInfoNotFound)
 		acknowledgement()
 	}
 	
@@ -143,15 +132,23 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		acknowledgement()
 	}
 	
-	func showDownloadInitiated(completion downloadUpdateStatusCompletion: @escaping (SPUDownloadUpdateStatus) -> Void) {
-		if self.isCancelled {
-			downloadUpdateStatusCompletion(.canceled)
-			return
-		}
-		
-		self.cancellationCallback = downloadUpdateStatusCompletion
+	func showUpdateInstalledAndRelaunched(_ relaunched: Bool, acknowledgement: @escaping () -> Void) {		
+		acknowledgement()
+		self.finish()
+	}
+	
+	func showUpdateInFocus() {
+		// Noop
 	}
 
+	func showDownloadInitiated(cancellation: @escaping () -> Void) {
+		if self.isCancelled {
+			cancellation()
+			return
+		}
+
+		self.cancellationCallback = cancellation
+	}
 	
 	// MARK: - Downloading Update
 	
@@ -187,28 +184,17 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		self.progressState = .extracting(progress: progress)
 	}
 	
-	func showReady(toInstallAndRelaunch installUpdateHandler: @escaping (SPUInstallUpdateStatus) -> Void) {
+	func showReady(toInstallAndRelaunch reply: @escaping (SPUUserUpdateChoice) -> Void) {
 		// Check whether app is open
 		self.isAppOpen = self.runningApplication != nil
 		
-		installUpdateHandler(self.isCancelled ? .dismissUpdateInstallation : .installAndRelaunchUpdateNow)
+		reply(self.isCancelled ? .dismiss : .install)
 	}
 	
-	func showInstallingUpdate() {
+	func showInstallingUpdate(withApplicationTerminated applicationTerminated: Bool) {
 		self.progressState = .installing
 	}
-	
-	func showUpdateInstallationDidFinish(acknowledgement: @escaping () -> Void) {
-		// Close the app after installation when it was not open before
-		if !self.isAppOpen, let runningApplication = self.runningApplication {
-			// Attempt to terminate app gracefully
-			runningApplication.terminate()
-		}
 		
-		acknowledgement()
-		self.finish()
-	}
-	
 
 	// MARK: - Ignored Methods
 	

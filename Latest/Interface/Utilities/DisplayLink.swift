@@ -86,10 +86,15 @@ class DisplayLink: NSObject {
 			self._frames = 1
 		}
         
-        self._currentFrame += 1
+#if os(macOS)
+		// Make 60 FPS the default rate and adjust progress increases based on the actual refresh rate of the display.
+		self._currentFrame += CVDisplayLinkGetActualOutputVideoRefreshPeriod(displayLink) / (1 / 60.0)
+#else
+		self._currentFrame += 1
+#endif
         
 		// Forward progress to the observer
-		DispatchQueue.main.sync {
+		DispatchQueue.main.async {
 			self.progress = self._currentFrame / self._frames
 			if self.duration != nil, self.progress >= 1 {
                 self.completionHandler?()
