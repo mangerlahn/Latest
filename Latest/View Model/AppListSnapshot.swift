@@ -62,7 +62,7 @@ struct AppListSnapshot {
 		
 		// Filter ignored apps
 		if !AppListSettings.shared.showIgnoredUpdates {
-			visibleApps = visibleApps.filter({ $0.isIgnored })
+			visibleApps = visibleApps.filter({ !$0.isIgnored })
 		}
 		
 		// Sort apps
