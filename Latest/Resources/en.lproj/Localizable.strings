@@ -2,46 +2,46 @@
 "(%@)" = "(%@)";
 
 /* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
-"An error occurred while updating %@." = "Ein Fehler ist während der Aktualisierung von %@ aufgetreten.";
+"An error occurred while updating %@." = "An error occurred while updating %@.";
 
 /* Touch Bar section title for available updates */
-"Available" = "Verfügbar";
+"Available" = "Available";
 
 /* Table Section Header for available updates */
-"Available Updates" = "Verfügbare Updates";
+"Available Updates" = "Available Updates";
 
 /* Cancel button in an update dialogue */
-"Cancel" = "Abbrechen";
+"Cancel" = "Cancel";
 
 /* Update progress state of cancelling an update */
-"Cancelling" = "Abbrechen";
+"Cancelling" = "Cancelling";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"Downloading %@ of %@" = "%1$@ von %2$@ herunterladen";
+"Downloading %@ of %@" = "Downloading %@ of %@";
 
 /* Description of button that opens an error dialogue. */
-"Error while updating app" = "App konnte nicht aktualisiert werden";
+"Error while updating app" = "Error while updating app";
 
 /* Update progress state of extracting the downloaded update */
-"Extracting Update" = "Update entpacken";
+"Extracting Update" = "Extracting Update";
 
 /* Touch Bar section title for ignored apps */
-"Ignored" = "Ignoriert";
+"Ignored" = "Ignored";
 
 /* Table Section Header for ignored apps */
-"Ignored Apps" = "Ignorierte Apps";
+"Ignored Apps" = "Ignored Apps";
 
 /* Update progress state of initializing an update */
-"Initializing" = "Initialisieren";
+"Initializing" = "Initializing";
 
 /* Touch Bar section title for installed apps */
-"Installed" = "Installiert";
+"Installed" = "Installed";
 
 /* Table Section Header for already installed apps */
-"Installed Apps" = "Installierte Apps";
+"Installed Apps" = "Installed Apps";
 
 /* Update progress state of installing an update */
-"Installing" = "Installieren";
+"Installing" = "Installing";
 
 /* App name as title of the main window. */
 "Latest" = "Latest";
@@ -50,62 +50,56 @@
 "Mac App Store" = "Mac App Store";
 
 /* New Version String */
-"New version: %@" = "Neue Version: %@";
+"New version: %@" = "New version: %@";
 
 /* Title of release notes empty state */
-"No app selected." = "Keine App ausgewählt.";
+"No app selected." = "No app selected.";
 
 /* Error message that no release notes were found */
-"No release notes were found for this app." = "Zu dieser App wurden keine Release Notes gefunden.";
+"No release notes were found for this app." = "No release notes were found for this app.";
 
 /* Error description when no update was found for a particular app. */
-"No update was found for this app." = "Es wurde kein Update für diese App gefunden.";
+"No update was found for this app." = "No update was found for this app.";
 
 /* number of updates available */
 "NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
 
-/* Action to open the app. */
-"Open" = "Öffnen";
-
 /* Title of button that opens the app. Should be written uppercase if appropriate. */
-"OPEN" = "ÖFFNEN";
+"OPEN" = "OPEN";
 
 /* Error description when no update was found for a particular app. */
-"Please sign in to the Mac App Store to update this app." = "Bitte melde dich im Mac App Store an, um das Update für diese App zu laden.";
+"Please sign in to the Mac App Store to update this app." = "Please sign in to the Mac App Store to update this app.";
 
 /* Button to retry an update in an error dialogue */
-"Retry" = "Erneut versuchen";
-
-/* Revea in Finder Row action */
-"Reveal" = "Zeigen";
+"Retry" = "Retry";
 
 /* Description of release notes empty state */
-"Select an app from the list to read its release notes." = "Wähle in der Seitenleiste eine App, um deren Release Notes zu lesen.";
+"Select an app from the list to read its release notes." = "Select an app from the list to read its release notes.";
 
 /* Revea in Finder Row action */
-"Show in Finder" = "Im Finder zeigen";
+"Show in Finder" = "Show in Finder";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"Source: %@" = "Quelle: %@";
+"Source: %@" = "Source: %@";
 
 /* No comment provided by engineer. */
-"Up to Date!" = "Alles aktuell!";
+"Up to Date!" = "Up to Date!";
 
 /* Update String */
-"Update" = "Aktualisieren";
+"Update" = "Update";
 
 /* Title of button that updates the app. Should be written uppercase if appropriate. */
-"UPDATE" = "AKTUALISIEREN";
+"UPDATE" = "UPDATE";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Für diese App konnte kein Update gefunden werden.";
+"UpdateInfoNotFoundError" = "No update was found for this app.";
 
 /* Update progress state of waiting to start an update */
-"Waiting" = "Warten";
+"Waiting" = "Waiting";
 
 /* The source name for apps loaded from third-party websites. */
 "Web" = "Web";
 
 /* Current Version String */
-"Your version: %@" = "Installierte Version: %@";
+"Your version: %@" = "Your version: %@";
 

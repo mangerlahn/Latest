@@ -10,25 +10,25 @@ import Cocoa
 
 /// The operation for checking for updates for a Mac App Store app.
 class UnsupportedUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
+	
+	static var sourceType: App.Bundle.Source {
+		return .unsupported
+	}
 		
-	/// The bundle that is not supported.
-	private let app: UnsupportedAppBundle
-			
-	required init?(withAppURL appURL: URL, version: String, buildNumber: String, completionBlock: @escaping UpdateCheckerCompletionBlock) {
-        let appName = appURL.lastPathComponent as NSString
-		let bundle = Bundle(path: appURL.path)
-		
-		guard let identifier = bundle?.bundleIdentifier else {
-			return nil
-		}
-		self.app = UnsupportedAppBundle(appName: appName.deletingPathExtension, bundleIdentifier: identifier, versionNumber: version, buildNumber: buildNumber, url: appURL)
-
+	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
+		return true
+	}
+	
+	required init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock) {
 		super.init()
 
 		self.completionBlock = {
-			completionBlock(self.app)
+			completionBlock(.failure(LatestError.updateInfoNotFound))
 		}
 	}
+	
+	
+	// MARK: - Operation
 
 	override func execute() {
 		// Nothing to check for, finish immediately

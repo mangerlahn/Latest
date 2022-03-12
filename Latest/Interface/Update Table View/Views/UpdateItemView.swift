@@ -10,7 +10,6 @@
 
 import Cocoa
 
-@available(OSX 10.12.2, *)
 /// The scubber view holds the applications icon as well as it's name
 class UpdateItemView: NSScrubberItemView {
 

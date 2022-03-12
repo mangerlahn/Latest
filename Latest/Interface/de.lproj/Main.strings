@@ -217,6 +217,12 @@
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
 "QRR-k0-TZ4.title" = "Aktualisieren";
 
+/* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.label" = "Alle aktualisieren";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.paletteLabel" = "Alle aktualisieren";
+
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zoomen";
 
@@ -279,6 +285,12 @@
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
 "VX8-qg-UOL.title" = "Label";
+
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
+"w14-Ia-4l9.title" = "Öffnen";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
+"wmL-ks-XSr.ibShadowedToolTip" = "Alle aktualisieren";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Hilfe";

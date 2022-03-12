@@ -11,87 +11,97 @@ import Cocoa
 /// The operation for checking for updates for a Sparkle app.
 class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	
-	private static let dateFormatter: DateFormatter = {
-		// Setup date formatter
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        
-        // Example of the date format: Mon, 28 Nov 2016 14:00:00 +0100
-        // This is problematic, because some developers use other date formats
-        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
-		
-		return dateFormatter
-	}()
-
-	/// The bundle to be checked for updates.
-	private let app: SparkleAppBundle
+	// MARK: - Update Check
 	
-	/// The url to check for updates.
-	private let url: URL
-		
-	required init?(withAppURL appURL: URL, version: String, buildNumber: String, completionBlock: @escaping UpdateCheckerCompletionBlock) {
-		let appName = appURL.lastPathComponent as NSString
-        let bundle = Bundle(path: appURL.path)
-        
-        guard let information = bundle?.infoDictionary, let identifier = bundle?.bundleIdentifier else {
-            return nil
-        }
-        
-        var url: URL
+	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
+		// Can check for updates if a feed URL is available for the given app
+		return Self.feedURL(from: url) != nil
+	}
 
-        if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString.unQuoted())  {
-            url = feedURL
-        } else { // Maybe the app is built using DevMate
-            // Check for the DevMate framework
-            let frameworksURL = URL(fileURLWithPath: appURL.path, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
-            
-			let frameworks = try? FileManager.default.contentsOfDirectory(atPath: frameworksURL.path)
-            if !(frameworks?.contains(where: { $0.contains("DevMateKit") }) ?? false) {
-                return nil
-            }
-            
-            // The app uses Devmate, so lets get the appcast from their servers
-            guard var feedURL = URL(string: "https://updates.devmate.com") else {
-                return nil
-            }
-            
-            feedURL.appendPathComponent(identifier)
-            feedURL.appendPathExtension("xml")
-            
-            url = feedURL
-        }
-
- 		// The requirements are met, the url points to a Mac App Store app. Initialize the operation.
-		self.url = url
-		self.app = SparkleAppBundle(appName: appName.deletingPathExtension, bundleIdentifier: identifier, versionNumber: version, buildNumber: buildNumber, url: appURL)
+	static var sourceType: App.Bundle.Source {
+		return .sparkle
+	}
+	
+	required init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock) {
+		self.app = app
+		self.url = Self.feedURL(from: app.fileURL)
 		
 		super.init()
-		
+
 		self.completionBlock = {
-			completionBlock(self.app)
+			if let update = self.update {
+				completionBlock(.success(update))
+			} else {
+				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+			}
+		}
+	}
+	
+	/// Returns the Sparkle feed url for the app at the given URL, if available.
+	static func feedURL(from appURL: URL) -> URL? {
+		let bundle = Bundle(path: appURL.path)
+		guard let information = bundle?.infoDictionary, let identifier = bundle?.bundleIdentifier else {
+			return nil
+		}
+
+		if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString.unquoted)  {
+			return feedURL
+		} else { // Maybe the app is built using DevMate
+			// Check for the DevMate framework
+			let frameworksURL = URL(fileURLWithPath: appURL.path, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
+			
+			let frameworks = try? FileManager.default.contentsOfDirectory(atPath: frameworksURL.path)
+			if !(frameworks?.contains(where: { $0.contains("DevMateKit") }) ?? false) {
+				return nil
+			}
+			
+			// The app uses Devmate, so lets get the appcast from their servers
+			guard var feedURL = URL(string: "https://updates.devmate.com") else {
+				return nil
+			}
+			
+			feedURL.appendPathComponent(identifier)
+			feedURL.appendPathExtension("xml")
+			
+			return feedURL
 		}
 	}
 
+	/// The bundle to be checked for updates.
+	private let app: App.Bundle
+	
+	/// The url to check for updates.
+	private let url: URL?
+	
+	/// The update fetched during the checking operation.
+	fileprivate var update: App.Update?
+
+	
+	// MARK: - Operation
+	
 	override func execute() {
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            if error == nil,
-                let xmlData = data {
+		guard let url = self.url else {
+			self.finish(with: LatestError.updateInfoNotFound)
+			return
+		}
 
-                let parser = XMLParser(data: xmlData)
+		let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+		let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+			if error == nil,
+				let xmlData = data {
 
+				let parser = XMLParser(data: xmlData)
 				parser.delegate = self
 
-                if !parser.parse() {
+				if !parser.parse() {
 					self.finish()
-                }
-            } else {
-				self.app.newestVersion.releaseNotes = error
-				self.finish()
-            }
-        })
-        
-        task.resume()
+				}
+			} else {
+				self.finish(with: error ?? MalformedURLError)
+			}
+		})
+		
+		task.resume()
 	}
 	
 	
@@ -101,17 +111,23 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
     private var currentlyParsing : ParsingType = .none
 	
 	/// An array holding all versions of the app contained in the Sparkle feed
-    private var versionInfos = [UpdateInfo]()
+	private var updates = [UpdateEntry]()
 	
 }
 
-fileprivate extension String {
-    func unQuoted() -> String {
-        return NSString(string: self).trimmingCharacters(in: CharacterSet(charactersIn: "'\""))
-    }
-}
-
 extension SparkleUpdateCheckerOperation: XMLParserDelegate {
+	
+	private static let dateFormatter: DateFormatter = {
+		// Setup date formatter
+		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "en_US")
+		
+		// Example of the date format: Mon, 28 Nov 2016 14:00:00 +0100
+		// This is problematic, because some developers use other date formats
+		dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
+		
+		return dateFormatter
+	}()
 	
     /// Enum reflecting the different parsing states
     private enum ParsingType {
@@ -129,13 +145,13 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
             self.createVersion()
         }
         
-		let info = self.app.newestVersion
+		let info = self.currentUpdate
         
         // Lets find the version number
         switch elementName {
         case "enclosure":
-            info.version.versionNumber = attributeDict["sparkle:shortVersionString"]
-            info.version.buildNumber = attributeDict["sparkle:version"]
+            info.versionNumber = attributeDict["sparkle:shortVersionString"]
+            info.buildNumber = attributeDict["sparkle:version"]
         case "pubDate":
             self.currentlyParsing = .pubDate
         case "sparkle:releaseNotesLink":
@@ -159,7 +175,7 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-		let info = self.app.newestVersion
+		let info = self.currentUpdate
 
         switch currentlyParsing {
         case .pubDate:
@@ -168,21 +184,22 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
             }
         case .releaseNotesLink:
             // Release Notes Link wins over other release notes types
-            if info.releaseNotes is URL { return }
-            info.releaseNotes = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines))
+			if case .url(_) = info.releaseNotes { return }
+			guard let url = URL(string: string.trimmingCharacters(in: .whitespacesAndNewlines)) else { return }
+			info.releaseNotes = .url(url: url)
         case .releaseNotesData:
             if info.releaseNotes == nil {
-                info.releaseNotes = ""
+				info.releaseNotes = .html(string: "")
             }
             
-            if var releaseNotes = info.releaseNotes as? String {
+			if case .html(var releaseNotes) = info.releaseNotes {
                 releaseNotes += string
-                info.releaseNotes = releaseNotes
+				info.releaseNotes = .html(string: releaseNotes)
             }
         case .version:
-            info.version.buildNumber = string
+            info.buildNumber = string
         case .shortVersion:
-            info.version.versionNumber = string
+            info.versionNumber = string
         case .none:
             ()
         }
@@ -191,11 +208,11 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         var foundItemWithDate = true
         
-        self.versionInfos = self.versionInfos.filter { (info) -> Bool in
+        self.updates = self.updates.filter { (info) -> Bool in
             return !info.version.isEmpty
         }
         
-        self.versionInfos.sort { (first, second) -> Bool in
+        self.updates.sort { (first, second) -> Bool in
             guard let firstDate = first.date else {
                 foundItemWithDate = false
                 return false
@@ -207,23 +224,24 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
             return firstDate.compare(secondDate) == .orderedDescending
         }
         
-        if !foundItemWithDate && self.versionInfos.count > 1 {
+        if !foundItemWithDate && self.updates.count > 1 {
             // The feed did not provide proper dates, so we only can try to compare version numbers against each other
             // With this information, we might be able to find the newest item
             // I don't want this to be the default option, as there might be version formats I don't think of right now
             // We will see how this plays out in the future
-            
-            self.versionInfos.sort(by: { (first, second) -> Bool in
+            self.updates.sort(by: { (first, second) -> Bool in
                 return first.version >= second.version
             })
         }
         
-        guard let version = self.versionInfos.first, !version.version.isEmpty else {
-			self.finish()
+        guard let update = self.updates.first else {
+			self.finish(with: LatestError.updateInfoNotFound)
             return
         }
-        
-		self.app.newestVersion = version
+		
+		self.update = App.Update(app: self.app, remoteVersion: update.version, date: update.date, releaseNotes: update.releaseNotes, updateAction: { app in
+			UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
+		})
         
         DispatchQueue.main.async(execute: {
 			self.finish()
@@ -235,10 +253,50 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
     
     /// Creates version info object and appends it to the versionInfos array
     private func createVersion() {
-        let version = UpdateInfo()
-        
-        self.app.newestVersion = version
-        self.versionInfos.append(version)
+        self.updates.append(UpdateEntry())
     }
+	
+	/// The currently parsed update entry.
+	private var currentUpdate: UpdateEntry {
+		if self.updates.isEmpty {
+			self.createVersion()
+		}
+		
+		return self.updates.last!
+	}
+	
+}
+
+
+// MARK: - Utilities
+
+/// Simple container holding update information for a single entry in the update feed.
+fileprivate class UpdateEntry {
+	
+	/// The version information of the entry.
+	var version: Version {
+		return Version(versionNumber: versionNumber, buildNumber: buildNumber)
+	}
+	
+	/// The version number of the entry.
+	var versionNumber: String?
+	
+	/// The build number of the entryl.
+	var buildNumber: String?
+	
+	/// The release date of the update entry.
+	var date: Date?
+	
+	/// Release notes associated with the entry.
+	var releaseNotes: App.Update.ReleaseNotes?
+		
+}
+
+fileprivate extension String {
+	
+	/// Returns the string with quotation marks trimmed.
+	var unquoted: String {
+		return NSString(string: self).trimmingCharacters(in: CharacterSet(charactersIn: "'\""))
+	}
 	
 }

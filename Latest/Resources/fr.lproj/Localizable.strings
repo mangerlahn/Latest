@@ -64,6 +64,9 @@
 /* number of updates available */
 "NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
 
+/* Action to open the app. */
+"Open" = "Ouvrir";
+
 /* Title of button that opens the app. Should be written uppercase if appropriate. */
 "OPEN" = "OUVRIR";
 
@@ -72,6 +75,9 @@
 
 /* Button to retry an update in an error dialogue */
 "Retry" = "Réessayer";
+
+/* Revea in Finder Row action */
+"Reveal" = "Révéler";
 
 /* Description of release notes empty state */
 "Select an app from the list to read its release notes." = "Sélectionnez une application dans la liste pour lire les notes de version.";
@@ -90,6 +96,9 @@
 
 /* Title of button that updates the app. Should be written uppercase if appropriate. */
 "UPDATE" = "MISE À JOUR";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoNotFoundError" = "Aucune mise à jour n'a été trouvée pour cette application.";
 
 /* Update progress state of waiting to start an update */
 "Waiting" = "En attente";

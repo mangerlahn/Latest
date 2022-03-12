@@ -1,6 +1,3 @@
-[submodule "Frameworks/mas-cli"]
-	path = Frameworks/mas-cli
-	url = https://github.com/mas-cli/mas.git
 [submodule "Frameworks/Sparkle"]
 	path = Frameworks/Sparkle
 	url = https://github.com/sparkle-project/Sparkle.git

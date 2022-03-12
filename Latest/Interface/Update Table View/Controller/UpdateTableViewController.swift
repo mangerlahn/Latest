@@ -11,59 +11,30 @@ import Cocoa
 /**
  This is the class handling the update process and displaying its results
  */
-class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate {
-
+class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, Observer {
+	
+	var id = UUID()
+	
     /// The array holding the apps that have an update available.
-	var dataStore: AppDataStore {
-		return UpdateChecker.shared.dataStore
+	var snapshot: AppListSnapshot = AppListSnapshot(withApps: [], filterQuery: nil) {
+		didSet {
+			self.updatePlaceholderVisibility()
+			
+			// Update selected app
+			self.selectApp(at: self.selectedAppIndex)
+		}
 	}
 	
 	/// Convenience for accessing apps that should be displayed in the table.
-	var apps: [AppDataStore.Entry] {
-		return self.dataStore.filteredApps
+	var apps: [AppListSnapshot.Entry] {
+		return self.snapshot.entries
 	}
-	
-	/// Represents the last state of apps used for animating transitions.
-	var appSnapshot = [AppDataStore.Entry]()
-    
-    /// Flag indicating that all apps are displayed or only the ones with updates available
-	var showInstalledUpdates: Bool {
-        set {
-			self.dataStore.showInstalledUpdates = newValue
-        }
-		
-		get {
-			return self.dataStore.showInstalledUpdates
-		}
-    }
-	
-    /// Whether ignored apps should be visible
-	var showIgnoredUpdates: Bool {
-        set {
-			self.dataStore.showIgnoredUpdates = newValue
-        }
-		
-		get {
-			return self.dataStore.showIgnoredUpdates
-		}
-    }
-	
-	/// Whether unsupported apps should be visible
-	var showUnsupportedUpdates: Bool {
-		set {
-			self.dataStore.showUnsupportedUpdates = newValue
-		}
-		
-		get {
-			return self.dataStore.showUnsupportedUpdates
-		}
-	}
-    
+	        
     /// The detail view controller that shows the release notes
     weak var releaseNotesViewController : ReleaseNotesViewController?
     
     /// The empty state label centered in the list view indicating that no updates are available
-    @IBOutlet weak var noUpdatesAvailableLabel: NSTextField!
+    @IBOutlet weak var placeholderLabel: NSTextField!
 	
 	/// The label indicating how many updates are vailable
     @IBOutlet weak var updatesLabel: NSTextField!
@@ -71,6 +42,24 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The menu displayed on secondary clicks on cells in the list
     @IBOutlet weak var tableViewMenu: NSMenu!
     
+	/// The currently selected app within the UI.
+	var selectedApp: App? {
+		willSet {
+			if let app = newValue, !self.snapshot.contains(app) {
+				fatalError("Attempted to select app that is not available.")
+			}
+		}
+	}
+
+	/// The index of the currently selected app within the UI.
+	var selectedAppIndex: Int? {
+		if let app = self.selectedApp {
+			return self.snapshot.index(of: app)
+		}
+		
+		return nil
+	}
+	
     
     // MARK: - View Lifecycle
     
@@ -83,18 +72,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                         
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
+		self.updateTitleAndBatch()
+		
+		AppListSettings.shared.add(self, handler: self.updateSnapshot)
         
-		self.dataStore.addObserver(self) { newValue in
-			self.updateTableView(with: self.appSnapshot, with: newValue)
-			self.appSnapshot = newValue
-			
-			self.updateEmtpyStateVisibility()
+		UpdateCheckCoordinator.shared.appProvider.addObserver(self) { newValue in
+			self.scheduleTableViewUpdate(with: AppListSnapshot(withApps: newValue, filterQuery: self.snapshot.filterQuery), animated: true)
 			self.updateTitleAndBatch()
-			
-			// Update selected app
-			if let index = self.dataStore.selectedAppIndex {
-				self.selectApp(at: index)
-			}
 		}
 		
 		if #available(macOS 11, *) {
@@ -109,6 +93,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
 		self.view.window?.makeFirstResponder(nil)
 	}
+	
+	deinit {
+		AppListSettings.shared.remove(self)
+	}
     
     
     // MARK: - TableView Stuff
@@ -116,28 +104,35 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The table view displaying the list
     @IBOutlet weak var tableView: NSTableView!
     
+	func updateSnapshot() {
+		self.scheduleTableViewUpdate(with: self.snapshot.updated(), animated: true)
+	}
+	
 	
     // MARK: Table View Delegate
 	
-	private func contentCell(for app: AppBundle) -> NSView? {
+	private func contentCell(for app: App) -> NSView? {
         guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) as? UpdateCell else {
             return nil
         }
-        
-		cell.app = app
-		cell.filterQuery = self.dataStore.filterQuery
 		
-        IconCache.shared.icon(for: app) { (image) in
+		// Only update cell if needed
+		guard cell.app != app else { return cell }
+		
+		cell.app = app
+		cell.filterQuery = self.snapshot.filterQuery
+		
+		IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
             
             // Tint the icon if the app is not supported
-            cell.imageView?.alphaValue = (type(of: app).supported ? 1 : 0.5)
+            cell.imageView?.alphaValue = (app.supported ? 1 : 0.5)
         }
         
         return cell
 	}
 	
-	private func headerCell(of section: AppDataStore.Section) -> NSView? {
+	private func headerCell(of section: AppListSnapshot.Section) -> NSView? {
 		let view = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellSectionIdentifier"), owner: self) as? UpdateGroupCellView
 		
 		view?.section = section
@@ -161,7 +156,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		// Ensure the index is valid
 		guard row >= 0 && row < self.apps.count else { return nil }
 		
-		if self.dataStore.isSectionHeader(at: row) {
+		if self.snapshot.isSectionHeader(at: row) {
 			guard let view = tableView.rowView(atRow: row, makeIfNecessary: false) else {
 				return UpdateGroupRowView()
 			}
@@ -175,13 +170,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		// Ensure the index is valid
 		guard row >= 0 && row < self.apps.count else { return -1 }
-		return self.dataStore.isSectionHeader(at: row) ? 27 : 60
+		return self.snapshot.isSectionHeader(at: row) ? 27 : 60
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
 		// Ensure the index is valid
 		guard row >= 0 && row < self.apps.count else { return false }
-        return self.dataStore.isSectionHeader(at: row)
+        return self.snapshot.isSectionHeader(at: row)
     }
     
     func tableView(_ tableView: NSTableView, rowActionsForRow row: Int, edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
@@ -189,11 +184,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		guard row >= 0 && row < self.apps.count else { return [] }
 
 		// Prevent section headers from displaying row actions
-		if self.dataStore.isSectionHeader(at: row) { return [] }
+		if self.snapshot.isSectionHeader(at: row) { return [] }
 		
         if edge == .trailing {
 			// Don't provide an update action if the app has no update available
-			if !(self.dataStore.app(at: row)?.updateAvailable ?? false) {
+			if !(self.snapshot.app(at: row)?.updateAvailable ?? false) {
 				return []
 			}
 			
@@ -201,17 +196,25 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                 self.updateApp(atIndex: row)
             })
             
-            action.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+			// Teal on macOS 11 / below is the same as Cyan on macOS 12+
+			if #available(macOS 12.0, *) {
+				action.backgroundColor = .systemCyan
+			} else {
+				action.backgroundColor = .systemTeal
+			}
             
             return [action]
         } else if edge == .leading {
-            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Show in Finder", comment: "Revea in Finder Row action"), handler: { (action, row) in
+			let open = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Open", comment: "Action to open the app.")) { action, row in
+				self.openApp(at: row)
+			}
+			
+            let reveal = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Reveal", comment: "Revea in Finder Row action"), handler: { (action, row) in
                 self.showAppInFinder(at: row)
             })
-            
-            action.backgroundColor = #colorLiteral(red: 0.6975218654, green: 0.6975218654, blue: 0.6975218654, alpha: 1)
-            
-            return [action]
+			reveal.backgroundColor = .systemGray
+
+            return [open, reveal]
         }
         
         return []
@@ -221,7 +224,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		// Ensure the index is valid
 		guard row >= 0 && row < self.apps.count else { return false }
 
-        return !self.dataStore.isSectionHeader(at: row)
+        return !self.snapshot.isSectionHeader(at: row)
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -233,13 +236,66 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func numberOfRows(in tableView: NSTableView) -> Int {
 		return self.apps.count
     }
+	
+	
+	// MARK: Update Scheduling
+	
+	/// The next snapshot to be applied to the table view.
+	private var newSnapshot: AppListSnapshot?
+	
+	/// Whether an table view update is already scheduled.
+	private var tableViewUpdateScheduled = false
+	
+	/// Whether a table view update is currently ongoing.
+	private var tableViewUpdateInProgress = false
+	
+	/// Schedules a table view update with the given snapshot.
+	func scheduleTableViewUpdate(with snapshot: AppListSnapshot, animated: Bool) {
+		self.newSnapshot = snapshot
+
+		if self.tableViewUpdateInProgress {
+			self.tableViewUpdateScheduled = true
+			return
+		}
+				
+		if animated {
+			if self.tableViewUpdateScheduled {
+				return
+			}
+
+			self.tableViewUpdateScheduled = true
+			self.perform(#selector(updateTableViewAnimated), with: nil, afterDelay: 0.1)
+			return
+		}
+		
+		self.tableViewUpdateScheduled = false
+		self.newSnapshot = nil
+		self.snapshot = snapshot
+		self.tableView.reloadData()
+	}
+	
+	@objc func updateTableViewAnimated() {
+		guard self.tableViewUpdateScheduled, let snapshot = newSnapshot else {
+			return
+		}
+		self.tableViewUpdateScheduled = false
+		self.tableViewUpdateInProgress = true
+		
+		let oldSnapshot = self.snapshot
+		self.snapshot = snapshot
+		self.newSnapshot = nil
+		self.updateTableView(with: oldSnapshot, with: self.snapshot)
+		
+		self.tableViewUpdateInProgress = false
+		self.updateTableViewAnimated()
+	}
     
     
     // MARK: - Public Methods
     
     /// Triggers the update checking mechanism
     func checkForUpdates() {
-		UpdateChecker.shared.run()
+		UpdateCheckCoordinator.shared.run()
 		self.view.window?.makeFirstResponder(self)
     }
 
@@ -248,31 +304,30 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
      - parameter index: The index of the given app. If nil, the currently selected app is deselected.
      */
     func selectApp(at index: Int?) {
-        guard let index = index, index >= 0 else {
-			self.dataStore.selectedApp = nil
+        guard let index = index, index >= 0, let app = self.snapshot.app(at: index) else {
             self.tableView.deselectAll(nil)
 			self.scrubber?.animator().selectedIndex = -1
 			
 			// Clear release notes
 			if let detailViewController = self.releaseNotesViewController {
-				detailViewController.display(content: nil, for: nil)
+				detailViewController.display(releaseNotesFor: nil)
 			}
             
             return
         }
         
+		if self.selectedApp?.identifier == app.identifier && index == self.tableView.selectedRow {
+			return
+		}
+		
 		self.scrubber?.animator().scrollItem(at: index, to: .center)
 		self.scrubber?.animator().selectedIndex = index
         
         self.tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
         self.tableView.scrollRowToVisible(index)
 			
-		guard let app = self.dataStore.app(at: index) else {
-            return
-        }
-        
-		self.dataStore.selectedApp = app
-		self.releaseNotesViewController?.display(content: app.newestVersion.releaseNotes, for: app)
+		self.selectedApp = app
+		self.releaseNotesViewController?.display(releaseNotesFor: app)
     }
     
     
@@ -294,6 +349,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	@IBAction func unignoreApp(_ sender: NSMenuItem?) {
 		self.setIgnored(false, forAppAt: self.rowIndex(forMenuItem: sender))
 	}
+	
+	/// Opens the selected app
+	@IBAction func openApp(_ sender: NSMenuItem?) {
+		self.openApp(at: self.rowIndex(forMenuItem: sender))
+	}
     
     /// Show the bundle of an app in Finder
     @IBAction func showAppInFinder(_ sender: NSMenuItem?) {
@@ -306,22 +366,20 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
         
 		let index = self.rowIndex(forMenuItem: menuItem)
-		guard index >= 0, let app = self.dataStore.app(at: index) else {
+		guard index >= 0, let app = self.snapshot.app(at: index) else {
 			return false
 		}
 		
 		switch action {
 		case #selector(updateApp(_:)):
 			return app.updateAvailable && !app.isUpdating
-		case #selector(showAppInFinder(_:)):
+		case #selector(openApp(_:)), #selector(showAppInFinder(_:)):
             return true
 		case #selector(ignoreApp(_:)):
-			let isIgnored = self.dataStore.isAppIgnored(app)
-			menuItem.isHidden = isIgnored
+			menuItem.isHidden = app.isIgnored
 			return true
 		case #selector(unignoreApp(_:)):
-			let isIgnored = self.dataStore.isAppIgnored(app)
-			menuItem.isHidden = !isIgnored
+			menuItem.isHidden = !app.isIgnored
 			return true
         default:
             ()
@@ -335,7 +393,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func menuNeedsUpdate(_ menu: NSMenu) {
         let row = self.tableView.clickedRow
         
-        guard row != -1, !self.dataStore.isSectionHeader(at: row) else { return }
+        guard row != -1, !self.snapshot.isSectionHeader(at: row) else { return }
         menu.items.forEach({ $0.representedObject = row })
     }
     
@@ -351,48 +409,52 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Updates the app and a given index
     private func updateApp(atIndex index: Int) {
         DispatchQueue.main.async {
-            if index < 0 || index >= self.apps.count {
-                return
-            }
-            
-			self.dataStore.app(at: index)?.update()
+			self.app(at: index)?.performUpdate()
         }
     }
 	
 	/// Sets the ignored state for the app at the given index
 	private func setIgnored(_ ignored: Bool, forAppAt index: Int) {
-		guard let app = self.dataStore.app(at: index) else { return }
-		self.dataStore.setIgnored(ignored, for: app)
+		guard let app = self.app(at: index) else { return }
+		UpdateCheckCoordinator.shared.appProvider.setIgnoredState(ignored, for: app)
 	}
     
+	/// Opens the app at a given index.
+	private func openApp(at index: Int) {
+		self.app(at: index)?.open()
+	}
+	
     /// Reveals the app at a given index in Finder
     private func showAppInFinder(at index: Int) {
-        if index < 0 || index >= self.apps.count {
-            return
-        }
-        
-        self.dataStore.app(at: index)?.showInFinder()
+		self.app(at: index)?.showInFinder()
     }
+	
+	/// Returns the app at the given index, if available.
+	private func app(at index: Int) -> App? {
+		guard index >= 0 && index < self.apps.count else {
+			return nil
+		}
+
+		return self.snapshot.app(at: index)
+	}
 	
 	
 	// MARK: - Interface Updating
     
     /// Updates the UI depending on available updates (show empty states or update list)
-    private func updateEmtpyStateVisibility() {
-        if self.apps.count == 0 && self.noUpdatesAvailableLabel.isHidden {
-            self.tableView.alphaValue = 0
+    private func updatePlaceholderVisibility() {
+        if self.apps.count == 0 && self.placeholderLabel.isHidden {
             self.tableView.isHidden = true
-            self.noUpdatesAvailableLabel.isHidden = false
-        } else if self.apps.count != 0 && !self.noUpdatesAvailableLabel.isHidden {
-            self.tableView.alphaValue = 1
+            self.placeholderLabel.isHidden = false
+        } else if self.apps.count != 0 && !self.placeholderLabel.isHidden {
             self.tableView.isHidden = false
-            self.noUpdatesAvailableLabel.isHidden = true
+            self.placeholderLabel.isHidden = true
         }
     }
     
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func updateTitleAndBatch() {
-        let count = self.dataStore.countOfAvailableUpdates
+		let count = UpdateCheckCoordinator.shared.appProvider.countOfAvailableUpdates
 		let statusText: String
 		
         if count == 0 {
@@ -414,15 +476,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		}
     }
 	
-	/// Updates the contents of the table view
-	func reloadTableView() {
-		// Update snapshot
-		self.appSnapshot = self.apps
-		self.tableView.reloadData()
-	}
-	
 	/// Animates changes made to the apps list
-	private func updateTableView(with oldValue: [AppDataStore.Entry], with newValue: [AppDataStore.Entry]) {
+	private func updateTableView(with oldSnapshot: AppListSnapshot, with newSnapshot: AppListSnapshot) {
+		let oldValue = oldSnapshot.entries
+		let newValue = newSnapshot.entries
+		
 		self.tableView.beginUpdates()
 		
 		var state = oldValue
@@ -433,7 +491,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			self.tableView.reloadData(forRowIndexes: IndexSet(integer: i), columnIndexes: IndexSet(integer: 0))
 			
 			// Skip identical items
-			if i < state.count && j < newValue.count && state[i] == newValue[j] {
+			if i < state.count && j < newValue.count && state[i].isSimilar(to: newValue[j]) {
 				i += 1
 				j += 1
 				continue
