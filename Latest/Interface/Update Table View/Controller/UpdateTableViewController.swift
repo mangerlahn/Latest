@@ -196,17 +196,25 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                 self.updateApp(atIndex: row)
             })
             
-            action.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+			// Teal on macOS 11 / below is the same as Cyan on macOS 12+
+			if #available(macOS 12.0, *) {
+				action.backgroundColor = .systemCyan
+			} else {
+				action.backgroundColor = .systemTeal
+			}
             
             return [action]
         } else if edge == .leading {
-            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Show in Finder", comment: "Revea in Finder Row action"), handler: { (action, row) in
+			let open = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Open", comment: "Action to open the app.")) { action, row in
+				self.openApp(at: row)
+			}
+			
+            let reveal = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Reveal", comment: "Revea in Finder Row action"), handler: { (action, row) in
                 self.showAppInFinder(at: row)
             })
-            
-            action.backgroundColor = #colorLiteral(red: 0.6975218654, green: 0.6975218654, blue: 0.6975218654, alpha: 1)
-            
-            return [action]
+			reveal.backgroundColor = .systemGray
+
+            return [open, reveal]
         }
         
         return []
@@ -341,6 +349,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	@IBAction func unignoreApp(_ sender: NSMenuItem?) {
 		self.setIgnored(false, forAppAt: self.rowIndex(forMenuItem: sender))
 	}
+	
+	/// Opens the selected app
+	@IBAction func openApp(_ sender: NSMenuItem?) {
+		self.openApp(at: self.rowIndex(forMenuItem: sender))
+	}
     
     /// Show the bundle of an app in Finder
     @IBAction func showAppInFinder(_ sender: NSMenuItem?) {
@@ -360,7 +373,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		switch action {
 		case #selector(updateApp(_:)):
 			return app.updateAvailable && !app.isUpdating
-		case #selector(showAppInFinder(_:)):
+		case #selector(openApp(_:)), #selector(showAppInFinder(_:)):
             return true
 		case #selector(ignoreApp(_:)):
 			menuItem.isHidden = app.isIgnored
@@ -396,29 +409,34 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// Updates the app and a given index
     private func updateApp(atIndex index: Int) {
         DispatchQueue.main.async {
-            if index < 0 || index >= self.apps.count {
-                return
-            }
-            
-			self.snapshot.app(at: index)?.performUpdate()
+			self.app(at: index)?.performUpdate()
         }
     }
 	
 	/// Sets the ignored state for the app at the given index
 	private func setIgnored(_ ignored: Bool, forAppAt index: Int) {
-		guard let app = self.snapshot.app(at: index) else { return }
-		
+		guard let app = self.app(at: index) else { return }
 		UpdateCheckCoordinator.shared.appProvider.setIgnoredState(ignored, for: app)
 	}
     
+	/// Opens the app at a given index.
+	private func openApp(at index: Int) {
+		self.app(at: index)?.open()
+	}
+	
     /// Reveals the app at a given index in Finder
     private func showAppInFinder(at index: Int) {
-        if index < 0 || index >= self.apps.count {
-            return
-        }
-        
-        self.snapshot.app(at: index)?.showInFinder()
+		self.app(at: index)?.showInFinder()
     }
+	
+	/// Returns the app at the given index, if available.
+	private func app(at index: Int) -> App? {
+		guard index >= 0 && index < self.apps.count else {
+			return nil
+		}
+
+		return self.snapshot.app(at: index)
+	}
 	
 	
 	// MARK: - Interface Updating

@@ -64,6 +64,9 @@
 /* number of updates available */
 "NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
 
+/* Action to open the app. */
+"Open" = "Öffnen";
+
 /* Title of button that opens the app. Should be written uppercase if appropriate. */
 "OPEN" = "ÖFFNEN";
 
@@ -72,6 +75,9 @@
 
 /* Button to retry an update in an error dialogue */
 "Retry" = "Erneut versuchen";
+
+/* Revea in Finder Row action */
+"Reveal" = "Zeigen";
 
 /* Description of release notes empty state */
 "Select an app from the list to read its release notes." = "Wähle in der Seitenleiste eine App, um deren Release Notes zu lesen.";
