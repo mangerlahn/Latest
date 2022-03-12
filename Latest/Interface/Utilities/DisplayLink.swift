@@ -94,7 +94,7 @@ class DisplayLink: NSObject {
 #endif
         
 		// Forward progress to the observer
-		DispatchQueue.main.sync {
+		DispatchQueue.main.async {
 			self.progress = self._currentFrame / self._frames
 			if self.duration != nil, self.progress >= 1 {
                 self.completionHandler?()

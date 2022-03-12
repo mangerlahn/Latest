@@ -21,27 +21,29 @@
 		5039DE8522CA396F0088B39B /* UpdateQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8422CA396F0088B39B /* UpdateQueue.swift */; };
 		5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8622CA39C60088B39B /* UpdateOperation.swift */; };
 		5039DE8B22CA39ED0088B39B /* StatefulOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */; };
-		5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */; };
 		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
-		506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* NSError+Latest.swift */; };
+		5058E9C327863FC80028F564 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058E9C227863FC80028F564 /* App.swift */; };
+		506A8F6722EC14CC00C755AF /* LatestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* LatestError.swift */; };
 		506DF77621248F6200D792FC /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF77521248F6200D792FC /* AppDataStore.swift */; };
 		506DF7782125580400D792FC /* UpdateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506DF7772125580400D792FC /* UpdateTableView.swift */; };
+		5073753F278998A300F371D8 /* AppLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073753E278998A300F371D8 /* AppLibrary.swift */; };
+		507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507375562789AB0300F371D8 /* AppListSnapshot.swift */; };
+		50737559278B0A7400F371D8 /* AppListSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50737558278B0A7400F371D8 /* AppListSettings.swift */; };
 		508323E3257824AA000BBA13 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E0257824A9000BBA13 /* DisplayLink.swift */; };
 		508323E4257824AA000BBA13 /* UpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E1257824A9000BBA13 /* UpdateButton.swift */; };
 		508323E5257824AA000BBA13 /* UpdateButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E2257824AA000BBA13 /* UpdateButtonCell.swift */; };
 		5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
-		509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* UpdateInfo.swift */; };
-		509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */; };
-		509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */; };
-		509512221FF36301003D2D7F /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121F1FF36301003D2D7F /* AppBundle.swift */; };
-		509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512251FF3631D003D2D7F /* UpdateChecker.swift */; };
+		509512151FF362A1003D2D7F /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* Update.swift */; };
+		509512221FF36301003D2D7F /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121F1FF36301003D2D7F /* Bundle.swift */; };
+		509512281FF3631D003D2D7F /* UpdateCheckCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */; };
 		509512301FF36378003D2D7F /* UpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095122F1FF36378003D2D7F /* UpdateCell.swift */; };
 		509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */; };
 		509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512321FF36380003D2D7F /* UpdateTableViewController.swift */; };
 		509512361FF36388003D2D7F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512351FF36388003D2D7F /* MainWindowController.swift */; };
-		509B5D3F257BD57700690AAB /* UnsupportedAppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B5D28257BD57700690AAB /* UnsupportedAppBundle.swift */; };
+		509735502798D17E00FFE809 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097354F2798D17E00FFE809 /* Observable.swift */; };
 		509B5D43257BD66200690AAB /* UnsupportedCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B5D42257BD66200690AAB /* UnsupportedCheckerOperation.swift */; };
+		50A8D2B327D2B063004DBA05 /* ReleaseNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8D2B227D2B063004DBA05 /* ReleaseNotesProvider.swift */; };
 		50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */; };
 		50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
@@ -234,27 +236,31 @@
 		5039DE8422CA396F0088B39B /* UpdateQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateQueue.swift; sourceTree = "<group>"; };
 		5039DE8622CA39C60088B39B /* UpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOperation.swift; sourceTree = "<group>"; };
 		5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulOperation.swift; sourceTree = "<group>"; };
-		5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUpdateListener.swift; sourceTree = "<group>"; };
 		5058BA3921202BA7003F332B /* IconCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCache.swift; sourceTree = "<group>"; };
-		506A8F6622EC14CC00C755AF /* NSError+Latest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Latest.swift"; sourceTree = "<group>"; };
+		5058E9C227863FC80028F564 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		506A8F6622EC14CC00C755AF /* LatestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestError.swift; sourceTree = "<group>"; };
 		506DF77521248F6200D792FC /* AppDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
 		506DF7772125580400D792FC /* UpdateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTableView.swift; sourceTree = "<group>"; };
+		5073753E278998A300F371D8 /* AppLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLibrary.swift; sourceTree = "<group>"; };
+		507375562789AB0300F371D8 /* AppListSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListSnapshot.swift; sourceTree = "<group>"; };
+		50737558278B0A7400F371D8 /* AppListSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListSettings.swift; sourceTree = "<group>"; };
 		508323E0257824A9000BBA13 /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		508323E1257824A9000BBA13 /* UpdateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButton.swift; sourceTree = "<group>"; };
 		508323E2257824AA000BBA13 /* UpdateButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButtonCell.swift; sourceTree = "<group>"; };
 		5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateOperation.swift; sourceTree = "<group>"; };
+		5094821C27C19E4A00EC6B6B /* CFBundle_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBundle_Private.h; sourceTree = "<group>"; };
+		5094823327C19F5800EC6B6B /* Latest Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Latest Bridging_Header.h"; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		509512111FF362A1003D2D7F /* UpdateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
-		5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacAppStoreAppBundle.swift; sourceTree = "<group>"; };
-		5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleAppBundle.swift; sourceTree = "<group>"; };
-		5095121F1FF36301003D2D7F /* AppBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
-		509512251FF3631D003D2D7F /* UpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateChecker.swift; path = "Latest/Model/Update Checker Extensions/UpdateChecker.swift"; sourceTree = SOURCE_ROOT; };
+		509512111FF362A1003D2D7F /* Update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
+		5095121F1FF36301003D2D7F /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateCheckCoordinator.swift; path = Latest/Model/UpdateCheckCoordinator.swift; sourceTree = SOURCE_ROOT; };
 		5095122F1FF36378003D2D7F /* UpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCell.swift; sourceTree = "<group>"; };
 		509512311FF36380003D2D7F /* ReleaseNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseNotesViewController.swift; sourceTree = "<group>"; };
 		509512321FF36380003D2D7F /* UpdateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewController.swift; sourceTree = "<group>"; };
 		509512351FF36388003D2D7F /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		509B5D28257BD57700690AAB /* UnsupportedAppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedAppBundle.swift; sourceTree = "<group>"; };
+		5097354F2798D17E00FFE809 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		509B5D42257BD66200690AAB /* UnsupportedCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedCheckerOperation.swift; sourceTree = "<group>"; };
+		50A8D2B227D2B063004DBA05 /* ReleaseNotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesProvider.swift; sourceTree = "<group>"; };
 		50ACE3F121D58DAD002FB72D /* UpdateTableView+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+Search.swift"; sourceTree = "<group>"; };
 		50B5A50321246E2500E96AEC /* UpdateGroupRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupRowView.swift; sourceTree = "<group>"; };
 		50C0B55126F545E300EEE4B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -318,7 +324,9 @@
 			children = (
 				50290E741E53EB6A00133E3D /* AppDelegate.swift */,
 				5095122A1FF36326003D2D7F /* Interface */,
+				50A8D2C927D2B071004DBA05 /* View Model */,
 				5095120D1FF3626A003D2D7F /* Model */,
+				5094823227C19E5F00EC6B6B /* Utilities */,
 				5095120C1FF3623B003D2D7F /* Resources */,
 			);
 			path = Latest;
@@ -362,6 +370,16 @@
 			path = "Release Notes";
 			sourceTree = "<group>";
 		};
+		507375552789AA7C00F371D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				509512101FF362A1003D2D7F /* Version.swift */,
+				5097354F2798D17E00FFE809 /* Observable.swift */,
+				5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		508323C825782483000BBA13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,12 +397,22 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		5094823227C19E5F00EC6B6B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				506A8F6622EC14CC00C755AF /* LatestError.swift */,
+				5094821C27C19E4A00EC6B6B /* CFBundle_Private.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5095120C1FF3623B003D2D7F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				50290E831E53EB7900133E3D /* Latest.entitlements */,
 				50290E781E53EB6A00133E3D /* Assets.xcassets */,
 				50290E7D1E53EB6A00133E3D /* Info.plist */,
+				5094823327C19F5800EC6B6B /* Latest Bridging_Header.h */,
 				501EA9891EB1BA4500D05821 /* InfoPlist.strings */,
 				501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */,
 				501EA9841EB1BA4400D05821 /* Localizable.strings */,
@@ -396,35 +424,22 @@
 		5095120D1FF3626A003D2D7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */,
+				5058E9C227863FC80028F564 /* App.swift */,
+				5073753E278998A300F371D8 /* AppLibrary.swift */,
+				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
+				5095121F1FF36301003D2D7F /* Bundle.swift */,
 				5039DE8322CA39630088B39B /* Updater */,
-				509512161FF362D1003D2D7F /* App Bundles */,
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
-				509512101FF362A1003D2D7F /* Version.swift */,
-				509512111FF362A1003D2D7F /* UpdateInfo.swift */,
+				507375552789AA7C00F371D8 /* Utilities */,
+				509512111FF362A1003D2D7F /* Update.swift */,
 				506DF77521248F6200D792FC /* AppDataStore.swift */,
-				5058B34A1FFBC34C007C6903 /* FolderUpdateListener.swift */,
-				5058BA3921202BA7003F332B /* IconCache.swift */,
-				506A8F6622EC14CC00C755AF /* NSError+Latest.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		509512161FF362D1003D2D7F /* App Bundles */ = {
-			isa = PBXGroup;
-			children = (
-				5095121F1FF36301003D2D7F /* AppBundle.swift */,
-				5095121E1FF36301003D2D7F /* SparkleAppBundle.swift */,
-				5095121D1FF36301003D2D7F /* MacAppStoreAppBundle.swift */,
-				509B5D28257BD57700690AAB /* UnsupportedAppBundle.swift */,
-			);
-			path = "App Bundles";
 			sourceTree = "<group>";
 		};
 		509512231FF36306003D2D7F /* Update Checker Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				509512251FF3631D003D2D7F /* UpdateChecker.swift */,
 				50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */,
 				50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */,
 				50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */,
@@ -452,6 +467,17 @@
 				509512351FF36388003D2D7F /* MainWindowController.swift */,
 			);
 			path = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		50A8D2C927D2B071004DBA05 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				50737558278B0A7400F371D8 /* AppListSettings.swift */,
+				507375562789AB0300F371D8 /* AppListSnapshot.swift */,
+				5058BA3921202BA7003F332B /* IconCache.swift */,
+				50A8D2B227D2B063004DBA05 /* ReleaseNotesProvider.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		50C81D6A1FBADC5900324C2E /* Tests */ = {
@@ -817,19 +843,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509512201FF36301003D2D7F /* MacAppStoreAppBundle.swift in Sources */,
+				509735502798D17E00FFE809 /* Observable.swift in Sources */,
 				509512141FF362A1003D2D7F /* Version.swift in Sources */,
+				50737559278B0A7400F371D8 /* AppListSettings.swift in Sources */,
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
 				508323E4257824AA000BBA13 /* UpdateButton.swift in Sources */,
 				50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */,
-				509512221FF36301003D2D7F /* AppBundle.swift in Sources */,
-				5058B34B1FFBC34C007C6903 /* FolderUpdateListener.swift in Sources */,
+				5058E9C327863FC80028F564 /* App.swift in Sources */,
+				509512221FF36301003D2D7F /* Bundle.swift in Sources */,
 				508323E3257824AA000BBA13 /* DisplayLink.swift in Sources */,
 				5058BA3A21202BA7003F332B /* IconCache.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
 				50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
-				509512211FF36301003D2D7F /* SparkleAppBundle.swift in Sources */,
+				507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */,
 				50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */,
 				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
@@ -840,8 +867,9 @@
 				50C9F10A2346386B00FD1802 /* MacAppStoreCheckerOperation.swift in Sources */,
 				502929F62120624700F00D1C /* ReleaseNotesLoadingViewController.swift in Sources */,
 				5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */,
-				506A8F6722EC14CC00C755AF /* NSError+Latest.swift in Sources */,
-				509512281FF3631D003D2D7F /* UpdateChecker.swift in Sources */,
+				506A8F6722EC14CC00C755AF /* LatestError.swift in Sources */,
+				509512281FF3631D003D2D7F /* UpdateCheckCoordinator.swift in Sources */,
+				5073753F278998A300F371D8 /* AppLibrary.swift in Sources */,
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
 				506DF77621248F6200D792FC /* AppDataStore.swift in Sources */,
 				509B5D43257BD66200690AAB /* UnsupportedCheckerOperation.swift in Sources */,
@@ -849,11 +877,11 @@
 				50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */,
 				50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */,
 				50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */,
-				509B5D3F257BD57700690AAB /* UnsupportedAppBundle.swift in Sources */,
 				506DF7782125580400D792FC /* UpdateTableView.swift in Sources */,
 				509512301FF36378003D2D7F /* UpdateCell.swift in Sources */,
-				509512151FF362A1003D2D7F /* UpdateInfo.swift in Sources */,
+				509512151FF362A1003D2D7F /* Update.swift in Sources */,
 				5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */,
+				50A8D2B327D2B063004DBA05 /* ReleaseNotesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,13 +1077,12 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 0.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/CommerceKit $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Latest/Resources/Latest Bridging_Header.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};
@@ -1079,13 +1106,12 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Latest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 0.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/CommerceKit $(SRCROOT)/Frameworks/mas-cli/PrivateFrameworks/StoreFoundation";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Latest/Resources/Latest Bridging_Header.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited) $(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 			};

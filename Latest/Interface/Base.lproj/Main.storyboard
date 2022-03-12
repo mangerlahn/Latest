@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="18009"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="19500"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -428,8 +428,8 @@
                                 <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" sizingBehavior="auto" id="ZWx-q6-TJz">
                                     <nil key="toolTip"/>
                                     <button key="view" toolTip="Reload" verticalHuggingPriority="750" id="FM4-aR-lhK">
-                                        <rect key="frame" x="2" y="14" width="40" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="9" y="14" width="26" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -441,7 +441,7 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D9AB5F20-627A-43CB-BD49-21067730000F" label="Progress" paletteLabel="Progress" tag="-1" id="OLo-39-3Sm">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="30" height="16"/>
+                                    <size key="minSize" width="16" height="16"/>
                                     <size key="maxSize" width="30" height="16"/>
                                     <progressIndicator key="view" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" controlSize="small" style="spinning" id="rtV-DA-Kd6">
                                         <rect key="frame" x="19" y="14" width="16" height="16"/>
@@ -451,8 +451,8 @@
                                 <toolbarItem implicitItemIdentifier="5B354B41-598E-4279-9FD9-F493AEA477C5" label="Update All" paletteLabel="Update All" image="NSTouchBarDownloadTemplate" sizingBehavior="auto" id="qS5-vO-h2j">
                                     <nil key="toolTip"/>
                                     <button key="view" toolTip="Update All" verticalHuggingPriority="750" id="wmL-ks-XSr">
-                                        <rect key="frame" x="11" y="14" width="40" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="18" y="14" width="27" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDownloadTemplate" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LPH-XM-HRa">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -629,7 +629,7 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mrm-RY-uqi"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5b-Ys-0LZ">
-                                                                            <rect key="frame" x="58" y="3" width="238" height="44"/>
+                                                                            <rect key="frame" x="58" y="3" width="239" height="44"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="K1m-1T-h1l">
                                                                                     <rect key="frame" x="-2" y="28" width="70" height="16"/>
@@ -668,7 +668,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hnT-Rb-bdR" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                                            <rect key="frame" x="297" y="8" width="80" height="32"/>
+                                                                            <rect key="frame" x="298" y="8" width="79" height="32"/>
                                                                             <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gw7-NE-1lh" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -720,7 +720,7 @@
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="KG1-yL-13W"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="KG1-yL-13W"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="pNp-tu-bJV"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="fLN-t4-yd2">
@@ -788,7 +788,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="noUpdatesAvailableLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
+                        <outlet property="placeholderLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
                         <outlet property="searchField" destination="pFN-sP-y2s" id="x6z-RR-xrS"/>
                         <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
                         <outlet property="tableViewMenu" destination="Ake-Tt-cX3" id="9e8-6Q-FyL"/>
@@ -854,7 +854,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="gW4-ur-MIN"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="100" verticalStackHuggingPriority="100" horizontalHuggingPriority="100" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPR-BE-Awf">
-                                                <rect key="frame" x="69" y="0.0" width="388" height="96"/>
+                                                <rect key="frame" x="69" y="0.0" width="389" height="96"/>
                                                 <subviews>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="xbF-gx-lWX">
                                                         <rect key="frame" x="0.0" y="0.0" width="12" height="96"/>
@@ -875,7 +875,7 @@
                                                         </constraints>
                                                     </customView>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-W4-mBM">
-                                                        <rect key="frame" x="16" y="26" width="372" height="44"/>
+                                                        <rect key="frame" x="16" y="26" width="373" height="44"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-sB-6dK">
                                                                 <rect key="frame" x="0.0" y="28" width="78" height="16"/>
@@ -948,10 +948,10 @@
                                                 </customSpacing>
                                             </stackView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Z4v-qI-DZW">
-                                                <rect key="frame" x="462" y="0.0" width="66" height="96"/>
+                                                <rect key="frame" x="463" y="0.0" width="65" height="96"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                        <rect key="frame" x="-7" y="43" width="80" height="32"/>
+                                                        <rect key="frame" x="-7" y="43" width="79" height="32"/>
                                                         <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QRR-k0-TZ4" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -991,7 +991,7 @@
                                     <constraint firstAttribute="bottom" secondItem="LmN-p8-kx5" secondAttribute="bottom" id="EAM-Vu-Mjn"/>
                                     <constraint firstItem="eK7-6F-FDn" firstAttribute="top" secondItem="eIJ-dI-FWU" secondAttribute="top" constant="40" placeholder="YES" id="RMM-vi-4sB"/>
                                     <constraint firstItem="LmN-p8-kx5" firstAttribute="leading" secondItem="eIJ-dI-FWU" secondAttribute="leading" id="aqd-zt-no0"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="fnm-I8-FXw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="fnm-I8-FXw"/>
                                     <constraint firstAttribute="trailing" secondItem="eK7-6F-FDn" secondAttribute="trailing" constant="20" symbolic="YES" id="hkn-Gc-IzT"/>
                                     <constraint firstAttribute="bottom" secondItem="eK7-6F-FDn" secondAttribute="bottom" constant="15" id="qqs-K3-9Yl"/>
                                 </constraints>
@@ -1114,7 +1114,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-Dy-v95">
-                                <rect key="frame" x="20" y="141" width="410" height="40"/>
+                                <rect key="frame" x="20" y="149" width="410" height="40"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="N0i-8s-eno">
                                         <rect key="frame" x="101" y="24" width="209" height="16"/>
@@ -1145,9 +1145,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="oLG-Dy-v95" firstAttribute="leading" secondItem="DHC-mI-pfQ" secondAttribute="leading" constant="20" symbolic="YES" id="Wlz-3q-X6v"/>
+                            <constraint firstItem="N0i-8s-eno" firstAttribute="centerY" secondItem="DHC-mI-pfQ" secondAttribute="centerY" constant="-20" id="YIW-o9-uqo"/>
                             <constraint firstItem="oLG-Dy-v95" firstAttribute="centerX" secondItem="DHC-mI-pfQ" secondAttribute="centerX" id="pUd-RP-VwU"/>
                             <constraint firstAttribute="trailing" secondItem="oLG-Dy-v95" secondAttribute="trailing" constant="20" symbolic="YES" id="tf0-mz-bZh"/>
-                            <constraint firstItem="oLG-Dy-v95" firstAttribute="centerY" secondItem="DHC-mI-pfQ" secondAttribute="centerY" id="wgX-5c-PXr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1164,7 +1164,7 @@
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
         <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
-        <image name="NSTouchBarSearchTemplate" width="14" height="15"/>
-        <image name="appstore" width="16" height="16"/>
+        <image name="NSTouchBarSearchTemplate" width="16" height="15"/>
+        <image name="appstore" width="12" height="12"/>
     </resources>
 </document>

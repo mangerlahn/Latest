@@ -39,7 +39,10 @@ class UpdateOperation: StatefulOperation {
 	}
 	
 	/// The app that is updated by this operation.
-	let app: AppBundle
+	let bundleIdentifier: String
+	
+	/// The identifier of the updated app.
+	let appIdentifier: App.Bundle.Identifier
 	
 	/// The handler forwarding the current progress state.
 	var progressHandler: UpdateQueue.ProgressHandler?
@@ -47,14 +50,15 @@ class UpdateOperation: StatefulOperation {
 		/// The current update state.
 	var progressState: UpdateOperation.ProgressState = .pending {
 		didSet {
-			self.progressHandler?(self.app)
+			self.progressHandler?(self.appIdentifier)
 		}
 	}
 
 	
 	/// Initializes the operation with the given app and progress handler.
-	init(app: AppBundle) {
-		self.app = app
+	init(bundleIdentifier: String, appIdentifier: App.Bundle.Identifier) {
+		self.bundleIdentifier = bundleIdentifier
+		self.appIdentifier = appIdentifier
 	}
 	
 	
@@ -73,28 +77,10 @@ class UpdateOperation: StatefulOperation {
 		if let error = self.error {
 			self.progressState = .error(error)
 		} else {
-			self.app.completeUpdate()
 			self.progressState = .none
 		}
 		
 		super.finish()
 	}
-	
-}
-
-// Error conveniences.
-extension NSError {
-
-	/// No update was found for this app.
-	static var noUpdate: NSError {
-		let description = NSLocalizedString("No update was found for this app.", comment: "Error description when no update was found for a particular app.")
-		return NSError(latestErrorWithCode: NSError.LatestErrorCodes.noUpdate, localizedDescription: description)
-	}
-	
-}
-
-extension NSError.LatestErrorCodes {
-
-	static let noUpdate = 0
 	
 }

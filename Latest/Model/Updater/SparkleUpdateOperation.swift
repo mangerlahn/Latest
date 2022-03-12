@@ -22,9 +22,9 @@ class SparkleUpdateOperation: UpdateOperation {
 	private let progressScheduler: DispatchSourceUserDataAdd
 	
 	/// Initializes the operation with the given Sparkle app and handler
-	init(app: SparkleAppBundle) {
+	override init(bundleIdentifier: String, appIdentifier: App.Bundle.Identifier) {
 		self.progressScheduler = DispatchSource.makeUserDataAddSource(queue: .global())
-		super.init(app: app)
+		super.init(bundleIdentifier: bundleIdentifier, appIdentifier: appIdentifier)
 
 		// Delay notifying observers to only let that notification occur in a certain interval
 		self.progressScheduler.setEventHandler() { [weak self] in
@@ -47,8 +47,8 @@ class SparkleUpdateOperation: UpdateOperation {
 		super.execute()
 		
 		// Gather app and app bundle
-		guard let app = self.app as? SparkleAppBundle, let bundle = Bundle(identifier: app.bundleIdentifier) else {
-			self.finish(with: NSError.noUpdate)
+		guard let bundle = Bundle(identifier: self.bundleIdentifier) else {
+			self.finish(with: LatestError.updateInfoNotFound)
 			return
 		}
 		
@@ -99,7 +99,7 @@ class SparkleUpdateOperation: UpdateOperation {
 	
 	/// One instance of the currently updating application.
 	fileprivate var runningApplication: NSRunningApplication? {
-		return NSWorkspace.shared.runningApplications.first(where: { $0.bundleIdentifier == self.app.bundleIdentifier })
+		return NSWorkspace.shared.runningApplications.first(where: { $0.bundleIdentifier == self.bundleIdentifier })
 	}
 
 }
@@ -122,12 +122,8 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		reply(self.isCancelled ? .dismiss : .install)
 	}
 		
-//	func showInformationalUpdateFound(with appcastItem: SUAppcastItem, userInitiated: Bool, reply: @escaping (SPUInformationalUpdateAlertChoice) -> Void) {
-//		reply(.dismissInformationalNoticeChoice)
-//	}
-//
 	func showUpdateNotFoundWithError(_ error: Error, acknowledgement: @escaping () -> Void) {
-		self.finish(with: NSError.noUpdate)
+		self.finish(with: LatestError.updateInfoNotFound)
 		acknowledgement()
 	}
 	

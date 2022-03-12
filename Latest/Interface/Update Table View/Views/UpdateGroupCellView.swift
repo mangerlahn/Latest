@@ -18,7 +18,7 @@ class UpdateGroupCellView: NSTableCellView {
 	private static let numberFormatter = NumberFormatter()
 
 	/// The section to be presented by this view.
-	var section: AppDataStore.Section? {
+	var section: AppListSnapshot.Section? {
 		didSet {
 			guard let section = self.section else { return }
 			

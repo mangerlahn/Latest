@@ -17,27 +17,17 @@ import Foundation
  Also, if the two versions are the same, or the strings are not parsable, the build numbers get compared.
  This class is very much work in progress and needs some deep thoughts on edge cases and a more clever implementation
  */
-struct Version : Equatable, Comparable {
+struct Version : Hashable, Comparable {
     
     /// The version number itself
-    var versionNumber : String?
+    let versionNumber : String?
     
     /// The build number itself
-    var buildNumber : String?
+    let buildNumber : String?
     
     /// Flag whether both version number and build number are unavailable
     var isEmpty: Bool {
         return self.versionNumber == nil && self.buildNumber == nil
-    }
-    
-    /**
-     Convenience initializer setting both version and build number
-     - parameter version: The version number
-     - parameter buildNumber: The build number
-     */
-    init(_ version: String? = nil, _ buildNumber: String? = nil) {
-        self.versionNumber = version
-        self.buildNumber = buildNumber
     }
     
     
@@ -58,6 +48,14 @@ struct Version : Equatable, Comparable {
         return result == .newer
     }
     
+	
+	// MARK: - Hashing
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(versionNumber)
+		hasher.combine(buildNumber)
+	}
+	
     
     // MARK: - Private
     
@@ -152,6 +150,12 @@ struct Version : Equatable, Comparable {
 
         return .equal // Think "1.2" vs "1.2"
     }
+}
+
+extension Version: CustomDebugStringConvertible {
+	var debugDescription: String {
+		return "Version: \(versionNumber ?? "None"), Build: \(buildNumber ?? "None")"
+	}
 }
 
 fileprivate typealias VersionComponent = (type: CharacterType, string: String)

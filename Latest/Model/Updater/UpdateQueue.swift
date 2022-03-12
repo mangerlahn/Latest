@@ -25,22 +25,22 @@ class UpdateQueue: OperationQueue {
 	// MARK: - Public Methods
 	
 	/// The handler forwarding the current progress state.
-	typealias ProgressHandler = (_: AppBundle) -> Void
+	typealias ProgressHandler = (_: App.Bundle.Identifier) -> Void
 	
 	/// Cancels the update operation for the given app.
-	func cancelUpdate(for app: AppBundle) {
-		guard let operation = self.operation(for: app) else { return }
+	func cancelUpdate(for identifier: App.Bundle.Identifier) {
+		guard let operation = self.operation(for: identifier) else { return }
 		operation.cancel()
 	}
 	
 	/// Whether the queue contains an update operation for the given app.
-	func contains(_ app: AppBundle) -> Bool {
-		return self.operation(for: app) != nil
+	func contains(_ identifier: App.Bundle.Identifier) -> Bool {
+		return self.operation(for: identifier) != nil
 	}
 	
 	/// Returns the state for a given app.
-	func state(for app: AppBundle) -> UpdateOperation.ProgressState {
-		return self.operation(for: app)?.progressState ?? .none
+	func state(for identifier: App.Bundle.Identifier) -> UpdateOperation.ProgressState {
+		return self.operation(for: identifier)?.progressState ?? .none
 	}
 	
 	override func addOperation(_ op: Operation) {
@@ -51,11 +51,16 @@ class UpdateQueue: OperationQueue {
 		}
 		
 		// Abort if the app is already in the queue
-		if !self.contains(operation.app) {
+		if !self.contains(operation.appIdentifier) {
 			super.addOperation(op)
 			
-			operation.progressHandler = { app in
-				self.notifyObservers(for: app)
+			operation.progressHandler = { identifier in
+				self.notifyObservers(for: identifier)
+			}
+			operation.completionBlock = {
+				if case .none = operation.progressState {
+					self.completionHandler?(operation.appIdentifier)
+				}
 			}
 		}
 	}
@@ -65,13 +70,19 @@ class UpdateQueue: OperationQueue {
 	
 	/// The handler for notifying observers about changes to the update state.
 	typealias ObserverHandler = (_: UpdateOperation.ProgressState) -> Void
+	
+	/// Called whenever an app update completes.
+	typealias CompletionHandler = (_: App.Bundle.Identifier) -> Void
 
 	/// A mapping of observers assotiated with apps.
-	private var observers = [String : [NSObject: ObserverHandler]]()
+	private var observers = [App.Bundle.Identifier : [NSObject: ObserverHandler]]()
+	
+	/// The completion handler to be called when an operation completes.
+	var completionHandler: CompletionHandler?
 	
 	/// Adds the observer if it is not already registered.
-	func addObserver(_ observer: NSObject, to app: AppBundle, handler: @escaping ObserverHandler) {
-		var observers = self.observers[app.bundleIdentifier] ?? [:]
+	func addObserver(_ observer: NSObject, to identifier: App.Bundle.Identifier, handler: @escaping ObserverHandler) {
+		var observers = self.observers[identifier] ?? [:]
 		
 		// Only add the observer, if it is not already installed.
 		guard observers[observer] == nil else {
@@ -81,23 +92,23 @@ class UpdateQueue: OperationQueue {
 		observers[observer] = handler
 		
 		// Call handler immediately to propagate initial state
-		handler(self.state(for: app))
+		handler(self.state(for: identifier))
 		
 		// Update observers
-		self.observers[app.bundleIdentifier] = observers
+		self.observers[identifier] = observers
 	}
 	
 	/// Remvoes the observer.
-	func removeObserver(_ observer: NSObject, for app: AppBundle) {
-		self.observers[app.bundleIdentifier]?.removeValue(forKey: observer)
+	func removeObserver(_ observer: NSObject, for identifier: App.Bundle.Identifier) {
+		self.observers[identifier]?.removeValue(forKey: observer)
 	}
 		
 	/// Notifies observers about state changes.
-	private func notifyObservers(for app: AppBundle) {
-		let state = self.state(for: app)
+	private func notifyObservers(for identifier: App.Bundle.Identifier) {
+		let state = self.state(for: identifier)
 		
 		DispatchQueue.main.async {
-			self.observers[app.bundleIdentifier]?.forEach { (key: NSObject, handler: UpdateQueue.ObserverHandler) in
+			self.observers[identifier]?.forEach { (key: NSObject, handler: UpdateQueue.ObserverHandler) in
 				handler(state)
 			}
 		}
@@ -107,13 +118,12 @@ class UpdateQueue: OperationQueue {
 	// MARK: - Helper
 	
 	/// Returns the operation for the given app.
-	private func operation(for app: AppBundle) -> UpdateOperation? {
+	private func operation(for identifier: App.Bundle.Identifier) -> UpdateOperation? {
 		guard let updateOperations = self.operations as? [UpdateOperation] else {
 			fatalError("Unknown operations in update queue")
 		}
 				
-		let identifier = app.bundleIdentifier
-		return updateOperations.first(where: { $0.app.bundleIdentifier == identifier })
+		return updateOperations.first(where: { $0.appIdentifier == identifier })
 	}
 		
 }

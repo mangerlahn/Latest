@@ -53,7 +53,7 @@ class UpdateCell: NSTableCellView {
 	// MARK: - Update Progress
 	
 	/// The app represented by this cell
-	var app: AppBundle? {
+	var app: App? {
 		didSet {
 			self.updateButton.app = self.app
 			self.updateContents()
@@ -76,7 +76,7 @@ class UpdateCell: NSTableCellView {
 		
 		// Update the contents of the cell
         self.currentVersionTextField.stringValue = versionInformation.current
-        self.newVersionTextField.stringValue = versionInformation.new
+		self.newVersionTextField.stringValue = versionInformation.new ?? ""
         self.newVersionTextField.isHidden = !app.updateAvailable
 	}
 	    
@@ -91,12 +91,7 @@ class UpdateCell: NSTableCellView {
 				self.newVersionTextField.textColor = .alternateSelectedControlTextColor
 		} else {
 			// Tint the name if the app is not supported
-			let supported: Bool
-			if let app = self.app {
-				supported = type(of: app).supported
-			} else {
-				supported = false
-			}
+			let supported = self.app?.supported ?? false
 			
 			self.nameTextField.textColor = (supported ? .labelColor : .tertiaryLabelColor)
 			self.currentVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
