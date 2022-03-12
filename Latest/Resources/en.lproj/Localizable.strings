@@ -91,6 +91,9 @@
 /* Title of button that updates the app. Should be written uppercase if appropriate. */
 "UPDATE" = "UPDATE";
 
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoNotFoundError" = "No update was found for this app.";
+
 /* Update progress state of waiting to start an update */
 "Waiting" = "Waiting";
 
