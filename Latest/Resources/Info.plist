@@ -39,5 +39,7 @@
 	<string>https://max.codes/latest/update.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>SUPublicEDKey</key>
+	<string>NfLJeVm80lYhhgOPJLoM6O3cND6MaNeydb5q05ML88Y=</string>
 </dict>
 </plist>
