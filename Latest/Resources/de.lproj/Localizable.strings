@@ -99,3 +99,10 @@
 "Your version: %@" = "Installierte Version: %@";
 
 
+
+
+/* Reveal in Finder Row action */
+"Reveal" = "Zeigen";
+
+/* Action to open the app. */
+"Open" = "Öffnen";
