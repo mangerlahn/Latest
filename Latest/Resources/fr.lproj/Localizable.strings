@@ -100,3 +100,10 @@
 
 
 
+
+
+/* Reveal in Finder Row action */
+"Reveal" = "Révéler";
+
+/* Action to open the app. */
+"Open" = "Ouvrir";
