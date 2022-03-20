@@ -2,7 +2,7 @@
 "(%@)" = "(%@)";
 
 /* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
-"An error occurred while updating %@." = "Une erreur s'est produite lors de la mise à jour de %@";
+"An error occurred while updating %@." = "Une erreur s'est produite lors de la mise à jour de %@.";
 
 /* Touch Bar section title for available updates */
 "Available" = "Disponible";
@@ -50,7 +50,7 @@
 "Mac App Store" = "Mac App Store";
 
 /* New Version String */
-"New version: %@" = "Nouvelle version: %@";
+"New version: %@" = "Nouvelle version: %@";
 
 /* Title of release notes empty state */
 "No app selected." = "Aucune application sélectionnée.";
@@ -59,13 +59,7 @@
 "No release notes were found for this app." = "Aucune note de version n'a été trouvée pour cette application.";
 
 /* Error description when no update was found for a particular app. */
-"No update was found for this app." = "Pas de mises à jour trouvées pour cette application";
-
-/* number of updates available */
-"NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
-
-/* Action to open the app. */
-"Open" = "Ouvrir";
+"No update was found for this app." = "Pas de mises à jour trouvées pour cette application.";
 
 /* Title of button that opens the app. Should be written uppercase if appropriate. */
 "OPEN" = "OUVRIR";
@@ -76,9 +70,6 @@
 /* Button to retry an update in an error dialogue */
 "Retry" = "Réessayer";
 
-/* Revea in Finder Row action */
-"Reveal" = "Révéler";
-
 /* Description of release notes empty state */
 "Select an app from the list to read its release notes." = "Sélectionnez une application dans la liste pour lire les notes de version.";
 
@@ -87,8 +78,6 @@
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "Source: %@" = "La source: %@";
-
-/* No comment provided by engineer. */
 "Up to Date!" = "À jour!";
 
 /* Update String */
@@ -109,3 +98,12 @@
 /* Current Version String */
 "Your version: %@" = "Votre version: %@";
 
+
+
+
+
+/* Reveal in Finder Row action */
+"Reveal" = "Révéler";
+
+/* Action to open the app. */
+"Open" = "Ouvrir";
