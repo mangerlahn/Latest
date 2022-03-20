@@ -61,9 +61,6 @@
 /* Error description when no update was found for a particular app. */
 "No update was found for this app." = "Pas de mises à jour trouvées pour cette application";
 
-/* number of updates available */
-"NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
-
 /* Action to open the app. */
 "Open" = "Ouvrir";
 
@@ -76,9 +73,6 @@
 /* Button to retry an update in an error dialogue */
 "Retry" = "Réessayer";
 
-/* Revea in Finder Row action */
-"Reveal" = "Révéler";
-
 /* Description of release notes empty state */
 "Select an app from the list to read its release notes." = "Sélectionnez une application dans la liste pour lire les notes de version.";
 
@@ -87,8 +81,6 @@
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "Source: %@" = "La source: %@";
-
-/* No comment provided by engineer. */
 "Up to Date!" = "À jour!";
 
 /* Update String */
@@ -108,4 +100,5 @@
 
 /* Current Version String */
 "Your version: %@" = "Votre version: %@";
+
 
