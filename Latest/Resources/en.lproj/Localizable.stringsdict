@@ -6,14 +6,14 @@
 	<dict>
 		<key>value</key>
 		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
 			<key>one</key>
 			<string>%d Update Available</string>
 			<key>other</key>
 			<string>%d Updates Available</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>
