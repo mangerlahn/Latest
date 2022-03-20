@@ -124,7 +124,7 @@ extension App.Bundle {
 			case .sparkle:
 				return NSLocalizedString("Web", comment: "The source name for apps loaded from third-party websites.")
 			case .appStore:
-				return NSLocalizedString("Mac App Store", comment: "The source name of apps loaded from the App Store.")
+				return NSLocalizedString("AppStore", comment: "The source name of apps loaded from the App Store.")
 			}
 		}
 		

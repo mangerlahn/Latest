@@ -47,7 +47,7 @@
 "Latest" = "Latest";
 
 /* The source name of apps loaded from the App Store. */
-"Mac App Store" = "Mac App Store";
+"AppStore" = "Mac App Store";
 
 /* New Version String */
 "New version: %@" = "New version: %@";
