@@ -70,6 +70,12 @@
 /* Button to retry an update in an error dialogue */
 "Retry" = "Retry";
 
+/* Reveal in Finder Row action */
+"Reveal" = "Reveal";
+
+/* Action to open the app. */
+"Open" = "Open";
+
 /* Description of release notes empty state */
 "Select an app from the list to read its release notes." = "Select an app from the list to read its release notes.";
 
