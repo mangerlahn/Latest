@@ -61,9 +61,6 @@
 /* Error description when no update was found for a particular app. */
 "No update was found for this app." = "Es wurde kein Update für diese App gefunden.";
 
-/* number of updates available */
-"NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
-
 /* Action to open the app. */
 "Open" = "Öffnen";
 

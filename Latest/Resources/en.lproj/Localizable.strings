@@ -61,9 +61,6 @@
 /* Error description when no update was found for a particular app. */
 "No update was found for this app." = "No update was found for this app.";
 
-/* number of updates available */
-"NumberOfUpdatesAvailable" = "NumberOfUpdatesAvailable";
-
 /* Title of button that opens the app. Should be written uppercase if appropriate. */
 "OPEN" = "OPEN";
 

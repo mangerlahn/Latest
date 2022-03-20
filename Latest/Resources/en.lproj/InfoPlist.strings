@@ -1,6 +1,0 @@
-/* Bundle name */
-"CFBundleName" = "Latest";
-
-/* Copyright (human-readable) */
-"NSHumanReadableCopyright" = "Copyright © 2022 Max Langer. All rights reserved.";
-
