@@ -2,7 +2,7 @@
 "(%@)" = "(%@)";
 
 /* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
-"An error occurred while updating %@." = "Ein Fehler ist während der Aktualisierung von %@ aufgetreten.";
+"An error occurred while updating %@." = "Während der Aktualisierung von %@ ist ein Fehler aufgetreten.";
 
 /* Touch Bar section title for available updates */
 "Available" = "Verfügbar";
