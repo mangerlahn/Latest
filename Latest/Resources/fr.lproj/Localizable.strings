@@ -77,14 +77,14 @@
 "Show in Finder" = "Révéler dans le Finder";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"Source: %@" = "La source: %@";
-"Up to Date!" = "À jour!";
+"Source: %@" = "Source : %@";
+"Up to Date!" = "À jour !";
 
 /* Update String */
 "Update" = "Mettre à jour";
 
 /* Title of button that updates the app. Should be written uppercase if appropriate. */
-"UPDATE" = "MISE À JOUR";
+"UPDATE" = "METTRE À JOUR";
 
 /* Error message stating that update info could not be retrieved for a given app. */
 "UpdateInfoNotFoundError" = "Aucune mise à jour n'a été trouvée pour cette application.";
@@ -96,7 +96,7 @@
 "Web" = "Réseau";
 
 /* Current Version String */
-"Your version: %@" = "Votre version: %@";
+"Your version: %@" = "Votre version : %@";
 
 
 
