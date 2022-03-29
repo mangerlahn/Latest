@@ -8,7 +8,7 @@
 
 import Cocoa
 
-/// The tableView behinf the updates list
+/// The tableView behind the updates list
 class UpdateTableView: NSTableView {
 
     /// Only the separator lines for populated rows will be drawn

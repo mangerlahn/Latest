@@ -104,7 +104,6 @@ class SparkleUpdateOperation: UpdateOperation {
 
 }
 
-
 // MARK: - Driver Implementation
 extension SparkleUpdateOperation: SPUUserDriver {
 	

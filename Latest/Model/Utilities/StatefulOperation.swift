@@ -43,7 +43,7 @@ class StatefulOperation: Operation {
     /// A lock to guard reads and writes to the `_state` property
     private let stateLock = NSLock()
 	
-	/// The actial state of the operation
+	/// The actual state of the operation
     private var state: State {
         get {
             return self.stateLock.withCriticalScope(block: {

@@ -14,7 +14,7 @@ protocol ReleaseNotesContentProtocol {
     /// The type of the viewController
     associatedtype ReleaseNotesContentController: NSViewController
     
-    /// The identifier from which the object is instatiated
+    /// The identifier from which the object is instantiated
     static var StoryboardIdentifier: String { get }
     
     /// The method loading the storyboard

@@ -226,7 +226,6 @@ class UpdateButton: NSButton {
 	
 }
 
-
 // MARK: - Error Handling
 
 private extension UpdateButton {
@@ -271,7 +270,6 @@ private extension UpdateButton {
 	}
 	
 }
-
 
 // MARK: - Animator Proxy
 extension UpdateButton {

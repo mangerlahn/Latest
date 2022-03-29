@@ -88,7 +88,6 @@ fileprivate enum ReleaseNotesContent {
     }
 }
 
-
 /**
  This is a super rudimentary implementation of an release notes viewer.
  It can open urls or display HTML strings right away.

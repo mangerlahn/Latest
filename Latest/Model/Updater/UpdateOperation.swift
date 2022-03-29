@@ -13,7 +13,7 @@ class UpdateOperation: StatefulOperation {
 	
 	/// Encapsulates different states that may be active during the update process.
 	enum ProgressState {
-		/// No update is ocurring at the moment.
+		/// No update is occurring at the moment.
 		case none
 		
 		/// The update is currently waiting to be executed. This may happen due to external constraints like the Mac App Store update queue.
@@ -62,7 +62,7 @@ class UpdateOperation: StatefulOperation {
 	}
 	
 	
-	// MARK: - Operation subclassing
+	// MARK: - Operation sub-classing
 	
 	override func execute() {
 		self.progressState = .initializing
