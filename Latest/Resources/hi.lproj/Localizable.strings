@@ -1,1 +1,88 @@
 
+
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
+
+/* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
+"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+
+/* Touch Bar section title for available updates */
+"AvailableSection" = "Available";
+
+/* Table Section Header for available updates */
+"AvailableUpdatesSection" = "Available Updates";
+
+/* Cancel button in an update dialogue */
+"CancelAction" = "Cancel";
+
+/* Update progress state of cancelling an update */
+"CancellingUpdateStatus" = "Cancelling";
+
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"DownloadingUpdateStatus" = "Downloading %@ of %@";
+
+/* Action to open the app. */
+"OpenAction" = "Open";
+
+/* Description of button that opens an error dialogue. */
+"ErrorButtonAccessibilityTitle" = "Error while updating app";
+
+/* Update progress state of extracting the downloaded update */
+"ExtractingUpdateStatus" = "Extracting Update";
+
+/* Touch Bar section title for ignored apps */
+"IgnoredSection" = "Ignored";
+
+/* Table Section Header for ignored apps */
+"IgnoredAppsSection" = "Ignored Apps";
+
+/* Update progress state of initializing an update */
+"InitializingUpdateStatus" = "Initializing";
+
+/* Touch Bar section title for installed apps */
+"InstalledSection" = "Installed";
+
+/* Table Section Header for already installed apps */
+"InstalledAppsSection" = "Installed Apps";
+
+/* Update progress state of installing an update */
+"InstallingUpdateStatus" = "Installing";
+
+/* The source name of apps loaded from the App Store. */
+"AppStoreSource" = "Mac App Store";
+
+/* New Version String */
+"RemoteVersionFormat" = "New version: %@";
+
+/* Title of release notes empty state */
+"NoAppSelectedTitle" = "No app selected.";
+
+/* Error message that no release notes were found */
+"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+
+/* Button to retry an update in an error dialogue */
+"RetryAction" = "Retry";
+
+/* Reveal in Finder Row action */
+"RevealAction" = "Reveal";
+
+/* Description of release notes empty state */
+"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"AppSource" = "Source: %@";
+
+/* Update String */
+"UpdateAction" = "Update";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoNotFoundError" = "No update was found for this app.";
+
+/* Update progress state of waiting to start an update */
+"WaitingUpdateStatus" = "Waiting";
+
+/* The source name for apps loaded from third-party websites. */
+"WebSource" = "Web";
+
+/* Current Version String */
+"LocalVersionFormat" = "Your version: %@";
