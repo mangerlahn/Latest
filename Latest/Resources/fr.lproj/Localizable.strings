@@ -59,7 +59,7 @@
 "OpenAction" = "Ouvrir";
 
 /* New Version String */
-"RemoteVersionFormat" = "Nouvelle version: %@";
+"RemoteVersionFormat" = "Nouvelle version : %@";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Réessayer";
@@ -84,4 +84,5 @@
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Réseau";
+
 
