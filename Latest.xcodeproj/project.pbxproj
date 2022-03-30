@@ -219,6 +219,7 @@
 
 /* Begin PBXFileReference section */
 		50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCellView.swift; sourceTree = "<group>"; };
+		5009D5A327F4F72500CBDBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		501EA97F1EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		501EA9831EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501EA98B1EB1BD8B00D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -920,6 +921,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5055A16E27E7151300884003 /* de */,
+				5009D5A327F4F72500CBDBE6 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

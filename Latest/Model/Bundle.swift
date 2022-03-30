@@ -112,7 +112,7 @@ extension App.Bundle {
 			case .sparkle:
 				return NSImage(named: "sparkle")!
 			case .appStore:
-				return NSImage(named: "appstore")
+				return NSImage(named: "AppStoreSource")
 			}
 		}
 		
@@ -122,9 +122,9 @@ extension App.Bundle {
 			case .unsupported:
 				return nil
 			case .sparkle:
-				return NSLocalizedString("Web", comment: "The source name for apps loaded from third-party websites.")
+				return NSLocalizedString("WebSource", comment: "The source name for apps loaded from third-party websites.")
 			case .appStore:
-				return NSLocalizedString("AppStore", comment: "The source name of apps loaded from the App Store.")
+				return NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store.")
 			}
 		}
 		

@@ -192,7 +192,8 @@ class ReleaseNotesViewController: NSViewController {
 		self.sourceIconImageView.image = app.source.sourceIcon
 		self.sourceIconImageView.toolTip = nil
 		if let sourceName = app.source.sourceName {
-			self.sourceIconImageView.toolTip = String(format: NSLocalizedString("Source: %@", comment: "The description of the app's source. e.g. 'Source: Mac App Store'"), sourceName)
+			let format = NSLocalizedString("AppSource", comment: "The description of the app's source. e.g. 'Source: Mac App Store'")
+			self.sourceIconImageView.toolTip = String(format: format, sourceName)
 		}
         
         let dateFormatter = DateFormatter()
@@ -217,10 +218,10 @@ class ReleaseNotesViewController: NSViewController {
 		self.app = nil
 		
 		// Prepare for empty state
-		let description = NSLocalizedString("Select an app from the list to read its release notes.", comment: "Description of release notes empty state")
+		let description = NSLocalizedString("NoAppSelectedDescription", comment: "Description of release notes empty state")
 		let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
 		self.show(error)
-		self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("No app selected.", comment: "Title of release notes empty state")
+		self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("NoAppSelectedTitle", comment: "Title of release notes empty state")
 
 		self.appInfoBackgroundView.isHidden = true
 	}

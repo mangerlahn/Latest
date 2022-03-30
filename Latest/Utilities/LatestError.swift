@@ -35,7 +35,7 @@ enum LatestError: Int, CustomNSError {
 				return NSLocalizedString("UpdateInfoNotFoundError", comment: "Error message stating that update info could not be retrieved for a given app.")
 				
 			case .releaseNotesUnavailable:
-				return NSLocalizedString("No release notes were found for this app.", comment: "Error message that no release notes were found")
+				return NSLocalizedString("NoReleaseNotesFoundError", comment: "Error message that no release notes were found")
 		}
 	}
 	

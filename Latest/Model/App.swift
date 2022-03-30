@@ -176,13 +176,13 @@ extension App {
 		
 		/// The localized version of the app present on the computer
 		var current: String {
-			return String(format:  NSLocalizedString("Your version: %@", comment: "Current Version String"), "\(self.rawCurrent)")
+			return String(format:  NSLocalizedString("LocalVersionFormat", comment: "The current version of an localy installed app. The placeholder %@ will be filled with the version number."), "\(self.rawCurrent)")
 		}
 		
 		/// The new available version of the app
 		var new: String? {
 			if let new = self.rawNew {
-				return String(format: NSLocalizedString("New version: %@", comment: "New Version String"), "\(new)")
+				return String(format: NSLocalizedString("RemoteVersionFormat", comment: "The most recent version available for an app. The placeholder %@ will be filled with the version number."), "\(new)")
 			}
 			
 			return nil

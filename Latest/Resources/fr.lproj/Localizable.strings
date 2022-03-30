@@ -1,109 +1,87 @@
-/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
-"(%@)" = "(%@)";
-
-/* Title of alert stating that an error occurred during an app update. %@ is the name of the app. */
-"An error occurred while updating %@." = "Une erreur s'est produite lors de la mise à jour de %@.";
-
-/* Touch Bar section title for available updates */
-"Available" = "Disponible";
-
-/* Table Section Header for available updates */
-"Available Updates" = "Mises à jour disponibles";
-
-/* Cancel button in an update dialogue */
-"Cancel" = "Annuler";
-
-/* Update progress state of cancelling an update */
-"Cancelling" = "Annulation";
-
-/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"Downloading %@ of %@" = "Téléchargement de %1$@ sur %2$@";
-
-/* Description of button that opens an error dialogue. */
-"Error while updating app" = "Erreur lors de la mise à jour de l'application";
-
-/* Update progress state of extracting the downloaded update */
-"Extracting Update" = "Extraction des mises à jour";
-
-/* Touch Bar section title for ignored apps */
-"Ignored" = "Ignorer";
-
-/* Table Section Header for ignored apps */
-"Ignored Apps" = "Applications ignorées";
-
-/* Update progress state of initializing an update */
-"Initializing" = "Initialisation";
-
-/* Touch Bar section title for installed apps */
-"Installed" = "Installé";
-
-/* Table Section Header for already installed apps */
-"Installed Apps" = "Applications installées";
-
-/* Update progress state of installing an update */
-"Installing" = "Installation";
-
-/* App name as title of the main window. */
-"Latest" = "Latest";
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"AppSource" = "Source : %@";
 
 /* The source name of apps loaded from the App Store. */
-"AppStore" = "Mac App Store";
+"AppStoreSource" = "Mac App Store";
 
-/* New Version String */
-"New version: %@" = "Nouvelle version: %@";
+/* Touch Bar section title for available updates */
+"AvailableSection" = "Disponible";
 
-/* Title of release notes empty state */
-"No app selected." = "Aucune application sélectionnée.";
+/* Table Section Header for available updates */
+"AvailableUpdatesSection" = "Mises à jour disponibles";
 
-/* Error message that no release notes were found */
-"No release notes were found for this app." = "Aucune note de version n'a été trouvée pour cette application.";
+/* Cancel button in an update dialogue */
+"CancelAction" = "Annuler";
 
-/* Error description when no update was found for a particular app. */
-"No update was found for this app." = "Pas de mises à jour trouvées pour cette application.";
+/* Update progress state of cancelling an update */
+"CancellingUpdateStatus" = "Annulation";
 
-/* Title of button that opens the app. Should be written uppercase if appropriate. */
-"OPEN" = "OUVRIR";
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"DownloadingUpdateStatus" = "Téléchargement de %1$@ sur %2$@";
 
-/* Error description when no update was found for a particular app. */
-"Please sign in to the Mac App Store to update this app." = "Veuillez vous connecter au Mac App Store pour mettre à jour cette application.";
+/* Description of button that opens an error dialogue. */
+"ErrorButtonAccessibilityTitle" = "Erreur lors de la mise à jour de l'application";
 
-/* Button to retry an update in an error dialogue */
-"Retry" = "Réessayer";
+/* Update progress state of extracting the downloaded update */
+"ExtractingUpdateStatus" = "Extraction des mises à jour";
+
+/* Table Section Header for ignored apps */
+"IgnoredAppsSection" = "Applications ignorées";
+
+/* Touch Bar section title for ignored apps */
+"IgnoredSection" = "Ignorer";
+
+/* Update progress state of initializing an update */
+"InitializingUpdateStatus" = "Initialisation";
+
+/* Table Section Header for already installed apps */
+"InstalledAppsSection" = "Applications installées";
+
+/* Touch Bar section title for installed apps */
+"InstalledSection" = "Installé";
+
+/* Update progress state of installing an update */
+"InstallingUpdateStatus" = "Installation";
+
+/* Current Version String */
+"LocalVersionFormat" = "Votre version : %@";
 
 /* Description of release notes empty state */
-"Select an app from the list to read its release notes." = "Sélectionnez une application dans la liste pour lire les notes de version.";
+"NoAppSelectedDescription" = "Sélectionnez une application dans la liste pour lire les notes de version.";
 
-/* Revea in Finder Row action */
-"Show in Finder" = "Révéler dans le Finder";
+/* Title of release notes empty state */
+"NoAppSelectedTitle" = "Aucune application sélectionnée.";
 
-/* The description of the app's source. e.g. 'Source: Mac App Store' */
-"Source: %@" = "Source : %@";
-"Up to Date!" = "À jour !";
+/* Error message that no release notes were found */
+"NoReleaseNotesFoundError" = "Aucune note de version n'a été trouvée pour cette application.";
+
+/* Action to open the app. */
+"OpenAction" = "Ouvrir";
+
+/* New Version String */
+"RemoteVersionFormat" = "Nouvelle version: %@";
+
+/* Button to retry an update in an error dialogue */
+"RetryAction" = "Réessayer";
+
+/* Reveal in Finder Row action */
+"RevealAction" = "Révéler";
+
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Update String */
-"Update" = "Mettre à jour";
+"UpdateAction" = "Mettre à jour";
 
-/* Title of button that updates the app. Should be written uppercase if appropriate. */
-"UPDATE" = "METTRE À JOUR";
+/* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
+"UpdateErrorAlertTitle" = "Une erreur s'est produite lors de la mise à jour de %@.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
 "UpdateInfoNotFoundError" = "Aucune mise à jour n'a été trouvée pour cette application.";
 
 /* Update progress state of waiting to start an update */
-"Waiting" = "En attente";
+"WaitingUpdateStatus" = "En attente";
 
 /* The source name for apps loaded from third-party websites. */
-"Web" = "Réseau";
+"WebSource" = "Réseau";
 
-/* Current Version String */
-"Your version: %@" = "Votre version : %@";
-
-
-
-
-
-/* Reveal in Finder Row action */
-"Reveal" = "Révéler";
-
-/* Action to open the app. */
-"Open" = "Ouvrir";

@@ -192,7 +192,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 				return []
 			}
 			
-            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Update", comment: "Update String"), handler: { (action, row) in
+            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("UpdateAction", comment: "Action to update a given app."), handler: { (action, row) in
                 self.updateApp(atIndex: row)
             })
             
@@ -205,11 +205,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             
             return [action]
         } else if edge == .leading {
-			let open = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Open", comment: "Action to open the app.")) { action, row in
+			let open = NSTableViewRowAction(style: .regular, title: NSLocalizedString("OpenAction", comment: "Action to open a given app.")) { action, row in
 				self.openApp(at: row)
 			}
 			
-            let reveal = NSTableViewRowAction(style: .regular, title: NSLocalizedString("Reveal", comment: "Revea in Finder Row action"), handler: { (action, row) in
+            let reveal = NSTableViewRowAction(style: .regular, title: NSLocalizedString("RevealAction", comment: "Revea in Finder Row action"), handler: { (action, row) in
                 self.showAppInFinder(at: row)
             })
 			reveal.backgroundColor = .systemGray
@@ -457,15 +457,11 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		let count = UpdateCheckCoordinator.shared.appProvider.countOfAvailableUpdates
 		let statusText: String
 		
-        if count == 0 {
-            NSApplication.shared.dockTile.badgeLabel = ""
-            statusText = NSLocalizedString("Up to Date!", comment: "")
-        } else {
-            NSApplication.shared.dockTile.badgeLabel = NumberFormatter().string(from: count as NSNumber)
-            
-            let format = NSLocalizedString("NumberOfUpdatesAvailable", comment: "number of updates available")
-            statusText = String.localizedStringWithFormat(format, count)
-        }
+		// Update dock badge
+		NSApplication.shared.dockTile.badgeLabel = count == 0 ? nil : NumberFormatter().string(from: count as NSNumber)
+		
+		let format = NSLocalizedString("NumberOfUpdatesAvailable", comment: "number of updates available")
+		statusText = String.localizedStringWithFormat(format, count)
         
 		self.scrubber?.reloadData()
 		
