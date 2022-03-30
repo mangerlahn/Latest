@@ -154,7 +154,6 @@ extension MacAppStoreUpdateCheckerOperation {
 		
 }
 
-
 // MARK: - Decoding
 
 /// Object containing a list of App Store entries.

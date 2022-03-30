@@ -115,7 +115,6 @@ class VersionTest: XCTestCase {
         var v2 = Version("2.1.5", "216")
         self.newer(v1, v2)
 
-
         v1 = Version("2.3.6", "215")
         v2 = Version("2.2.4", nil)
         self.newer(v1, v2)

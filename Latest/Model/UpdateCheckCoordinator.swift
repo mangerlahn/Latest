@@ -58,7 +58,7 @@ class UpdateCheckCoordinator {
 	
 	// MARK: - Update Checking
 	
-	/// Whether the checker is curently waiting for the initial update check.
+	/// Whether the checker is currently waiting for the initial update check.
 	private var waitForInitialCheck = true
 
 	/// The delegate for the progress of the entire update checking progress
@@ -79,7 +79,7 @@ class UpdateCheckCoordinator {
 	private let updateOperationQueue: OperationQueue = {
 		let operationQueue = OperationQueue()
 		
-		// Allow 100 simultanious updates
+		// Allow 100 simultaneously updates
 		operationQueue.maxConcurrentOperationCount = 100
 		
 		return operationQueue
@@ -139,7 +139,6 @@ class UpdateCheckCoordinator {
     }
 	
 }
-
 
 // MARK: - Update Checking Operations
 

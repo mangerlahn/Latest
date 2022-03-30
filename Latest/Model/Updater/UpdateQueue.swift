@@ -74,7 +74,7 @@ class UpdateQueue: OperationQueue {
 	/// Called whenever an app update completes.
 	typealias CompletionHandler = (_: App.Bundle.Identifier) -> Void
 
-	/// A mapping of observers assotiated with apps.
+	/// A mapping of observers associated with apps.
 	private var observers = [App.Bundle.Identifier : [NSObject: ObserverHandler]]()
 	
 	/// The completion handler to be called when an operation completes.
@@ -98,7 +98,7 @@ class UpdateQueue: OperationQueue {
 		self.observers[identifier] = observers
 	}
 	
-	/// Remvoes the observer.
+	/// Removes the observer.
 	func removeObserver(_ observer: NSObject, for identifier: App.Bundle.Identifier) {
 		self.observers[identifier]?.removeValue(forKey: observer)
 	}

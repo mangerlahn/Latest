@@ -8,16 +8,16 @@
 import Foundation
 import QuartzCore
 
-/// Cross-plattform convenience for accessing a DisplayLink.
+/// Cross-platform convenience for accessing a DisplayLink.
 class DisplayLink: NSObject {
 
-	/// The amount of time the display link should be running. If  set to `nil`, the display link runs indefinitly. 
+	/// The amount of time the display link should be running. If  set to `nil`, the display link runs indefinitely. 
     private(set) var duration : Double?
 	
 	/// An optional completion handler called after the display link stopped animating.
     var completionHandler : (() -> ())?
 	
-	/// The current  animation progess. Only useful if a duration has been set.
+	/// The current  animation progress. Only useful if a duration has been set.
 	private(set) var progress : Double = 0
     
     #if os(macOS)

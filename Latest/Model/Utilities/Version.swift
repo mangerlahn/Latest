@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 /**
  A Version represents a single version of an app. It contains both the version number and the build number to uniquely
  identify an app (in theory).

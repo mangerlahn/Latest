@@ -96,7 +96,7 @@ class ReleaseNotesProvider {
 			return .failure(error)
 		}
 
-		// Having only one line means that the text was no HTML but plain text. Therefore we reinstantiate the attributed string as plain text
+		// Having only one line means that the text was no HTML but plain text. Therefore we instantiate the attributed string as plain text again.
 		// The initialization with HTML enabled removes all new lines
 		// If anyone has a better idea for checking if the data is valid HTML or plain text, feel free to fix.
 		if string.string.split(separator: "\n").count == 1 {

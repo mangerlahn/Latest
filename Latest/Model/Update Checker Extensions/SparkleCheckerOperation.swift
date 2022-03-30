@@ -267,7 +267,6 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
 	
 }
 
-
 // MARK: - Utilities
 
 /// Simple container holding update information for a single entry in the update feed.
@@ -281,7 +280,7 @@ fileprivate class UpdateEntry {
 	/// The version number of the entry.
 	var versionNumber: String?
 	
-	/// The build number of the entryl.
+	/// The build number of the entry.
 	var buildNumber: String?
 	
 	/// The release date of the update entry.

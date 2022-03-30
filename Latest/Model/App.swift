@@ -127,7 +127,7 @@ extension App {
 		return self.update?.isUpdating ?? false
 	}
 	
-	/// Updates the app. This is a subclassing hook. The default implementation opens the app.
+	/// Updates the app. This is a sub-classing hook. The default implementation opens the app.
 	final func performUpdate() {
 		self.update?.perform()
 	}

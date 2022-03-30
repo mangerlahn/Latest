@@ -36,7 +36,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The empty state label centered in the list view indicating that no updates are available
     @IBOutlet weak var placeholderLabel: NSTextField!
 	
-	/// The label indicating how many updates are vailable
+	/// The label indicating how many updates are available
     @IBOutlet weak var updatesLabel: NSTextField!
         
     /// The menu displayed on secondary clicks on cells in the list

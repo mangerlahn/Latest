@@ -60,7 +60,7 @@ class UpdateButtonCell: NSButtonCell {
 		}
 	}
 	
-	/// The progress to be rendered when `.progess` is set as the content type. Animates the transition.
+	/// The progress to be rendered when `.progress` is set as the content type. Animates the transition.
 	private var _oldUpdateProgress: Double = 0.0
 	var updateProgress: Double = 0.0 {
 		didSet {
