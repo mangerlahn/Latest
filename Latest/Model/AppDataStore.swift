@@ -23,7 +23,7 @@ protocol AppProviding {
 	/// Adds the observer if it is not already registered.
 	func addObserver(_ observer: NSObject, handler: @escaping ObserverHandler)
 	
-	/// Remvoes the observer.
+	/// Removes the observer.
 	func removeObserver(_ observer: NSObject)
 	
 	/// Sets the ignored state for the given app.
@@ -168,7 +168,7 @@ class AppDataStore: AppProviding {
 		
 	// MARK: - Observer Handling
 	
-	/// A mapping of observers assotiated with apps.
+	/// A mapping of observers associated with apps.
 	private var observers = [NSObject: ObserverHandler]()
 	
 	/// Adds the observer if it is not already registered.

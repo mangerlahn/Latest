@@ -53,7 +53,7 @@ extension App {
 		
 		// MARK: - Actions
 				
-		/// Updates the app. This is a subclassing hook. The default implementation opens the app.
+		/// Updates the app. This is a sub-classing hook. The default implementation opens the app.
 		final func perform() {
 			guard !self.isUpdating else {
 				fatalError("Attempt to perform update on app that is already updating.")
