@@ -220,9 +220,6 @@
 /* Begin PBXFileReference section */
 		50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCellView.swift; sourceTree = "<group>"; };
 		5009D5A327F4F72500CBDBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5009D5B927F4F78800CBDBE6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
-		5009D5BA27F4F78800CBDBE6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = vi; path = vi.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		5009D5BB27F4F78800CBDBE6 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501EA97F1EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		501EA9831EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501EA98B1EB1BD8B00D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -631,7 +628,6 @@
 				Base,
 				de,
 				fr,
-				vi,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			productRefGroup = 50290E721E53EB6A00133E3D /* Products */;
@@ -897,7 +893,6 @@
 				501EA9831EB1BA4400D05821 /* de */,
 				50E65CE0247A84F300DFEB47 /* fr */,
 				50C0B55126F545E300EEE4B7 /* en */,
-				5009D5BB27F4F78800CBDBE6 /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -908,7 +903,6 @@
 				501EA98B1EB1BD8B00D05821 /* de */,
 				501EA98D1EB1BD9400D05821 /* en */,
 				50E65CDE247A84E700DFEB47 /* fr */,
-				5009D5BA27F4F78800CBDBE6 /* vi */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -919,7 +913,6 @@
 				50290E7B1E53EB6A00133E3D /* Base */,
 				501EA97F1EB1BA4400D05821 /* de */,
 				50E65CDD247A84BC00DFEB47 /* fr */,
-				5009D5B927F4F78800CBDBE6 /* vi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
