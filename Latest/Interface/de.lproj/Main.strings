@@ -20,7 +20,7 @@
 "4sb-4s-VLi.title" = "Latest beenden";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
-"4vf-ia-dzo.title" = "Auf Aktualisierungen prüfen…";
+"4vf-ia-dzo.title" = "Nach Updates suchen …";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
 "5cs-kb-AQj.title" = "Kopieren";
@@ -68,7 +68,7 @@
 "bm3-iR-6vZ.title" = "Im Finder zeigen";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Einstellungen…";
+"BOF-NM-1cW.title" = "Einstellungen …";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
 "c4C-I9-Gd0.title" = "Apps auf Updates prüfen …";
