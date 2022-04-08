@@ -20,7 +20,7 @@
 "4sb-4s-VLi.title" = "Latest beenden";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
-"4vf-ia-dzo.title" = "Auf Aktualisierungen prüfen… ";
+"4vf-ia-dzo.title" = "Nach Updates suchen …";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
 "5cs-kb-AQj.title" = "Kopieren";
@@ -68,10 +68,10 @@
 "bm3-iR-6vZ.title" = "Im Finder zeigen";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Einstellungen… ";
+"BOF-NM-1cW.title" = "Einstellungen …";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
-"c4C-I9-Gd0.title" = "Auf Aktualisierungen prüfen… ";
+"c4C-I9-Gd0.title" = "Apps auf Updates prüfen …";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
 "Cm3-IX-Kw4.title" = "Release Notes konnten nicht geladen werden!";
@@ -161,7 +161,7 @@
 "jEo-hx-9Qp.title" = "Intelligente Anführungszeichen";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Alle anzeigen";
+"Kd2-mp-pUS.title" = "Alle einblenden";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
 "l11-q2-MLf.title" = "Ersetzungen";
@@ -206,7 +206,7 @@
 "Olw-nP-bQN.title" = "Latest ausblenden";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimieren";
+"OY7-WF-poV.title" = "Im Dock ablegen";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
 "pDo-aP-nIF.title" = "Auswahl anzeigen";
