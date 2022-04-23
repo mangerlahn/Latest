@@ -53,6 +53,7 @@
 		50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */; };
 		50C9F10A2346386B00FD1802 /* MacAppStoreCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */; };
 		50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */; };
+		50D6EF5F281461A3002D7006 /* Sparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6EF5E281461A3002D7006 /* Sparkle.swift */; };
 		50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */; };
 		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
 		50F62F0F22FA27D300A2F2AF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F62EF822FA277D00A2F2AF /* Sparkle.framework */; };
@@ -285,6 +286,7 @@
 		50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheckerOperation.swift; sourceTree = "<group>"; };
 		50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppStoreCheckerOperation.swift; sourceTree = "<group>"; };
 		50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleCheckerOperation.swift; sourceTree = "<group>"; };
+		50D6EF5E281461A3002D7006 /* Sparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sparkle.swift; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
 		50E65CDD247A84BC00DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 		5095120D1FF3626A003D2D7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				50D6EF5D2814618C002D7006 /* Sparkle */,
 				5058E9C227863FC80028F564 /* App.swift */,
 				5073753E278998A300F371D8 /* AppLibrary.swift */,
 				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
@@ -500,6 +503,14 @@
 				50C81D731FBADC9100324C2E /* VersionTest.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		50D6EF5D2814618C002D7006 /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				50D6EF5E281461A3002D7006 /* Sparkle.swift */,
+			);
+			path = Sparkle;
 			sourceTree = "<group>";
 		};
 		50DAEF3E21047E3B00B32E8A /* Update Table View */ = {
@@ -855,6 +866,7 @@
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */,
 				50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */,
+				50D6EF5F281461A3002D7006 /* Sparkle.swift in Sources */,
 				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
 				508323E5257824AA000BBA13 /* UpdateButtonCell.swift in Sources */,

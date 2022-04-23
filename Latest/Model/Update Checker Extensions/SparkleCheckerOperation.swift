@@ -38,33 +38,9 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	}
 	
 	/// Returns the Sparkle feed url for the app at the given URL, if available.
-	static func feedURL(from appURL: URL) -> URL? {
-		let bundle = Bundle(path: appURL.path)
-		guard let information = bundle?.infoDictionary, let identifier = bundle?.bundleIdentifier else {
-			return nil
-		}
-
-		if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString.unquoted)  {
-			return feedURL
-		} else { // Maybe the app is built using DevMate
-			// Check for the DevMate framework
-			let frameworksURL = URL(fileURLWithPath: appURL.path, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
-			
-			let frameworks = try? FileManager.default.contentsOfDirectory(atPath: frameworksURL.path)
-			if !(frameworks?.contains(where: { $0.contains("DevMateKit") }) ?? false) {
-				return nil
-			}
-			
-			// The app uses Devmate, so lets get the appcast from their servers
-			guard var feedURL = URL(string: "https://updates.devmate.com") else {
-				return nil
-			}
-			
-			feedURL.appendPathComponent(identifier)
-			feedURL.appendPathExtension("xml")
-			
-			return feedURL
-		}
+	private static func feedURL(from appURL: URL) -> URL? {
+		guard let bundle = Bundle(path: appURL.path) else { return nil }
+		return Sparke.feedURL(from: bundle)
 	}
 
 	/// The bundle to be checked for updates.
@@ -289,13 +265,4 @@ fileprivate class UpdateEntry {
 	/// Release notes associated with the entry.
 	var releaseNotes: App.Update.ReleaseNotes?
 		
-}
-
-fileprivate extension String {
-	
-	/// Returns the string with quotation marks trimmed.
-	var unquoted: String {
-		return NSString(string: self).trimmingCharacters(in: CharacterSet(charactersIn: "'\""))
-	}
-	
 }
