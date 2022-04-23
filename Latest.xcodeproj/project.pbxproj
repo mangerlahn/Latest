@@ -10,6 +10,8 @@
 		50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */; };
 		501EA9821EB1BA4400D05821 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9841EB1BA4400D05821 /* Localizable.strings */; };
 		501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */; };
+		5022179B2804BB330043366B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 502217992804BB330043366B /* InfoPlist.strings */; };
+		502217B52804BBCF0043366B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7D1E53EB6A00133E3D /* Info.plist */; };
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
@@ -226,6 +228,11 @@
 		502217602804B9830043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Main.strings; sourceTree = "<group>"; };
 		502217762804B9950043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = hr; path = hr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		502217772804B9990043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5022179A2804BB330043366B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		502217B12804BB390043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		502217B22804BB3C0043366B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		502217B32804BB3E0043366B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		502217B42804BB400043366B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50290E711E53EB6A00133E3D /* Latest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50290E741E53EB6A00133E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50290E781E53EB6A00133E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -417,6 +424,7 @@
 				50290E831E53EB7900133E3D /* Latest.entitlements */,
 				50290E781E53EB6A00133E3D /* Assets.xcassets */,
 				50290E7D1E53EB6A00133E3D /* Info.plist */,
+				502217992804BB330043366B /* InfoPlist.strings */,
 				5094823327C19F5800EC6B6B /* Latest Bridging_Header.h */,
 				501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */,
 				501EA9841EB1BA4400D05821 /* Localizable.strings */,
@@ -785,7 +793,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502217B52804BBCF0043366B /* Info.plist in Resources */,
 				50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */,
+				5022179B2804BB330043366B /* InfoPlist.strings in Resources */,
 				50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */,
 				501EA9821EB1BA4400D05821 /* Localizable.strings in Resources */,
 				50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */,
@@ -913,6 +923,18 @@
 				502217762804B9950043366B /* hr */,
 			);
 			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		502217992804BB330043366B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5022179A2804BB330043366B /* en */,
+				502217B12804BB390043366B /* hr */,
+				502217B22804BB3C0043366B /* fr */,
+				502217B32804BB3E0043366B /* de */,
+				502217B42804BB400043366B /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		50290E7A1E53EB6A00133E3D /* Main.storyboard */ = {
