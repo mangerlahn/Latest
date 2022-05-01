@@ -47,20 +47,43 @@ class AppLibrary {
 	@objc func gatherAppBundles() {
 		self.appSearchQuery.disableUpdates()
 		
-		// Run metadata query to gather all apps
-		self.bundles = self.appSearchQuery.results.compactMap { item -> App.Bundle? in
-			guard let metadata = item as? NSMetadataItem,
-				let path = metadata.value(forAttribute: NSMetadataItemPathKey) as? String else { return nil }
-			
-			let url = URL(fileURLWithPath: path)
-			
-			// Only allow apps in the application folder and outside excluded subfolders
-			if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
-				return nil
+		let appSearchQueryResults = self.appSearchQuery.results
+		if appSearchQueryResults.isEmpty {
+			// Look for applications in the /Applications folder manually
+			let fileManager = FileManager.default
+			var bundles = [App.Bundle]()
+			do {
+				for applicationPath in Self.applicationPaths {
+					let appPaths = try fileManager.contentsOfDirectory(atPath: applicationPath)
+					for appPath in appPaths {
+						let url = URL(fileURLWithPath: applicationPath + "/" + appPath)
+						if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
+							continue
+						}
+						if let bundle = self.bundle(forAppAt: url) {
+							bundles.append(bundle)
+						}
+					}
+				}
+			} catch {
 			}
-			
-			// Create an update check operation from the url if possible
-			return self.bundle(forAppAt: url, metadata: metadata)
+			self.bundles = bundles
+		} else {
+			// Run metadata query to gather all apps
+			self.bundles = appSearchQueryResults.compactMap { item -> App.Bundle? in
+				guard let metadata = item as? NSMetadataItem,
+					let path = metadata.value(forAttribute: NSMetadataItemPathKey) as? String else { return nil }
+				
+				let url = URL(fileURLWithPath: path)
+				
+				// Only allow apps in the application folder and outside excluded subfolders
+				if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
+					return nil
+				}
+				
+				// Create an update check operation from the url if possible
+				return self.bundle(forAppAt: url, metadata: metadata)
+			}
 		}
 		
 		self.appSearchQuery.enableUpdates()
@@ -120,6 +143,25 @@ class AppLibrary {
 		return App.Bundle(version: version, name: appName, bundleIdentifier: identifier, fileURL: url, source: source)
 	}
 	
+	/// Returns a bundle representation for the app at the given url, without Spotlight Metadata.
+	private func bundle(forAppAt url: URL) -> App.Bundle? {
+		guard let appBundle = Bundle(path: url.path),
+			  let buildNumber = appBundle.uncachedBundleVersion,
+			  let identifier = appBundle.bundleIdentifier,
+			  let versionNumber = appBundle.versionNumber,
+			  let appName = appBundle.bundleName else {
+			return nil
+		}
+		// Find update source
+		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
+			return nil
+		}
+		
+		// Create bundle
+		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
+		return App.Bundle(version: version, name: appName, bundleIdentifier: identifier, fileURL: url, source: source)
+	}
+	
 }
 
 fileprivate extension Bundle {
@@ -134,5 +176,14 @@ fileprivate extension Bundle {
 		
 		return infoDictionary?["CFBundleVersion"] as? String
 	}
-	
+
+	/// Returns the bundle name when working without Spotlight.
+	var bundleName: String? {
+		return infoDictionary?["CFBundleName"] as? String
+	}
+
+	/// Returns the short version string when working without Spotlight.
+	var versionNumber: String? {
+		return infoDictionary?["CFBundleShortVersionString"] as? String
+	}
 }
