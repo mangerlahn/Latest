@@ -52,9 +52,8 @@ class AppLibrary {
 			// Look for applications in the /Applications folder manually
 			let fileManager = FileManager.default
 			var bundles = [App.Bundle]()
-			do {
-				for applicationPath in Self.applicationPaths {
-					let appPaths = try fileManager.contentsOfDirectory(atPath: applicationPath)
+			for applicationPath in Self.applicationPaths {
+				if let appPaths = try? fileManager.contentsOfDirectory(atPath: applicationPath) {
 					for appPath in appPaths {
 						let url = URL(fileURLWithPath: applicationPath + "/" + appPath)
 						if Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
@@ -64,8 +63,7 @@ class AppLibrary {
 							bundles.append(bundle)
 						}
 					}
-				}
-			} catch {
+				}				
 			}
 			self.bundles = bundles
 		} else {
