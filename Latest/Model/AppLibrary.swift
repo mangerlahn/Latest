@@ -55,7 +55,7 @@ class AppLibrary {
 			for applicationPath in Self.applicationPaths {
 				if let appPaths = try? fileManager.contentsOfDirectory(atPath: applicationPath) {
 					for appPath in appPaths {
-						let url = URL(fileURLWithPath: applicationPath + "/" + appPath)
+						let url = URL(fileURLWithPath: applicationPath).appendingPathComponent(appPath)
 						if Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
 							continue
 						}
@@ -63,7 +63,7 @@ class AppLibrary {
 							bundles.append(bundle)
 						}
 					}
-				}				
+				}
 			}
 			self.bundles = bundles
 		} else {
