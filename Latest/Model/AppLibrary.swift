@@ -57,7 +57,7 @@ class AppLibrary {
 					let appPaths = try fileManager.contentsOfDirectory(atPath: applicationPath)
 					for appPath in appPaths {
 						let url = URL(fileURLWithPath: applicationPath + "/" + appPath)
-						if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
+						if Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
 							continue
 						}
 						if let bundle = self.bundle(forAppAt: url) {
@@ -77,7 +77,7 @@ class AppLibrary {
 				let url = URL(fileURLWithPath: path)
 				
 				// Only allow apps in the application folder and outside excluded subfolders
-				if !Self.applicationPaths.contains(where: { url.path.hasPrefix($0) }) || Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
+				if Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
 					return nil
 				}
 				
