@@ -31,7 +31,7 @@
 "ExtractingUpdateStatus" = "Meng-ekstrak Update";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Aplikasi yang Diabaikan";
 
 /* Update progress state of initializing an update */
 "InitializingUpdateStatus" = "Mempersiapkan";
@@ -55,13 +55,13 @@
 "NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "Tidak ada catatan rilis yang ditemukan untuk aplikasi ini.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Coba lagi";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Buka";
 
 /* Action to open the app. */
 "OpenAction" = "Buka";
