@@ -29,6 +29,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 		super.init()
 
 		self.completionBlock = {
+			guard !self.isCancelled else { return }
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
@@ -121,13 +122,13 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
             self.createVersion()
         }
         
-		let info = self.currentUpdate
+		guard let info = self.currentUpdate else { return }
         
         // Lets find the version number
         switch elementName {
         case "enclosure":
-            info.versionNumber = attributeDict["sparkle:shortVersionString"]
-            info.buildNumber = attributeDict["sparkle:version"]
+            info.versionNumber = attributeDict["sparkle:shortVersionString"] ?? info.versionNumber
+            info.buildNumber = attributeDict["sparkle:version"] ?? info.buildNumber
         case "pubDate":
             self.currentlyParsing = .pubDate
         case "sparkle:releaseNotesLink":
@@ -139,19 +140,17 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
         case "description":
             self.currentlyParsing = .releaseNotesData
         default:
-            ()
+			self.currentlyParsing = .none
         }
         
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "pubDate" {
-            self.currentlyParsing = .none
-        }
+		self.currentlyParsing = .none
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-		let info = self.currentUpdate
+		guard let info = self.currentUpdate else { return }
 
         switch currentlyParsing {
         case .pubDate:
@@ -233,12 +232,8 @@ extension SparkleUpdateCheckerOperation: XMLParserDelegate {
     }
 	
 	/// The currently parsed update entry.
-	private var currentUpdate: UpdateEntry {
-		if self.updates.isEmpty {
-			self.createVersion()
-		}
-		
-		return self.updates.last!
+	private var currentUpdate: UpdateEntry? {
+		return self.updates.last
 	}
 	
 }
