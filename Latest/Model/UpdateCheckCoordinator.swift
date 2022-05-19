@@ -121,6 +121,7 @@ class UpdateCheckCoordinator {
 		}
 		
 		// Start update check
+		self.updateOperationQueue.cancelAllOperations()
 		self.updateOperationQueue.addOperations(operations, waitUntilFinished: true)
 			
 		DispatchQueue.main.async {

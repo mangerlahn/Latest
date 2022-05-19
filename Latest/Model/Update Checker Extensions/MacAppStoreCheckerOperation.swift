@@ -36,6 +36,8 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 		super.init()
 
 		self.completionBlock = {
+			guard !self.isCancelled else { return }
+			
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
