@@ -257,6 +257,10 @@
 		5073753E278998A300F371D8 /* AppLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLibrary.swift; sourceTree = "<group>"; };
 		507375562789AB0300F371D8 /* AppListSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListSnapshot.swift; sourceTree = "<group>"; };
 		50737558278B0A7400F371D8 /* AppListSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListSettings.swift; sourceTree = "<group>"; };
+		507AEEEF284E0F0900A5CCBC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		507AEF05284E0F1500A5CCBC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		507AEF06284E0F1800A5CCBC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		507AEF07284E0F1D00A5CCBC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		508323E0257824A9000BBA13 /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		508323E1257824A9000BBA13 /* UpdateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButton.swift; sourceTree = "<group>"; };
 		508323E2257824AA000BBA13 /* UpdateButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButtonCell.swift; sourceTree = "<group>"; };
@@ -661,6 +665,7 @@
 				hr,
 				it,
 				sk,
+				ru,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			productRefGroup = 50290E721E53EB6A00133E3D /* Products */;
@@ -931,6 +936,7 @@
 				502217772804B9990043366B /* hr */,
 				50BC19E028230BE3005945E8 /* it */,
 				50BC19E128230BE5005945E8 /* sk */,
+				507AEF07284E0F1D00A5CCBC /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -945,6 +951,7 @@
 				502217762804B9950043366B /* hr */,
 				50BC19DE28230BDB005945E8 /* it */,
 				50BC19DF28230BDD005945E8 /* sk */,
+				507AEF06284E0F1800A5CCBC /* ru */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -959,6 +966,7 @@
 				502217B42804BB400043366B /* ko */,
 				50BC19DC28230BCA005945E8 /* it */,
 				50BC19DD28230BCC005945E8 /* sk */,
+				507AEF05284E0F1500A5CCBC /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -974,6 +982,7 @@
 				502217602804B9830043366B /* hr */,
 				50BC19DA28230BA8005945E8 /* it */,
 				50BC19DB28230BBC005945E8 /* sk */,
+				507AEEEF284E0F0900A5CCBC /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
