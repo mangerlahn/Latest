@@ -187,13 +187,16 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		if self.snapshot.isSectionHeader(at: row) { return [] }
 		
         if edge == .trailing {
+			guard let app = self.snapshot.app(at: row) else { return [] }
+			
 			// Don't provide an update action if the app has no update available
-			if !(self.snapshot.app(at: row)?.updateAvailable ?? false) {
+			if !app.updateAvailable || app.isUpdating {
 				return []
 			}
 			
             let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("UpdateAction", comment: "Action to update a given app."), handler: { (action, row) in
                 self.updateApp(atIndex: row)
+				tableView.rowActionsVisible = false
             })
             
 			// Teal on macOS 11 / below is the same as Cyan on macOS 12+
@@ -207,10 +210,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         } else if edge == .leading {
 			let open = NSTableViewRowAction(style: .regular, title: NSLocalizedString("OpenAction", comment: "Action to open a given app.")) { action, row in
 				self.openApp(at: row)
+				tableView.rowActionsVisible = false
 			}
 			
             let reveal = NSTableViewRowAction(style: .regular, title: NSLocalizedString("RevealAction", comment: "Revea in Finder Row action"), handler: { (action, row) in
                 self.showAppInFinder(at: row)
+				tableView.rowActionsVisible = false
             })
 			reveal.backgroundColor = .systemGray
 

@@ -91,7 +91,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
-		UpdateCheckCoordinator.shared.appProvider.updatableApps.forEach({ $0.performUpdate() })
+		UpdateCheckCoordinator.shared.appProvider.updatableApps.forEach({ app in
+			if !app.isUpdating {
+				app.performUpdate()
+			}
+		})
     }
     	
 	@IBAction func performFindPanelAction(_ sender: Any?) {
