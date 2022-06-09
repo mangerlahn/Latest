@@ -4,85 +4,85 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "更新時出錯 %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Available";
+"AvailableSection" = "可用的";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
+"AvailableUpdatesSection" = "可用更新";
 
 /* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"CancelAction" = "取消";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "正在取消";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "正在下載 %@ of %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "更新應用程序時出錯";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "正在解壓更新";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "忽略";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "已忽略的應用程序";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "正在初始化";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "已安裝";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "已安裝的應用程序";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "正在安裝";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "新版本: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "未選擇應用程序。";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "找不到此應用的發行說明。";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "重試";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "顯示";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "打開";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "從清單中選擇一個應用程序以閱讀其發行說明。";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "源: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "更新";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "找不到此應用的更新。";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "請稍候";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "網站";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "您的版本： %@";
