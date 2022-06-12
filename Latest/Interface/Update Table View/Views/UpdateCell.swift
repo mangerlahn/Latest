@@ -62,7 +62,9 @@ class UpdateCell: NSTableCellView {
 	
 	var filterQuery: String? {
 		didSet {
-			self.updateTitle()
+			if filterQuery != oldValue {
+				self.updateTitle()
+			}
 		}
 	}
 	

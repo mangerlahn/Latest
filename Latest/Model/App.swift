@@ -159,7 +159,7 @@ extension App {
 		
 		if let queryString = query, let selectedRange = self.bundle.name.lowercased().range(of: queryString.lowercased()) {
 			name.addAttribute(.foregroundColor, value: NSColor(named: "FadedSearchText")!, range: NSMakeRange(0, name.length))
-			name.addAttribute(.foregroundColor, value: NSColor.labelColor, range: NSRange(selectedRange, in: self.bundle.name))
+			name.removeAttribute(.foregroundColor, range: NSRange(selectedRange, in: self.bundle.name))
 		}
 		
 		return name

@@ -116,11 +116,12 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return nil
         }
 		
+		cell.filterQuery = self.snapshot.filterQuery
+		
 		// Only update cell if needed
 		guard cell.app != app else { return cell }
 		
 		cell.app = app
-		cell.filterQuery = self.snapshot.filterQuery
 		
 		IconCache.shared.icon(for: app) { (image) in
             cell.imageView?.image = image
