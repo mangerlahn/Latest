@@ -109,3 +109,15 @@
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
 "Id2-BS-gzO.title" = "Pilih Semua";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Tunjukkan Semua";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Hantar Semua ke Depan Sekali";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
+"Lga-BY-8RF.title" = "Potong";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Perkhidmatan";
