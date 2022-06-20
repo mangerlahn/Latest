@@ -303,6 +303,10 @@
 		50E65CDD247A84BC00DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		50E65CDE247A84E700DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		50E65CE0247A84F300DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50E7ED2C2861183A006EF45F /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Main.strings; sourceTree = "<group>"; };
+		50E7ED4228611864006EF45F /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50E7ED4328611869006EF45F /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ms; path = ms.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		50E7ED442861186D006EF45F /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50F62EE522FA277D00A2F2AF /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Frameworks/Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -666,6 +670,7 @@
 				it,
 				sk,
 				ru,
+				ms,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			productRefGroup = 50290E721E53EB6A00133E3D /* Products */;
@@ -937,6 +942,7 @@
 				50BC19E028230BE3005945E8 /* it */,
 				50BC19E128230BE5005945E8 /* sk */,
 				507AEF07284E0F1D00A5CCBC /* ru */,
+				50E7ED442861186D006EF45F /* ms */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -952,6 +958,7 @@
 				50BC19DE28230BDB005945E8 /* it */,
 				50BC19DF28230BDD005945E8 /* sk */,
 				507AEF06284E0F1800A5CCBC /* ru */,
+				50E7ED4328611869006EF45F /* ms */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -967,6 +974,7 @@
 				50BC19DC28230BCA005945E8 /* it */,
 				50BC19DD28230BCC005945E8 /* sk */,
 				507AEF05284E0F1500A5CCBC /* ru */,
+				50E7ED4228611864006EF45F /* ms */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -983,6 +991,7 @@
 				50BC19DA28230BA8005945E8 /* it */,
 				50BC19DB28230BBC005945E8 /* sk */,
 				507AEEEF284E0F0900A5CCBC /* ru */,
+				50E7ED2C2861183A006EF45F /* ms */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

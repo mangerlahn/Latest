@@ -10,7 +10,7 @@
 "AvailableSection" = "Tersedia";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Kemaskini tersedia";
+"AvailableUpdatesSection" = "Kemaskini Tersedia";
 
 /* Cancel button in an update dialogue */
 "CancelAction" = "Batal";

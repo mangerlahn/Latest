@@ -138,7 +138,7 @@
 "Olw-nP-bQN.title" = "Sembunyikan Terkini";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Kemas Kini Tersedia";
+"NNm-bC-QYz.title" = "Kemaskini Tersedia";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
 "TKo-Xa-BjT.title" = "Tunjukkan Penggantian";
@@ -207,10 +207,10 @@
 "pDo-aP-nIF.title" = "Lompat ke Pilihan";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.label" = "Kemas Kini Semua";
+"qS5-vO-h2j.label" = "Kemaskini Semua";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.paletteLabel" = "Kemas Kini Semua";
+"qS5-vO-h2j.paletteLabel" = "Kemaskini Semua";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Guna Pilihan untuk Mencari";
@@ -222,7 +222,7 @@
 "uWn-a0-oM2.title" = "Label";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
-"wmL-ks-XSr.ibShadowedToolTip" = "Kemas Kini Semua";
+"wmL-ks-XSr.ibShadowedToolTip" = "Kemaskini Semua";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
 "WX3-Xi-vCY.title" = "Tunjukkan Ejaan dan Tatabahasa";
@@ -234,13 +234,13 @@
 "OLo-39-3Sm.paletteLabel" = "Kemajuan";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Kemas Kini";
+"QRR-k0-TZ4.title" = "Kemaskini";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zum";
 
 /* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
-"tXI-mr-wws.title" = "Kemas Kini Semua";
+"tXI-mr-wws.title" = "Kemaskini Semua";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
 "bm3-iR-6vZ.title" = "Tunjukkan dalam Finder";
@@ -318,4 +318,4 @@
 "Rh5-N3-X6H.title" = "Tunjukkan Apps Diabaikan";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Kemas Kini Tersedia";
+"rK6-RZ-Ga6.title" = "5 Kemaskini Tersedia";
