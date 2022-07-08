@@ -624,7 +624,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="50" id="OcP-jm-bZl"/>
-                                                                                <constraint firstAttribute="height" constant="50" id="gtH-0k-v5L"/>
+                                                                                <constraint firstAttribute="height" priority="900" constant="50" id="gtH-0k-v5L"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mrm-RY-uqi"/>
                                                                         </imageView>
