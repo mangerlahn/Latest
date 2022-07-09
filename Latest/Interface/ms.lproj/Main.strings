@@ -1,0 +1,321 @@
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
+"00n-xr-jcQ.title" = "Kemaskini";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
+"1Gu-Ep-ZWZ.title" = "Cari dan Tukar…";
+
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Terkini";
+
+/* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
+"1Z9-ws-FMW.title" = "Menu";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
+"3GZ-aM-hwz.title" = "Sel Teks";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "Masukkan Skrin Penuh";
+
+/* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Berhenti Terkini";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Salin";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Mengenai Terkini";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Betulkan Ejaan Secara Automatik";
+
+/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
+"6Cd-Qc-3Xc.title" = "Tunjukkan App Tidak Disokong";
+
+/* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "Versi Terbaharu";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "Label";
+
+/* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
+"7c2-6r-Saw.title" = "Melawat Laman Web-Terkini";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
+"Ah1-jH-gCv.title" = "Buat asal";
+
+/* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
+"Ake-Tt-cX3.title" = "Menu";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Keutamaan…";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "Gagal memuatkan nota keluaran!";
+
+/* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
+"D2N-5U-W7Z.title" = "Tiada Kemaskini Tersedia";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Tutup";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Semak Ejaan Semasa Menaip";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Bantuan";
+
+/* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Bantuan Terkini";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
+"FM4-aR-lhK.ibShadowedToolTip" = "Tambah nilai";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
+"G1D-lo-gfr.title" = "Penggantian Teks";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
+"GMn-QE-qPC.title" = "Tampal";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "Guna huruf besar";
+
+/* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
+"Gw7-NE-1lh.title" = "Kemaskini";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
+"HyV-fh-RgO.title" = "Lihat";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "Kemaskini";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
+"yPN-rG-tgD.title" = "Carian Terdahulu";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "Pengesan Data";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Semak untuk Kemaskini…";
+
+/* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Terkini";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Menu Utama";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "Lihat";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
+"Id2-BS-gzO.title" = "Pilih Semua";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Tunjukkan Semua";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Hantar Semua ke Depan Sekali";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
+"Lga-BY-8RF.title" = "Potong";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Perkhidmatan";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
+"J6q-tg-1G2.title" = "Transformasi";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
+"Nnu-IS-gsC.title" = "Mula Bercakap";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.label" = "Kemajuan";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimumkan";
+
+/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Sembunyikan Terkini";
+
+/* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
+"NNm-bC-QYz.title" = "Kemaskini Tersedia";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
+"TKo-Xa-BjT.title" = "Tunjukkan Penggantian";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
+"UPY-HP-f2p.title" = "Label";
+
+/* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
+"SVA-bh-cUe.title" = "App Name";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Sembunyikan Lain";
+
+/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "Tunjukkan Apps Dipasang";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
+"YRo-LJ-qSP.title" = "Transformasi";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
+"Yj4-SM-ocg.title" = "Buat Semula";
+
+/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.label" = "Muat Semula";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Fail";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
+"cWB-Qy-jEV.title" = "Pertuturan";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Fail";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
+"c4C-I9-Gd0.title" = "Semak untuk Kemaskini…";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
+"gU8-2v-afa.title" = "Cari Seterusnya";
+
+/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+"h6g-FG-nGh.title" = "Versi Semasa";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
+"h9B-7u-6ru.title" = "Tunjukkan dalam Finder";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
+"hOB-nw-cIX.title" = "Cari";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Perkhidmatan";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
+"iUE-OL-cvh.title" = "Salin/Tampal Pintar";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
+"jEo-hx-9Qp.title" = "Petikan Pintar";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
+"mu8-FK-tXI.title" = "Cari…";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
+"r6p-yM-qya.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
+"pDo-aP-nIF.title" = "Lompat ke Pilihan";
+
+/* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.label" = "Kemaskini Semua";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.paletteLabel" = "Kemaskini Semua";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
+"ryW-4P-l7k.title" = "Guna Pilihan untuk Mencari";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
+"uGs-GF-i9Z.title" = "Henti Bercakap";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
+"uWn-a0-oM2.title" = "Label";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
+"wmL-ks-XSr.ibShadowedToolTip" = "Kemaskini Semua";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
+"WX3-Xi-vCY.title" = "Tunjukkan Ejaan dan Tatabahasa";
+
+/* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
+"PS4-wi-kF9.title" = "Abaikan";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.paletteLabel" = "Kemajuan";
+
+/* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
+"QRR-k0-TZ4.title" = "Kemaskini";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zum";
+
+/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
+"tXI-mr-wws.title" = "Kemaskini Semua";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
+"bm3-iR-6vZ.title" = "Tunjukkan dalam Finder";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
+"SKi-gD-wYr.title" = "Jadikan Huruf Kecil";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
+"tw7-g1-6Wz.title" = "Pautan Pintar";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Tetingkap";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
+"UVA-tb-pA9.title" = "Penggantian";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Terkini";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
+"aCF-1x-0c1.title" = "Cari";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Tetingkap";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "Semak Dokumen Sekarang";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
+"iis-Dj-0TB.title" = "Semak Tatabahasa Dengan Ejaan";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
+"Xng-11-x9Q.title" = "Jadikan Huruf Besar";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
+"mS9-zq-Dvi.title" = "Padam";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.paletteLabel" = "Muat Semula";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
+"mTS-fP-YWg.title" = "Edit";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
+"l11-q2-MLf.title" = "Penggantian";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Bantuan";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
+"wtc-0j-cAV.title" = "Ejaan dan Tatabahasa";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
+"y5A-ib-gR6.title" = "Pertuturan";
+
+/* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
+"spt-ns-lYo.title" = "Multiline Label";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
+"uw5-pW-jNu.title" = "Sempang Pintar";
+
+/* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
+"ucY-cy-GON.title" = "Ejaan";
+
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
+"w14-Ia-4l9.title" = "Buka";
+
+/* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
+"x6Q-gr-lO2.title" = "Tampal dan Padankan Gaya";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
+"VX8-qg-UOL.title" = "Label";
+
+/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
+"Rh5-N3-X6H.title" = "Tunjukkan Apps Diabaikan";
+
+/* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
+"rK6-RZ-Ga6.title" = "5 Kemaskini Tersedia";

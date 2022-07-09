@@ -1,0 +1,87 @@
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Buscar actualitzacions…";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Copiar";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "No s'han pogut carregar les notes de la versió!";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Porta-ho tot al davant";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "Posar en majúscules";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
+"Lga-BY-8RF.title" = "Tallar";
+
+/* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
+"Ljr-hV-usc.title" = "No ignorar";
+
+/* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
+"SVA-bh-cUe.title" = "Nom de l'aplicació";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Fitxer";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
+"c4C-I9-Gd0.title" = "Buscar actualitzacions…";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "Comprovar el document ara";
+
+/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+"h6g-FG-nGh.title" = "Versió actual";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Fitxer";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
+"mS9-zq-Dvi.title" = "Suprimir";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
+"mu8-FK-tXI.title" = "Trobar…";
+
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
+"o46-Ym-MCY.title" = "Donar";
+
+/* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
+"rK6-RZ-Ga6.title" = "5 actualitzacions disponibles";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
+"r6p-yM-qya.title" = "Editar";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Quant a Latest";
+
+/* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
+"NNm-bC-QYz.title" = "Actualitzacions disponibles";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Tancar";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
+"iis-Dj-0TB.title" = "Comprovar la gramàtica i l'ortografia";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Comprovar l'ortografia mentre s'escriu";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Corregir l'ortografia automàticament";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "Detectors de dades";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
+"hOB-nw-cIX.title" = "Trobar";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
+"mTS-fP-YWg.title" = "Editar";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
+"aCF-1x-0c1.title" = "Trobar";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "Anar a pantalla completa";

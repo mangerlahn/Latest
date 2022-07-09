@@ -62,7 +62,7 @@ struct AppListSnapshot {
 		
 		// Filter ignored apps
 		if !AppListSettings.shared.showIgnoredUpdates {
-			visibleApps = visibleApps.filter({ $0.isIgnored })
+			visibleApps = visibleApps.filter({ !$0.isIgnored })
 		}
 		
 		// Sort apps
@@ -122,20 +122,20 @@ struct AppListSnapshot {
 	// MARK: - Section Builder
 	
 	private static func updatableAppsSection(withCount numberOfApps: Int) -> Section {
-		let title = NSLocalizedString("Available Updates", comment: "Table Section Header for available updates")
-		let shortTitle = NSLocalizedString("Available", comment: "Touch Bar section title for available updates")
+		let title = NSLocalizedString("AvailableUpdatesSection", comment: "Table Section Header for available updates")
+		let shortTitle = NSLocalizedString("AvailableSection", comment: "Touch Bar section title for available updates")
 		return Section(title: title, shortTitle: shortTitle, numberOfApps: numberOfApps)
 	}
 	
 	private static func updatedAppsSection(withCount numberOfApps: Int) -> Section {
-		let title = NSLocalizedString("Installed Apps", comment: "Table Section Header for already installed apps")
-		let shortTitle = NSLocalizedString("Installed", comment: "Touch Bar section title for installed apps")
+		let title = NSLocalizedString("InstalledAppsSection", comment: "Table Section Header for already installed apps")
+		let shortTitle = NSLocalizedString("InstalledSection", comment: "Touch Bar section title for installed apps")
 		return Section(title: title, shortTitle: shortTitle, numberOfApps: numberOfApps)
 	}
 
 	private static func ignoredAppsSection(withCount numberOfApps: Int) -> Section {
-		let title = NSLocalizedString("Ignored Apps", comment: "Table Section Header for ignored apps")
-		let shortTitle = NSLocalizedString("Ignored", comment: "Touch Bar section title for ignored apps")
+		let title = NSLocalizedString("IgnoredAppsSection", comment: "Table Section Header for ignored apps")
+		let shortTitle = NSLocalizedString("IgnoredSection", comment: "Touch Bar section title for ignored apps")
 		return Section(title: title, shortTitle: shortTitle, numberOfApps: numberOfApps)
 	}
 

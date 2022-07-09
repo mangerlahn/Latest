@@ -54,7 +54,7 @@ class SparkleUpdateOperation: UpdateOperation {
 		
 		DispatchQueue.main.async {
 			// Instantiate a new updater that performs the update
-			let updater = SPUUpdater(hostBundle: bundle, applicationBundle: bundle, userDriver: self, delegate: nil)
+			let updater = SPUUpdater(hostBundle: bundle, applicationBundle: bundle, userDriver: self, delegate: self)
 			
 			do {
 				try updater.start()
@@ -203,5 +203,15 @@ extension SparkleUpdateOperation: SPUUserDriver {
 	func showUpdateReleaseNotesFailedToDownloadWithError(_ error: Error) {}
 	func showSendingTerminationSignal() {}
 	func dismissUpdateInstallation() {}
+	
+}
+
+extension SparkleUpdateOperation: SPUUpdaterDelegate {
+	
+	func feedURLString(for updater: SPUUpdater) -> String? {
+		// We can try to supply a valid feed as addition to Sparkle's own methods.
+		// For some cases (like DevMate) Sparkle fails to retrieve an appcast by itself.
+		return Sparke.feedURL(from: updater.hostBundle)?.absoluteString
+	}
 	
 }

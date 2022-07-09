@@ -1,0 +1,88 @@
+
+
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
+
+/* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
+"UpdateErrorAlertTitle" = "更新時出錯 %@.";
+
+/* Touch Bar section title for available updates */
+"AvailableSection" = "可用的";
+
+/* Table Section Header for available updates */
+"AvailableUpdatesSection" = "可用更新";
+
+/* Cancel button in an update dialogue */
+"CancelAction" = "取消";
+
+/* Update progress state of cancelling an update */
+"CancellingUpdateStatus" = "正在取消";
+
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"DownloadingUpdateStatus" = "正在下載 %@ of %@";
+
+/* Description of button that opens an error dialogue. */
+"ErrorButtonAccessibilityTitle" = "更新應用程序時出錯";
+
+/* Update progress state of extracting the downloaded update */
+"ExtractingUpdateStatus" = "正在解壓更新";
+
+/* Touch Bar section title for ignored apps */
+"IgnoredSection" = "忽略";
+
+/* Table Section Header for ignored apps */
+"IgnoredAppsSection" = "已忽略的應用程序";
+
+/* Update progress state of initializing an update */
+"InitializingUpdateStatus" = "正在初始化";
+
+/* Touch Bar section title for installed apps */
+"InstalledSection" = "已安裝";
+
+/* Table Section Header for already installed apps */
+"InstalledAppsSection" = "已安裝的應用程序";
+
+/* Update progress state of installing an update */
+"InstallingUpdateStatus" = "正在安裝";
+
+/* The source name of apps loaded from the App Store. */
+"AppStoreSource" = "Mac App Store";
+
+/* New Version String */
+"RemoteVersionFormat" = "新版本: %@";
+
+/* Title of release notes empty state */
+"NoAppSelectedTitle" = "未選擇應用程序。";
+
+/* Error message that no release notes were found */
+"NoReleaseNotesFoundError" = "找不到此應用的發行說明。";
+
+/* Button to retry an update in an error dialogue */
+"RetryAction" = "重試";
+
+/* Reveal in Finder Row action */
+"RevealAction" = "顯示";
+
+/* Action to open the app. */
+"OpenAction" = "打開";
+
+/* Description of release notes empty state */
+"NoAppSelectedDescription" = "從清單中選擇一個應用程序以閱讀其發行說明。";
+
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"AppSource" = "源: %@";
+
+/* Update String */
+"UpdateAction" = "更新";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoNotFoundError" = "找不到此應用的更新。";
+
+/* Update progress state of waiting to start an update */
+"WaitingUpdateStatus" = "請稍候";
+
+/* The source name for apps loaded from third-party websites. */
+"WebSource" = "網站";
+
+/* Current Version String */
+"LocalVersionFormat" = "您的版本： %@";

@@ -1,0 +1,51 @@
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
+"00n-xr-jcQ.title" = "Perbarui";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "Ganti ke Layar Penuh";
+
+/* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Keluar Latest";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Salin";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Tentang Latest";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Benarkan Ejaan Secara Otomatis";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "Label";
+
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Terbaru";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "Detektor Data";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Menu utama";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
+"3GZ-aM-hwz.title" = "Sel Teks";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Periksa Pembaruan…";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
+"1Gu-Ep-ZWZ.title" = "Cari dan Ganti…";
+
+/* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
+"1Z9-ws-FMW.title" = "Menu";
+
+/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
+"6Cd-Qc-3Xc.title" = "Tampilkan aplikasi yang tidak didukung";
+
+/* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "Versi Baru";
+
+/* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
+"7c2-6r-Saw.title" = "Kunjungi Situs Web Latest";

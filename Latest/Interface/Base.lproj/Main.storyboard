@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="19500"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="21007"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21208.1"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -624,7 +624,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="50" id="OcP-jm-bZl"/>
-                                                                                <constraint firstAttribute="height" constant="50" id="gtH-0k-v5L"/>
+                                                                                <constraint firstAttribute="height" priority="900" constant="50" id="gtH-0k-v5L"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mrm-RY-uqi"/>
                                                                         </imageView>
@@ -842,14 +842,14 @@
             <objects>
                 <viewController id="diQ-yt-Gcs" customClass="ReleaseNotesViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="d3c-S1-m3j">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="296"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="296"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="eIJ-dI-FWU">
-                                <rect key="frame" x="0.0" y="145" width="568" height="151"/>
+                                <rect key="frame" x="0.0" y="145" width="400" height="151"/>
                                 <subviews>
                                     <stackView verifyAmbiguity="off" distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="247.99998474121094" verticalStackHuggingPriority="248.99998474121094" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="748" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eK7-6F-FDn">
-                                        <rect key="frame" x="20" y="15" width="528" height="96"/>
+                                        <rect key="frame" x="20" y="15" width="360" height="96"/>
                                         <subviews>
                                             <imageView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Y4U-TI-bJq">
                                                 <rect key="frame" x="0.0" y="16" width="64" height="64"/>
@@ -860,7 +860,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="gW4-ur-MIN"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="100" verticalStackHuggingPriority="100" horizontalHuggingPriority="100" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPR-BE-Awf">
-                                                <rect key="frame" x="69" y="0.0" width="388" height="96"/>
+                                                <rect key="frame" x="69" y="0.0" width="220" height="96"/>
                                                 <subviews>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="xbF-gx-lWX">
                                                         <rect key="frame" x="0.0" y="0.0" width="12" height="96"/>
@@ -881,7 +881,7 @@
                                                         </constraints>
                                                     </customView>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-W4-mBM">
-                                                        <rect key="frame" x="16" y="26" width="372" height="44"/>
+                                                        <rect key="frame" x="16" y="26" width="204" height="44"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-sB-6dK">
                                                                 <rect key="frame" x="0.0" y="28" width="78" height="16"/>
@@ -894,9 +894,9 @@
                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                         </textFieldCell>
                                                                     </textField>
-                                                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FjR-uj-JoM">
+                                                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="20" translatesAutoresizingMaskIntoConstraints="NO" id="FjR-uj-JoM">
                                                                         <rect key="frame" x="43" y="0.0" width="37" height="16"/>
-                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="VX8-qg-UOL">
+                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="VX8-qg-UOL">
                                                                             <font key="font" metaFont="system"/>
                                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -954,7 +954,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Z4v-qI-DZW">
-                                                <rect key="frame" x="462" y="0.0" width="66" height="96"/>
+                                                <rect key="frame" x="294" y="0.0" width="66" height="96"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
                                                         <rect key="frame" x="-7" y="43" width="80" height="32"/>
@@ -988,7 +988,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="LmN-p8-kx5">
-                                        <rect key="frame" x="0.0" y="-2" width="568" height="5"/>
+                                        <rect key="frame" x="0.0" y="-2" width="400" height="5"/>
                                     </box>
                                 </subviews>
                                 <constraints>
@@ -1029,35 +1029,35 @@
         <scene sceneID="ckG-xB-c08">
             <objects>
                 <viewController storyboardIdentifier="ReleaseNotesTextViewControllerIdentifier" id="HU9-NT-SZF" customClass="ReleaseNotesTextViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" wantsLayer="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="uof-Qz-xrD">
+                    <scrollView key="view" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="emw-13-fb9">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" wantsLayer="YES" copiesOnScroll="NO" id="HmJ-8L-9ax">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <clipView key="contentView" id="zGU-7N-SZC">
                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView wantsLayer="YES" editable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="D4s-i4-4ug">
+                                <textView wantsLayer="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="3YZ-dP-D2l">
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="450" height="300"/>
-                                    <size key="maxSize" width="90000000" height="10000000"/>
+                                    <size key="maxSize" width="450" height="10000000"/>
                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="dpU-nR-zSj">
-                            <rect key="frame" x="-100" y="-100" width="450" height="16"/>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="zaV-sF-kai">
+                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="qbD-8S-FfM">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="YrO-2c-LSY">
                             <rect key="frame" x="434" y="0.0" width="16" height="300"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <connections>
-                        <outlet property="textView" destination="D4s-i4-4ug" id="Mac-H0-pol"/>
+                        <outlet property="textView" destination="3YZ-dP-D2l" id="nFx-R6-rkb"/>
                     </connections>
                 </viewController>
                 <customObject id="yi2-iX-w1s" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1069,11 +1069,11 @@
             <objects>
                 <viewController storyboardIdentifier="ReleaseNotesLoadingViewControllerIdentifier" id="ayd-kB-hcW" customClass="ReleaseNotesLoadingViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="8IN-hG-baJ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="311"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="311"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="woV-Tf-kjt">
-                                <rect key="frame" x="165" y="137" width="120" height="38"/>
+                                <rect key="frame" x="140" y="137" width="120" height="38"/>
                                 <subviews>
                                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5Wc-mB-Bp9">
                                         <rect key="frame" x="52" y="22" width="16" height="16"/>
@@ -1116,14 +1116,14 @@
             <objects>
                 <viewController storyboardIdentifier="ReleaseNotesErrorViewControllerIdentifier" id="dC7-Ek-0B8" customClass="ReleaseNotesErrorViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="DHC-mI-pfQ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="322"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="322"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-Dy-v95">
-                                <rect key="frame" x="20" y="149" width="410" height="40"/>
+                                <rect key="frame" x="20" y="149" width="360" height="40"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="N0i-8s-eno">
-                                        <rect key="frame" x="101" y="24" width="209" height="16"/>
+                                        <rect key="frame" x="76" y="24" width="209" height="16"/>
                                         <textFieldCell key="cell" selectable="YES" alignment="center" title="Failed to load the release notes!" id="Cm3-IX-Kw4">
                                             <font key="font" metaFont="systemSemibold" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1131,7 +1131,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-gR-w9f">
-                                        <rect key="frame" x="157" y="0.0" width="96" height="16"/>
+                                        <rect key="frame" x="132" y="0.0" width="96" height="16"/>
                                         <textFieldCell key="cell" selectable="YES" alignment="center" title="Multiline Label" id="spt-ns-lYo">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1170,7 +1170,7 @@
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
         <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
-        <image name="NSTouchBarSearchTemplate" width="15" height="15"/>
+        <image name="NSTouchBarSearchTemplate" width="16" height="15"/>
         <image name="appstore" width="16" height="16"/>
     </resources>
 </document>

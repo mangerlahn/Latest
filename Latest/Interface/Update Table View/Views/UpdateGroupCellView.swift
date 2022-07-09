@@ -22,15 +22,35 @@ class UpdateGroupCellView: NSTableCellView {
 		didSet {
 			guard let section = self.section else { return }
 			
-			// Format app counter
+			// Format section title
 			let count = Self.numberFormatter.string(from: section.numberOfApps as NSNumber) ?? "0"
-			let countString = String(format: NSLocalizedString("(%@)", comment: "Describes how many apps are in a section, number of apps is inserted in placeholder."), count)
+			let format = NSLocalizedString("SectionTitle", comment: "The title of a section divider in the app list. The first placeholder is the name of the section. The value in paranthesis describes how many apps are in that section, number of apps is inserted in the second placeholder. Use the HTML underline tag <u> to mark the deemphasized part of the text, which should be the count. Example: 'Installed Apps (42)'")
+			let sectionText = String(format: format, section.title, count)
 			
-			// Build text
-			let text = NSMutableAttributedString(string: section.title + " ")
-			text.append(NSAttributedString(string: countString, attributes: [.foregroundColor: NSColor.tertiaryLabelColor, .font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .small))]))
+			// Convert to text
+			guard let htmlData = sectionText.data(using: .utf8),
+				  let text = try? NSAttributedString(data: htmlData, options: [
+					.documentType: NSAttributedString.DocumentType.html,
+					.characterEncoding: String.Encoding.utf8.rawValue
+				  ], documentAttributes: nil) else {
+				assertionFailure("Localized string could not be loaded.")
+				return
+			}
 			
-			self.titleField.attributedStringValue = text
+			// Find the range of the underlined text
+			var range: NSRange = NSMakeRange(0, 0)
+			text.enumerateAttribute(.underlineStyle, in: NSMakeRange(0, text.length)) { value, valueRange, stop in
+				if value != nil {
+					range = valueRange
+					stop.pointee = true
+				}
+			}
+			
+			// Remove the underline and add special formatting to the count
+			let formattedText = NSMutableAttributedString(string: text.string)
+			formattedText.setAttributes([.foregroundColor: NSColor.tertiaryLabelColor, .font: NSFont.systemFont(ofSize: NSFont.systemFontSize(for: .small))], range: range)
+			
+			self.titleField.attributedStringValue = formattedText
 		}
 	}
 	

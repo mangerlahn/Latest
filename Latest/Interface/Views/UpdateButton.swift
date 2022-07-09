@@ -133,11 +133,11 @@ class UpdateButton: NSButton {
 		
 		case .pending:
 			self.updateInterfaceVisibility(with: .indeterminate)
-			self.toolTip = NSLocalizedString("Waiting", comment: "Update progress state of waiting to start an update")
+			self.toolTip = NSLocalizedString("WaitingUpdateStatus", comment: "Update progress state of waiting to start an update")
 		
 		case .initializing:
 			self.updateInterfaceVisibility(with: .indeterminate)
-			self.toolTip = NSLocalizedString("Initializing", comment: "Update progress state of initializing an update")
+			self.toolTip = NSLocalizedString("InitializingUpdateStatus", comment: "Update progress state of initializing an update")
 		
 		case .downloading(let loadedSize, let totalSize):
 			self.updateInterfaceVisibility(with: .progress)
@@ -148,7 +148,7 @@ class UpdateButton: NSButton {
 			let byteFormatter = ByteCountFormatter()
 			byteFormatter.countStyle = .file
 			
-			let formatString = NSLocalizedString("Downloading %@ of %@", comment: "Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB'")
+			let formatString = NSLocalizedString("DownloadingUpdateStatus", comment: "Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB'")
 			self.toolTip = String.localizedStringWithFormat(formatString, byteFormatter.string(fromByteCount: loadedSize), byteFormatter.string(fromByteCount: totalSize))
 		
 		case .extracting(let progress):
@@ -156,11 +156,11 @@ class UpdateButton: NSButton {
 			
 			// Extracting goes to 95%
 			self.contentCell.updateProgress = 0.75 + (progress * 0.25)
-			self.toolTip = NSLocalizedString("Extracting Update", comment: "Update progress state of extracting the downloaded update")
+			self.toolTip = NSLocalizedString("ExtractingUpdateStatus", comment: "Update progress state of extracting the downloaded update")
 		
 		case .installing:
 			self.updateInterfaceVisibility(with: .indeterminate)
-			self.toolTip = NSLocalizedString("Installing", comment: "Update progress state of installing an update")
+			self.toolTip = NSLocalizedString("InstallingUpdateStatus", comment: "Update progress state of installing an update")
 		
 		case .error(let error):
 			self.updateInterfaceVisibility(with: self.showActionButton ? .error : .none)
@@ -168,7 +168,7 @@ class UpdateButton: NSButton {
 		
 		case .cancelling:
 			self.updateInterfaceVisibility(with: .indeterminate)
-			self.toolTip = NSLocalizedString("Cancelling", comment: "Update progress state of cancelling an update")
+			self.toolTip = NSLocalizedString("CancellingUpdateStatus", comment: "Update progress state of cancelling an update")
 		}
 	}
 	
@@ -186,15 +186,15 @@ class UpdateButton: NSButton {
 		
 		switch state {
 		case .update:
-			self.title = NSLocalizedString("UPDATE", comment: "Title of button that updates the app. Should be written uppercase if appropriate.")
+			self.title = NSLocalizedString("UpdateAction", comment: "Action to update a given app.").localizedUppercase
 			self.image = nil
 		case .open:
-			self.title = NSLocalizedString("OPEN", comment: "Title of button that opens the app. Should be written uppercase if appropriate.")
+			self.title = NSLocalizedString("OpenAction", comment: "Action to open a given app.").localizedUppercase
 			self.image = nil
 		case .error:
 			self.title = ""
 			if #available(OSX 11.0, *) {
-				self.image = NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: NSLocalizedString("Error while updating app", comment: "Description of button that opens an error dialogue."))
+				self.image = NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: NSLocalizedString("ErrorButtonAccessibilityTitle", comment: "Description of button that opens an error dialogue."))
 			} else {
 				self.image = NSImage(named: "warning")!
 			}
@@ -258,13 +258,13 @@ private extension UpdateButton {
 		let alert = NSAlert()
 		alert.alertStyle = .informational
 		
-		let message = NSLocalizedString("An error occurred while updating %@.", comment: "Title of alert stating that an error occurred during an app update. %@ is the name of the app.")
+		let message = NSLocalizedString("UpdateErrorAlertTitle", comment: "Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app.")
 		alert.messageText = String.localizedStringWithFormat(message, self.app!.name)
 		
 		alert.informativeText = error.localizedDescription
 		
-		alert.addButton(withTitle: NSLocalizedString("Retry", comment: "Button to retry an update in an error dialogue"))
-		alert.addButton(withTitle: NSLocalizedString("Cancel", comment: "Cancel button in an update dialogue"))
+		alert.addButton(withTitle: NSLocalizedString("RetryAction", comment: "Button to retry an update in an error dialogue"))
+		alert.addButton(withTitle: NSLocalizedString("CancelAction", comment: "Cancel button in an update dialogue"))
 		
 		return alert
 	}

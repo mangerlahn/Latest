@@ -1,0 +1,88 @@
+
+
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
+
+/* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
+"UpdateErrorAlertTitle" = "حدث خطأ أثناء تحديث %@.";
+
+/* Touch Bar section title for available updates */
+"AvailableSection" = "متاح";
+
+/* Table Section Header for available updates */
+"AvailableUpdatesSection" = "التحديثات المتاحة";
+
+/* Cancel button in an update dialogue */
+"CancelAction" = "الغاء";
+
+/* Update progress state of cancelling an update */
+"CancellingUpdateStatus" = "جاري الإلغاء";
+
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"DownloadingUpdateStatus" = "جاري التحميل%@ من %@";
+
+/* Description of button that opens an error dialogue. */
+"ErrorButtonAccessibilityTitle" = "خطأ أثناء تحديث البرنامج";
+
+/* Update progress state of extracting the downloaded update */
+"ExtractingUpdateStatus" = "استخراج التحديث";
+
+/* Touch Bar section title for ignored apps */
+"IgnoredSection" = "مهمل";
+
+/* Table Section Header for ignored apps */
+"IgnoredAppsSection" = "البرامج مهملة";
+
+/* Update progress state of initializing an update */
+"InitializingUpdateStatus" = "جاري التهيئة";
+
+/* Touch Bar section title for installed apps */
+"InstalledSection" = "مثبت";
+
+/* Table Section Header for already installed apps */
+"InstalledAppsSection" = "البرامج المثبتة";
+
+/* Update progress state of installing an update */
+"InstallingUpdateStatus" = "جاري التثبيت";
+
+/* The source name of apps loaded from the App Store. */
+"AppStoreSource" = "متجر برامج ماك";
+
+/* New Version String */
+"RemoteVersionFormat" = "تحديث جديد: %@";
+
+/* Title of release notes empty state */
+"NoAppSelectedTitle" = "لم يتم تحديد أي برنامج.";
+
+/* Error message that no release notes were found */
+"NoReleaseNotesFoundError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج.";
+
+/* Button to retry an update in an error dialogue */
+"RetryAction" = "أعد المحاولة";
+
+/* Reveal in Finder Row action */
+"RevealAction" = "كشف";
+
+/* Action to open the app. */
+"OpenAction" = "فتح";
+
+/* Description of release notes empty state */
+"NoAppSelectedDescription" = "حدد برنامجًا من القائمة لقراءة ملاحظات الإصدار الخاصة به.";
+
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"AppSource" = "المصدر: %@";
+
+/* Update String */
+"UpdateAction" = "تحديث";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoNotFoundError" = "لم يتم العثور على تحديث لهذا البرنامج.";
+
+/* Update progress state of waiting to start an update */
+"WaitingUpdateStatus" = "انتظار";
+
+/* The source name for apps loaded from third-party websites. */
+"WebSource" = "الويب";
+
+/* Current Version String */
+"LocalVersionFormat" = "الإصدار الخاص بك: %@";

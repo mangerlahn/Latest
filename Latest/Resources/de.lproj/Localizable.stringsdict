@@ -16,6 +16,8 @@
 			<string>%d Update verfügbar</string>
 			<key>other</key>
 			<string>%d Updates verfügbar</string>
+			<key>zero</key>
+			<string>Alles aktuell!</string>
 		</dict>
 	</dict>
 </dict>

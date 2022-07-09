@@ -1,0 +1,88 @@
+
+
+/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
+
+/* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
+"UpdateErrorAlertTitle" = "Terjadi galat saat memperbarui %@.";
+
+/* Touch Bar section title for ignored apps */
+"IgnoredSection" = "Abaikan";
+
+/* Touch Bar section title for available updates */
+"AvailableSection" = "Tersedia";
+
+/* Table Section Header for available updates */
+"AvailableUpdatesSection" = "Update tersedia";
+
+/* Cancel button in an update dialogue */
+"CancelAction" = "Batal";
+
+/* Update progress state of cancelling an update */
+"CancellingUpdateStatus" = "Batalkan";
+
+/* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
+"DownloadingUpdateStatus" = "Mengunduh %@ of %@";
+
+/* Description of button that opens an error dialogue. */
+"ErrorButtonAccessibilityTitle" = "Galat saat memperbarui aplikasi";
+
+/* Update progress state of extracting the downloaded update */
+"ExtractingUpdateStatus" = "Meng-ekstrak Update";
+
+/* Table Section Header for ignored apps */
+"IgnoredAppsSection" = "Aplikasi yang Diabaikan";
+
+/* Update progress state of initializing an update */
+"InitializingUpdateStatus" = "Mempersiapkan";
+
+/* Touch Bar section title for installed apps */
+"InstalledSection" = "Terinstal";
+
+/* Table Section Header for already installed apps */
+"InstalledAppsSection" = "Aplikasi terinstal";
+
+/* Update progress state of installing an update */
+"InstallingUpdateStatus" = "Memasang";
+
+/* The source name of apps loaded from the App Store. */
+"AppStoreSource" = "Mac App Store";
+
+/* New Version String */
+"RemoteVersionFormat" = "Versi baru: %@";
+
+/* Title of release notes empty state */
+"NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih";
+
+/* Error message that no release notes were found */
+"NoReleaseNotesFoundError" = "Tidak ada catatan rilis yang ditemukan untuk aplikasi ini.";
+
+/* Button to retry an update in an error dialogue */
+"RetryAction" = "Coba lagi";
+
+/* Reveal in Finder Row action */
+"RevealAction" = "Buka";
+
+/* Action to open the app. */
+"OpenAction" = "Buka";
+
+/* Description of release notes empty state */
+"NoAppSelectedDescription" = "Pilih aplikasi untuk melihat catatan rilisnya";
+
+/* The description of the app's source. e.g. 'Source: Mac App Store' */
+"AppSource" = "Sumber: %@";
+
+/* Update String */
+"UpdateAction" = "Perbarui";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoNotFoundError" = "Tidak ada update untuk aplikasi ini";
+
+/* Update progress state of waiting to start an update */
+"WaitingUpdateStatus" = "Menunggu";
+
+/* The source name for apps loaded from third-party websites. */
+"WebSource" = "Web";
+
+/* Current Version String */
+"LocalVersionFormat" = "Versi Anda: %@";

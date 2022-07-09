@@ -16,6 +16,8 @@
 			<string>%d mise à jour disponible</string>
 			<key>other</key>
 			<string>%d mises à jour disponible</string>
+			<key>zero</key>
+			<string>À jour !</string>
 		</dict>
 	</dict>
 </dict>

@@ -58,7 +58,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 
 		if #available(macOS 11.0, *) {
 			self.window?.toolbarStyle = .unified
-			self.window?.title = NSLocalizedString("Latest", comment: "App name as title of the main window.")
+			self.window?.title = Bundle.main.localizedInfoDictionary?[kCFBundleNameKey as String] as! String
 		} else {
 			self.window?.titleVisibility = .hidden
 		}
@@ -91,7 +91,22 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
-		UpdateCheckCoordinator.shared.appProvider.updatableApps.forEach({ $0.performUpdate() })
+		// Separate app store updates from the others
+		let apps = UpdateCheckCoordinator.shared.appProvider.updatableApps
+		let nonAppStoreApps = apps.filter { app in
+			app.source != .appStore
+		}
+		
+		// If more than one app store update is available, open the Updates page, update only non-App Store apps individually
+		let combineMacAppStoreUpdates = (apps.count - nonAppStoreApps.count > 1)
+		if combineMacAppStoreUpdates {
+			NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
+		}
+		(combineMacAppStoreUpdates ? nonAppStoreApps : apps).forEach({ app in
+			if !app.isUpdating {
+				app.performUpdate()
+			}
+		})
     }
     	
 	@IBAction func performFindPanelAction(_ sender: Any?) {
