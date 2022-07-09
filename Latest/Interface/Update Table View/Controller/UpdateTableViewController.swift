@@ -116,19 +116,18 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
             return nil
         }
 		
-		cell.filterQuery = self.snapshot.filterQuery
-		
-		// Only update cell if needed
-		guard cell.app != app else { return cell }
-		
+		// Only update image if needed, as this might result in flicker
+		if cell.app != app {
+			IconCache.shared.icon(for: app) { (image) in
+				cell.imageView?.image = image
+			}
+		}
+
 		cell.app = app
-		
-		IconCache.shared.icon(for: app) { (image) in
-            cell.imageView?.image = image
-            
-            // Tint the icon if the app is not supported
-            cell.imageView?.alphaValue = (app.supported ? 1 : 0.5)
-        }
+		cell.filterQuery = self.snapshot.filterQuery
+
+		// Tint the icon if the app is not supported
+		cell.imageView?.alphaValue = (app.supported ? 1 : 0.5)
         
         return cell
 	}
