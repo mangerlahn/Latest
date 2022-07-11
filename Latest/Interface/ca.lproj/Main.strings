@@ -21,7 +21,7 @@
 "Ljr-hV-usc.title" = "No ignorar";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "Nom de l'aplicació";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "Fitxer";
@@ -33,7 +33,7 @@
 "eIs-LJ-TQe.title" = "Comprovar el document ara";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Versió actual";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "Fitxer";
@@ -48,7 +48,7 @@
 "o46-Ym-MCY.title" = "Donar";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 actualitzacions disponibles";
+"rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
 "r6p-yM-qya.title" = "Editar";
@@ -57,7 +57,7 @@
 "5kV-Vb-QxS.title" = "Quant a Latest";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Actualitzacions disponibles";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Tancar";
@@ -85,3 +85,27 @@
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Anar a pantalla completa";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "Gw7-NE-1lh"; */
+"Gw7-NE-1lh.title" = "<dnl>";
+
+/* Class = "NSWindow"; title = "<dnl>"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
+"QRR-k0-TZ4.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
+"UPY-HP-f2p.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
+"VX8-qg-UOL.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
+"uWn-a0-oM2.title" = "<dnl>";
