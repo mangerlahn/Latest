@@ -1,6 +1,9 @@
 
 
-/* Describes how many apps are in a section, number of apps is inserted in placeholder. */
+
+/* Update progress state of cancelling an update */
+"CancellingUpdateStatus" = "A Cancelar";
+/* The title of a section divider in the app list. The first placeholder is the name of the section. The value in paranthesis describes how many apps are in that section, number of apps is inserted in the second placeholder. Use the HTML underline tag <u> to mark the deemphasized part of the text, which should be the count. Example: 'Installed Apps (42)' */
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
@@ -15,9 +18,6 @@
 /* Cancel button in an update dialogue */
 "CancelAction" = "Cancelar";
 
-/* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "A Cancelar";
-
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
 "DownloadingUpdateStatus" = "A descarregar %@ of %@";
 
@@ -26,12 +26,6 @@
 
 /* Update progress state of extracting the downloaded update */
 "ExtractingUpdateStatus" = "A Extrair Actualização";
-
-/* Update String */
-"UpdateAction" = "Actualizar";
-
-/* Current Version String */
-"LocalVersionFormat" = "A sua versão: %@";
 
 /* Touch Bar section title for ignored apps */
 "IgnoredSection" = "Ignorado";
@@ -42,6 +36,9 @@
 /* Update progress state of initializing an update */
 "InitializingUpdateStatus" = "A Inicializar";
 
+/* The source name of apps loaded from the App Store. */
+"AppStoreSource" = "Mac App Store";
+
 /* Touch Bar section title for installed apps */
 "InstalledSection" = "Instalada";
 
@@ -50,9 +47,6 @@
 
 /* Update progress state of installing an update */
 "InstallingUpdateStatus" = "A Instalar";
-
-/* The source name of apps loaded from the App Store. */
-"AppStoreSource" = "Mac App Store";
 
 /* New Version String */
 "RemoteVersionFormat" = "Nova Versão: %@";
@@ -78,6 +72,9 @@
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Fonte: %@";
 
+/* Update String */
+"UpdateAction" = "Actualizar";
+
 /* Error message stating that update info could not be retrieved for a given app. */
 "UpdateInfoNotFoundError" = "Nenhuma actualização encontrada para esta app.";
 
@@ -86,3 +83,6 @@
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
+
+/* Current Version String */
+"LocalVersionFormat" = "A sua versão: %@";

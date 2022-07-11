@@ -1,3 +1,6 @@
+# Unreleased Changes
+- Language Support for Portuguese (Thanks Filipe!)
+
 # 0.8.1
 #### New and Improved:
 - Language Support for various languages like:
