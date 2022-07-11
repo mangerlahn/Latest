@@ -21,7 +21,7 @@
 "Ah1-jH-gCv.title" = "Отменить";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Доступных обновлений";
+"rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
 "PS4-wi-kF9.title" = "Игнорировать";
@@ -42,7 +42,7 @@
 "OLo-39-3Sm.paletteLabel" = "Прогресс";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Обновить";
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.paletteLabel" = "Перезагрузить";
@@ -54,7 +54,7 @@
 "R4o-n2-Eq4.title" = "Увеличить";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Доступные обновления";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.label" = "Перезагрузить";
@@ -69,7 +69,7 @@
 "eIs-LJ-TQe.title" = "Проверить документ сейчас";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Текущая версия";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
 "mu8-FK-tXI.title" = "Найти…";
@@ -141,10 +141,10 @@
 "6Cd-Qc-3Xc.title" = "Показывать неподдерживаемые приложения";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Новая версия";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Ярлык";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Посетить страницу обновления";
@@ -183,7 +183,7 @@
 "GMn-QE-qPC.title" = "Вставить";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Обновить";
+"Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Просмотр";
@@ -207,7 +207,7 @@
 "GZQ-fq-mFU.title" = "Сделать заглавными буквами";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Последняя";
+"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
 "J6q-tg-1G2.title" = "Трансформации";
@@ -228,16 +228,16 @@
 "Olw-nP-bQN.title" = "Скрыть последние";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "Название приложения";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Окно";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "Ярлык";
+"UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "Ярлык";
+"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Скрыть остальные";
@@ -321,7 +321,7 @@
 "uQy-DD-JDr.title" = "Последнее";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "Ярлык";
+"uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
 "ucY-cy-GON.title" = "Произношение";
