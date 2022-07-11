@@ -33,10 +33,10 @@
 "6Cd-Qc-3Xc.title" = "Zobraziť nepodporovaných aplikácií";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Nová verzia";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Štítok";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Navštíviť Latest webové stránky";
@@ -75,7 +75,7 @@
 "GMn-QE-qPC.title" = "Vložiť";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Aktualizácia";
+"Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Zobraziť";
@@ -87,7 +87,7 @@
 "IAo-SY-fd9.title" = "Aktualizácia";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Latest";
+"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
 "Id2-BS-gzO.title" = "Vybrať všetko";
@@ -117,7 +117,7 @@
 "PS4-wi-kF9.title" = "Ignorovať";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Aktualizácia";
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Priblížiť";
@@ -126,7 +126,7 @@
 "Rh5-N3-X6H.title" = "Zobraziť ignorované aplikácie";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "Názov aplikácie";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
 "TKo-Xa-BjT.title" = "Zobraziť náhrady";
@@ -135,13 +135,13 @@
 "Td7-aD-5lo.title" = "Okno";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "Štítok";
+"UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
 "UVA-tb-pA9.title" = "Náhrady";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "Štítok";
+"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Skryť ostatné";
@@ -231,7 +231,7 @@
 "r6p-yM-qya.title" = "Upraviť";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 dostupných aktualizácií";
+"rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Použiť výber pre vyhľadanie";
@@ -246,7 +246,7 @@
 "uQy-DD-JDr.title" = "Latest";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "Štítok";
+"uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
 "ucY-cy-GON.title" = "Pravopis";
@@ -285,7 +285,7 @@
 "NMo-om-nkz.title" = "Služby";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Dostupné aktualizácie";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Skryť Latest";
@@ -309,7 +309,7 @@
 "dMs-cI-mzQ.title" = "Súbor";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Aktuálna verzia";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
 "uw5-pW-jNu.title" = "Inteligentné pomlčky";
