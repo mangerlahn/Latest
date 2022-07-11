@@ -33,10 +33,10 @@
 "6Cd-Qc-3Xc.title" = "Tunjukkan App Tidak Disokong";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Versi Terbaharu";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Label";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Melawat Laman Web-Terkini";
@@ -81,7 +81,7 @@
 "GZQ-fq-mFU.title" = "Guna huruf besar";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Kemaskini";
+"Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
 "HyV-fh-RgO.title" = "Lihat";
@@ -99,7 +99,7 @@
 "4vf-ia-dzo.title" = "Semak untuk Kemaskini…";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Terkini";
+"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Menu Utama";
@@ -138,16 +138,16 @@
 "Olw-nP-bQN.title" = "Sembunyikan Terkini";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Kemaskini Tersedia";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
 "TKo-Xa-BjT.title" = "Tunjukkan Penggantian";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "Label";
+"UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "App Name";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Sembunyikan Lain";
@@ -180,7 +180,7 @@
 "gU8-2v-afa.title" = "Cari Seterusnya";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Versi Semasa";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
 "h9B-7u-6ru.title" = "Tunjukkan dalam Finder";
@@ -219,7 +219,7 @@
 "uGs-GF-i9Z.title" = "Henti Bercakap";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "Label";
+"uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
 "wmL-ks-XSr.ibShadowedToolTip" = "Kemaskini Semua";
@@ -234,7 +234,7 @@
 "OLo-39-3Sm.paletteLabel" = "Kemajuan";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Kemaskini";
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zum";
@@ -312,10 +312,10 @@
 "x6Q-gr-lO2.title" = "Tampal dan Padankan Gaya";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "Label";
+"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
 "Rh5-N3-X6H.title" = "Tunjukkan Apps Diabaikan";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Kemaskini Tersedia";
+"rK6-RZ-Ga6.title" = "<dnl>";
