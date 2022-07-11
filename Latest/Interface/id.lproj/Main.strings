@@ -18,7 +18,7 @@
 "63s-Hc-NQY.title" = "Benarkan Ejaan Secara Otomatis";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Label";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Terbaru";
@@ -45,7 +45,37 @@
 "6Cd-Qc-3Xc.title" = "Tampilkan aplikasi yang tidak didukung";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Versi Baru";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Kunjungi Situs Web Latest";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "Gw7-NE-1lh"; */
+"Gw7-NE-1lh.title" = "<dnl>";
+
+/* Class = "NSWindow"; title = "<dnl>"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
+"UPY-HP-f2p.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
+"VX8-qg-UOL.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
+"QRR-k0-TZ4.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "SVA-bh-cUe"; */
+"SVA-bh-cUe.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NNm-bC-QYz"; */
+"NNm-bC-QYz.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+"h6g-FG-nGh.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "rK6-RZ-Ga6"; */
+"rK6-RZ-Ga6.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
+"uWn-a0-oM2.title" = "<dnl>";
