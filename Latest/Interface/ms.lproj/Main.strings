@@ -201,7 +201,7 @@
 "mu8-FK-tXI.title" = "Cari…";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
-"r6p-yM-qya.title" = "Edit";
+"r6p-yM-qya.title" = "Sunting";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
 "pDo-aP-nIF.title" = "Lompat ke Pilihan";
@@ -282,7 +282,7 @@
 "ZWx-q6-TJz.paletteLabel" = "Muat Semula";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
-"mTS-fP-YWg.title" = "Edit";
+"mTS-fP-YWg.title" = "Sunting";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
 "l11-q2-MLf.title" = "Penggantian";
@@ -319,3 +319,12 @@
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
 "rK6-RZ-Ga6.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
+"Ljr-hV-usc.title" = "jangan abaikan";
+
+/* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
+"iLi-Yb-UfX.title" = "Memuat Nota Keluaran";
+
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
+"o46-Ym-MCY.title" = "Donasi";
