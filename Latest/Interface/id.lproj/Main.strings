@@ -79,3 +79,27 @@
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
 "uWn-a0-oM2.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
+"Ah1-jH-gCv.title" = "Undo";
+
+/* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
+"Ake-Tt-cX3.title" = "Menu";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Pengaturan…";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "Gagal menampilkan catatan rilis!";
+
+/* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
+"D2N-5U-W7Z.title" = "Tidak Ada Pembaruan Tersedia";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Tutup";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Cek Ejaan Saat Mengetik";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Bantuan";
