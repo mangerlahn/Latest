@@ -1,5 +1,10 @@
 # Unreleased Changes
+- Language Support for Catalan (Thanks Maite!)
+- Language Support for Spanish (Thanks Darío!)
+
+# 0.8.2
 - Language Support for Portuguese (Thanks Filipe!)
+- It should also fix a crash on launch occurring on macOS 10.13. Sorry about that!
 
 # 0.8.1
 #### New and Improved:
