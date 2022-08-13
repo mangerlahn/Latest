@@ -52,7 +52,7 @@
 "RemoteVersionFormat" = "Versi baru: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih";
+"NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih.";
 
 /* Error message that no release notes were found */
 "NoReleaseNotesFoundError" = "Tidak ada catatan rilis yang ditemukan untuk aplikasi ini.";
@@ -67,7 +67,7 @@
 "OpenAction" = "Buka";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Pilih aplikasi untuk melihat catatan rilisnya";
+"NoAppSelectedDescription" = "Pilih aplikasi untuk melihat catatan rilisnya.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Sumber: %@";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Perbarui";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Tidak ada update untuk aplikasi ini";
+"UpdateInfoNotFoundError" = "Tidak ada update untuk aplikasi ini.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Menunggu";
