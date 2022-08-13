@@ -9,7 +9,7 @@
 "5kV-Vb-QxS.title" = "Sobre o Latest";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Nova Versão";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
 "Cm3-IX-Kw4.title" = "Falha a ler as release notes!";
@@ -45,7 +45,7 @@
 "4sb-4s-VLi.title" = "Sair";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Etiqueta";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Menú Principal";
@@ -57,13 +57,13 @@
 "GMn-QE-qPC.title" = "Colar";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Actualizações Disponíveis";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
 "Nnu-IS-gsC.title" = "Comece a Falar";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Actualizar";
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
 "SKi-gD-wYr.title" = "Transformar em minúsculas";
@@ -153,7 +153,7 @@
 "GZQ-fq-mFU.title" = "Letras Maiúsculas";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Actualizar";
+"Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Visualizar";
@@ -171,7 +171,7 @@
 "IAo-SY-fd9.title" = "Actualizar";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Latest";
+"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
 "J6q-tg-1G2.title" = "Transformações";
@@ -201,7 +201,7 @@
 "UVA-tb-pA9.title" = "Substituições";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "Etiqueta";
+"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.label" = "Recarregar";
@@ -219,13 +219,13 @@
 "Rh5-N3-X6H.title" = "Mostrar Apps Ignoradas";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "Nome da App";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
 "TKo-Xa-BjT.title" = "Mostrar Substituições";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "Etiqueta";
+"UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
 "Yj4-SM-ocg.title" = "Voltar a Fazer";
@@ -258,7 +258,7 @@
 "eIs-LJ-TQe.title" = "Verificar Documento Agora";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Versão Actual";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
 "iLi-Yb-UfX.title" = "A Carregar as Release Notes";
@@ -294,7 +294,7 @@
 "r6p-yM-qya.title" = "Editar";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Actualizações Disponíveis";
+"rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
 "spt-ns-lYo.title" = "Etiqueta Multilinha";
@@ -309,7 +309,7 @@
 "uGs-GF-i9Z.title" = "Parar de Falar";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "Etiqueta";
+"uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Ajuda";
