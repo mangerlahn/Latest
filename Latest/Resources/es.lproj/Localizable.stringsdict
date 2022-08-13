@@ -18,7 +18,7 @@
 			<string>%d actualizaciones disponibles</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@valor@</string>
+		<string>%#@value@</string>
 	</dict>
 </dict>
 </plist>
