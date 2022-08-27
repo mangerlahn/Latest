@@ -247,6 +247,10 @@
 		502929F02120623100F00D1C /* ReleaseNotesErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesErrorViewController.swift; sourceTree = "<group>"; };
 		502929F42120624700F00D1C /* ReleaseNotesLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesLoadingViewController.swift; sourceTree = "<group>"; };
 		502929FA21206BC800F00D1C /* ReleaseNotesContentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesContentProtocol.swift; sourceTree = "<group>"; };
+		50303BFC28BA06450020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		50303BFD28BA06520020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50303BFE28BA06560020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nl; path = nl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		50303BFF28BA06590020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50368BD22800C725005D1CF2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		50368BE82800C76A005D1CF2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ko; path = ko.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		50368BE92800C775005D1CF2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -691,6 +695,7 @@
 				"pt-PT",
 				ca,
 				es,
+				nl,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			productRefGroup = 50290E721E53EB6A00133E3D /* Products */;
@@ -967,6 +972,7 @@
 				502572ED287CA65300E5ECAF /* pt-PT */,
 				5097CD6D28A82A5D00D66B4C /* es */,
 				5097CD6E28A82A5F00D66B4C /* ca */,
+				50303BFF28BA06590020C46F /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -987,6 +993,7 @@
 				502572F0287CA69700E5ECAF /* pt-PT */,
 				5097CD6F28A82A6300D66B4C /* ca */,
 				5097CD7028A82A6500D66B4C /* es */,
+				50303BFE28BA06560020C46F /* nl */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -1007,6 +1014,7 @@
 				502572EC287CA64900E5ECAF /* pt-PT */,
 				5097CD7128A82A6800D66B4C /* ca */,
 				5097CD7228A82A6A00D66B4C /* es */,
+				50303BFD28BA06520020C46F /* nl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1028,6 +1036,7 @@
 				502572D5287CA61100E5ECAF /* pt-PT */,
 				5097CD5628A82A3B00D66B4C /* ca */,
 				5097CD6C28A82A5500D66B4C /* es */,
+				50303BFC28BA06450020C46F /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
