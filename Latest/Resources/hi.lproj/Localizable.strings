@@ -10,7 +10,7 @@
 "AvailableSection" = "उपलब्ध";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "उपलब्ध उपदेट्स";
+"AvailableUpdatesSection" = "उपलब्ध अपडेट";
 
 /* Cancel button in an update dialogue */
 "CancelAction" = "कैंसल करे";
@@ -19,70 +19,70 @@
 "CancellingUpdateStatus" = "कैंसल हो रहा है";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "डाउनलोड %a का %a";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "खोलें";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "एप को अपडेट करते समय एरर";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Extracting अपडेट";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "नजर अंदाज किया गया";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "नजर अंदाज किए गए एप";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "शुरुवात की जा रही है";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "इंस्टॉल किया गया";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "इंस्टॉल किए गए एप";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "इंस्टॉल किया जा रहा है";
 
 /* The source name of apps loaded from the App Store. */
-"AppStoreSource" = "Mac App Store";
+"AppStoreSource" = "मैक एप स्टोर";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "नया वर्ज़न : %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "किसी एप का चुनाव नहीं किया गया है";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "इस एप के कोई रिलीज नोट नहीं पाए गए";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "फिर से कोशिश करें";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "खोलकर बताएं";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "एप के रिलीज नोट्स पढ़ने की लिए लिस्ट में से एप का चुनाव करें";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "सोर्स : %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "अपडेट करें";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "इस एप के लिए कोई अपडेट नहीं पाया गया";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "इंतजार हो रहा है";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "वेब";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "आपका वर्ज़न : %@";
