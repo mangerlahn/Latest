@@ -4,7 +4,7 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "Προέκυψε σφάλμα κατά την ενημέρωση του %@.";
+"UpdateErrorAlertTitle" = "Προέκυψε σφάλμα κατά την ενημέρωση της εφαρμογής %@.";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "Διαθέσιμο";
