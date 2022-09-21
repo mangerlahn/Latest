@@ -190,7 +190,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		reply(self.isCancelled ? .dismiss : .install)
 	}
 	
-	func showInstallingUpdate(withApplicationTerminated applicationTerminated: Bool) {
+	func showInstallingUpdate(withApplicationTerminated applicationTerminated: Bool, retryTerminatingApplication: @escaping () -> Void) {
 		self.progressState = .installing
 	}
 		
