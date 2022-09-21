@@ -317,6 +317,14 @@
 		50C9F0F4234637BD00FD1802 /* UpdateCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheckerOperation.swift; sourceTree = "<group>"; };
 		50C9F1092346386B00FD1802 /* MacAppStoreCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppStoreCheckerOperation.swift; sourceTree = "<group>"; };
 		50C9F10B234641E000FD1802 /* SparkleCheckerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleCheckerOperation.swift; sourceTree = "<group>"; };
+		50D6695A28DBA9F800FD3F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		50D6697128DBAA2F00FD3F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		50D6697228DBAA3A00FD3F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		50D6697328DBAA4200FD3F6A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		50D6697428DBAC4B00FD3F6A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
+		50D6697528DBAC6B00FD3F6A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50D6697628DBAC6E00FD3F6A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = el; path = el.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		50D6697728DBAC7200FD3F6A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50D6EF5E281461A3002D7006 /* Sparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sparkle.swift; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
@@ -696,6 +704,8 @@
 				ca,
 				es,
 				nl,
+				"zh-Hans",
+				el,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			productRefGroup = 50290E721E53EB6A00133E3D /* Products */;
@@ -973,6 +983,8 @@
 				5097CD6D28A82A5D00D66B4C /* es */,
 				5097CD6E28A82A5F00D66B4C /* ca */,
 				50303BFF28BA06590020C46F /* nl */,
+				50D6697128DBAA2F00FD3F6A /* zh-Hans */,
+				50D6697728DBAC7200FD3F6A /* el */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -994,6 +1006,8 @@
 				5097CD6F28A82A6300D66B4C /* ca */,
 				5097CD7028A82A6500D66B4C /* es */,
 				50303BFE28BA06560020C46F /* nl */,
+				50D6697228DBAA3A00FD3F6A /* zh-Hans */,
+				50D6697628DBAC6E00FD3F6A /* el */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -1015,6 +1029,8 @@
 				5097CD7128A82A6800D66B4C /* ca */,
 				5097CD7228A82A6A00D66B4C /* es */,
 				50303BFD28BA06520020C46F /* nl */,
+				50D6697328DBAA4200FD3F6A /* zh-Hans */,
+				50D6697528DBAC6B00FD3F6A /* el */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1037,6 +1053,8 @@
 				5097CD5628A82A3B00D66B4C /* ca */,
 				5097CD6C28A82A5500D66B4C /* es */,
 				50303BFC28BA06450020C46F /* nl */,
+				50D6695A28DBA9F800FD3F6A /* zh-Hans */,
+				50D6697428DBAC4B00FD3F6A /* el */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

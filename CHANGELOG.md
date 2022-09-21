@@ -1,7 +1,9 @@
 # Unreleased Changes
 - Language Support for Catalan (Thanks Maite!)
 - Language Support for Dutch (Thanks Eitot!)
+- Language Support for Greek (Thanks Efthymis!)
 - Language Support for Spanish (Thanks Darío!)
+- Language Support for Simplified Chinese
 
 # 0.8.2
 - Language Support for Portuguese (Thanks Filipe!)
