@@ -122,7 +122,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 	}
 		
 	func showUpdateNotFoundWithError(_ error: Error, acknowledgement: @escaping () -> Void) {
-		self.finish(with: LatestError.updateInfoNotFound)
+		self.finish(with: error)
 		acknowledgement()
 	}
 	
