@@ -83,7 +83,7 @@ class UpdateCheckCoordinator {
 	private let updateOperationQueue: OperationQueue = {
 		let operationQueue = OperationQueue()
 		
-		// Allow 10 simultaneously updates
+		// Allow 10 simultaneous updates
 		operationQueue.maxConcurrentOperationCount = 10
 		
 		return operationQueue
