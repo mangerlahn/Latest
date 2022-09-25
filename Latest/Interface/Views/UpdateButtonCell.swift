@@ -33,10 +33,7 @@ class UpdateButtonCell: NSButtonCell {
 			
 			// Start a display link that continuously updates the activity indicator
 			if self.contentType == .indeterminate {
-				displayLink = DisplayLink(duration: nil, callback: { frame in
-					self.view.needsDisplay = true
-				})
-				displayLink?.start()
+				self.startDisplayLink(withDuration: nil)
 			} else {
 				self.displayLink = nil
 			}
@@ -69,11 +66,15 @@ class UpdateButtonCell: NSButtonCell {
 			}
 			
 			self._oldUpdateProgress = oldValue
-			displayLink = DisplayLink(duration: 0.2, callback: { frame in
-				self.view.needsDisplay = true
-			})
-			displayLink?.start()
+			self.startDisplayLink(withDuration: 0.2)
 		}
+	}
+	
+	private func startDisplayLink(withDuration duration: Double?) {
+		displayLink = DisplayLink(duration: duration, callback: { [weak self] frame in
+			self?.view.needsDisplay = true
+		})
+		displayLink?.start()
 	}
 	
 	
