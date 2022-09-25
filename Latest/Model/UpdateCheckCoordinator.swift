@@ -104,7 +104,7 @@ class UpdateCheckCoordinator {
 	
 	/// Performs the update check on the given bundles.
 	private func runUpdateCheck(on bundles: [App.Bundle]) {
-		let operations = self.library.bundles.compactMap { bundle in
+		let operations = bundles.compactMap { bundle in
 			return Self.operation(forChecking: bundle) { result in
 				self.didCheck(bundle, result)
 			}
