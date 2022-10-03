@@ -1,5 +1,15 @@
 # Unreleased Changes
+# 0.8.3
+- Language Support for Catalan (Thanks Maite!)
+- Language Support for Dutch (Thanks Eitot!)
+- Language Support for Greek (Thanks Efthymis!)
+- Language Support for Spanish (Thanks Darío!)
+- Language Support for Simplified Chinese
+- Hopefully fixed some crashes around updating apps.
+
+# 0.8.2
 - Language Support for Portuguese (Thanks Filipe!)
+- It should also fix a crash on launch occurring on macOS 10.13. Sorry about that!
 
 # 0.8.1
 #### New and Improved:

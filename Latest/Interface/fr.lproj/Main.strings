@@ -32,10 +32,10 @@
 "6Cd-Qc-3Xc.title" = "Afficher les applications non prises en charge";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Label";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Nouvelle version";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Visiter le site web de Latest";
@@ -113,13 +113,13 @@
 "gU8-2v-afa.title" = "Trouver le suivant";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Mise à jour";
+"Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
 "GZQ-fq-mFU.title" = "Capitaliser";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Version actuelle";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Voir";
@@ -149,7 +149,7 @@
 "iLi-Yb-UfX.title" = "Chargement des notes de version";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Fenêtre";
+"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
 "iUE-OL-cvh.title" = "Copier/Coller intelligent";
@@ -188,7 +188,7 @@
 "NMo-om-nkz.title" = "Services";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Mises à jour disponibles";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
 "Nnu-IS-gsC.title" = "Commencez à parler";
@@ -215,7 +215,7 @@
 "PS4-wi-kF9.title" = "Ignorer";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Mise à jour";
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
 "qS5-vO-h2j.label" = "Mettre à jour tous";
@@ -233,7 +233,7 @@
 "Rh5-N3-X6H.title" = "Afficher les applications ignorées";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Mises à jour disponibles";
+"rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Utiliser la sélection pour trouver";
@@ -245,7 +245,7 @@
 "spt-ns-lYo.title" = "Label multi-ligne";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "Nom de l'application";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Fenêtre";
@@ -266,7 +266,7 @@
 "uGs-GF-i9Z.title" = "Arrêter de parler";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "Label";
+"UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Latest";
@@ -278,13 +278,13 @@
 "uw5-pW-jNu.title" = "Tirets intelligents";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "Label";
+"uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Cacher les autres";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "Label";
+"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
 "w14-Ia-4l9.title" = "Ouvrir";

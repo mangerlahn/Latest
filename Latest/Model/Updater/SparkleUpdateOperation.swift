@@ -122,7 +122,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 	}
 		
 	func showUpdateNotFoundWithError(_ error: Error, acknowledgement: @escaping () -> Void) {
-		self.finish(with: LatestError.updateInfoNotFound)
+		self.finish(with: error)
 		acknowledgement()
 	}
 	
@@ -190,7 +190,7 @@ extension SparkleUpdateOperation: SPUUserDriver {
 		reply(self.isCancelled ? .dismiss : .install)
 	}
 	
-	func showInstallingUpdate(withApplicationTerminated applicationTerminated: Bool) {
+	func showInstallingUpdate(withApplicationTerminated applicationTerminated: Bool, retryTerminatingApplication: @escaping () -> Void) {
 		self.progressState = .installing
 	}
 		

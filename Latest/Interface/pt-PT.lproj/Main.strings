@@ -30,10 +30,10 @@
 "6Cd-Qc-3Xc.title" = "Mostrar Apps não Suportadas";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
-"6YS-DP-XWA.title" = "Nova Versão";
+"6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "Etiqueta";
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Visitar o Sítio Web";
@@ -81,7 +81,7 @@
 "GZQ-fq-mFU.title" = "Letras Maiúsculas";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
-"Gw7-NE-1lh.title" = "Actualizar";
+"Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Visualizar";
@@ -93,7 +93,7 @@
 "IAo-SY-fd9.title" = "Actualizar";
 
 /* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "Latest";
+"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
 "Id2-BS-gzO.title" = "Seleccionar Tudo";
@@ -117,7 +117,7 @@
 "SKi-gD-wYr.title" = "Transformar em minúsculas";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "Nome da App";
+"SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
 "TKo-Xa-BjT.title" = "Mostrar Substituições";
@@ -126,13 +126,13 @@
 "Td7-aD-5lo.title" = "Janela";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "Etiqueta";
+"UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
 "UVA-tb-pA9.title" = "Substituições";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "Etiqueta";
+"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Esconder o Resto";
@@ -228,7 +228,7 @@
 "r6p-yM-qya.title" = "Editar";
 
 /* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
-"rK6-RZ-Ga6.title" = "5 Actualizações Disponíveis";
+"rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Utilizar Selecção para Pesquisar";
@@ -249,7 +249,7 @@
 "uQy-DD-JDr.title" = "Latest";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "Etiqueta";
+"uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
 "wtc-0j-cAV.title" = "Dicionário e Gramática";
@@ -282,7 +282,7 @@
 "NMo-om-nkz.title" = "Serviços";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "Actualizações Disponíveis";
+"NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "Minimizar";
@@ -294,7 +294,7 @@
 "PS4-wi-kF9.title" = "Ignorar";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "Actualizar";
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zoom";
@@ -306,7 +306,7 @@
 "gU8-2v-afa.title" = "Procurar Seguinte";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "Versão Actual";
+"h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
 "h9B-7u-6ru.title" = "Mostrar no Finder";

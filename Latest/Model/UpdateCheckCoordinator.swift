@@ -67,6 +67,10 @@ class UpdateCheckCoordinator {
 	/// The library containing all bundles loaded from disk.
 	private lazy var library: AppLibrary = {
 		return AppLibrary { bundles in
+			// New bundles, immediately cancel all update checks, as new ones will be performed
+			self.updateOperationQueue.cancelAllOperations()
+
+			// Set new bundles and check for updates
 			let newApps = self.dataStore.set(appBundles: Set(bundles))
 			self.runUpdateCheck(on: newApps.map({ $0.bundle }))
 		}
@@ -79,8 +83,8 @@ class UpdateCheckCoordinator {
 	private let updateOperationQueue: OperationQueue = {
 		let operationQueue = OperationQueue()
 		
-		// Allow 100 simultaneously updates
-		operationQueue.maxConcurrentOperationCount = 100
+		// Allow 10 simultaneous updates
+		operationQueue.maxConcurrentOperationCount = 10
 		
 		return operationQueue
 	}()
@@ -100,7 +104,7 @@ class UpdateCheckCoordinator {
 	
 	/// Performs the update check on the given bundles.
 	private func runUpdateCheck(on bundles: [App.Bundle]) {
-		let operations = self.library.bundles.compactMap { bundle in
+		let operations = bundles.compactMap { bundle in
 			return Self.operation(forChecking: bundle) { result in
 				self.didCheck(bundle, result)
 			}

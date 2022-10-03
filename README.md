@@ -30,7 +30,7 @@ After that, run `brew install --cask latest` to install the current version of L
 
 You can build Latest directly on your machine. To do that, you have to download the source code by cloning the repository: `git clone --recurse-submodules git@github.com:mangerlahn/Latest.git`.
 
-Then you can open the `Latest.xcodeproj` and hit *Build and Run*. Make sure that the `Latest` scheme is selected. Latest uses submodules to organize its dependencies. If the project is not building, make sure submodules are initialized correctly. To update them, call `git submodule update --init --recursive`.
+Then you can open the `Latest.xcodeproj` and hit *Build and Run*. Make sure that the `Latest` scheme is selected.
 
 ## Contribution
 
@@ -52,20 +52,20 @@ I would like to assign every issue to the person working on that particular thin
 
 As mentioned above, Latest is free for you to use. I work on the app in my spare time. If you would like to support the development by donating, you can do so [here][12].
 
-[1]: https://travis-ci.org/mangerlahn/Latest
-[2]: https://hosted.weblate.org/engage/latest/
-[3]: https://github.com/mangerlahn/latest/issues
-[4]: https://max.codes/latest/Latest.zip
-[5]: https://github.com/mangerlahn/Latest/releases
-[6]: https://github.com/Homebrew/homebrew-cask
-[7]: https://brew.sh
-[8]: https://weblate.org/
-[9]: https://hosted.weblate.org/engage/latest/
-[10]: https://hosted.weblate.org/engage/latest/
-[11]: https://github.com/mangerlahn/latest/issues
-[12]: https://max.codes/latest/donate
+[1]:	https://travis-ci.org/mangerlahn/Latest
+[2]:	https://hosted.weblate.org/engage/latest/
+[3]:	https://github.com/mangerlahn/latest/issues
+[4]:	https://max.codes/latest/Latest.zip
+[5]:	https://github.com/mangerlahn/Latest/releases
+[6]:	https://github.com/Homebrew/homebrew-cask
+[7]:	https://brew.sh
+[8]:	https://weblate.org/
+[9]:	https://hosted.weblate.org/engage/latest/
+[10]:	https://hosted.weblate.org/engage/latest/
+[11]:	https://github.com/mangerlahn/latest/issues
+[12]:	https://max.codes/latest/donate
 
-[image-1]: https://travis-ci.org/mangerlahn/Latest.svg?branch=master
-[image-2]: https://hosted.weblate.org/widgets/latest/-/svg-badge.svg
-[image-3]: ./latest.png
-[image-4]: https://hosted.weblate.org/widgets/latest/-/multi-auto.svg
+[image-1]:	https://travis-ci.org/mangerlahn/Latest.svg?branch=master
+[image-2]:	https://hosted.weblate.org/widgets/latest/-/svg-badge.svg
+[image-3]:	./latest.png
+[image-4]:	https://hosted.weblate.org/widgets/latest/-/multi-auto.svg
