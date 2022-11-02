@@ -43,3 +43,6 @@
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
 "6YS-DP-XWA.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
+"D2N-5U-W7Z.title" = "Mevcut güncelleme yok";
