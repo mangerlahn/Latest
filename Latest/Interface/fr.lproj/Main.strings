@@ -251,7 +251,7 @@
 "Td7-aD-5lo.title" = "Fenêtre";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "Afficher les substitutions";
+"TKo-Xa-BjT.title" = "Afficher les remplacements";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
 "tw7-g1-6Wz.title" = "Liens intelligents";
@@ -272,7 +272,7 @@
 "uQy-DD-JDr.title" = "Latest";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "Substitutions";
+"UVA-tb-pA9.title" = "Remplacements";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
 "uw5-pW-jNu.title" = "Tirets intelligents";
