@@ -4,6 +4,8 @@
 - Ignored Apps can be shown independent of installed apps
 - Show installed apps by default
 
+- Language Support for Norwegian Bokmål (Thanks Sander!)
+
 #### Bug Fixes
 - Latest now remembers the width of the update list
 
