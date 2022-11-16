@@ -84,8 +84,7 @@ extension MacAppStoreUpdateCheckerOperation {
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
 		return App.Update(app: self.app, remoteVersion: version, date: entry.date, releaseNotes: entry.releaseNotes) { app in
-			// Update: Open App Store page where the user can update manually
-			NSWorkspace.shared.open(entry.pageURL)
+			UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
 		}
 	}
 	
@@ -181,6 +180,9 @@ fileprivate struct AppStoreEntry: Decodable {
 	/// The link to the app store page.
 	let pageURL: URL
 	
+	/// The identifier for this app in the App Store context.
+	let appStoreIdentifier: UInt64
+	
 	
 	// MARK: - Decoding
 	
@@ -189,6 +191,7 @@ fileprivate struct AppStoreEntry: Decodable {
 		case releaseNotes = "releaseNotes"
 		case date = "currentVersionReleaseDate"
 		case pageURL = "trackViewUrl"
+		case appStoreIdentifier = "trackId"
 	}
 	
 	init(from decoder: Decoder) throws {
@@ -210,6 +213,8 @@ fileprivate struct AppStoreEntry: Decodable {
 			throw MalformedURLError
 		}
 		self.pageURL = url
+		
+		self.appStoreIdentifier = try container.decode(UInt64.self, forKey: .appStoreIdentifier)
 	}
 	
 	
