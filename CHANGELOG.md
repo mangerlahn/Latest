@@ -4,6 +4,8 @@
 - Ignored Apps can be shown independent of installed apps
 - Show installed apps by default
 
+- Language Support for Hungarian (Thanks Barczi!)
+- Language Support for Indonesian (Thanks Adrian!)
 - Language Support for Norwegian Bokmål (Thanks Sander!)
 
 #### Bug Fixes
