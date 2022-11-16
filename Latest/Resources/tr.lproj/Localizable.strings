@@ -64,7 +64,7 @@
 "RevealAction" = "Reveal";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Aç";
 
 /* Description of release notes empty state */
 "NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
