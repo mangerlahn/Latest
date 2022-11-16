@@ -65,7 +65,7 @@
 "bib-Uj-vzu.title" = "Fichier";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
-"bm3-iR-6vZ.title" = "Révéler dans le Finder";
+"bm3-iR-6vZ.title" = "Afficher dans le Finder";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Préférences…";
@@ -125,7 +125,7 @@
 "H8h-7b-M4v.title" = "Voir";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
-"h9B-7u-6ru.title" = "Révéler dans le Finder";
+"h9B-7u-6ru.title" = "Afficher dans le Finder";
 
 /* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
 "hOB-nw-cIX.title" = "Trouver";
@@ -209,7 +209,7 @@
 "OY7-WF-poV.title" = "Minimiser";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
-"pDo-aP-nIF.title" = "Sauter à la sélection";
+"pDo-aP-nIF.title" = "Aller à la sélection";
 
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
 "PS4-wi-kF9.title" = "Ignorer";
@@ -218,10 +218,10 @@
 "QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.label" = "Mettre à jour tous";
+"qS5-vO-h2j.label" = "Tout mettre à jour";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.paletteLabel" = "Mettre à jour tous";
+"qS5-vO-h2j.paletteLabel" = "Tout mettre à jour";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Zoom";
@@ -251,7 +251,7 @@
 "Td7-aD-5lo.title" = "Fenêtre";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "Afficher les substitutions";
+"TKo-Xa-BjT.title" = "Afficher les remplacements";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
 "tw7-g1-6Wz.title" = "Liens intelligents";
@@ -272,7 +272,7 @@
 "uQy-DD-JDr.title" = "Latest";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "Substitutions";
+"UVA-tb-pA9.title" = "Remplacements";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
 "uw5-pW-jNu.title" = "Tirets intelligents";
@@ -290,7 +290,7 @@
 "w14-Ia-4l9.title" = "Ouvrir";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
-"wmL-ks-XSr.ibShadowedToolTip" = "Mettre à jour tous";
+"wmL-ks-XSr.ibShadowedToolTip" = "Tout mettre à jour";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Aide";
@@ -317,7 +317,7 @@
 "Yj4-SM-ocg.title" = "Refaire";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
-"yPN-rG-tgD.title" = "Trouver précédent";
+"yPN-rG-tgD.title" = "Trouver le précédent";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
 "YRo-LJ-qSP.title" = "Transformations";
