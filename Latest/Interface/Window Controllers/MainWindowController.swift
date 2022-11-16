@@ -91,18 +91,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
-		// Separate app store updates from the others
-		let apps = UpdateCheckCoordinator.shared.appProvider.updatableApps
-		let nonAppStoreApps = apps.filter { app in
-			app.source != .appStore
-		}
-		
-		// If more than one app store update is available, open the Updates page, update only non-App Store apps individually
-		let combineMacAppStoreUpdates = (apps.count - nonAppStoreApps.count > 1)
-		if combineMacAppStoreUpdates {
-			NSWorkspace.shared.open(URL(string: "macappstore://showUpdatesPage")!)
-		}
-		(combineMacAppStoreUpdates ? nonAppStoreApps : apps).forEach({ app in
+		// Iterate all updatable apps and perform update
+		UpdateCheckCoordinator.shared.appProvider.updatableApps.forEach({ app in
 			if !app.isUpdating {
 				app.performUpdate()
 			}
