@@ -86,3 +86,6 @@
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";
