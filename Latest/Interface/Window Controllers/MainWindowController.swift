@@ -55,6 +55,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         super.windowDidLoad()
     
 		self.window?.titlebarAppearsTransparent = true
+		self.window?.setFrameAutosaveName("MainWindow")
 
 		if #available(macOS 11.0, *) {
 			self.window?.toolbarStyle = .unified
@@ -76,6 +77,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         self.listViewController.releaseNotesViewController = self.releaseNotesViewController
 
         if let splitViewController = self.contentViewController as? NSSplitViewController {
+			splitViewController.splitView.autosaveName = "MainSplitView"
+			
             let detailItem = splitViewController.splitViewItems[1]
             detailItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
         }
