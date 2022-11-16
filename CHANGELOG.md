@@ -1,4 +1,12 @@
 # Unreleased Changes
+#### New and Improved:
+- Apps from the Mac App Store can be updated from within Latest
+- Ignored Apps can be shown independent of installed apps
+- Show installed apps by default
+
+#### Bug Fixes
+- Latest now remembers the width of the update list
+
 # 0.8.3
 - Language Support for Catalan (Thanks Maite!)
 - Language Support for Dutch (Thanks Eitot!)
