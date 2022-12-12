@@ -48,7 +48,15 @@ class AppLibrary {
 		self.appSearchQuery.disableUpdates()
 		
 		let appSearchQueryResults = self.appSearchQuery.results
+		var isSpotlightEnabled = true
 		if appSearchQueryResults.isEmpty {
+			isSpotlightEnabled = false
+		} else if appSearchQueryResults.count == 1 {
+			if (appSearchQueryResults[0] as? NSMetadataItem)?.value(forAttribute: NSMetadataItemPathKey) as? String == "/Applications/Safari.app" {
+				isSpotlightEnabled = false // In macOS 13.0.1, Spotlight query returns a single installed app Safari even when Spotlight indexing on applications itself is disabled!
+			}
+		}
+		if !isSpotlightEnabled {
 			// Look for applications in the /Applications folder manually
 			let fileManager = FileManager.default
 			var bundles = [App.Bundle]()
