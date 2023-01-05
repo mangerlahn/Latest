@@ -103,7 +103,7 @@ extension MacAppStoreUpdateOperation: CKDownloadQueueObserver {
 		case 0:
 			self.progressState = .downloading(loadedSize: Int64(status.activePhase.progressValue), totalSize: Int64(status.activePhase.totalProgressValue))
 		case 1:
-			self.progressState = .installing
+			self.progressState = .extracting(progress: Double(status.activePhase.progressValue) / Double(status.activePhase.totalProgressValue))
 		default:
 			self.progressState = .initializing
 		}
