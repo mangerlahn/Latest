@@ -45,7 +45,12 @@ class UpdateOperation: StatefulOperation {
 	let appIdentifier: App.Bundle.Identifier
 	
 	/// The handler forwarding the current progress state.
-	var progressHandler: UpdateQueue.ProgressHandler?
+	var progressHandler: UpdateQueue.ProgressHandler? {
+		didSet {
+			// Notify immediately
+			self.progressHandler?(self.appIdentifier)
+		}
+	}
 	
 		/// The current update state.
 	var progressState: UpdateOperation.ProgressState = .pending {
