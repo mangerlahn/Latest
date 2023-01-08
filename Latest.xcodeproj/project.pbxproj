@@ -195,6 +195,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29A88F88296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Main.strings; sourceTree = "<group>"; };
+		29A88F89296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29A88F8A296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fa; path = fa.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		29A88F8B296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCellView.swift; sourceTree = "<group>"; };
 		5009D5D727F4FF9A00CBDBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		501EA97F1EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -683,6 +687,7 @@
 				nl,
 				"zh-Hans",
 				el,
+				fa,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			packageReferences = (
@@ -966,6 +971,7 @@
 				50303BFF28BA06590020C46F /* nl */,
 				50D6697128DBAA2F00FD3F6A /* zh-Hans */,
 				50D6697728DBAC7200FD3F6A /* el */,
+				29A88F8B296B7DC2000A5EDE /* fa */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -989,6 +995,7 @@
 				50303BFE28BA06560020C46F /* nl */,
 				50D6697228DBAA3A00FD3F6A /* zh-Hans */,
 				50D6697628DBAC6E00FD3F6A /* el */,
+				29A88F8A296B7DC2000A5EDE /* fa */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -1012,6 +1019,7 @@
 				50303BFD28BA06520020C46F /* nl */,
 				50D6697328DBAA4200FD3F6A /* zh-Hans */,
 				50D6697528DBAC6B00FD3F6A /* el */,
+				29A88F89296B7DC2000A5EDE /* fa */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1036,6 +1044,7 @@
 				50303BFC28BA06450020C46F /* nl */,
 				50D6695A28DBA9F800FD3F6A /* zh-Hans */,
 				50D6697428DBAC4B00FD3F6A /* el */,
+				29A88F88296B7DC2000A5EDE /* fa */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
