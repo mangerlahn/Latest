@@ -34,7 +34,7 @@
 "IgnoredAppsSection" = "Aplicaciones ignoradas";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Inicialización";
+"InitializingUpdateStatus" = "Inicializando";
 
 /* Touch Bar section title for installed apps */
 "InstalledSection" = "Instalado";
@@ -88,4 +88,4 @@
 "LocalVersionFormat" = "Su versión: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "Inicia sesión en la Mac App Store para actualizar ésta app.";
