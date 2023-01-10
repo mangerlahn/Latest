@@ -4,40 +4,40 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "Güncelleme sırasında bir hata oluştu %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Available";
+"AvailableSection" = "Hazır";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
+"AvailableUpdatesSection" = "Kullanılabilir Güncellemeler";
 
 /* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"CancelAction" = "İptal";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "İptal";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "%@ / %@ indiriliyor";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "Uygulama güncellenirken hata oluştu";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Güncelleme ayıklanıyor";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "Yok Sayıldı";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Yoksayılan Uygulamalar";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "Başlatılıyor";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "Yüklendi";
 
 /* Table Section Header for already installed apps */
 "InstalledAppsSection" = "Installed Apps";
@@ -64,7 +64,7 @@
 "RevealAction" = "Reveal";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Aç";
 
 /* Description of release notes empty state */
 "NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
@@ -86,3 +86,6 @@
 
 /* Current Version String */
 "LocalVersionFormat" = "Your version: %@";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";

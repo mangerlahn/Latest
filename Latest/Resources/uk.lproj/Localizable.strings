@@ -4,70 +4,70 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "Сталася помилка під час оновлення %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Available";
+"AvailableSection" = "Доступно";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
+"AvailableUpdatesSection" = "Доступні оновлення";
 
 /* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"CancelAction" = "Скасувати";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "Скасування";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "Завантаження %@ із %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "Помилка при оновленні додатку";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Розпакування оновлення";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "Ігнорується";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Ігноровані програми";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "Ініціалізація";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "Встановлено";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "Встановлені додатки";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "Встановлення";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "Нова версія: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "Додаток не вибрано.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "Для цієї програми не знайдено приміток до випуску.";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "Повторити спробу";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Розкрити";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Відкрити";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Виберіть програму зі списку, щоб прочитати примітки до її випуску.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Source: %@";
@@ -86,3 +86,6 @@
 
 /* Current Version String */
 "LocalVersionFormat" = "Your version: %@";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";

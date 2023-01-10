@@ -15,6 +15,8 @@ enum LatestError: Int, CustomNSError {
 	/// An error to be used when no release notes were found for a given app.
 	case releaseNotesUnavailable
 	
+	/// An error raised by the App Store updater in case the user is not signed in.
+	case notSignedInToAppStore
 	
 	// MARK: - NSError Protocol
 	
@@ -36,6 +38,9 @@ enum LatestError: Int, CustomNSError {
 				
 			case .releaseNotesUnavailable:
 				return NSLocalizedString("NoReleaseNotesFoundError", comment: "Error message that no release notes were found")
+				
+			case .notSignedInToAppStore:
+				return NSLocalizedString("AppStoreNotSignedInError", comment: "Error description when no update was found for a particular app.")
 		}
 	}
 	
