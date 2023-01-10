@@ -72,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29A88F88296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Main.strings; sourceTree = "<group>"; };
+		29A88F89296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29A88F8A296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fa; path = fa.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		29A88F8B296B7DC2000A5EDE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCellView.swift; sourceTree = "<group>"; };
 		5009D5D727F4FF9A00CBDBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		500A89272924F91C004008F6 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main.strings; sourceTree = "<group>"; };
@@ -619,6 +623,7 @@
 				nl,
 				"zh-Hans",
 				el,
+				fa,
 				nb,
 				id,
 				hu,
@@ -771,6 +776,7 @@
 				50303BFF28BA06590020C46F /* nl */,
 				50D6697128DBAA2F00FD3F6A /* zh-Hans */,
 				50D6697728DBAC7200FD3F6A /* el */,
+				29A88F8B296B7DC2000A5EDE /* fa */,
 				500A892A2924F91C004008F6 /* nb */,
 				500A892C2924FE0D004008F6 /* id */,
 				500A89302924FE43004008F6 /* hu */,
@@ -797,6 +803,7 @@
 				50303BFE28BA06560020C46F /* nl */,
 				50D6697228DBAA3A00FD3F6A /* zh-Hans */,
 				50D6697628DBAC6E00FD3F6A /* el */,
+				29A88F8A296B7DC2000A5EDE /* fa */,
 				500A89292924F91C004008F6 /* nb */,
 				500A892D2924FE19004008F6 /* id */,
 				500A89312924FE46004008F6 /* hu */,
@@ -823,6 +830,7 @@
 				50303BFD28BA06520020C46F /* nl */,
 				50D6697328DBAA4200FD3F6A /* zh-Hans */,
 				50D6697528DBAC6B00FD3F6A /* el */,
+				29A88F89296B7DC2000A5EDE /* fa */,
 				500A89282924F91C004008F6 /* nb */,
 				500A892E2924FE1F004008F6 /* id */,
 				500A89322924FE4C004008F6 /* hu */,
@@ -850,6 +858,7 @@
 				50303BFC28BA06450020C46F /* nl */,
 				50D6695A28DBA9F800FD3F6A /* zh-Hans */,
 				50D6697428DBAC4B00FD3F6A /* el */,
+				29A88F88296B7DC2000A5EDE /* fa */,
 				500A89272924F91C004008F6 /* nb */,
 				500A892B2924FDEF004008F6 /* id */,
 				500A892F2924FE32004008F6 /* hu */,
