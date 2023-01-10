@@ -4,13 +4,13 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "Сталася помилка під час оновлення %@.";
+"UpdateErrorAlertTitle" = "Під час оновлення сталася помилка %@.";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "Доступно";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Доступні оновлення";
+"AvailableUpdatesSection" = "Доступні Оновлення";
 
 /* Cancel button in an update dialogue */
 "CancelAction" = "Скасувати";
@@ -22,16 +22,16 @@
 "DownloadingUpdateStatus" = "Завантаження %@ із %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Помилка при оновленні додатку";
+"ErrorButtonAccessibilityTitle" = "Помилка під час оновлення застосунку";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Розпакування оновлення";
+"ExtractingUpdateStatus" = "Вилучення оновлення";
 
 /* Touch Bar section title for ignored apps */
 "IgnoredSection" = "Ігнорується";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ігноровані програми";
+"IgnoredAppsSection" = "Ігноровані Застосунки";
 
 /* Update progress state of initializing an update */
 "InitializingUpdateStatus" = "Ініціалізація";
@@ -40,7 +40,7 @@
 "InstalledSection" = "Встановлено";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Встановлені додатки";
+"InstalledAppsSection" = "Встановлені застосунки";
 
 /* Update progress state of installing an update */
 "InstallingUpdateStatus" = "Встановлення";
@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "Нова версія: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Додаток не вибрано.";
+"NoAppSelectedTitle" = "Застосунок не вибрано.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Для цієї програми не знайдено приміток до випуску.";
+"NoReleaseNotesFoundError" = "Для цього застосунку не знайдено приміток до випуску.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Повторити спробу";
@@ -70,22 +70,22 @@
 "NoAppSelectedDescription" = "Виберіть програму зі списку, щоб прочитати примітки до її випуску.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Джерело: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "Оновлення";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "Не знайдено оновлення для цього застосунку.";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Очікування";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "Веб";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "Ваша версія: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";
+"AppStoreNotSignedInError" = "Увійдіть до Mac App Store, щоб оновити цей застосунок.";
