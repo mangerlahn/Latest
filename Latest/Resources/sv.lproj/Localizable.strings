@@ -4,7 +4,7 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "Det gick inte att uppdatera %@ på grund av ett fel.";
+"UpdateErrorAlertTitle" = "Ett fel inträffade under uppdateringen av %@.";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "Tillgänglig";
@@ -25,7 +25,7 @@
 "IgnoredSection" = "Ignorerad";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Appen kunde inte uppdateras";
+"ErrorButtonAccessibilityTitle" = "Fel vid uppdatering av app";
 
 /* Update progress state of extracting the downloaded update */
 "ExtractingUpdateStatus" = "Packar upp uppdatering";
@@ -52,7 +52,7 @@
 "RemoteVersionFormat" = "Ny version: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Ingen app har valts.";
+"NoAppSelectedTitle" = "Ingen app vald.";
 
 /* Error message that no release notes were found */
 "NoReleaseNotesFoundError" = "Ingen versionsinformation kunde hittas för denna app.";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Uppdatera";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Det fanns inga uppdateringar för denna app.";
+"UpdateInfoNotFoundError" = "Ingen uppdatering hittades för denna app.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Väntar";
@@ -85,7 +85,7 @@
 "WebSource" = "Webb";
 
 /* Current Version String */
-"LocalVersionFormat" = "Installerad version: %@";
+"LocalVersionFormat" = "Din version: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Logga in i Mac App Store för att uppdatera den här appen.";
+"AppStoreNotSignedInError" = "Logga in på Mac App Store för att uppdatera denna app.";
