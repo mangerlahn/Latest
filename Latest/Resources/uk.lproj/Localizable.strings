@@ -67,7 +67,7 @@
 "OpenAction" = "Відкрити";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Виберіть програму зі списку, щоб прочитати примітки до її випуску.";
+"NoAppSelectedDescription" = "Виберіть застосунок зі списку, щоб прочитати примітки до її випуску.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Джерело: %@";
