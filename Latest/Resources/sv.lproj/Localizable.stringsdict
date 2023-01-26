@@ -18,7 +18,7 @@
 			<string>%d Updateringar Tillgängliga</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@värde@</string>
+		<string>%#@value@</string>
 	</dict>
 </dict>
 </plist>
