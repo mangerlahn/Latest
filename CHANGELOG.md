@@ -4,12 +4,18 @@
 - Ignored Apps can be shown independent of installed apps
 - Show installed apps by default
 
+- Language Support for Czech (Thanks Lubos!)
 - Language Support for Hungarian (Thanks Barczi!)
 - Language Support for Indonesian (Thanks Adrian!)
 - Language Support for Norwegian Bokmål (Thanks Sander!)
+- Language Support for Persian (Thanks Shayan!)
+- Language Support for Swedish (Thanks Tygyh & Peter!)
+- Language Support for Ukrainian (Thanks Ihor!)
 
 #### Bug Fixes
+- Fixed empty app list when spotlight search is disabled (Thanks Mikhail!)
 - Latest now remembers the width of the update list
+- Fixed a crash with non-western arabic numerals in version numbers
 
 # 0.8.3
 - Language Support for Catalan (Thanks Maite!)
