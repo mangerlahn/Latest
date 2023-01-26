@@ -61,7 +61,7 @@
 "RetryAction" = "Znovu";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Ohladiť";
+"RevealAction" = "Zobraziť";
 
 /* Action to open the app. */
 "OpenAction" = "Otvoriť";
@@ -76,10 +76,10 @@
 "UpdateAction" = "Aktualizácia";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Táto aplikácia nenašla žiadnu aktualizáciu.";
+"UpdateInfoNotFoundError" = "K tejto aplikácii neboli nájdené žiadne aktualizácie.";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Čakanie";
+"WaitingUpdateStatus" = "Čakám";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
@@ -88,4 +88,4 @@
 "LocalVersionFormat" = "Vaša verzia: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "Prihláste sa do Mac App Store pre aktualizáciu tejto aplikácie.";
