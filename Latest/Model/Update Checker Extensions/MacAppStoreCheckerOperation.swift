@@ -20,12 +20,10 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 	}
 	
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
-		let bundle = Bundle(path: url.path)
 		let fileManager = FileManager.default
 		
-		// Mac Apps contain a receipt, iOS apps are wrapped inside a macOS bundle, but without an actual purchase receipt
-		guard let receiptPath = bundle?.appStoreReceiptURL?.path,
-			  fileManager.fileExists(atPath: receiptPath) || receiptPath.contains("WrappedBundle") else { return false }
+		// Mac Apps contain a receipt, iOS apps are only available via the Mac App Store
+		guard let receiptPath = receiptPath(forAppAt: url), fileManager.fileExists(atPath: receiptPath) || isIOSAppBundle(at: url) else { return false }
 		
 		return true
 	}
@@ -76,6 +74,22 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 		}
 	}
 	
+	
+	// MARK: - Bundle Operations
+	
+	/// Returns the app store receipt path for the app at the given URL, if available.
+	static fileprivate func receiptPath(forAppAt url: URL) -> String? {
+		let bundle = Bundle(path: url.path)
+		return bundle?.appStoreReceiptURL?.path
+	}
+	
+	/// Returns whether the app at the given URL is an iOS app wrapped to run on macOS.
+	static fileprivate func isIOSAppBundle(at url: URL) -> Bool {
+		// iOS apps are wrapped inside a macOS bundle
+		let path = receiptPath(forAppAt: url)
+		return path?.contains("WrappedBundle") ?? false
+	}
+	
 }
 
 extension MacAppStoreUpdateCheckerOperation {
@@ -84,7 +98,15 @@ extension MacAppStoreUpdateCheckerOperation {
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
 		return App.Update(app: self.app, remoteVersion: version, date: entry.date, releaseNotes: entry.releaseNotes) { app in
-			UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
+			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
+			if Self.isIOSAppBundle(at: app.fileURL) {
+				NSWorkspace.shared.open(entry.pageURL)
+			}
+			
+			// Perform the update in-app
+			else {
+				UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
+			}
 		}
 	}
 	
