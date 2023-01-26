@@ -30,7 +30,7 @@
 "65u-P1-4rd.title" = "Detektory údajov";
 
 /* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Zobraziť nepodporovaných aplikácií";
+"6Cd-Qc-3Xc.title" = "Zobraziť nepodporované aplikácie";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
 "6YS-DP-XWA.title" = "<dnl>";
@@ -99,7 +99,7 @@
 "Kd2-mp-pUS.title" = "Zobraziť všetko";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Privesť všetko na začiatok";
+"LE2-aR-0XJ.title" = "Presunúť všetko do popredia";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
 "Nnu-IS-gsC.title" = "Začať hovoriť";
@@ -153,7 +153,7 @@
 "XVu-eG-PUK.title" = "Zobraziť nainštalované aplikácie";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
-"Xng-11-x9Q.title" = "Urobiť veľké písmená";
+"Xng-11-x9Q.title" = "Uprav na veľké písmená";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
 "YRo-LJ-qSP.title" = "Premeny";
@@ -291,7 +291,7 @@
 "Olw-nP-bQN.title" = "Skryť Latest";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
-"SKi-gD-wYr.title" = "Urobiť malé písmená";
+"SKi-gD-wYr.title" = "Uprav na malé písmená";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
 "eIs-LJ-TQe.title" = "Skontrolovať dokument teraz";
