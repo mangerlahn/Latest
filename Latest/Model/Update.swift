@@ -21,6 +21,9 @@ extension App {
 		/// The newest version of the app available for download.
 		let remoteVersion: Version
 		
+		/// The minimum version required to perform this update.
+		let minimumOSVersion: OperatingSystemVersion?
+		
 		/// The release date of the update
 		let date : Date?
 		
@@ -32,9 +35,10 @@ extension App {
 		let updateAction: UpdateAction
 		
 		/// Initializes the update with the given parameters.
-		init(app: App.Bundle, remoteVersion: Version, date: Date?, releaseNotes: ReleaseNotes?, updateAction: @escaping UpdateAction) {
+		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, date: Date?, releaseNotes: ReleaseNotes?, updateAction: @escaping UpdateAction) {
 			self.app = app
 			self.remoteVersion = remoteVersion
+			self.minimumOSVersion = minimumOSVersion
 			self.date = date
 			self.releaseNotes = releaseNotes
 			self.updateAction = updateAction
@@ -42,7 +46,13 @@ extension App {
 
 		/// Whether an update is available for the given app.
 		var updateAvailable: Bool {
-			return self.remoteVersion > self.app.version
+			var updateAvailable = (remoteVersion > app.version)
+			
+			if updateAvailable, let minimumOSVersion {
+				updateAvailable = ProcessInfo.processInfo.isOperatingSystemAtLeast(minimumOSVersion)
+			}
+			
+			return updateAvailable
 		}
 		
 		/// Whether the app is currently being updated.

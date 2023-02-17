@@ -97,7 +97,7 @@ extension MacAppStoreUpdateCheckerOperation {
 	/// Returns a proper update object from the given app store entry.
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
-		return App.Update(app: self.app, remoteVersion: version, date: entry.date, releaseNotes: entry.releaseNotes) { app in
+		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, date: entry.date, releaseNotes: entry.releaseNotes) { app in
 			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
 			if Self.isIOSAppBundle(at: app.fileURL) {
 				NSWorkspace.shared.open(entry.pageURL)
@@ -205,6 +205,9 @@ fileprivate struct AppStoreEntry: Decodable {
 	/// The identifier for this app in the App Store context.
 	let appStoreIdentifier: UInt64
 	
+	/// The minimum OS version required to run this update.
+	let minimumOSVersion: OperatingSystemVersion
+	
 	
 	// MARK: - Decoding
 	
@@ -214,6 +217,7 @@ fileprivate struct AppStoreEntry: Decodable {
 		case date = "currentVersionReleaseDate"
 		case pageURL = "trackViewUrl"
 		case appStoreIdentifier = "trackId"
+		case minimumOSVersion = "minimumOsVersion"
 	}
 	
 	init(from decoder: Decoder) throws {
@@ -237,6 +241,9 @@ fileprivate struct AppStoreEntry: Decodable {
 		self.pageURL = url
 		
 		self.appStoreIdentifier = try container.decode(UInt64.self, forKey: .appStoreIdentifier)
+		
+		let osVersionString = try container.decode(String.self, forKey: .minimumOSVersion)
+		self.minimumOSVersion = try OperatingSystemVersion(string: osVersionString)
 	}
 	
 	

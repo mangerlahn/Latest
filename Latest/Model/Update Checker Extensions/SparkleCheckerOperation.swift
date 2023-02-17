@@ -84,18 +84,24 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	}
 	
 	fileprivate func finish(with appcastItem: SUAppcastItem) {
-		let update = UpdateEntry()
-		update.buildNumber = appcastItem.versionString
-		update.versionNumber = appcastItem.displayVersionString
-		update.date = appcastItem.date
+		let version = Version(versionNumber: appcastItem.displayVersionString, buildNumber: appcastItem.versionString)
 		
-		if let description = appcastItem.itemDescription {
-			update.releaseNotes = .html(string: description)
-		} else if let url = appcastItem.releaseNotesURL ?? appcastItem.fullReleaseNotesURL {
-			update.releaseNotes = .url(url: url)
+		// OS Version
+		var minimumOSVersion: OperatingSystemVersion? = nil
+		if let minimumVersion = appcastItem.minimumSystemVersion {
+			minimumOSVersion = try? OperatingSystemVersion(string: minimumVersion)
 		}
 		
-		self.update = App.Update(app: self.app, remoteVersion: update.version, date: update.date, releaseNotes: update.releaseNotes, updateAction: { app in
+		// Release Notes
+		var releaseNotes: App.Update.ReleaseNotes? = nil
+		if let description = appcastItem.itemDescription {
+			releaseNotes = .html(string: description)
+		} else if let url = appcastItem.releaseNotesURL ?? appcastItem.fullReleaseNotesURL {
+			releaseNotes = .url(url: url)
+		}
+		
+		// Build update
+		self.update = App.Update(app: self.app, remoteVersion: version, minimumOSVersion: minimumOSVersion, date: appcastItem.date, releaseNotes: releaseNotes, updateAction: { app in
 			UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
 		})
 
@@ -162,7 +168,6 @@ extension SparkleUpdateCheckerOperation: SPUUserDriver {
 	
 }
 
-
 extension SparkleUpdateCheckerOperation: SPUUpdaterDelegate {
 	
 	func feedURLString(for updater: SPUUpdater) -> String? {
@@ -171,29 +176,4 @@ extension SparkleUpdateCheckerOperation: SPUUpdaterDelegate {
 		return Sparke.feedURL(from: updater.hostBundle)?.absoluteString
 	}
 	
-}
-
-
-// MARK: - Utilities
-
-/// Simple container holding update information for a single entry in the update feed.
-fileprivate class UpdateEntry {
-	
-	/// The version information of the entry.
-	var version: Version {
-		return Version(versionNumber: versionNumber, buildNumber: buildNumber)
-	}
-	
-	/// The version number of the entry.
-	var versionNumber: String?
-	
-	/// The build number of the entry.
-	var buildNumber: String?
-	
-	/// The release date of the update entry.
-	var date: Date?
-	
-	/// Release notes associated with the entry.
-	var releaseNotes: App.Update.ReleaseNotes?
-		
 }

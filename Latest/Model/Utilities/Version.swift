@@ -237,3 +237,32 @@ fileprivate enum VersionComponent: Equatable {
 	}
 	
 }
+
+
+// MARK: -
+
+extension OperatingSystemVersion {
+	
+	init(string: String) throws {
+		let components = string.versionComponents().compactMap({ component in
+			switch component {
+				case .number(let value):
+					return value
+				default:
+					return nil
+			}
+		})
+		guard !components.isEmpty else { throw OperatingSystemVersionError.parsingError(version: string) }
+		
+		let major = components[0]
+		let minor = components.count > 1 ? components[1] : 0
+		let patch = components.count > 2 ? components[2] : 0
+		self.init(majorVersion: major, minorVersion: minor, patchVersion: patch)
+	}
+	
+	enum OperatingSystemVersionError: Error {
+		case parsingError(version: String)
+	}
+	
+}
+
