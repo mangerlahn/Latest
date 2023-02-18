@@ -13,7 +13,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>Verzije su aktualne!</string>
+			<string>Verzija je aktualna!</string>
 			<key>one</key>
 			<string>Dostupna je %d nova verzija</string>
 			<key>few</key>
