@@ -1,7 +1,9 @@
 # Unreleased Changes
+# 0.9
 #### New and Improved:
 - Apps from the Mac App Store can be updated from within Latest
 - Ignored Apps can be shown independent of installed apps
+- Updates only show up if they are compatible with the installed operating system
 - Show installed apps by default
 
 - Language Support for Czech (Thanks Lubos!)
@@ -13,6 +15,7 @@
 - Language Support for Ukrainian (Thanks Ihor!)
 
 #### Bug Fixes
+- Tweaked Croatian localization (Thanks Milo!)
 - Fixed empty app list when spotlight search is disabled (Thanks Mikhail!)
 - Latest now remembers the width of the update list
 - Fixed a crash with non-western arabic numerals in version numbers
