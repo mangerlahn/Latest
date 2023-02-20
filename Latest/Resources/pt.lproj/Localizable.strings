@@ -86,3 +86,6 @@
 
 /* Current Version String */
 "LocalVersionFormat" = "A sua versão: %@";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "Inicie sessão na Mac App Store para atualizar esta aplicação.";

@@ -28,7 +28,7 @@
 "ExtractingUpdateStatus" = "Raspakiravanje nove verzije";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Zanemareni";
+"IgnoredSection" = "Zanemareno";
 
 /* Table Section Header for ignored apps */
 "IgnoredAppsSection" = "Zanemareni programi";
@@ -40,7 +40,7 @@
 "UpdateAction" = "Aktualiziraj";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Instalirani";
+"InstalledSection" = "Instalirano";
 
 /* Table Section Header for already installed apps */
 "InstalledAppsSection" = "Instalirani programi";
@@ -58,7 +58,7 @@
 "NoAppSelectedTitle" = "Nijedan program nije odbran.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Za ovaj program nema napomena uz izdanje.";
+"NoReleaseNotesFoundError" = "Za ovaj program nema napomena o izdanju.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Pokušaj ponovo";
@@ -70,7 +70,7 @@
 "OpenAction" = "Otvori";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Odaberi program iz popisa čije napomene uz izdanje želiš pročitati.";
+"NoAppSelectedDescription" = "Odaberi program iz popisa čije napomene o izdanju želiš pročitati.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Izvor: %@";
@@ -86,3 +86,6 @@
 
 /* Current Version String */
 "LocalVersionFormat" = "Tvoja verzija: %@";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "Za aktualiziranje ove aplikacije prijavi se na Mac App Store.";

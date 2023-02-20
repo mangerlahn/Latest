@@ -1,0 +1,195 @@
+
+/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
+"6Cd-Qc-3Xc.title" = "Покажи неподдържаните приложения";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
+"YRo-LJ-qSP.title" = "Трансфорамации";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Помощ";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
+"FM4-aR-lhK.ibShadowedToolTip" = "Презареди";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
+"G1D-lo-gfr.title" = "Смяна на текста";
+
+/* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
+"Ljr-hV-usc.title" = "Не игнорирай";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
+"cWB-Qy-jEV.title" = "Реч";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
+"00n-xr-jcQ.title" = "Обнови";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
+"1Gu-Ep-ZWZ.title" = "Намери и замести…";
+
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Latest";
+
+/* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
+"1Z9-ws-FMW.title" = "Меню";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
+"3GZ-aM-hwz.title" = "Текстова клетка";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "На цял екран";
+
+/* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Затоври Latest";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Провери за обновления…";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Копирай";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Относно Latest";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Поправи правописа автоматично";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "Детектори на данни";
+
+/* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
+"7c2-6r-Saw.title" = "Посети сайта на Latest";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Главно меню";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
+"Ah1-jH-gCv.title" = "Стъпка назад";
+
+/* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
+"Ake-Tt-cX3.title" = "Меню";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Настройки…";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "Неуспешно зареждане на бележките!";
+
+/* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
+"D2N-5U-W7Z.title" = "Няма налични актуализации";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Затвори";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Провери правописа по време на писане";
+
+/* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Помощ за Latest";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
+"GMn-QE-qPC.title" = "Постави";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "Направи с главни букви";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "Изглед";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
+"HyV-fh-RgO.title" = "Изглед";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "Обнови";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
+"Id2-BS-gzO.title" = "Избери всички";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
+"J6q-tg-1G2.title" = "Трансформации";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Покажи всички";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "На преден план";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
+"Lga-BY-8RF.title" = "Изрежи";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Услуги";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
+"Nnu-IS-gsC.title" = "Започни говор";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.label" = "Прогрес";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.paletteLabel" = "Прогрес";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Минимизирай";
+
+/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Скрий Latest";
+
+/* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
+"PS4-wi-kF9.title" = "Игнорирай";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Приближи";
+
+/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
+"Rh5-N3-X6H.title" = "Покажи игнорираните приложения";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
+"SKi-gD-wYr.title" = "Направи с малки букви";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
+"TKo-Xa-BjT.title" = "Покажи смени";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Прозорец";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
+"UVA-tb-pA9.title" = "Смени";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Скрий останалите";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
+"WX3-Xi-vCY.title" = "Покажи Граматика и правопис";
+
+/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "Покажи инсталираните приложения";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
+"Xng-11-x9Q.title" = "Направи с главни букви";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
+"Yj4-SM-ocg.title" = "Стъпка напред";
+
+/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.label" = "Презареди";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.paletteLabel" = "Презареди";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
+"aCF-1x-0c1.title" = "Намери";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Прозорец";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Файл";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
+"bm3-iR-6vZ.title" = "Покажи във Finder";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
+"c4C-I9-Gd0.title" = "Провери за актуализации…";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Файл";

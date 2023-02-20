@@ -57,7 +57,7 @@
 "BOF-NM-1cW.title" = "Postavke …";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
-"Cm3-IX-Kw4.title" = "Neuspjelo učitavanje napomena uz izdanje!";
+"Cm3-IX-Kw4.title" = "Neuspjelo učitavanje napomena o izdanju!";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
 "Ah1-jH-gCv.title" = "Poništi";
@@ -168,7 +168,7 @@
 "VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
-"Vdr-fp-XzO.title" = "Sakrij ostalo";
+"Vdr-fp-XzO.title" = "Sakrij druge";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
 "WX3-Xi-vCY.title" = "Pokaži pravopis i gramatiku";
@@ -198,7 +198,7 @@
 "aUF-d1-5bR.title" = "Prozor";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
-"bib-Uj-vzu.title" = "Datoteke";
+"bib-Uj-vzu.title" = "Datoteka";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
 "bm3-iR-6vZ.title" = "Pokaži u Finderu";
@@ -210,7 +210,7 @@
 "cWB-Qy-jEV.title" = "Govor";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "Datoteke";
+"dMs-cI-mzQ.title" = "Datoteka";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
 "eIs-LJ-TQe.title" = "Provjeri dokument sada";
@@ -231,7 +231,7 @@
 "hz9-B4-Xy5.title" = "Usluge";
 
 /* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
-"iLi-Yb-UfX.title" = "Učitavanje napomena uz izdanja";
+"iLi-Yb-UfX.title" = "Učitavanje napomena o izdanju";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
 "iUE-OL-cvh.title" = "Pametno kopiranje/umetanje";
@@ -306,7 +306,7 @@
 "wmL-ks-XSr.ibShadowedToolTip" = "Aktualiziraj sve";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
-"wpr-3q-Mcd.title" = "Pomogni";
+"wpr-3q-Mcd.title" = "Pomoć";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
 "wtc-0j-cAV.title" = "Pravopis i gramatika";

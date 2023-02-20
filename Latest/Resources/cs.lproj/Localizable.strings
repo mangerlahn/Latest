@@ -2,87 +2,90 @@
 
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "Rušení operace";
 /* Describes how many apps are in a section, number of apps is inserted in placeholder. */
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "Nastala chyba při aktualizaci %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Available";
+"AvailableSection" = "Dostupné";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
+"AvailableUpdatesSection" = "Dostupné aktualizace";
 
 /* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"CancelAction" = "Zrušit";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "Stahování %@ z %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "Chyba aktualizace programu";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Rozbalování aktualizace";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "Ignorované";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Ignorované aplikace";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "Inicializace";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "Nainstalované";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "Nainstalované aplikace";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "Instalace";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "Nová verze: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "Nebyla vybrána žádná aplikace.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "K této aplikaci nebyly nalezeny žádné poznámky o vydání.";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "Zopakovat";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Zobrazit";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Otevřít";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Vyberte aplikaci pro zobrazení poznámek k vydání.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Zdroj: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "Aktualizace";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "K této aplikaci nebyly nalezeny žádné aktualizace.";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Čekám";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "Vaše verze: %@";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "Přihlašte se do Mac App Store pro aktualizaci této aplikace.";

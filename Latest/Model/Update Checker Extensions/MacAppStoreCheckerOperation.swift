@@ -20,12 +20,10 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 	}
 	
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
-		let bundle = Bundle(path: url.path)
 		let fileManager = FileManager.default
 		
-		// Mac Apps contain a receipt, iOS apps are wrapped inside a macOS bundle, but without an actual purchase receipt
-		guard let receiptPath = bundle?.appStoreReceiptURL?.path,
-			  fileManager.fileExists(atPath: receiptPath) || receiptPath.contains("WrappedBundle") else { return false }
+		// Mac Apps contain a receipt, iOS apps are only available via the Mac App Store
+		guard let receiptPath = receiptPath(forAppAt: url), fileManager.fileExists(atPath: receiptPath) || isIOSAppBundle(at: url) else { return false }
 		
 		return true
 	}
@@ -76,6 +74,22 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 		}
 	}
 	
+	
+	// MARK: - Bundle Operations
+	
+	/// Returns the app store receipt path for the app at the given URL, if available.
+	static fileprivate func receiptPath(forAppAt url: URL) -> String? {
+		let bundle = Bundle(path: url.path)
+		return bundle?.appStoreReceiptURL?.path
+	}
+	
+	/// Returns whether the app at the given URL is an iOS app wrapped to run on macOS.
+	static fileprivate func isIOSAppBundle(at url: URL) -> Bool {
+		// iOS apps are wrapped inside a macOS bundle
+		let path = receiptPath(forAppAt: url)
+		return path?.contains("WrappedBundle") ?? false
+	}
+	
 }
 
 extension MacAppStoreUpdateCheckerOperation {
@@ -83,9 +97,16 @@ extension MacAppStoreUpdateCheckerOperation {
 	/// Returns a proper update object from the given app store entry.
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
-		return App.Update(app: self.app, remoteVersion: version, date: entry.date, releaseNotes: entry.releaseNotes) { app in
-			// Update: Open App Store page where the user can update manually
-			NSWorkspace.shared.open(entry.pageURL)
+		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, date: entry.date, releaseNotes: entry.releaseNotes) { app in
+			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
+			if Self.isIOSAppBundle(at: app.fileURL) {
+				NSWorkspace.shared.open(entry.pageURL)
+			}
+			
+			// Perform the update in-app
+			else {
+				UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
+			}
 		}
 	}
 	
@@ -181,6 +202,12 @@ fileprivate struct AppStoreEntry: Decodable {
 	/// The link to the app store page.
 	let pageURL: URL
 	
+	/// The identifier for this app in the App Store context.
+	let appStoreIdentifier: UInt64
+	
+	/// The minimum OS version required to run this update.
+	let minimumOSVersion: OperatingSystemVersion
+	
 	
 	// MARK: - Decoding
 	
@@ -189,6 +216,8 @@ fileprivate struct AppStoreEntry: Decodable {
 		case releaseNotes = "releaseNotes"
 		case date = "currentVersionReleaseDate"
 		case pageURL = "trackViewUrl"
+		case appStoreIdentifier = "trackId"
+		case minimumOSVersion = "minimumOsVersion"
 	}
 	
 	init(from decoder: Decoder) throws {
@@ -210,6 +239,11 @@ fileprivate struct AppStoreEntry: Decodable {
 			throw MalformedURLError
 		}
 		self.pageURL = url
+		
+		self.appStoreIdentifier = try container.decode(UInt64.self, forKey: .appStoreIdentifier)
+		
+		let osVersionString = try container.decode(String.self, forKey: .minimumOSVersion)
+		self.minimumOSVersion = try OperatingSystemVersion(string: osVersionString)
 	}
 	
 	

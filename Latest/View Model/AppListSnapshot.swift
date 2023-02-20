@@ -47,7 +47,7 @@ struct AppListSnapshot {
 		
 		// Filter installed updates
 		if !AppListSettings.shared.showInstalledUpdates {
-			visibleApps = visibleApps.filter({ $0.updateAvailable })
+			visibleApps = visibleApps.filter({ $0.updateAvailable || $0.isIgnored })
 		}
 		
 		// Filter unsupported apps

@@ -88,42 +88,45 @@ struct Version : Hashable, Comparable {
             let component1 = c1[i]
             let component2 = c2[i]
             
-            if component1.type == component2.type {
-                if component1.type == .number {
-                    let value1 = Int(component1.string)!
-                    let value2 = Int(component2.string)!
-                    
-                    if value1 > value2 {
-                        return .newer // Think "1.3" vs "1.2"
-                    } else if value2 > value1 {
-                        return .older // Think "1.2" vs "1.3"
-                    }
-                } else if component1.type == .string {
-                    let result = component1.string.compare(component2.string)
-                    
-                    switch result {
-                    case .orderedAscending:
-                        return .older // Think "1.2A" vs "1.2B"
-                    case .orderedDescending:
-                        return .newer // Think "1.2B" vs "1.2A"
-                    default: ()
-                    }
-                }
-            } else {
-                // Not the same type? Now we have to do some validity checking
-                if component1.type != .string && component2.type == .string {
-                    return .newer // Think "1.2.3" vs "1.2A"
-                } else if component1.type == .string && component2.type != .string {
-                    return .older // Think "1.2A" vs "1.2.2"
-                }
-                
-                // One is a number and the other is a period. The period is invalid
-                if component1.type == .number {
-                    return .newer // Think "1.2.3" vs "1.2.."
-                }
-                
-                return .older // Think "1.2.." vs "1.2.0"
+			// Compare numbers
+			if case .number(let value1) = component1, case .number(let value2) = component2 {
+				if value1 > value2 {
+					return .newer // Think "1.3" vs "1.2"
+				} else if value2 > value1 {
+					return .older // Think "1.2" vs "1.3"
+				}
+			}
+			
+			// Compare letters
+			else if case .string(let value1) = component1, case .string(let value2) = component2 {
+				switch value1.compare(value2) {
+					case .orderedAscending:
+						return .older // Think "1.2A" vs "1.2B"
+					case .orderedDescending:
+						return .newer // Think "1.2B" vs "1.2A"
+					default: ()
+				}
             }
+			
+			
+			// Not the same type? Now we have to do some validity checking
+			else if case .string(_) = component1 {
+				return .older // Think "1.2A" vs "1.2.2"
+			}
+		
+			else if case .string(_) = component2 {
+				return .newer // Think "1.2.3" vs "1.2A"
+			}
+			
+			
+			// One is a number and the other is a period. The period is invalid
+			else if case .number(_) = component1 {
+				return .older // Think "1.2.." vs "1.2.0"
+			}
+                
+			else if case .number(_) = component2 {
+				return .newer // Think "1.2.3" vs "1.2.."
+			}
         }
         
         // The versions are equal up to the point where they both still have parts
@@ -131,11 +134,11 @@ struct Version : Hashable, Comparable {
         if count1 != count2 {
             let l = count1 > count2
             let longerComponents = (l ? c1 : c2)[(l ? count2 : count1)...]
-            guard let component = longerComponents.first(where: { $0.type != .separator }) else {
+            guard let component = longerComponents.first(where: { $0 != .separator }) else {
                 return .equal // Think "1.2" vs "1.2."
             }
             
-            if component.type == .number, let number = Int(component.string) {
+			if case .number(let number) = component {
                 if number == 0 {
                     return .equal // Think "1.2" vs "1.2.0"
                 }
@@ -156,8 +159,6 @@ extension Version: CustomDebugStringConvertible {
 	}
 }
 
-fileprivate typealias VersionComponent = (type: CharacterType, string: String)
-
 /// An extension helping the version checking
 fileprivate extension String {
     
@@ -166,27 +167,34 @@ fileprivate extension String {
      Components are grouped by Character type, so "12.3" returns [("12", .number), (".", .separator), ("3", .number)]
      */
     func versionComponents() -> [VersionComponent] {
-        guard let first = self.first else {
-            return []
-        }
-        
-        let components = self.dropFirst().reduce([(CharacterType.for(first)!, String(first))]) { (result: [VersionComponent], character) -> [VersionComponent] in
-            var result = result
-            var component = result.last!
-            let newType = CharacterType.for(character)
-            
-            if newType != component.type || component.type == .separator {
-                result.append((newType!, String(character)))
-            } else {
-                component.string.append(character)
-                result.removeLast()
-                result.append(component)
-            }
-            
-            return result
-        }
-    
-        return components
+		let scanner = Scanner(string: self)
+
+		var components = [VersionComponent]()
+		while !scanner.isAtEnd {
+			var number: Int = 0
+			var string: NSString? = ""
+			
+			// Try to scan number
+			if scanner.scanInt(&number) {
+				components.append(.number(value: number))
+			}
+			
+			// Try to scan separator
+			else if scanner.scanCharacters(from: .separators, into: nil) {
+				components.append(.separator)
+			}
+			
+			// Try to scan anything else
+			else if scanner.scanCharacters(from: .letters, into: &string), let string {
+				components.append(.string(value: string as String))
+			}
+			
+			else {
+				fatalError("Unable to parse version string: \(self)")
+			}
+		}
+
+		return components
     }
 }
 
@@ -194,35 +202,67 @@ fileprivate extension Array where Element == VersionComponent {
 
     /// Removes any leading v of a version number ("v1.2" -> "1.2")
     mutating func cutVersionPrefix() {
-        guard let component = self.first else { return }
-        
-        if component.string == "v" {
-            self.removeFirst()
-        }
+		guard let component = self.first, case .string(let value) = component, value == "v" else { return }
+		self.removeFirst()
     }
     
 }
 
-// Defining the type of a character
-fileprivate enum CharacterType {
-    
-    case separator // Newlines, punctuation..
-    case number // 0..9
-    case string // Everything else
-    
-    /// Returns the type for a given character
-    static func `for`(_ character: Character) -> CharacterType? {
-        guard let scalar = character.unicodeScalars.first else { return nil }
-        
-        if NSCharacterSet.decimalDigits.contains(scalar) {
-            return .number
-        }
-        
-        if NSCharacterSet.whitespacesAndNewlines.contains(scalar) || NSCharacterSet.punctuationCharacters.contains(scalar) {
-            return .separator
-        }
-        
-        return .string
-    }
-    
+fileprivate extension CharacterSet {
+	
+	/// Contains all delimiters used by a version string
+	static let separators = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
+	
+	/// Contains any characters but separators and digits
+	static let letters = CharacterSet.separators.union(.decimalDigits).inverted
+	
 }
+
+// Defining the type of a character
+fileprivate enum VersionComponent: Equatable {
+
+    case separator // Newlines, punctuation..
+	case number(value: Int) // 0..9
+	case string(value: String) // Everything else
+	
+	func isSameType(_ other: VersionComponent) -> Bool {
+		switch (self, other) {
+			case (.separator, .separator),
+				(.number(_), .number(_)),
+				(.string(_), .string(_)):
+				return true
+			default:
+				return false
+		}
+	}
+	
+}
+
+
+// MARK: -
+
+extension OperatingSystemVersion {
+	
+	init(string: String) throws {
+		let components = string.versionComponents().compactMap({ component in
+			switch component {
+				case .number(let value):
+					return value
+				default:
+					return nil
+			}
+		})
+		guard !components.isEmpty else { throw OperatingSystemVersionError.parsingError(version: string) }
+		
+		let major = components[0]
+		let minor = components.count > 1 ? components[1] : 0
+		let patch = components.count > 2 ? components[2] : 0
+		self.init(majorVersion: major, minorVersion: minor, patchVersion: patch)
+	}
+	
+	enum OperatingSystemVersionError: Error {
+		case parsingError(version: String)
+	}
+	
+}
+
