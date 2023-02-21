@@ -13,9 +13,9 @@
 			<key>zero</key>
 			<string>Uppdaterad!</string>
 			<key>one</key>
-			<string>%d Updatering Tillgänglig</string>
+			<string>%d uppdatering tillgänglig</string>
 			<key>other</key>
-			<string>%d Updateringar Tillgängliga</string>
+			<string>%d uppdateringar tillgängliga</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>
