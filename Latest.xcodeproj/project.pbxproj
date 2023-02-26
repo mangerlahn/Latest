@@ -128,6 +128,10 @@
 		502929F02120623100F00D1C /* ReleaseNotesErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesErrorViewController.swift; sourceTree = "<group>"; };
 		502929F42120624700F00D1C /* ReleaseNotesLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesLoadingViewController.swift; sourceTree = "<group>"; };
 		502929FA21206BC800F00D1C /* ReleaseNotesContentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesContentProtocol.swift; sourceTree = "<group>"; };
+		502F70BF29AB4D0700B30692 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Main.strings; sourceTree = "<group>"; };
+		502F70C429AB4DEF00B30692 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		502F70C529AB4DF300B30692 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fil; path = fil.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		502F70C629AB4DF700B30692 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50303BFC28BA06450020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		50303BFD28BA06520020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50303BFE28BA06560020C46F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = nl; path = nl.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -642,6 +646,7 @@
 				sv,
 				cs,
 				uk,
+				fil,
 			);
 			mainGroup = 50290E681E53EB6A00133E3D;
 			packageReferences = (
@@ -798,6 +803,7 @@
 				501B5F81298321AA009C6F70 /* cs */,
 				501B5F82298321AD009C6F70 /* sv */,
 				501B5F862983253E009C6F70 /* uk */,
+				502F70C629AB4DF700B30692 /* fil */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -828,6 +834,7 @@
 				501B5F7F298321A3009C6F70 /* cs */,
 				501B5F80298321A6009C6F70 /* sv */,
 				501B5F8429832537009C6F70 /* uk */,
+				502F70C529AB4DF300B30692 /* fil */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -858,6 +865,7 @@
 				501B5F7D2983219B009C6F70 /* cs */,
 				501B5F7E2983219F009C6F70 /* sv */,
 				501B5F852983253B009C6F70 /* uk */,
+				502F70C429AB4DEF00B30692 /* fil */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -889,6 +897,7 @@
 				501B5F7B29832166009C6F70 /* sv */,
 				501B5F7C2983216D009C6F70 /* cs */,
 				501B5F8329832520009C6F70 /* uk */,
+				502F70BF29AB4D0700B30692 /* fil */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

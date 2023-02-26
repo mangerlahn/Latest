@@ -1,4 +1,7 @@
 # Unreleased Changes
+- Language Support for Filipino (Thanks Gean Paulo!)
+- Tweaked Swedish localization (Thanks Peeter!)
+
 # 0.9
 #### New and Improved:
 - Apps from the Mac App Store can be updated from within Latest
