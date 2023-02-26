@@ -2,88 +2,88 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "May naganap na error habang ina-update ang %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Available";
+"AvailableSection" = "Mga Available";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
+"AvailableUpdatesSection" = "Magagamit na Mga Update";
 
 /* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"CancelAction" = "Kanselahin";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "Kinakansela";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "Dina-download ang %@ ng %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "Error habang ina-update ang app";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Nag-aaplay ng update";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "Hindi pinansin";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Isinantabing Apps";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "Nagsisimula";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "Naka-install";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "Naka-install na Apps";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "Kasalukuyang Ini-install";
 
 /* The source name of apps loaded from the App Store. */
-"AppStoreSource" = "Mac App Store";
+"AppStoreSource" = "App Store ng Mac";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "Bagong bersyon: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "Walang napiling app.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "Walang nakitang release notes para sa app na ito.";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "Subukan muli";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Ibunyag";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Buksan";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Pumili ng app mula sa listahan para basahin ang mga release notes.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Pinagmulan: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "I-update";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "Walang nakitang update para sa app na ito.";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Naghihintay";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "Websayt";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "Iyong bersyon: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "Mag-sign in sa Mac App Store para i-update ang app na ito.";
