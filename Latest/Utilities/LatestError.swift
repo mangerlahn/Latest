@@ -30,8 +30,13 @@ enum LatestError: Int, CustomNSError {
 		return self.rawValue
 	}
 	
+	/// Error details
+	var errorUserInfo: [String : Any] {
+		return [NSLocalizedDescriptionKey: localizedDescription]
+	}
+	
 	/// The localized description of the error.
-	var localizedDescription: String {
+	private var localizedDescription: String {
 		switch self {
 			case .updateInfoNotFound:
 				return NSLocalizedString("UpdateInfoNotFoundError", comment: "Error message stating that update info could not be retrieved for a given app.")
