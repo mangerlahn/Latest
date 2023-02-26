@@ -193,3 +193,12 @@
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "Файл";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "Gw7-NE-1lh"; */
+"Gw7-NE-1lh.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "<dnl>";
