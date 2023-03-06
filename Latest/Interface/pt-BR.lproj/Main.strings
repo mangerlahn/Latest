@@ -1,0 +1,33 @@
+
+/* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Sair";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
+"00n-xr-jcQ.title" = "Atualizar";
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
+"1Gu-Ep-ZWZ.title" = "Encontrar e Substituir…";
+
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Latest";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Procurar atualizações…";
+
+/* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
+"1Z9-ws-FMW.title" = "Menu";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
+"3GZ-aM-hwz.title" = "Célula de Texto";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
+"4J7-dP-txa.title" = "Tela cheia";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Copiar";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Sobre o Latest";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Corrigir Erros Automaticamente";
