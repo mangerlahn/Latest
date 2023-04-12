@@ -253,3 +253,60 @@
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
 "x6Q-gr-lO2.title" = "Colar e Corresponder Estilo";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "Detectores de Dados";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "Gw7-NE-1lh"; */
+"Gw7-NE-1lh.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Verificar Erros Enquanto Escreve";
+
+/* Class = "NSWindow"; title = "<dnl>"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NNm-bC-QYz"; */
+"NNm-bC-QYz.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
+"QRR-k0-TZ4.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
+"VX8-qg-UOL.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
+"UPY-HP-f2p.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Esconder Outros";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
+"WX3-Xi-vCY.title" = "Mostrar Dicionário e Gramática";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "SVA-bh-cUe"; */
+"SVA-bh-cUe.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
+"Xng-11-x9Q.title" = "Transformar em Maiúsculas";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "Verificar Documento Agora";
+
+/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+"h6g-FG-nGh.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
+"pDo-aP-nIF.title" = "Pular para Seleção";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
+"ryW-4P-l7k.title" = "Utilizar Seleção para Pesquisar";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
+"tw7-g1-6Wz.title" = "Ligações Inteligentes";
