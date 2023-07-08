@@ -163,3 +163,168 @@
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
 "HyV-fh-RgO.title" = "عرض";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "أجهزة كشف البيانات";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "فشل تحميل لإصدار ملاحظات التحديث!";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "تحقق من الاخطاء الإملائية عند الكتابه";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "تكبير الحروف";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
+"J6q-tg-1G2.title" = "التحولات";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
+"Lga-BY-8RF.title" = "قص";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.label" = "التقدم";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.paletteLabel" = "التقدم";
+
+/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "اخفاء Latest";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "تكبير";
+
+/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
+"Rh5-N3-X6H.title" = "اظهار البرامج المتجاهل";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
+"SKi-gD-wYr.title" = "جعل الأحرف صغيره";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "نافذه";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
+"UVA-tb-pA9.title" = "البدائل";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "اخفاء الغير";
+
+/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "إظهار التطبيقات المثبتة";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
+"Xng-11-x9Q.title" = "جعل الأحرف كبيرة";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
+"Yj4-SM-ocg.title" = "إعادة";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.paletteLabel" = "إعادة التحميل";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
+"bm3-iR-6vZ.title" = "اظهر في الباحث";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "تحقق من المستند الآن";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
+"gU8-2v-afa.title" = "بحث عن التالي";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
+"iUE-OL-cvh.title" = "نسخ / لصق ذكي";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
+"jEo-hx-9Qp.title" = "اقتباسات ذكية";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
+"l11-q2-MLf.title" = "البدائل";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
+"mu8-FK-tXI.title" = "ابحث…";
+
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
+"o46-Ym-MCY.title" = "تبرع";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
+"pDo-aP-nIF.title" = "انتقل إلى التحديد";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
+"r6p-yM-qya.title" = "حرر";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
+"ryW-4P-l7k.title" = "استخدم التحديد للبحث";
+
+/* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
+"spt-ns-lYo.title" = "تسمية متعددة الأسطر";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
+"uGs-GF-i9Z.title" = "توقف عن الكلام";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "الأحدث";
+
+/* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
+"ucY-cy-GON.title" = "الإملائية";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
+"uw5-pW-jNu.title" = "شرطات ذكية";
+
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
+"w14-Ia-4l9.title" = "افتح";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
+"wmL-ks-XSr.ibShadowedToolTip" = "تحديث الكل";
+
+/* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
+"x6Q-gr-lO2.title" = "لصق ومطابقة النمط";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
+"y5A-ib-gR6.title" = "خطاب";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
+"yPN-rG-tgD.title" = "البحث عن السابق";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "إحضار الكل إلى المقدمة";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
+"TKo-Xa-BjT.title" = "إظهر البدائل";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
+"WX3-Xi-vCY.title" = "إظهار التدقيق الإملائي والنحوي";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
+"cWB-Qy-jEV.title" = "خطاب";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
+"hOB-nw-cIX.title" = "ابحث";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
+"tw7-g1-6Wz.title" = "روابط ذكية";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "مساعده";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "الخدمات";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
+"YRo-LJ-qSP.title" = "التحولات";
+
+/* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
+"iLi-Yb-UfX.title" = "تحميل ملاحظات الإصدار";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
+"wtc-0j-cAV.title" = "التهجئة والقواعد اللغوية";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
+"Nnu-IS-gsC.title" = "ابدأ بالحديث";
+
+/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.label" = "إعادة التحميل";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
+"h9B-7u-6ru.title" = "اظهر في الباحث";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "تصغير";
