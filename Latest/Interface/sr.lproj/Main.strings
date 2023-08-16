@@ -40,3 +40,6 @@
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
 "aCF-1x-0c1.title" = "Pronađi";
+
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "poslednje";
