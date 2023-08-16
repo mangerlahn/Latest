@@ -74,7 +74,7 @@
 "UpdateAction" = "بروزرسانی";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "بروزرسانی ای برای این اپلیکیشن پیدا نشد";
+"UpdateInfoNotFoundError" = "بروزرسانی ای برای این اپلیکیشن پیدا نشد.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "انتظار";
@@ -86,4 +86,4 @@
 "LocalVersionFormat" = "نسخه شما: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "برای بروزرسانی این اپلیکشن وارد اپل‌استور مک شوید.";
