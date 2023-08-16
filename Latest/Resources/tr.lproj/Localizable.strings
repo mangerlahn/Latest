@@ -49,7 +49,7 @@
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "Yeni versiyon: %@";
 
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "Hiçbir uygulama seçilmedi.";
@@ -61,7 +61,7 @@
 "RetryAction" = "Yeniden dene";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Göster";
 
 /* Action to open the app. */
 "OpenAction" = "Aç";
