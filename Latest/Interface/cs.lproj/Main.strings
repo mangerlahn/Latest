@@ -15,7 +15,7 @@
 "6Cd-Qc-3Xc.title" = "Zobrazit nepodporované aplikace";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
-"Ah1-jH-gCv.title" = "Vrátit zpátky";
+"Ah1-jH-gCv.title" = "Odvolat akci";
 
 /* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
 "Ake-Tt-cX3.title" = "Menu";
@@ -30,64 +30,64 @@
 "FM4-aR-lhK.ibShadowedToolTip" = "Načíst znovu";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
-"G1D-lo-gfr.title" = "Nahrazení textu";
+"G1D-lo-gfr.title" = "Nahrazovat text";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
 "GMn-QE-qPC.title" = "Vložit";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
-"H8h-7b-M4v.title" = "Zobrazit";
+"H8h-7b-M4v.title" = "Zobrazení";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
-"HyV-fh-RgO.title" = "Zobrazit";
+"HyV-fh-RgO.title" = "Zobrazení";
 
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
-"IAo-SY-fd9.title" = "Aktualizace";
+"IAo-SY-fd9.title" = "Aktualizovat";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
-"Id2-BS-gzO.title" = "Vybrat všechno";
+"Id2-BS-gzO.title" = "Vybrat vše";
 
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
-"00n-xr-jcQ.title" = "Aktualizace";
+"00n-xr-jcQ.title" = "Aktualizovat";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
-"1Gu-Ep-ZWZ.title" = "Najít a nahradit…";
+"1Gu-Ep-ZWZ.title" = "Hledat a nahradit…";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Latest";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
-"4J7-dP-txa.title" = "Zobrazit na celou obrazovku";
+"4J7-dP-txa.title" = "Spustit režim celé obrazovky";
 
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Textová bunka";
+"3GZ-aM-hwz.title" = "Textová buňka";
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Ukončit Latest";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
-"4vf-ia-dzo.title" = "Kontrola aktualizací…";
+"4vf-ia-dzo.title" = "Zkontrolovat aktualizace…";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
-"5cs-kb-AQj.title" = "Skopírovat";
+"5cs-kb-AQj.title" = "Kopírovat";
 
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "O aplikaci Latest";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
-"63s-Hc-NQY.title" = "Automatická oprava pravopisu";
+"63s-Hc-NQY.title" = "Automaticky opravovat pravopis";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
-"65u-P1-4rd.title" = "Detektory údajů";
+"65u-P1-4rd.title" = "Dynamické značky";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
 "Cm3-IX-Kw4.title" = "Nepodařilo se načíst poznámky k vydání!";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
-"GZQ-fq-mFU.title" = "Velké začáteční písmena";
+"GZQ-fq-mFU.title" = "Velká počáteční písmena";
 
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
 "D2N-5U-W7Z.title" = "Žádné dostupné aktualizace";
@@ -96,22 +96,22 @@
 "7c2-6r-Saw.title" = "Navštívit Latest webové stránky";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Hlavné menu";
+"AYu-sK-qS6.title" = "Hlavní menu";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
-"F2S-fz-NVQ.title" = "Pomoc";
+"F2S-fz-NVQ.title" = "Nápověda";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Nastavení…";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
-"ES5-dd-1TR.title" = "Kontrola pravopisu při psaní";
+"ES5-dd-1TR.title" = "Kontrolovat pravopis při psaní";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
-"J6q-tg-1G2.title" = "Proměny";
+"J6q-tg-1G2.title" = "Transformace";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Zobrazit všechno";
+"Kd2-mp-pUS.title" = "Zobrazit vše";
 
 /* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
 "QRR-k0-TZ4.title" = "<dnl>";
@@ -132,13 +132,13 @@
 "NMo-om-nkz.title" = "Služby";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Přesunout všechno do popředí";
+"LE2-aR-0XJ.title" = "Přenést vše do popředí";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
-"Lga-BY-8RF.title" = "Vystřihnout";
+"Lga-BY-8RF.title" = "Vyjmout";
 
 /* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
-"Ljr-hV-usc.title" = "Neignoruj";
+"Ljr-hV-usc.title" = "Neignorovat";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Okno";
@@ -153,25 +153,25 @@
 "OY7-WF-poV.title" = "Minimalizovat";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
-"R4o-n2-Eq4.title" = "Přiblížení";
+"R4o-n2-Eq4.title" = "Přepnout velikost";
 
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
 "Rh5-N3-X6H.title" = "Zobrazit ignorované aplikace";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
-"Nnu-IS-gsC.title" = "Spustit mluvení";
+"Nnu-IS-gsC.title" = "Spustit předčítání";
 
 /* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Skrýt Latest";
 
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
-"PS4-wi-kF9.title" = "Ignoruj";
+"PS4-wi-kF9.title" = "Ignorovat";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
-"SKi-gD-wYr.title" = "Uprav na malé písmená";
+"SKi-gD-wYr.title" = "Převést na malá písmena";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "Zobrazit náhrady";
+"TKo-Xa-BjT.title" = "Zobrazit záměny";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Skrýt ostatní";
@@ -183,13 +183,13 @@
 "XVu-eG-PUK.title" = "Zobrazit nainstalované aplikace";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
-"bm3-iR-6vZ.title" = "Zobraziť vo Finderi";
+"bm3-iR-6vZ.title" = "Zobrazit ve Finderu";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
-"aCF-1x-0c1.title" = "Najít";
+"aCF-1x-0c1.title" = "Hledat";
 
 /* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
-"ZWx-q6-TJz.label" = "Načítání";
+"ZWx-q6-TJz.label" = "Načíst znovu";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.paletteLabel" = "Načíst znovu";
@@ -201,31 +201,31 @@
 "aUF-d1-5bR.title" = "Okno";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
-"Xng-11-x9Q.title" = "Uprav na velké písmena";
+"Xng-11-x9Q.title" = "Převést na velké písmena";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
-"YRo-LJ-qSP.title" = "Proměny";
+"YRo-LJ-qSP.title" = "Záměny";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
-"Yj4-SM-ocg.title" = "Znovu";
+"Yj4-SM-ocg.title" = "Opakovat akci";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
 "c4C-I9-Gd0.title" = "Kontrola aktualizací…";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
-"cWB-Qy-jEV.title" = "Rěč";
+"cWB-Qy-jEV.title" = "Řeč";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
-"eIs-LJ-TQe.title" = "Zkontrolovat dokument teď";
+"eIs-LJ-TQe.title" = "Zkontrolovat dokument";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
-"gU8-2v-afa.title" = "Najít další";
+"gU8-2v-afa.title" = "Hledat další";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
-"h9B-7u-6ru.title" = "Zobrazit ve Finder";
+"h9B-7u-6ru.title" = "Zobrazit ve Finderu";
 
 /* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
-"hOB-nw-cIX.title" = "Najít";
+"hOB-nw-cIX.title" = "Hledat";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Služby";
@@ -234,64 +234,64 @@
 "iLi-Yb-UfX.title" = "Načítání poznámek k vydání";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
-"iUE-OL-cvh.title" = "Inteligentné kopírování/vkládání";
+"iUE-OL-cvh.title" = "Inteligentní kopírování/vkládání";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
-"iis-Dj-0TB.title" = "Kontrola gramatiky s pravopisem";
+"iis-Dj-0TB.title" = "Kontrolovat gramatiku a pravopis";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
-"jEo-hx-9Qp.title" = "Chytré ponuky";
+"jEo-hx-9Qp.title" = "Inteligentní uvozovky";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
-"l11-q2-MLf.title" = "Náhrady";
+"l11-q2-MLf.title" = "Záměny";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
-"mS9-zq-Dvi.title" = "Odstranit";
+"mS9-zq-Dvi.title" = "Smazat";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
-"mTS-fP-YWg.title" = "Upravit";
+"mTS-fP-YWg.title" = "Úpravy";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "rK6-RZ-Ga6"; */
 "rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
-"r6p-yM-qya.title" = "Upravit";
+"r6p-yM-qya.title" = "Úpravy";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
-"mu8-FK-tXI.title" = "Najít…";
+"mu8-FK-tXI.title" = "Hledat…";
 
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
 "o46-Ym-MCY.title" = "Darovat";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
-"pDo-aP-nIF.title" = "Přejít na výběr";
+"pDo-aP-nIF.title" = "Zobrazit výběr";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.label" = "Aktualizovat všechno";
+"qS5-vO-h2j.label" = "Aktualizovat vše";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.paletteLabel" = "Aktualizovat všechno";
+"qS5-vO-h2j.paletteLabel" = "Aktualizovat vše";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
 "uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
-"tXI-mr-wws.title" = "Aktualizovat všechno";
+"tXI-mr-wws.title" = "Aktualizovat vše";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
-"wmL-ks-XSr.ibShadowedToolTip" = "Aktualizovat všechno";
+"wmL-ks-XSr.ibShadowedToolTip" = "Aktualizovat vše";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
-"ryW-4P-l7k.title" = "Použít výběr pro hledání";
+"ryW-4P-l7k.title" = "Hledat výběr";
 
 /* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
 "spt-ns-lYo.title" = "Víceřádkový popis";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
-"tw7-g1-6Wz.title" = "Inteligentné odkazy";
+"tw7-g1-6Wz.title" = "Inteligentní odkazy";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
-"uGs-GF-i9Z.title" = "Zastavit mluvení";
+"uGs-GF-i9Z.title" = "Zastavit předčítání";
 
 /* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Latest";
@@ -300,31 +300,31 @@
 "ucY-cy-GON.title" = "Pravopis";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
-"uw5-pW-jNu.title" = "Inteligentné pomlčky";
+"uw5-pW-jNu.title" = "Inteligentní pomlčky";
 
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
 "w14-Ia-4l9.title" = "Otevřít";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
-"wpr-3q-Mcd.title" = "Pomoc";
+"wpr-3q-Mcd.title" = "Nápověda";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
 "wtc-0j-cAV.title" = "Pravopis a gramatika";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
-"x6Q-gr-lO2.title" = "Vložiť a zachovat styl";
+"x6Q-gr-lO2.title" = "Vložit a použít styl";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
-"y5A-ib-gR6.title" = "Rěč";
+"y5A-ib-gR6.title" = "Řeč";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
-"yPN-rG-tgD.title" = "Najít předchozí";
+"yPN-rG-tgD.title" = "Hledat předchozí";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NNm-bC-QYz"; */
 "NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "Načíst znovu";
+"dMs-cI-mzQ.title" = "Soubor";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "Náhrady";
+"UVA-tb-pA9.title" = "Záměny";
