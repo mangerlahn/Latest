@@ -5,7 +5,7 @@
 	<key>NumberOfUpdatesAvailable</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@value@</string>
+		<string>%#@القيمه@</string>
 		<key>value</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
