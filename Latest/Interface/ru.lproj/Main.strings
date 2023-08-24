@@ -126,7 +126,7 @@
 "4vf-ia-dzo.title" = "Проверка обновлений…";
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Закрыть";
+"4sb-4s-VLi.title" = "Выйти из последней версии";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
 "5cs-kb-AQj.title" = "Копировать";
@@ -198,7 +198,7 @@
 "Id2-BS-gzO.title" = "Выбрать всё";
 
 /* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "Помощь";
+"FKE-Sm-Kum.title" = "Последняя справка";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
 "G1D-lo-gfr.title" = "Замена текста";
