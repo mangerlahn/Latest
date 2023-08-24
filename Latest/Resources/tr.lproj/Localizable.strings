@@ -40,52 +40,52 @@
 "InstalledSection" = "Yüklendi";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "Mevcut Uygulamalar";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "Yükleniyor";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "Yeni versiyon: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "Hiçbir uygulama seçilmedi.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "Bu uygulama için güncelleme notu bulunmuyor.";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "Yeniden dene";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Göster";
 
 /* Action to open the app. */
 "OpenAction" = "Aç";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Sürüm notlarını okumak için listeden bir uygulama seçin.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Kaynak: %@";
 
 /* Update String */
 "UpdateAction" = "Update";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "Bu uygulama için güncelleme bulunamadı.";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Bekliyor";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "Senin Versiyonun: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";
+"AppStoreNotSignedInError" = "Bu uygulamayı güncellemek için Mac App Store'da oturum açın.";

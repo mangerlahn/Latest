@@ -1,89 +1,89 @@
 
-/* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
-
-/* New Version String */
-"RemoteVersionFormat" = "New version: %@";
-
-/* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+/* Cancel button in an update dialogue */
+"CancelAction" = "Адмена";
 /* The title of a section divider in the app list. The first placeholder is the name of the section. The value in paranthesis describes how many apps are in that section, number of apps is inserted in the second placeholder. Use the HTML underline tag <u> to mark the deemphasized part of the text, which should be the count. Example: 'Installed Apps (42)' */
-"SectionTitle" = "%1$@ [@X5@X](%2$@)[@X14@X]";
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "Пры абнаўленні адбылася памылка % @ .";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Dostupno";
+"AvailableSection" = "Даступна";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
-
-/* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"AvailableUpdatesSection" = "Даступныя абнаўленні";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "Адмена";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "Запампоўванне %@ of %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "Памылка падчас абнаўленні дадатка";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Выманне абнаўлення";
+
+/* Touch Bar section title for ignored apps */
+"IgnoredSection" = "Ігнараваць";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Ігнараваныя Дадаткі";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "Ініцыялізацыя";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "Устаноўка";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "Устаноўленыя дадаткі";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "Устаноўка";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
+/* New Version String */
+"RemoteVersionFormat" = "Новая версія: %@";
+
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "Прыкладанне не абрана.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+"NoReleaseNotesFoundError" = "Для гэтага прыкладання не было знойдзена ніякіх заўваг да выпуску.";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "Зноўку";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Раскрыць";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Адкрыць";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Выберыце прыкладанне з спісу, каб азнаёміцца з заўвагамі да яго выпуску.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Рэсурс: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "Абнаўленне";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoNotFoundError" = "Для гэтага прыкладання не было знойдзена абнаўленняў.";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Чаканне";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "Сетка";
+
+/* Current Version String */
+"LocalVersionFormat" = "Ваша версія: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "Увайдзіце ў Mac App Store, каб абнавіць гэты дадатак.";
