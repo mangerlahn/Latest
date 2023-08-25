@@ -1,6 +1,11 @@
 # Unreleased Changes
-- Language Support for Filipino (Thanks Gean Paulo!)
-- Tweaked Swedish localization (Thanks Peeter!)
+- Language support for:
+	- Arabic (Thanks Hussain & Nas!)
+	- Traditional Chinese (Thanks Pan!)
+	- Filipino (Thanks Gean Paulo!)
+	- Polish (Thanks Konrad!)
+	- Portugiese (Brasilian) (Thanks Felipe!)
+- Tweaks for many languages, including Czech and Swedish (Thanks Jiří, Peeter and all the others!)
 
 # 0.9
 #### New and Improved:
