@@ -339,7 +339,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: - Menu Item Stuff
 	
 	private func rowIndex(forMenuItem menuItem: NSMenuItem?) -> Int {
-		return menuItem?.representedObject as? Int ?? self.tableView.selectedRow
+		guard let app = menuItem?.representedObject as? App, let index = self.snapshot.index(of: app) else { return self.tableView.selectedRow }
+		return index
 	}
     
     /// Open a single app
@@ -399,7 +400,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         let row = self.tableView.clickedRow
         
         guard row != -1, !self.snapshot.isSectionHeader(at: row) else { return }
-        menu.items.forEach({ $0.representedObject = row })
+		menu.items.forEach({ $0.representedObject = self.snapshot.app(at: row) })
     }
     
 	
@@ -411,10 +412,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	// MARK: - Actions
 	
-    /// Updates the app and a given index
+    /// Updates the app at the given index.
     private func updateApp(atIndex index: Int) {
+		guard let app = self.app(at: index) else { return }
+		
+		// Delay update to improve animations
         DispatchQueue.main.async {
-			self.app(at: index)?.performUpdate()
+			app.performUpdate()
         }
     }
 	
