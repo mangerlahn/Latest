@@ -31,10 +31,10 @@
 /* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
 "6Cd-Qc-3Xc.title" = "Nicht unterstützte Apps anzeigen";
 
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
 "6va-ld-AXD.title" = "<dnl>";
 
-/* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
 "6YS-DP-XWA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
@@ -112,13 +112,13 @@
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
 "gU8-2v-afa.title" = "Weitersuchen (vorwärts)";
 
-/* Class = "NSButtonCell"; title = "Update"; ObjectID = "Gw7-NE-1lh"; */
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "Gw7-NE-1lh"; */
 "Gw7-NE-1lh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
 "GZQ-fq-mFU.title" = "Großschreiben";
 
-/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "h6g-FG-nGh"; */
 "h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
@@ -148,7 +148,7 @@
 /* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
 "iLi-Yb-UfX.title" = "Lade Release Notes";
 
-/* Class = "NSWindow"; title = "Latest"; ObjectID = "IQv-IB-iLA"; */
+/* Class = "NSWindow"; title = "<dnl>"; ObjectID = "IQv-IB-iLA"; */
 "IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
@@ -187,7 +187,7 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Dienste";
 
-/* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NNm-bC-QYz"; */
 "NNm-bC-QYz.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
@@ -214,7 +214,7 @@
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
 "PS4-wi-kF9.title" = "Ignorieren";
 
-/* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
 "QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
@@ -232,7 +232,7 @@
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
 "Rh5-N3-X6H.title" = "Ignorierte Apps anzeigen";
 
-/* Class = "NSTextFieldCell"; title = "5 Updates Available"; ObjectID = "rK6-RZ-Ga6"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "rK6-RZ-Ga6"; */
 "rK6-RZ-Ga6.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
@@ -244,7 +244,7 @@
 /* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
 "spt-ns-lYo.title" = "Multiline Label";
 
-/* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "SVA-bh-cUe"; */
 "SVA-bh-cUe.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
@@ -265,7 +265,7 @@
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
 "uGs-GF-i9Z.title" = "Sprachausgabe stoppen";
 
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "UPY-HP-f2p"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
 "UPY-HP-f2p.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
@@ -277,13 +277,13 @@
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
 "uw5-pW-jNu.title" = "Intelligente Bindestriche";
 
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "uWn-a0-oM2"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
 "uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Andere ausblenden";
 
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
 "VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
@@ -327,3 +327,4 @@
 
 /* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.paletteLabel" = "Neu laden";
+
