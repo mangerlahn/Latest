@@ -170,7 +170,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		// Ensure the index is valid
 		guard row >= 0 && row < self.apps.count else { return -1 }
-		return self.snapshot.isSectionHeader(at: row) ? 27 : 60
+		return self.snapshot.isSectionHeader(at: row) ? 27 : 65
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {

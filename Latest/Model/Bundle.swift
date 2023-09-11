@@ -21,14 +21,19 @@ extension App {
 		/// The display name of the app
 		let name: String
 		
-		/// The bundle identifier of the app
+		/// The unique identifier of the bundle, equal to the URL of the bundle.
 		let identifier: Identifier
 		
+		/// The bundle identifier of the app.
 		let bundleIdentifier: String
 		
 		/// The url of the app on the users computer
 		let fileURL: URL
 		
+		/// The date the bundle was last modified.
+		let modificationDate: Date
+		
+		/// The source of the bundle (App Store, Sparkle...)
 		let source: Source
 		
 		init(version: Version, name: String, bundleIdentifier: String, fileURL: URL, source: Source) {
@@ -38,6 +43,9 @@ extension App {
 			self.bundleIdentifier = bundleIdentifier
 			self.fileURL = fileURL
 			self.source = source
+			
+			let date = try? fileURL.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
+			self.modificationDate = date ?? Date.distantPast
 		}
 		
 		

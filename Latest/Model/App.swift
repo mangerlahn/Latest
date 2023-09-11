@@ -98,6 +98,11 @@ extension App {
 	var supported: Bool {
 		return self.bundle.source != .unsupported
 	}
+	
+	/// The date of the app when it was last updated.
+	var updateDate: Date {
+		return self.update?.date ?? self.bundle.modificationDate
+	}
 
 	
 	// MARK: - Update Properties

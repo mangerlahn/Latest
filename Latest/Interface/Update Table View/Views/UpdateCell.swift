@@ -30,6 +30,9 @@ class UpdateCell: NSTableCellView {
 	/// The constraint defining the leading inset of the content.
 	@IBOutlet private weak var leadingConstraint: NSLayoutConstraint!
 	
+	/// Label displaying the last modified/update date for the app.
+	@IBOutlet private weak var dateTextField: NSTextField!
+	
 	/// The button handling the update of the app.
 	@IBOutlet private weak var updateButton: UpdateButton!
 	
@@ -71,6 +74,16 @@ class UpdateCell: NSTableCellView {
 	
 	// MARK: - Utilities
 	
+	/// A date formatter for preparing the update date.
+	private lazy var dateFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.timeStyle = .none
+		dateFormatter.dateStyle = .short
+		dateFormatter.doesRelativeDateFormatting = true
+		
+		return dateFormatter
+	}()
+	
 	private func updateContents() {
 		guard let app = self.app, let versionInformation = app.localizedVersionInformation else { return }
 		
@@ -80,6 +93,7 @@ class UpdateCell: NSTableCellView {
         self.currentVersionTextField.stringValue = versionInformation.current
 		self.newVersionTextField.stringValue = versionInformation.new ?? ""
         self.newVersionTextField.isHidden = !app.updateAvailable
+		self.dateTextField.stringValue = dateFormatter.string(from: app.updateDate)
 	}
 	    
 	private func updateTitle() {
@@ -87,18 +101,12 @@ class UpdateCell: NSTableCellView {
 	}
 	
 	private func updateTextColors() {
-		if self.backgroundStyle == .emphasized {
-			self.nameTextField.textColor = .alternateSelectedControlTextColor
-				self.currentVersionTextField.textColor = .alternateSelectedControlTextColor
-				self.newVersionTextField.textColor = .alternateSelectedControlTextColor
-		} else {
-			// Tint the name if the app is not supported
-			let supported = self.app?.supported ?? false
-			
-			self.nameTextField.textColor = (supported ? .labelColor : .tertiaryLabelColor)
-			self.currentVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
-			self.newVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
-		}
-
+		// Tint the name if the app is not supported
+		let supported = self.app?.supported ?? false
+		
+		self.nameTextField.textColor = (self.backgroundStyle == .emphasized ? .alternateSelectedControlTextColor : (supported ? .labelColor : .tertiaryLabelColor))
+		self.currentVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
+		self.newVersionTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
+		self.dateTextField.textColor = (supported ? .secondaryLabelColor : .tertiaryLabelColor)
 	}
 }
