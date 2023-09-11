@@ -88,3 +88,9 @@
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
 
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "Melde dich im Mac App Store an, um diese App zu aktualisieren.";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
