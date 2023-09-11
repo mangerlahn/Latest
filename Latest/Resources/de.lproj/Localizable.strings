@@ -92,4 +92,4 @@
 "NameSortOption" = "Name";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Datum";
