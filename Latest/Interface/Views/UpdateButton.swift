@@ -184,24 +184,30 @@ class UpdateButton: NSButton {
 		self.interfaceState = state
 		self.contentCell.contentType = state.contentType
 		
+		var title: String?
+		var image: NSImage?
 		switch state {
 		case .update:
-			self.title = NSLocalizedString("UpdateAction", comment: "Action to update a given app.").localizedUppercase
-			self.image = nil
+			title = NSLocalizedString("UpdateAction", comment: "Action to update a given app.")
 		case .open:
-			self.title = NSLocalizedString("OpenAction", comment: "Action to open a given app.").localizedUppercase
-			self.image = nil
+			title = NSLocalizedString("OpenAction", comment: "Action to open a given app.")
 		case .error:
-			self.title = ""
 			if #available(OSX 11.0, *) {
-				self.image = NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: NSLocalizedString("ErrorButtonAccessibilityTitle", comment: "Description of button that opens an error dialogue."))
+				image = NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: NSLocalizedString("ErrorButtonAccessibilityTitle", comment: "Description of button that opens an error dialogue."))
 			} else {
-				self.image = NSImage(named: "warning")!
+				image = NSImage(named: "warning")!
 			}
 		default:
-			self.title = ""
-			self.image = nil
+			()
 		}
+		
+		// Beginning with macOS 14, the button text is no longer uppercase
+		if #available(macOS 14.0, *) {
+			self.title = title ?? ""
+		} else {
+			self.title = title?.localizedUppercase ?? ""
+		}
+		self.image = image
 	}
 	
 	

@@ -988,7 +988,7 @@
                                                 <rect key="frame" x="305" y="0.0" width="55" height="96"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                        <rect key="frame" x="-7" y="43" width="69" height="32"/>
+                                                        <rect key="frame" x="-7" y="46" width="69" height="32"/>
                                                         <buttonCell key="cell" type="push" title="&lt;dnl&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QRR-k0-TZ4" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1005,7 +1005,7 @@
                                             </customView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="i3z-7y-cNC" firstAttribute="top" secondItem="n5Y-7Z-cEd" secondAttribute="top" id="fV4-tG-PJ0"/>
+                                            <constraint firstItem="n5Y-7Z-cEd" firstAttribute="top" secondItem="Y4U-TI-bJq" secondAttribute="top" constant="7" id="pka-7Z-emq"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
