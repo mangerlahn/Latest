@@ -118,9 +118,9 @@ extension App.Bundle {
 			case .unsupported:
 				return nil
 			case .sparkle:
-				return NSImage(named: "sparkle")!
+				return NSImage(named: "sparkle")
 			case .appStore:
-				return NSImage(named: "AppStoreSource")
+				return NSImage(named: "appstore")
 			}
 		}
 		
