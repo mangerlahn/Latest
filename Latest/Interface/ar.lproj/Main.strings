@@ -328,3 +328,6 @@
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "تصغير";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "";
