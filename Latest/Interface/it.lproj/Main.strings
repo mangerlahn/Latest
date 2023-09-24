@@ -6,10 +6,10 @@
 "3GZ-aM-hwz.title" = "Casella di testo";
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Esci";
+"4sb-4s-VLi.title" = "Esci da Latest";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
-"4vf-ia-dzo.title" = "Ricerca aggiornamenti …";
+"4vf-ia-dzo.title" = "Controlla aggiornamenti…";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
 "5cs-kb-AQj.title" = "Copia";
@@ -39,7 +39,7 @@
 "FKE-Sm-Kum.title" = "Aiuto su Latest";
 
 /* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
-"G1D-lo-gfr.title" = "Sostituisci testo";
+"G1D-lo-gfr.title" = "Sostituzione testo";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
 "GMn-QE-qPC.title" = "Incolla";
@@ -75,7 +75,7 @@
 "PS4-wi-kF9.title" = "Ignora";
 
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
-"Rh5-N3-X6H.title" = "Mostra le applicazioni ignorate";
+"Rh5-N3-X6H.title" = "Mostra applicazioni ignorate";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Finestra";
@@ -93,7 +93,7 @@
 "ZWx-q6-TJz.paletteLabel" = "Ricarica";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
-"SKi-gD-wYr.title" = "Minuscolo";
+"SKi-gD-wYr.title" = "Rendi minuscolo";
 
 /* Class = "NSTextFieldCell"; title = "App Name"; ObjectID = "SVA-bh-cUe"; */
 "SVA-bh-cUe.title" = "<dnl>";
@@ -111,7 +111,7 @@
 "YRo-LJ-qSP.title" = "Trasformazioni";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
-"Yj4-SM-ocg.title" = "Ripristina originale";
+"Yj4-SM-ocg.title" = "Ripristina";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
 "aCF-1x-0c1.title" = "Trova";
@@ -126,13 +126,13 @@
 "c4C-I9-Gd0.title" = "Verifica aggiornamenti…";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
-"eIs-LJ-TQe.title" = "Controlla documento";
+"eIs-LJ-TQe.title" = "Controlla documento ora";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
 "h9B-7u-6ru.title" = "Mostra nel Finder";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
-"iis-Dj-0TB.title" = "Controlla ortografia durante la digitazione";
+"iis-Dj-0TB.title" = "Controlla grammatica con ortografia";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
 "jEo-hx-9Qp.title" = "Virgolette smart";
@@ -141,7 +141,7 @@
 "l11-q2-MLf.title" = "Sostituzioni";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
-"mS9-zq-Dvi.title" = "Cancella";
+"mS9-zq-Dvi.title" = "Elimina";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
 "mu8-FK-tXI.title" = "Trova…";
@@ -162,10 +162,10 @@
 "tXI-mr-wws.title" = "Aggiorna tutto";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
-"ryW-4P-l7k.title" = "Ricerca testo selezionato";
+"ryW-4P-l7k.title" = "Trova testo selezionato";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
-"tw7-g1-6Wz.title" = "Link smart";
+"tw7-g1-6Wz.title" = "Collegamenti smart";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
 "uGs-GF-i9Z.title" = "Interrompi riproduzione";
@@ -198,7 +198,7 @@
 "yPN-rG-tgD.title" = "Trova precedente";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
-"4J7-dP-txa.title" = "Visualizza a tutto schermo";
+"4J7-dP-txa.title" = "Passa a schermo intero";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
 "LE2-aR-0XJ.title" = "Porta tutte in primo piano";
@@ -225,7 +225,7 @@
 "Id2-BS-gzO.title" = "Seleziona tutto";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimizza";
+"OY7-WF-poV.title" = "Contrai";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "Archivio";
@@ -243,7 +243,7 @@
 "FM4-aR-lhK.ibShadowedToolTip" = "Ricarica";
 
 /* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
-"spt-ns-lYo.title" = "Etichetta su più linee";
+"spt-ns-lYo.title" = "Etichetta su più righe";
 
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
 "IAo-SY-fd9.title" = "Aggiorna";
@@ -255,7 +255,7 @@
 "h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
-"iLi-Yb-UfX.title" = "Note di rilascio in caricamento";
+"iLi-Yb-UfX.title" = "Carico note di rilascio";
 
 /* Class = "NSButtonCell"; title = "Update"; ObjectID = "QRR-k0-TZ4"; */
 "QRR-k0-TZ4.title" = "<dnl>";
@@ -273,13 +273,13 @@
 "dMs-cI-mzQ.title" = "Archivio";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
-"pDo-aP-nIF.title" = "Salta alla selezione";
+"pDo-aP-nIF.title" = "Vai alla selezione";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
 "wtc-0j-cAV.title" = "Ortografia e grammatica";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
-"x6Q-gr-lO2.title" = "Incolla e mantieni il formato";
+"x6Q-gr-lO2.title" = "Incolla e mantieni formattazione";
 
 /* Class = "NSTextFieldCell"; title = "Available Updates"; ObjectID = "NNm-bC-QYz"; */
 "NNm-bC-QYz.title" = "<dnl>";
@@ -297,7 +297,7 @@
 "AYu-sK-qS6.title" = "Menu principale";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
-"Xng-11-x9Q.title" = "Maiuscolo";
+"Xng-11-x9Q.title" = "Rendi maiuscolo";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
 "1Gu-Ep-ZWZ.title" = "Trova e sostituisci…";
@@ -328,3 +328,9 @@
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
 "65u-P1-4rd.title" = "Rilevatori di dati";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Ordina";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Ordina";
