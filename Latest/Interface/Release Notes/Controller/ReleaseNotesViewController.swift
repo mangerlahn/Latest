@@ -284,7 +284,6 @@ class ReleaseNotesViewController: NSViewController {
     private func updateInsets() {
         let inset = self.appInfoBackgroundView.frame.size.height
         self.content?.textController?.updateInsets(with: inset)
-		self.content?.loadingController?.topInset = inset
     }
     
     /// Switches the content to error and displays the localized error

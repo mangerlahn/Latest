@@ -21,16 +21,6 @@ class ReleaseNotesLoadingViewController: NSViewController {
         self.activityIndicator.startAnimation(nil)
     }
 	
-	
-	// MARK: - Accessors
-	
-	/// The top inset ensuring the loading content to appear centered.
-	var topInset: CGFloat = 0 {
-		didSet {
-			self.horizontalConstraint.constant = (self.topInset / 2)
-		}
-	}
-    
 }
 
 extension ReleaseNotesLoadingViewController: ReleaseNotesContentProtocol {
