@@ -144,14 +144,7 @@ class AppLibrary {
 			return nil
 		}
 		
-		// Find update source
-		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
-			return nil
-		}
-		
-		// Create bundle
-		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
-		return App.Bundle(version: version, name: appName, bundleIdentifier: identifier, fileURL: url, source: source)
+		return bundle(forAppAt: url, name: appName, versionNumber: versionNumber, buildNumber: buildNumber, identifier: identifier)
 	}
 	
 	/// Returns a bundle representation for the app at the given url, without Spotlight Metadata.
@@ -163,6 +156,11 @@ class AppLibrary {
 			  let appName = appBundle.bundleName else {
 			return nil
 		}
+
+		return bundle(forAppAt: url, name: appName, versionNumber: versionNumber, buildNumber: buildNumber, identifier: identifier)
+	}
+	
+	private func bundle(forAppAt url: URL, name: String, versionNumber: String, buildNumber: String, identifier: String) -> App.Bundle? {
 		// Find update source
 		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
 			return nil
@@ -170,7 +168,7 @@ class AppLibrary {
 		
 		// Create bundle
 		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
-		return App.Bundle(version: version, name: appName, bundleIdentifier: identifier, fileURL: url, source: source)
+		return App.Bundle(version: version, name: name, bundleIdentifier: identifier, fileURL: url, source: source)
 	}
 	
 }
