@@ -15,7 +15,7 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 	
 	// MARK: - Update Check
 	
-	static var sourceType: App.Bundle.Source {
+	static var sourceType: App.Source {
 		return .appStore
 	}
 	
@@ -28,7 +28,7 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 		return true
 	}
 	
-	required init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock) {
+	required init(with app: App.Bundle, repository: UpdateRepository?, completionBlock: @escaping UpdateCheckerCompletionBlock) {
 		self.app = app
 		
 		super.init()
@@ -97,7 +97,7 @@ extension MacAppStoreUpdateCheckerOperation {
 	/// Returns a proper update object from the given app store entry.
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
-		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, date: entry.date, releaseNotes: entry.releaseNotes) { app in
+		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, source: .appStore, date: entry.date, releaseNotes: entry.releaseNotes) { app in
 			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
 			if Self.isIOSAppBundle(at: app.fileURL) {
 				NSWorkspace.shared.open(entry.pageURL)

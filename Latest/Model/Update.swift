@@ -24,6 +24,9 @@ extension App {
 		/// The minimum version required to perform this update.
 		let minimumOSVersion: OperatingSystemVersion?
 		
+		/// The entity the update is being sourced from.
+		let source: Source
+
 		/// The release date of the update
 		let date : Date?
 		
@@ -35,10 +38,11 @@ extension App {
 		let updateAction: UpdateAction
 		
 		/// Initializes the update with the given parameters.
-		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, date: Date?, releaseNotes: ReleaseNotes?, updateAction: @escaping UpdateAction) {
+		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, source: Source, date: Date?, releaseNotes: ReleaseNotes?, updateAction: @escaping UpdateAction) {
 			self.app = app
 			self.remoteVersion = remoteVersion
 			self.minimumOSVersion = minimumOSVersion
+			self.source = source
 			self.date = date
 			self.releaseNotes = releaseNotes
 			self.updateAction = updateAction
