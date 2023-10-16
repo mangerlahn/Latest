@@ -91,7 +91,7 @@
 "AppStoreNotSignedInError" = "Inicia sesión en la Mac App Store para actualizar ésta app.";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Nombre";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Fecha";
