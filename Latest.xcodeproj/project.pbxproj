@@ -460,18 +460,18 @@
 		5095120D1FF3626A003D2D7F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				50D6EF5D2814618C002D7006 /* Sparkle */,
 				5058E9C227863FC80028F564 /* App.swift */,
+				506DF77521248F6200D792FC /* AppDataStore.swift */,
 				5073753E278998A300F371D8 /* AppLibrary.swift */,
 				5095121F1FF36301003D2D7F /* Bundle.swift */,
+				509512111FF362A1003D2D7F /* Update.swift */,
 				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
 				50BEF14D2AC972B40052C417 /* UpdateRepository.swift */,
 				50366E5127DFD14100D4E247 /* Source.swift */,
 				5039DE8322CA39630088B39B /* Updater */,
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
+				50D6EF5D2814618C002D7006 /* Sparkle */,
 				507375552789AA7C00F371D8 /* Utilities */,
-				509512111FF362A1003D2D7F /* Update.swift */,
-				506DF77521248F6200D792FC /* AppDataStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
