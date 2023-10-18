@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Застосунок не вибрано.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Для цього застосунку не знайдено приміток до випуску.";
+"ReleaseNotesUnavailableError" = "Для цього застосунку не знайдено приміток до випуску.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Повторити спробу";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Оновлення";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Не знайдено оновлення для цього застосунку.";
+"UpdateInfoUnavailableError" = "Не знайдено оновлення для цього застосунку.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Очікування";

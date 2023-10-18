@@ -218,10 +218,9 @@ class ReleaseNotesViewController: NSViewController {
 		self.app = nil
 		
 		// Prepare for empty state
-		let description = NSLocalizedString("NoAppSelectedDescription", comment: "Description of release notes empty state")
-		let error = NSError(domain: "com.max-langer.addism", code: 1000, userInfo: [NSLocalizedDescriptionKey: description])
+		let error = LatestError.custom(title: NSLocalizedString("NoAppSelectedTitle", comment: "Title of release notes empty state"),
+									   description: NSLocalizedString("NoAppSelectedDescription", comment: "Description of release notes empty state"))
 		self.show(error)
-		self.content?.errorController?.titleTextField.stringValue = NSLocalizedString("NoAppSelectedTitle", comment: "Title of release notes empty state")
 
 		self.appInfoBackgroundView.isHidden = true
 	}

@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "لم يتم تحديد أي برنامج.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج.";
+"ReleaseNotesUnavailableError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "أعد المحاولة";
@@ -76,7 +76,7 @@
 "UpdateAction" = "تحديث";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "لم يتم العثور على تحديث لهذا البرنامج.";
+"UpdateInfoUnavailableError" = "لم يتم العثور على تحديث لهذا البرنامج.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "انتظار";

@@ -7,10 +7,10 @@
 //
 
 /// Provides errors within the app's error domain.
-enum LatestError: Int, CustomNSError {
+enum LatestError: LocalizedError {
 	
 	/// The update info for a given app could not be loaded.
-	case updateInfoNotFound
+	case updateInfoUnavailable
 	
 	/// An error to be used when no release notes were found for a given app.
 	case releaseNotesUnavailable
@@ -18,35 +18,63 @@ enum LatestError: Int, CustomNSError {
 	/// An error raised by the App Store updater in case the user is not signed in.
 	case notSignedInToAppStore
 	
-	// MARK: - NSError Protocol
+	case custom(title: String, description: String?)
 	
-	/// The domain of the app's errors.
-	static var errorDomain: String {
-		"com.max-langer.latest"
-	}
 	
-	/// The code of the error.
-	var errorCode: Int {
-		return self.rawValue
-	}
-	
-	/// Error details
-	var errorUserInfo: [String : Any] {
-		return [NSLocalizedDescriptionKey: localizedDescription]
-	}
+	// MARK: - Localized Error Protocol
 	
 	/// The localized description of the error.
-	private var localizedDescription: String {
+	var localizedDescription: String {
 		switch self {
-			case .updateInfoNotFound:
-				return NSLocalizedString("UpdateInfoNotFoundError", comment: "Error message stating that update info could not be retrieved for a given app.")
+			case .updateInfoUnavailable:
+				return NSLocalizedString("UpdateInfoUnavailableError", comment: "Short description of error stating that update info could not be retrieved for a given app.")
 				
 			case .releaseNotesUnavailable:
-				return NSLocalizedString("NoReleaseNotesFoundError", comment: "Error message that no release notes were found")
+				return NSLocalizedString("ReleaseNotesUnavailableError", comment: "Short description of error that no release notes were found.")
 				
 			case .notSignedInToAppStore:
-				return NSLocalizedString("AppStoreNotSignedInError", comment: "Error description when no update was found for a particular app.")
+				return NSLocalizedString("AppStoreNotSignedInError", comment: "Short description of error when no update was found for a particular app.")
+			
+			case .custom(let title, _):
+				return title
 		}
+	}
+	
+	var errorDescription: String? {
+		localizedDescription
+	}
+	
+	var failureReason: String? {
+		switch self {
+		case .updateInfoUnavailable:
+			return NSLocalizedString("UpdateInfoUnavailableErrorFailureReason", comment: "Error message stating that update info could not be retrieved for a given app.")
+			
+		case .releaseNotesUnavailable:
+			return NSLocalizedString("ReleaseNotesUnavailableErrorFailureReason", comment: "Error message that no release notes were found.")
+			
+		case .notSignedInToAppStore:
+			return nil
+			
+		case .custom(_ , let description):
+			return description
+		}
+	}
+	
+	var recoverySuggestion: String? {
+		switch self {
+		case .updateInfoUnavailable:
+			return nil
+			
+		case .releaseNotesUnavailable:
+			return nil
+			
+		case .notSignedInToAppStore:
+			return NSLocalizedString("AppStoreNotSignedInErrorRecoverySuggestion", comment: "Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account.")
+			
+		case .custom(_ , _):
+			return nil
+		}
+
 	}
 	
 }

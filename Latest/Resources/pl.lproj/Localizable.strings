@@ -2,7 +2,7 @@
 
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Nie znaleziono listy zmian dla tej aplikacji.";
+"ReleaseNotesUnavailableError" = "Nie znaleziono listy zmian dla tej aplikacji.";
 /* Describes how many apps are in a section, number of apps is inserted in placeholder. */
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
@@ -76,7 +76,7 @@
 "UpdateAction" = "Aktualizuj";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Nie znaleziono aktualizacji dla tej aplikacji.";
+"UpdateInfoUnavailableError" = "Nie znaleziono aktualizacji dla tej aplikacji.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Oczekuję";

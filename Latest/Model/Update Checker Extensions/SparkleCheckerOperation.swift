@@ -34,7 +34,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
-				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+				completionBlock(.failure(self.error ?? LatestError.updateInfoUnavailable))
 			}
 		}
 	}
@@ -63,7 +63,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	override func execute() {
 		// Gather app and app bundle
 		guard let bundle = Bundle(identifier: self.app.bundleIdentifier) else {
-			self.finish(with: LatestError.updateInfoNotFound)
+			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}
 		
