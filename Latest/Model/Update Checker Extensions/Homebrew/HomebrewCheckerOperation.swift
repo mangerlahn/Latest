@@ -37,7 +37,7 @@ class HomebrewCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
-				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+				completionBlock(.failure(self.error ?? LatestError.updateInfoUnavailable))
 			}
 		}
 	}
