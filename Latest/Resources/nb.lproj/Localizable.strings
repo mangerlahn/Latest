@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Ingen app er valgt.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Ingen versjonsnotater ble funnet for denne appen.";
+"ReleaseNotesUnavailableError" = "Ingen versjonsnotater ble funnet for denne appen.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Prøv på nytt";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Oppdater";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Ingen oppdatering ble funnet for denne appen.";
+"UpdateInfoUnavailableError" = "Ingen oppdatering ble funnet for denne appen.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Venter";

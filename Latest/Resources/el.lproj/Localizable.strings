@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Δεν επιλέχθηκε εφαρμογή.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Δεν βρέθηκαν σημειώσεις ενημέρωσης για την εφαρμογή αυτή.";
+"ReleaseNotesUnavailableError" = "Δεν βρέθηκαν σημειώσεις ενημέρωσης για την εφαρμογή αυτή.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Επανάληψη";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Ενημέρωση";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Δεν βρέθηκε ενημέρωση για αυτή την εφαρμογή.";
+"UpdateInfoUnavailableError" = "Δεν βρέθηκε ενημέρωση για αυτή την εφαρμογή.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Αναμονή";

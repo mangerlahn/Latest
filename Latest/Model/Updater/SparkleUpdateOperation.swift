@@ -48,7 +48,7 @@ class SparkleUpdateOperation: UpdateOperation {
 		
 		// Gather app and app bundle
 		guard let bundle = Bundle(identifier: self.bundleIdentifier) else {
-			self.finish(with: LatestError.updateInfoNotFound)
+			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}
 		

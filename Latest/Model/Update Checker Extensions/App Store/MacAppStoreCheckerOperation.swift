@@ -39,7 +39,7 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
-				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+				completionBlock(.failure(self.error ?? LatestError.updateInfoUnavailable))
 			}
 		}
 	}
@@ -160,7 +160,7 @@ extension MacAppStoreUpdateCheckerOperation {
 			
 			do {
 				guard let entry = try JSONDecoder().decode(EntryList.self, from: data).results.first else {
-					completion(.failure(LatestError.updateInfoNotFound))
+					completion(.failure(LatestError.updateInfoUnavailable))
 					return
 				}
 				

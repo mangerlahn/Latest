@@ -53,7 +53,7 @@
 "NoAppSelectedTitle" = "هیچ اپلیکیشنی انتخاب نشده.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "توضیحی برای این بروزرسانی پیدا نشد.";
+"ReleaseNotesUnavailableError" = "توضیحی برای این بروزرسانی پیدا نشد.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "تلاش دوباره";
@@ -74,7 +74,7 @@
 "UpdateAction" = "بروزرسانی";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "بروزرسانی ای برای این اپلیکیشن پیدا نشد.";
+"UpdateInfoUnavailableError" = "بروزرسانی ای برای این اپلیکیشن پیدا نشد.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "انتظار";

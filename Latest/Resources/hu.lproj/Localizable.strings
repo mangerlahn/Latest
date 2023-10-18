@@ -73,13 +73,13 @@
 "NoAppSelectedTitle" = "Nincsen alkalmazás kiválasztva.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Nincsen elérhető leírás az alkalmazáshoz.";
+"ReleaseNotesUnavailableError" = "Nincsen elérhető leírás az alkalmazáshoz.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Újra";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Nem található frissítés ehhez az alkalmazáshoz.";
+"UpdateInfoUnavailableError" = "Nem található frissítés ehhez az alkalmazáshoz.";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";

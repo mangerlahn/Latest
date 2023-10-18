@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Nebola vybratá žiadna aplikácia.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "K tejto aplikácii neboli nájdené žiadne poznámky k vydaniu.";
+"ReleaseNotesUnavailableError" = "K tejto aplikácii neboli nájdené žiadne poznámky k vydaniu.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Znovu";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Aktualizácia";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "K tejto aplikácii neboli nájdené žiadne aktualizácie.";
+"UpdateInfoUnavailableError" = "K tejto aplikácii neboli nájdené žiadne aktualizácie.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čakám";

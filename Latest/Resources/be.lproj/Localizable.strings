@@ -53,7 +53,7 @@
 "NoAppSelectedTitle" = "Прыкладанне не абрана.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Для гэтага прыкладання не было знойдзена ніякіх заўваг да выпуску.";
+"ReleaseNotesUnavailableError" = "Для гэтага прыкладання не было знойдзена ніякіх заўваг да выпуску.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Зноўку";
@@ -74,7 +74,7 @@
 "UpdateAction" = "Абнаўленне";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Для гэтага прыкладання не было знойдзена абнаўленняў.";
+"UpdateInfoUnavailableError" = "Для гэтага прыкладання не было знойдзена абнаўленняў.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Чаканне";

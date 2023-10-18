@@ -61,7 +61,7 @@
 "NoAppSelectedTitle" = "No s'ha seleccionat cap aplicació.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No s'ha trobat cap nota de versió per a aquesta aplicació.";
+"ReleaseNotesUnavailableError" = "No s'ha trobat cap nota de versió per a aquesta aplicació.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Reintentar";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Actualització";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No s'ha trobat cap actualització per a aquesta aplicació.";
+"UpdateInfoUnavailableError" = "No s'ha trobat cap actualització per a aquesta aplicació.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Esperant";

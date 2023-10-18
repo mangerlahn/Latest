@@ -58,7 +58,7 @@
 "NoAppSelectedTitle" = "Nijedan program nije odbran.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Za ovaj program nema napomena o izdanju.";
+"ReleaseNotesUnavailableError" = "Za ovaj program nema napomena o izdanju.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Pokušaj ponovo";
@@ -76,7 +76,7 @@
 "AppSource" = "Izvor: %@";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Za ovaj program nema novih verzija.";
+"UpdateInfoUnavailableError" = "Za ovaj program nema novih verzija.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čekanje";

@@ -53,7 +53,7 @@
 "NoAppSelectedTitle" = "Walang napiling app.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Walang nakitang release notes para sa app na ito.";
+"ReleaseNotesUnavailableError" = "Walang nakitang release notes para sa app na ito.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Subukan muli";
@@ -74,7 +74,7 @@
 "UpdateAction" = "I-update";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Walang nakitang update para sa app na ito.";
+"UpdateInfoUnavailableError" = "Walang nakitang update para sa app na ito.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Naghihintay";

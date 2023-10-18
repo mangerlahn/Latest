@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "没有选中的应用程序。";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "找不到此应用的发行说明。";
+"ReleaseNotesUnavailableError" = "找不到此应用的发行说明。";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "重试";
@@ -76,7 +76,7 @@
 "UpdateAction" = "更新";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "找不到此应用程序的更新。";
+"UpdateInfoUnavailableError" = "找不到此应用程序的更新。";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "等待中";

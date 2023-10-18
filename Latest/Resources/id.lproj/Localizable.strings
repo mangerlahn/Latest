@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Tidak ada catatan rilis yang ditemukan untuk aplikasi ini.";
+"ReleaseNotesUnavailableError" = "Tidak ada catatan rilis yang ditemukan untuk aplikasi ini.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Coba lagi";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Perbarui";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Tidak ada update untuk aplikasi ini.";
+"UpdateInfoUnavailableError" = "Tidak ada update untuk aplikasi ini.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Menunggu";

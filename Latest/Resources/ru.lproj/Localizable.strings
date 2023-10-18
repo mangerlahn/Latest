@@ -58,7 +58,7 @@
 "NoAppSelectedTitle" = "Приложение не выбрано.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Для этого приложения не было найдено никаких заметок о выпуске.";
+"ReleaseNotesUnavailableError" = "Для этого приложения не было найдено никаких заметок о выпуске.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Повторить";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Обновление";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Обновление для этого приложения не найдено.";
+"UpdateInfoUnavailableError" = "Обновление для этого приложения не найдено.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Ожидание";

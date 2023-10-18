@@ -53,7 +53,7 @@
 "NoAppSelectedTitle" = "Aucune application sélectionnée.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Aucune note de version n'a été trouvée pour cette application.";
+"ReleaseNotesUnavailableError" = "Aucune note de version n'a été trouvée pour cette application.";
 
 /* Action to open the app. */
 "OpenAction" = "Ouvrir";
@@ -77,7 +77,7 @@
 "UpdateErrorAlertTitle" = "Une erreur s'est produite lors de la mise à jour de %@.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Aucune mise à jour n'a été trouvée pour cette application.";
+"UpdateInfoUnavailableError" = "Aucune mise à jour n'a été trouvée pour cette application.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "En attente";

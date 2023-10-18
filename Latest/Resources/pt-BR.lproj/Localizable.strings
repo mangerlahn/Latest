@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Nenhum app selecionado.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Não foram encontradas notas de lançamento para este app.";
+"ReleaseNotesUnavailableError" = "Não foram encontradas notas de lançamento para este app.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Tentar novamente";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Atualizar";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Nenhuma atualização encontrada para este app.";
+"UpdateInfoUnavailableError" = "Nenhuma atualização encontrada para este app.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "eSPERANDO";
