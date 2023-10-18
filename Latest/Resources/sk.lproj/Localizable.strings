@@ -91,7 +91,7 @@
 "AppStoreNotSignedInError" = "Prihláste sa do Mac App Store pre aktualizáciu tejto aplikácie.";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Meno";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Dátum";

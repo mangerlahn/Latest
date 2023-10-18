@@ -91,7 +91,7 @@
 "AppStoreNotSignedInError" = "Войдите в Mac App Store, чтобы обновить это приложение.";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Название";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Дата";
