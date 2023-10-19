@@ -11,7 +11,7 @@ import Foundation
 /// An interface for objects providing apps.
 protocol AppProviding {
 	
-	/// Returns a list of apps with available updates.
+	/// Returns a list of apps with available updates that can be updated from within Latest.
 	var updatableApps: [App] { get }
 
 	/// Returns the number of apps with updates available.
@@ -79,13 +79,15 @@ class AppDataStore: AppProviding {
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updatableApps: [App] {
 		updateQueue.sync {
-			return self.apps.filter({ $0.updateAvailable && !$0.isIgnored })
+			return self.apps.filter({ $0.updateAvailable && $0.usesBuiltInUpdater && !$0.isIgnored })
 		}
 	}
 		
 	/// The cached count of apps with updates available
 	var countOfAvailableUpdates: Int {
-		return self.updatableApps.count
+		updateQueue.sync {
+			return self.apps.filter({ $0.updateAvailable && !$0.isIgnored }).count
+		}
 	}
 	
 	/// Updates the store with the given set of app bundles.

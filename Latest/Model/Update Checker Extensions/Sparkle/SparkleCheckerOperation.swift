@@ -101,9 +101,9 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 		}
 		
 		// Build update
-		self.update = App.Update(app: self.app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .sparkle, date: appcastItem.date, releaseNotes: releaseNotes, updateAction: { app in
+		self.update = App.Update(app: self.app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .sparkle, date: appcastItem.date, releaseNotes: releaseNotes, updateAction: .builtIn(block: { app in
 			UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
-		})
+		}))
 
 		DispatchQueue.main.async(execute: {
 			self.finish()

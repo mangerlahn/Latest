@@ -54,9 +54,9 @@ class HomebrewCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 		repository.updateInfo(for: bundle) { bundle, version, minimumOSVersion in
 			defer { self.finish() }
 			guard let version else { return }
-			self.update = App.Update(app: bundle, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .homebrew, date: nil, releaseNotes: nil) { app in
+			self.update = App.Update(app: bundle, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .homebrew, date: nil, releaseNotes: nil, updateAction: .external(block: { app in
 				app.open()
-			}
+			}))
 		}
 	}
 	

@@ -133,6 +133,11 @@ extension App {
 		return self.update?.isUpdating ?? false
 	}
 	
+	/// Whether the update is performed using a built in updater.
+	var usesBuiltInUpdater: Bool {
+		return self.update?.usesBuiltInUpdater ?? false
+	}
+	
 	/// Updates the app. This is a sub-classing hook. The default implementation opens the app.
 	final func performUpdate() {
 		self.update?.perform()

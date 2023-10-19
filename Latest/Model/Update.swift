@@ -34,11 +34,10 @@ extension App {
 		let releaseNotes: ReleaseNotes?
 		
 		/// A handler performing the update action of the app.
-		typealias UpdateAction = (_ app: App.Bundle) -> Void
-		let updateAction: UpdateAction
+		let updateAction: Action
 		
 		/// Initializes the update with the given parameters.
-		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, source: Source, date: Date?, releaseNotes: ReleaseNotes?, updateAction: @escaping UpdateAction) {
+		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, source: Source, date: Date?, releaseNotes: ReleaseNotes?, updateAction: Action) {
 			self.app = app
 			self.remoteVersion = remoteVersion
 			self.minimumOSVersion = minimumOSVersion
@@ -63,6 +62,11 @@ extension App {
 		var isUpdating: Bool {
 			return UpdateQueue.shared.contains(self.app.identifier)
 		}
+		
+		/// Whether the update is performed using a built in updater.
+		var usesBuiltInUpdater: Bool {
+			if case .builtIn(_) = updateAction { true } else { false }
+		}
 
 		
 		// MARK: - Actions
@@ -77,7 +81,7 @@ extension App {
 				fatalError("Attempt to perform update on app that is already up to date.")
 			}
 			
-			self.updateAction(self.app)
+			self.updateAction.perform(with: self.app)
 		}
 		
 		/// Cancels the scheduled update for this app.
@@ -119,4 +123,30 @@ extension App.Update: CustomDebugStringConvertible {
 	var debugDescription: String {
 		return self.remoteVersion.debugDescription
 	}
+}
+
+extension App.Update {
+	
+	typealias UpdateAction = (_ app: App.Bundle) -> Void
+	
+	/// Defines possible update actions.
+	enum Action {
+		
+		/// The update will be performed within this app.
+		case builtIn(block: UpdateAction)
+		
+		/// No updater is available to update this app. An external program will be launched to perform the update.
+		case external(block: UpdateAction)
+		
+		/// Performs the update for the given bundle.
+		func perform(with bundle: App.Bundle) {
+			switch self {
+			case .builtIn(let block):
+				block(bundle)
+			case .external(let block):
+				block(bundle)
+			}
+		}
+	}
+	
 }
