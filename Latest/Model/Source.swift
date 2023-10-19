@@ -34,12 +34,7 @@ extension App {
 			case .appStore:
 				return NSImage(named: "appstore")
 			case .homebrew:
-					#warning("Icon")
-					if #available(macOS 11.0, *) {
-						return NSImage(systemSymbolName: "crown.fill", accessibilityDescription: nil)!
-					} else {
-						return nil
-					}
+				return NSImage(named: "brew")
 			}
 		}
 		
@@ -53,7 +48,7 @@ extension App {
 			case .appStore:
 				return NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store.")
 			case .homebrew:
-				return NSLocalizedString("HomebrewName", comment: "The name of the Homebrew package manager.")
+				return NSLocalizedString("HomebrewSource", comment: "The source name for apps checked via the Homebrew package manager.")
 				
 			}
 		}
