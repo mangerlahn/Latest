@@ -167,7 +167,7 @@
 "l11-q2-MLf.title" = "Ersetzungen";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "Alle einblenden";
+"LE2-aR-0XJ.title" = "Alle nach vorne bringen";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
 "Lga-BY-8RF.title" = "Ausschneiden";
