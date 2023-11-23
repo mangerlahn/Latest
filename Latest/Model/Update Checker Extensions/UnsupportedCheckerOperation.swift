@@ -24,7 +24,7 @@ class UnsupportedUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 
 		self.completionBlock = {
 			guard !self.isCancelled else { return }
-			completionBlock(.failure(LatestError.updateInfoNotFound))
+			completionBlock(.failure(LatestError.updateInfoUnavailable))
 		}
 	}
 	
