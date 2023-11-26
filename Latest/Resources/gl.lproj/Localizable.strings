@@ -80,7 +80,7 @@
 "LocalVersionFormat" = "Your version: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "";
+"AppStoreNotSignedInError" = "Not Signed In";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Name";
