@@ -8,6 +8,9 @@
 
 import AppKit
 
+/// User defaults key for storing the last cache update date.
+private let CacheUpdateDateKey = "CacheUpdateDateKey"
+
 /// A storage that fetches update information from an online source.
 ///
 /// Can be asked for update version information for a given application bundle.
@@ -15,6 +18,9 @@ class UpdateRepository {
 
 	/// The URL update information is being fetched from.
 	private static let repositoryURL = URL(string: "https://formulae.brew.sh/api/cask.json")!
+	
+	/// Duration after which the cache will be invalidated. (1 hour in seconds)
+	private static let cacheInvalidationDuration: Double = 1 * 60 * 60
 
 	// MARK: - Init
 	
@@ -23,21 +29,7 @@ class UpdateRepository {
 	/// Returns a new repository with up to date update information.
 	static func newRepository() -> UpdateRepository {
 		let repository = UpdateRepository()
-		
-		let session = URLSession(configuration: .default)
-		let task = session.dataTask(with: repositoryURL) { data, response, error in
-			guard let data else {
-				repository.finalize(with: [])
-				return
-			}
-			
-			do {
-				repository.finalize(with: try JSONDecoder().decode([Entry].self, from: data))
-			} catch {
-				repository.finalize(with: [])
-			}
-		}
-		task.resume()
+		repository.load()
 		
 		return repository
 	}
@@ -89,6 +81,62 @@ class UpdateRepository {
 				return n.caseInsensitiveCompare(name) == .orderedSame
 			}
 		})
+	}
+	
+	
+	// MARK: - Cache Handling
+	
+	/// The URL where the cached repository will be stored.
+	private var cacheURL: URL? = {
+		if #available(macOS 11.0, *) {
+			FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?
+				.appendingPathComponent(Bundle.main.bundleIdentifier!)
+				.appendingPathComponent("RepositoryCache").appendingPathExtension(for: .json)
+		} else {
+			FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?
+				.appendingPathComponent(Bundle.main.bundleIdentifier!)
+				.appendingPathComponent("RepositoryCache").appendingPathExtension("json")
+		}
+	}()
+	
+	/// Loads the repository data.
+	private func load() {
+		// Check for valid cache file
+		let timeInterval = UserDefaults.standard.double(forKey: CacheUpdateDateKey) as TimeInterval
+		if timeInterval > 0, timeInterval.distance(to: Date.timeIntervalSinceReferenceDate) < Self.cacheInvalidationDuration, 
+			let cacheURL = self.cacheURL, let data = try? Data(contentsOf: cacheURL)  {
+			parse(data)
+			return
+		}
+		
+		// Fetch data from server
+		let session = URLSession(configuration: .default)
+		let task = session.dataTask(with: Self.repositoryURL) { [weak self] data, response, error in
+			guard let self else { return }
+			
+			self.parse(data)
+			
+			// Store in cache
+			if let data, let cacheURL = self.cacheURL {
+				try? data.write(to: cacheURL)
+				UserDefaults.standard.setValue(Date.timeIntervalSinceReferenceDate, forKey: CacheUpdateDateKey)
+			}
+		}
+		task.resume()
+	}
+	
+	/// Parses the given repository data and finishes loading.
+	private func parse(_ repositoryData: Data?) {
+		guard let repositoryData else {
+			finalize(with: [])
+			return
+		}
+		
+		do {
+			finalize(with: try JSONDecoder().decode([Entry].self, from: repositoryData))
+		} catch {
+			finalize(with: [])
+		}
 	}
 
 }
