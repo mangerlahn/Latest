@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "Nová verzia: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nebola vybratá žiadna aplikácia.";
+"NoAppSelectedTitle" = "Nie je vybraná aplikácia";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "K tejto aplikácii neboli nájdené žiadne poznámky k vydaniu.";
+"ReleaseNotesUnavailableError" = "Žiadne poznámky k vydaniu";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Znovu";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Aktualizácia";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "K tejto aplikácii neboli nájdené žiadne aktualizácie.";
+"UpdateInfoUnavailableError" = "Aktualizovať informácie Neprístupné";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čakám";
@@ -88,10 +88,22 @@
 "LocalVersionFormat" = "Vaša verzia: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Prihláste sa do Mac App Store pre aktualizáciu tejto aplikácie.";
+"AppStoreNotSignedInError" = "Nie je prihlásený";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Meno";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
 "DateSortOption" = "Dátum";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Prihláste sa do Mac App Store pre aktualizáciu tejto aplikácie.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Informácie o aktualizácii sa nesmú načítať pre túto aplikáciu.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Poznámky k vydaniu nie sú k dispozícii pre túto aplikáciu.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

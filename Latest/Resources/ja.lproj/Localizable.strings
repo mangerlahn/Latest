@@ -7,9 +7,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "アプリが選択されていません。";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "このアプリのリリースノートは見つかりませんでした。";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "リトライ";
 
@@ -18,9 +15,6 @@
 
 /* Update String */
 "UpdateAction" = "更新";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "このアプリの更新は見つかりませんでした。";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "待機中";
@@ -88,10 +82,28 @@
 "LocalVersionFormat" = "あなたのバージョン： %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Mac App Storeにサインインして、このアプリケーションをアップデートしてください。";
+"AppStoreNotSignedInError" = "Not Signed In";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Name";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
 "DateSortOption" = "Date";
+
+/* Short description of error stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableError" = "Update Information Unavailable";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Mac App Storeにサインインして、このアプリケーションをアップデートしてください。";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Short description of error that no release notes were found. */
+"ReleaseNotesUnavailableError" = "No Release Notes";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

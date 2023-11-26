@@ -1,7 +1,4 @@
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Nobenih opomb ob izdaji ni bilo mogoče najti za to aplikacijo.";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Poskusi Znova";
 
@@ -41,11 +38,8 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "Izbrana ni nobena aplikacija.";
 
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Za to aplikacijo ni bilo mogoče najti nobenih posodobitev.";
-
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Prijavite se v Mac App Store za posodobitev te aplikacije.";
+"AppStoreNotSignedInError" = "Not Signed In";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čakanje na Posodobitev";
@@ -93,3 +87,21 @@
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
 "DateSortOption" = "Date";
+
+/* Short description of error stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableError" = "Update Information Unavailable";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Prijavite se v Mac App Store za posodobitev te aplikacije.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Short description of error that no release notes were found. */
+"ReleaseNotesUnavailableError" = "No Release Notes";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

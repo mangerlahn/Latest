@@ -54,9 +54,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "לא נבחרה אפליקציה.";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "לא נמצאו הערות גרסה עבור אפליקציה זו.";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "נסה שוב";
 
@@ -75,9 +72,6 @@
 /* Update String */
 "UpdateAction" = "עדכן";
 
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "לא נמצא עדכון עבור אפליקציה זו.";
-
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "ממתין";
 
@@ -88,10 +82,28 @@
 "LocalVersionFormat" = "גרסתך: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "התחברו לחנות האפליקציות למק כדי לעדכן אפליקציה זו.";
+"AppStoreNotSignedInError" = "Not Signed In";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Name";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
 "DateSortOption" = "Date";
+
+/* Short description of error stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableError" = "Update Information Unavailable";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "התחברו לחנות האפליקציות למק כדי לעדכן אפליקציה זו.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Short description of error that no release notes were found. */
+"ReleaseNotesUnavailableError" = "No Release Notes";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";
