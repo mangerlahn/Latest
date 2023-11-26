@@ -47,6 +47,14 @@ extension App {
 			let date = try? fileURL.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate
 			self.modificationDate = date ?? Date.distantPast
 		}
+
+
+		// MARK: - Actions
+		
+		/// Opens the app and a given index
+		func open() {
+			NSWorkspace.shared.open(self.fileURL)
+		}
 		
 		
 		// MARK: - Secure Coding
@@ -99,43 +107,3 @@ extension App.Bundle: CustomDebugStringConvertible {
 	}
 }
 
-extension App.Bundle {
-	
-	/// The source of update information.
-	enum Source: String, Equatable {
-		/// No known source had information about this app. It is unsupported by the update checker.
-		case unsupported
-		
-		/// The Sparkle Updater is the update source.
-		case sparkle
-		
-		/// The Mac App Store is the update source.
-		case appStore
-		
-		/// The icon representing the source.
-		var sourceIcon: NSImage? {
-			switch self {
-			case .unsupported:
-				return nil
-			case .sparkle:
-				return NSImage(named: "sparkle")
-			case .appStore:
-				return NSImage(named: "appstore")
-			}
-		}
-		
-		/// The name of the source.
-		var sourceName: String? {
-			switch self {
-			case .unsupported:
-				return nil
-			case .sparkle:
-				return NSLocalizedString("WebSource", comment: "The source name for apps loaded from third-party websites.")
-			case .appStore:
-				return NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store.")
-			}
-		}
-		
-	}
-	
-}

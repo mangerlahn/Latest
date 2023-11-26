@@ -124,7 +124,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         
         switch action {
         case #selector(updateAll(_:)):
-			return UpdateCheckCoordinator.shared.appProvider.updatableApps.count != 0
+			return hasUpdatesAvailable
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
 		case #selector(performFindPanelAction(_:)):
@@ -198,7 +198,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		self.reloadButton.isEnabled = true
 		self.reloadTouchBarButton.isEnabled = true
 		self.progressIndicator.isHidden = true
-        self.updateAllButton.isEnabled = UpdateCheckCoordinator.shared.appProvider.updatableApps.count != 0
+        self.updateAllButton.isEnabled = hasUpdatesAvailable
 	}
     
 	
@@ -218,6 +218,14 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	
 	@IBAction func changeSortOrder(_ sender: NSMenuItem?) {
 		AppListSettings.shared.sortOrder = sender?.representedObject as! AppListSettings.SortOptions
+	}
+	
+	
+	// MARK: - Accessors
+	
+	/// Whether there are any updatable apps.
+	private var hasUpdatesAvailable: Bool {
+		!UpdateCheckCoordinator.shared.appProvider.updatableApps.isEmpty
 	}
 
     
