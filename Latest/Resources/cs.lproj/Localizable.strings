@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Nebyla vybrána žádná aplikace.";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "K této aplikaci nebyly nalezeny žádné poznámky o vydání.";
+"ReleaseNotesUnavailableError" = "Nebyly nalezeny žádné poznámky k vydání.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Zopakovat";
@@ -103,4 +103,4 @@
 "UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Poznámky k vydání nejsou pro tuto aplikaci k dispozici";
