@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "Versi baru: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih.";
+"NoAppSelectedTitle" = "Tidak ada aplikasi yang dipilih";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "Tidak ada catatan rilis yang ditemukan untuk aplikasi ini.";
+"ReleaseNotesUnavailableError" = "Tidak ada catatan rilis";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Coba lagi";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Perbarui";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Tidak ada update untuk aplikasi ini.";
+"UpdateInfoUnavailableError" = "Tidak ada update untuk aplikasi ini";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Menunggu";
@@ -88,7 +88,7 @@
 "LocalVersionFormat" = "Versi Anda: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Tidak masuk";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Nama";
@@ -100,7 +100,7 @@
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Masuk ke Mac App Store untuk memperbarui aplikasi ini.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Pembaruan informasi tidak dapat diambil untuk aplikasi ini.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Catatan rilis tidak tersedia untuk aplikasi ini.";
