@@ -20,7 +20,7 @@
 			<string>%@d #Poboljšati</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@vrednost@</string>
+		<string>%#@value@</string>
 	</dict>
 </dict>
 </plist>
