@@ -39,7 +39,7 @@
 "NoAppSelectedTitle" = "Izbrana ni nobena aplikacija.";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Prijavite se v Mac App Store za posodobitev te aplikacije.";
+"AppStoreNotSignedInError" = "";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čakanje na Posodobitev";
@@ -92,7 +92,7 @@
 "UpdateInfoUnavailableError" = "Update Information Unavailable";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Prijavite se v Mac App Store za posodobitev te aplikacije.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
 "UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";

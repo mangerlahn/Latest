@@ -88,7 +88,7 @@
 "LocalVersionFormat" = "Versi anda: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Daftar masuk ke Mac App Store untuk mengemas kini applikasi ini.";
+"AppStoreNotSignedInError" = "";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Nama";
@@ -97,7 +97,7 @@
 "DateSortOption" = "Tarikh";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Daftar masuk ke Mac App Store untuk mengemas kini applikasi ini.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
 "UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
