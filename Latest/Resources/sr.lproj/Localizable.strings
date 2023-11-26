@@ -55,9 +55,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "Nijedna aplikacija nije obeležena.";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Nisu pronađene beleške promena za ovu aplikaciju.";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Pokušaj ponovo";
 
@@ -75,9 +72,6 @@
 
 /* Update String */
 "UpdateAction" = "Update";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Waiting";

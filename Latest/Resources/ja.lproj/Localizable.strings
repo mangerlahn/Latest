@@ -7,9 +7,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "アプリが選択されていません。";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "このアプリのリリースノートは見つかりませんでした。";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "リトライ";
 
@@ -18,9 +15,6 @@
 
 /* Update String */
 "UpdateAction" = "更新";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "このアプリの更新は見つかりませんでした。";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "待機中";

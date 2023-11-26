@@ -1,7 +1,4 @@
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Nobenih opomb ob izdaji ni bilo mogoče najti za to aplikacijo.";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Poskusi Znova";
 
@@ -40,9 +37,6 @@
 
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "Izbrana ni nobena aplikacija.";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Za to aplikacijo ni bilo mogoče najti nobenih posodobitev.";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInError" = "Prijavite se v Mac App Store za posodobitev te aplikacije.";

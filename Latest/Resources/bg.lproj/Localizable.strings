@@ -4,9 +4,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "Не е избрано приложение.";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Не са намерени бележки за това приложение.";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Опитай пак";
 
@@ -24,9 +21,6 @@
 
 /* Update String */
 "UpdateAction" = "Обнови";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Няма намерена актуализация за това приложение.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Чакане";

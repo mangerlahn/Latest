@@ -54,9 +54,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "לא נבחרה אפליקציה.";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "לא נמצאו הערות גרסה עבור אפליקציה זו.";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "נסה שוב";
 
@@ -74,9 +71,6 @@
 
 /* Update String */
 "UpdateAction" = "עדכן";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "לא נמצא עדכון עבור אפליקציה זו.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "ממתין";

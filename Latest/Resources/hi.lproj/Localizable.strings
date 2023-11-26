@@ -57,9 +57,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "किसी एप का चुनाव नहीं किया गया है";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "इस एप के कोई रिलीज नोट नहीं पाए गए";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "फिर से कोशिश करें";
 
@@ -74,9 +71,6 @@
 
 /* Update String */
 "UpdateAction" = "अपडेट करें";
-
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "इस एप के लिए कोई अपडेट नहीं पाया गया";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "इंतजार हो रहा है";
