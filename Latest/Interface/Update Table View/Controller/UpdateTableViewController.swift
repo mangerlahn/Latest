@@ -310,6 +310,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
      */
     func selectApp(at index: Int?) {
         guard let index = index, index >= 0, let app = self.snapshot.app(at: index) else {
+			self.selectedApp = nil
             self.tableView.deselectAll(nil)
 			self.scrubber?.animator().selectedIndex = -1
 			
