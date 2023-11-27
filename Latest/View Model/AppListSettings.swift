@@ -6,12 +6,32 @@
 //  Copyright © 2022 Max Langer. All rights reserved.
 //
 
+private let SortOptionsKey = "SortOptionsKey"
 private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
 private let ShowUnsupportedUpdatesKey = "ShowUnsupportedUpdatesKey"
 
 /// Observable front end to app list preferences.
 struct AppListSettings: Observable {
+	
+	/// Sorting options available to the app list.
+	enum SortOptions: Int, CaseIterable {
+		/// Sort based on the date of the the last update, similar to what the App Store does.
+		case updateDate = 0
+		
+		/// Sort alphabetically by app name.
+		case name = 1
+		
+		/// A user-displayable text of the given sort option.
+		var displayName: String {
+			switch self {
+			case .updateDate:
+				return NSLocalizedString("DateSortOption", comment: "Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date'")
+			case .name:
+				return NSLocalizedString("NameSortOption", comment: "Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name'")
+			}
+		}
+	}
 	
 	var observers = [UUID : ObservationHandler]()
 
@@ -23,6 +43,17 @@ struct AppListSettings: Observable {
 	static var shared: AppListSettings = {
 		return AppListSettings()
 	}()
+	
+	/// The order the app list should be shown in.
+	var sortOrder: SortOptions {
+		set {
+			set(newValue.rawValue, forKey: SortOptionsKey)
+		}
+		
+		get {
+			SortOptions(rawValue: UserDefaults.standard.integer(forKey: SortOptionsKey))!
+		}
+	}
 	
 	/// Whether ignored apps should be visible
 	var showIgnoredUpdates: Bool {

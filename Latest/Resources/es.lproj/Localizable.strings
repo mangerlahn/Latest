@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "Nueva versión: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No se ha seleccionado ninguna aplicación.";
+"NoAppSelectedTitle" = "Ninguna aplicación seleccionada";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No se ha encontrado ninguna nota de la versión para esta aplicación.";
+"ReleaseNotesUnavailableError" = "No hay notas de la versión";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Reintentar";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Actualizar";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No se ha encontrado ninguna actualización para esta aplicación.";
+"UpdateInfoUnavailableError" = "Información de la actualización no disponible";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Esperando";
@@ -88,4 +88,22 @@
 "LocalVersionFormat" = "Su versión: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Inicia sesión en la Mac App Store para actualizar ésta app.";
+"AppStoreNotSignedInError" = "No está registrado";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Nombre";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Fecha";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Inicia sesión en la Mac App Store para actualizar ésta app.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "No se ha podido recuperar la información de la actualización para esta aplicación.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Las notas para la versión no están disponibles para esta aplicación.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

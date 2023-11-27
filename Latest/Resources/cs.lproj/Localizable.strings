@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "Nová verze: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nebyla vybrána žádná aplikace.";
+"NoAppSelectedTitle" = "Nebyla vybrána žádná aplikace";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "K této aplikaci nebyly nalezeny žádné poznámky o vydání.";
+"ReleaseNotesUnavailableError" = "Žádné poznámky k vydání";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Zopakovat";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Aktualizace";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "K této aplikaci nebyly nalezeny žádné aktualizace.";
+"UpdateInfoUnavailableError" = "K této aplikaci nebyly nalezeny žádné aktualizace";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čekám";
@@ -88,4 +88,22 @@
 "LocalVersionFormat" = "Vaše verze: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Přihlašte se do Mac App Store pro aktualizaci této aplikace.";
+"AppStoreNotSignedInError" = "Nepřihlášen*a";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Jméno";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Datum";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Přihlašte se do Mac App Store pro aktualizaci této aplikace.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Informaci o aktualizaci této aplikace nebylo možné získat.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Poznámky k vydání nejsou pro tuto aplikaci k dispozici.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

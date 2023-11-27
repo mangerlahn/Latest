@@ -81,7 +81,7 @@
 "uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
-"Ah1-jH-gCv.title" = "Undo";
+"Ah1-jH-gCv.title" = "Urungkan";
 
 /* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
 "Ake-Tt-cX3.title" = "Menu";
@@ -273,7 +273,7 @@
 "c4C-I9-Gd0.title" = "Periksa Pembaruan…";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
-"cWB-Qy-jEV.title" = "Pidato";
+"cWB-Qy-jEV.title" = "Ucapan";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "File";
@@ -319,3 +319,18 @@
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Gunakan Pilihan untuk Mencari";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
+"uw5-pW-jNu.title" = "Tanda Hubung Cerdas";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
+"y5A-ib-gR6.title" = "Mengucap";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Terbaru";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Urutkan Berdasar";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Urutkan Berdasar";

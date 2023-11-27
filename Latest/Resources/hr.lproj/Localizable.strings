@@ -55,10 +55,10 @@
 "RemoteVersionFormat" = "Nova verzija: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nijedan program nije odbran.";
+"NoAppSelectedTitle" = "Nijedan program nije odabran";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Za ovaj program nema napomena o izdanju.";
+"ReleaseNotesUnavailableError" = "Bez napomena o izdanju";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Pokušaj ponovo";
@@ -76,7 +76,7 @@
 "AppSource" = "Izvor: %@";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Za ovaj program nema novih verzija.";
+"UpdateInfoUnavailableError" = "Informacije o novim verzijama nisu dostupne";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čekanje";
@@ -88,4 +88,22 @@
 "LocalVersionFormat" = "Tvoja verzija: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Za aktualiziranje ove aplikacije prijavi se na Mac App Store.";
+"AppStoreNotSignedInError" = "Nisi prijavljen/a";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Ime";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Datum";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Za aktualiziranje ove aplikacije prijavi se na Mac App Store.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Informacije o novim verzijama nisu pronađene za ovaj program.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Za ovaj program nema napomena o izdanju.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

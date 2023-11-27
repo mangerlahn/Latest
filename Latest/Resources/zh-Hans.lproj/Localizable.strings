@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "没有选中的应用程序。";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "找不到此应用的发行说明。";
+"ReleaseNotesUnavailableError" = "找不到此应用的发行说明。";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "重试";
@@ -76,7 +76,7 @@
 "UpdateAction" = "更新";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "找不到此应用程序的更新。";
+"UpdateInfoUnavailableError" = "找不到此应用程序的更新。";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "等待中";
@@ -88,4 +88,22 @@
 "LocalVersionFormat" = "你的版本： %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "登录 Mac App Store 以更新此应用程序。";
+"AppStoreNotSignedInError" = "Not Signed In";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Date";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "登录 Mac App Store 以更新此应用程序。";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

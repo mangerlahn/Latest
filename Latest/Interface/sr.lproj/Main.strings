@@ -1,0 +1,45 @@
+
+/* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
+"1Gu-Ep-ZWZ.title" = "Pronađi i zameni…";
+
+/* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
+"7c2-6r-Saw.title" = "Poseti zvaničnu web-stranu";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
+"00n-xr-jcQ.title" = "Ažuriranje";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
+"6YS-DP-XWA.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "<dnl>";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Glavni meni";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Kopiraj";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Zatvori";
+
+/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
+"6Cd-Qc-3Xc.title" = "Prikaži nepodržane aplikacije";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Fajl";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Podešavanja…";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Automatsko ispravljanje pravopisa";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
+"Ah1-jH-gCv.title" = "Poništi";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
+"aCF-1x-0c1.title" = "Pronađi";
+
+/* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "poslednje";

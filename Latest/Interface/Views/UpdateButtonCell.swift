@@ -112,8 +112,12 @@ class UpdateButtonCell: NSButtonCell {
 		// Adjust the styling of the button
 		string.addAttribute(.foregroundColor, value: Self.tintColor, range: range)
 		string.addAttribute(.font, value: NSFont.systemFont(ofSize: self.font!.pointSize - 1, weight: .medium), range: range)
+		
+		// Slightly shift frame to account for adjusted font size
+		var adjustedFrame = frame
+		adjustedFrame.origin.y -= 1
 				
-		return super.drawTitle(string, withFrame: frame, in: controlView)
+		return super.drawTitle(string, withFrame: adjustedFrame, in: controlView)
 	}
 	
 	override func drawImage(_ image: NSImage, withFrame frame: NSRect, in controlView: NSView) {

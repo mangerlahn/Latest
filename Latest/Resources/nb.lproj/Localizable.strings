@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "Ingen app er valgt.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Ingen versjonsnotater ble funnet for denne appen.";
+"ReleaseNotesUnavailableError" = "Ingen versjonsnotater ble funnet for denne appen.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Prøv på nytt";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Oppdater";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Ingen oppdatering ble funnet for denne appen.";
+"UpdateInfoUnavailableError" = "Ingen oppdatering ble funnet for denne appen.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Venter";
@@ -88,4 +88,22 @@
 "LocalVersionFormat" = "Din versjon: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Logg inn på Mac App Store for å oppdatere denne appen.";
+"AppStoreNotSignedInError" = "Not Signed In";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Date";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Logg inn på Mac App Store for å oppdatere denne appen.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

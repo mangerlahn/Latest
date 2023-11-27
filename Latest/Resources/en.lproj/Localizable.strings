@@ -50,10 +50,13 @@
 "RemoteVersionFormat" = "New version: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "No App Selected";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "No release notes were found for this app.";
+/* Short description of error that no release notes were found. */
+"ReleaseNotesUnavailableError" = "No Release Notes";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Retry";
@@ -73,8 +76,11 @@
 /* Update String */
 "UpdateAction" = "Update";
 
+/* Short description of error stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableError" = "Update Information Unavailable";
+
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "No update was found for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Waiting";
@@ -86,4 +92,16 @@
 "LocalVersionFormat" = "Your version: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "Not Signed In";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Date";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

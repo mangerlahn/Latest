@@ -11,6 +11,9 @@
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
 
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Sort By";
+
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
 "3GZ-aM-hwz.title" = "Text Cell";
 
@@ -194,6 +197,9 @@
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
 "Yj4-SM-ocg.title" = "Redo";
 
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Sort By";
+
 /* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.label" = "Reload";
 
@@ -227,7 +233,7 @@
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
 "gU8-2v-afa.title" = "Find Next";
 
-/* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "h6g-FG-nGh"; */
 "h6g-FG-nGh.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
@@ -250,6 +256,9 @@
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
 "jEo-hx-9Qp.title" = "Smart Quotes";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "jLw-y7-vqv"; */
+"jLw-y7-vqv.title" = "<dnl>";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
 "l11-q2-MLf.title" = "Substitutions";

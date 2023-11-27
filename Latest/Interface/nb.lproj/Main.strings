@@ -57,13 +57,13 @@
 "pDo-aP-nIF.title" = "Hopp til Utvalg";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.label" = "Oppdater Alt";
+"qS5-vO-h2j.label" = "Oppdater Alle";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
 "r6p-yM-qya.title" = "Rediger";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.paletteLabel" = "Oppdater Alt";
+"qS5-vO-h2j.paletteLabel" = "Oppdater Alle";
 
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Bruk Utvalg for Finn";
@@ -162,7 +162,7 @@
 "cWB-Qy-jEV.title" = "Tale";
 
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
-"00n-xr-jcQ.title" = "Oppdatering";
+"00n-xr-jcQ.title" = "Oppdater";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
 "1Gu-Ep-ZWZ.title" = "Finn og Erstatt…";
@@ -282,7 +282,7 @@
 "bm3-iR-6vZ.title" = "Vis i Finder";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
-"c4C-I9-Gd0.title" = "Se etter Oppdateringer…";
+"c4C-I9-Gd0.title" = "Søk etter Oppdateringer…";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
 "eIs-LJ-TQe.title" = "Sjekk Dokumentet Nå";

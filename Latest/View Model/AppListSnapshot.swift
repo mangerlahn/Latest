@@ -65,9 +65,14 @@ struct AppListSnapshot {
 			visibleApps = visibleApps.filter({ !$0.isIgnored })
 		}
 		
-		// Sort apps
+		// Sort apps based on setting
 		let filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
-			return app1.name.lowercased() < app2.name.lowercased()
+			switch AppListSettings.shared.sortOrder {
+			case .updateDate:
+				return app1.updateDate > app2.updateDate
+			case .name:
+				return app1.name.lowercased() < app2.name.lowercased()
+			}
 		})
 		
 		// Build final list. This is a very inefficient solution. Find a better one

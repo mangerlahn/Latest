@@ -45,7 +45,8 @@ class DisplayLink: NSObject {
         
 		#if os(macOS)
 		func displayLinkOutputCallback(_ displayLink: CVDisplayLink, _ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>, _ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>, _ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn {
-
+			guard let displayLinkContext else { return kCVReturnInvalidArgument }
+			
 			unsafeBitCast(displayLinkContext, to: DisplayLink.self).displayTick()
 			return kCVReturnSuccess
 		}

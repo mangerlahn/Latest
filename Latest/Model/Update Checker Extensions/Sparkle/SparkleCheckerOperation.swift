@@ -19,11 +19,11 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 		return Self.feedURL(from: url) != nil
 	}
 
-	static var sourceType: App.Bundle.Source {
+	static var sourceType: App.Source {
 		return .sparkle
 	}
 	
-	required init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock) {
+	required init(with app: App.Bundle, repository: UpdateRepository?, completionBlock: @escaping UpdateCheckerCompletionBlock) {
 		self.app = app
 		self.url = Self.feedURL(from: app.fileURL)
 		
@@ -34,7 +34,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
-				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+				completionBlock(.failure(self.error ?? LatestError.updateInfoUnavailable))
 			}
 		}
 	}
@@ -63,7 +63,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 	override func execute() {
 		// Gather app and app bundle
 		guard let bundle = Bundle(identifier: self.app.bundleIdentifier) else {
-			self.finish(with: LatestError.updateInfoNotFound)
+			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}
 		
@@ -101,9 +101,9 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
 		}
 		
 		// Build update
-		self.update = App.Update(app: self.app, remoteVersion: version, minimumOSVersion: minimumOSVersion, date: appcastItem.date, releaseNotes: releaseNotes, updateAction: { app in
+		self.update = App.Update(app: self.app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .sparkle, date: appcastItem.date, releaseNotes: releaseNotes, updateAction: .builtIn(block: { app in
 			UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
-		})
+		}))
 
 		DispatchQueue.main.async(execute: {
 			self.finish()
@@ -173,7 +173,7 @@ extension SparkleUpdateCheckerOperation: SPUUpdaterDelegate {
 	func feedURLString(for updater: SPUUpdater) -> String? {
 		// We can try to supply a valid feed as addition to Sparkle's own methods.
 		// For some cases (like DevMate) Sparkle fails to retrieve an appcast by itself.
-		return Sparke.feedURL(from: updater.hostBundle)?.absoluteString
+		return url?.absoluteString
 	}
 	
 }

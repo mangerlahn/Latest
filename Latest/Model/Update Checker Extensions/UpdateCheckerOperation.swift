@@ -15,12 +15,12 @@ protocol UpdateCheckerOperation: StatefulOperation {
 	typealias UpdateCheckerCompletionBlock = ((Result<App.Update, Error>) -> Void)
 	
 	/// Initializes the operation. May return nil if the app at the given URL can't be checked using the given update checker operation.
-	init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock)
+	init(with bundle: App.Bundle, repository: UpdateRepository?, completionBlock: @escaping UpdateCheckerCompletionBlock)
 
 	/// Returns whether the operation can perform an update check for the app at the given url.
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool
 	
 	/// The type of source this operation can check.
-	static var sourceType: App.Bundle.Source { get }
+	static var sourceType: App.Source { get }
 	
 }

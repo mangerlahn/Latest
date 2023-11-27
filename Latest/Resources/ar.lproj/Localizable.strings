@@ -22,7 +22,7 @@
 "DownloadingUpdateStatus" = "جاري التحميل%@ من %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "خطأ أثناء تحديث البرنامج";
+"ErrorButtonAccessibilityTitle" = "خطأ أثناء تحديث التطبيق";
 
 /* Update progress state of extracting the downloaded update */
 "ExtractingUpdateStatus" = "استخراج التحديث";
@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "لم يتم تحديد أي برنامج.";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج.";
+"ReleaseNotesUnavailableError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "أعد المحاولة";
@@ -76,7 +76,7 @@
 "UpdateAction" = "تحديث";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "لم يتم العثور على تحديث لهذا البرنامج.";
+"UpdateInfoUnavailableError" = "لم يتم العثور على تحديث لهذا البرنامج.";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "انتظار";
@@ -88,4 +88,22 @@
 "LocalVersionFormat" = "الإصدار الخاص بك: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInError" = "Not Signed In";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Date";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "قم بتسجيل الدخول في Mac App Store لتحديث هذا التطبيق.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

@@ -104,9 +104,7 @@ class StatefulOperation: Operation {
      finished its execution.
      */
     func execute() {
-        print("\(type(of: self)) must override `execute()`.")
-        
-        self.finish()
+        fatalError("\(type(of: self)) must override `execute()`.")
     }
     
     func finish() {

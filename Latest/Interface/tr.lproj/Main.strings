@@ -46,3 +46,45 @@
 
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
 "D2N-5U-W7Z.title" = "Mevcut güncelleme yok";
+
+/* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
+"Ake-Tt-cX3.title" = "Menü";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Tercihler";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Kapat";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Yazarken Yazımı Denetle";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Yardım";
+
+/* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Latest Yardım";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
+"FM4-aR-lhK.ibShadowedToolTip" = "Tekrar yükle";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
+"G1D-lo-gfr.title" = "Metin Değiştirme";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
+"GMn-QE-qPC.title" = "Yapıştır";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "Büyük Harfle";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "Görüntüle";
+
+/* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
+"7c2-6r-Saw.title" = "Latest web sayfasını ziyaret et";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Ana Menü";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "Sürüm notları yüklemesi başarısız!";

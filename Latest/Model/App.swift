@@ -90,13 +90,19 @@ extension App {
 		return self.bundle.fileURL
 	}
 
-	var source: Bundle.Source {
-		return self.bundle.source
+	/// The overall source the update is being fetched from.
+	var source: Source {
+		return update?.source ?? bundle.source
 	}
 	
 	/// Whether the app can be updated within Latest.
 	var supported: Bool {
-		return self.bundle.source != .unsupported
+		return self.source != .unsupported
+	}
+	
+	/// The date of the app when it was last updated.
+	var updateDate: Date {
+		return self.update?.date ?? self.bundle.modificationDate
 	}
 
 	
@@ -127,6 +133,11 @@ extension App {
 		return self.update?.isUpdating ?? false
 	}
 	
+	/// Whether the update is performed using a built in updater.
+	var usesBuiltInUpdater: Bool {
+		return self.update?.usesBuiltInUpdater ?? false
+	}
+	
 	/// Updates the app. This is a sub-classing hook. The default implementation opens the app.
 	final func performUpdate() {
 		self.update?.perform()
@@ -140,9 +151,9 @@ extension App {
 	
 	// MARK: - Actions
 	
-	/// Opens the app and a given index
+	/// Opens the app
 	func open() {
-		NSWorkspace.shared.open(self.fileURL)
+		bundle.open()
 	}
 	
 	/// Reveals the app at a given index in Finder

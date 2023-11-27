@@ -104,8 +104,9 @@ class UpdateCheckCoordinator {
 	
 	/// Performs the update check on the given bundles.
 	private func runUpdateCheck(on bundles: [App.Bundle]) {
+		let repository = UpdateRepository.newRepository()
 		let operations = bundles.compactMap { bundle in
-			return Self.operation(forChecking: bundle) { result in
+			return Self.operation(forChecking: bundle, repository: repository) { result in
 				self.didCheck(bundle, result)
 			}
 		}
@@ -154,18 +155,18 @@ extension UpdateCheckCoordinator {
 		return [
 			MacAppStoreUpdateCheckerOperation.self,
 			SparkleUpdateCheckerOperation.self,
-			UnsupportedUpdateCheckerOperation.self
+			HomebrewCheckerOperation.self
 		]
 	}
 	
 	/// Returns the update source for the app at the given url.
-	static func source(forAppAt url: URL) -> App.Bundle.Source? {
+	static func source(forAppAt url: URL) -> App.Source? {
 		return self.availableOperations.first { $0.canPerformUpdateCheck(forAppAt: url) }?.sourceType
 	}
 	
 	/// Returns the update check operation for the given app bundle.
-	static func operation(forChecking bundle: App.Bundle, completion: @escaping UpdateCheckerOperation.UpdateCheckerCompletionBlock) -> UpdateCheckerOperation? {
-		return self.availableOperations.first { $0.sourceType == bundle.source }?.init(with: bundle, completionBlock: completion)
+	static func operation(forChecking bundle: App.Bundle, repository: UpdateRepository?, completion: @escaping UpdateCheckerOperation.UpdateCheckerCompletionBlock) -> UpdateCheckerOperation? {
+		return self.availableOperations.first { $0.sourceType == bundle.source }?.init(with: bundle, repository: repository, completionBlock: completion)
 	}
 	
 }

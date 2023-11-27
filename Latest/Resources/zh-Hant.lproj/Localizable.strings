@@ -1,13 +1,13 @@
 
 
 /* Describes how many apps are in a section, number of apps is inserted in placeholder. */
-"SectionTitle" = "%1$@ <u>(%2$@)</u>";
+"SectionTitle" = "%1$@<u>（%2$@）</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "更新時出錯 %@.";
+"UpdateErrorAlertTitle" = "更新 %@ 時出錯。";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "可用的";
+"AvailableSection" = "可用";
 
 /* Table Section Header for available updates */
 "AvailableUpdatesSection" = "可用更新";
@@ -19,10 +19,10 @@
 "CancellingUpdateStatus" = "正在取消";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "正在下載 %@ of %@";
+"DownloadingUpdateStatus" = "正在下載 %@（共 %@）";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "更新應用程序時出錯";
+"ErrorButtonAccessibilityTitle" = "更新應用程式時出錯";
 
 /* Update progress state of extracting the downloaded update */
 "ExtractingUpdateStatus" = "正在解壓更新";
@@ -31,7 +31,7 @@
 "IgnoredSection" = "忽略";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "已忽略的應用程序";
+"IgnoredAppsSection" = "忽略的應用程式";
 
 /* Update progress state of initializing an update */
 "InitializingUpdateStatus" = "正在初始化";
@@ -40,7 +40,7 @@
 "InstalledSection" = "已安裝";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "已安裝的應用程序";
+"InstalledAppsSection" = "已安裝的應用程式";
 
 /* Update progress state of installing an update */
 "InstallingUpdateStatus" = "正在安裝";
@@ -49,13 +49,13 @@
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "新版本: %@";
+"RemoteVersionFormat" = "新版本：%@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "未選擇應用程序。";
+"NoAppSelectedTitle" = "未選擇應用程式。";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "找不到此應用的發行說明。";
+"ReleaseNotesUnavailableError" = "找不到此應用程式的發行說明。";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "重試";
@@ -67,16 +67,16 @@
 "OpenAction" = "打開";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "從清單中選擇一個應用程序以閱讀其發行說明。";
+"NoAppSelectedDescription" = "從清單中選擇應用程式以閱讀其發行說明。";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "源: %@";
+"AppSource" = "來源：%@";
 
 /* Update String */
 "UpdateAction" = "更新";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "找不到此應用的更新。";
+"UpdateInfoUnavailableError" = "未找到此應用程式的更新。";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "請稍候";
@@ -85,7 +85,25 @@
 "WebSource" = "網站";
 
 /* Current Version String */
-"LocalVersionFormat" = "您的版本： %@";
+"LocalVersionFormat" = "您的版本：%@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";
+"AppStoreNotSignedInError" = "Not Signed In";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Date";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "請登入 Mac App Store 以更新此應用程式。";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

@@ -39,7 +39,10 @@ class AppLibrary {
 	func startQuery() {
 		// Gather apps if no update is already ongoing
 		if !self.appSearchQuery.isStarted || self.appSearchQuery.isStopped {
-			self.appSearchQuery.start()
+			// Gather apps manually if starting the query fails
+			if !self.appSearchQuery.start() {
+				self.gatherAppBundles()
+			}
 		}
 	}
 
@@ -48,32 +51,34 @@ class AppLibrary {
 		self.appSearchQuery.disableUpdates()
 		
 		let appSearchQueryResults = self.appSearchQuery.results
-		var isSpotlightEnabled = true
-		if appSearchQueryResults.isEmpty {
-			isSpotlightEnabled = false
-		} else if appSearchQueryResults.count == 1 {
-			if (appSearchQueryResults[0] as? NSMetadataItem)?.value(forAttribute: NSMetadataItemPathKey) as? String == "/Applications/Safari.app" {
-				isSpotlightEnabled = false // In macOS 13.0.1, Spotlight query returns a single installed app Safari even when Spotlight indexing on applications itself is disabled!
-			}
-		}
-		if !isSpotlightEnabled {
+		
+		// Query manually if the query did not return any results
+		let manualQueryRequired = appSearchQueryResults.isEmpty
+		
+			// In macOS 13.0.1, Spotlight query returns a single installed app Safari even when Spotlight indexing on applications itself is disabled!
+			|| (appSearchQueryResults.count == 1 && (appSearchQueryResults[0] as? NSMetadataItem)?.value(forAttribute: NSMetadataItemPathKey) as? String == "/Applications/Safari.app")
+		
+		if manualQueryRequired {
 			// Look for applications in the /Applications folder manually
 			let fileManager = FileManager.default
-			var bundles = [App.Bundle]()
-			for applicationPath in Self.applicationPaths {
-				if let appPaths = try? fileManager.contentsOfDirectory(atPath: applicationPath) {
-					for appPath in appPaths {
-						let url = URL(fileURLWithPath: applicationPath).appendingPathComponent(appPath)
-						if Self.excludedSubfolders.contains(where: { url.path.contains($0) }) {
-							continue
-						}
-						if let bundle = self.bundle(forAppAt: url) {
-							bundles.append(bundle)
-						}
+			self.bundles = Self.applicationPaths.flatMap { applicationPath -> [App.Bundle] in
+				guard let appPaths = try? fileManager.contentsOfDirectory(atPath: applicationPath) else {
+					return []
+				}
+				
+				return appPaths.compactMap { appPath in
+					let url = URL(fileURLWithPath: applicationPath).appendingPathComponent(appPath)
+					guard !Self.excludedSubfolders.contains(where: { url.path.contains($0) }) else {
+						return nil
 					}
+					
+					if let bundle = self.bundle(forAppAt: url) {
+						return bundle
+					}
+					
+					return nil
 				}
 			}
-			self.bundles = bundles
 		} else {
 			// Run metadata query to gather all apps
 			self.bundles = appSearchQueryResults.compactMap { item -> App.Bundle? in
@@ -139,14 +144,7 @@ class AppLibrary {
 			return nil
 		}
 		
-		// Find update source
-		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
-			return nil
-		}
-		
-		// Create bundle
-		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
-		return App.Bundle(version: version, name: appName, bundleIdentifier: identifier, fileURL: url, source: source)
+		return bundle(forAppAt: url, name: appName, versionNumber: versionNumber, buildNumber: buildNumber, identifier: identifier)
 	}
 	
 	/// Returns a bundle representation for the app at the given url, without Spotlight Metadata.
@@ -158,6 +156,11 @@ class AppLibrary {
 			  let appName = appBundle.bundleName else {
 			return nil
 		}
+
+		return bundle(forAppAt: url, name: appName, versionNumber: versionNumber, buildNumber: buildNumber, identifier: identifier)
+	}
+	
+	private func bundle(forAppAt url: URL, name: String, versionNumber: String, buildNumber: String, identifier: String) -> App.Bundle? {
 		// Find update source
 		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
 			return nil
@@ -165,7 +168,7 @@ class AppLibrary {
 		
 		// Create bundle
 		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
-		return App.Bundle(version: version, name: appName, bundleIdentifier: identifier, fileURL: url, source: source)
+		return App.Bundle(version: version, name: name, bundleIdentifier: identifier, fileURL: url, source: source)
 	}
 	
 }

@@ -1,4 +1,28 @@
 # Unreleased Changes
+
+# 0.10
+#### New and Improved:
+- Added update checking via Homebrew Cask, which should allow for many more updates to be found
+- The app list is now sorted by recently updated apps. Sort by app name can be restored via the main menu: View > Sort By > Name
+- Improved messages when no release notes are available
+- Interface improvements for macOS Sonoma
+
+- Language support for:
+	- Arabic (Thanks Hussain & Nas!)
+	- Traditional Chinese (Thanks Pan!)
+	- Filipino (Thanks Gean Paulo!)
+	- Polish (Thanks Konrad!)
+	- Portugiese (Brasilian) (Thanks Felipe!)
+- Tweaks for many languages, including Czech, Italian and Swedish (Thanks Jiří, Francesco, Peeter and all the others!)
+
+#### Bug Fixes:
+- Fixed a crash when updating apps via context menu
+- Fixed an UI crash when updating apps
+- Fixed cases in which the update button would be hidden
+- Attempt to fix app list being empty
+- The Update All button now only updates apps within Latest (no other apps will be opened)
+- Fixed loading of release notes for certain apps
+
 # 0.9
 #### New and Improved:
 - Apps from the Mac App Store can be updated from within Latest

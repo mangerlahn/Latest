@@ -15,7 +15,7 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 	
 	// MARK: - Update Check
 	
-	static var sourceType: App.Bundle.Source {
+	static var sourceType: App.Source {
 		return .appStore
 	}
 	
@@ -28,7 +28,7 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 		return true
 	}
 	
-	required init(with app: App.Bundle, completionBlock: @escaping UpdateCheckerCompletionBlock) {
+	required init(with app: App.Bundle, repository: UpdateRepository?, completionBlock: @escaping UpdateCheckerCompletionBlock) {
 		self.app = app
 		
 		super.init()
@@ -39,7 +39,7 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 			if let update = self.update {
 				completionBlock(.success(update))
 			} else {
-				completionBlock(.failure(self.error ?? LatestError.updateInfoNotFound))
+				completionBlock(.failure(self.error ?? LatestError.updateInfoUnavailable))
 			}
 		}
 	}
@@ -97,17 +97,20 @@ extension MacAppStoreUpdateCheckerOperation {
 	/// Returns a proper update object from the given app store entry.
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
-		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, date: entry.date, releaseNotes: entry.releaseNotes) { app in
+		let action: App.Update.Action = if Self.isIOSAppBundle(at: app.fileURL) {
 			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
-			if Self.isIOSAppBundle(at: app.fileURL) {
+			.external(block: { app in
 				NSWorkspace.shared.open(entry.pageURL)
-			}
-			
+			})
+		} else {
 			// Perform the update in-app
-			else {
+			.builtIn(block: { app in
 				UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
-			}
+			})
+
 		}
+		
+		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, source: .appStore, date: entry.date, releaseNotes: entry.releaseNotes, updateAction: action)
 	}
 	
 	/// Fetches update info and returns the result in the given completion handler.
@@ -160,7 +163,7 @@ extension MacAppStoreUpdateCheckerOperation {
 			
 			do {
 				guard let entry = try JSONDecoder().decode(EntryList.self, from: data).results.first else {
-					completion(.failure(LatestError.updateInfoNotFound))
+					completion(.failure(LatestError.updateInfoUnavailable))
 					return
 				}
 				

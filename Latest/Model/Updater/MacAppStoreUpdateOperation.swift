@@ -60,7 +60,7 @@ class MacAppStoreUpdateOperation: UpdateOperation {
 				self.purchase = purchase
 				self.observerIdentifier = CKDownloadQueue.shared().add(self)
 			} else {
-				self.finish(with: LatestError.updateInfoNotFound)
+				self.finish(with: LatestError.updateInfoUnavailable)
 			}
 		}
 	}

@@ -328,3 +328,9 @@
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Prozor";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Razvrstaj po";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Razvrstaj po";

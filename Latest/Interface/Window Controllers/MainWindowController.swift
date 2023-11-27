@@ -124,7 +124,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         
         switch action {
         case #selector(updateAll(_:)):
-			return UpdateCheckCoordinator.shared.appProvider.updatableApps.count != 0
+			return hasUpdatesAvailable
         case #selector(reload(_:)):
             return self.reloadButton.isEnabled
 		case #selector(performFindPanelAction(_:)):
@@ -137,6 +137,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.items.forEach { (menuItem) in
+			// Sort By menu constructed dynamically
+			if menuItem.identifier == NSUserInterfaceItemIdentifier(rawValue: "sortByMenu") {
+				menuItem.submenu?.items = sortByMenuItems
+			}
+
             guard let action = menuItem.action else { return }
             
             switch action {
@@ -149,8 +154,18 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             default:
                 ()
             }
-        }
+		}
     }
+	
+	private var sortByMenuItems: [NSMenuItem] {
+		AppListSettings.SortOptions.allCases.map { order in
+			let item = NSMenuItem(title: order.displayName, action: #selector(changeSortOrder), keyEquivalent: "")
+			item.representedObject = order
+			item.state = AppListSettings.shared.sortOrder == order ? .on : .off
+			
+			return item
+		}
+	}
     
     
     // MARK: - Update Checker Progress Delegate
@@ -183,7 +198,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		self.reloadButton.isEnabled = true
 		self.reloadTouchBarButton.isEnabled = true
 		self.progressIndicator.isHidden = true
-        self.updateAllButton.isEnabled = UpdateCheckCoordinator.shared.appProvider.updatableApps.count != 0
+        self.updateAllButton.isEnabled = hasUpdatesAvailable
 	}
     
 	
@@ -199,6 +214,18 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	
 	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
 		AppListSettings.shared.showUnsupportedUpdates = !AppListSettings.shared.showUnsupportedUpdates
+	}
+	
+	@IBAction func changeSortOrder(_ sender: NSMenuItem?) {
+		AppListSettings.shared.sortOrder = sender?.representedObject as! AppListSettings.SortOptions
+	}
+	
+	
+	// MARK: - Accessors
+	
+	/// Whether there are any updatable apps.
+	private var hasUpdatesAvailable: Bool {
+		!UpdateCheckCoordinator.shared.appProvider.updatableApps.isEmpty
 	}
 
     

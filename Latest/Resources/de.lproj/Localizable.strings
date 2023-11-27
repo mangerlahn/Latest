@@ -1,6 +1,9 @@
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Quelle: %@";
 
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInError" = "Melde dich im Mac App Store an, um diese App zu aktualisieren.";
+
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
@@ -50,10 +53,10 @@
 "NoAppSelectedDescription" = "Wähle in der Seitenleiste eine App, um deren Release Notes zu lesen.";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Keine App ausgewählt.";
+"NoAppSelectedTitle" = "Keine App ausgewählt";
 
 /* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "Zu dieser App wurden keine Release Notes gefunden.";
+"ReleaseNotesUnavailableError" = "Keine Versionshinweise";
 
 /* Action to open the app. */
 "OpenAction" = "Öffnen";
@@ -77,7 +80,7 @@
 "UpdateErrorAlertTitle" = "Während der Aktualisierung von %@ ist ein Fehler aufgetreten.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "Für diese App konnte kein Update gefunden werden.";
+"UpdateInfoUnavailableError" = "Keine Updateinformationen verfügbar";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Warten";
@@ -86,4 +89,22 @@
 "WebSource" = "Web";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Melde dich im Mac App Store an, um diese App zu aktualisieren.";
+"AppStoreNotSignedInError" = "Nicht angemeldet";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Datum";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Melde dich im Mac App Store an, um diese App zu aktualisieren.";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Für diese App konnten keine Updateinformationen abgerufen werden.";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Für diese App sind keine Versionshinweise verfügbar.";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

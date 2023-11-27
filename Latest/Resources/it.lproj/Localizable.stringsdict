@@ -13,11 +13,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>Nessun aggiornamento disponibile</string>
+			<string>Tutto aggiornato!</string>
 			<key>one</key>
-			<string>%d aggiornamenti disponibili</string>
+			<string>%d aggiornamento disponibile</string>
 			<key>other</key>
-			<string>Un aggiornamento disponibile</string>
+			<string>%d aggiornamenti disponibili</string>
 		</dict>
 	</dict>
 </dict>

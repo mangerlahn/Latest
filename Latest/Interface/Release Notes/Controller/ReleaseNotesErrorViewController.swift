@@ -12,14 +12,19 @@ import Cocoa
 class ReleaseNotesErrorViewController: NSViewController {
 
     /// The textField holding the error title
-    @IBOutlet weak var titleTextField: NSTextField!
+    @IBOutlet private weak var titleTextField: NSTextField!
     
     /// The textField holding the error description
-    @IBOutlet weak var descriptionTextField: NSTextField!
+    @IBOutlet private weak var descriptionTextField: NSTextField!
  
     /// Updates the description of the error
     func show(_ error: Error) {
-        self.descriptionTextField.stringValue = error.localizedDescription
+		if let localizedError = error as? LocalizedError, let failureReason = localizedError.failureReason {
+			titleTextField.stringValue = localizedError.localizedDescription
+			descriptionTextField.stringValue = failureReason
+		} else {
+			descriptionTextField.stringValue = error.localizedDescription
+		}
     }
     
 }

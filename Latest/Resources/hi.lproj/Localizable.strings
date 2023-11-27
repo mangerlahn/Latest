@@ -57,9 +57,6 @@
 /* Title of release notes empty state */
 "NoAppSelectedTitle" = "किसी एप का चुनाव नहीं किया गया है";
 
-/* Error message that no release notes were found */
-"NoReleaseNotesFoundError" = "इस एप के कोई रिलीज नोट नहीं पाए गए";
-
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "फिर से कोशिश करें";
 
@@ -75,9 +72,6 @@
 /* Update String */
 "UpdateAction" = "अपडेट करें";
 
-/* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoNotFoundError" = "इस एप के लिए कोई अपडेट नहीं पाया गया";
-
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "इंतजार हो रहा है";
 
@@ -88,4 +82,28 @@
 "LocalVersionFormat" = "आपका वर्ज़न : %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "\"Sign in to the Mac App Store to update this app.\"";
+"AppStoreNotSignedInError" = "Not Signed In";
+
+/* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
+"NameSortOption" = "Name";
+
+/* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
+"DateSortOption" = "Date";
+
+/* Short description of error stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableError" = "Update Information Unavailable";
+
+/* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app।";
+
+/* Error message stating that update info could not be retrieved for a given app. */
+"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app।";
+
+/* Short description of error that no release notes were found. */
+"ReleaseNotesUnavailableError" = "No Release Notes";
+
+/* Error message that no release notes were found. */
+"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app।";
+
+/* The source name for apps checked via the Homebrew package manager. */
+"HomebrewSource" = "Homebrew";

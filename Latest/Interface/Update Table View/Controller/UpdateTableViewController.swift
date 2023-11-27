@@ -19,9 +19,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	var snapshot: AppListSnapshot = AppListSnapshot(withApps: [], filterQuery: nil) {
 		didSet {
 			self.updatePlaceholderVisibility()
-			
-			// Update selected app
-			self.selectApp(at: self.selectedAppIndex)
 		}
 	}
 	
@@ -170,7 +167,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		// Ensure the index is valid
 		guard row >= 0 && row < self.apps.count else { return -1 }
-		return self.snapshot.isSectionHeader(at: row) ? 27 : 60
+		return self.snapshot.isSectionHeader(at: row) ? 27 : 65
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
@@ -277,6 +274,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		self.newSnapshot = nil
 		self.snapshot = snapshot
 		self.tableView.reloadData()
+		
+		// Update selected app
+		self.ensureSelection()
 	}
 	
 	@objc func updateTableViewAnimated() {
@@ -290,6 +290,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		self.snapshot = snapshot
 		self.newSnapshot = nil
 		self.updateTableView(with: oldSnapshot, with: self.snapshot)
+		
+		// Update selected app
+		self.ensureSelection()
 		
 		self.tableViewUpdateInProgress = false
 		self.updateTableViewAnimated()
@@ -310,6 +313,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
      */
     func selectApp(at index: Int?) {
         guard let index = index, index >= 0, let app = self.snapshot.app(at: index) else {
+			self.selectedApp = nil
             self.tableView.deselectAll(nil)
 			self.scrubber?.animator().selectedIndex = -1
 			
@@ -339,7 +343,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     // MARK: - Menu Item Stuff
 	
 	private func rowIndex(forMenuItem menuItem: NSMenuItem?) -> Int {
-		return menuItem?.representedObject as? Int ?? self.tableView.selectedRow
+		guard let app = menuItem?.representedObject as? App, let index = self.snapshot.index(of: app) else { return self.tableView.selectedRow }
+		return index
 	}
     
     /// Open a single app
@@ -399,7 +404,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         let row = self.tableView.clickedRow
         
         guard row != -1, !self.snapshot.isSectionHeader(at: row) else { return }
-        menu.items.forEach({ $0.representedObject = row })
+		menu.items.forEach({ $0.representedObject = self.snapshot.app(at: row) })
     }
     
 	
@@ -411,10 +416,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	// MARK: - Actions
 	
-    /// Updates the app and a given index
+    /// Updates the app at the given index.
     private func updateApp(atIndex index: Int) {
+		guard let app = self.app(at: index) else { return }
+		
+		// Delay update to improve animations
         DispatchQueue.main.async {
-			self.app(at: index)?.performUpdate()
+			app.performUpdate()
         }
     }
 	
@@ -476,6 +484,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			self.updatesLabel.stringValue = statusText
 		}
     }
+	
+	private func ensureSelection() {
+		self.selectApp(at: self.selectedAppIndex)
+	}
 	
 	/// Animates changes made to the apps list
 	private func updateTableView(with oldSnapshot: AppListSnapshot, with newSnapshot: AppListSnapshot) {

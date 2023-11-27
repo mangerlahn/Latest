@@ -328,3 +328,9 @@
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
 "uw5-pW-jNu.title" = "Smarta streck";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Sortera efter";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Sortera efter";
