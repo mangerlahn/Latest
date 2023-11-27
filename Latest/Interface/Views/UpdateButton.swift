@@ -175,12 +175,13 @@ class UpdateButton: NSButton {
 	/// Updates the visibility of single views with the given state.
 	private var interfaceState: InterfaceState = .none
 	private func updateInterfaceVisibility(with state: InterfaceState) {
+		self.isHidden = (state == .none)
+
 		// Nothing to update
 		guard self.interfaceState != state || self.contentCell.contentType != state.contentType else {
 			return
 		}
 		
-		self.isHidden = (state == .none)
 		self.interfaceState = state
 		self.contentCell.contentType = state.contentType
 		

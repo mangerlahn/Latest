@@ -18,6 +18,7 @@
 #### Bug Fixes:
 - Fixed a crash when updating apps via context menu
 - Fixed an UI crash when updating apps
+- Fixed cases in which the update button would be hidden
 - Attempt to fix app list being empty
 - The Update All button now only updates apps within Latest (no other apps will be opened)
 - Fixed loading of release notes for certain apps
