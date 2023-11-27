@@ -19,9 +19,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	var snapshot: AppListSnapshot = AppListSnapshot(withApps: [], filterQuery: nil) {
 		didSet {
 			self.updatePlaceholderVisibility()
-			
-			// Update selected app
-			self.selectApp(at: self.selectedAppIndex)
 		}
 	}
 	
@@ -277,6 +274,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		self.newSnapshot = nil
 		self.snapshot = snapshot
 		self.tableView.reloadData()
+		
+		// Update selected app
+		self.ensureSelection()
 	}
 	
 	@objc func updateTableViewAnimated() {
@@ -290,6 +290,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		self.snapshot = snapshot
 		self.newSnapshot = nil
 		self.updateTableView(with: oldSnapshot, with: self.snapshot)
+		
+		// Update selected app
+		self.ensureSelection()
 		
 		self.tableViewUpdateInProgress = false
 		self.updateTableViewAnimated()
@@ -481,6 +484,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 			self.updatesLabel.stringValue = statusText
 		}
     }
+	
+	private func ensureSelection() {
+		self.selectApp(at: self.selectedAppIndex)
+	}
 	
 	/// Animates changes made to the apps list
 	private func updateTableView(with oldSnapshot: AppListSnapshot, with newSnapshot: AppListSnapshot) {
