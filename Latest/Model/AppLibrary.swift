@@ -123,6 +123,12 @@ class AppLibrary {
 	/// Excluded subfolders that won't be checked.
 	private static let excludedSubfolders = Set(["Setapp/", ".app/"])
 	
+	/// Set of bundles that should not be included in Latest.
+	private static let excludedBundleIdentifiers = Set([
+		// Safari Web Apps
+		"com.apple.Safari.WebApp"
+	])
+	
 	/// The metadata query that gathers all apps.
 	private let appSearchQuery: NSMetadataQuery = {
 		let query = NSMetadataQuery()
@@ -163,6 +169,11 @@ class AppLibrary {
 	private func bundle(forAppAt url: URL, name: String, versionNumber: String, buildNumber: String, identifier: String) -> App.Bundle? {
 		// Find update source
 		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
+			return nil
+		}
+		
+		// Skip bundles which are explicitly excluded
+		guard !Self.excludedBundleIdentifiers.contains(where: { identifier.contains($0) }) else {
 			return nil
 		}
 		
