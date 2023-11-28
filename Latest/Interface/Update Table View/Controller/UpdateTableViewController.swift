@@ -69,7 +69,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                         
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
-		self.updateTitleAndBatch()
 		
 		AppListSettings.shared.add(self, handler: self.updateSnapshot)
         
@@ -85,6 +84,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     override func viewWillAppear() {
         super.viewWillAppear()
+		
+		// Setup title
+		self.updateTitleAndBatch()
 		
 		// Setup search field
         NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
