@@ -65,7 +65,12 @@ extension App {
 		
 		/// Whether the update is performed using a built in updater.
 		var usesBuiltInUpdater: Bool {
-			if case .builtIn(_) = updateAction { true } else { false }
+			externalUpdaterName == nil
+		}
+		
+		/// The name of the external updater used to update this app.
+		var externalUpdaterName: String? {
+			if case .external(let label, _) = updateAction { label } else { nil }
 		}
 
 		
@@ -136,14 +141,14 @@ extension App.Update {
 		case builtIn(block: UpdateAction)
 		
 		/// No updater is available to update this app. An external program will be launched to perform the update.
-		case external(block: UpdateAction)
+		case external(label: String, block: UpdateAction)
 		
 		/// Performs the update for the given bundle.
 		func perform(with bundle: App.Bundle) {
 			switch self {
 			case .builtIn(let block):
 				block(bundle)
-			case .external(let block):
+			case .external(_, let block):
 				block(bundle)
 			}
 		}

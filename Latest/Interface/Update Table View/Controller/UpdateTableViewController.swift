@@ -193,7 +193,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 				return []
 			}
 			
-            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("UpdateAction", comment: "Action to update a given app."), handler: { (action, row) in
+            let action = NSTableViewRowAction(style: .regular, title: updateTitle(for: app), handler: { (action, row) in
                 self.updateApp(atIndex: row)
 				tableView.rowActionsVisible = false
             })
@@ -384,6 +384,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		
 		switch action {
 		case #selector(updateApp(_:)):
+			menuItem.title = updateTitle(for: app)
 			return app.updateAvailable && !app.isUpdating
 		case #selector(openApp(_:)), #selector(showAppInFinder(_:)):
             return true
@@ -541,6 +542,15 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		}
 		
 		self.tableView.endUpdates()
+	}
+	
+	/// Returns an appropriate title for update actions for the given app.
+	private func updateTitle(for app: App) -> String {
+		if let externalUpdater = app.externalUpdaterName {
+			String(format: NSLocalizedString("ExternalUpdateAction", comment: "Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name)"), externalUpdater)
+		} else {
+			NSLocalizedString("UpdateAction", comment: "Action to update a given app.")
+		}
 	}
     
 }

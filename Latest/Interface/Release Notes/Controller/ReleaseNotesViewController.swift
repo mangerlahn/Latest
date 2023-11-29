@@ -98,6 +98,7 @@ class ReleaseNotesViewController: NSViewController {
     @IBOutlet weak var appInfoContentView: NSStackView!
     
     @IBOutlet weak var updateButton: UpdateButton!
+	@IBOutlet weak var externalUpdateLabel: NSTextField!
     
     @IBOutlet weak var appNameTextField: NSTextField!
     @IBOutlet weak var appDateTextField: NSTextField!
@@ -177,39 +178,55 @@ class ReleaseNotesViewController: NSViewController {
 	
     
     // MARK: - User Interface Stuff
+	
+	/// Date formatter used to display the apps update date.
+	private lazy var appDateFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateStyle = .long
+		dateFormatter.timeStyle = .none
+		
+		return dateFormatter
+	}()
     
     private func display(_ app: App) {
+		// Update header
         self.appInfoBackgroundView.isHidden = false
         self.app = app
         self.appNameTextField.stringValue = app.name
         
+		// Version Information
         if let versionInformation = app.localizedVersionInformation {
 			self.appCurrentVersionTextField.stringValue = versionInformation.current
 			self.appNewVersionTextField.stringValue = versionInformation.new ?? ""
 		}
         self.appNewVersionTextField.isHidden = !app.updateAvailable
 		
+		// Image
 		self.sourceIconImageView.image = app.source.sourceIcon
 		self.sourceIconImageView.toolTip = nil
 		if let sourceName = app.source.sourceName {
 			let format = NSLocalizedString("AppSource", comment: "The description of the app's source. e.g. 'Source: Mac App Store'")
 			self.sourceIconImageView.toolTip = String(format: format, sourceName)
 		}
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
-        
+		IconCache.shared.icon(for: app) { (image) in
+			self.appIconImageView.image = image
+		}
+		
+		// Date
 		if let date = app.latestUpdateDate {
-            self.appDateTextField.stringValue = dateFormatter.string(from: date)
+            self.appDateTextField.stringValue = appDateFormatter.string(from: date)
             self.appDateTextField.isHidden = false
         } else {
             self.appDateTextField.isHidden = true
         }
+		
+		// Update Action
+		if app.updateAvailable, let name = app.externalUpdaterName {
+			externalUpdateLabel.stringValue = String(format: NSLocalizedString("ExternalUpdateActionWithAppName", comment: "An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: \"Update in XY\""), name)
+		} else {
+			externalUpdateLabel.stringValue = ""
+		}
         
-        IconCache.shared.icon(for: app) { (image) in
-            self.appIconImageView.image = image
-        }
         
         self.updateInsets()
     }

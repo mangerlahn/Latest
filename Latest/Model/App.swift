@@ -138,6 +138,13 @@ extension App {
 		return self.update?.usesBuiltInUpdater ?? false
 	}
 	
+	/// The name of the external updater used to update this app.
+	///
+	/// Returns `nil` if `usesBuiltInUpdater` is `true`.
+	var externalUpdaterName: String? {
+		return self.update?.externalUpdaterName
+	}
+	
 	/// Updates the app. This is a sub-classing hook. The default implementation opens the app.
 	final func performUpdate() {
 		self.update?.perform()
