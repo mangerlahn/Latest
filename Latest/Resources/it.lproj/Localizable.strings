@@ -55,7 +55,7 @@
 "RemoteVersionFormat" = "Nuova versione: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nessuna applicazione selezionata.";
+"NoAppSelectedTitle" = "Nessuna app selezionata";
 
 /* Error message that no release notes were found */
 "ReleaseNotesUnavailableError" = "Non sono state trovate note di rilascio per questa applicazione.";
@@ -88,7 +88,7 @@
 "LocalVersionFormat" = "La tua versione: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Accesso richiesto";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Nome";
@@ -100,10 +100,10 @@
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Accedi all'App Store per aggiornare questa app.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Impossibile verificare la presenza di aggiornamenti per questa app.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Note di rilascio non disponibili per questa app.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
