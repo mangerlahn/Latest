@@ -58,10 +58,10 @@
 "RemoteVersionFormat" = "Nieuwe versie: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Geen app geselecteerd.";
+"NoAppSelectedTitle" = "Geen app geselecteerd";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "Geen versienotities gevonden voor deze app.";
+"ReleaseNotesUnavailableError" = "Geen versie-notities gevonden voor deze app";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Opnieuw";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Werk bij";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Geen update gevonden voor deze app.";
+"UpdateInfoUnavailableError" = "Geen update gevonden voor deze app";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Wachten";
@@ -88,22 +88,22 @@
 "LocalVersionFormat" = "Jouw versie: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Niet ingelogd";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Naam";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Datum";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Log in bij de Mac App Store om deze app bij te werken.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Update informatie kon niet worden opgehaald voor deze app.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Releaseopmerkingen zijn niet beschikbaar voor deze app.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
