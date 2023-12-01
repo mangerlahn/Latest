@@ -88,3 +88,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
 "Cm3-IX-Kw4.title" = "Sürüm notları yüklemesi başarısız!";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Sırala";
