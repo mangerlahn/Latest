@@ -113,4 +113,4 @@
 "ExternalUpdateActionWithAppName" = "in %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "In %@ aktualisieren";
