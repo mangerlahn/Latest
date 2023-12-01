@@ -4,13 +4,13 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "Um erro ocorreu atualizava %@.";
+"UpdateErrorAlertTitle" = "Aconteceu um erro durante a atualização %@.";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "Disponível";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Atualizações Disponíveis";
+"AvailableUpdatesSection" = "Atualizações disponíveis";
 
 /* Cancel button in an update dialogue */
 "CancelAction" = "Cancelar";
@@ -19,10 +19,10 @@
 "CancellingUpdateStatus" = "Cancelando";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Baixando %@ of %@";
+"DownloadingUpdateStatus" = "Baixando %@ de %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Erro ao atualizar o app";
+"ErrorButtonAccessibilityTitle" = "Erro ao atualizar aplicativo";
 
 /* Update progress state of extracting the downloaded update */
 "ExtractingUpdateStatus" = "Extraindo atualização";
@@ -31,7 +31,7 @@
 "IgnoredSection" = "Ignorado";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Apps ignorados";
+"IgnoredAppsSection" = "Aplicativos ignorados";
 
 /* Update progress state of initializing an update */
 "InitializingUpdateStatus" = "Inicializando";
@@ -40,7 +40,7 @@
 "InstalledSection" = "Instalado";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Apps instalados";
+"InstalledAppsSection" = "Aplicativos instalados";
 
 /* Update progress state of installing an update */
 "InstallingUpdateStatus" = "Instalando";
@@ -49,13 +49,13 @@
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "Nova Versão: %@";
+"RemoteVersionFormat" = "Nova versão: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nenhum app selecionado.";
+"NoAppSelectedTitle" = "Nenhum aplicativo selecionado";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "Não foram encontradas notas de lançamento para este app.";
+"ReleaseNotesUnavailableError" = "Não foram encontradas notas de lançamento para este app";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Tentar novamente";
@@ -76,10 +76,10 @@
 "UpdateAction" = "Atualizar";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Nenhuma atualização encontrada para este app.";
+"UpdateInfoUnavailableError" = "Nenhuma atualização encontrada";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "eSPERANDO";
+"WaitingUpdateStatus" = "Esperando";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
@@ -88,28 +88,28 @@
 "LocalVersionFormat" = "Sua versão: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Não conectado";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Nome";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Data";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Entre na Mac App Store para atualizar este app.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Não foi possível recuperar as informações de atualização deste app.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "As notas de versão não estão disponíveis para este aplicativo.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "em %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "Atualização em %@";
