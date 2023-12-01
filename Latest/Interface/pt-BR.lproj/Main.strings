@@ -1,18 +1,18 @@
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Sair";
+"4sb-4s-VLi.title" = "Sair do Latest";
 
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
 "00n-xr-jcQ.title" = "Atualizar";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
-"1Gu-Ep-ZWZ.title" = "Encontrar e Substituir…";
+"1Gu-Ep-ZWZ.title" = "Pesquisar e Substituir…";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Latest";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
-"4vf-ia-dzo.title" = "Procurar atualizações…";
+"4vf-ia-dzo.title" = "Procurar por Atualizações…";
 
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
@@ -75,7 +75,7 @@
 "F2S-fz-NVQ.title" = "Ajuda";
 
 /* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "Ajuda Latest";
+"FKE-Sm-Kum.title" = "Ajuda do Latest";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
 "FM4-aR-lhK.ibShadowedToolTip" = "Recarregar";
@@ -108,13 +108,13 @@
 "OLo-39-3Sm.paletteLabel" = "Progresso";
 
 /* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Esconder Latest";
+"Olw-nP-bQN.title" = "Esconder o Latest";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
 "uWn-a0-oM2.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
-"yPN-rG-tgD.title" = "Encontrar Anterior";
+"yPN-rG-tgD.title" = "Encontrar o Anterior";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "rK6-RZ-Ga6"; */
 "rK6-RZ-Ga6.title" = "<dnl>";
@@ -123,7 +123,7 @@
 "iLi-Yb-UfX.title" = "Carregando Notas de Lançamento";
 
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
-"Rh5-N3-X6H.title" = "Mostrar Apps Ignorados";
+"Rh5-N3-X6H.title" = "Mostrar Aplicativos Ignorados";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
 "Yj4-SM-ocg.title" = "Refazer";
@@ -144,13 +144,13 @@
 "c4C-I9-Gd0.title" = "Procurar por Atualizações…";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
-"cWB-Qy-jEV.title" = "Fala";
+"cWB-Qy-jEV.title" = "Falar";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "Arquivo";
 
 /* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
-"gU8-2v-afa.title" = "Encontrar Próximo";
+"gU8-2v-afa.title" = "Encontrar o Próximo";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
 "h9B-7u-6ru.title" = "Mostrar no Finder";
@@ -183,16 +183,16 @@
 "uGs-GF-i9Z.title" = "Parar de Falar";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
-"ucY-cy-GON.title" = "Dicionário";
+"ucY-cy-GON.title" = "Ortografia";
 
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
 "w14-Ia-4l9.title" = "Abrir";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
-"y5A-ib-gR6.title" = "Fala";
+"y5A-ib-gR6.title" = "Falar";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
-"7c2-6r-Saw.title" = "Visitar o website Latest";
+"7c2-6r-Saw.title" = "Visitar o website do Latest";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Menu principal";
@@ -216,7 +216,7 @@
 "TKo-Xa-BjT.title" = "Mostrar Substituições";
 
 /* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
-"XVu-eG-PUK.title" = "Exibir Apps Instalados";
+"XVu-eG-PUK.title" = "Exibir Aplicativos Instalados";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
 "YRo-LJ-qSP.title" = "Transformações";
@@ -249,7 +249,7 @@
 "UVA-tb-pA9.title" = "Substituições";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
-"wtc-0j-cAV.title" = "Dicionário e Gramática";
+"wtc-0j-cAV.title" = "Ortografia e Gramática";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
 "x6Q-gr-lO2.title" = "Colar e Corresponder Estilo";
@@ -310,3 +310,27 @@
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
 "tw7-g1-6Wz.title" = "Ligações Inteligentes";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Latest";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Trazer Tudo para a Frente";
+
+/* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
+"spt-ns-lYo.title" = "Etiqueta Multilinhas";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
+"iis-Dj-0TB.title" = "Verificar a gramática com ortografia";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Ordenar Por";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
+"jEo-hx-9Qp.title" = "Aspas Inteligentes";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
+"uw5-pW-jNu.title" = "Traços Inteligentes";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Ordenar por";
