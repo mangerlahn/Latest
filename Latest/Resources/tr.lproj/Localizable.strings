@@ -7,19 +7,19 @@
 "UpdateErrorAlertTitle" = "Güncelleme sırasında bir hata oluştu %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Hazır";
+"AvailableSection" = "Mevcut";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Kullanılabilir Güncellemeler";
+"AvailableUpdatesSection" = "Mevcut Güncellemeler";
 
 /* Cancel button in an update dialogue */
 "CancelAction" = "İptal";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "İptal";
+"CancellingUpdateStatus" = "İptal Ediliyor";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "%@ / %@ indiriliyor";
+"DownloadingUpdateStatus" = "İndiriliyor %@ of %@";
 
 /* Description of button that opens an error dialogue. */
 "ErrorButtonAccessibilityTitle" = "Uygulama güncellenirken hata oluştu";
@@ -40,7 +40,7 @@
 "InstalledSection" = "Yüklendi";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Mevcut Uygulamalar";
+"InstalledAppsSection" = "Yüklenmiş Uygulamalar";
 
 /* Update progress state of installing an update */
 "InstallingUpdateStatus" = "Yükleniyor";
@@ -70,7 +70,7 @@
 "AppSource" = "Kaynak: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "Güncelleme";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Bekliyor";
@@ -79,37 +79,37 @@
 "WebSource" = "Web";
 
 /* Current Version String */
-"LocalVersionFormat" = "Senin Versiyonun: %@";
+"LocalVersionFormat" = "Yüklü Versiyon: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Oturum Açılmadı";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "İsim";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Tarih";
 
 /* Short description of error stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Update Information Unavailable";
+"UpdateInfoUnavailableError" = "Güncelleme Bilgileri Kullanılamıyor";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Bu uygulamayı güncellemek için Mac App Store'da oturum açın.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Bu uygulama için güncelleme bilgisi alınamadı.";
 
 /* Short description of error that no release notes were found. */
-"ReleaseNotesUnavailableError" = "No Release Notes";
+"ReleaseNotesUnavailableError" = "Sürüm notu bulunmuyor";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Bu uygulama için sürüm notları mevcut değildir.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "%@ ile";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "%@ ile güncelle";
