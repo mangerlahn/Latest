@@ -15,11 +15,11 @@
 			<key>zero</key>
 			<string>Aktualizované!</string>
 			<key>one</key>
-			<string>%d Aktualizácia k dispozícii</string>
+			<string>%d aktualizácia k dispozícii</string>
 			<key>few</key>
-			<string>%d Aktualizácie k dispozícii</string>
+			<string>%d aktualizácie k dispozícii</string>
 			<key>other</key>
-			<string>%d Aktualizácií k dispozícii</string>
+			<string>%d aktualizácií k dispozícii</string>
 		</dict>
 	</dict>
 </dict>
