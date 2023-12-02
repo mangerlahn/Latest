@@ -459,10 +459,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Updates the UI depending on available updates (show empty states or update list)
     private func updatePlaceholderVisibility() {
-        if self.apps.count == 0 && self.placeholderLabel.isHidden {
+		// Only show placeholder if there are no apps and also no active search (which might produce an empty list)
+		let showPlaceholder = self.apps.isEmpty && self.snapshot.filterQuery == nil
+		
+        if showPlaceholder && self.placeholderLabel.isHidden {
             self.tableView.isHidden = true
             self.placeholderLabel.isHidden = false
-        } else if self.apps.count != 0 && !self.placeholderLabel.isHidden {
+        } else if !showPlaceholder && !self.placeholderLabel.isHidden {
             self.tableView.isHidden = false
             self.placeholderLabel.isHidden = true
         }
