@@ -25,7 +25,10 @@ struct Version : Hashable, Comparable {
 	
 	/// Flag whether both version number and build number are unavailable
 	var isEmpty: Bool {
-		return (versionNumber?.isEmpty ?? true && buildNumber?.isEmpty ?? true)
+		let versionNumberComponents = versionNumber?.components().compactMap({ $0.plainComponent }).joined()
+		let buildNumberComponents = buildNumber?.components().compactMap({ $0.plainComponent }).joined()
+		
+		return (versionNumberComponents?.isEmpty ?? true && buildNumberComponents?.isEmpty ?? true)
 	}
 	
 	
@@ -76,7 +79,7 @@ struct Version : Hashable, Comparable {
 			v2 = rhs.versionNumber
 		}
 		
-		guard let c1 = v1?.versionComponents(), let c2 = v2?.versionComponents() else {
+		guard let c1 = v1?.components(), let c2 = v2?.components() else {
 			return .undefined
 		}
 		
@@ -170,7 +173,7 @@ fileprivate extension String {
 	 Returns the components of an version number.
 	 Components are grouped by Character type, so "12.3" returns [("12", .number), (".", .separator), ("3", .number)]
 	 */
-	func versionComponents() -> [Version.Segment] {
+	func components() -> [Version.Segment] {
 		let scanner = Scanner(string: self)
 		
 		var components = [Version.Segment]()
@@ -296,7 +299,7 @@ extension Version {
 		// The last component of the version number is actually the build number. (Can only be detected for equal build numbers. Avoids false positives)
 		// App: 1.2 (40)
 		// Remote: 1.2.40
-		if buildNumber == nil, var components = versionNumber?.versionComponents(), let lastRemoteComponent = components.last?.plainComponent, lastRemoteComponent == appVersion.buildNumber {
+		if buildNumber == nil, var components = versionNumber?.components(), let lastRemoteComponent = components.last?.plainComponent, lastRemoteComponent == appVersion.buildNumber {
 			// Remove build number segment from version number and store it separately.
 			let buildNumber = components.removeLast()
 			
@@ -315,7 +318,7 @@ extension Version {
 		}
 
 		//
-		if appVersion.buildNumber == appVersion.versionNumber, var components = versionNumber?.versionComponents(), components.last?.plainComponent != nil, components.count == 7 {
+		if appVersion.buildNumber == appVersion.versionNumber, var components = versionNumber?.components(), components.last?.plainComponent != nil, components.count == 7 {
 			components.removeLast()
 			components.removeLast()
 			
@@ -336,7 +339,7 @@ extension Version {
 extension OperatingSystemVersion {
 	
 	init(string: String) throws {
-		let components = string.versionComponents().flatMap({ component in
+		let components = string.components().flatMap({ component in
 			switch component {
 			case .component(let atoms):
 				return atoms.compactMap { atom in

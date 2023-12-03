@@ -176,9 +176,14 @@ class AppLibrary {
 		guard !Self.excludedBundleIdentifiers.contains(where: { identifier.contains($0) }) else {
 			return nil
 		}
-		
-		// Create bundle
+
+		// Build version. Skip bundle if no version is provided.
 		let version = Version(versionNumber: VersionParser.parse(versionNumber: versionNumber), buildNumber: VersionParser.parse(buildNumber: buildNumber))
+		guard !version.isEmpty else {
+			return nil
+		}
+
+		// Create bundle
 		return App.Bundle(version: version, name: name, bundleIdentifier: identifier, fileURL: url, source: source)
 	}
 	

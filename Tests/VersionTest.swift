@@ -23,6 +23,18 @@ class VersionTest: XCTestCase {
         XCTAssertNil(version.versionNumber)
         XCTAssertNil(version.buildNumber)
     }
+	
+	func testEmptyVersion() {
+		XCTAssertTrue(Version(versionNumber: nil, buildNumber: nil).isEmpty)
+		XCTAssertTrue(Version(versionNumber: nil, buildNumber: "").isEmpty)
+		XCTAssertTrue(Version(versionNumber: "", buildNumber: "").isEmpty)
+		XCTAssertTrue(Version(versionNumber: nil, buildNumber: ".").isEmpty)
+		XCTAssertTrue(Version(versionNumber: "\n", buildNumber: nil).isEmpty)
+		
+		XCTAssertFalse(Version(versionNumber: "1", buildNumber: nil).isEmpty)
+		XCTAssertFalse(Version(versionNumber: nil, buildNumber: "1").isEmpty)
+		XCTAssertFalse(Version(versionNumber: "1.2", buildNumber: "123").isEmpty)
+	}
     
     
     // MARK: - Right Comparison
