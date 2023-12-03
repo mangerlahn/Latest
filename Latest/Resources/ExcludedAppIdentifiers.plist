@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>com.apple.Safari.WebApp</string>
+	<string>com.prusa3d.slic3r/</string>
+	<string>com.spotify.client</string>
+	<string>dev.warp.Warp-Stable</string>
+	<string>com.obsbot.OBSBOT_WebCam</string>
+	<string>com.google.android.studio</string>
+	<string>co.vero.desktop</string>
+	<string>org.gramps-project.gramps</string>
+	<string>com.google.android.mtpviewer</string>
+	<string>epp.package.cpp</string>
+	<string>epp.package.dsl</string>
+	<string>epp.package.committers</string>
+	<string>epp.package.java</string>
+	<string>org.eclipse.platform.ide</string>
+	<string>epp.package.modeling</string>
+	<string>epp.package.rcp</string>
+</array>
+</plist>
