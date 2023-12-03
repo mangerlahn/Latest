@@ -206,14 +206,7 @@ extension UpdateRepository {
 		
 		/// The current version of the app.
 		var version: Version {
-			// Split raw version into components to separate out the version and build number
-			let versionComponents =  rawVersion.split(separator: ",")
-			
-			var components = versionComponents.map { String($0) }
-			let version = !components.isEmpty ? components.removeFirst() : nil
-			let buildNumber = !components.isEmpty ? components.removeFirst() : nil
-
-			return Version(versionNumber: version, buildNumber: buildNumber)
+			return VersionParser.parse(combinedVersionNumber: rawVersion)
 		}
 		
 	}

@@ -63,6 +63,10 @@
 		50D6EF5F281461A3002D7006 /* Sparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6EF5E281461A3002D7006 /* Sparkle.swift */; };
 		50DAEF4021047E5100B32E8A /* UpdateTableView+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */; };
 		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
+		50E4EB072B17DACB00A70A7D /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4EB062B17DACB00A70A7D /* VersionParser.swift */; };
+		50E4EB092B17DFCE00A70A7D /* VersionParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */; };
+		50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */; };
+		50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +248,8 @@
 		50D6EF5E281461A3002D7006 /* Sparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sparkle.swift; sourceTree = "<group>"; };
 		50DAEF3F21047E5100B32E8A /* UpdateTableView+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateTableView+TouchBar.swift"; sourceTree = "<group>"; };
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
+		50E4EB062B17DACB00A70A7D /* VersionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
+		50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParserTest.swift; sourceTree = "<group>"; };
 		50E65CDD247A84BC00DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		50E65CDE247A84E700DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		50E65CE0247A84F300DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -275,6 +281,8 @@
 		50F542FA22D9C41D004B3F8D /* ISAuthenticationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAuthenticationContext.h; sourceTree = "<group>"; };
 		50F542FB22D9C41D004B3F8D /* SSPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPurchase.h; sourceTree = "<group>"; };
 		50F542FC22D9C41D004B3F8D /* ISStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreClient.h; sourceTree = "<group>"; };
+		50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionTest.swift; sourceTree = "<group>"; };
+		50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionSanitizationTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,7 +418,6 @@
 				509C4ABB2AD1FFCC00E9C2E1 /* FailableDecodable.swift */,
 				5097354F2798D17E00FFE809 /* Observable.swift */,
 				5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */,
-				509512101FF362A1003D2D7F /* Version.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -468,6 +475,7 @@
 				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
 				50BEF14D2AC972B40052C417 /* UpdateRepository.swift */,
 				50366E5127DFD14100D4E247 /* Source.swift */,
+				50E4EB052B17DAB900A70A7D /* Version */,
 				5039DE8322CA39630088B39B /* Updater */,
 				509512231FF36306003D2D7F /* Update Checker Extensions */,
 				50D6EF5D2814618C002D7006 /* Sparkle */,
@@ -524,7 +532,10 @@
 			isa = PBXGroup;
 			children = (
 				50C81D6D1FBADC5900324C2E /* Info.plist */,
+				50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */,
 				50C81D731FBADC9100324C2E /* VersionTest.swift */,
+				50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */,
+				50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -566,6 +577,15 @@
 				506DF7772125580400D792FC /* UpdateTableView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		50E4EB052B17DAB900A70A7D /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				509512101FF362A1003D2D7F /* Version.swift */,
+				50E4EB062B17DACB00A70A7D /* VersionParser.swift */,
+			);
+			path = Version;
 			sourceTree = "<group>";
 		};
 		50F542DF22D9C41C004B3F8D /* CommerceKit */ = {
@@ -657,7 +677,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = "";
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Max Langer";
 				TargetAttributes = {
@@ -798,6 +818,7 @@
 				5040D45C28DBB753009BF379 /* HomebrewCheckerOperation.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
 				50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */,
+				50E4EB072B17DACB00A70A7D /* VersionParser.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				5039DE8D22CAA2790088B39B /* MacAppStoreUpdateOperation.swift in Sources */,
 				507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */,
@@ -836,6 +857,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */,
+				50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */,
+				50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */,
+				50E4EB092B17DFCE00A70A7D /* VersionParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,7 +1228,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/Contents/MacOS/Latest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Latest";
 			};
 			name = Debug;
 		};
@@ -1231,7 +1255,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/Contents/MacOS/Latest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Latest";
 			};
 			name = Release;
 		};

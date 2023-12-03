@@ -49,7 +49,7 @@ extension App {
 
 		/// Whether an update is available for the given app.
 		var updateAvailable: Bool {
-			var updateAvailable = (remoteVersion > app.version)
+			var updateAvailable = app.version < remoteVersion
 			
 			if updateAvailable, let minimumOSVersion {
 				updateAvailable = ProcessInfo.processInfo.isOperatingSystemAtLeast(minimumOSVersion)
@@ -92,6 +92,18 @@ extension App {
 		/// Cancels the scheduled update for this app.
 		func cancelUpdate() {
 			UpdateQueue.shared.cancelUpdate(for: self.app.identifier)
+		}
+		
+		
+		// MARK: - Sanitization
+		
+		/// Returns a sanitized update for the given app bundle.
+		func sanitized(for bundle: App.Bundle) -> Update {
+			let version = remoteVersion.sanitize(with: bundle.version)
+			guard version != remoteVersion else { return self }
+			
+			// Modify just the remote version
+			return Update(app: app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: source, date: date, releaseNotes: releaseNotes, updateAction: updateAction)
 		}
 		
 		

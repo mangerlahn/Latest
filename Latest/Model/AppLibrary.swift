@@ -178,7 +178,7 @@ class AppLibrary {
 		}
 		
 		// Create bundle
-		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
+		let version = Version(versionNumber: VersionParser.parse(versionNumber: versionNumber), buildNumber: VersionParser.parse(buildNumber: buildNumber))
 		return App.Bundle(version: version, name: name, bundleIdentifier: identifier, fileURL: url, source: source)
 	}
 	

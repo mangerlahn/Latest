@@ -126,7 +126,7 @@ class VersionTest: XCTestCase {
     
     func testOlderVersion() {
 		let v1 = Version(versionNumber: "2.1.5", buildNumber: nil)
-		let v2 = Version(versionNumber: "v2.1.6", buildNumber: "216")
+		let v2 = Version(versionNumber: "2.1.6", buildNumber: "216")
         self.older(v1, v2)
     }
     
@@ -139,69 +139,39 @@ class VersionTest: XCTestCase {
 		v2 = Version(versionNumber: "2.2.6", buildNumber: nil)
         self.equal(v1, v2)
         
-		v1 = Version(versionNumber: "v2.2.6", buildNumber: nil)
+		v1 = Version(versionNumber: "2.2.6", buildNumber: nil)
 		v2 = Version(versionNumber: "2.2.6", buildNumber: nil)
         self.equal(v1, v2)
     }
     
     func testNewerVersion() {
-		var v1 = Version(versionNumber: "v3.1.5", buildNumber: nil)
+		var v1 = Version(versionNumber: "3.1.5", buildNumber: nil)
 		var v2 = Version(versionNumber: "2.1.6", buildNumber: "216")
         self.newer(v1, v2)
         
 		v1 = Version(versionNumber: "3.1.5", buildNumber: "215")
-		v2 = Version(versionNumber: "v2.2.6", buildNumber: nil)
+		v2 = Version(versionNumber: "2.2.6", buildNumber: nil)
         self.newer(v1, v2)
     }
 	
 	func testNumeralSystems() {
 		// Western arabic numerals
-		var v1 = Version(versionNumber: "v3.1.5", buildNumber: nil)
+		var v1 = Version(versionNumber: "3.1.5", buildNumber: nil)
 		var v2 = Version(versionNumber: "2.1.6", buildNumber: "216")
 		self.newer(v1, v2)
 		
 		// Eastern arabic numerals
 		v1 = Version(versionNumber: "٣.١.٥", buildNumber: "٢١٥")
-		v2 = Version(versionNumber: "v٢.٢.٦", buildNumber: nil)
+		v2 = Version(versionNumber: "٢.٢.٦", buildNumber: nil)
 		self.newer(v1, v2)
 		
 		// Indian numerals
 		v1 = Version(versionNumber: "३.१.५", buildNumber: "२१७")
-		v2 = Version(versionNumber: "v२.१.६", buildNumber: nil)
+		v2 = Version(versionNumber: "२.१.६", buildNumber: nil)
 		self.newer(v1, v2)
 	}
 	
 	
-	// MARK: - OS Version
-	
-	func testGenericOSVersion() throws {
-		let version = try OperatingSystemVersion(string: "11.2.3")
-		XCTAssertEqual(version.majorVersion, 11)
-		XCTAssertEqual(version.minorVersion, 2)
-		XCTAssertEqual(version.patchVersion, 3)
-	}
-	
-	func testOnlyMajorOSVersion() throws {
-		let version = try OperatingSystemVersion(string: "11.0")
-		XCTAssertEqual(version.majorVersion, 11)
-		XCTAssertEqual(version.minorVersion, 0)
-		XCTAssertEqual(version.patchVersion, 0)
-	}
-	
-	func testFourComponentOSVersion() throws {
-		let version = try OperatingSystemVersion(string: "11.2.3.1")
-		XCTAssertEqual(version.majorVersion, 11)
-		XCTAssertEqual(version.minorVersion, 2)
-		XCTAssertEqual(version.patchVersion, 3)
-	}
-
-	
-	func testInvalidOSVersion() throws {
-		XCTAssertThrowsError(try OperatingSystemVersion(string: ""))
-		XCTAssertThrowsError(try OperatingSystemVersion(string: "Version"))
-	}
-	
-    
     // MARK: - Helper Methods
     
     private func older(_ v1: Version, _ v2: Version) {
