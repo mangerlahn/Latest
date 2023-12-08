@@ -26,7 +26,7 @@ class App {
 	/// Initializes the app with the given parameters.
 	init(bundle: App.Bundle, update: Result<Update, Error>?, isIgnored: Bool) {
 		self.bundle = bundle
-		self.updateResult = update
+		self.updateResult = Self.sanitize(update: update, for: bundle)
 		self.isIgnored = isIgnored
 	}
 	
@@ -38,6 +38,20 @@ class App {
 	/// Returns a new app object with an updated ignored state.
 	func with(ignoredState: Bool) -> App {
 		return App(bundle: self.bundle, update: self.updateResult, isIgnored: ignoredState)
+	}
+	
+	
+	// MARK: - Sanitization
+	
+	/// Sanitizes the update result for the given app bundle.
+	///
+	/// Used to clean up version information based on information provided by the app bundle.
+	private static func sanitize(update: Result<Update, Error>?, for bundle: App.Bundle) -> Result<Update, Error>? {
+		guard let update = try? update?.get() else {
+			return update
+		}
+		
+		return .success(update.sanitized(for: bundle))
 	}
 	
 }
