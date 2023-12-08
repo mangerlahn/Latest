@@ -4,6 +4,8 @@
 <dict>
 	<key>NumberOfUpdatesAvailable</key>
 	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
 		<key>value</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
