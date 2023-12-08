@@ -40,7 +40,7 @@ class UpdateRepository {
 	/// Returns update information for the given bundle.
 	func updateInfo(for bundle: App.Bundle, handler: @escaping (_ bundle: App.Bundle, _ version: Version?, _ minimumOSVersion: OperatingSystemVersion?) -> Void) {
 		let checkApp = {
-			guard let entry = self.entry(for: bundle.fileURL.lastPathComponent) else {
+			guard let entry = self.entry(for: bundle) else {
 				handler(bundle, nil, nil)
 				return
 			}
@@ -65,7 +65,7 @@ class UpdateRepository {
 	/// Sets the given entries and performs pending requests.
 	private func finalize(with entries: [Entry]) {
 		// Filter out any entries without application name
-		self.entries = entries.compactMap { !$0.names.isEmpty ? $0 : nil }
+		self.entries = entries.filter { !$0.names.isEmpty || !$0.bundleIdentifiers.isEmpty }
 		
 		// Perform any pending requests
 		self.pendingRequests.forEach { request in
@@ -75,8 +75,20 @@ class UpdateRepository {
 	}
 	
 	/// Returns a repository entry for the given name, if available.
-	private func entry(for name: String) -> Entry? {
-		return self.entries?.first(where: { entry in
+	private func entry(for bundle: App.Bundle) -> Entry? {
+		let name = bundle.fileURL.lastPathComponent
+
+		// Match bundle identifier
+		return entries?.first(where: { entry in
+			if entry.bundleIdentifiers.contains(bundle.bundleIdentifier) {
+				return true
+			}
+			
+			return false
+		})
+		
+		// Fallback: Try to match app name (unreliable, since sometimes multiple apps with the same name exist. See Telegram or Eclipse)
+		?? self.entries?.first(where: { entry in
 			return entry.names.contains { n in
 				return n.caseInsensitiveCompare(name) == .orderedSame
 			}
@@ -137,78 +149,6 @@ class UpdateRepository {
 		} catch {
 			finalize(with: [])
 		}
-	}
-
-}
-
-extension UpdateRepository {
-	
-	/// Represents one application within the repository.
-	private struct Entry: Decodable {
-		
-		
-		// MARK:  - Structure
-		
-		enum CodingKeys: String, CodingKey {
-			case artifacts
-			case token
-			case rawVersion = "version"
-			case minimumOSVersion = "depends_on"
-		}
-		
-		private struct Artifact: Decodable {
-			let app: [String]
-		}
-		
-		private struct MinimumOS: Decodable {
-			let macos: Version?
-			
-			struct Version: Decodable {
-				let version: [String]?
-				
-				enum CodingKeys: String, CodingKey {
-					case version = ">="
-				}
-			}
-		}
-		
-		
-		// MARK: - Accessors
-		
-		/// The name of the app.
-		let names: [String]
-		
-		/// The raw version string of the app.
-		private let rawVersion: String
-		
-		/// The brew identifier for the app.
-		let token: String
-		
-		/// The minimum os version required for the update.
-		let minimumOSVersion: OperatingSystemVersion?
-				
-		init(from decoder: Decoder) throws {
-			let container = try decoder.container(keyedBy: CodingKeys.self)
-			
-			rawVersion = try container.decode(String.self, forKey: .rawVersion)
-			token = try container.decode(String.self, forKey: .token)
-			names = try container.decode([FailableDecodable<Artifact>].self, forKey: .artifacts).flatMap { $0.base?.app ?? [] }
-			
-			if let osVersion = try container.decode(MinimumOS.self, forKey: .minimumOSVersion).macos?.version?.first {
-				minimumOSVersion = try OperatingSystemVersion(string: osVersion)
-			} else {
-				minimumOSVersion = nil
-			}
-		}
-		
-		
-		// MARK: - Accessors
-		
-		/// The current version of the app.
-		var version: Version {
-			return VersionParser.parse(combinedVersionNumber: rawVersion)
-		}
-		
 	}
 
 }
