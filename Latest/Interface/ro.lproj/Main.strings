@@ -3,16 +3,298 @@
 "00n-xr-jcQ.title" = "Actualizare";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
-"1Gu-Ep-ZWZ.title" = "Găsire și înlocuire…";
+"1Gu-Ep-ZWZ.title" = "Gasire si inlocuire…";
 
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Meniu";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "Cea mai recentă";
+"1Xt-HY-uBw.title" = "Cea mai recenta";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
 "3GZ-aM-hwz.title" = "Celula de text";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
-"4J7-dP-txa.title" = "Celula de text";
+"4J7-dP-txa.title" = "Mod Ecran Complet";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Latest";
+
+/* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
+"iLi-Yb-UfX.title" = "Incarca note lansare";
+
+/* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
+"ucY-cy-GON.title" = "Ortografie";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.paletteLabel" = "Reincarcare";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
+"HyV-fh-RgO.title" = "Vizualizare";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
+"Id2-BS-gzO.title" = "Selectare Toate";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Adu tot in fata";
+
+/* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
+"D2N-5U-W7Z.title" = "Nicio actualizare disponibila";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Servicii";
+
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
+"w14-Ia-4l9.title" = "Deschide";
+
+/* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
+"spt-ns-lYo.title" = "Eticheta multilinie";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "Fisier";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Inchide";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Ascunde Altele";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
+"iis-Dj-0TB.title" = "Verifica gramatica si ortografia";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
+"c4C-I9-Gd0.title" = "Cauta actualizari…";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.paletteLabel" = "Progres";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
+"y5A-ib-gR6.title" = "Vorbire";
+
+/* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
+"7c2-6r-Saw.title" = "Viziteaza site-ul Latest";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
+"yPN-rG-tgD.title" = "Gaseste anteriorul";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
+"ryW-4P-l7k.title" = "Foloseste selectia pentru cautare";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
+"GMn-QE-qPC.title" = "Alipire";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
+"FM4-aR-lhK.ibShadowedToolTip" = "Reincarcare";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
+"mS9-zq-Dvi.title" = "Sterge";
+
+/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.label" = "Reincarcare";
+
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
+"o46-Ym-MCY.title" = "Doneaza";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
+"iUE-OL-cvh.title" = "Copy/Paste Smart";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Arata Toate";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
+"bm3-iR-6vZ.title" = "Arata in Finder";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "Lga-BY-8RF"; */
+"Lga-BY-8RF.title" = "Taie";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "Verifica documentul acum";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
+"h9B-7u-6ru.title" = "Arata in Finder";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
+"aCF-1x-0c1.title" = "Gaseste";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
+"l11-q2-MLf.title" = "Inlocuiri";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "Vizualizare";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Mareste";
+
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "Scriere litere mari";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
+"5cs-kb-AQj.title" = "Copiaza";
+
+/* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
+"J6q-tg-1G2.title" = "Transformari";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Fereastra";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
+"tw7-g1-6Wz.title" = "Link-uri smart";
+
+/* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
+"Cm3-IX-Kw4.title" = "Nu s-au putut incarca notele de lansare!";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Sorteaza dupa";
+
+/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "Arata aplicatii instalate";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "Fisier";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
+"uGs-GF-i9Z.title" = "Opreste vorbirea";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
+"wtc-0j-cAV.title" = "Ortografie si gramatica";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
+"TKo-Xa-BjT.title" = "Afiseaza inlocuiri";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
+"jEo-hx-9Qp.title" = "Citate Smart";
+
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
+"WX3-Xi-vCY.title" = "Arata ortografie si gramatica";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
+"hOB-nw-cIX.title" = "Gaseste";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Ajutor";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
+"mTS-fP-YWg.title" = "Editeaza";
+
+/* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
+"ES5-dd-1TR.title" = "Verifica ortografia in timpul scrierii";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
+"Nnu-IS-gsC.title" = "Vorbeste";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
+"mu8-FK-tXI.title" = "Cauta…";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Ajutor";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
+"r6p-yM-qya.title" = "Editeaza";
+
+/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
+"tXI-mr-wws.title" = "Actualizeaza Toate";
+
+/* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "Actualizare";
+
+/* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.label" = "Actualizeaza Toate";
+
+/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
+"Rh5-N3-X6H.title" = "Arata aplicatiile ignorate";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
+"uw5-pW-jNu.title" = "Cratime smart";
+
+/* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Iesire Latest";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
+"Ah1-jH-gCv.title" = "Anuleaza";
+
+/* Class = "NSMenuItem"; title = "Latest Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Ajutor Latest";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.paletteLabel" = "Actualizeaza Toate";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
+"Xng-11-x9Q.title" = "Transforma in litere mari";
+
+/* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
+"65u-P1-4rd.title" = "Detectoare de date";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
+"UVA-tb-pA9.title" = "Inlocuiri";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Servicii";
+
+/* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
+"63s-Hc-NQY.title" = "Corecteaza ortografia automat";
+
+/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
+"6Cd-Qc-3Xc.title" = "Arata aplicatiile nesuportate";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Preferinte…";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
+"Yj4-SM-ocg.title" = "Refa";
+
+/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Ascunde Latest";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Meniul principal";
+
+/* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
+"x6Q-gr-lO2.title" = "Alipeste si potriveste stilul";
+
+/* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
+"Ake-Tt-cX3.title" = "Meniu";
+
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
+"SKi-gD-wYr.title" = "Transforma in litere mici";
+
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.label" = "Progres";
+
+/* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
+"PS4-wi-kF9.title" = "Ignora";
+
+/* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
+"Ljr-hV-usc.title" = "Nu ignora";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
+"wmL-ks-XSr.ibShadowedToolTip" = "Actualizeaza Toate";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimizeaza";
+
+/* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Despre Latest";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
+"4vf-ia-dzo.title" = "Cauta actualizari…";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
+"gU8-2v-afa.title" = "Gaseste urmatorul";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
+"YRo-LJ-qSP.title" = "Transformari";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Sorteaza dupa";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Fereastra";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
+"cWB-Qy-jEV.title" = "Vorbire";
+
+/* Class = "NSMenuItem"; title = "Text Replacement"; ObjectID = "G1D-lo-gfr"; */
+"G1D-lo-gfr.title" = "Inlocuire text";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
+"pDo-aP-nIF.title" = "Sari la Selectie";
