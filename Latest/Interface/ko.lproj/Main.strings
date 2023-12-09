@@ -328,3 +328,6 @@
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
 "yPN-rG-tgD.title" = "이전 찾기";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "정렬";

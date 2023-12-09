@@ -90,7 +90,7 @@
 "GMn-QE-qPC.title" = "Постави";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
-"GZQ-fq-mFU.title" = "Направи с главни букви";
+"GZQ-fq-mFU.title" = "Направи с главна буква";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "Изглед";
@@ -202,3 +202,108 @@
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
 "6YS-DP-XWA.title" = "<dnl>";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Latest";
+
+/* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
+"iLi-Yb-UfX.title" = "Зареждане на бележките по обновлението";
+
+/* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
+"ucY-cy-GON.title" = "Правопис";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Услуги";
+
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
+"w14-Ia-4l9.title" = "Отваряне";
+
+/* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
+"spt-ns-lYo.title" = "Многоредов етикет";
+
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
+"iis-Dj-0TB.title" = "Провери за граматични грешки";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
+"y5A-ib-gR6.title" = "Реч";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
+"yPN-rG-tgD.title" = "Намери предишен";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
+"ryW-4P-l7k.title" = "Използвай селекцията за намиране";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
+"mS9-zq-Dvi.title" = "Изтриване";
+
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
+"o46-Ym-MCY.title" = "Дари";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
+"iUE-OL-cvh.title" = "Умно Копиране/Поставяне";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "Провери документа сега";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
+"h9B-7u-6ru.title" = "Отвори Finder";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
+"l11-q2-MLf.title" = "Замествания";
+
+/* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
+"tw7-g1-6Wz.title" = "Умни препратки";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Подреди по";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
+"uGs-GF-i9Z.title" = "Спри говора";
+
+/* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
+"wtc-0j-cAV.title" = "Правопис и граматика";
+
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
+"jEo-hx-9Qp.title" = "Умни цитати";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
+"hOB-nw-cIX.title" = "Намери";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "mTS-fP-YWg"; */
+"mTS-fP-YWg.title" = "Редактиране";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
+"mu8-FK-tXI.title" = "Намери…";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Помощ";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
+"r6p-yM-qya.title" = "Редактиране";
+
+/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
+"tXI-mr-wws.title" = "Обнови всички";
+
+/* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.label" = "Обнови всички";
+
+/* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
+"uw5-pW-jNu.title" = "Умни тирета";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
+"qS5-vO-h2j.paletteLabel" = "Обнови всички";
+
+/* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
+"x6Q-gr-lO2.title" = "Постави и запази стила";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
+"wmL-ks-XSr.ibShadowedToolTip" = "Обновяване на всички";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
+"gU8-2v-afa.title" = "Намери следващ";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Подреди по";
+
+/* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
+"pDo-aP-nIF.title" = "Прескочи към секция";

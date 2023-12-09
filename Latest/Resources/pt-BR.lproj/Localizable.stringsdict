@@ -11,11 +11,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>Actualizado!</string>
+			<string>Atualizado!</string>
 			<key>one</key>
-			<string>%d Actualização Disponível</string>
+			<string>%d Atualização Disponível</string>
 			<key>other</key>
-			<string>%d Actualizações Disponíveis</string>
+			<string>%d Atualizações Disponíveis</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>

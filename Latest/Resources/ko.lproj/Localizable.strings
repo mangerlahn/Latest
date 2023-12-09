@@ -58,7 +58,7 @@
 "InstalledAppsSection" = "설치된 앱";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "이 앱에 대한 출시 정보를 찾을 수 없습니다.";
+"ReleaseNotesUnavailableError" = "이 앱의 출시 정보 없음";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "재시도";
@@ -67,7 +67,7 @@
 "OpenAction" = "열기";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "릴리스 정보를 읽으려면 목록에서 앱을 선택합니다.";
+"NoAppSelectedDescription" = "출시 정보를 읽으려면 목록에서 앱을 선택합니다.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "소스: %@";
@@ -88,22 +88,28 @@
 "LocalVersionFormat" = "사용자 버전: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "가입하지 않음";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "이름";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "날짜";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "이 앱을 업데이트하려면 Mac App Store에 로그인하십시오.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "이 앱에 대한 업데이트 정보를 검색할 수 없습니다.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "이 앱의 출시 정보가 없습니다.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
+
+/* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
+"ExternalUpdateActionWithAppName" = "in %@";
+
+/* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
+"ExternalUpdateAction" = "Update in %@";

@@ -99,7 +99,7 @@ extension MacAppStoreUpdateCheckerOperation {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
 		let action: App.Update.Action = if Self.isIOSAppBundle(at: app.fileURL) {
 			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
-			.external(block: { app in
+			.external(label: NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store."), block: { app in
 				NSWorkspace.shared.open(entry.pageURL)
 			})
 		} else {

@@ -69,7 +69,6 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                         
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
-		self.updateTitleAndBatch()
 		
 		AppListSettings.shared.add(self, handler: self.updateSnapshot)
         
@@ -85,6 +84,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     override func viewWillAppear() {
         super.viewWillAppear()
+		
+		// Setup title
+		self.updateTitleAndBatch()
 		
 		// Setup search field
         NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
@@ -191,7 +193,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 				return []
 			}
 			
-            let action = NSTableViewRowAction(style: .regular, title: NSLocalizedString("UpdateAction", comment: "Action to update a given app."), handler: { (action, row) in
+            let action = NSTableViewRowAction(style: .regular, title: updateTitle(for: app), handler: { (action, row) in
                 self.updateApp(atIndex: row)
 				tableView.rowActionsVisible = false
             })
@@ -382,6 +384,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		
 		switch action {
 		case #selector(updateApp(_:)):
+			menuItem.title = updateTitle(for: app)
 			return app.updateAvailable && !app.isUpdating
 		case #selector(openApp(_:)), #selector(showAppInFinder(_:)):
             return true
@@ -456,10 +459,13 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Updates the UI depending on available updates (show empty states or update list)
     private func updatePlaceholderVisibility() {
-        if self.apps.count == 0 && self.placeholderLabel.isHidden {
+		// Only show placeholder if there are no apps and also no active search (which might produce an empty list)
+		let showPlaceholder = self.apps.isEmpty && self.snapshot.filterQuery == nil
+		
+        if showPlaceholder && self.placeholderLabel.isHidden {
             self.tableView.isHidden = true
             self.placeholderLabel.isHidden = false
-        } else if self.apps.count != 0 && !self.placeholderLabel.isHidden {
+        } else if !showPlaceholder && !self.placeholderLabel.isHidden {
             self.tableView.isHidden = false
             self.placeholderLabel.isHidden = true
         }
@@ -539,6 +545,15 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		}
 		
 		self.tableView.endUpdates()
+	}
+	
+	/// Returns an appropriate title for update actions for the given app.
+	private func updateTitle(for app: App) -> String {
+		if let externalUpdater = app.externalUpdaterName {
+			String(format: NSLocalizedString("ExternalUpdateAction", comment: "Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name)"), externalUpdater)
+		} else {
+			NSLocalizedString("UpdateAction", comment: "Action to update a given app.")
+		}
 	}
     
 }

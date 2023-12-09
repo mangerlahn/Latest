@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="22009"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="22500"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -883,7 +883,7 @@
                                         <rect key="frame" x="20" y="15" width="360" height="96"/>
                                         <subviews>
                                             <imageView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Y4U-TI-bJq">
-                                                <rect key="frame" x="0.0" y="16" width="64" height="64"/>
+                                                <rect key="frame" x="0.0" y="9" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="Se1-u6-BQ1"/>
                                                     <constraint firstAttribute="width" secondItem="Y4U-TI-bJq" secondAttribute="height" multiplier="1:1" id="aWq-WK-xqZ"/>
@@ -984,11 +984,11 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Z4v-qI-DZW">
-                                                <rect key="frame" x="305" y="0.0" width="55" height="96"/>
+                                            <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-dW-3UA">
+                                                <rect key="frame" x="305" y="30" width="55" height="36"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                        <rect key="frame" x="-7" y="46" width="69" height="32"/>
+                                                        <rect key="frame" x="-7" y="9" width="69" height="32"/>
                                                         <buttonCell key="cell" type="push" title="&lt;dnl&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QRR-k0-TZ4" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -997,15 +997,32 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showActionButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1m1-dh-wzF">
+                                                        <rect key="frame" x="-2" y="0.0" width="59" height="11"/>
+                                                        <textFieldCell key="cell" alignment="center" title="&lt;dnl&gt;" id="V9u-cb-GDY">
+                                                            <font key="font" metaFont="miniSystem"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="n5Y-7Z-cEd" firstAttribute="leading" secondItem="Z4v-qI-DZW" secondAttribute="leading" id="LCX-aY-Na6"/>
-                                                    <constraint firstAttribute="trailing" secondItem="n5Y-7Z-cEd" secondAttribute="trailing" id="Xge-4N-zUd"/>
+                                                    <constraint firstAttribute="width" secondItem="n5Y-7Z-cEd" secondAttribute="width" priority="500" id="Agg-Kr-X0m"/>
+                                                    <constraint firstItem="1m1-dh-wzF" firstAttribute="centerX" secondItem="n5Y-7Z-cEd" secondAttribute="centerX" priority="300" id="t6T-JT-LO8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="n5Y-7Z-cEd" secondAttribute="trailing" id="tiE-Oe-bT6"/>
                                                 </constraints>
-                                            </customView>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="n5Y-7Z-cEd" firstAttribute="top" secondItem="Y4U-TI-bJq" secondAttribute="top" constant="7" id="pka-7Z-emq"/>
+                                            <constraint firstItem="n5Y-7Z-cEd" firstAttribute="top" secondItem="Y4U-TI-bJq" secondAttribute="top" constant="7" id="A51-mf-TcJ"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -1048,6 +1065,7 @@
                         <outlet property="appInfoContentView" destination="eK7-6F-FDn" id="enY-AO-ooj"/>
                         <outlet property="appNameTextField" destination="i3z-7y-cNC" id="JLS-lq-Df0"/>
                         <outlet property="appNewVersionTextField" destination="bCy-gi-UaH" id="uOg-PL-d6o"/>
+                        <outlet property="externalUpdateLabel" destination="1m1-dh-wzF" id="onu-CG-PbP"/>
                         <outlet property="sourceIconImageView" destination="COF-67-BQV" id="kOM-vx-f81"/>
                         <outlet property="updateButton" destination="n5Y-7Z-cEd" id="qFs-Dh-mdW"/>
                     </connections>

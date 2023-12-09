@@ -123,6 +123,15 @@ class AppLibrary {
 	/// Excluded subfolders that won't be checked.
 	private static let excludedSubfolders = Set(["Setapp/", ".app/"])
 	
+	/// Set of bundles that should not be included in Latest.
+	private static let excludedBundleIdentifiers: Set<String> = {
+		let url = Bundle.main.url(forResource: "ExcludedAppIdentifiers", withExtension: "plist")!
+		let data = try! Data(contentsOf: url)
+		
+		let propertyList = try! PropertyListSerialization.propertyList(from: data, format: nil) as! [String]
+		return Set(propertyList)
+	}()
+	
 	/// The metadata query that gathers all apps.
 	private let appSearchQuery: NSMetadataQuery = {
 		let query = NSMetadataQuery()
@@ -166,8 +175,18 @@ class AppLibrary {
 			return nil
 		}
 		
+		// Skip bundles which are explicitly excluded
+		guard !Self.excludedBundleIdentifiers.contains(where: { identifier.contains($0) }) else {
+			return nil
+		}
+
+		// Build version. Skip bundle if no version is provided.
+		let version = Version(versionNumber: VersionParser.parse(versionNumber: versionNumber), buildNumber: VersionParser.parse(buildNumber: buildNumber))
+		guard !version.isEmpty else {
+			return nil
+		}
+
 		// Create bundle
-		let version = Version(versionNumber: versionNumber, buildNumber: buildNumber)
 		return App.Bundle(version: version, name: name, bundleIdentifier: identifier, fileURL: url, source: source)
 	}
 	

@@ -14,7 +14,7 @@
 			<string>¡Al día!</string>
 			<key>one</key>
 			<string>%d actualización disponible</string>
-			<key>many</key>
+			<key>other</key>
 			<string>%d actualizaciones disponibles</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>

@@ -328,3 +328,6 @@
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
 "y5A-ib-gR6.title" = "朗读";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "排序";
