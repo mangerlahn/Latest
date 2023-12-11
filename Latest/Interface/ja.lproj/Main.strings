@@ -133,3 +133,9 @@
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "ほかを隠す";
+
+/* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
+"Ljr-hV-usc.title" = "無視しない";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "並び替え";
