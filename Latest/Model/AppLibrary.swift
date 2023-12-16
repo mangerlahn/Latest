@@ -124,13 +124,10 @@ class AppLibrary {
 	private static let excludedSubfolders = Set(["Setapp/", ".app/"])
 	
 	/// Set of bundles that should not be included in Latest.
-	private static let excludedBundleIdentifiers: Set<String> = {
-		let url = Bundle.main.url(forResource: "ExcludedAppIdentifiers", withExtension: "plist")!
-		let data = try! Data(contentsOf: url)
-		
-		let propertyList = try! PropertyListSerialization.propertyList(from: data, format: nil) as! [String]
-		return Set(propertyList)
-	}()
+	private static let excludedBundleIdentifiers = Set([
+		// Safari Web Apps
+		"com.apple.Safari.WebApp"
+	])
 	
 	/// The metadata query that gathers all apps.
 	private let appSearchQuery: NSMetadataQuery = {
