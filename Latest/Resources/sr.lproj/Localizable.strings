@@ -1,23 +1,23 @@
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignorisano";
+"IgnoredSection" = "Zanemareno";
 
 /* New Version String */
 "RemoteVersionFormat" = "Nova verzija: %@";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "Verzija: %@";
 /* The title of a section divider in the app list. The first placeholder is the name of the section. The value in paranthesis describes how many apps are in that section, number of apps is inserted in the second placeholder. Use the HTML underline tag <u> to mark the deemphasized part of the text, which should be the count. Example: 'Installed Apps (42)' */
-"SectionTitle" = "%1$@ [@X5@X](%2$@)[@X14@X]";
+"SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "Desio se problem prilikom ažuriranja %@.";
+"UpdateErrorAlertTitle" = "Došlo je do greške pri ažuriranju %@.";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "Dostupno";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Dostupna Ažuriranja";
+"AvailableUpdatesSection" = "Dostupna ažuriranja";
 
 /* Cancel button in an update dialogue */
 "CancelAction" = "Otkaži";
@@ -26,16 +26,16 @@
 "CancellingUpdateStatus" = "Otkazivanje";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Preuzimanje %@ od %@";
+"DownloadingUpdateStatus" = "Preuzeto %@ od %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Problem prilikom ažuriranja apliakcije";
+"ErrorButtonAccessibilityTitle" = "Problem prilikom ažuriranja programa";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Ekstraktovanje Ažuriranja";
+"ExtractingUpdateStatus" = "Raspakivanje nove verzije";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignorisane Aplikacije";
+"IgnoredAppsSection" = "Zanemareni programi";
 
 /* Update progress state of initializing an update */
 "InitializingUpdateStatus" = "Pokretanje";
@@ -44,16 +44,16 @@
 "InstalledSection" = "Instalirano";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Instalirane Aplikacije";
+"InstalledAppsSection" = "Instalirani programi";
 
 /* Update progress state of installing an update */
 "InstallingUpdateStatus" = "Instaliranje";
 
 /* The source name of apps loaded from the App Store. */
-"AppStoreSource" = "Mac Prodavnica Aplikacija";
+"AppStoreSource" = "Mac App Store";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nijedna aplikacija nije obeležena.";
+"NoAppSelectedTitle" = "Nijedan program nije odabran";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Pokušaj ponovo";
@@ -65,49 +65,49 @@
 "OpenAction" = "Otvori";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Izaberi program sa liste da pročitaš napomene o izdanju.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Izvor: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "Ažuriraj";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Na čekanju";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Niste ulogovani";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Ime";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Datum";
 
 /* Short description of error stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Update Information Unavailable";
+"UpdateInfoUnavailableError" = "Informacija o ažuriranju nije dostupna";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Ulogujte se u Mac App Store za ažuriranje ovog programa.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Informacija o novim verzijama ovog programa nije pronađena.";
 
 /* Short description of error that no release notes were found. */
-"ReleaseNotesUnavailableError" = "No Release Notes";
+"ReleaseNotesUnavailableError" = "Nema napomena o izdanju";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Napomene o izdanju nisu dostupne za ovaj program.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "u %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "Ažuriraj u %@";
