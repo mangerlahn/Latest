@@ -202,7 +202,7 @@ class UpdateRepository {
 			case .repository:
 				"https://formulae.brew.sh/api/cask.json"
 			case .unsupportedApps:
-				"https://raw.githubusercontent.com/mangerlahn/Latest/develop/Latest/Resources/ExcludedAppIdentifiers.plist"
+				"https://raw.githubusercontent.com/mangerlahn/Latest/main/Latest/Resources/ExcludedAppIdentifiers.plist"
 			}
 			
 			return URL(string: urlString)!

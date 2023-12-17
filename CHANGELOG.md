@@ -1,7 +1,16 @@
 # Unreleased Changes
 
+# 0.10.2
+This update fixes more issues with the Homebrew check introduced in a recent update. Thank you for your continued reports, [please keep them coming][1]!
+
+- Language support for:
+	- Hebrew
+	- Serbian (Thanks smudja)!
+	- Various tweaks to other languages.
+
+
 # 0.10.1
-This update fixes many issues with the Homebrew check introduced in the last update. Sorry for the inconvenience and thanks for the numerous reports highlighting these issues. [Please keep them coming][1]!
+This update fixes many issues with the Homebrew check introduced in the last update. Sorry for the inconvenience and thanks for the numerous reports highlighting these issues. [Please keep them coming][2]!
  
 - Improvements to update checking:
 	- Fix many cases where an update would be shown for up to date apps
@@ -97,7 +106,7 @@ More langauges like Arabic, Catalan, Chinese, Indonesian and Norwegian are well 
 - Smaller UI fixes
 # 0.8
 #### New and Improved:
-- The Update All button returned to the toolbar. (Thanks [decodism][2]!)
+- The Update All button returned to the toolbar. (Thanks [decodism][3]!)
 - Icons of unsupported apps are now dimmed in the app list. (Thanks decodism!)
 - Added an action to open apps right from app list.  
 
@@ -125,7 +134,7 @@ Version 0.7.1 fixes a crash on launch that occurred for some people.
 - Refined interface with support for macOS Big Sur
 - Runs natively on M1 Macs
 - Adds Update checking support for iOS apps installed from the Mac App Store (M1 Macs only)
-- Latest is now available in French (Thanks [Flavien][3]!)
+- Latest is now available in French (Thanks [Flavien][4]!)
 - A little icon next to an app's name shows its source (Mac App Store or Web)
 - Adds an option to display unsupported apps in the update list, they appear greyed out
 
@@ -134,7 +143,7 @@ Version 0.7.1 fixes a crash on launch that occurred for some people.
 - Latest automatically quits when closing the window
 
 #### Now Fixed:
-- Some supported apps would not appear (Thanks [Simeon][4]!)
+- Some supported apps would not appear (Thanks [Simeon][5]!)
 - The window would not maximize when minimized in the dock
 - Fixed a crash when right-clicking insite the update list
 - Fixed a crash when quitting Latest or updating apps while Latest is open
@@ -189,23 +198,23 @@ This is basically version 0.4.4, but there was an issue with codesigning so many
 Version 0.4.3 slightly improves the way Latest handles offline situations and fixes a bug that caused apps in the update list to disappear after reload.
 
 # 0.4.2
-This update fixes some cases where the app could crash based on [\#25][5].
+This update fixes some cases where the app could crash based on [\#25][6].
 
 # 0.4.1
 #### Now Fixed:
-- Improvements to the Sparkle parser for better quality of information and filtering of unsupported apps (partly [\#27][6])
-- The "Open All" button really opened all installed apps! ([\#26][7])
+- Improvements to the Sparkle parser for better quality of information and filtering of unsupported apps (partly [\#27][7])
+- The "Open All" button really opened all installed apps! ([\#26][8])
 
 # 0.4
 #### Whats new:
-- Redesigned, uniform Release Notes ([\#3][8])
-- Touch Bar Support ([\#20][9])
-- Latest can show already installed updates ([\#15][10])
-- Latest now searches subfolders for updates ([\#22][11])
+- Redesigned, uniform Release Notes ([\#3][9])
+- Touch Bar Support ([\#20][10])
+- Latest can show already installed updates ([\#15][11])
+- Latest now searches subfolders for updates ([\#22][12])
 
 #### Thats fixed:
-- Apps will no longer disappear after reload ([\#21][12], [\#23][13])
-- Some release notes failed to load ([\#24][14])
+- Apps will no longer disappear after reload ([\#21][13], [\#23][14])
+- Some release notes failed to load ([\#24][15])
 
 # 0.3.2
 #### Now Fixed:
@@ -222,16 +231,17 @@ This update fixes some cases where the app could crash based on [\#25][5].
 - Small UI tweaks
 
 [1]:	https://github.com/mangerlahn/Latest/issues
-[2]:	https://github.com/decodism
-[3]:	https://github.com/flavienbonvin
-[4]:	https://github.com/sleifer
-[5]:	https://github.com/mangerlahn/Latest/issues/25
-[6]:	https://github.com/mangerlahn/Latest/issues/27
-[7]:	https://github.com/mangerlahn/Latest/issues/26
-[8]:	https://github.com/mangerlahn/Latest/issues/3
-[9]:	https://github.com/mangerlahn/Latest/issues/20
-[10]:	https://github.com/mangerlahn/Latest/issues/15
-[11]:	https://github.com/mangerlahn/Latest/issues/22
-[12]:	https://github.com/mangerlahn/Latest/issues/21
-[13]:	https://github.com/mangerlahn/Latest/issues/23
-[14]:	https://github.com/mangerlahn/Latest/issues/24
+[2]:	https://github.com/mangerlahn/Latest/issues
+[3]:	https://github.com/decodism
+[4]:	https://github.com/flavienbonvin
+[5]:	https://github.com/sleifer
+[6]:	https://github.com/mangerlahn/Latest/issues/25
+[7]:	https://github.com/mangerlahn/Latest/issues/27
+[8]:	https://github.com/mangerlahn/Latest/issues/26
+[9]:	https://github.com/mangerlahn/Latest/issues/3
+[10]:	https://github.com/mangerlahn/Latest/issues/20
+[11]:	https://github.com/mangerlahn/Latest/issues/15
+[12]:	https://github.com/mangerlahn/Latest/issues/22
+[13]:	https://github.com/mangerlahn/Latest/issues/21
+[14]:	https://github.com/mangerlahn/Latest/issues/23
+[15]:	https://github.com/mangerlahn/Latest/issues/24
