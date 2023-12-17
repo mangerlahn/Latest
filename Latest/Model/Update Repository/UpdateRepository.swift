@@ -18,6 +18,9 @@ class UpdateRepository {
 	
 	/// Duration after which the cache will be invalidated. (1 hour in seconds)
 	private static let cacheInvalidationDuration: Double = 1 * 60 * 60
+	
+	/// Queue on which requests will be handled.
+	private var queue = DispatchQueue(label: "repositoryQueue")
 
 	// MARK: - Init
 	
@@ -54,10 +57,12 @@ class UpdateRepository {
 		}
 		
 		/// Entries are still being fetched, add the request to the queue.
-		if entries == nil {
-			self.pendingRequests.append(checkApp)
-		} else {
-			checkApp()
+		queue.async {
+			if self.entries == nil {
+				self.pendingRequests.append(checkApp)
+			} else {
+				checkApp()
+			}
 		}
 	}
 	
@@ -72,11 +77,13 @@ class UpdateRepository {
 	
 	/// Sets the given entries and performs pending requests.
 	private func finalize() {
-		// Perform any pending requests
-		self.pendingRequests.forEach { request in
-			request()
+		queue.async {
+			// Perform any pending requests
+			self.pendingRequests.forEach { request in
+				request()
+			}
+			self.pendingRequests.removeAll()
 		}
-		self.pendingRequests.removeAll()
 	}
 	
 	/// Returns a repository entry for the given name, if available.
