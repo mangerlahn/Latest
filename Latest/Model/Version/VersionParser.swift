@@ -14,8 +14,8 @@ enum VersionParser {
 	// MARK: - Patterns
 	
 	private static let buildNumberPatterns: [Pattern] = [
-		// IU prefix (IU-1234)
-		.init(pattern: "IU-(.*)", components: [.buildNumber: 1]),
+		// Two-letter prefix (IU-1234, IC-1234)
+		.init(pattern: "[A-Z]{2}-(.*)", components: [.buildNumber: 1]),
 
 		// Version Number / Build Number (1.2/1234)
 		.init(pattern: "(.*)/(.*)", components: [.buildNumber: 2]),
@@ -37,6 +37,9 @@ enum VersionParser {
 		// OSX postfix (1.2.osx2)
 		.init(pattern: "(.*).osx.*", components: [.versionNumber: 1]),
 		
+		// Build number postfix (1.2 (r1234))
+		.init(pattern: "(.*) \\(r.*\\)", components: [.versionNumber: 1]),
+
 		// Catch all
 		.init(pattern: ".*", components: [.versionNumber: 0])
 	]

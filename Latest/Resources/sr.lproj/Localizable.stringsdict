@@ -10,14 +10,8 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
-			<key>zero</key>
-			<string>nula</string>
-			<key>one</key>
-			<string>jedan</string>
-			<key>few</key>
-			<string>nekoliko</string>
 			<key>other</key>
-			<string>%@d #Poboljšati</string>
+			<string>%d Poboljšati</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>

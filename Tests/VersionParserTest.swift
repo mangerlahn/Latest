@@ -15,7 +15,9 @@ final class VersionParserTest: XCTestCase {
 	func testBuildNumberParsing() {
 		XCTAssertEqual(VersionParser.parse(buildNumber: "1234"), "1234")
 		XCTAssertEqual(VersionParser.parse(buildNumber: "IU-1234"), "1234")
+		XCTAssertEqual(VersionParser.parse(buildNumber: "WS-1234"), "1234")
 		XCTAssertEqual(VersionParser.parse(buildNumber: "1.2/1234"), "1234")
+		XCTAssertEqual(VersionParser.parse(buildNumber: "ab-1234"), "ab-1234")
 	}
 	
 	func testVersionNumberParsing() {
@@ -23,6 +25,7 @@ final class VersionParserTest: XCTestCase {
 		XCTAssertEqual(VersionParser.parse(versionNumber: "v1234"), "1234")
 		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2.3.4"), "1.2.3.4")
 		XCTAssertEqual(VersionParser.parse(versionNumber: "Build 1234"), "1234")
+		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2.3 (r1234)"), "1.2.3")
 		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2.3.osx14"), "1.2.3")
 		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2-HEAD-123abc"), "1.2")
 	}

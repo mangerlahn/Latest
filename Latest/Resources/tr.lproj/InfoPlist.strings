@@ -1,8 +1,8 @@
 /* The name of the app. Should only be translated if "Latest" feels "wrong" for a given language and if a better alternative exists. I.e. the app is not localized in German as english app names are common and no "good sounding" alternatives exist. */
-"CFBundleName" = "Güncel";
+"CFBundleName" = "Latest";
 
 /* The name of the app. Should only be translated if "Latest" feels "wrong" for a given language and if a better alternative exists. I.e. the app is not localized in German as english app names are common and no "good sounding" alternatives exist. */
-"CFBundleDisplayName" = "Güncel";
+"CFBundleDisplayName" = "Latest";
 
 /* Copyright (human-readable) */
 "NSHumanReadableCopyright" = "Telif Hakkı © 2022 Max Langer. Tüm Hakları Saklıdır";

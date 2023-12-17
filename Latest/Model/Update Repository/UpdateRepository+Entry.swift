@@ -205,7 +205,7 @@ fileprivate extension UpdateRepository.Entry {
 			let names: [String] = (try? uninstallContainer.decodeVariable(String.self, forKey: .delete))?.compactMap { path in
 				let url = URL(fileURLWithPath: path)
 				guard url.pathExtension == "app" else { return nil }
-				return url.deletingPathExtension().lastPathComponent
+				return url.lastPathComponent
 			} ?? []
 			
 			// Try to get bundle identifiers
