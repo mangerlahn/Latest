@@ -19,18 +19,18 @@
 	<string>org.eclipse.platform.ide</string>
 	<string>epp.package.modeling</string>
 	<string>epp.package.rcp</string>
-	<string>co.eclecticlight.CirrusMac<\string>
-	<string>co.eclecticlight.Dintch<\string>
-	<string>co.eclecticlight.LockRattler<\string>
-	<string>co.eclecticlight.Metamer<\string>
-	<string>co.eclecticlight.Mints<\string>
-	<string>co.eclecticlight.Signet<\string>
-	<string>co.eclecticlight.SilentKnight<\string>
-	<string>co.eclecticlight.Spundle<\string>
-	<string>co.eclecticlight.TheTimeMachineMechanic<\string>
-	<string>co.eclecticlight.Ulbow<\string>
-	<string>co.eclecticlight.xattred<\string>
-	<string>co.eclecticlight.XProCheck<\string>
-	<string>org.the-meiers.coolterm<\string>
+	<string>co.eclecticlight.CirrusMac</string>
+	<string>co.eclecticlight.Dintch</string>
+	<string>co.eclecticlight.LockRattler</string>
+	<string>co.eclecticlight.Metamer</string>
+	<string>co.eclecticlight.Mints</string>
+	<string>co.eclecticlight.Signet</string>
+	<string>co.eclecticlight.SilentKnight</string>
+	<string>co.eclecticlight.Spundle</string>
+	<string>co.eclecticlight.TheTimeMachineMechanic</string>
+	<string>co.eclecticlight.Ulbow</string>
+	<string>co.eclecticlight.xattred</string>
+	<string>co.eclecticlight.XProCheck</string>
+	<string>org.the-meiers.coolterm</string>
 </array>
 </plist>
