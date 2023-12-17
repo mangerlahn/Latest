@@ -84,23 +84,32 @@ class UpdateRepository {
 		let name = bundle.fileURL.lastPathComponent
 
 		// Don't return an entry for unsupported apps
-		guard !unsupportedBundleIdentifiers.contains(bundle.bundleIdentifier) else { return nil }
+		guard let entries, !unsupportedBundleIdentifiers.contains(bundle.bundleIdentifier) else { return nil }
 		
-		// Match bundle identifier
-		return entries?.first(where: { entry in
-			if entry.bundleIdentifiers.contains(bundle.bundleIdentifier) {
-				return true
-			}
-			
-			return false
-		})
-		
-		// Fallback: Try to match app name (unreliable, since sometimes multiple apps with the same name exist. See Telegram or Eclipse)
-		?? self.entries?.first(where: { entry in
+		// Finding the correct entry is not trivial as there is no bundle identifier stored in an entry. We have a list of app names (could be ambiguous) and a list of bundle identifier guesses.
+		// However, both app names and bundle identifiers may occur in more than one entry:
+		// - App Names: Might occur multiple times for similar apps (Telegram.app for Desktop vs. Telegram.app for Mac)
+		// - Bundle Identifiers: Might occur multiple times for apps in bundles (com.microsoft.word in Word.app and Office bundle)
+		//
+		// Strategy: Find all entries that point to the given app name. If only one entry comes up, return that. Otherwise, try to match bundle identifiers to narrow it down.
+		var possibleEntries = entries.filter { entry in
 			return entry.names.contains { n in
 				return n.caseInsensitiveCompare(name) == .orderedSame
 			}
-		})
+		}
+		
+		guard !possibleEntries.isEmpty else { return nil }
+		if possibleEntries.count == 1 {
+			return possibleEntries.first
+		}
+		
+		// Match bundle identifier
+		possibleEntries = possibleEntries.filter { entry in
+			entry.bundleIdentifiers.contains(bundle.bundleIdentifier)
+		}
+		
+		// Only return an entry if we fixed the disambiguation
+		return (possibleEntries.count == 1 ? possibleEntries.first : nil)
 	}
 	
 	
@@ -158,7 +167,7 @@ class UpdateRepository {
 			let entries = try JSONDecoder().decode([Entry].self, from: repositoryData)
 		
 			// Filter out any entries without application name
-			self.entries = entries.filter { !$0.names.isEmpty || !$0.bundleIdentifiers.isEmpty }
+			self.entries = entries.filter { !$0.names.isEmpty }
 		} catch {
 			self.entries = []
 		}
