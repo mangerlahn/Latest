@@ -15,7 +15,7 @@
 "3GZ-aM-hwz.title" = "Polje teksta";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
-"4J7-dP-txa.title" = "Cjeloekranski prikaz";
+"4J7-dP-txa.title" = "Uključi cjeloekranski prikaz";
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Zatvori program „Najnovije”";
