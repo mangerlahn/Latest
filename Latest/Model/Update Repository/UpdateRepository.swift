@@ -57,9 +57,11 @@ class UpdateRepository {
 		}
 		
 		/// Entries are still being fetched, add the request to the queue.
-		queue.async {
-			if self.entries == nil {
-				self.pendingRequests.append(checkApp)
+		queue.async { [weak self] in
+			guard let self else { return }
+			
+			if self.pendingRequests != nil {
+				self.pendingRequests?.append(checkApp)
 			} else {
 				checkApp()
 			}
@@ -67,31 +69,38 @@ class UpdateRepository {
 	}
 	
 	/// List of entries stored within the repository.
-	private var entries: [Entry]?
+	private var entries: [Entry]!
 	
 	/// A list of requests being performed while the repository was still fetching data.
-	private var pendingRequests: [() -> Void] = []
+	///
+	/// It also acts as a flag for whether initialization finished. The array is initialized when the repository is created. It will be set to nil once `finalize()` is being called.
+	private var pendingRequests: [() -> Void]? = []
 	
 	/// A set of bundle identifiers for which update checking is currently not supported.
 	private var unsupportedBundleIdentifiers: Set<String>!
 	
 	/// Sets the given entries and performs pending requests.
 	private func finalize() {
-		queue.async {
+		queue.async { [weak self] in
+			guard let self else { return }
+			guard let pendingRequests else {
+				fatalError("Finalize must only be called once!")
+			}
+			
 			// Perform any pending requests
-			self.pendingRequests.forEach { request in
+			pendingRequests.forEach { request in
 				request()
 			}
-			self.pendingRequests.removeAll()
+			
+			// Mark repository as loaded.
+			self.pendingRequests = nil
 		}
 	}
 	
 	/// Returns a repository entry for the given name, if available.
 	private func entry(for bundle: App.Bundle) -> Entry? {
-		let name = bundle.fileURL.lastPathComponent
-
 		// Don't return an entry for unsupported apps
-		guard let entries, !unsupportedBundleIdentifiers.contains(bundle.bundleIdentifier) else { return nil }
+		guard !unsupportedBundleIdentifiers.contains(bundle.bundleIdentifier) else { return nil }
 		
 		// Finding the correct entry is not trivial as there is no bundle identifier stored in an entry. We have a list of app names (could be ambiguous) and a list of bundle identifier guesses.
 		// However, both app names and bundle identifiers may occur in more than one entry:
@@ -99,6 +108,7 @@ class UpdateRepository {
 		// - Bundle Identifiers: Might occur multiple times for apps in bundles (com.microsoft.word in Word.app and Office bundle)
 		//
 		// Strategy: Find all entries that point to the given app name. If only one entry comes up, return that. Otherwise, try to match bundle identifiers to narrow it down.
+		let name = bundle.fileURL.lastPathComponent
 		var possibleEntries = entries.filter { entry in
 			return entry.names.contains { n in
 				return n.caseInsensitiveCompare(name) == .orderedSame
