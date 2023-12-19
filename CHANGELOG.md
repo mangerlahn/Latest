@@ -1,5 +1,8 @@
 # Unreleased Changes
 
+# 0.10.3
+Fixes a crash that may occur after updating to 0.10.2.
+
 # 0.10.2
 This update fixes more issues with the Homebrew check introduced in a recent update. Thank you for your continued reports, [please keep them coming][1]!
 
@@ -35,7 +38,7 @@ This update fixes many issues with the Homebrew check introduced in the last upd
 # 0.10
 #### New and Improved:
 - Added update checking via Homebrew Cask, which should allow for many more updates to be found
-- The app list is now sorted by recently updated apps. Sort by app name can be restored via the main menu: View > Sort By > Name
+- The app list is now sorted by recently updated apps. Sort by app name can be restored via the main menu: View \> Sort By \> Name
 - Improved messages when no release notes are available
 - Interface improvements for macOS Sonoma
 
