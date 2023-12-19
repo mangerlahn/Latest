@@ -330,4 +330,7 @@
 "OY7-WF-poV.title" = "تصغير";
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
-"1fA-1k-qER.title" = "";
+"1fA-1k-qER.title" = "رتب حسب";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "رتب حسب";
