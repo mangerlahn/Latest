@@ -20,6 +20,9 @@ enum VersionParser {
 		// Version Number / Build Number (1.2/1234)
 		.init(pattern: "(.*)/(.*)", components: [.buildNumber: 2]),
 		
+		// Build number postfix (1.2 (r1234))
+		.init(pattern: ".* \\(r(.*)\\)", components: [.buildNumber: 1]),
+		
 		// Catch all
 		.init(pattern: ".*", components: [.buildNumber: 0])
 	]
