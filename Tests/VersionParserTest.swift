@@ -17,6 +17,7 @@ final class VersionParserTest: XCTestCase {
 		XCTAssertEqual(VersionParser.parse(buildNumber: "IU-1234"), "1234")
 		XCTAssertEqual(VersionParser.parse(buildNumber: "WS-1234"), "1234")
 		XCTAssertEqual(VersionParser.parse(buildNumber: "1.2/1234"), "1234")
+		XCTAssertEqual(VersionParser.parse(buildNumber: "1.2 (r1234)"), "1234")
 		XCTAssertEqual(VersionParser.parse(buildNumber: "ab-1234"), "ab-1234")
 	}
 	
