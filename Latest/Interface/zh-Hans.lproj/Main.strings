@@ -331,3 +331,6 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "排序";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "排序方式";
