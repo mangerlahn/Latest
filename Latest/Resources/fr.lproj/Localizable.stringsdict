@@ -12,12 +12,12 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>Vous êtes à jour !</string>
 			<key>one</key>
 			<string>%d mise à jour disponible</string>
-			<key>other</key>
-			<string>%d mises à jour disponible</string>
-			<key>zero</key>
-			<string>À jour !</string>
+			<key>many</key>
+			<string>%d mises à jour disponibles</string>
 		</dict>
 	</dict>
 </dict>
