@@ -28,7 +28,7 @@
 "ExtractingUpdateStatus" = "استخراج التحديث";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "مهمل";
+"IgnoredSection" = "تم تجاهله";
 
 /* Table Section Header for ignored apps */
 "IgnoredAppsSection" = "البرامج مهملة";
@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "تحديث جديد: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "لم يتم تحديد أي برنامج.";
+"NoAppSelectedTitle" = "لم يتم تحديد أي برنامج";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج.";
+"ReleaseNotesUnavailableError" = "لم يتم العثور على ملاحظات الإصدار لهذا البرنامج";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "أعد المحاولة";
@@ -76,7 +76,7 @@
 "UpdateAction" = "تحديث";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "لم يتم العثور على تحديث لهذا البرنامج.";
+"UpdateInfoUnavailableError" = "لم يتم العثور على تحديث لهذا البرنامج";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "انتظار";
@@ -88,28 +88,28 @@
 "LocalVersionFormat" = "الإصدار الخاص بك: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "لم يتم تسجيل الدخول";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "الاسم";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "التاريخ";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "قم بتسجيل الدخول في Mac App Store لتحديث هذا التطبيق.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "لم يتم العثورعلى معلومات التحديث لهذا التطبيق.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "ملاحظات الإصدار غير متوفرة لهذا التطبيق.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "في %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "تحديث في %@";
