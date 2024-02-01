@@ -69,7 +69,7 @@ class UpdateRepository {
 	}
 	
 	/// List of entries stored within the repository.
-	private var entries: [Entry]!
+	private var entries = [Entry]()
 	
 	/// A list of requests being performed while the repository was still fetching data.
 	///
