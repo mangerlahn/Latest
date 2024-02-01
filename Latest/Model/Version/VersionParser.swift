@@ -119,7 +119,7 @@ extension VersionParser {
 		
 		/// Extracts the component as string from the given parsing result.
 		func string(for component: Component, in versionString: String, match: NSTextCheckingResult) -> String? {
-			guard let index = components[component] else {
+			guard !versionString.isEmpty, let index = components[component] else {
 				return nil
 			}
 			
