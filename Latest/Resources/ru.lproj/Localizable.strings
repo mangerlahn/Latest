@@ -19,7 +19,7 @@
 "RevealAction" = "Раскрыть";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Отмена";
+"CancellingUpdateStatus" = "Отменяю";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
 "DownloadingUpdateStatus" = "Загрузка %@ из %@";
@@ -55,10 +55,10 @@
 "RemoteVersionFormat" = "Новая версия: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Приложение не выбрано.";
+"NoAppSelectedTitle" = "Приложение не выбрано";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "Для этого приложения не было найдено никаких заметок о выпуске.";
+"ReleaseNotesUnavailableError" = "Отсутствует список изменений";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Повторить";
@@ -76,7 +76,7 @@
 "UpdateAction" = "Обновление";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Обновление для этого приложения не найдено.";
+"UpdateInfoUnavailableError" = "Информация об обновлении не найдена";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Ожидание";
@@ -88,7 +88,7 @@
 "LocalVersionFormat" = "Ваша версия: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Вы не вошли";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Название";
@@ -100,16 +100,16 @@
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Войдите в Mac App Store, чтобы обновить это приложение.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Информация об обновлении этого приложения не может быть получена.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Список изменений недоступен для этого приложения.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "в %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "Обновить в %@";
