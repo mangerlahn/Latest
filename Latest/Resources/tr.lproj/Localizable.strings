@@ -52,7 +52,7 @@
 "RemoteVersionFormat" = "Yeni versiyon: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Hiçbir uygulama seçilmedi.";
+"NoAppSelectedTitle" = "Seçili uygulamala yok.";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Yeniden dene";
