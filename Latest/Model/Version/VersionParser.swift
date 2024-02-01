@@ -34,14 +34,18 @@ enum VersionParser {
 		// Version prefix (v1234)
 		.init(pattern: "v(.*)", components: [.versionNumber: 1]),
 		
-		// Commit postfix (1.2-HEAD-123abc)
+		// Commit postfix (1.2-HEAD-123abc / 1.2-stable.123abc)
 		.init(pattern: "(.*)-HEAD-.*", components: [.versionNumber: 1]),
+		.init(pattern: "(.*)-stable.*", components: [.versionNumber: 1]),
 		
 		// OSX postfix (1.2.osx2)
 		.init(pattern: "(.*).osx.*", components: [.versionNumber: 1]),
 		
 		// Build number postfix (1.2 (r1234))
 		.init(pattern: "(.*) \\(r.*\\)", components: [.versionNumber: 1]),
+		
+		// "latest" postfix
+		.init(pattern: "(.*)-latest", components: [.versionNumber: 1]),
 
 		// Catch all
 		.init(pattern: ".*", components: [.versionNumber: 0])
