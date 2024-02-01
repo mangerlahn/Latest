@@ -52,10 +52,10 @@
 "RemoteVersionFormat" = "新版本: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "没有选中的应用程序。";
+"NoAppSelectedTitle" = "没有选中的应用程序";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "找不到此应用的发行说明。";
+"ReleaseNotesUnavailableError" = "找不到此应用的发行说明";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "重试";
@@ -76,7 +76,7 @@
 "UpdateAction" = "更新";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "找不到此应用程序的更新。";
+"UpdateInfoUnavailableError" = "找不到此应用程序的更新信息";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "等待中";
@@ -88,28 +88,28 @@
 "LocalVersionFormat" = "你的版本： %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "未登录 App Store";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "名称";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "日期";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "登录 Mac App Store 以更新此应用程序。";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "找不到此应用的更新信息。";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "此应用程序没有提供发行说明。";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "去 %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "去 %@ 更新";
