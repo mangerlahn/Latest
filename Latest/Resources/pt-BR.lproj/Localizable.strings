@@ -7,7 +7,7 @@
 "UpdateErrorAlertTitle" = "Aconteceu um erro durante a atualização %@.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Disponível";
+"AvailableSection" = "Disponíveis";
 
 /* Table Section Header for available updates */
 "AvailableUpdatesSection" = "Atualizações disponíveis";
