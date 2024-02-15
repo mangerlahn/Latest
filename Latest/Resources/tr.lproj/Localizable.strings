@@ -4,7 +4,7 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "Güncelleme sırasında bir hata oluştu %@.";
+"UpdateErrorAlertTitle" = "%@ güncellenirken bir hata oluştu .";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "Mevcut";
@@ -52,7 +52,7 @@
 "RemoteVersionFormat" = "Yeni versiyon: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Hiçbir uygulama seçilmedi.";
+"NoAppSelectedTitle" = "Seçili uygulamala yok";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Yeniden dene";
@@ -76,7 +76,7 @@
 "WaitingUpdateStatus" = "Bekliyor";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "İnternet";
 
 /* Current Version String */
 "LocalVersionFormat" = "Yüklü Versiyon: %@";

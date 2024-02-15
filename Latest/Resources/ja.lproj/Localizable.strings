@@ -5,7 +5,7 @@
 "RemoteVersionFormat" = "新しいバージョン： ％@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "アプリが選択されていません。";
+"NoAppSelectedTitle" = "アプリが選択されていません";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "リトライ";
@@ -82,34 +82,34 @@
 "LocalVersionFormat" = "あなたのバージョン： %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "サインインしていません";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "名前";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "日付";
 
 /* Short description of error stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Update Information Unavailable";
+"UpdateInfoUnavailableError" = "更新情報がありません";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Mac App Storeにサインインして、このアプリケーションをアップデートしてください。";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "このアプリの更新情報を取得出来ませんでした。";
 
 /* Short description of error that no release notes were found. */
-"ReleaseNotesUnavailableError" = "No Release Notes";
+"ReleaseNotesUnavailableError" = "リリースノートがありません";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "このアプリのリリースノートは利用できません。";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "%@で";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "%@に更新";
