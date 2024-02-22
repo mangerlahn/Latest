@@ -328,3 +328,9 @@
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
 "Yj4-SM-ocg.title" = "Επανάληψη";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Ταξινόμηση κατά";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Ταξινόμηση κατά";
