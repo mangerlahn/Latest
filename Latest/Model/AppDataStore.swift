@@ -15,7 +15,7 @@ protocol AppProviding {
 	var updatableApps: [App] { get }
 
 	/// Returns the number of apps with updates available.
-	var countOfAvailableUpdates: Int { get }
+	func countOfAvailableUpdates(where condition: (App) -> Bool) -> Int
 	
 	/// The handler for notifying observers about changes to the update state.
 	typealias ObserverHandler = (_ newValue: [App]) -> Void
@@ -84,9 +84,9 @@ class AppDataStore: AppProviding {
 	}
 		
 	/// The cached count of apps with updates available
-	var countOfAvailableUpdates: Int {
+	func countOfAvailableUpdates(where condition: (App) -> Bool) -> Int {
 		updateQueue.sync {
-			return self.apps.filter({ $0.updateAvailable && !$0.isIgnored }).count
+			return self.apps.filter({ $0.updateAvailable && !$0.isIgnored && condition($0) }).count
 		}
 	}
 	

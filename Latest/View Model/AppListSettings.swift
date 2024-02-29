@@ -10,6 +10,7 @@ private let SortOptionsKey = "SortOptionsKey"
 private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
 private let ShowUnsupportedUpdatesKey = "ShowUnsupportedUpdatesKey"
+private let ShowExternalUpdatesKey = "ShowExternalUpdatesKey"
 
 /// Observable front end to app list preferences.
 struct AppListSettings: Observable {
@@ -55,6 +56,17 @@ struct AppListSettings: Observable {
 		}
 	}
 	
+	/// Whether installed apps should be visible
+	var showInstalledUpdates: Bool {
+		set {
+			set(newValue, forKey: ShowInstalledUpdatesKey)
+		}
+		
+		get {
+			UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey)
+		}
+	}
+	
 	/// Whether ignored apps should be visible
 	var showIgnoredUpdates: Bool {
 		set {
@@ -78,13 +90,13 @@ struct AppListSettings: Observable {
 	}
 	
 	/// Whether installed apps should be visible
-	var showInstalledUpdates: Bool {
+	var showExternalUpdates: Bool {
 		set {
-			set(newValue, forKey: ShowInstalledUpdatesKey)
+			set(newValue, forKey: ShowExternalUpdatesKey)
 		}
 		
 		get {
-			UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey)
+			UserDefaults.standard.bool(forKey: ShowExternalUpdatesKey)
 		}
 	}
 	

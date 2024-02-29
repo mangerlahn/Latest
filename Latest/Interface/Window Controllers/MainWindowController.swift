@@ -115,7 +115,7 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	}
     
     
-    // MARK: Menu Item ShowIgnoredUpdatesKeytion
+    // MARK: Menu Item
 
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else {
@@ -151,6 +151,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
                 menuItem.state = AppListSettings.shared.showIgnoredUpdates ? .on : .off
 			case #selector(toggleShowUnsupportedUpdates(_:)):
 				menuItem.state = AppListSettings.shared.showUnsupportedUpdates ? .on : .off
+			case #selector(toggleShowExternalUpdates(_:)):
+				menuItem.state = AppListSettings.shared.showExternalUpdates ? .on : .off
             default:
                 ()
             }
@@ -204,22 +206,26 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	
 	// MARK: - Actions
 	
-	@IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
-		AppListSettings.shared.showInstalledUpdates = !AppListSettings.shared.showInstalledUpdates
-	}
-	
-	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
-		AppListSettings.shared.showIgnoredUpdates = !AppListSettings.shared.showIgnoredUpdates
-	 }
-	
-	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
-		AppListSettings.shared.showUnsupportedUpdates = !AppListSettings.shared.showUnsupportedUpdates
-	}
-	
 	@IBAction func changeSortOrder(_ sender: NSMenuItem?) {
 		AppListSettings.shared.sortOrder = sender?.representedObject as! AppListSettings.SortOptions
 	}
+
+	@IBAction func toggleShowInstalledUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showInstalledUpdates.toggle()
+	}
 	
+	@IBAction func toggleShowIgnoredUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showIgnoredUpdates.toggle()
+	 }
+	
+	@IBAction func toggleShowUnsupportedUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showUnsupportedUpdates.toggle()
+	}
+
+	@IBAction func toggleShowExternalUpdates(_ sender: NSMenuItem?) {
+		AppListSettings.shared.showExternalUpdates.toggle()
+	}
+
 	
 	// MARK: - Accessors
 	

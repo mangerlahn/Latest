@@ -45,24 +45,33 @@ struct AppListSnapshot {
 		// Mutable copy
 		var visibleApps = apps
 		
-		// Filter installed updates
-		if !AppListSettings.shared.showInstalledUpdates {
-			visibleApps = visibleApps.filter({ $0.updateAvailable || $0.isIgnored })
-		}
-		
-		// Filter unsupported apps
-		if !AppListSettings.shared.showUnsupportedUpdates {
-			visibleApps = visibleApps.filter({ $0.supported })
-		}
-		
-		// Apply filter query
-		if let filterQuery = filterQuery {
-			visibleApps = visibleApps.filter({ $0.name.localizedCaseInsensitiveContains(filterQuery) })
-		}
-		
-		// Filter ignored apps
-		if !AppListSettings.shared.showIgnoredUpdates {
-			visibleApps = visibleApps.filter({ !$0.isIgnored })
+		visibleApps = visibleApps.filter { app in
+			// Apply filter query/Users/Max/Developer/External_Projects/Latest/Latest/Latest/Interface/Window Controllers/MainWindowController.swift:				menuItem.state = AppListSettings.shared.showUnsupportedUpdates ? .on : .off
+			if let filterQuery = filterQuery, !app.name.localizedCaseInsensitiveContains(filterQuery) {
+				return false
+			}
+
+			// Filter installed updates
+			if !AppListSettings.shared.showInstalledUpdates && !(app.updateAvailable || app.isIgnored) {
+				return false
+			}
+						
+			// Filter ignored apps
+			if !AppListSettings.shared.showIgnoredUpdates && app.isIgnored {
+				return false
+			}
+
+			// Filter unsupported apps
+			if !AppListSettings.shared.showUnsupportedUpdates && !app.supported {
+				return false
+			}
+			
+			// Filter apps not using the builtin updater
+			if !AppListSettings.shared.showExternalUpdates && app.updateAvailable && !app.usesBuiltInUpdater {
+				return false
+			}
+			
+			return true
 		}
 		
 		// Sort apps based on setting

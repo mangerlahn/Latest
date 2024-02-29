@@ -338,6 +338,12 @@
                                                 <action selector="toggleShowUnsupportedUpdates:" target="Ady-hI-5gd" id="URA-qk-ZAz"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="sV1-V0-voo"/>
+                                        <menuItem title="Show External Updates" keyEquivalent="E" id="ZAF-PE-baJ">
+                                            <connections>
+                                                <action selector="toggleShowExternalUpdates:" target="Ady-hI-5gd" id="g0C-DT-iGw"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2cf-83-Jly"/>
                                         <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
                                             <connections>
@@ -883,7 +889,7 @@
                                         <rect key="frame" x="20" y="15" width="360" height="96"/>
                                         <subviews>
                                             <imageView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Y4U-TI-bJq">
-                                                <rect key="frame" x="0.0" y="9" width="64" height="64"/>
+                                                <rect key="frame" x="0.0" y="16" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="Se1-u6-BQ1"/>
                                                     <constraint firstAttribute="width" secondItem="Y4U-TI-bJq" secondAttribute="height" multiplier="1:1" id="aWq-WK-xqZ"/>
@@ -985,7 +991,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-dW-3UA">
-                                                <rect key="frame" x="305" y="30" width="55" height="36"/>
+                                                <rect key="frame" x="305" y="37" width="55" height="36"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
                                                         <rect key="frame" x="-7" y="9" width="69" height="32"/>

@@ -105,6 +105,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
 	func updateSnapshot() {
 		self.scheduleTableViewUpdate(with: self.snapshot.updated(), animated: true)
+		self.updateTitleAndBatch()
 	}
 	
 	
@@ -473,7 +474,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     
     /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
     private func updateTitleAndBatch() {
-		let count = UpdateCheckCoordinator.shared.appProvider.countOfAvailableUpdates
+		let showExternalUpdates = AppListSettings.shared.showExternalUpdates
+		let count = UpdateCheckCoordinator.shared.appProvider.countOfAvailableUpdates(where: { showExternalUpdates || $0.usesBuiltInUpdater })
 		let statusText: String
 		
 		// Update dock badge
