@@ -53,7 +53,14 @@ extension App {
 		
 		/// Opens the app and a given index
 		func open() {
-			NSWorkspace.shared.open(self.fileURL)
+			if #available(macOS 10.15, *) {
+				// Open application asynchronously
+				let configuration = NSWorkspace.OpenConfiguration()
+				NSWorkspace.shared.open(self.fileURL, configuration: configuration, completionHandler: nil)
+			} else {
+				// Open application synchronously
+				NSWorkspace.shared.open(self.fileURL)
+			}
 		}
 		
 		
