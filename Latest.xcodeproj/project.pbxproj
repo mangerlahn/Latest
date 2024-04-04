@@ -10,6 +10,8 @@
 		50037513245EA9FA00D3BB0D /* UpdateGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50037512245EA9FA00D3BB0D /* UpdateGroupCellView.swift */; };
 		501EA9821EB1BA4400D05821 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 501EA9841EB1BA4400D05821 /* Localizable.strings */; };
 		501EA98A1EB1BD8B00D05821 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 501EA98C1EB1BD8B00D05821 /* Localizable.stringsdict */; };
+		501EF8ED2B9A665A00F0D759 /* BundleCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501EF8EC2B9A665A00F0D759 /* BundleCollector.swift */; };
+		501EF8EF2B9A77B400F0D759 /* AppDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501EF8EE2B9A77B400F0D759 /* AppDirectory.swift */; };
 		50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50290E741E53EB6A00133E3D /* AppDelegate.swift */; };
 		50290E791E53EB6A00133E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50290E781E53EB6A00133E3D /* Assets.xcassets */; };
 		50290E7C1E53EB6A00133E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50290E7A1E53EB6A00133E3D /* Main.storyboard */; };
@@ -117,6 +119,8 @@
 		501EA9831EB1BA4400D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501EA98B1EB1BD8B00D05821 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = de; path = de.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		501EA98D1EB1BD9400D05821 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		501EF8EC2B9A665A00F0D759 /* BundleCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleCollector.swift; sourceTree = "<group>"; };
+		501EF8EE2B9A77B400F0D759 /* AppDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDirectory.swift; sourceTree = "<group>"; };
 		502217602804B9830043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Main.strings; sourceTree = "<group>"; };
 		502217762804B9950043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = hr; path = hr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		502217772804B9990043366B /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -336,6 +340,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501EF8EB2B9A661B00F0D759 /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				501EF8EE2B9A77B400F0D759 /* AppDirectory.swift */,
+				5073753E278998A300F371D8 /* AppLibrary.swift */,
+				501EF8EC2B9A665A00F0D759 /* BundleCollector.swift */,
+			);
+			path = Directory;
+			sourceTree = "<group>";
+		};
 		50290E681E53EB6A00133E3D = {
 			isa = PBXGroup;
 			children = (
@@ -500,8 +514,8 @@
 			children = (
 				5058E9C227863FC80028F564 /* App.swift */,
 				506DF77521248F6200D792FC /* AppDataStore.swift */,
-				5073753E278998A300F371D8 /* AppLibrary.swift */,
 				5095121F1FF36301003D2D7F /* Bundle.swift */,
+				501EF8EB2B9A661B00F0D759 /* Directory */,
 				509512111FF362A1003D2D7F /* Update.swift */,
 				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
 				50C8573E2B25CF6100F5BF0B /* Update Repository */,
@@ -870,10 +884,12 @@
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
 				5039DE8D22CAA2790088B39B /* MacAppStoreUpdateOperation.swift in Sources */,
 				507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */,
+				501EF8ED2B9A665A00F0D759 /* BundleCollector.swift in Sources */,
 				50C9F0F5234637BD00FD1802 /* UpdateCheckerOperation.swift in Sources */,
 				50D6EF5F281461A3002D7006 /* Sparkle.swift in Sources */,
 				50ACE3F221D58DAD002FB72D /* UpdateTableView+Search.swift in Sources */,
 				502929EF2120621B00F00D1C /* ReleaseNotesTextViewController.swift in Sources */,
+				501EF8EF2B9A77B400F0D759 /* AppDirectory.swift in Sources */,
 				508323E5257824AA000BBA13 /* UpdateButtonCell.swift in Sources */,
 				509512331FF36380003D2D7F /* ReleaseNotesViewController.swift in Sources */,
 				502929FB21206BC800F00D1C /* ReleaseNotesContentProtocol.swift in Sources */,
