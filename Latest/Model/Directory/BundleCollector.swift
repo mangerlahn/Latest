@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 /// Gathers apps at a given URL.
 enum BundleCollector {
@@ -20,6 +21,9 @@ enum BundleCollector {
 		"com.apple.Safari.WebApp"
 	])
 	
+	@available(macOS 11.0, *)
+	private static let appExtension = UTType.applicationBundle.preferredFilenameExtension
+	
 	/// Returns a list of application bundles at the given URL.
 	static func collectBundles(at url: URL) -> [App.Bundle] {
 		let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsPackageDescendants])
@@ -31,7 +35,8 @@ enum BundleCollector {
 				continue
 			}
 			
-			if let bundle = bundle(forAppAt: bundleURL) {
+			let expectedExtension = if #available(macOS 11.0, *) { appExtension } else { "app" }
+			if bundleURL.pathExtension == expectedExtension, let bundle = bundle(forAppAt: bundleURL) {
 				bundles.append(bundle)
 			}
 		}

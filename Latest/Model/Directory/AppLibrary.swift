@@ -48,7 +48,9 @@ class AppLibrary {
 	
 	/// Starts the update checking process
 	func startQuery() {
-		self.setupDirectoryObservers()
+		DispatchQueue.global().async {
+			self.setupDirectoryObservers()
+		}
 	}
 		
 	private func setupDirectoryObservers() {
