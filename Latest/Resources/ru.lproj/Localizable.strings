@@ -103,7 +103,7 @@
 "UpdateInfoUnavailableErrorFailureReason" = "Информация об обновлении этого приложения не может быть получена.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Список изменений недоступен для этого приложения.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Список изменений недоступен для этого приложения";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
