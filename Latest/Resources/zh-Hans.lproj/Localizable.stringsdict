@@ -13,7 +13,7 @@
 			<key>zero</key>
 			<string>暂无待更新 App!</string>
 			<key>other</key>
-			<string>%d 个 App 可更新</string>
+			<string>%d个App可更新</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>

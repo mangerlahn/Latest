@@ -11,13 +11,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>Актуально!</string>
+			<string>Все обновлено</string>
 			<key>one</key>
-			<string>%d Обновление доступно</string>
+			<string>%d обновление доступно</string>
 			<key>few</key>
-			<string>%d Обновления доступно</string>
+			<string>%d обновлений доступно</string>
 			<key>many</key>
-			<string>%d Обновлений доступно</string>
+			<string>%d обновлений доступно</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>
