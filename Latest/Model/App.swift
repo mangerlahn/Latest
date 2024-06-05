@@ -187,14 +187,15 @@ extension App {
 	
 	/// Returns an attributed string that highlights a given search query within this app's name.
 	func highlightedName(for query: String?) -> NSAttributedString {
-		let name = NSMutableAttributedString(string: self.bundle.name)
+		let name = bundle.name
+		let attributedName = NSMutableAttributedString(string: name)
 		
-		if let queryString = query, let selectedRange = self.bundle.name.lowercased().range(of: queryString.lowercased()) {
-			name.addAttribute(.foregroundColor, value: NSColor(named: "FadedSearchText")!, range: NSMakeRange(0, name.length))
-			name.removeAttribute(.foregroundColor, range: NSRange(selectedRange, in: self.bundle.name))
+		if let queryString = query, let selectedRange = name.range(of: queryString, options: .caseInsensitive) {
+			attributedName.addAttribute(.foregroundColor, value: NSColor(resource: .fadedSearchText), range: NSMakeRange(0, name.count))
+			attributedName.removeAttribute(.foregroundColor, range: NSRange(selectedRange, in: name))
 		}
 		
-		return name
+		return attributedName
 	}
 
 }

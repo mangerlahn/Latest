@@ -46,7 +46,7 @@ struct AppListSnapshot {
 		var visibleApps = apps
 		
 		visibleApps = visibleApps.filter { app in
-			// Apply filter query/Users/Max/Developer/External_Projects/Latest/Latest/Latest/Interface/Window Controllers/MainWindowController.swift:				menuItem.state = AppListSettings.shared.showUnsupportedUpdates ? .on : .off
+			// Apply filter query
 			if let filterQuery = filterQuery, !app.name.localizedCaseInsensitiveContains(filterQuery) {
 				return false
 			}
