@@ -13,7 +13,7 @@
 			<key>zero</key>
 			<string>全是最新版本！</string>
 			<key>other</key>
-			<string>有 %d 個可以更新</string>
+			<string>有 %d 個可用更新</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@value@</string>
