@@ -58,7 +58,7 @@ class AppLibrary {
 		var dispatchGroup: DispatchGroup? = self.directories.isEmpty ? DispatchGroup() : nil
 		
 		// Setup directories
-		directories = Dictionary(uniqueKeysWithValues: applicationURLs.map({ url in
+		directories = Dictionary(uniqueKeysWithValues: directoryStore.URLs.map({ url in
 			dispatchGroup?.enter()
 			
 			// Reuse existing directory observations if possible
@@ -86,18 +86,11 @@ class AppLibrary {
 
 	
 	
-	// MARK: - Accessors
+	// MARK: - Directory Handling
 	
-	/// The url of the /Applications folder on the users Mac
-	private lazy var applicationURLs : [URL] = {
-		let fileManager = FileManager.default
-		let urls = [FileManager.SearchPathDomainMask.localDomainMask, .userDomainMask].flatMap { (domainMask) -> [URL] in
-			return fileManager.urls(for: .applicationDirectory, in: domainMask)
-		}
-		
-		return urls.filter { url -> Bool in
-			return fileManager.fileExists(atPath: url.path)
-		}
+	/// The store handling application directories.
+	private lazy var directoryStore = {
+		AppDirectoryStore(updateHandler: self.setupDirectoryObservers)
 	}()
 	
 }
