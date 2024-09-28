@@ -90,7 +90,7 @@ class AppLibrary {
 	
 	/// The store handling application directories.
 	private lazy var directoryStore = {
-		AppDirectoryStore(updateHandler: self.setupDirectoryObservers)
+		AppDirectoryStore(updateHandler: self.startQuery)
 	}()
 	
 }

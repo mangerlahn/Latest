@@ -27,6 +27,8 @@
 		5040D45C28DBB753009BF379 /* HomebrewCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040D45A28DBB753009BF379 /* HomebrewCheckerOperation.swift */; };
 		5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048573F22C81DCF00C52C48 /* CommerceKit.framework */; };
 		5048574222C81DF900C52C48 /* StoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048574122C81DF800C52C48 /* StoreFoundation.framework */; };
+		504FB4A92B76CA28009C73E9 /* UpdateCheckSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504FB4A82B76CA28009C73E9 /* UpdateCheckSettings.swift */; };
+		504FB4AC2B76CA77009C73E9 /* AppLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504FB4AB2B76CA77009C73E9 /* AppLocationViewController.swift */; };
 		5058BA3A21202BA7003F332B /* IconCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058BA3921202BA7003F332B /* IconCache.swift */; };
 		5058E9C327863FC80028F564 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058E9C227863FC80028F564 /* App.swift */; };
 		506A8F6722EC14CC00C755AF /* LatestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A8F6622EC14CC00C755AF /* LatestError.swift */; };
@@ -39,6 +41,7 @@
 		508323E4257824AA000BBA13 /* UpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E1257824A9000BBA13 /* UpdateButton.swift */; };
 		508323E5257824AA000BBA13 /* UpdateButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508323E2257824AA000BBA13 /* UpdateButtonCell.swift */; };
 		5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */; };
+		5093EF9C2B913A1C0041E6C1 /* AppDirectoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5093EF9B2B913A1C0041E6C1 /* AppDirectoryCellView.swift */; };
 		509512141FF362A1003D2D7F /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512101FF362A1003D2D7F /* Version.swift */; };
 		509512151FF362A1003D2D7F /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509512111FF362A1003D2D7F /* Update.swift */; };
 		509512221FF36301003D2D7F /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095121F1FF36301003D2D7F /* Bundle.swift */; };
@@ -163,6 +166,8 @@
 		5040D45A28DBB753009BF379 /* HomebrewCheckerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomebrewCheckerOperation.swift; sourceTree = "<group>"; };
 		5048573F22C81DCF00C52C48 /* CommerceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommerceKit.framework; path = ../../../../../../System/Library/PrivateFrameworks/CommerceKit.framework; sourceTree = "<group>"; };
 		5048574122C81DF800C52C48 /* StoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreFoundation.framework; path = ../../../../../../System/Library/PrivateFrameworks/StoreFoundation.framework; sourceTree = "<group>"; };
+		504FB4A82B76CA28009C73E9 /* UpdateCheckSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckSettings.swift; sourceTree = "<group>"; };
+		504FB4AB2B76CA77009C73E9 /* AppLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocationViewController.swift; sourceTree = "<group>"; };
 		5053E6C82A98AB4B008B18D0 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		5053E6C92A98AB86008B18D0 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Main.strings; sourceTree = "<group>"; };
 		5053E6CA2A98AB96008B18D0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -199,6 +204,7 @@
 		508323E1257824A9000BBA13 /* UpdateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButton.swift; sourceTree = "<group>"; };
 		508323E2257824AA000BBA13 /* UpdateButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateButtonCell.swift; sourceTree = "<group>"; };
 		5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateOperation.swift; sourceTree = "<group>"; };
+		5093EF9B2B913A1C0041E6C1 /* AppDirectoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDirectoryCellView.swift; sourceTree = "<group>"; };
 		5094821C27C19E4A00EC6B6B /* CFBundle_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBundle_Private.h; sourceTree = "<group>"; };
 		5094823327C19F5800EC6B6B /* Latest Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Latest Bridging_Header.h"; sourceTree = "<group>"; };
 		509512101FF362A1003D2D7F /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -435,6 +441,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		504FB4AA2B76CA3B009C73E9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				504FB4AB2B76CA77009C73E9 /* AppLocationViewController.swift */,
+				5093EF9B2B913A1C0041E6C1 /* AppDirectoryCellView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		5053158F27DD446F002F8F3C /* App Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +501,18 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		5093EF9A2B9139E80041E6C1 /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				5095122E1FF3634E003D2D7F /* Window Controllers */,
+				50DAEF3E21047E3B00B32E8A /* Update Table View */,
+				5058BA36211F9F49003F332B /* Release Notes */,
+				508323C825782483000BBA13 /* Views */,
+				508323DF25782490000BBA13 /* Utilities */,
+			);
+			path = "Main Window";
+			sourceTree = "<group>";
+		};
 		5094823227C19E5F00EC6B6B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +548,7 @@
 				501EF8EB2B9A661B00F0D759 /* Directory */,
 				509512111FF362A1003D2D7F /* Update.swift */,
 				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
+				504FB4A82B76CA28009C73E9 /* UpdateCheckSettings.swift */,
 				50C8573E2B25CF6100F5BF0B /* Update Repository */,
 				50366E5127DFD14100D4E247 /* Source.swift */,
 				50E4EB052B17DAB900A70A7D /* Version */,
@@ -547,11 +575,8 @@
 			isa = PBXGroup;
 			children = (
 				50290E7A1E53EB6A00133E3D /* Main.storyboard */,
-				5095122E1FF3634E003D2D7F /* Window Controllers */,
-				50DAEF3E21047E3B00B32E8A /* Update Table View */,
-				5058BA36211F9F49003F332B /* Release Notes */,
-				508323C825782483000BBA13 /* Views */,
-				508323DF25782490000BBA13 /* Utilities */,
+				5093EF9A2B9139E80041E6C1 /* Main Window */,
+				504FB4AA2B76CA3B009C73E9 /* Settings */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -871,6 +896,7 @@
 				509735502798D17E00FFE809 /* Observable.swift in Sources */,
 				509512141FF362A1003D2D7F /* Version.swift in Sources */,
 				50737559278B0A7400F371D8 /* AppListSettings.swift in Sources */,
+				504FB4A92B76CA28009C73E9 /* UpdateCheckSettings.swift in Sources */,
 				509512361FF36388003D2D7F /* MainWindowController.swift in Sources */,
 				508323E4257824AA000BBA13 /* UpdateButton.swift in Sources */,
 				50BEF14C2AC2CB110052C417 /* WebContentLoader.swift in Sources */,
@@ -881,6 +907,7 @@
 				508323E3257824AA000BBA13 /* DisplayLink.swift in Sources */,
 				5058BA3A21202BA7003F332B /* IconCache.swift in Sources */,
 				5040D45C28DBB753009BF379 /* HomebrewCheckerOperation.swift in Sources */,
+				5093EF9C2B913A1C0041E6C1 /* AppDirectoryCellView.swift in Sources */,
 				509512341FF36380003D2D7F /* UpdateTableViewController.swift in Sources */,
 				50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */,
 				50E4EB072B17DACB00A70A7D /* VersionParser.swift in Sources */,
@@ -902,6 +929,7 @@
 				5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */,
 				506A8F6722EC14CC00C755AF /* LatestError.swift in Sources */,
 				509512281FF3631D003D2D7F /* UpdateCheckCoordinator.swift in Sources */,
+				504FB4AC2B76CA77009C73E9 /* AppLocationViewController.swift in Sources */,
 				5073753F278998A300F371D8 /* AppLibrary.swift in Sources */,
 				502929F22120623100F00D1C /* ReleaseNotesErrorViewController.swift in Sources */,
 				506DF77621248F6200D792FC /* AppDataStore.swift in Sources */,
