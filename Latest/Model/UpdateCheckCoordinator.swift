@@ -46,12 +46,6 @@ class UpdateCheckCoordinator {
 	
 	// MARK: - Initialization
 	
-	private init() {
-		UpdateQueue.shared.completionHandler = { id in
-			self.library.gatherAppBundles()
-		}
-	}
-	
 	/// The shared instance of the update checker.
 	static let shared = UpdateCheckCoordinator()
 	
@@ -67,9 +61,6 @@ class UpdateCheckCoordinator {
 	/// The library containing all bundles loaded from disk.
 	private lazy var library: AppLibrary = {
 		return AppLibrary { bundles in
-			// New bundles, immediately cancel all update checks, as new ones will be performed
-			self.updateOperationQueue.cancelAllOperations()
-
 			// Set new bundles and check for updates
 			let newApps = self.dataStore.set(appBundles: Set(bundles))
 			self.runUpdateCheck(on: newApps.map({ $0.bundle }))
@@ -126,7 +117,6 @@ class UpdateCheckCoordinator {
 		}
 		
 		// Start update check
-		self.updateOperationQueue.cancelAllOperations()
 		self.updateOperationQueue.addOperations(operations, waitUntilFinished: true)
 			
 		DispatchQueue.main.async {

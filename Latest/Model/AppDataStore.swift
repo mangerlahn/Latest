@@ -74,7 +74,12 @@ class AppDataStore: AppProviding {
 	// MARK: - App Providing
 	
 	/// The collection holding all apps that have been found.
-	private(set) var apps = Set<App>()
+	private(set) var apps = Set<App>() {
+		didSet {
+			// Schedule an update for observers
+			self.scheduleFilterUpdate()
+		}
+	}
 	
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updatableApps: [App] {
@@ -129,10 +134,7 @@ class AppDataStore: AppProviding {
 		}
 		
 		self.apps.insert(app)
-		
-		// Schedule an update for observers
-		self.scheduleFilterUpdate()
-    }
+	}
 	
 	
 	// MARK: - Ignoring Apps
