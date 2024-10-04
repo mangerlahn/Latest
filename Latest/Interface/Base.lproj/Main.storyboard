@@ -576,7 +576,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="194"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="65" viewBased="YES" id="Aue-8r-EWw" customClass="UpdateTableView" customModule="Latest" customModuleProvider="target">
+                                        <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="65" usesAutomaticRowHeights="YES" viewBased="YES" id="Aue-8r-EWw" customClass="UpdateTableView" customModule="Latest" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="400" height="194"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -596,14 +596,14 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="MLMUpdateCellSectionIdentifier" id="ZtS-Z9-Cu9" customClass="UpdateGroupCellView" customModule="Latest" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="0.0" width="380" height="26"/>
+                                                            <rect key="frame" x="10" y="0.0" width="400" height="26"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="DVj-Eq-QBv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="26"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="420" height="26"/>
                                                                     <subviews>
-                                                                        <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhF-6m-YCA">
-                                                                            <rect key="frame" x="18" y="5" width="344" height="16"/>
+                                                                        <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="20" verticalHuggingPriority="750" horizontalCompressionResistancePriority="20" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhF-6m-YCA">
+                                                                            <rect key="frame" x="18" y="5" width="364" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="&lt;dnl&gt;" allowsEditingTextAttributes="YES" id="NNm-bC-QYz">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -612,14 +612,15 @@
                                                                         </textField>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="centerY" secondItem="DVj-Eq-QBv" secondAttribute="centerY" id="2Rs-TS-xL1"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="xhF-6m-YCA" secondAttribute="trailing" constant="20" id="EO7-Tw-OBW"/>
+                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="top" secondItem="DVj-Eq-QBv" secondAttribute="top" constant="5" id="Bvy-aH-476"/>
                                                                         <constraint firstItem="xhF-6m-YCA" firstAttribute="leading" secondItem="DVj-Eq-QBv" secondAttribute="leading" constant="20" id="WgZ-5m-bcs"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="xhF-6m-YCA" secondAttribute="bottom" constant="5" id="X00-7l-vwQ"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="xhF-6m-YCA" secondAttribute="trailing" constant="40" id="p42-fq-g7h"/>
                                                                     </constraints>
                                                                 </visualEffectView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="DVj-Eq-QBv" secondAttribute="trailing" id="QhD-5H-yqc"/>
+                                                                <constraint firstAttribute="trailing" secondItem="DVj-Eq-QBv" secondAttribute="trailing" constant="-20" id="QhD-5H-yqc"/>
                                                                 <constraint firstAttribute="bottom" secondItem="DVj-Eq-QBv" secondAttribute="bottom" id="chm-Rk-jh3"/>
                                                                 <constraint firstItem="DVj-Eq-QBv" firstAttribute="leading" secondItem="ZtS-Z9-Cu9" secondAttribute="leading" id="ltP-EW-8at"/>
                                                                 <constraint firstItem="DVj-Eq-QBv" firstAttribute="top" secondItem="ZtS-Z9-Cu9" secondAttribute="top" id="zDi-if-AoH"/>
@@ -679,7 +680,7 @@
                                                                             <rect key="frame" x="58" y="6" width="312" height="44"/>
                                                                             <subviews>
                                                                                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="K1m-1T-h1l">
-                                                                                    <rect key="frame" x="-2" y="28" width="41" height="16"/>
+                                                                                    <rect key="frame" x="-2" y="28" width="273" height="16"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="&lt;dnl&gt;" allowsEditingTextAttributes="YES" id="SVA-bh-cUe">
                                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -716,7 +717,8 @@
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="g5b-Ys-0LZ" firstAttribute="centerY" secondItem="Oqi-sq-lFG" secondAttribute="centerY" id="ZB4-Yd-2gX"/>
+                                                                        <constraint firstItem="g5b-Ys-0LZ" firstAttribute="top" secondItem="aYW-KW-d10" secondAttribute="top" constant="5" id="wiw-RZ-8XZ"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="g5b-Ys-0LZ" secondAttribute="bottom" constant="6" id="z5K-aw-euc"/>
                                                                     </constraints>
                                                                     <visibilityPriorities>
                                                                         <integer value="1000"/>
@@ -730,6 +732,7 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="aYW-KW-d10" firstAttribute="leading" secondItem="c4D-Nt-dk9" secondAttribute="leading" constant="10" id="0Mk-1x-5cn"/>
+                                                                <constraint firstItem="5eq-hm-UOt" firstAttribute="leading" secondItem="K1m-1T-h1l" secondAttribute="trailing" constant="10" id="4lZ-9N-Gul"/>
                                                                 <constraint firstItem="hnT-Rb-bdR" firstAttribute="centerY" secondItem="Oqi-sq-lFG" secondAttribute="centerY" priority="250" id="H8e-qg-fK6"/>
                                                                 <constraint firstAttribute="trailing" secondItem="aYW-KW-d10" secondAttribute="trailing" id="Hii-Pa-KcE"/>
                                                                 <constraint firstItem="aYW-KW-d10" firstAttribute="centerY" secondItem="c4D-Nt-dk9" secondAttribute="centerY" id="XgV-bZ-9fY"/>
@@ -792,9 +795,9 @@
                                     <constraint firstItem="C1U-Xt-po9" firstAttribute="centerX" secondItem="zLf-Z1-wsn" secondAttribute="centerX" priority="1" id="Kp3-2L-dJi"/>
                                 </constraints>
                             </customView>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-I6-M7r">
-                                <rect key="frame" x="113" y="125" width="175" height="21"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Updates Available" id="D2N-5U-W7Z">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="30" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-I6-M7r">
+                                <rect key="frame" x="18" y="125" width="364" height="21"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Updates Available" id="D2N-5U-W7Z">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -820,10 +823,11 @@
                             <constraint firstItem="yos-E7-CDu" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="ImF-sc-IlD"/>
                             <constraint firstAttribute="trailing" secondItem="yos-E7-CDu" secondAttribute="trailing" id="QOn-lW-jBV"/>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="VRY-sw-t9v"/>
+                            <constraint firstItem="gUd-I6-M7r" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" constant="20" id="Z5d-wf-g7W"/>
                             <constraint firstItem="pFN-sP-y2s" firstAttribute="top" secondItem="zLf-Z1-wsn" secondAttribute="bottom" constant="8" symbolic="YES" id="ayY-zN-ich"/>
-                            <constraint firstItem="gUd-I6-M7r" firstAttribute="centerX" secondItem="JKX-qd-RUY" secondAttribute="centerX" id="cCh-9W-Z9S"/>
                             <constraint firstAttribute="trailing" secondItem="zLf-Z1-wsn" secondAttribute="trailing" id="gSz-1J-Go1"/>
                             <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="pFN-sP-y2s" secondAttribute="bottom" constant="8" symbolic="YES" id="mOK-h5-sYO"/>
+                            <constraint firstAttribute="trailing" secondItem="gUd-I6-M7r" secondAttribute="trailing" constant="20" id="txJ-69-wQL"/>
                             <constraint firstAttribute="bottom" secondItem="yos-E7-CDu" secondAttribute="bottom" constant="-1" id="ue4-dZ-PoH"/>
                             <constraint firstAttribute="trailing" secondItem="pFN-sP-y2s" secondAttribute="trailing" constant="20" symbolic="YES" id="zvh-EW-8CN"/>
                         </constraints>
@@ -893,7 +897,7 @@
                                         <rect key="frame" x="20" y="15" width="360" height="96"/>
                                         <subviews>
                                             <imageView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Y4U-TI-bJq">
-                                                <rect key="frame" x="0.0" y="16" width="64" height="64"/>
+                                                <rect key="frame" x="0.0" y="9" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="Se1-u6-BQ1"/>
                                                     <constraint firstAttribute="width" secondItem="Y4U-TI-bJq" secondAttribute="height" multiplier="1:1" id="aWq-WK-xqZ"/>
@@ -995,7 +999,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-dW-3UA">
-                                                <rect key="frame" x="305" y="37" width="55" height="36"/>
+                                                <rect key="frame" x="305" y="30" width="55" height="36"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
                                                         <rect key="frame" x="-7" y="9" width="69" height="32"/>
@@ -1304,7 +1308,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="Tbt-C9-u3W"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="qPK-Oc-ZGZ"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="NGC-OT-Wza">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="NGC-OT-Wza">
                                     <rect key="frame" x="1" y="183" width="398" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1419,6 +1423,6 @@
         <image name="NSTouchBarDownloadTemplate" width="20" height="20"/>
         <image name="NSTouchBarRefreshTemplate" width="18" height="21"/>
         <image name="NSTouchBarSearchTemplate" width="20" height="20"/>
-        <image name="appstore" width="12" height="12"/>
+        <image name="appstore" width="16" height="16"/>
     </resources>
 </document>
