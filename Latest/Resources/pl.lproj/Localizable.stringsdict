@@ -16,7 +16,7 @@
 			<string>%d Dostępnych Aktualizacji</string>
 			<key>few</key>
 			<string>%d Dostępnych Aktualizacji</string>
-			<key>many</key>
+			<key>other</key>
 			<string>%d Dostępnych Aktualizacji</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>

@@ -16,7 +16,7 @@
 			<string>%d Оновлення доступне</string>
 			<key>few</key>
 			<string>%d Оновлення доступні</string>
-			<key>many</key>
+			<key>other</key>
 			<string>%d Оновлень доступні</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>

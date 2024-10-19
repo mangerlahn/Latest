@@ -14,8 +14,8 @@
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "Sort By";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Text Cell";
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "3jr-8s-u5A"; */
+"3jr-8s-u5A.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Enter Full Screen";
@@ -70,6 +70,9 @@
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Close";
+
+/* Class = "NSWindow"; title = "Settings"; ObjectID = "DfQ-ss-Qv2"; */
+"DfQ-ss-Qv2.title" = "Settings";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
 "ES5-dd-1TR.title" = "Check Spelling While Typing";
@@ -149,6 +152,9 @@
 /* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
 "PS4-wi-kF9.title" = "Ignore";
 
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "Pdj-YX-mnM"; */
+"Pdj-YX-mnM.title" = "<dnl>";
+
 /* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
 "QRR-k0-TZ4.title" = "<dnl>";
 
@@ -176,6 +182,12 @@
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
 "UVA-tb-pA9.title" = "Substitutions";
 
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "Uax-et-NIt"; */
+"Uax-et-NIt.title" = "Open";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "V9u-cb-GDY"; */
+"V9u-cb-GDY.title" = "<dnl>";
+
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
 "VX8-qg-UOL.title" = "<dnl>";
 
@@ -196,6 +208,9 @@
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
 "Yj4-SM-ocg.title" = "Redo";
+
+/* Class = "NSMenuItem"; title = "Show External Updates"; ObjectID = "ZAF-PE-baJ"; */
+"ZAF-PE-baJ.title" = "Show External Updates";
 
 /* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
 "ZKg-u2-aqr.title" = "Sort By";
@@ -253,6 +268,9 @@
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
 "iis-Dj-0TB.title" = "Check Grammar With Spelling";
+
+/* Class = "NSTextFieldCell"; title = "Check apps from:"; ObjectID = "ivV-VN-4CO"; */
+"ivV-VN-4CO.title" = "Check apps from:";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
 "jEo-hx-9Qp.title" = "Smart Quotes";

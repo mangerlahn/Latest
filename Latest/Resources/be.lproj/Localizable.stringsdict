@@ -16,7 +16,7 @@
 			<string>У курсе падзей!</string>
 			<key>few</key>
 			<string>Даступна абнаўленне %d</string>
-			<key>many</key>
+			<key>other</key>
 			<string>Даступны абнаўленні %d</string>
 		</dict>
 		<key>NSStringLocalizedFormatKey</key>
