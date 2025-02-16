@@ -3,7 +3,7 @@
 "00n-xr-jcQ.title" = "更新";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "最新信息";
+"1Xt-HY-uBw.title" = "Latest";
 
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "菜单";
@@ -42,7 +42,7 @@
 "BOF-NM-1cW.title" = "偏好设置…";
 
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
-"D2N-5U-W7Z.title" = "无可更新 Apps";
+"D2N-5U-W7Z.title" = "暂无可用更新";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "访问 Lastest 的网站";
@@ -51,7 +51,7 @@
 "DVo-aG-piG.title" = "关闭";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
-"Cm3-IX-Kw4.title" = "加载更新说明失败！";
+"Cm3-IX-Kw4.title" = "加载更新日志失败！";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "帮助";
@@ -87,7 +87,7 @@
 "aCF-1x-0c1.title" = "查找";
 
 /* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
-"XVu-eG-PUK.title" = "显示已安装的 Apps";
+"XVu-eG-PUK.title" = "显示已安装的应用";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
 "bm3-iR-6vZ.title" = "在 Finder 中打开";
@@ -114,7 +114,7 @@
 "dMs-cI-mzQ.title" = "文件";
 
 /* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
-"iLi-Yb-UfX.title" = "加载更新说明中";
+"iLi-Yb-UfX.title" = "正在加载更新日志";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
 "Yj4-SM-ocg.title" = "重做";
@@ -129,13 +129,13 @@
 "o46-Ym-MCY.title" = "捐赠";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.label" = "更新全部";
+"qS5-vO-h2j.label" = "全部更新";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
-"qS5-vO-h2j.paletteLabel" = "更新全部";
+"qS5-vO-h2j.paletteLabel" = "全部更新";
 
 /* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
-"tXI-mr-wws.title" = "更新全部";
+"tXI-mr-wws.title" = "全部更新";
 
 /* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Latest";
@@ -144,7 +144,7 @@
 "w14-Ia-4l9.title" = "打开";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Update All"; ObjectID = "wmL-ks-XSr"; */
-"wmL-ks-XSr.ibShadowedToolTip" = "更新全部";
+"wmL-ks-XSr.ibShadowedToolTip" = "全部更新";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "帮助";
@@ -186,19 +186,19 @@
 "63s-Hc-NQY.title" = "自动纠正拼写";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
-"ES5-dd-1TR.title" = "检查打字的拼写";
+"ES5-dd-1TR.title" = "键入时检查拼写";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Reload"; ObjectID = "FM4-aR-lhK"; */
-"FM4-aR-lhK.ibShadowedToolTip" = "重载";
+"FM4-aR-lhK.ibShadowedToolTip" = "刷新";
 
 /* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
-"Rh5-N3-X6H.title" = "显示曾选择忽略的 Apps";
+"Rh5-N3-X6H.title" = "显示已忽略的应用";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
 "mS9-zq-Dvi.title" = "删除";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
-"jEo-hx-9Qp.title" = "半角引号自动更换为前后引号";
+"jEo-hx-9Qp.title" = "智能引号";
 
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
 "mu8-FK-tXI.title" = "查找…";
@@ -222,10 +222,10 @@
 "FKE-Sm-Kum.title" = "最新帮助";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "显示代替项";
+"TKo-Xa-BjT.title" = "显示替换";
 
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
-"wtc-0j-cAV.title" = "拼写与语法";
+"wtc-0j-cAV.title" = "拼写和语法";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
 "65u-P1-4rd.title" = "数据探测器";
@@ -243,10 +243,10 @@
 "IAo-SY-fd9.title" = "更新";
 
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
-"J6q-tg-1G2.title" = "转变";
+"J6q-tg-1G2.title" = "转换";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
-"LE2-aR-0XJ.title" = "前置所有";
+"LE2-aR-0XJ.title" = "前置全部窗口";
 
 /* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
 "Ljr-hV-usc.title" = "不要忽略";
@@ -255,7 +255,7 @@
 "NMo-om-nkz.title" = "服务";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
-"Nnu-IS-gsC.title" = "开始说话";
+"Nnu-IS-gsC.title" = "开始朗读";
 
 /* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
 "OLo-39-3Sm.label" = "进度";
@@ -273,34 +273,34 @@
 "Td7-aD-5lo.title" = "窗口";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "代替项";
+"UVA-tb-pA9.title" = "替换";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "隐藏其它";
 
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
-"WX3-Xi-vCY.title" = "显示拼写与语法";
+"WX3-Xi-vCY.title" = "显示拼写和语法";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
 "Xng-11-x9Q.title" = "大写";
 
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
-"YRo-LJ-qSP.title" = "转变";
+"YRo-LJ-qSP.title" = "转换";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
 "cWB-Qy-jEV.title" = "朗读";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
-"eIs-LJ-TQe.title" = "现在检查文档";
+"eIs-LJ-TQe.title" = "立即检查文稿";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
 "iUE-OL-cvh.title" = "智能复制/粘贴";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
-"iis-Dj-0TB.title" = "检查语法与拼写";
+"iis-Dj-0TB.title" = "检查语法和拼写";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
-"l11-q2-MLf.title" = "代替项";
+"l11-q2-MLf.title" = "替换";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
 "pDo-aP-nIF.title" = "跳到选择";
@@ -321,7 +321,24 @@
 "y5A-ib-gR6.title" = "朗读";
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
-"1fA-1k-qER.title" = "排序";
+"1fA-1k-qER.title" = "排序方式";
 
 /* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
 "ZKg-u2-aqr.title" = "排序方式";
+"3jr-8s-u5A.title" = "<dnl>";
+"HfB-8a-u7P.title" = "不支持的应用";
+"Ntm-I4-heJ.title" = "有限支持的应用";
+"pNJ-Hl-Qxz.title" = "报告问题…";
+"ivV-VN-4CO.title" = "检查应用源：";
+"Aeb-LJ-TzL.title" = "包含：";
+"JNL-bS-gzr.title" = "通用";
+"MRG-cS-c2g.title" = "位置";
+"Pdj-YX-mnM.title" = "<dnl>";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"NC1-U2-waJ.title" = "<dnl>";
+"NvM-TY-Zhn.title" = "<dnl>";
+"Uax-et-NIt.title" = "打开";
+"Mdn-MF-57Q.title" = "显示没有可用更新信息的应用。";
+"rG3-x9-kec.title" = "列出有限支持的应用。更新信息可能过时或不准确，且无法在Latest中直接执行更新。\n";
+"DfQ-ss-Qv2.title" = "设置";
