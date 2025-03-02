@@ -153,7 +153,7 @@
 "Ake-Tt-cX3.title" = "Меню";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Настройки";
+"BOF-NM-1cW.title" = "Настройки…";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
 "Cm3-IX-Kw4.title" = "Ошибка загрузки списка изменений!";
@@ -325,3 +325,20 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "Сортировать по";
+"Mdn-MF-57Q.title" = "Показать приложения без доступных обновлений.";
+"Pdj-YX-mnM.title" = "<dnl>";
+"NC1-U2-waJ.title" = "<dnl>";
+"DfQ-ss-Qv2.title" = "Настройки";
+"rG3-x9-kec.title" = "Список приложений с ограниченной поддержкой. Информация об обновлениях может быть устаревшей или неточной, и обновления не могут быть выполнены непосредственно в Latest.\n";
+"3jr-8s-u5A.title" = "<dnl>";
+"ivV-VN-4CO.title" = "Проверить приложения в:";
+"Uax-et-NIt.title" = "Открыть";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "Включая:";
+"HfB-8a-u7P.title" = "Неподдерживаемые приложения";
+"JNL-bS-gzr.title" = "Общие";
+"MRG-cS-c2g.title" = "Локации";
+"Ntm-I4-heJ.title" = "Приложения с ограниченной поддержкой";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Сообщить о проблеме…";
