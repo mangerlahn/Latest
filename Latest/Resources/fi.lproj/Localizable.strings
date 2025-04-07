@@ -4,123 +4,123 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "An error occurred while updating %@.";
+"UpdateErrorAlertTitle" = "Tapahtui virhe päivitettäessä %@:a.";
 
 /* Touch Bar section title for available updates */
-"AvailableSection" = "Available";
+"AvailableSection" = "Saatavilla";
 
 /* Table Section Header for available updates */
-"AvailableUpdatesSection" = "Available Updates";
+"AvailableUpdatesSection" = "Saatavilla olevat päivitykset";
 
 /* Cancel button in an update dialogue */
-"CancelAction" = "Cancel";
+"CancelAction" = "Peruuta";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Cancelling";
+"CancellingUpdateStatus" = "Peruutetaan";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Extracting Update";
+"ExtractingUpdateStatus" = "Puretaan päivitys";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "Downloading %@ of %@";
+"DownloadingUpdateStatus" = "Ladataan %@ / %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Error while updating app";
+"ErrorButtonAccessibilityTitle" = "Virhe päivitettäessä sovellusta";
 
 /* Touch Bar section title for ignored apps */
-"IgnoredSection" = "Ignored";
+"IgnoredSection" = "Ohitettu";
 
 /* Table Section Header for ignored apps */
-"IgnoredAppsSection" = "Ignored Apps";
+"IgnoredAppsSection" = "Ohitetut sovellukset";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Initializing";
+"InitializingUpdateStatus" = "Alustaminen";
 
 /* Touch Bar section title for installed apps */
-"InstalledSection" = "Installed";
+"InstalledSection" = "Asennettu";
 
 /* Table Section Header for already installed apps */
-"InstalledAppsSection" = "Installed Apps";
+"InstalledAppsSection" = "Asennetut sovellukset";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installing";
+"InstallingUpdateStatus" = "Asentaminen";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
 
 /* New Version String */
-"RemoteVersionFormat" = "New version: %@";
+"RemoteVersionFormat" = "Uusi versio: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "No app selected.";
+"NoAppSelectedTitle" = "Ei valittua sovellusta";
 
 /* Button to retry an update in an error dialogue */
-"RetryAction" = "Retry";
+"RetryAction" = "Yritä uudelleen";
 
 /* Reveal in Finder Row action */
-"RevealAction" = "Reveal";
+"RevealAction" = "Paljasta";
 
 /* Action to open the app. */
-"OpenAction" = "Open";
+"OpenAction" = "Avaa";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
+"NoAppSelectedDescription" = "Valitse sovellus luettelosta lukeaksesi sen julkaisutiedot.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "Source: %@";
+"AppSource" = "Lähde: %@";
 
 /* Update String */
-"UpdateAction" = "Update";
+"UpdateAction" = "Päivitä";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Waiting";
+"WaitingUpdateStatus" = "Odottamassa";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
 
 /* Current Version String */
-"LocalVersionFormat" = "Your version: %@";
+"LocalVersionFormat" = "Versiosi: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Ei kirjautunut sisään";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Nimi";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Päivämäärä";
 
 /* Short description of error stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Update Information Unavailable";
+"UpdateInfoUnavailableError" = "Päivitystietoja ei saatavilla";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Kirjaudu sisään Mac App Storeen päivittääksesi tämän sovelluksen.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Päivitystietoja ei voitu noutaa tälle sovellukselle.";
 
 /* Short description of error that no release notes were found. */
-"ReleaseNotesUnavailableError" = "No Release Notes";
+"ReleaseNotesUnavailableError" = "Ei julkaisutietoja";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Julkaisutiedot eivät ole saatavilla tälle sovellukselle.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "%@:ssa";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"ExternalUpdateAction" = "Päivitä %@:ssa";
+"UnsupportedLabel" = "Ei tukea";
+"LimitedSupportLabel" = "Rajoitettu tuki";
+"NoSupportDescription" = "Päivitystiedot eivät ole saatavilla. Tarkista sovellus tai sen verkkosivusto hallitaksesi päivityksiä.";
+"SupportedCompactLabel" = "Tuettu";
+"LimitedSupportCompactLabel" = "Rajoitettu";
+"SupportedLabel" = "Tuettu";
+"UnsupportedCompactLabel" = "Ei tuettu";
+"SingleCombinedVersionFormat" = "Versio: %@";
+"LimitedSupportDescription" = "Päivitystiedot ovat yleisesti saatavilla, mutta ne voivat joskus olla vanhentuneita tai epätarkkoja. Päivityksiä ei voi tehdä suoraan täällä.";
+"FullSupportDescription" = "Täysin tuettu. Luotettavat versiotiedot ovat saatavilla, ja päivityksiä voidaan hallita suoraan sovelluksessa.\n\nJos näytetyt versiotiedot ovat epätarkkoja, kirjoita ongelmaraportti.";
+"CombinedVersionFormat" = "Versio: %1$@ → %2$@";
