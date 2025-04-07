@@ -4,7 +4,7 @@
 "SectionTitle" = "%1$@ <u>(%2$@)</u>";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
-"UpdateErrorAlertTitle" = "更新时遇到错误 %@.";
+"UpdateErrorAlertTitle" = "更新 %@ 时发生错误。";
 
 /* Touch Bar section title for available updates */
 "AvailableSection" = "可用";
@@ -19,7 +19,7 @@
 "CancellingUpdateStatus" = "正在取消";
 
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
-"DownloadingUpdateStatus" = "正在下载 %@ of %@";
+"DownloadingUpdateStatus" = "正在下载 %@ / %@";
 
 /* Description of button that opens an error dialogue. */
 "ErrorButtonAccessibilityTitle" = "更新应用程序时出错";
@@ -112,15 +112,15 @@
 "ExternalUpdateActionWithAppName" = "去 %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "去 %@ 更新";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"ExternalUpdateAction" = "在 %@ 中更新";
+"UnsupportedLabel" = "不支持";
+"LimitedSupportLabel" = "有限支持";
+"NoSupportDescription" = "更新信息不可用，请查看应用或其官网以管理更新。";
+"SupportedCompactLabel" = "支持";
+"LimitedSupportCompactLabel" = "有限";
+"SupportedLabel" = "支持";
+"UnsupportedCompactLabel" = "不支持";
+"SingleCombinedVersionFormat" = "版本: %@";
+"LimitedSupportDescription" = "更新信息通常可用，但有时可能过时或不准确。无法直接在此处执行更新。";
+"FullSupportDescription" = "完全支持。提供可靠的版本信息，可直接在应用内管理更新。\n\n如果显示的版本信息不准确，请随时写一个问题报告。";
+"CombinedVersionFormat" = "版本: %1$@ → %2$@";
