@@ -22,7 +22,7 @@
 "DownloadingUpdateStatus" = "Preuzeto %@ od %@";
 
 /* Description of button that opens an error dialogue. */
-"ErrorButtonAccessibilityTitle" = "Greška prilikom aktualiziranja programa";
+"ErrorButtonAccessibilityTitle" = "Greška prilikom aktualiziranja aplikacije";
 
 /* Update progress state of extracting the downloaded update */
 "ExtractingUpdateStatus" = "Raspakiravanje nove verzije";
@@ -70,7 +70,7 @@
 "OpenAction" = "Otvori";
 
 /* Description of release notes empty state */
-"NoAppSelectedDescription" = "Odaberi program iz popisa čije napomene o izdanju želiš pročitati.";
+"NoAppSelectedDescription" = "Odaberi aplikaciju iz popisa čije napomene o izdanju želiš pročitati.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
 "AppSource" = "Izvor: %@";
@@ -100,10 +100,10 @@
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Za aktualiziranje ove aplikacije prijavi se na Mac App Store.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Informacije o novim verzijama nisu pronađene za ovaj program.";
+"UpdateInfoUnavailableErrorFailureReason" = "Informacije o novim verzijama nisu pronađene za ovu aplikaciju.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Za ovaj program nema napomena o izdanju.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Za ovu aplikaciju nema napomena o izdanju.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Aktualiziraj u %@";
-"UnsupportedLabel" = "No support";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "Nepodržano";
+"SupportedCompactLabel" = "Podržano";
+"LimitedSupportLabel" = "Ograničena podrška";
+"NoSupportDescription" = "Nema Informacija o novim verzijama. Provjeri aplikaciju ili njezinu web stranicu za upravljanje verzijama.";
+"LimitedSupportCompactLabel" = "Ograničeno";
+"SupportedLabel" = "Podržano";
+"UnsupportedCompactLabel" = "Nepodržano";
+"SingleCombinedVersionFormat" = "Verzija: %@";
+"LimitedSupportDescription" = "Informacije o novim verzijama su općenito dostupne ali mogu biti zastarjele ili netočne. Aktualiziranja se ne mogu izvršiti ovdje.";
+"FullSupportDescription" = "Potpuno podržano. Pouzdane informacije o verziji su dostupne i aktualiziranja se mogu sprovesti izravno unutar aplikacije.\n\nAko prikazane informacije o verziji nisu točne, slobodno napiši izvještaj o problemu.";
+"CombinedVersionFormat" = "Verzija: %1$@ → %2$@";
