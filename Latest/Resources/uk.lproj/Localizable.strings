@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Оновити у %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "Без підтримки";
+"LimitedSupportLabel" = "Обмежена підтримка";
+"NoSupportDescription" = "Інформація про оновлення недоступна. Перевірте програму або її веб-сайт, щоб керувати оновленнями.";
+"SupportedCompactLabel" = "Підтримується";
+"LimitedSupportCompactLabel" = "Обмежений";
+"SupportedLabel" = "Підтримується";
+"UnsupportedCompactLabel" = "Не підтримується";
+"SingleCombinedVersionFormat" = "Версія: %@";
+"LimitedSupportDescription" = "Інформація про оновлення зазвичай доступна, але іноді може бути застарілою або неточною. Оновлення не можна виконувати безпосередньо тут.";
+"FullSupportDescription" = "Повністю підтримується. Доступна надійна інформація про версію, а оновленнями можна керувати безпосередньо в програмі.\n\nЯкщо показана інформація про версію є неточною, не соромтеся написати звіт про проблему.";
+"CombinedVersionFormat" = "Версія: %1$@ → %2$@";
