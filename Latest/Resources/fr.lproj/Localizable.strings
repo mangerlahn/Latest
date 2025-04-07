@@ -111,14 +111,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Mettre à jour dans %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "Aucun support";
+"LimitedSupportLabel" = "Prise en charge limitée";
+"NoSupportDescription" = "Les informations de mise à jour ne sont pas disponibles. Veuillez consulter l'application ou son site web pour gérer les mises à jour.";
+"SupportedCompactLabel" = "Pris en charge";
+"LimitedSupportCompactLabel" = "Limitée";
+"SupportedLabel" = "Pris en charge";
+"UnsupportedCompactLabel" = "Non pris en charge";
+"SingleCombinedVersionFormat" = "Version : %@";
+"LimitedSupportDescription" = "Les informations de mise à jour sont généralement disponibles, mais peuvent parfois être obsolètes ou inexactes. Les mises à jour ne peuvent pas être effectuées directement ici.";
+"FullSupportDescription" = "Entièrement pris en charge. Les informations de version sont fiables, et les mises à jour peuvent être gérées directement depuis l'application.\n\nSi les informations de version affichées sont inexactes, n'hésitez pas à signaler un problème.";
+"CombinedVersionFormat" = "Version : %1$@ → %2$@";
