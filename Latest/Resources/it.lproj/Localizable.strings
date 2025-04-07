@@ -16,7 +16,7 @@
 "CancelAction" = "Annulla";
 
 /* Update progress state of cancelling an update */
-"CancellingUpdateStatus" = "Annullo";
+"CancellingUpdateStatus" = "Annullo…";
 
 /* Description of release notes empty state */
 "NoAppSelectedDescription" = "Seleziona un'applicazione dalla lista per leggere le sue note di rilascio.";
@@ -28,7 +28,7 @@
 "ErrorButtonAccessibilityTitle" = "Errore durante l'aggiornamento dell'app";
 
 /* Update progress state of extracting the downloaded update */
-"ExtractingUpdateStatus" = "Estraggo aggiornamento";
+"ExtractingUpdateStatus" = "Estraggo aggiornamento…";
 
 /* Touch Bar section title for ignored apps */
 "IgnoredSection" = "Ignorate";
@@ -37,7 +37,7 @@
 "IgnoredAppsSection" = "Applicazioni ignorate";
 
 /* Update progress state of initializing an update */
-"InitializingUpdateStatus" = "Inizializzo";
+"InitializingUpdateStatus" = "Inizializzo…";
 
 /* Touch Bar section title for installed apps */
 "InstalledSection" = "Installate";
@@ -46,7 +46,7 @@
 "InstalledAppsSection" = "Applicazioni installate";
 
 /* Update progress state of installing an update */
-"InstallingUpdateStatus" = "Installo";
+"InstallingUpdateStatus" = "Installo…";
 
 /* The source name of apps loaded from the App Store. */
 "AppStoreSource" = "Mac App Store";
@@ -58,7 +58,7 @@
 "NoAppSelectedTitle" = "Nessuna app selezionata";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "Non sono state trovate note di rilascio per questa applicazione.";
+"ReleaseNotesUnavailableError" = "Nessuna nota di rilascio";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "Riprova";
@@ -76,10 +76,10 @@
 "UpdateAction" = "Aggiorna";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Non è stato trovato nessun aggiornamento per questa app.";
+"UpdateInfoUnavailableError" = "Informazioni non disponibili";
 
 /* Update progress state of waiting to start an update */
-"WaitingUpdateStatus" = "Attendo";
+"WaitingUpdateStatus" = "Attendo…";
 
 /* The source name for apps loaded from third-party websites. */
 "WebSource" = "Web";
@@ -100,7 +100,7 @@
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Accedi all'App Store per aggiornare questa app.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Impossibile verificare la presenza di aggiornamenti per questa app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Non è stato possibile recupare informazioni sugli aggiornamenti per questa app.";
 
 /* Error message that no release notes were found. */
 "ReleaseNotesUnavailableErrorFailureReason" = "Note di rilascio non disponibili per questa app.";
@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Aggiorna in %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "Non supportata";
+"LimitedSupportLabel" = "Supporto limitato";
+"NoSupportDescription" = "Non sono disponibili informazioni sull'aggiornamento. Controlla l'app o visita il sito per gestire gli aggiornamenti.";
+"SupportedCompactLabel" = "Supportata";
+"LimitedSupportCompactLabel" = "Limitata";
+"SupportedLabel" = "Supportata";
+"UnsupportedCompactLabel" = "Non supportata";
+"SingleCombinedVersionFormat" = "Versione: %@";
+"LimitedSupportDescription" = "Di solito le informazioni sugli aggiornamenti sono disponibili, ma potrebbero essere obsolete o imprecise. Gli aggiornamenti non possono essere eseguiti da qui.";
+"FullSupportDescription" = "Completamente supportata. Sono disponibili informazioni affidabili sulle versioni e gli aggiornamenti possono essere gestiti all'interno dell'app.\n\nSe le informazioni di versione non sono accurate, inviaci una segnalazione.";
+"CombinedVersionFormat" = "Versione: %1$@ → %2$@";
