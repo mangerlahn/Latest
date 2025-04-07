@@ -88,7 +88,7 @@
 "LocalVersionFormat" = "Ваша версия: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Вы не вошли";
+"AppStoreNotSignedInError" = "Авторизируйтесь в Mac App Store, чтобы обновить это приложение";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Название";
@@ -100,10 +100,10 @@
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Войдите в Mac App Store, чтобы обновить это приложение.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Информация об обновлении этого приложения не может быть получена.";
+"UpdateInfoUnavailableErrorFailureReason" = "Информация об обновлении приложения не может быть получена.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Список изменений недоступен для этого приложения";
+"ReleaseNotesUnavailableErrorFailureReason" = "Список изменений недоступен для этого приложения.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Обновить в %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "Не поддерживается";
+"LimitedSupportLabel" = "Ограниченная поддержка";
+"NoSupportDescription" = "Информация об обновлениях недоступна. Проверьте приложение или его веб-сайт для управления обновлениями.";
+"SupportedCompactLabel" = "Поддерживается";
+"LimitedSupportCompactLabel" = "Ограничено";
+"SupportedLabel" = "Поддерживается";
+"UnsupportedCompactLabel" = "Не поддерживается";
+"SingleCombinedVersionFormat" = "Версия: %@";
+"LimitedSupportDescription" = "Информация об обновлениях обычно доступна, но иногда может быть устаревшей или неточной. Обновления не могут быть выполнены непосредственно здесь.";
+"FullSupportDescription" = "Полностью поддерживается. Доступна достоверная информация о версии, а управлять обновлениями можно непосредственно в приложении.\n\nЕсли отображаемая информация о версии неточна, не стесняйтесь написать отчет о проблеме.";
+"CombinedVersionFormat" = "Версия: %1$@ → %2$@";
