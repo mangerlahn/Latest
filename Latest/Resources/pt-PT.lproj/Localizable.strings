@@ -58,7 +58,7 @@
 "RemoteVersionFormat" = "Nova Versão: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Nenhuma Aplicação seleccionada.";
+"NoAppSelectedTitle" = "Nenhuma app selecionada";
 
 /* Error message that no release notes were found */
 "ReleaseNotesUnavailableError" = "Não foram encontradas notas de lançamento para esta aplicação.";
@@ -88,31 +88,31 @@
 "WebSource" = "Web";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Não conectado";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Nome";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Data";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "Sign in to the Mac App Store to update this app.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "Inicie sessão na Mac App Store para atualizar esta aplicação.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Não foi possível recuperar as informações de atualização deste app.";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "As notas de versão não estão disponíveis para esta app.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "em %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "Atualização em %@";
 "UnsupportedLabel" = "No support";
 "LimitedSupportLabel" = "Limited support";
 "NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
