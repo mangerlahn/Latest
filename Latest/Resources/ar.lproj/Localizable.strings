@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "تحديث في %@";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"NoSupportDescription" = "معلومات التحديث غير متوفرة. تحقق من التطبيق أو موقعه الإلكتروني لإدارة التحديثات.";
+"LimitedSupportDescription" = "معلومات التحديث متاحة بشكل عام ولكنها قد تكون قديمة أو غير دقيقة في بعض الأحيان. لا يمكن إجراء التحديثات مباشرة هنا.";
+"FullSupportDescription" = "مدعوم بالكامل. تتوفر معلومات إصدار موثوقة، ويمكن إدارة التحديثات مباشرةً داخل التطبيق.\n\nإذا كانت معلومات الإصدار المعروضة غير دقيقة، فلا تتردد في كتابة تقرير عن المشكلة.";
+"UnsupportedLabel" = "بدون دعم";
+"LimitedSupportLabel" = "دعم محدود";
+"SupportedCompactLabel" = "مدعوم";
+"LimitedSupportCompactLabel" = "محدود";
+"SupportedLabel" = "مدعوم";
+"UnsupportedCompactLabel" = "غير مدعوم";
+"SingleCombinedVersionFormat" = "الإصدار: %@";
+"CombinedVersionFormat" = "الإصدار: %1$$@ → %2$$@";
