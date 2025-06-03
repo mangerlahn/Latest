@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Actualizar en %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
+"UnsupportedLabel" = "Sin soporte";
+"LimitedSupportLabel" = "Soporte limitado";
+"NoSupportDescription" = "La información de actualización no está disponible. Revisa la aplicación o su sitio web para gestionar las actualizaciones.";
+"SupportedCompactLabel" = "Compatible";
+"LimitedSupportCompactLabel" = "Limitado";
+"SupportedLabel" = "Compatible";
+"UnsupportedCompactLabel" = "No compatible";
 "SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
+"LimitedSupportDescription" = "La información de actualización generalmente está disponible, pero a veces puede estar desactualizada o ser inexacta. No se pueden realizar actualizaciones directamente desde aquí.";
+"FullSupportDescription" = "Totalmente compatible. La información de versión es confiable y las actualizaciones pueden gestionarse directamente desde la aplicación.\n\nSi la información de la versión mostrada es incorrecta, no dudes en enviar un informe de problema.";
 "CombinedVersionFormat" = "Version: %1$@ → %2$@";
