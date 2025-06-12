@@ -2,9 +2,6 @@
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
 "00n-xr-jcQ.title" = "Aggiorna";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Casella di testo";
-
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Esci da Latest";
 
@@ -16,9 +13,6 @@
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "63s-Hc-NQY"; */
 "63s-Hc-NQY.title" = "Correggi ortografia automaticamente";
-
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Mostra applicazioni non supportate";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Visita il sito web di Latest";
@@ -79,9 +73,6 @@
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Finestra";
-
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
 "XVu-eG-PUK.title" = "Mostra applicazioni installate";
@@ -334,3 +325,20 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "Ordina";
+"ivV-VN-4CO.title" = "Verifica app da:";
+"Aeb-LJ-TzL.title" = "Includi:";
+"Uax-et-NIt.title" = "Apri";
+"HfB-8a-u7P.title" = "App non supportate";
+"Ntm-I4-heJ.title" = "App con supporto limitato";
+"JNL-bS-gzr.title" = "Generali";
+"3jr-8s-u5A.title" = "<dnl>";
+"DfQ-ss-Qv2.title" = "Impostazioni";
+"Pdj-YX-mnM.title" = "<dnl>";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Segnala un problema…";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Mdn-MF-57Q.title" = "Mostra le app senza informazioni sugli aggiornamenti.";
+"MRG-cS-c2g.title" = "Posizioni";
+"NC1-U2-waJ.title" = "<dnl>";
+"rG3-x9-kec.title" = "Elenca le app con supporto limitato. Le informazioni sugli aggiornamenti potrebbero essere obsolete o imprecise e gli aggiornamenti non possono essere eseguiti direttamente da Latest.\n";

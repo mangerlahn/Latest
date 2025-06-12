@@ -9,7 +9,7 @@
 import Foundation
 
 /// An convenience operation adding state to Operations.
-class StatefulOperation: Operation {
+class StatefulOperation: Operation, @unchecked Sendable {
 
     // MARK: State Management
     

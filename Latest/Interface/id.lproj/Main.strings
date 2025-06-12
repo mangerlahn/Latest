@@ -29,9 +29,6 @@
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Menu utama";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Sel Teks";
-
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
 "4vf-ia-dzo.title" = "Periksa Pembaruan…";
 
@@ -40,9 +37,6 @@
 
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
-
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Tampilkan aplikasi yang tidak didukung";
 
 /* Class = "NSTextFieldCell"; title = "New Version"; ObjectID = "6YS-DP-XWA"; */
 "6YS-DP-XWA.title" = "<dnl>";
@@ -58,9 +52,6 @@
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
 "UPY-HP-f2p.title" = "<dnl>";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
 "QRR-k0-TZ4.title" = "<dnl>";
@@ -334,3 +325,20 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "Urutkan Berdasar";
+"DfQ-ss-Qv2.title" = "Pengaturan";
+"Mdn-MF-57Q.title" = "Tunjukan aplikasi tanpa info update apapun.";
+"ivV-VN-4CO.title" = "Cek aplikasi dari:";
+"rG3-x9-kec.title" = "List aplikasi dengan dukungan terbatas. Informasi pembaruan mungkin kurang update atau tidak akurat, dan pembaruan tidak bisa dilakukan secara langsung.\n";
+"JNL-bS-gzr.title" = "Umum";
+"3jr-8s-u5A.title" = "<dnl>";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "Buka";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "Termasuk:";
+"HfB-8a-u7P.title" = "Aplikasi tidak didukung";
+"MRG-cS-c2g.title" = "Lokasi";
+"NC1-U2-waJ.title" = "<dnl>";
+"Ntm-I4-heJ.title" = "Aplikasi dengan dukungan terbatas";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Laporkan masalah…";

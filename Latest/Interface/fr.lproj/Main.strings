@@ -10,9 +10,6 @@
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Cellule de texte";
-
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Activer le mode plein écran";
 
@@ -27,9 +24,6 @@
 
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "À propos de Latest";
-
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Afficher les applications non prises en charge";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "6va-ld-AXD"; */
 "6va-ld-AXD.title" = "<dnl>";
@@ -283,9 +277,6 @@
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Cacher les autres";
 
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
-
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
 "w14-Ia-4l9.title" = "Ouvrir";
 
@@ -327,3 +318,16 @@
 
 /* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
 "ZWx-q6-TJz.paletteLabel" = "Recharger";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Trier par";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Trier par";
+"9ux-Hr-SHb.title" = "<dnl>";
+"ivV-VN-4CO.title" = "Vérifier les applications provenant de :";
+"3jr-8s-u5A.title" = "<dnl>";
+"DfQ-ss-Qv2.title" = "Réglages";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "Ouvrir";
+"V9u-cb-GDY.title" = "<dnl>";

@@ -9,13 +9,7 @@
 import Foundation
 
 /// A uniquely identifiable observer.
-@available(macOS, deprecated: 10.15, renamed: "Identifiable")
-protocol Observer {
-	
-	/// The identifier of the observer.
-	var id: UUID { get }
-	
-}
+protocol Observer: Identifiable where ID == UUID {}
 
 /// An observable object.
 protocol Observable {
@@ -27,10 +21,10 @@ protocol Observable {
 	var observers: [UUID: ObservationHandler] { get set }
 
 	/// Adds the observer with the given handler to the list of observers.
-	mutating func add(_ observer: Observer, handler: @escaping ObservationHandler)
+	mutating func add(_ observer: any Observer, handler: @escaping ObservationHandler)
 	
 	/// Removes the given observer from the list.
-	mutating func remove(_ observer: Observer)
+	mutating func remove(_ observer: any Observer)
 	
 	/// Notifies the observers of an observation.
 	func notify()
@@ -39,11 +33,11 @@ protocol Observable {
 
 extension Observable {
 	
-	mutating func add(_ observer: Observer, handler: @escaping ObservationHandler) {
+	mutating func add(_ observer: any Observer, handler: @escaping ObservationHandler) {
 		observers[observer.id] = handler
 	}
 	
-	mutating func remove(_ observer: Observer) {
+	mutating func remove(_ observer: any Observer) {
 		observers.removeValue(forKey: observer.id)
 	}
 	

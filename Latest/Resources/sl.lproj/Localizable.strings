@@ -111,3 +111,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "Update in %@";
+"UnsupportedLabel" = "No support";
+"LimitedSupportLabel" = "Limited support";
+"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
+"SupportedCompactLabel" = "Supported";
+"LimitedSupportCompactLabel" = "Limited";
+"SupportedLabel" = "Supported";
+"UnsupportedCompactLabel" = "Unsupported";
+"SingleCombinedVersionFormat" = "Version: %@";
+"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
+"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
+"CombinedVersionFormat" = "Version: %1$@ → %2$@";

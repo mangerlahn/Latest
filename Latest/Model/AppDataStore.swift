@@ -15,7 +15,7 @@ protocol AppProviding {
 	var updatableApps: [App] { get }
 
 	/// Returns the number of apps with updates available.
-	var countOfAvailableUpdates: Int { get }
+	func countOfAvailableUpdates(where condition: (App) -> Bool) -> Int
 	
 	/// The handler for notifying observers about changes to the update state.
 	typealias ObserverHandler = (_ newValue: [App]) -> Void
@@ -74,7 +74,12 @@ class AppDataStore: AppProviding {
 	// MARK: - App Providing
 	
 	/// The collection holding all apps that have been found.
-	private(set) var apps = Set<App>()
+	private(set) var apps = Set<App>() {
+		didSet {
+			// Schedule an update for observers
+			self.scheduleFilterUpdate()
+		}
+	}
 	
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updatableApps: [App] {
@@ -84,9 +89,9 @@ class AppDataStore: AppProviding {
 	}
 		
 	/// The cached count of apps with updates available
-	var countOfAvailableUpdates: Int {
+	func countOfAvailableUpdates(where condition: (App) -> Bool) -> Int {
 		updateQueue.sync {
-			return self.apps.filter({ $0.updateAvailable && !$0.isIgnored }).count
+			return self.apps.filter({ $0.updateAvailable && !$0.isIgnored && condition($0) }).count
 		}
 	}
 	
@@ -129,10 +134,7 @@ class AppDataStore: AppProviding {
 		}
 		
 		self.apps.insert(app)
-		
-		// Schedule an update for observers
-		self.scheduleFilterUpdate()
-    }
+	}
 	
 	
 	// MARK: - Ignoring Apps

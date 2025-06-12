@@ -29,6 +29,10 @@ final class VersionParserTest: XCTestCase {
 		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2.3 (r1234)"), "1.2.3")
 		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2.3.osx14"), "1.2.3")
 		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2-HEAD-123abc"), "1.2")
+		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2-stable.123abc"), "1.2")
+		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2-latest"), "1.2")
+		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2-release"), "1.2")
+		XCTAssertEqual(VersionParser.parse(versionNumber: "1.2-demo"), "1.2")
 	}
 
 	func testCombinedVersionNumberParsing() {
@@ -36,6 +40,13 @@ final class VersionParserTest: XCTestCase {
 		XCTAssertEqual(VersionParser.parse(combinedVersionNumber: "1234,321"), Version(versionNumber: "1234", buildNumber: "321"))
 		XCTAssertEqual(VersionParser.parse(combinedVersionNumber: "1.2.3.4,321ABC,70"), Version(versionNumber: "1.2.3.4", buildNumber: "321ABC"))
 		XCTAssertEqual(VersionParser.parse(combinedVersionNumber: "2.2.1-763"), Version(versionNumber: "2.2.1", buildNumber: "763"))
+	}
+	
+	func testEmptyVersionParsing() {
+		XCTAssertNil(VersionParser.parse(buildNumber: ""))
+		XCTAssertNil(VersionParser.parse(versionNumber: ""))
+		
+		XCTAssertEqual(VersionParser.parse(combinedVersionNumber: ""), Version(versionNumber: nil, buildNumber: nil))
 	}
 	
 }

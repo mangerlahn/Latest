@@ -10,7 +10,7 @@ import AppKit
 import Sparkle
 
 /// The operation updating Sparkle apps.
-class SparkleUpdateOperation: UpdateOperation {
+class SparkleUpdateOperation: UpdateOperation, @unchecked Sendable {
 	
 	/// The updater used to update this app.
 	private var updater: SPUUpdater?

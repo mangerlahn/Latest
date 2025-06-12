@@ -10,9 +10,6 @@
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Text Cell";
-
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Vollbildmodus";
 
@@ -27,9 +24,6 @@
 
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "Über Latest";
-
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Nicht unterstützte Apps anzeigen";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
 "6va-ld-AXD.title" = "<dnl>";
@@ -283,9 +277,6 @@
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Andere ausblenden";
 
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
-
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
 "w14-Ia-4l9.title" = "Öffnen";
 
@@ -333,3 +324,20 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "Sortieren nach";
+"ivV-VN-4CO.title" = "Prüfe Apps in:";
+"DfQ-ss-Qv2.title" = "Einstellungen";
+"9ux-Hr-SHb.title" = "<dnl>";
+"3jr-8s-u5A.title" = "<dnl>";
+"V9u-cb-GDY.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "Einbeziehen:";
+"HfB-8a-u7P.title" = "Apps ohne Unterstützung";
+"Mdn-MF-57Q.title" = "Zeige Apps für die keine Versionsinformationen verfügbar sind.";
+"NC1-U2-waJ.title" = "<dnl>";
+"Ntm-I4-heJ.title" = "Apps mit eingeschränkter Unterstützung";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Fehler melden…";
+"Pdj-YX-mnM.title" = "<dnl>";
+"MRG-cS-c2g.title" = "Orte";
+"Uax-et-NIt.title" = "Öffnen";
+"JNL-bS-gzr.title" = "Allgemein";
+"rG3-x9-kec.title" = "Versionsinformationen für diese Apps sind möglicherweise fehlerhaft, Updates können nicht innerhalb von Latest durchgeführt werden.\n";

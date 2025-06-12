@@ -13,7 +13,7 @@ extension App {
 	/// The source of update information.
 	enum Source: String, Equatable {
 		/// No known source had information about this app. It is unsupported by the update checker.
-		case unsupported
+		case none
 		
 		/// The Sparkle Updater is the update source.
 		case sparkle
@@ -27,7 +27,7 @@ extension App {
 		/// The icon representing the source.
 		var sourceIcon: NSImage? {
 			switch self {
-			case .unsupported:
+			case .none:
 				return nil
 			case .sparkle:
 				return NSImage(named: "sparkle")
@@ -41,7 +41,7 @@ extension App {
 		/// The name of the source.
 		var sourceName: String? {
 			switch self {
-			case .unsupported:
+			case .none:
 				return nil
 			case .sparkle:
 				return NSLocalizedString("WebSource", comment: "The source name for apps loaded from third-party websites.")
@@ -52,7 +52,67 @@ extension App {
 				
 			}
 		}
+	}
+}
+
+// MARK: - Support State
+
+extension App.Source {
+	/// Possible states for whether a source is supported by the app.
+	enum SupportState {
+		/// The source is fully supported, including in-app updates.
+		case full
 		
+		/// There is some update information available, but it may be incomplete. In-app updates do not work.
+		case limited
+		
+		/// The source is unknown and no update information is available.
+		case none
 	}
 	
+	/// Whether the source is supported by the app.
+	var supportState: SupportState {
+		switch self {
+		case .none:
+			return .none
+		case .sparkle, .appStore:
+			return .full
+		case .homebrew:
+			return .limited
+		}
+	}
+}
+
+
+// MARK: Accessors
+
+extension App.Source.SupportState {
+	/// Returns an image using the system status indicator (colored dot) for the given status.
+	var statusImage: NSImage {
+		let name = switch self {
+		case .full: NSImage.statusAvailableName
+		case .limited: NSImage.statusPartiallyAvailableName
+		case .none: NSImage.statusUnavailableName
+		}
+		
+		return NSImage(named: name)!
+	}
+	
+	/// Returns a label briefly describing the given status.
+	var label: String {
+		switch self {
+		case .full: NSLocalizedString("SupportedLabel", comment: "A label used for apps which are fully supported by Latest.")
+		case .limited: NSLocalizedString("LimitedSupportLabel", comment: "A label used for apps which are partially supported by Latest.")
+		case .none: NSLocalizedString("UnsupportedLabel", comment: "A label used for apps which are not supported by Latest.")
+		}
+	}
+	
+	/// A more compact version of the label describing the given status.
+	var compactLabel: String {
+		switch self {
+		case .full: NSLocalizedString("SupportedCompactLabel", comment: "A compact label used for apps which are fully supported by Latest.")
+		case .limited: NSLocalizedString("LimitedSupportCompactLabel", comment: "A compact label used for apps which are partially supported by Latest.")
+		case .none: NSLocalizedString("UnsupportedCompactLabel", comment: "A compact label used for apps which are not supported by Latest.")
+		}
+	}
 }

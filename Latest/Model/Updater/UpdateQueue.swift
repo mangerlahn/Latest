@@ -9,7 +9,7 @@
 import Foundation
 
 /// The queue where update operations are scheduled on.
-class UpdateQueue: OperationQueue {
+class UpdateQueue: OperationQueue, @unchecked Sendable {
 	
 	// MARK: - Initialization
 	private override init() {
@@ -57,11 +57,6 @@ class UpdateQueue: OperationQueue {
 			operation.progressHandler = { identifier in
 				self.notifyObservers(for: identifier)
 			}
-			operation.completionBlock = {
-				if case .none = operation.progressState {
-					self.completionHandler?(operation.appIdentifier)
-				}
-			}
 		}
 	}
 	
@@ -70,15 +65,9 @@ class UpdateQueue: OperationQueue {
 	
 	/// The handler for notifying observers about changes to the update state.
 	typealias ObserverHandler = (_: UpdateOperation.ProgressState) -> Void
-	
-	/// Called whenever an app update completes.
-	typealias CompletionHandler = (_: App.Bundle.Identifier) -> Void
 
 	/// A mapping of observers associated with apps.
 	private var observers = [App.Bundle.Identifier : [NSObject: ObserverHandler]]()
-	
-	/// The completion handler to be called when an operation completes.
-	var completionHandler: CompletionHandler?
 	
 	/// Adds the observer if it is not already registered.
 	func addObserver(_ observer: NSObject, to identifier: App.Bundle.Identifier, handler: @escaping ObserverHandler) {

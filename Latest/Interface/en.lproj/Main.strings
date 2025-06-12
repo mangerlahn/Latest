@@ -1,6 +1,8 @@
-
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "00n-xr-jcQ"; */
 "00n-xr-jcQ.title" = "Update";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Sort By";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
 "1Gu-Ep-ZWZ.title" = "Find and Replace…";
@@ -11,11 +13,8 @@
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Menu";
 
-/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
-"1fA-1k-qER.title" = "Sort By";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Text Cell";
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "3jr-8s-u5A"; */
+"3jr-8s-u5A.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Enter Full Screen";
@@ -38,20 +37,17 @@
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
 "65u-P1-4rd.title" = "Data Detectors";
 
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Show Unsupported Apps";
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
+"6va-ld-AXD.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6YS-DP-XWA"; */
 "6YS-DP-XWA.title" = "<dnl>";
 
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "6va-ld-AXD"; */
-"6va-ld-AXD.title" = "<dnl>";
-
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Visit Latest-Website";
 
-/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
+"aCF-1x-0c1.title" = "Find";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "Ah1-jH-gCv"; */
 "Ah1-jH-gCv.title" = "Undo";
@@ -59,17 +55,44 @@
 /* Class = "NSMenu"; title = "Menu"; ObjectID = "Ake-Tt-cX3"; */
 "Ake-Tt-cX3.title" = "Menu";
 
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "File";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
+"bm3-iR-6vZ.title" = "Show in Finder";
+
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Preferences…";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
+"c4C-I9-Gd0.title" = "Check for Updates…";
 
 /* Class = "NSTextFieldCell"; title = "Failed to load the release notes!"; ObjectID = "Cm3-IX-Kw4"; */
 "Cm3-IX-Kw4.title" = "Failed to load the release notes!";
 
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
+"cWB-Qy-jEV.title" = "Speech";
+
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
 "D2N-5U-W7Z.title" = "No Updates Available";
 
+/* Class = "NSWindow"; title = "Settings"; ObjectID = "DfQ-ss-Qv2"; */
+"DfQ-ss-Qv2.title" = "Settings";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "File";
+
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Close";
+
+/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
+"eIs-LJ-TQe.title" = "Check Document Now";
 
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "ES5-dd-1TR"; */
 "ES5-dd-1TR.title" = "Check Spelling While Typing";
@@ -89,32 +112,68 @@
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "GMn-QE-qPC"; */
 "GMn-QE-qPC.title" = "Paste";
 
-/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
-"GZQ-fq-mFU.title" = "Capitalize";
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
+"gU8-2v-afa.title" = "Find Next";
 
 /* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "Gw7-NE-1lh"; */
 "Gw7-NE-1lh.title" = "<dnl>";
 
+/* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "GZQ-fq-mFU"; */
+"GZQ-fq-mFU.title" = "Capitalize";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "h6g-FG-nGh"; */
+"h6g-FG-nGh.title" = "<dnl>";
+
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
 "H8h-7b-M4v.title" = "View";
+
+/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
+"h9B-7u-6ru.title" = "Show in Finder";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
+"hOB-nw-cIX.title" = "Find";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
 "HyV-fh-RgO.title" = "View";
 
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Services";
+
 /* Class = "NSMenuItem"; title = "Update"; ObjectID = "IAo-SY-fd9"; */
 "IAo-SY-fd9.title" = "Update";
-
-/* Class = "NSWindow"; title = "<dnl>"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "<dnl>";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Id2-BS-gzO"; */
 "Id2-BS-gzO.title" = "Select All";
 
+/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
+"iis-Dj-0TB.title" = "Check Grammar With Spelling";
+
+/* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
+"iLi-Yb-UfX.title" = "Loading Release Notes";
+
+/* Class = "NSWindow"; title = "<dnl>"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
+"iUE-OL-cvh.title" = "Smart Copy/Paste";
+
+/* Class = "NSTextFieldCell"; title = "Check apps from:"; ObjectID = "ivV-VN-4CO"; */
+"ivV-VN-4CO.title" = "Check apps from:";
+
 /* Class = "NSMenu"; title = "Transformations"; ObjectID = "J6q-tg-1G2"; */
 "J6q-tg-1G2.title" = "Transformations";
 
+/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
+"jEo-hx-9Qp.title" = "Smart Quotes";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "jLw-y7-vqv"; */
+"jLw-y7-vqv.title" = "<dnl>";
+
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
+"l11-q2-MLf.title" = "Substitutions";
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
 "LE2-aR-0XJ.title" = "Bring All to Front";
@@ -125,144 +184,6 @@
 /* Class = "NSMenuItem"; title = "Don't Ignore"; ObjectID = "Ljr-hV-usc"; */
 "Ljr-hV-usc.title" = "Don't Ignore";
 
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NNm-bC-QYz"; */
-"NNm-bC-QYz.title" = "<dnl>";
-
-/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
-"Nnu-IS-gsC.title" = "Start Speaking";
-
-/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
-"OLo-39-3Sm.label" = "Progress";
-
-/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
-"OLo-39-3Sm.paletteLabel" = "Progress";
-
-/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
-"OY7-WF-poV.title" = "Minimize";
-
-/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide Latest";
-
-/* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
-"PS4-wi-kF9.title" = "Ignore";
-
-/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
-"QRR-k0-TZ4.title" = "<dnl>";
-
-/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
-"R4o-n2-Eq4.title" = "Zoom";
-
-/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
-"Rh5-N3-X6H.title" = "Show Ignored Apps";
-
-/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
-"SKi-gD-wYr.title" = "Make Lower Case";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "SVA-bh-cUe"; */
-"SVA-bh-cUe.title" = "<dnl>";
-
-/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "Show Substitutions";
-
-/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
-"Td7-aD-5lo.title" = "Window";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
-"UPY-HP-f2p.title" = "<dnl>";
-
-/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "Substitutions";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
-
-/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
-"Vdr-fp-XzO.title" = "Hide Others";
-
-/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
-"WX3-Xi-vCY.title" = "Show Spelling and Grammar";
-
-/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
-"XVu-eG-PUK.title" = "Show Installed Apps";
-
-/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
-"Xng-11-x9Q.title" = "Make Upper Case";
-
-/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
-"YRo-LJ-qSP.title" = "Transformations";
-
-/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
-"Yj4-SM-ocg.title" = "Redo";
-
-/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
-"ZKg-u2-aqr.title" = "Sort By";
-
-/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
-"ZWx-q6-TJz.label" = "Reload";
-
-/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
-"ZWx-q6-TJz.paletteLabel" = "Reload";
-
-/* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
-"aCF-1x-0c1.title" = "Find";
-
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Window";
-
-/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
-"bib-Uj-vzu.title" = "File";
-
-/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "bm3-iR-6vZ"; */
-"bm3-iR-6vZ.title" = "Show in Finder";
-
-/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "c4C-I9-Gd0"; */
-"c4C-I9-Gd0.title" = "Check for Updates…";
-
-/* Class = "NSMenu"; title = "Speech"; ObjectID = "cWB-Qy-jEV"; */
-"cWB-Qy-jEV.title" = "Speech";
-
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "File";
-
-/* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "eIs-LJ-TQe"; */
-"eIs-LJ-TQe.title" = "Check Document Now";
-
-/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "gU8-2v-afa"; */
-"gU8-2v-afa.title" = "Find Next";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "h6g-FG-nGh"; */
-"h6g-FG-nGh.title" = "<dnl>";
-
-/* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
-"h9B-7u-6ru.title" = "Show in Finder";
-
-/* Class = "NSMenuItem"; title = "Find"; ObjectID = "hOB-nw-cIX"; */
-"hOB-nw-cIX.title" = "Find";
-
-/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
-
-/* Class = "NSTextFieldCell"; title = "Loading Release Notes"; ObjectID = "iLi-Yb-UfX"; */
-"iLi-Yb-UfX.title" = "Loading Release Notes";
-
-/* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "iUE-OL-cvh"; */
-"iUE-OL-cvh.title" = "Smart Copy/Paste";
-
-/* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "iis-Dj-0TB"; */
-"iis-Dj-0TB.title" = "Check Grammar With Spelling";
-
-/* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
-"jEo-hx-9Qp.title" = "Smart Quotes";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "jLw-y7-vqv"; */
-"jLw-y7-vqv.title" = "<dnl>";
-
-/* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
-"l11-q2-MLf.title" = "Substitutions";
-
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "mS9-zq-Dvi"; */
 "mS9-zq-Dvi.title" = "Delete";
 
@@ -272,11 +193,41 @@
 /* Class = "NSMenuItem"; title = "Find…"; ObjectID = "mu8-FK-tXI"; */
 "mu8-FK-tXI.title" = "Find…";
 
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Services";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NNm-bC-QYz"; */
+"NNm-bC-QYz.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Nnu-IS-gsC"; */
+"Nnu-IS-gsC.title" = "Start Speaking";
+
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "o46-Ym-MCY"; */
 "o46-Ym-MCY.title" = "Donate";
 
+/* Class = "NSToolbarItem"; label = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.label" = "Progress";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Progress"; ObjectID = "OLo-39-3Sm"; */
+"OLo-39-3Sm.paletteLabel" = "Progress";
+
+/* Class = "NSMenuItem"; title = "Hide Latest"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Latest";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimize";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "Pdj-YX-mnM"; */
+"Pdj-YX-mnM.title" = "<dnl>";
+
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
 "pDo-aP-nIF.title" = "Jump to Selection";
+
+/* Class = "NSMenuItem"; title = "Ignore"; ObjectID = "PS4-wi-kF9"; */
+"PS4-wi-kF9.title" = "Ignore";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "QRR-k0-TZ4"; */
+"QRR-k0-TZ4.title" = "<dnl>";
 
 /* Class = "NSToolbarItem"; label = "Update All"; ObjectID = "qS5-vO-h2j"; */
 "qS5-vO-h2j.label" = "Update All";
@@ -284,8 +235,14 @@
 /* Class = "NSToolbarItem"; paletteLabel = "Update All"; ObjectID = "qS5-vO-h2j"; */
 "qS5-vO-h2j.paletteLabel" = "Update All";
 
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoom";
+
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "r6p-yM-qya"; */
 "r6p-yM-qya.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Show Ignored Apps"; ObjectID = "Rh5-N3-X6H"; */
+"Rh5-N3-X6H.title" = "Show Ignored Apps";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "rK6-RZ-Ga6"; */
 "rK6-RZ-Ga6.title" = "<dnl>";
@@ -293,29 +250,56 @@
 /* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "ryW-4P-l7k"; */
 "ryW-4P-l7k.title" = "Use Selection for Find";
 
+/* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "SKi-gD-wYr"; */
+"SKi-gD-wYr.title" = "Make Lower Case";
+
 /* Class = "NSTextFieldCell"; title = "Multiline Label"; ObjectID = "spt-ns-lYo"; */
 "spt-ns-lYo.title" = "Multiline Label";
 
-/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
-"tXI-mr-wws.title" = "Update All";
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "SVA-bh-cUe"; */
+"SVA-bh-cUe.title" = "<dnl>";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
+"TKo-Xa-BjT.title" = "Show Substitutions";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "tw7-g1-6Wz"; */
 "tw7-g1-6Wz.title" = "Smart Links";
 
-/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
-"uGs-GF-i9Z.title" = "Stop Speaking";
+/* Class = "NSMenuItem"; title = "Update All"; ObjectID = "tXI-mr-wws"; */
+"tXI-mr-wws.title" = "Update All";
 
-/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "Latest";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
-"uWn-a0-oM2.title" = "<dnl>";
+/* Class = "NSMenuItem"; title = "Open"; ObjectID = "Uax-et-NIt"; */
+"Uax-et-NIt.title" = "Open";
 
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "ucY-cy-GON"; */
 "ucY-cy-GON.title" = "Spelling";
 
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "uGs-GF-i9Z"; */
+"uGs-GF-i9Z.title" = "Stop Speaking";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
+"UPY-HP-f2p.title" = "<dnl>";
+
+/* Class = "NSMenu"; title = "Latest"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Latest";
+
+/* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
+"UVA-tb-pA9.title" = "Substitutions";
+
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "uw5-pW-jNu"; */
 "uw5-pW-jNu.title" = "Smart Dashes";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "uWn-a0-oM2"; */
+"uWn-a0-oM2.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "V9u-cb-GDY"; */
+"V9u-cb-GDY.title" = "<dnl>";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
 
 /* Class = "NSMenuItem"; title = "Open"; ObjectID = "w14-Ia-4l9"; */
 "w14-Ia-4l9.title" = "Open";
@@ -329,11 +313,68 @@
 /* Class = "NSMenuItem"; title = "Spelling and Grammar"; ObjectID = "wtc-0j-cAV"; */
 "wtc-0j-cAV.title" = "Spelling and Grammar";
 
+/* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "WX3-Xi-vCY"; */
+"WX3-Xi-vCY.title" = "Show Spelling and Grammar";
+
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "x6Q-gr-lO2"; */
 "x6Q-gr-lO2.title" = "Paste and Match Style";
+
+/* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "Xng-11-x9Q"; */
+"Xng-11-x9Q.title" = "Make Upper Case";
+
+/* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
+"XVu-eG-PUK.title" = "Show Installed Apps";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "y5A-ib-gR6"; */
 "y5A-ib-gR6.title" = "Speech";
 
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "Yj4-SM-ocg"; */
+"Yj4-SM-ocg.title" = "Redo";
+
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
 "yPN-rG-tgD.title" = "Find Previous";
+
+/* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "YRo-LJ-qSP"; */
+"YRo-LJ-qSP.title" = "Transformations";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Sort By";
+
+/* Class = "NSToolbarItem"; label = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.label" = "Reload";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Reload"; ObjectID = "ZWx-q6-TJz"; */
+"ZWx-q6-TJz.paletteLabel" = "Reload";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "9ux-Hr-SHb"; */
+"9ux-Hr-SHb.title" = "<dnl>";
+
+/* Class = "NSTextFieldCell"; title = "Include:"; ObjectID = "Aeb-LJ-TzL"; */
+"Aeb-LJ-TzL.title" = "Include:";
+
+/* Class = "NSButtonCell"; title = "Unsupported apps"; ObjectID = "HfB-8a-u7P"; */
+"HfB-8a-u7P.title" = "Unsupported apps";
+
+/* Class = "NSViewController"; title = "General"; ObjectID = "JNL-bS-gzr"; */
+"JNL-bS-gzr.title" = "General";
+
+/* Class = "NSTextFieldCell"; title = "Show apps without any available update information."; ObjectID = "Mdn-MF-57Q"; */
+"Mdn-MF-57Q.title" = "Show apps without any available update information.";
+
+/* Class = "NSViewController"; title = "Locations"; ObjectID = "MRG-cS-c2g"; */
+"MRG-cS-c2g.title" = "Locations";
+
+/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NC1-U2-waJ"; */
+"NC1-U2-waJ.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "Apps with limited support"; ObjectID = "Ntm-I4-heJ"; */
+"Ntm-I4-heJ.title" = "Apps with limited support";
+
+/* Class = "NSButtonCell"; title = "<dnl>"; ObjectID = "NvM-TY-Zhn"; */
+"NvM-TY-Zhn.title" = "<dnl>";
+
+/* Class = "NSButtonCell"; title = "Report Issue…"; ObjectID = "pNJ-Hl-Qxz"; */
+"pNJ-Hl-Qxz.title" = "Report Issue…";
+
+/* Class = "NSTextFieldCell"; title = "List apps with limited support. Update information may be outdated or inaccurate, and updates cannot be performed directly in Latest.\n"; ObjectID = "rG3-x9-kec"; */
+"rG3-x9-kec.title" = "List apps with limited support. Update information may be outdated or inaccurate, and updates cannot be performed directly in Latest.\n";

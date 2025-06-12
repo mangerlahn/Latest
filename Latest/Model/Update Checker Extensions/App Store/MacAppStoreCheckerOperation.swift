@@ -11,7 +11,7 @@ import Cocoa
 let MalformedURLError = NSError(domain: NSURLErrorDomain, code: NSURLErrorUnsupportedURL, userInfo: nil)
 
 /// The operation for checking for updates for a Mac App Store app.
-class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
+class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, @unchecked Sendable {
 	
 	// MARK: - Update Check
 	

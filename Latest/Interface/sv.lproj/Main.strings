@@ -17,9 +17,6 @@
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
 "UPY-HP-f2p.title" = "<dnl>";
 
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
-
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "5cs-kb-AQj"; */
 "5cs-kb-AQj.title" = "Kopiera";
 
@@ -46,12 +43,6 @@
 
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Helskärmsläge";
-
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Visa appar som inte stöds";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Textcell";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "65u-P1-4rd"; */
 "65u-P1-4rd.title" = "Datadetektorer";
@@ -334,3 +325,20 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "Sortera efter";
+"DfQ-ss-Qv2.title" = "Inställningar";
+"3jr-8s-u5A.title" = "<dnl>";
+"NC1-U2-waJ.title" = "<dnl>";
+"rG3-x9-kec.title" = "Visa appar med begränsat stöd. Uppdateringsinformation kan vara utdaterad eller felaktig, uppdateringar kan inte utföras direkt i Latest.\n";
+"HfB-8a-u7P.title" = "Appar som inte stöds";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "Öppna";
+"V9u-cb-GDY.title" = "<dnl>";
+"ivV-VN-4CO.title" = "Utforska appar från:";
+"Aeb-LJ-TzL.title" = "Inkludera:";
+"JNL-bS-gzr.title" = "Allmän";
+"Mdn-MF-57Q.title" = "Visa appar utan tillgänglig uppdateringsinformation.";
+"MRG-cS-c2g.title" = "Platser";
+"Ntm-I4-heJ.title" = "Appar med begränsad support";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Rapportera problem…";

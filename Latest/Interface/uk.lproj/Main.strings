@@ -38,14 +38,11 @@
 /* Class = "NSMenuItem"; title = "Menu"; ObjectID = "1Z9-ws-FMW"; */
 "1Z9-ws-FMW.title" = "Меню";
 
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "3GZ-aM-hwz"; */
-"3GZ-aM-hwz.title" = "Текстова комірка";
-
 /* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "4J7-dP-txa"; */
 "4J7-dP-txa.title" = "Увійти до повноекранного режиму";
 
 /* Class = "NSMenuItem"; title = "Quit Latest"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Закрити";
+"4sb-4s-VLi.title" = "Закрити Latest";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "4vf-ia-dzo"; */
 "4vf-ia-dzo.title" = "Перевірка оновлень…";
@@ -55,9 +52,6 @@
 
 /* Class = "NSMenuItem"; title = "About Latest"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "Про Latest";
-
-/* Class = "NSMenuItem"; title = "Show Unsupported Apps"; ObjectID = "6Cd-Qc-3Xc"; */
-"6Cd-Qc-3Xc.title" = "Показати Непідтримувані Застосунки";
 
 /* Class = "NSMenuItem"; title = "Visit Latest-Website"; ObjectID = "7c2-6r-Saw"; */
 "7c2-6r-Saw.title" = "Відвідати сайт Latest";
@@ -79,9 +73,6 @@
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "UPY-HP-f2p"; */
 "UPY-HP-f2p.title" = "<dnl>";
-
-/* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "VX8-qg-UOL"; */
-"VX8-qg-UOL.title" = "<dnl>";
 
 /* Class = "NSTextFieldCell"; title = "Current Version"; ObjectID = "h6g-FG-nGh"; */
 "h6g-FG-nGh.title" = "<dnl>";
@@ -328,3 +319,26 @@
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "yPN-rG-tgD"; */
 "yPN-rG-tgD.title" = "Знайти попереднє";
+
+/* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
+"1fA-1k-qER.title" = "Сортувати за";
+
+/* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
+"ZKg-u2-aqr.title" = "Сортувати за";
+"3jr-8s-u5A.title" = "<dnl>";
+"ivV-VN-4CO.title" = "Перевірте програми з:";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "Відчинено";
+"V9u-cb-GDY.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "Включати:";
+"HfB-8a-u7P.title" = "Непідтримувані програми";
+"JNL-bS-gzr.title" = "Загальний";
+"MRG-cS-c2g.title" = "Розташування";
+"NC1-U2-waJ.title" = "<dnl>";
+"Ntm-I4-heJ.title" = "Програми з обмеженою підтримкою";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Повідомити про проблему…";
+"DfQ-ss-Qv2.title" = "Налаштування";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Mdn-MF-57Q.title" = "Показувати програми без доступної інформації про оновлення.";
+"rG3-x9-kec.title" = "Список додатків з обмеженою підтримкою. Інформація про оновлення може бути застарілою або неточною, і оновлення не можна виконати безпосередньо в Latest.\n";

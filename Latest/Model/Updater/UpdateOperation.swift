@@ -9,7 +9,7 @@
 import Foundation
 
 /// The abstract update operation used for updating apps.
-class UpdateOperation: StatefulOperation {
+class UpdateOperation: StatefulOperation, @unchecked Sendable {
 	
 	/// Encapsulates different states that may be active during the update process.
 	enum ProgressState {

@@ -10,7 +10,7 @@ import CommerceKit
 import StoreFoundation
 
 /// The operation updating Mac App Store apps.
-class MacAppStoreUpdateOperation: UpdateOperation {
+class MacAppStoreUpdateOperation: UpdateOperation, @unchecked Sendable {
 
 	/// The purchase associated with the to be updated app.
 	private var purchase: SSPurchase!

@@ -2,7 +2,7 @@
 "CFBundleName" = "Terkini";
 
 /* Copyright (human-readable) */
-"NSHumanReadableCopyright" = "Hakcipta © 2022 Max Langer. Hakcipta terpelihara.";
+"NSHumanReadableCopyright" = "Hakcipta © 2025 Max Langer. Hakcipta terpelihara.";
 
 /* The name of the app. Should only be translated if "Latest" feels "wrong" for a given language and if a better alternative exists. I.e. the app is not localized in German as english app names are common and no "good sounding" alternatives exist. */
 "CFBundleDisplayName" = "Terkini";

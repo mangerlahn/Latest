@@ -10,7 +10,7 @@ import Cocoa
 import Sparkle
 
 /// The operation for checking for updates for a Sparkle app.
-class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation {
+class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, @unchecked Sendable {
 	
 	// MARK: - Update Check
 	

@@ -9,7 +9,9 @@
 private let SortOptionsKey = "SortOptionsKey"
 private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
-private let ShowUnsupportedUpdatesKey = "ShowUnsupportedUpdatesKey"
+
+private let IncludeUnsupportedAppsKey = "ShowUnsupportedUpdatesKey"
+private let IncludeAppsWithLimitedSupportKey = "IncludeAppsWithLimitedSupportKey"
 
 /// Observable front end to app list preferences.
 struct AppListSettings: Observable {
@@ -55,6 +57,17 @@ struct AppListSettings: Observable {
 		}
 	}
 	
+	/// Whether installed apps should be visible
+	var showInstalledUpdates: Bool {
+		set {
+			set(newValue, forKey: ShowInstalledUpdatesKey)
+		}
+		
+		get {
+			UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey)
+		}
+	}
+	
 	/// Whether ignored apps should be visible
 	var showIgnoredUpdates: Bool {
 		set {
@@ -67,24 +80,24 @@ struct AppListSettings: Observable {
 	}
 	
 	/// Whether unsupported apps should be visible
-	var showUnsupportedUpdates: Bool {
+	var includeUnsupportedApps: Bool {
 		set {
-			set(newValue, forKey: ShowUnsupportedUpdatesKey)
+			set(newValue, forKey: IncludeUnsupportedAppsKey)
 		}
 		
 		get {
-			UserDefaults.standard.bool(forKey: ShowUnsupportedUpdatesKey)
+			UserDefaults.standard.bool(forKey: IncludeUnsupportedAppsKey)
 		}
 	}
 	
-	/// Whether installed apps should be visible
-	var showInstalledUpdates: Bool {
+	/// Whether apps only partially supported by Latest should be included.
+	var includeAppsWithLimitedSupport: Bool {
 		set {
-			set(newValue, forKey: ShowInstalledUpdatesKey)
+			set(newValue, forKey: IncludeAppsWithLimitedSupportKey)
 		}
 		
 		get {
-			UserDefaults.standard.bool(forKey: ShowInstalledUpdatesKey)
+			UserDefaults.standard.bool(forKey: IncludeAppsWithLimitedSupportKey)
 		}
 	}
 	

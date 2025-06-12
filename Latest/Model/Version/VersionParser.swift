@@ -34,14 +34,20 @@ enum VersionParser {
 		// Version prefix (v1234)
 		.init(pattern: "v(.*)", components: [.versionNumber: 1]),
 		
-		// Commit postfix (1.2-HEAD-123abc)
+		// Commit postfix (1.2-HEAD-123abc / 1.2-stable.123abc)
 		.init(pattern: "(.*)-HEAD-.*", components: [.versionNumber: 1]),
+		.init(pattern: "(.*)-stable.*", components: [.versionNumber: 1]),
 		
 		// OSX postfix (1.2.osx2)
 		.init(pattern: "(.*).osx.*", components: [.versionNumber: 1]),
 		
 		// Build number postfix (1.2 (r1234))
 		.init(pattern: "(.*) \\(r.*\\)", components: [.versionNumber: 1]),
+		
+		// word postfixes
+		.init(pattern: "(.*)-release", components: [.versionNumber: 1]),
+		.init(pattern: "(.*)-latest", components: [.versionNumber: 1]),
+		.init(pattern: "(.*)-demo", components: [.versionNumber: 1]),
 
 		// Catch all
 		.init(pattern: ".*", components: [.versionNumber: 0])
@@ -115,7 +121,7 @@ extension VersionParser {
 		
 		/// Extracts the component as string from the given parsing result.
 		func string(for component: Component, in versionString: String, match: NSTextCheckingResult) -> String? {
-			guard let index = components[component] else {
+			guard !versionString.isEmpty, let index = components[component] else {
 				return nil
 			}
 			

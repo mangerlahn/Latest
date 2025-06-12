@@ -111,7 +111,7 @@ extension App {
 	
 	/// Whether the app can be updated within Latest.
 	var supported: Bool {
-		return self.source != .unsupported
+		return self.source != .none
 	}
 	
 	/// The date of the app when it was last updated.
@@ -187,14 +187,15 @@ extension App {
 	
 	/// Returns an attributed string that highlights a given search query within this app's name.
 	func highlightedName(for query: String?) -> NSAttributedString {
-		let name = NSMutableAttributedString(string: self.bundle.name)
+		let name = bundle.name
+		let attributedName = NSMutableAttributedString(string: name)
 		
-		if let queryString = query, let selectedRange = self.bundle.name.lowercased().range(of: queryString.lowercased()) {
-			name.addAttribute(.foregroundColor, value: NSColor(named: "FadedSearchText")!, range: NSMakeRange(0, name.length))
-			name.removeAttribute(.foregroundColor, range: NSRange(selectedRange, in: self.bundle.name))
+		if let queryString = query, let selectedRange = name.range(of: queryString, options: .caseInsensitive) {
+			attributedName.addAttribute(.foregroundColor, value: NSColor(resource: .fadedSearchText), range: NSMakeRange(0, name.count))
+			attributedName.removeAttribute(.foregroundColor, range: NSRange(selectedRange, in: name))
 		}
 		
-		return name
+		return attributedName
 	}
 
 }
@@ -218,6 +219,15 @@ extension App {
 			}
 			
 			return nil
+		}
+
+		/// Returns version string by optionally combining the current and new version.
+		func combined(includeNew: Bool) -> String {
+			if let rawNew, includeNew, rawCurrent != rawNew {
+				String(format: NSLocalizedString("CombinedVersionFormat", comment: "Text for the current version number with option to update to a newer one, e.g. 'Version: 1.2.2 -> 1.2.3'. Has two parameters, the first being the current version, the second being the next version."), rawCurrent, rawNew)
+			} else {
+				String(format: NSLocalizedString("SingleCombinedVersionFormat", comment: "Text for the given version number, e.g. 'Version: 1.2.3'"), rawCurrent)
+			}
 		}
 		
 		fileprivate var rawCurrent: String
