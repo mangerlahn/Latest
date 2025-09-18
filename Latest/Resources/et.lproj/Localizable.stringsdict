@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    </dict>
+<dict>
+	<key>NumberOfUpdatesAvailable</key>
+	<dict>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>Kõik on uuendatud!</string>
+			<key>one</key>
+			<string>Saadaval on %d uuendus</string>
+			<key>other</key>
+			<string>Saadaval on %d uuendust</string>
+		</dict>
+	</dict>
+</dict>
 </plist>
