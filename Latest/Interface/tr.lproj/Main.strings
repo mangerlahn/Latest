@@ -45,7 +45,7 @@
 "Ake-Tt-cX3.title" = "Menü";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "seçenekler";
+"BOF-NM-1cW.title" = "Tercihler…";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Kapat";
@@ -171,7 +171,7 @@
 "aCF-1x-0c1.title" = "Bul";
 
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "l11-q2-MLf"; */
-"l11-q2-MLf.title" = "Dönüşümler";
+"l11-q2-MLf.title" = "Yerine Koymalar";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
 "R4o-n2-Eq4.title" = "Yakınlaştır";
@@ -186,7 +186,7 @@
 "tw7-g1-6Wz.title" = "Akıllı Bağlantılar";
 
 /* Class = "NSMenuItem"; title = "Sort By"; ObjectID = "ZKg-u2-aqr"; */
-"ZKg-u2-aqr.title" = "'e göre Sırala";
+"ZKg-u2-aqr.title" = "Şuna Göre Sırala";
 
 /* Class = "NSMenuItem"; title = "Show Installed Apps"; ObjectID = "XVu-eG-PUK"; */
 "XVu-eG-PUK.title" = "Yüklü Uygulamaları Göster";
@@ -201,7 +201,7 @@
 "wtc-0j-cAV.title" = "Yazım ve Dilbilgisi";
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "TKo-Xa-BjT"; */
-"TKo-Xa-BjT.title" = "Dönüşümleri Göster";
+"TKo-Xa-BjT.title" = "Yerine Koymaları Göster";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "jEo-hx-9Qp"; */
 "jEo-hx-9Qp.title" = "Akıllı Alıntılar";
@@ -249,7 +249,7 @@
 "Xng-11-x9Q.title" = "Büyük Harf Yap";
 
 /* Class = "NSMenuItem"; title = "Substitutions"; ObjectID = "UVA-tb-pA9"; */
-"UVA-tb-pA9.title" = "Dönüşümler";
+"UVA-tb-pA9.title" = "Yerine Koymalar";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Servisler";
@@ -296,3 +296,19 @@
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
 "pDo-aP-nIF.title" = "Seçime Atla";
 "3jr-8s-u5A.title" = "<dnl>";
+"DfQ-ss-Qv2.title" = "Ayarlar";
+"ivV-VN-4CO.title" = "Şuradan uygulamaları kontrol et:";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "Aç";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "Dahil et:";
+"HfB-8a-u7P.title" = "Desteklenmeyen uygulamalar";
+"JNL-bS-gzr.title" = "Genel";
+"Mdn-MF-57Q.title" = "Güncelleme bilgisi olmayan uygulamaları göster.";
+"MRG-cS-c2g.title" = "Konumlar";
+"NC1-U2-waJ.title" = "<dnl>";
+"Ntm-I4-heJ.title" = "Sınırlı destekli uygulamalar";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "Sorunu Bildir…";
+"rG3-x9-kec.title" = "Sınırlı destekli uygulamaları listele. Güncelleme bilgileri eski veya hatalı olabilir ve güncellemeler Latest üzerinden doğrudan gerçekleştirilemez.\n";
