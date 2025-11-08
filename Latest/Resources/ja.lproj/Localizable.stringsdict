@@ -11,7 +11,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>zero</key>
-			<string>最新の！</string>
+			<string>すべて最新です!</string>
 			<key>other</key>
 			<string>%d個のアップデートが利用可能</string>
 		</dict>
