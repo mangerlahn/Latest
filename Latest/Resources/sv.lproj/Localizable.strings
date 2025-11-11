@@ -118,7 +118,7 @@
 "LimitedSupportLabel" = "Limited support";
 "NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
 "SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
+"LimitedSupportCompactLabel" = "Begränsad";
 "SupportedLabel" = "Supported";
 "UnsupportedCompactLabel" = "Unsupported";
 "SingleCombinedVersionFormat" = "Version: %@";
