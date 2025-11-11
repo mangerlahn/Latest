@@ -55,7 +55,7 @@
 "NoAppSelectedTitle" = "未選擇應用程式";
 
 /* Error message that no release notes were found */
-"ReleaseNotesUnavailableError" = "找不到此應用程式的發行說明。";
+"ReleaseNotesUnavailableError" = "無發行說明";
 
 /* Button to retry an update in an error dialogue */
 "RetryAction" = "重試";
@@ -76,7 +76,7 @@
 "UpdateAction" = "更新";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "未找到此應用程式的更新。";
+"UpdateInfoUnavailableError" = "未找到此應用程式的更新";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "請稍候";
@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "到 %@ 更新";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
+"UnsupportedLabel" = "不支援";
+"LimitedSupportLabel" = "有限支援";
+"NoSupportDescription" = "更新資訊不可用。請查看應用程式或其官方網站以管理更新。";
+"SupportedCompactLabel" = "支援";
 "LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"SupportedLabel" = "支援";
+"UnsupportedCompactLabel" = "不支援";
+"SingleCombinedVersionFormat" = "版本: %@";
+"LimitedSupportDescription" = "更新資訊通常可用，但有時可能過時或不正確。無法在此直接執行更新。";
+"FullSupportDescription" = "完全支援。提供可靠的版本資訊，可直接在應用程式內管理更新。\n\n若顯示的版本資訊不正確，請隨時回報問題。";
+"CombinedVersionFormat" = "版本: %1$@ → %2$@";
