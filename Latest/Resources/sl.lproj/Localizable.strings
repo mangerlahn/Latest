@@ -36,16 +36,16 @@
 "RemoteVersionFormat" = "Nova različica: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "Izbrana ni nobena aplikacija.";
+"NoAppSelectedTitle" = "Izbrana ni nobena aplikacija";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "Not Signed In";
+"AppStoreNotSignedInError" = "Niste prijavljeni";
 
 /* Update progress state of waiting to start an update */
 "WaitingUpdateStatus" = "Čakanje na Posodobitev";
 
 /* The source name for apps loaded from third-party websites. */
-"WebSource" = "Web";
+"WebSource" = "Spletno mesto";
 
 /* Current Version String */
 "LocalVersionFormat" = "Vaša različica: %@";
@@ -83,42 +83,42 @@
 "IgnoredAppsSection" = "Ignorirane Aplikacije";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
-"NameSortOption" = "Name";
+"NameSortOption" = "Ime";
 
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
-"DateSortOption" = "Date";
+"DateSortOption" = "Datum";
 
 /* Short description of error stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableError" = "Update Information Unavailable";
+"UpdateInfoUnavailableError" = "Informacije o posodobitvah niso na voljo";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInErrorRecoverySuggestion" = "Prijavite se v Mac App Store za posodobitev te aplikacije.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
-"UpdateInfoUnavailableErrorFailureReason" = "Update information could not be retrieved for this app.";
+"UpdateInfoUnavailableErrorFailureReason" = "Za to aplikacijo ni bilo mogoče pridobiti informacij o posodobitvah";
 
 /* Short description of error that no release notes were found. */
-"ReleaseNotesUnavailableError" = "No Release Notes";
+"ReleaseNotesUnavailableError" = "Ni opomb ob izdaji";
 
 /* Error message that no release notes were found. */
-"ReleaseNotesUnavailableErrorFailureReason" = "Release notes are not available for this app.";
+"ReleaseNotesUnavailableErrorFailureReason" = "Informacije o izdaji te aplikacije niso na voljo.";
 
 /* The source name for apps checked via the Homebrew package manager. */
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "v %@";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"ExternalUpdateAction" = "Posodobi preko %@";
+"UnsupportedLabel" = "Brez podpore";
+"LimitedSupportLabel" = "Omejena podpora";
+"NoSupportDescription" = "Podatki o posodobitvah niso na voljo. Posodobitve lahko upravljate v aplikaciji ali na njenem spletnem mestu.";
+"SupportedCompactLabel" = "Podprto";
+"LimitedSupportCompactLabel" = "Omejeno";
+"SupportedLabel" = "Podprto";
+"UnsupportedCompactLabel" = "Nepodprto";
+"SingleCombinedVersionFormat" = "Različica: %@";
+"LimitedSupportDescription" = "nformacije o posodobitvah so praviloma na voljo, vendar so lahko občasno zastarele ali netočne. Posodobitev na tem mestu ni mogoče opraviti.";
+"FullSupportDescription" = "Popolnoma podprta aplikacija. Zanesljive informacije o različici so na voljo, posodobitve pa je mogoče upravljati neposredno v aplikaciji.\n\nV primeru netočnih informacij o različici vas vabimo, da oddate poročilo o napaki.";
+"CombinedVersionFormat" = "Različica: %1$@ → %2$@";
