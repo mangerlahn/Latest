@@ -112,7 +112,7 @@
 "ExternalUpdateActionWithAppName" = "%@ 에서";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
+"ExternalUpdateAction" = "%@ 에서 업데이트";
 "UnsupportedLabel" = "지원되지 않음";
 "LimitedSupportLabel" = "제한된 지원";
 "NoSupportDescription" = "업데이트 정보를 사용할 수 없습니다. 업데이트를 관리하려면 앱이나 웹사이트를 확인하세요.";
