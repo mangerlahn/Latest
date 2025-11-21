@@ -122,3 +122,5 @@
 "LimitedSupportDescription" = "nformacije o posodobitvah so praviloma na voljo, vendar so lahko občasno zastarele ali netočne. Posodobitev na tem mestu ni mogoče opraviti.";
 "FullSupportDescription" = "Popolnoma podprta aplikacija. Zanesljive informacije o različici so na voljo, posodobitve pa je mogoče upravljati neposredno v aplikaciji.\n\nV primeru netočnih informacij o različici vas vabimo, da oddate poročilo o napaki.";
 "CombinedVersionFormat" = "Različica: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
