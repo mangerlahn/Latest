@@ -122,3 +122,5 @@
 "LimitedSupportDescription" = "Les informations de mise à jour sont généralement disponibles, mais peuvent parfois être obsolètes ou inexactes. Les mises à jour ne peuvent pas être effectuées directement ici.";
 "FullSupportDescription" = "Entièrement pris en charge. Les informations de version sont fiables, et les mises à jour peuvent être gérées directement depuis l'application.\n\nSi les informations de version affichées sont inexactes, n'hésitez pas à signaler un problème.";
 "CombinedVersionFormat" = "Version : %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
