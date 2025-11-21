@@ -124,3 +124,5 @@
 "LimitedSupportDescription" = "Güncelleme bilgileri genellikle mevcuttur ancak bazen eski veya hatalı olabilir. Güncellemeler doğrudan buradan gerçekleştirilemez.";
 "FullSupportDescription" = "Tam olarak destekleniyor. Güvenilir sürüm bilgileri mevcut ve güncellemeler uygulama üzerinden doğrudan yönetilebilir.\n\nGösterilen sürüm bilgisi yanlışsa, lütfen bir hata bildirimi yazmaktan çekinmeyin.";
 "CombinedVersionFormat" = "Sürüm: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
