@@ -124,3 +124,5 @@
 "LimitedSupportDescription" = "Informacije o novim verzijama su općenito dostupne ali mogu biti zastarjele ili netočne. Aktualiziranja se ne mogu izvršiti ovdje.";
 "FullSupportDescription" = "Potpuno podržano. Pouzdane informacije o verziji su dostupne i aktualiziranja se mogu sprovesti izravno unutar aplikacije.\n\nAko prikazane informacije o verziji nisu točne, slobodno napiši izvještaj o problemu.";
 "CombinedVersionFormat" = "Verzija: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
