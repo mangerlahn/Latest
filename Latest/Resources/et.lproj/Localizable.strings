@@ -46,3 +46,5 @@
 "ReleaseNotesUnavailableErrorFailureReason" = "Rakenduse avaldamise kohta puudub lisateave.";
 "CombinedVersionFormat" = "Versioon: %1$@ → %2$@";
 "InstallingUpdateStatus" = "Paigaldamisel";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
