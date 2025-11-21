@@ -125,3 +125,5 @@
 "LimitedSupportDescription" = "Versionsinformationen sind grundsätzlich verfügbar, können aber unzuverlässig oder veraltet sein. Updates müssen innerhalb der entsprechenden App durchgeführt werden.";
 "FullSupportDescription" = "Vollständig unterstützt. Die Versionsinformationen für diese App sind zuverlässig und Updates können direkt in Latest durchgeführt werden.\n\nSchreib gern einen Fehlerbericht, falls die Versionsinformationen fehlerhaft sind.";
 "CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
