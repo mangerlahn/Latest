@@ -124,3 +124,5 @@
 "SingleCombinedVersionFormat" = "Version: %@";
 "LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
 "CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
