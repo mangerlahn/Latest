@@ -124,3 +124,5 @@
 "LimitedSupportDescription" = "Päivitystiedot ovat yleisesti saatavilla, mutta ne voivat joskus olla vanhentuneita tai epätarkkoja. Päivityksiä ei voi tehdä suoraan täällä.";
 "FullSupportDescription" = "Täysin tuettu. Luotettavat versiotiedot ovat saatavilla, ja päivityksiä voidaan hallita suoraan sovelluksessa.\n\nJos näytetyt versiotiedot ovat epätarkkoja, kirjoita ongelmaraportti.";
 "CombinedVersionFormat" = "Versio: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
