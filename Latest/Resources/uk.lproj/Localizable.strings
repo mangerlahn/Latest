@@ -124,3 +124,5 @@
 "LimitedSupportDescription" = "Інформація про оновлення зазвичай доступна, але іноді може бути застарілою або неточною. Оновлення не можна виконувати безпосередньо тут.";
 "FullSupportDescription" = "Повністю підтримується. Доступна надійна інформація про версію, а оновленнями можна керувати безпосередньо в програмі.\n\nЯкщо показана інформація про версію є неточною, не соромтеся написати звіт про проблему.";
 "CombinedVersionFormat" = "Версія: %1$@ → %2$@";
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
