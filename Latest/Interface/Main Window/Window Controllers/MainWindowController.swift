@@ -179,11 +179,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	
 	private var sortByMenuItems: [NSMenuItem] {
 		AppListSettings.SortOptions.allCases.map { order in
-			let item = NSMenuItem(title: order.displayName, action: #selector(changeSortOrder), keyEquivalent: "")
-			item.representedObject = order
-			item.state = AppListSettings.shared.sortOrder == order ? .on : .off
-			
-			return item
+			order.menuItem(
+				target: self,
+				action: #selector(changeSortOrder),
+				isSelected: AppListSettings.shared.sortOrder == order
+			)
 		}
 	}
     

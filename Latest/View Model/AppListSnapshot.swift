@@ -111,6 +111,12 @@ struct AppListSnapshot {
 				return app1.updateDate > app2.updateDate
 			case .name:
 				return app1.name.lowercased() < app2.name.lowercased()
+			case .supportStatus:
+				if app1.supportState != app2.supportState {
+					return app1.supportState.sortPriority < app2.supportState.sortPriority
+				}
+
+				return app1.name.localizedCaseInsensitiveCompare(app2.name) == .orderedAscending
 			}
 		})
 		

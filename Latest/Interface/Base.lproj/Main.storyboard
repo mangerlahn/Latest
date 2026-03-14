@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="24006"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="23010"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -25,20 +25,20 @@
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Check for Updates…" image="arrow.trianglehead.2.clockwise.rotate.90" catalog="system" id="4vf-ia-dzo">
+                                        <menuItem title="Check for Updates…" id="4vf-ia-dzo">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="checkForUpdates:" target="ZIQ-oE-e1U" id="6ax-If-3sD"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" image="gear" catalog="system" keyEquivalent="," id="BOF-NM-1cW">
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
                                                 <segue destination="FYj-Dr-V87" kind="show" id="nij-E9-reP"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
-                                        <menuItem title="Services" secondaryImage="menuItem:NMo-om-nkz:secondaryImage" id="NMo-om-nkz">
+                                        <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
@@ -73,23 +73,23 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Update" image="square.and.arrow.down" catalog="system" keyEquivalent="u" id="IAo-SY-fd9">
+                                        <menuItem title="Update" keyEquivalent="u" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="updateApp:" target="Ady-hI-5gd" id="8d0-AY-Uqx"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Update All" image="custom.arrow.down.square.stack" keyEquivalent="U" id="tXI-mr-wws">
+                                        <menuItem title="Update All" keyEquivalent="U" id="tXI-mr-wws">
                                             <connections>
                                                 <action selector="updateAll:" target="Ady-hI-5gd" id="krK-jh-4Gr"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="6iT-9L-JOa"/>
-                                        <menuItem title="Open" image="arrow.up.forward.app" catalog="system" keyEquivalent="O" id="Uax-et-NIt">
+                                        <menuItem title="Open" keyEquivalent="O" id="Uax-et-NIt">
                                             <connections>
                                                 <action selector="openApp:" target="Ady-hI-5gd" id="UoD-aP-cgb"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show in Finder" image="finder" catalog="system" keyEquivalent="R" id="bm3-iR-6vZ">
+                                        <menuItem title="Show in Finder" keyEquivalent="R" id="bm3-iR-6vZ">
                                             <connections>
                                                 <action selector="showAppInFinder:" target="Ady-hI-5gd" id="WCT-RO-qvU"/>
                                             </connections>
@@ -326,23 +326,23 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
-                                        <menuItem title="Sort By" image="arrow.up.arrow.down" catalog="system" identifier="sortByMenu" id="ZKg-u2-aqr">
+                                        <menuItem title="Sort By" identifier="sortByMenu" id="ZKg-u2-aqr">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Sort By" id="1fA-1k-qER"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wrO-ue-Kal"/>
-                                        <menuItem title="Show Installed Apps" image="checkmark.app" catalog="system" keyEquivalent="i" id="XVu-eG-PUK">
+                                        <menuItem title="Show Installed Apps" keyEquivalent="i" id="XVu-eG-PUK">
                                             <connections>
                                                 <action selector="toggleShowInstalledUpdates:" target="Ady-hI-5gd" id="DiG-pc-JWl"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Show Ignored Apps" image="app.dashed" catalog="system" keyEquivalent="I" id="Rh5-N3-X6H">
+                                        <menuItem title="Show Ignored Apps" keyEquivalent="I" id="Rh5-N3-X6H">
                                             <connections>
                                                 <action selector="toggleShowIgnoredUpdates:" target="Ady-hI-5gd" id="V8P-XQ-TjM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="2cf-83-Jly"/>
-                                        <menuItem title="Check for Updates…" image="arrow.clockwise" catalog="system" keyEquivalent="r" id="c4C-I9-Gd0">
+                                        <menuItem title="Check for Updates…" keyEquivalent="r" id="c4C-I9-Gd0">
                                             <connections>
                                                 <action selector="reload:" target="Ady-hI-5gd" id="hPg-BA-6c8"/>
                                             </connections>
@@ -392,13 +392,13 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="1aU-f4-c4Z"/>
-                                        <menuItem title="Visit Latest-Website" image="globe" catalog="system" id="7c2-6r-Saw">
+                                        <menuItem title="Visit Latest-Website" id="7c2-6r-Saw">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="visitWebsite:" target="Ady-hI-5gd" id="nmK-ds-F4f"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Donate" image="hands.clap" catalog="system" id="o46-Ym-MCY">
+                                        <menuItem title="Donate" id="o46-Ym-MCY">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="donate:" target="Ady-hI-5gd" id="k6J-4J-DNa"/>
@@ -413,11 +413,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target">
-                    <connections>
-                        <outlet property="standardUpdaterController" destination="ZIQ-oE-e1U" id="g1s-Rq-LqN"/>
-                    </connections>
-                </customObject>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
                 <customObject id="ZIQ-oE-e1U" customClass="SPUStandardUpdaterController"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,14 +427,54 @@
                     <window key="window" identifier="MainWindow" title="&lt;dnl&gt;" subtitle="&lt;dnl&gt;" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindowSize" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="549" y="334" width="1004" height="495"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1410"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <value key="minSize" type="size" width="350" height="300"/>
                         <toolbar key="toolbar" implicitIdentifier="DF48FE56-E2C5-4C10-9902-E95C4C7EE57B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="lw0-Zu-kOT">
-                            <allowedToolbarItems/>
-                            <defaultToolbarItems/>
-                            <connections>
-                                <outlet property="delegate" destination="B8D-0N-5wS" id="OrD-mI-ePL"/>
-                            </connections>
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="6dc-Xr-FRW"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sgB-XA-UzA"/>
+                                <toolbarItem implicitItemIdentifier="8B9D4DF6-7C34-490B-A523-757D80785B85" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" sizingBehavior="auto" id="ZWx-q6-TJz">
+                                    <nil key="toolTip"/>
+                                    <button key="view" toolTip="Reload" verticalHuggingPriority="750" id="FM4-aR-lhK">
+                                        <rect key="frame" x="9" y="14" width="26" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BmP-cD-p7E">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="reload:" target="B8D-0N-5wS" id="rFX-tF-Prr"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="61C82154-9A7F-4754-850C-BB9D8EF16208" label="Progress" paletteLabel="Progress" tag="-1" sizingBehavior="auto" id="2cr-nD-7M6">
+                                    <nil key="toolTip"/>
+                                    <progressIndicator key="view" maxValue="100" doubleValue="65" controlSize="small" style="spinning" id="ZTZ-78-jVy">
+                                        <rect key="frame" x="19" y="14" width="16" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </progressIndicator>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="5B354B41-598E-4279-9FD9-F493AEA477C5" label="Update All" paletteLabel="Update All" image="NSTouchBarDownloadTemplate" sizingBehavior="auto" id="qS5-vO-h2j">
+                                    <nil key="toolTip"/>
+                                    <button key="view" toolTip="Update All" verticalHuggingPriority="750" id="wmL-ks-XSr">
+                                        <rect key="frame" x="18" y="14" width="27" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDownloadTemplate" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LPH-XM-HRa">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="updateAll:" target="Oky-zY-oP4" id="Hii-Jj-PVy"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="sgB-XA-UzA"/>
+                                <toolbarItem reference="2cr-nD-7M6"/>
+                                <toolbarItem reference="ZWx-q6-TJz"/>
+                                <toolbarItem reference="qS5-vO-h2j"/>
+                            </defaultToolbarItems>
                         </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="5kS-Vl-rlN"/>
@@ -482,7 +518,10 @@
                         </touchBarItems>
                     </touchBar>
                     <connections>
+                        <outlet property="progressIndicator" destination="ZTZ-78-jVy" id="4xC-Xl-5nc"/>
+                        <outlet property="reloadButton" destination="FM4-aR-lhK" id="eb4-jN-US4"/>
                         <outlet property="reloadTouchBarButton" destination="XDV-N5-XxD" id="tCc-NF-xZ1"/>
+                        <outlet property="updateAllButton" destination="wmL-ks-XSr" id="zKx-P2-Mvw"/>
                         <segue destination="RAb-Ag-jja" kind="relationship" relationship="window.shadowedContentViewController" id="8Lr-Po-xG2"/>
                     </connections>
                 </windowController>
@@ -547,46 +586,49 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="MLMUpdateCellSectionIdentifier" id="ZtS-Z9-Cu9" customClass="UpdateGroupCellView" customModule="Latest" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="0.0" width="380" height="26"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                        <tableCellView identifier="MLMUpdateCellSectionIdentifier" misplaced="YES" id="ZtS-Z9-Cu9" customClass="UpdateGroupCellView" customModule="Latest" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="0.0" width="389" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="DVj-Eq-QBv">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="26"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="389" height="28"/>
+                                                                    <subviews>
+                                                                        <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="20" verticalHuggingPriority="750" horizontalCompressionResistancePriority="20" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhF-6m-YCA">
+                                                                            <rect key="frame" x="18" y="6" width="333" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" title="&lt;dnl&gt;" allowsEditingTextAttributes="YES" id="NNm-bC-QYz">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="top" secondItem="DVj-Eq-QBv" secondAttribute="top" constant="6" id="Bvy-aH-476"/>
+                                                                        <constraint firstItem="xhF-6m-YCA" firstAttribute="leading" secondItem="DVj-Eq-QBv" secondAttribute="leading" constant="20" id="WgZ-5m-bcs"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="xhF-6m-YCA" secondAttribute="bottom" constant="6" id="X00-7l-vwQ"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="xhF-6m-YCA" secondAttribute="trailing" constant="40" id="p42-fq-g7h"/>
+                                                                    </constraints>
                                                                 </visualEffectView>
-                                                                <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="20" verticalHuggingPriority="750" horizontalCompressionResistancePriority="20" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhF-6m-YCA">
-                                                                    <rect key="frame" x="20" y="5" width="324" height="16"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" title="&lt;dnl&gt;" allowsEditingTextAttributes="YES" id="NNm-bC-QYz">
-                                                                        <font key="font" metaFont="systemMedium" size="13"/>
-                                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="xhF-6m-YCA" firstAttribute="top" secondItem="ZtS-Z9-Cu9" secondAttribute="top" constant="5" id="GJp-Zp-KgO"/>
-                                                                <constraint firstAttribute="trailing" secondItem="xhF-6m-YCA" secondAttribute="trailing" constant="38" id="PuY-qX-7H7"/>
                                                                 <constraint firstAttribute="trailing" secondItem="DVj-Eq-QBv" secondAttribute="trailing" id="QhD-5H-yqc"/>
                                                                 <constraint firstAttribute="bottom" secondItem="DVj-Eq-QBv" secondAttribute="bottom" id="chm-Rk-jh3"/>
-                                                                <constraint firstItem="xhF-6m-YCA" firstAttribute="leading" secondItem="ZtS-Z9-Cu9" secondAttribute="leading" constant="22" id="fIZ-KU-ehA"/>
-                                                                <constraint firstAttribute="bottom" secondItem="xhF-6m-YCA" secondAttribute="bottom" constant="5" id="foH-Nd-kQc"/>
                                                                 <constraint firstItem="DVj-Eq-QBv" firstAttribute="leading" secondItem="ZtS-Z9-Cu9" secondAttribute="leading" id="ltP-EW-8at"/>
                                                                 <constraint firstItem="DVj-Eq-QBv" firstAttribute="top" secondItem="ZtS-Z9-Cu9" secondAttribute="top" id="zDi-if-AoH"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="backgroundEffectView" destination="DVj-Eq-QBv" id="3Rt-gT-bnS"/>
                                                                 <outlet property="titleField" destination="xhF-6m-YCA" id="LiU-5J-UIh"/>
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="MLMUpdateCellIdentifier" id="c4D-Nt-dk9" customClass="UpdateCell" customModule="Latest" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="26" width="380" height="65"/>
+                                                            <rect key="frame" x="10" y="26" width="389" height="65"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="equalSpacing" orientation="vertical" alignment="trailing" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEj-uF-Wqu">
-                                                                    <rect key="frame" x="330" y="6" width="59" height="61"/>
+                                                                    <rect key="frame" x="334" y="6" width="55" height="61"/>
                                                                     <subviews>
                                                                         <textField focusRingType="none" horizontalHuggingPriority="900" verticalHuggingPriority="900" translatesAutoresizingMaskIntoConstraints="NO" id="5eq-hm-UOt">
-                                                                            <rect key="frame" x="24" y="43" width="37" height="18"/>
+                                                                            <rect key="frame" x="20" y="43" width="37" height="18"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="&lt;dnl&gt;" id="jLw-y7-vqv">
                                                                                 <font key="font" textStyle="callout" name=".SFNS-Regular"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -594,7 +636,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hnT-Rb-bdR" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="18" width="59" height="24"/>
+                                                                            <rect key="frame" x="-7" y="13" width="69" height="32"/>
                                                                             <buttonCell key="cell" type="push" title="&lt;dnl&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gw7-NE-1lh" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -605,7 +647,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </button>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bw8-Av-de6">
-                                                                            <rect key="frame" x="43" y="0.0" width="16" height="16"/>
+                                                                            <rect key="frame" x="39" y="0.0" width="16" height="16"/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="Ms2-mQ-S6S"/>
                                                                         </imageView>
                                                                     </subviews>
@@ -701,9 +743,11 @@
                                                                 <outlet property="currentVersionTextField" destination="NDE-WY-fgE" id="dth-6g-C7b"/>
                                                                 <outlet property="dateTextField" destination="5eq-hm-UOt" id="BMW-MC-Pcn"/>
                                                                 <outlet property="imageView" destination="Oqi-sq-lFG" id="XXX-VF-qY9"/>
+                                                                <outlet property="leadingConstraint" destination="0Mk-1x-5cn" id="zCa-7J-0JT"/>
                                                                 <outlet property="nameTextField" destination="K1m-1T-h1l" id="VjW-hc-6Zq"/>
                                                                 <outlet property="newVersionTextField" destination="JkL-bF-Me7" id="0rh-Zg-BpN"/>
                                                                 <outlet property="supportStateImageView" destination="Bw8-Av-de6" id="9IP-nF-jXC"/>
+                                                                <outlet property="trailingConstraint" destination="yHR-oP-E6l" id="LTD-4L-0F0"/>
                                                                 <outlet property="updateButton" destination="hnT-Rb-bdR" id="BLC-h0-nRi"/>
                                                             </connections>
                                                         </tableCellView>
@@ -760,7 +804,7 @@
                                 </textFieldCell>
                             </textField>
                             <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFN-sP-y2s" customClass="UpdateSearchField" customModule="Latest" customModuleProvider="target">
-                                <rect key="frame" x="20" y="203" width="360" height="28"/>
+                                <rect key="frame" x="20" y="201" width="233" height="30"/>
                                 <searchFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="8t3-jj-ywQ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -770,6 +814,21 @@
                                     <action selector="searchFieldTextDidChange:" target="4DM-RB-IVI" id="Yqb-GN-rQ9"/>
                                 </connections>
                             </searchField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-0R-A3x">
+                                <rect key="frame" x="261" y="201" width="119" height="26"/>
+                                <popUpButtonCell key="cell" type="popup" bezelStyle="rounded" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="vXp-UQ-4lI" id="gL9-3E-6P4">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" autoenablesItems="NO" id="A4r-WT-lWE">
+                                        <items>
+                                            <menuItem title="Sort" id="vXp-UQ-4lI"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="changeSortOrderFromPopup:" target="4DM-RB-IVI" id="ACc-DU-eMQ"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" id="Ca2-sY-MWm"/>
@@ -780,20 +839,22 @@
                             <constraint firstAttribute="trailing" secondItem="yos-E7-CDu" secondAttribute="trailing" id="QOn-lW-jBV"/>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="VRY-sw-t9v"/>
                             <constraint firstItem="gUd-I6-M7r" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" constant="20" id="Z5d-wf-g7W"/>
+                            <constraint firstItem="oTq-0R-A3x" firstAttribute="centerY" secondItem="pFN-sP-y2s" secondAttribute="centerY" id="aPH-H1-K2G"/>
                             <constraint firstItem="pFN-sP-y2s" firstAttribute="top" secondItem="zLf-Z1-wsn" secondAttribute="bottom" constant="8" symbolic="YES" id="ayY-zN-ich"/>
+                            <constraint firstItem="oTq-0R-A3x" firstAttribute="leading" secondItem="pFN-sP-y2s" secondAttribute="trailing" constant="8" symbolic="YES" id="cq8-c2-hF9"/>
                             <constraint firstAttribute="trailing" secondItem="zLf-Z1-wsn" secondAttribute="trailing" id="gSz-1J-Go1"/>
-                            <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" constant="78" id="ljC-c9-iVT"/>
+                            <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="pFN-sP-y2s" secondAttribute="bottom" constant="8" symbolic="YES" id="mOK-h5-sYO"/>
                             <constraint firstAttribute="trailing" secondItem="gUd-I6-M7r" secondAttribute="trailing" constant="20" id="txJ-69-wQL"/>
                             <constraint firstAttribute="bottom" secondItem="yos-E7-CDu" secondAttribute="bottom" constant="-1" id="ue4-dZ-PoH"/>
-                            <constraint firstAttribute="trailing" secondItem="pFN-sP-y2s" secondAttribute="trailing" constant="20" symbolic="YES" id="zvh-EW-8CN"/>
+                            <constraint firstAttribute="trailing" secondItem="oTq-0R-A3x" secondAttribute="trailing" constant="20" symbolic="YES" id="zvh-EW-8CN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="placeholderLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
                         <outlet property="searchField" destination="pFN-sP-y2s" id="x6z-RR-xrS"/>
+                        <outlet property="sortOrderPopupButton" destination="oTq-0R-A3x" id="VDU-8r-yfl"/>
                         <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
                         <outlet property="tableViewMenu" destination="Ake-Tt-cX3" id="9e8-6Q-FyL"/>
-                        <outlet property="topTableConstraint" destination="ljC-c9-iVT" id="Tdo-6v-8zF"/>
                         <outlet property="updatesLabel" destination="C1U-Xt-po9" id="gYG-qf-IaS"/>
                     </connections>
                 </viewController>
@@ -802,32 +863,32 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Menu" id="Ake-Tt-cX3">
                         <items>
-                            <menuItem title="Update" image="square.and.arrow.down" catalog="system" id="00n-xr-jcQ">
+                            <menuItem title="Update" id="00n-xr-jcQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="updateApp:" target="MxB-hL-adL" id="1IZ-Ca-AKt"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Ignore" image="app.dashed" catalog="system" id="PS4-wi-kF9" userLabel="Ignore">
+                            <menuItem title="Ignore" id="PS4-wi-kF9" userLabel="Ignore">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="ignoreApp:" target="MxB-hL-adL" id="eZ6-zI-CeB"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Don't Ignore" image="custom.app.dashed.slash" id="Ljr-hV-usc" userLabel="Unignore">
+                            <menuItem title="Don't Ignore" id="Ljr-hV-usc" userLabel="Unignore">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="unignoreApp:" target="MxB-hL-adL" id="oa9-yN-Xq6"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="Sha-Xo-nI1"/>
-                            <menuItem title="Open" image="arrow.up.forward.app" catalog="system" id="w14-Ia-4l9" userLabel="Open">
+                            <menuItem title="Open" id="w14-Ia-4l9" userLabel="Open">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openApp:" target="MxB-hL-adL" id="BeE-Pr-FN9"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Show in Finder" image="finder" catalog="system" id="h9B-7u-6ru">
+                            <menuItem title="Show in Finder" id="h9B-7u-6ru">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showAppInFinder:" target="MxB-hL-adL" id="iar-Jd-EH1"/>
@@ -837,7 +898,7 @@
                     </menu>
                 </menuItem>
             </objects>
-            <point key="canvasLocation" x="-170" y="1241.5"/>
+            <point key="canvasLocation" x="-170" y="1242"/>
         </scene>
         <!--Release Notes View Controller-->
         <scene sceneID="zoJ-XZ-LEg">
@@ -862,10 +923,10 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="gW4-ur-MIN"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-W4-mBM">
-                                                <rect key="frame" x="69" y="9" width="279" height="47"/>
+                                                <rect key="frame" x="69" y="9" width="283" height="47"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFd-sB-6dK">
-                                                        <rect key="frame" x="0.0" y="28" width="105" height="19"/>
+                                                        <rect key="frame" x="0.0" y="28" width="111" height="19"/>
                                                         <subviews>
                                                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i3z-7y-cNC">
                                                                 <rect key="frame" x="-2" y="2" width="41" height="16"/>
@@ -876,7 +937,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button wantsLayer="YES" imageHugsTitle="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vZx-eE-eAD">
-                                                                <rect key="frame" x="47" y="0.0" width="58" height="19"/>
+                                                                <rect key="frame" x="47" y="0.0" width="64" height="19"/>
                                                                 <buttonCell key="cell" type="inline" title="&lt;dnl&gt;" bezelStyle="inline" image="NSStatusAvailable" imagePosition="leading" alignment="left" scrollable="YES" lineBreakMode="clipping" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NvM-TY-Zhn" customClass="SupportStatusButtonCell" customModule="Latest" customModuleProvider="target">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -927,10 +988,10 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-dW-3UA">
-                                                <rect key="frame" x="353" y="17" width="59" height="40"/>
+                                                <rect key="frame" x="357" y="21" width="55" height="36"/>
                                                 <subviews>
                                                     <button wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n5Y-7Z-cEd" customClass="UpdateButton" customModule="Latest" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="16" width="59" height="24"/>
+                                                        <rect key="frame" x="-7" y="9" width="69" height="32"/>
                                                         <buttonCell key="cell" type="push" title="&lt;dnl&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QRR-k0-TZ4" customClass="UpdateButtonCell" customModule="Latest" customModuleProvider="target">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -940,7 +1001,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1m1-dh-wzF">
-                                                        <rect key="frame" x="-2" y="0.0" width="63" height="11"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="59" height="11"/>
                                                         <textFieldCell key="cell" alignment="center" title="&lt;dnl&gt;" id="V9u-cb-GDY">
                                                             <font key="font" metaFont="miniSystem"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1020,13 +1081,13 @@
             <objects>
                 <viewController id="FG1-bm-xzA" customClass="SupportStatusInfoViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="z9I-Pr-VMQ">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="98"/>
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="92"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="10" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wiw-It-Zps">
-                                <rect key="frame" x="5" y="15" width="305" height="71"/>
+                                <rect key="frame" x="5" y="15" width="305" height="65"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="750" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7S-6N-UGS">
-                                        <rect key="frame" x="5" y="34" width="300" height="37"/>
+                                        <rect key="frame" x="5" y="28" width="300" height="37"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bDO-cy-71I">
                                                 <rect key="frame" x="0.0" y="21" width="16" height="16"/>
@@ -1080,7 +1141,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <button horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IB6-c3-l16">
-                                        <rect key="frame" x="200" y="0.0" width="105" height="24"/>
+                                        <rect key="frame" x="210" y="-1" width="95" height="19"/>
                                         <buttonCell key="cell" type="roundRect" title="Report Issue…" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pNJ-Hl-Qxz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="cellTitle"/>
@@ -1148,7 +1209,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="YrO-2c-LSY">
-                            <rect key="frame" x="433" y="0.0" width="17" height="300"/>
+                            <rect key="frame" x="434" y="0.0" width="16" height="300"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -1261,12 +1322,12 @@
         <scene sceneID="d1P-e9-H2I">
             <objects>
                 <viewController title="General" showSeguePresentationStyle="single" id="JNL-bS-gzr" customClass="GeneralSettingsViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="4Hf-JC-45B">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="219"/>
+                    <view key="view" misplaced="YES" id="4Hf-JC-45B">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="168"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <gridView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" xPlacement="leading" yPlacement="top" rowAlignment="firstBaseline" translatesAutoresizingMaskIntoConstraints="NO" id="crg-Gw-gZ5">
-                                <rect key="frame" x="20" y="79" width="400" height="120"/>
+                                <rect key="frame" x="20" y="20" width="400" height="120"/>
                                 <constraints>
                                     <constraint firstItem="wFA-25-IF0" firstAttribute="leading" secondItem="Kg6-de-pO8" secondAttribute="leading" id="NZc-9d-pHq"/>
                                     <constraint firstItem="Kg6-de-pO8" firstAttribute="leading" secondItem="cHy-Zs-llx" secondAttribute="leading" constant="20" id="kQk-rf-nIe"/>
@@ -1295,7 +1356,7 @@
                                     </gridCell>
                                     <gridCell row="AG2-lk-oHh" column="XhW-KT-4zm" id="R3U-J6-Ami">
                                         <button key="contentView" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-Zs-llx">
-                                            <rect key="frame" x="54" y="104" width="346" height="16"/>
+                                            <rect key="frame" x="52" y="103" width="348" height="18"/>
                                             <buttonCell key="cell" type="check" title="Apps with limited support" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ntm-I4-heJ">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1331,7 +1392,7 @@
                                     <gridCell row="Kfw-oY-iJg" column="dMS-4w-aVX" id="RjP-hG-NjI"/>
                                     <gridCell row="Kfw-oY-iJg" column="XhW-KT-4zm" id="xGd-Az-tbD">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZa-ii-6NG">
-                                            <rect key="frame" x="54" y="20" width="346" height="16"/>
+                                            <rect key="frame" x="52" y="19" width="348" height="18"/>
                                             <buttonCell key="cell" type="check" title="Unsupported apps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HfB-8a-u7P">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1364,107 +1425,34 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="7SS-a4-UT5">
-                                <rect key="frame" x="20" y="10" width="400" height="59"/>
-                                <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="15" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ah-KH-WBc">
-                                        <rect key="frame" x="0.0" y="10" width="400" height="39"/>
-                                        <subviews>
-                                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1g-4B-NJR">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="39"/>
-                                                <subviews>
-                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Kv0-fa-Wii">
-                                                        <rect key="frame" x="0.0" y="36" width="400" height="5"/>
-                                                    </box>
-                                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pte-WT-r4A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="30"/>
-                                                        <subviews>
-                                                            <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yvA-0o-wsV">
-                                                                <rect key="frame" x="-2" y="0.0" width="319" height="30"/>
-                                                                <textFieldCell key="cell" selectable="YES" title="Enable a helper program to update App Store apps within Latest." id="lWS-Xp-ESz">
-                                                                    <font key="font" usesAppearanceFont="YES"/>
-                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                            </textField>
-                                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rzH-he-Kpq">
-                                                                <rect key="frame" x="335" y="0.0" width="65" height="30"/>
-                                                                <buttonCell key="cell" type="push" title="Enable" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="04d-8o-Qmi">
-                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system"/>
-                                                                </buttonCell>
-                                                                <connections>
-                                                                    <action selector="registerInstallHelper:" target="JNL-bS-gzr" id="Gsb-WK-toe"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <visibilityPriorities>
-                                                            <integer value="1000"/>
-                                                            <integer value="1000"/>
-                                                        </visibilityPriorities>
-                                                        <customSpacing>
-                                                            <real value="3.4028234663852886e+38"/>
-                                                            <real value="3.4028234663852886e+38"/>
-                                                        </customSpacing>
-                                                    </stackView>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="8ah-KH-WBc" secondAttribute="bottom" constant="10" id="3lv-mu-Y7F"/>
-                                    <constraint firstItem="8ah-KH-WBc" firstAttribute="top" secondItem="7SS-a4-UT5" secondAttribute="top" constant="10" id="LEn-p9-XCp"/>
-                                    <constraint firstItem="8ah-KH-WBc" firstAttribute="leading" secondItem="7SS-a4-UT5" secondAttribute="leading" id="tJu-LO-l6v"/>
-                                    <constraint firstAttribute="trailing" secondItem="8ah-KH-WBc" secondAttribute="trailing" id="x9J-li-v7U"/>
-                                </constraints>
-                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="7SS-a4-UT5" firstAttribute="top" secondItem="crg-Gw-gZ5" secondAttribute="bottom" constant="10" id="0ZN-jn-WUD"/>
-                            <constraint firstItem="7SS-a4-UT5" firstAttribute="leading" secondItem="4Hf-JC-45B" secondAttribute="leading" constant="20" symbolic="YES" id="FYJ-dU-il9"/>
-                            <constraint firstAttribute="bottom" secondItem="7SS-a4-UT5" secondAttribute="bottom" constant="10" id="WC9-FJ-gfc"/>
+                            <constraint firstAttribute="bottom" secondItem="crg-Gw-gZ5" secondAttribute="bottom" constant="20" symbolic="YES" id="k4U-VR-rMz"/>
                             <constraint firstItem="crg-Gw-gZ5" firstAttribute="top" secondItem="4Hf-JC-45B" secondAttribute="top" constant="20" symbolic="YES" id="kh5-R2-oHV"/>
                             <constraint firstItem="crg-Gw-gZ5" firstAttribute="leading" secondItem="4Hf-JC-45B" secondAttribute="leading" constant="20" symbolic="YES" id="tcN-Ue-Dgt"/>
                             <constraint firstAttribute="trailing" secondItem="crg-Gw-gZ5" secondAttribute="trailing" constant="20" symbolic="YES" id="unh-aR-t5g"/>
-                            <constraint firstAttribute="trailing" secondItem="7SS-a4-UT5" secondAttribute="trailing" constant="20" symbolic="YES" id="vZO-R4-VRE"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="animatingBottomConstraint" destination="WC9-FJ-gfc" id="YNK-13-WgZ"/>
+                        <outlet property="animatingBottomConstraint" destination="k4U-VR-rMz" id="zB1-BE-eSB"/>
                         <outlet property="animatingTrailingConstraint" destination="unh-aR-t5g" id="aXT-Rg-kTg"/>
-                        <outlet property="installHelperOptInView" destination="C1g-4B-NJR" id="sQ3-DK-w7s"/>
                     </connections>
                 </viewController>
                 <customObject id="P9G-Ah-AWe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="K4d-o1-apG"/>
             </objects>
-            <point key="canvasLocation" x="1667" y="138.5"/>
+            <point key="canvasLocation" x="2340" y="76.5"/>
         </scene>
         <!--Locations-->
         <scene sceneID="Zun-m9-nSS">
             <objects>
                 <viewController title="Locations" showSeguePresentationStyle="single" id="MRG-cS-c2g" customClass="AppDirectoryViewController" customModule="Latest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XHZ-eg-flw">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="296"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="292"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="TT8-7k-Vwa">
-                                <rect key="frame" x="20" y="52" width="400" height="200"/>
+                                <rect key="frame" x="20" y="48" width="400" height="200"/>
                                 <clipView key="contentView" ambiguous="YES" id="MBA-8X-Q1N">
                                     <rect key="frame" x="1" y="1" width="398" height="198"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1511,7 +1499,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="253" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5VP-ZB-KeF">
+                                                                        <progressIndicator horizontalHuggingPriority="253" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5VP-ZB-KeF">
                                                                             <rect key="frame" x="324" y="4" width="16" height="16"/>
                                                                         </progressIndicator>
                                                                         <textField focusRingType="none" horizontalHuggingPriority="254" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lDe-f8-ntC">
@@ -1566,7 +1554,7 @@
                                     <constraint firstAttribute="height" constant="200" id="qPK-Oc-ZGZ"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="NGC-OT-Wza">
-                                    <rect key="frame" x="1" y="182" width="398" height="17"/>
+                                    <rect key="frame" x="1" y="183" width="398" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="GS4-99-hcG">
@@ -1575,7 +1563,7 @@
                                 </scroller>
                             </scrollView>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tsj-I2-1A0">
-                                <rect key="frame" x="18" y="260" width="404" height="16"/>
+                                <rect key="frame" x="18" y="256" width="404" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Check apps from:" id="ivV-VN-4CO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1583,7 +1571,7 @@
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iwo-UW-yZn">
-                                <rect key="frame" x="20" y="20" width="61" height="24"/>
+                                <rect key="frame" x="17" y="18" width="67" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="momentary" id="gDt-YW-EYG">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -1617,7 +1605,7 @@
                 </viewController>
                 <customObject id="Vg8-PL-7Ko" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2164" y="180"/>
+            <point key="canvasLocation" x="2340" y="389"/>
         </scene>
         <!--Release Notes Error View Controller-->
         <scene sceneID="vfl-LZ-teC">
@@ -1677,118 +1665,13 @@
     <resources>
         <image name="NSAddTemplate" width="18" height="17"/>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSRefreshTemplate" width="18" height="21"/>
         <image name="NSRemoveTemplate" width="18" height="5"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="NSTouchBarDownloadTemplate" width="20" height="20"/>
         <image name="NSTouchBarRefreshTemplate" width="18" height="21"/>
         <image name="NSTouchBarSearchTemplate" width="20" height="20"/>
-        <image name="app.dashed" catalog="system" width="15" height="14"/>
-        <image name="arrow.clockwise" catalog="system" width="14" height="16"/>
-        <image name="arrow.trianglehead.2.clockwise.rotate.90" catalog="system" width="16" height="15"/>
-        <image name="arrow.up.arrow.down" catalog="system" width="18" height="15"/>
-        <image name="arrow.up.forward.app" catalog="system" width="15" height="14"/>
-        <image name="checkmark.app" catalog="system" width="15" height="14"/>
-        <image name="custom.app.dashed.slash" width="12" height="12"/>
-        <image name="custom.arrow.down.square.stack" width="11" height="13"/>
         <image name="externaldrive" catalog="system" width="18" height="13"/>
-        <image name="finder" catalog="system" width="16" height="15"/>
-        <image name="gear" catalog="system" width="17" height="16"/>
         <image name="gearshape" catalog="system" width="16" height="16"/>
-        <image name="globe" catalog="system" width="15" height="15"/>
-        <image name="hands.clap" catalog="system" width="20" height="19"/>
-        <image name="menuItem:NMo-om-nkz:secondaryImage" width="20" height="16">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
-S2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBALDB8gJSssLS40QEhJTVBRVSRudWxs2Q0ODxAREhMUFRYX
-GBkaGxwdHlZOU1NpemVcTlNJbWFnZUZsYWdzVk5TUmVwc1tOU1RpbnRDb2xvclYkY2xhc3NXTlNDb2xv
-cl5OU1Jlc2l6aW5nTW9kZVxOU0lzVGVtcGxhdGVfECZOU0FsaWdubWVudFJlY3RJbk5vcm1hbGl6ZWRD
-b29yZGluYXRlc4ACEiDAAACAA4AAgA+ACRAACYAOWHsyMCwgMTZ90iERIiRaTlMub2JqZWN0c6EjgASA
-CNIhESYkoycoKYAFgAaAB4AIEAZbZ2VhcnNoYXBlLjII0i8wMTJaJGNsYXNzbmFtZVgkY2xhc3Nlc1dO
-U0FycmF5ojEzWE5TT2JqZWN01jURNjc4OTo7PD0+P1dOU1doaXRlXE5TQ29tcG9uZW50c1xOU0NvbG9y
-U3BhY2VfEBJOU0N1c3RvbUNvbG9yU3BhY2VfEBBOU0xpbmVhckV4cG9zdXJlRDAgMACADUMwIDAQA4AK
-QTHUQUJDEURFRkdUTlNJRFVOU0lDQ1dOU01vZGVsEAmACxAAgAxPERGcAAARnGFwcGwCAAAAbW50ckdS
-QVlYWVogB9wACAAXAA8ALgAPYWNzcEFQUEwAAAAAbm9uZQAAAAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA
-0y1hcHBsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFZGVzYwAA
-AMAAAAB5ZHNjbQAAATwAAAgaY3BydAAACVgAAAAjd3RwdAAACXwAAAAUa1RSQwAACZAAAAgMZGVzYwAA
-AAAAAAAfR2VuZXJpYyBHcmF5IEdhbW1hIDIuMiBQcm9maWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1s
-dWMAAAAAAAAAHwAAAAxza1NLAAAALgAAAYRkYURLAAAAOgAAAbJjYUVTAAAAOAAAAex2aVZOAAAAQAAA
-AiRwdEJSAAAASgAAAmR1a1VBAAAALAAAAq5mckZVAAAAPgAAAtpodUhVAAAANAAAAxh6aFRXAAAAGgAA
-A0xrb0tSAAAAIgAAA2ZuYk5PAAAAOgAAA4hjc0NaAAAAKAAAA8JoZUlMAAAAJAAAA+pyb1JPAAAAKgAA
-BA5kZURFAAAATgAABDhpdElUAAAATgAABIZzdlNFAAAAOAAABNR6aENOAAAAGgAABQxqYUpQAAAAJgAA
-BSZlbEdSAAAAKgAABUxwdFBPAAAAUgAABXZubE5MAAAAQAAABchlc0VTAAAATAAABgh0aFRIAAAAMgAA
-BlR0clRSAAAAJAAABoZmaUZJAAAARgAABqpockhSAAAAPgAABvBwbFBMAAAASgAABy5hckVHAAAALAAA
-B3hydVJVAAAAOgAAB6RlblVTAAAAPAAAB94AVgFhAGUAbwBiAGUAYwBuAOEAIABzAGkAdgDhACAAZwBh
-AG0AYQAgADIALAAyAEcAZQBuAGUAcgBpAHMAawAgAGcAcgDlACAAMgAsADIAIABnAGEAbQBtAGEALQBw
-AHIAbwBmAGkAbABHAGEAbQBtAGEAIABkAGUAIABnAHIAaQBzAG8AcwAgAGcAZQBuAOgAcgBpAGMAYQAg
-ADIALgAyAEMepQB1ACAAaADsAG4AaAAgAE0A4AB1ACAAeADhAG0AIABDAGgAdQBuAGcAIABHAGEAbQBt
-AGEAIAAyAC4AMgBQAGUAcgBmAGkAbAAgAEcAZQBuAOkAcgBpAGMAbwAgAGQAYQAgAEcAYQBtAGEAIABk
-AGUAIABDAGkAbgB6AGEAcwAgADIALAAyBBcEMAQzBDAEOwRMBD0EMAAgAEcAcgBhAHkALQQzBDAEPAQw
-ACAAMgAuADIAUAByAG8AZgBpAGwAIABnAOkAbgDpAHIAaQBxAHUAZQAgAGcAcgBpAHMAIABnAGEAbQBt
-AGEAIAAyACwAMgDBAGwAdABhAGwA4QBuAG8AcwAgAHMAegD8AHIAawBlACAAZwBhAG0AbQBhACAAMgAu
-ADKQGnUocHCWjlFJXqYAMgAuADKCcl9pY8+P8Md8vBgAINaMwMkAIKwQucgAIAAyAC4AMgAg1QS4XNMM
-x3wARwBlAG4AZQByAGkAcwBrACAAZwByAOUAIABnAGEAbQBtAGEAIAAyACwAMgAtAHAAcgBvAGYAaQBs
-AE8AYgBlAGMAbgDhACABYQBlAGQA4QAgAGcAYQBtAGEAIAAyAC4AMgXSBdAF3gXUACAF0AXkBdUF6AAg
-BdsF3AXcBdkAIAAyAC4AMgBHAGEAbQBhACAAZwByAGkAIABnAGUAbgBlAHIAaQBjAQMAIAAyACwAMgBB
-AGwAbABnAGUAbQBlAGkAbgBlAHMAIABHAHIAYQB1AHMAdAB1AGYAZQBuAC0AUAByAG8AZgBpAGwAIABH
-AGEAbQBtAGEAIAAyACwAMgBQAHIAbwBmAGkAbABvACAAZwByAGkAZwBpAG8AIABnAGUAbgBlAHIAaQBj
-AG8AIABkAGUAbABsAGEAIABnAGEAbQBtAGEAIAAyACwAMgBHAGUAbgBlAHIAaQBzAGsAIABnAHIA5QAg
-ADIALAAyACAAZwBhAG0AbQBhAHAAcgBvAGYAaQBsZm6QGnBwXqZ8+2VwADIALgAyY8+P8GWHTvZOAIIs
-MLAw7DCkMKww8zDeACAAMgAuADIAIDDXMO0w1TChMKQw6wOTA7UDvQO5A7oDzAAgA5MDugPBA7kAIAOT
-A6wDvAO8A7EAIAAyAC4AMgBQAGUAcgBmAGkAbAAgAGcAZQBuAOkAcgBpAGMAbwAgAGQAZQAgAGMAaQBu
-AHoAZQBuAHQAbwBzACAAZABhACAARwBhAG0AbQBhACAAMgAsADIAQQBsAGcAZQBtAGUAZQBuACAAZwBy
-AGkAagBzACAAZwBhAG0AbQBhACAAMgAsADIALQBwAHIAbwBmAGkAZQBsAFAAZQByAGYAaQBsACAAZwBl
-AG4A6QByAGkAYwBvACAAZABlACAAZwBhAG0AbQBhACAAZABlACAAZwByAGkAcwBlAHMAIAAyACwAMg4j
-DjEOBw4qDjUOQQ4BDiEOIQ4yDkAOAQ4jDiIOTA4XDjEOSA4nDkQOGwAgADIALgAyAEcAZQBuAGUAbAAg
-AEcAcgBpACAARwBhAG0AYQAgADIALAAyAFkAbABlAGkAbgBlAG4AIABoAGEAcgBtAGEAYQBuACAAZwBh
-AG0AbQBhACAAMgAsADIAIAAtAHAAcgBvAGYAaQBpAGwAaQBHAGUAbgBlAHIAaQENAGsAaQAgAEcAcgBh
-AHkAIABHAGEAbQBtAGEAIAAyAC4AMgAgAHAAcgBvAGYAaQBsAFUAbgBpAHcAZQByAHMAYQBsAG4AeQAg
-AHAAcgBvAGYAaQBsACAAcwB6AGEAcgBvAVsAYwBpACAAZwBhAG0AbQBhACAAMgAsADIGOgYnBkUGJwAg
-ADIALgAyACAGRAZIBkYAIAYxBkUGJwYvBkoAIAY5BicGRQQeBDEESQQwBE8AIARBBDUEQAQwBE8AIAQz
-BDAEPAQ8BDAAIAAyACwAMgAtBD8EQAQ+BEQEOAQ7BEwARwBlAG4AZQByAGkAYwAgAEcAcgBhAHkAIABH
-AGEAbQBtAGEAIAAyAC4AMgAgAFAAcgBvAGYAaQBsAGUAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIElu
-Yy4sIDIwMTIAAFhZWiAAAAAAAADzUQABAAAAARbMY3VydgAAAAAAAAQAAAAABQAKAA8AFAAZAB4AIwAo
-AC0AMgA3ADsAQABFAEoATwBUAFkAXgBjAGgAbQByAHcAfACBAIYAiwCQAJUAmgCfAKQAqQCuALIAtwC8
-AMEAxgDLANAA1QDbAOAA5QDrAPAA9gD7AQEBBwENARMBGQEfASUBKwEyATgBPgFFAUwBUgFZAWABZwFu
-AXUBfAGDAYsBkgGaAaEBqQGxAbkBwQHJAdEB2QHhAekB8gH6AgMCDAIUAh0CJgIvAjgCQQJLAlQCXQJn
-AnECegKEAo4CmAKiAqwCtgLBAssC1QLgAusC9QMAAwsDFgMhAy0DOANDA08DWgNmA3IDfgOKA5YDogOu
-A7oDxwPTA+AD7AP5BAYEEwQgBC0EOwRIBFUEYwRxBH4EjASaBKgEtgTEBNME4QTwBP4FDQUcBSsFOgVJ
-BVgFZwV3BYYFlgWmBbUFxQXVBeUF9gYGBhYGJwY3BkgGWQZqBnsGjAadBq8GwAbRBuMG9QcHBxkHKwc9
-B08HYQd0B4YHmQesB78H0gflB/gICwgfCDIIRghaCG4IggiWCKoIvgjSCOcI+wkQCSUJOglPCWQJeQmP
-CaQJugnPCeUJ+woRCicKPQpUCmoKgQqYCq4KxQrcCvMLCwsiCzkLUQtpC4ALmAuwC8gL4Qv5DBIMKgxD
-DFwMdQyODKcMwAzZDPMNDQ0mDUANWg10DY4NqQ3DDd4N+A4TDi4OSQ5kDn8Omw62DtIO7g8JDyUPQQ9e
-D3oPlg+zD88P7BAJECYQQxBhEH4QmxC5ENcQ9RETETERTxFtEYwRqhHJEegSBxImEkUSZBKEEqMSwxLj
-EwMTIxNDE2MTgxOkE8UT5RQGFCcUSRRqFIsUrRTOFPAVEhU0FVYVeBWbFb0V4BYDFiYWSRZsFo8WshbW
-FvoXHRdBF2UXiReuF9IX9xgbGEAYZRiKGK8Y1Rj6GSAZRRlrGZEZtxndGgQaKhpRGncanhrFGuwbFBs7
-G2MbihuyG9ocAhwqHFIcexyjHMwc9R0eHUcdcB2ZHcMd7B4WHkAeah6UHr4e6R8THz4faR+UH78f6iAV
-IEEgbCCYIMQg8CEcIUghdSGhIc4h+yInIlUigiKvIt0jCiM4I2YjlCPCI/AkHyRNJHwkqyTaJQklOCVo
-JZclxyX3JicmVyaHJrcm6CcYJ0kneierJ9woDSg/KHEooijUKQYpOClrKZ0p0CoCKjUqaCqbKs8rAis2
-K2krnSvRLAUsOSxuLKIs1y0MLUEtdi2rLeEuFi5MLoIuty7uLyQvWi+RL8cv/jA1MGwwpDDbMRIxSjGC
-Mbox8jIqMmMymzLUMw0zRjN/M7gz8TQrNGU0njTYNRM1TTWHNcI1/TY3NnI2rjbpNyQ3YDecN9c4FDhQ
-OIw4yDkFOUI5fzm8Ofk6Njp0OrI67zstO2s7qjvoPCc8ZTykPOM9Ij1hPaE94D4gPmA+oD7gPyE/YT+i
-P+JAI0BkQKZA50EpQWpBrEHuQjBCckK1QvdDOkN9Q8BEA0RHRIpEzkUSRVVFmkXeRiJGZ0arRvBHNUd7
-R8BIBUhLSJFI10kdSWNJqUnwSjdKfUrESwxLU0uaS+JMKkxyTLpNAk1KTZNN3E4lTm5Ot08AT0lPk0/d
-UCdQcVC7UQZRUFGbUeZSMVJ8UsdTE1NfU6pT9lRCVI9U21UoVXVVwlYPVlxWqVb3V0RXklfgWC9YfVjL
-WRpZaVm4WgdaVlqmWvVbRVuVW+VcNVyGXNZdJ114XcleGl5sXr1fD19hX7NgBWBXYKpg/GFPYaJh9WJJ
-Ypxi8GNDY5dj62RAZJRk6WU9ZZJl52Y9ZpJm6Gc9Z5Nn6Wg/aJZo7GlDaZpp8WpIap9q92tPa6dr/2xX
-bK9tCG1gbbluEm5rbsRvHm94b9FwK3CGcOBxOnGVcfByS3KmcwFzXXO4dBR0cHTMdSh1hXXhdj52m3b4
-d1Z3s3gReG54zHkqeYl553pGeqV7BHtje8J8IXyBfOF9QX2hfgF+Yn7CfyN/hH/lgEeAqIEKgWuBzYIw
-gpKC9INXg7qEHYSAhOOFR4Wrhg6GcobXhzuHn4gEiGmIzokziZmJ/opkisqLMIuWi/yMY4zKjTGNmI3/
-jmaOzo82j56QBpBukNaRP5GokhGSepLjk02TtpQglIqU9JVflcmWNJaflwqXdZfgmEyYuJkkmZCZ/Jpo
-mtWbQpuvnByciZz3nWSd0p5Anq6fHZ+Ln/qgaaDYoUehtqImopajBqN2o+akVqTHpTilqaYapoum/adu
-p+CoUqjEqTepqaocqo+rAqt1q+msXKzQrUStuK4trqGvFq+LsACwdbDqsWCx1rJLssKzOLOutCW0nLUT
-tYq2AbZ5tvC3aLfguFm40blKucK6O7q1uy67p7whvJu9Fb2Pvgq+hL7/v3q/9cBwwOzBZ8Hjwl/C28NY
-w9TEUcTOxUvFyMZGxsPHQce/yD3IvMk6ybnKOMq3yzbLtsw1zLXNNc21zjbOts83z7jQOdC60TzRvtI/
-0sHTRNPG1EnUy9VO1dHWVdbY11zX4Nhk2OjZbNnx2nba+9uA3AXcit0Q3ZbeHN6i3ynfr+A24L3hROHM
-4lPi2+Nj4+vkc+T85YTmDeaW5x/nqegy6LzpRunQ6lvq5etw6/vshu0R7ZzuKO6070DvzPBY8OXxcvH/
-8ozzGfOn9DT0wvVQ9d72bfb794r4Gfio+Tj5x/pX+uf7d/wH/Jj9Kf26/kv+3P9t///SLzBKS1xOU0Nv
-bG9yU3BhY2WiTDNcTlNDb2xvclNwYWNl0i8wTk9XTlNDb2xvcqJOM18QLXt7MCwgMC4yMTg3NX0sIHsw
-Ljk3NDk5OTk5OTk5OTk5OTk4LCAwLjU2MjV9fdIvMFJTV05TSW1hZ2WiUjMACAARABoAJAApADIANwBJ
-AEwAUQBTAGYAbAB/AIYAkwCaAKYArQC1AMQA0QD6APwBAQEDAQUBBwEJAQsBDAEOARcBHAEnASkBKwEt
-ATIBNgE4AToBPAE+AUABTAFNAVIBXQFmAW4BcQF6AYcBjwGcAakBvgHRAdYB2AHcAd4B4AHiAesB8AH2
-Af4CAAICAgQCBhOmE6sTuBO7E8gTzRPVE9gUCBQNFBUAAAAAAAACAQAAAAAAAABUAAAAAAAAAAAAAAAA
-AAAUGA
-</mutableData>
-        </image>
-        <image name="square.and.arrow.down" catalog="system" width="15" height="17"/>
     </resources>
 </document>

@@ -121,6 +121,9 @@
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Name";
 
+/* Sorting option to group apps by support level. Displayed in menu with title: 'Sort By' -> 'Support' */
+"SupportStatusSortOption" = "Support";
+
 /* Description of release notes empty state */
 "NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
 
