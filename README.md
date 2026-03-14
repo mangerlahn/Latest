@@ -32,6 +32,11 @@ You can build Latest directly on your machine. To do that, you have to download 
 
 Then you can open the `Latest.xcodeproj` and hit *Build and Run*. Make sure that the `Latest` scheme is selected.
 
+### Build from IntelliJ IDEA
+
+If you prefer JetBrains tooling, this repository also includes shared run configurations for IntelliJ IDEA.
+Open the project in IntelliJ IDEA and use either `Latest (Build)` or `Latest (Run)`. Both configurations call the shell scripts in [`scripts/`](./scripts), which build the Xcode project through `xcodebuild`.
+
 ## Contribution
 
 I am thankful for all contributions to the project. You can contribute typo-fixes, translations, code and of course suggestions, wishes, and bug reports.
