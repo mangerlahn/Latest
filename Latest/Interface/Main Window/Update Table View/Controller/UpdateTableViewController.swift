@@ -66,6 +66,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
+
+		self.configureSortOrderPopupButton()
                         
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
@@ -87,9 +89,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		
 		// Setup title
 		self.updateTitleAndBatch()
-		
-		// Setup search field
+
+		// Keep the search field below the titlebar controls in the unified window style.
         NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
+
 		self.view.window?.makeFirstResponder(nil)
 	}
 	
@@ -104,6 +107,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     @IBOutlet weak var tableView: NSTableView!
     
 	func updateSnapshot() {
+		self.updateSortOrderPopupButtonSelection()
 		self.scheduleTableViewUpdate(with: self.snapshot.updated(), animated: true)
 		self.updateTitleAndBatch()
 	}
@@ -374,7 +378,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         guard let action = menuItem.action else {
             return true
         }
-        
+
 		let index = self.rowIndex(forMenuItem: menuItem)
 		guard index >= 0, let app = self.snapshot.app(at: index) else {
 			return false
@@ -413,6 +417,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	/// The search field used for filtering apps
 	@IBOutlet weak var searchField: NSSearchField!
+
+	/// The dropdown used for selecting the current sort mode.
+	@IBOutlet weak var sortOrderPopupButton: NSPopUpButton!
 	
 	
 	// MARK: - Actions

@@ -87,6 +87,18 @@ extension App.Source {
 // MARK: Accessors
 
 extension App.Source.SupportState {
+	/// A stable sort rank used for ordering apps by support status.
+	var sortPriority: Int {
+		switch self {
+		case .full:
+			return 0
+		case .limited:
+			return 1
+		case .none:
+			return 2
+		}
+	}
+
 	/// Returns an image using the system status indicator (colored dot) for the given status.
 	var statusImage: NSImage {
 		let name = switch self {

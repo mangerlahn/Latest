@@ -6,6 +6,8 @@
 //  Copyright © 2022 Max Langer. All rights reserved.
 //
 
+import AppKit
+
 private let SortOptionsKey = "SortOptionsKey"
 private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
@@ -23,6 +25,9 @@ struct AppListSettings: Observable {
 		
 		/// Sort alphabetically by app name.
 		case name = 1
+
+		/// Sort by whether an app is fully supported, has limited support, or is unsupported.
+		case supportStatus = 2
 		
 		/// A user-displayable text of the given sort option.
 		var displayName: String {
@@ -31,6 +36,8 @@ struct AppListSettings: Observable {
 				return NSLocalizedString("DateSortOption", comment: "Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date'")
 			case .name:
 				return NSLocalizedString("NameSortOption", comment: "Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name'")
+			case .supportStatus:
+				return NSLocalizedString("SupportStatusSortOption", comment: "Sorting option to group apps by support level. Displayed in menu with title: 'Sort By' -> 'Support'")
 			}
 		}
 	}
@@ -112,4 +119,15 @@ struct AppListSettings: Observable {
 		}
 	}
 	
+}
+
+extension AppListSettings.SortOptions {
+	/// Returns a menu item representing the sort option.
+	func menuItem(target: AnyObject?, action: Selector?, isSelected: Bool = false) -> NSMenuItem {
+		let item = NSMenuItem(title: self.displayName, action: action, keyEquivalent: "")
+		item.target = target
+		item.representedObject = self
+		item.state = isSelected ? .on : .off
+		return item
+	}
 }

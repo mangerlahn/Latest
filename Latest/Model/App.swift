@@ -113,6 +113,11 @@ extension App {
 	var supported: Bool {
 		return self.source != .none
 	}
+
+	/// The support level of the app within Latest.
+	var supportState: Source.SupportState {
+		return self.source.supportState
+	}
 	
 	/// The date of the app when it was last updated.
 	var updateDate: Date {
