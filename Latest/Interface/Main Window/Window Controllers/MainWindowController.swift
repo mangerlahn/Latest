@@ -53,6 +53,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         
     override func windowDidLoad() {
         super.windowDidLoad()
+		
+		(NSApp.delegate as? AppDelegate)?.register(mainWindowController: self)
     
 		self.window?.titlebarAppearsTransparent = true
 		self.window?.title = Bundle.main.localizedInfoDictionary?[kCFBundleNameKey as String] as! String
@@ -245,6 +247,16 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 }
 
 extension MainWindowController: NSWindowDelegate {
+	
+		func windowShouldClose(_ sender: NSWindow) -> Bool {
+			guard UpdateCheckSettings.shared.keepInMenuBar else {
+				return true
+			}
+			
+			sender.orderOut(nil)
+			(NSApp.delegate as? AppDelegate)?.enterBackgroundMode()
+			return false
+		}
 	
 	@available(macOS, deprecated: 11.0)
 	func window(_ window: NSWindow, willPositionSheet sheet: NSWindow, using rect: NSRect) -> NSRect {

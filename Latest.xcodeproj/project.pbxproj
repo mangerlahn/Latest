@@ -66,6 +66,11 @@
 		50BEF14E2AC972B40052C417 /* UpdateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BEF14D2AC972B40052C417 /* UpdateRepository.swift */; };
 		50C59D692D1F182B005BC36B /* SettingsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C59D682D1F182B005BC36B /* SettingsTabViewController.swift */; };
 		50C59D6D2D1F54BF005BC36B /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C59D6C2D1F54B5005BC36B /* GeneralSettingsViewController.swift */; };
+		60A100092D70000100A1B2C3 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1000A2D70000100A1B2C3 /* SettingsWindowController.swift */; };
+		60A100012D70000100A1B2C3 /* SettingsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A100002D70000100A1B2C3 /* SettingsSectionView.swift */; };
+		60A100032D70000100A1B2C3 /* SettingsCheckboxItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A100022D70000100A1B2C3 /* SettingsCheckboxItemView.swift */; };
+		60A100052D70000100A1B2C3 /* SettingsPopUpItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A100042D70000100A1B2C3 /* SettingsPopUpItemView.swift */; };
+		60A100072D70000100A1B2C3 /* AutomationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A100062D70000100A1B2C3 /* AutomationSettingsViewController.swift */; };
 		50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C81D731FBADC9100324C2E /* VersionTest.swift */; };
 		50C857402B25CF7500F5BF0B /* UpdateRepositoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C8573F2B25CF7500F5BF0B /* UpdateRepositoryCache.swift */; };
 		50C8C85C208A0EE9004FF5D5 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 50C8C85B208A0EE9004FF5D5 /* dsa_pub.pem */; };
@@ -262,6 +267,11 @@
 		50C36372287A22E5003965E1 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50C59D682D1F182B005BC36B /* SettingsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabViewController.swift; sourceTree = "<group>"; };
 		50C59D6C2D1F54B5005BC36B /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
+		60A1000A2D70000100A1B2C3 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		60A100002D70000100A1B2C3 /* SettingsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionView.swift; sourceTree = "<group>"; };
+		60A100022D70000100A1B2C3 /* SettingsCheckboxItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCheckboxItemView.swift; sourceTree = "<group>"; };
+		60A100042D70000100A1B2C3 /* SettingsPopUpItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopUpItemView.swift; sourceTree = "<group>"; };
+		60A100062D70000100A1B2C3 /* AutomationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationSettingsViewController.swift; sourceTree = "<group>"; };
 		50C81D691FBADC5900324C2E /* Latest Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Latest Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C81D6D1FBADC5900324C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C81D731FBADC9100324C2E /* VersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTest.swift; sourceTree = "<group>"; };
@@ -452,6 +462,8 @@
 			isa = PBXGroup;
 			children = (
 				50C59D682D1F182B005BC36B /* SettingsTabViewController.swift */,
+				60A1000A2D70000100A1B2C3 /* SettingsWindowController.swift */,
+				60A100082D70000100A1B2C3 /* Automation */,
 				50C59D6A2D1F1AEE005BC36B /* General */,
 				50C59D6B2D1F1AF7005BC36B /* Locations */,
 			);
@@ -620,10 +632,21 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		60A100082D70000100A1B2C3 /* Automation */ = {
+			isa = PBXGroup;
+			children = (
+				60A100062D70000100A1B2C3 /* AutomationSettingsViewController.swift */,
+			);
+			path = Automation;
+			sourceTree = "<group>";
+		};
 		50C59D6A2D1F1AEE005BC36B /* General */ = {
 			isa = PBXGroup;
 			children = (
 				50C59D6C2D1F54B5005BC36B /* GeneralSettingsViewController.swift */,
+				60A100022D70000100A1B2C3 /* SettingsCheckboxItemView.swift */,
+				60A100042D70000100A1B2C3 /* SettingsPopUpItemView.swift */,
+				60A100002D70000100A1B2C3 /* SettingsSectionView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -941,6 +964,7 @@
 				50B5A50421246E2500E96AEC /* UpdateGroupRowView.swift in Sources */,
 				5058E9C327863FC80028F564 /* App.swift in Sources */,
 				50C59D692D1F182B005BC36B /* SettingsTabViewController.swift in Sources */,
+				60A100092D70000100A1B2C3 /* SettingsWindowController.swift in Sources */,
 				509512221FF36301003D2D7F /* Bundle.swift in Sources */,
 				508323E3257824AA000BBA13 /* DisplayLink.swift in Sources */,
 				508A40552D56962400A02DF1 /* SupportStatusButtonCell.swift in Sources */,
@@ -985,6 +1009,10 @@
 				509512151FF362A1003D2D7F /* Update.swift in Sources */,
 				5087CD2D22F6E06B0013354C /* SparkleUpdateOperation.swift in Sources */,
 				50C59D6D2D1F54BF005BC36B /* GeneralSettingsViewController.swift in Sources */,
+				60A100032D70000100A1B2C3 /* SettingsCheckboxItemView.swift in Sources */,
+				60A100052D70000100A1B2C3 /* SettingsPopUpItemView.swift in Sources */,
+				60A100012D70000100A1B2C3 /* SettingsSectionView.swift in Sources */,
+				60A100072D70000100A1B2C3 /* AutomationSettingsViewController.swift in Sources */,
 				50C857402B25CF7500F5BF0B /* UpdateRepositoryCache.swift in Sources */,
 				50A8D2B327D2B063004DBA05 /* ReleaseNotesProvider.swift in Sources */,
 				509C4ABC2AD1FFCC00E9C2E1 /* FailableDecodable.swift in Sources */,
