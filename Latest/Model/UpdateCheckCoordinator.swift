@@ -61,6 +61,9 @@ class UpdateCheckCoordinator {
 	
 	/// Whether the checker is currently waiting for the initial update check.
 	private var waitForInitialCheck = true
+	
+	/// Whether an update check is currently running.
+	private var isRunning = false
 
 	/// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckProgressReporting? {
@@ -101,6 +104,11 @@ class UpdateCheckCoordinator {
 	
 	/// Initiate the update check, if not already running.
 	func run() {
+		guard !self.isRunning else {
+			return
+		}
+		
+		self.isRunning = true
 		self.progressDelegate?.updateCheckerDidStartScanningForApps(self)
 
 		if self.waitForInitialCheck {
@@ -140,7 +148,9 @@ class UpdateCheckCoordinator {
 			
 		DispatchQueue.main.async {
 			// Update Checks finished
+			self.isRunning = false
 			self.progressDelegate?.updateCheckerDidFinishCheckingForUpdates(self)
+			self.performAutomaticUpdatesIfNeeded()
 		}
 	}
     
@@ -174,6 +184,26 @@ class UpdateCheckCoordinator {
 					delegate.updateChecker(self, didFailToObserveDirectoryAt: failure.url, error: failure.error)
 				}
 			}
+		}
+	}
+	
+	/// Starts updates automatically for the apps Latest can update directly.
+	private func performAutomaticUpdatesIfNeeded() {
+		let schedule = UpdateCheckSettings.shared.automaticUpdateSchedule
+		guard schedule.isDue(since: UpdateCheckSettings.shared.lastAutomaticUpdateDate) else {
+			return
+		}
+		
+		let updatableApps = self.appProvider.updatableApps.filter { !$0.isUpdating }
+		guard !updatableApps.isEmpty else {
+			return
+		}
+		
+		UpdateCheckSettings.shared.lastAutomaticUpdateDate = Date()
+		
+		updatableApps.forEach { app in
+			guard !app.isUpdating else { return }
+			app.performUpdate()
 		}
 	}
 	
