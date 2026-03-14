@@ -2,7 +2,7 @@
 
 [![Translation status][image-1]][1]
 
-This is Latest, a small utility app for the Mac. Latest is a free and open-source app for macOS that checks if all your apps are up to date. Get a quick overview of which apps changed and what changed and update them right away. Latest currently supports apps downloaded from the Mac App Store and apps that use Sparkle for updates, which covers most of the apps on the market.
+This is Latest, a small utility app for the Mac. Latest is a free and open-source app for macOS that checks if your apps are up to date. Get a quick overview of which apps changed and what changed and update them right away. Latest currently supports apps downloaded from the Mac App Store and those that use Sparkle for updates.
 
 Latest is developed in my free time, so occasional updates may happen. Take a look at the [Issues][2] section to see what's coming. If you have an idea for a new feature, or encounter any bugs, feel free to open a new issue.
 I am thankful for contributions. Check out the section below for more information.
