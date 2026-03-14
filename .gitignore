@@ -69,3 +69,6 @@ iOSInjectionProject/
 *.xcbkptlist
 /Frameworks/Cartfile.resolved
 Frameworks/Carthage/Checkouts
+
+# JetBrains IDEs
+.idea/
