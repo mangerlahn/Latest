@@ -10,6 +10,8 @@ import Cocoa
 
 /// The folder listener listens for changes in the given directory and then runs the update checker on changes
 class AppDirectory {
+
+	typealias DescriptorProvider = (URL) -> CInt
 	
 	/// The url on which the listener reacts to changes on
 	let url : URL
@@ -29,41 +31,51 @@ class AppDirectory {
 	/// The queue on which updates to the collection are being performed.
 	private var collectionQueue = DispatchQueue(label: "DataStoreQueue")
 
+	private let descriptorProvider: DescriptorProvider
+
 	
 	/// The file system listener
-	private lazy var listener : DispatchSourceFileSystemObject = {
-		let descriptor = open((self.url as NSURL).fileSystemRepresentation, O_EVTONLY)
-		guard descriptor != -1 else { fatalError("Unable to open folder at url") }
+	private lazy var listener: DispatchSourceFileSystemObject? = {
+		let descriptor = descriptorProvider(url)
+		guard descriptor != -1 else { return nil }
 		
 		let source = DispatchSource.makeFileSystemObjectSource(fileDescriptor: descriptor,
 															   eventMask: .write)
 		
 		source.setEventHandler(handler: collectBundles)
+		source.setCancelHandler {
+			close(descriptor)
+		}
 		
 		return source
 	}()
 	
 	/// Initializes the class and resumes the listener automatically
-	init(url: URL, updateHandler: @escaping UpdateHandler) {
+	init(url: URL, updateHandler: @escaping UpdateHandler, descriptorProvider: @escaping DescriptorProvider = AppDirectory.openDescriptor) {
 		self.url = url
 		self.handler = updateHandler
+		self.descriptorProvider = descriptorProvider
 		
 		resumeTracking()
 	}
 	
 	deinit {
-		listener.cancel()
+		listener?.cancel()
 	}
 	
 	/// Resumes tracking if it is not already running
 	private func resumeTracking() {
-		listener.activate()
+		listener?.activate()
 		collectBundles()
 	}
 	
 	/// Triggers an update run
 	private func collectBundles() {
 		bundles = BundleCollector.collectBundles(at: self.url)
+	}
+
+	private static func openDescriptor(for url: URL) -> CInt {
+		open((url as NSURL).fileSystemRepresentation, O_EVTONLY)
 	}
 	
 }
