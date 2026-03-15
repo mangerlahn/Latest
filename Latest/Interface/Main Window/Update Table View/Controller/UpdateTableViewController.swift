@@ -15,6 +15,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	var id = UUID()
 	
+	/// Background queue used to prepare expensive snapshots without blocking the main thread.
+	private let snapshotQueue = DispatchQueue(label: "UpdateTableViewController.snapshot", qos: .userInitiated)
+	private var snapshotGeneration = 0
+	
     /// The array holding the apps that have an update available.
 	var snapshot: AppListSnapshot = AppListSnapshot(withApps: [], filterQuery: nil) {
 		didSet {
@@ -73,8 +77,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		AppListSettings.shared.add(self, handler: self.updateSnapshot)
         
 		UpdateCheckCoordinator.shared.appProvider.addObserver(self) { newValue in
-			self.scheduleTableViewUpdate(with: AppListSnapshot(withApps: newValue, filterQuery: self.snapshot.filterQuery), animated: true)
-			self.updateTitleAndBatch()
+			self.scheduleSnapshotUpdate(withApps: newValue, filterQuery: self.snapshot.filterQuery, animated: true)
 		}
 		
 		if #available(macOS 11, *) {
@@ -104,8 +107,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     @IBOutlet weak var tableView: NSTableView!
     
 	func updateSnapshot() {
-		self.scheduleTableViewUpdate(with: self.snapshot.updated(), animated: true)
-		self.updateTitleAndBatch()
+		self.scheduleSnapshotUpdate(withApps: self.snapshot.apps, filterQuery: self.snapshot.filterQuery, animated: true)
 	}
 	
 	
@@ -250,6 +252,29 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	/// Whether a table view update is currently ongoing.
 	private var tableViewUpdateInProgress = false
+	
+	private func scheduleSnapshotUpdate(withApps apps: [App], filterQuery: String?, animated: Bool) {
+		snapshotGeneration += 1
+		let generation = snapshotGeneration
+		
+		snapshotQueue.async {
+			let snapshot = AppListSnapshot(withApps: apps, filterQuery: filterQuery)
+			
+			DispatchQueue.main.async {
+				guard generation == self.snapshotGeneration else { return }
+				
+				let shouldAnimate = animated && self.shouldAnimateTransition(from: self.snapshot, to: snapshot)
+				self.scheduleTableViewUpdate(with: snapshot, animated: shouldAnimate)
+				self.updateTitleAndBatch()
+			}
+		}
+	}
+	
+	private func shouldAnimateTransition(from oldSnapshot: AppListSnapshot, to newSnapshot: AppListSnapshot) -> Bool {
+		let maxEntryCount = max(oldSnapshot.entries.count, newSnapshot.entries.count)
+		let delta = abs(oldSnapshot.entries.count - newSnapshot.entries.count)
+		return maxEntryCount <= 150 && delta <= 30
+	}
 	
 	/// Schedules a table view update with the given snapshot.
 	func scheduleTableViewUpdate(with snapshot: AppListSnapshot, animated: Bool) {
