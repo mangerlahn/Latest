@@ -77,6 +77,7 @@
 		50DAEF4421047FA900B32E8A /* UpdateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAEF4321047FA900B32E8A /* UpdateItemView.swift */; };
 		50E4EB072B17DACB00A70A7D /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4EB062B17DACB00A70A7D /* VersionParser.swift */; };
 		50E4EB092B17DFCE00A70A7D /* VersionParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */; };
+		50F0AA112D7B1234006ABCD1 /* AppDirectoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0AA102D7B1234006ABCD1 /* AppDirectoryTest.swift */; };
 		50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */; };
 		50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */; };
 		50FEB8812B1D2402006FB75D /* ExcludedAppIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50FEB8802B1D2402006FB75D /* ExcludedAppIdentifiers.plist */; };
@@ -299,6 +300,7 @@
 		50DAEF4321047FA900B32E8A /* UpdateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItemView.swift; sourceTree = "<group>"; };
 		50E4EB062B17DACB00A70A7D /* VersionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
 		50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParserTest.swift; sourceTree = "<group>"; };
+		50F0AA102D7B1234006ABCD1 /* AppDirectoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDirectoryTest.swift; sourceTree = "<group>"; };
 		50E65CDD247A84BC00DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		50E65CDE247A84E700DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		50E65CE0247A84F300DFEB47 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -641,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				50C81D6D1FBADC5900324C2E /* Info.plist */,
+				50F0AA102D7B1234006ABCD1 /* AppDirectoryTest.swift */,
 				50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */,
 				50C81D731FBADC9100324C2E /* VersionTest.swift */,
 				50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */,
@@ -995,6 +998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F0AA112D7B1234006ABCD1 /* AppDirectoryTest.swift in Sources */,
 				50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */,
 				50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */,
 				50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */,
