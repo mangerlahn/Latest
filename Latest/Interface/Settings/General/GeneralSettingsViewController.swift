@@ -14,12 +14,14 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 	
 	private enum Style {
 		static let includeColor = NSColor.systemOrange
+		static let appearanceColor = NSColor.systemGreen
 		static let windowColor = NSColor.systemBlue
 		static let startupColor = NSColor.systemIndigo
 	}
 	
 	private let includeAppsWithLimitedSupportButton = NSButton(checkboxWithTitle: NSLocalizedString("Partially supported apps", comment: "Setting title for showing apps with limited support."), target: nil, action: nil)
 	private let includeUnsupportedAppsButton = NSButton(checkboxWithTitle: NSLocalizedString("Unsupported apps", comment: "Setting title for showing unsupported apps."), target: nil, action: nil)
+	private let versionTextSizePopUpButton = NSPopUpButton(frame: .zero, pullsDown: false)
 	private let keepInMenuBarButton = NSButton(checkboxWithTitle: NSLocalizedString("Keep Latest running after closing the main window", comment: "Setting title for keeping Latest running in the menu bar."), target: nil, action: nil)
 	private let keepInDockButton = NSButton(checkboxWithTitle: NSLocalizedString("Show Latest in the Dock while hidden", comment: "Setting title for keeping Latest visible in the Dock while hidden."), target: nil, action: nil)
 	private let openAtLoginButton = NSButton(checkboxWithTitle: NSLocalizedString("Open Latest at login", comment: "Setting title for starting Latest at login."), target: nil, action: nil)
@@ -57,6 +59,16 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 		}
 	}
 	
+	/// The font size used for version labels in the update list.
+	var versionTextSize: AppListSettings.VersionTextSize {
+		get {
+			AppListSettings.shared.versionTextSize
+		}
+		set {
+			AppListSettings.shared.versionTextSize = newValue
+		}
+	}
+	
 	/// Whether Latest should remain accessible from the menu bar after its window is closed.
 	@objc var keepInMenuBar: Bool {
 		get {
@@ -83,6 +95,16 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 	
 	@objc private func toggleIncludeUnsupportedApps(_ sender: NSButton) {
 		self.includeUnsupportedApps = sender.state == .on
+	}
+	
+	@objc private func changeVersionTextSize(_ sender: NSPopUpButton) {
+		let selectedIndex = sender.indexOfSelectedItem
+		guard let size = AppListSettings.VersionTextSize(rawValue: selectedIndex) else {
+			self.refreshControls()
+			return
+		}
+		
+		self.versionTextSize = size
 	}
 	
 	@objc private func toggleKeepInMenuBar(_ sender: NSButton) {
@@ -125,6 +147,7 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 		
 		self.configureCheckbox(self.includeAppsWithLimitedSupportButton, action: #selector(toggleIncludeAppsWithLimitedSupport(_:)))
 		self.configureCheckbox(self.includeUnsupportedAppsButton, action: #selector(toggleIncludeUnsupportedApps(_:)))
+		self.configureVersionTextSizePopUp()
 		self.configureCheckbox(self.keepInMenuBarButton, action: #selector(toggleKeepInMenuBar(_:)))
 		self.configureCheckbox(self.keepInDockButton, action: #selector(toggleKeepInDock(_:)))
 		self.configureCheckbox(self.openAtLoginButton, action: #selector(toggleOpenAtLogin(_:)))
@@ -149,6 +172,22 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 			]
 		)
 		contentStack.addArrangedSubview(includeSection)
+		
+		let appearanceSection = SettingsSectionView(
+			title: NSLocalizedString("Appearance", comment: "Settings section title."),
+			symbolName: "textformat.size",
+			tintColor: Style.appearanceColor,
+			items: [
+				SettingsPopUpItemView(
+					title: NSLocalizedString("Version text size", comment: "Setting title for the version text size."),
+					symbolName: "textformat",
+					tintColor: Style.appearanceColor,
+					popUpButton: self.versionTextSizePopUpButton,
+					helper: NSLocalizedString("Makes the Your version and New version lines easier to read in the update list.", comment: "Helper text for the version text size setting.")
+				)
+			]
+		)
+		contentStack.addArrangedSubview(appearanceSection)
 		
 		let windowSection = SettingsSectionView(
 			title: NSLocalizedString("Window", comment: "Settings section title."),
@@ -189,6 +228,8 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 		NSLayoutConstraint.activate([
 			includeSection.leadingAnchor.constraint(equalTo: contentStack.leadingAnchor),
 			includeSection.trailingAnchor.constraint(equalTo: contentStack.trailingAnchor),
+			appearanceSection.leadingAnchor.constraint(equalTo: contentStack.leadingAnchor),
+			appearanceSection.trailingAnchor.constraint(equalTo: contentStack.trailingAnchor),
 			windowSection.leadingAnchor.constraint(equalTo: contentStack.leadingAnchor),
 			windowSection.trailingAnchor.constraint(equalTo: contentStack.trailingAnchor),
 			startupSection.leadingAnchor.constraint(equalTo: contentStack.leadingAnchor),
@@ -199,6 +240,7 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 	private func refreshControls() {
 		self.includeAppsWithLimitedSupportButton.state = self.includeAppsWithLimitedSupport ? .on : .off
 		self.includeUnsupportedAppsButton.state = self.includeUnsupportedApps ? .on : .off
+		self.versionTextSizePopUpButton.selectItem(at: self.versionTextSize.rawValue)
 		self.keepInMenuBarButton.state = self.keepInMenuBar ? .on : .off
 		self.keepInDockButton.state = self.keepInDock ? .on : .off
 		self.openAtLoginButton.state = LoginItemService.shared.isEnabled ? .on : .off
@@ -210,6 +252,13 @@ class GeneralSettingsViewController: SettingsTabItemViewController {
 		button.action = action
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.setButtonType(.switch)
+	}
+	
+	private func configureVersionTextSizePopUp() {
+		self.versionTextSizePopUpButton.removeAllItems()
+		self.versionTextSizePopUpButton.addItems(withTitles: AppListSettings.VersionTextSize.allCases.map(\.displayName))
+		self.versionTextSizePopUpButton.target = self
+		self.versionTextSizePopUpButton.action = #selector(changeVersionTextSize(_:))
 	}
 
 	private func presentLoginItemError(_ error: Error) {

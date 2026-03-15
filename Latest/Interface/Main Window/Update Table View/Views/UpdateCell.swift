@@ -27,6 +27,12 @@ class UpdateCell: NSTableCellView {
 	/// The stack view holding the cells contents.
 	@IBOutlet private weak var contentStackView: NSStackView!
 	
+	/// The constraint defining the leading inset of the content.
+	@available(macOS, deprecated: 11.0) @IBOutlet private weak var leadingConstraint: NSLayoutConstraint!
+	
+	/// Constraint controlling the trailing inset of the cell.
+	@available(macOS, deprecated: 11.0) @IBOutlet private weak var trailingConstraint: NSLayoutConstraint!
+
 	/// Label displaying the last modified/update date for the app.
 	@IBOutlet private weak var dateTextField: NSTextField!
 	
@@ -35,6 +41,20 @@ class UpdateCell: NSTableCellView {
 	
 	/// Image view displaying a status indicator for the support status of the app.
 	@IBOutlet private weak var supportStateImageView: NSImageView!
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		if #available(macOS 11.0, *) {
+			self.leadingConstraint.constant = 0;
+			self.trailingConstraint.constant = 0;
+		} else {
+			self.leadingConstraint.constant = 20;
+			self.trailingConstraint.constant = 20;
+		}
+		
+		self.applyVersionTextAppearance()
+	}
 	
 	
 	// MARK: - Update Progress
@@ -91,6 +111,7 @@ class UpdateCell: NSTableCellView {
         self.currentVersionTextField.stringValue = versionInformation.current
 		self.newVersionTextField.stringValue = versionInformation.new ?? ""
         self.newVersionTextField.isHidden = !app.updateAvailable
+		self.applyVersionTextAppearance()
 		self.dateTextField.stringValue = dateFormatter.string(from: app.updateDate)
 		
 		// Support state
@@ -115,5 +136,21 @@ class UpdateCell: NSTableCellView {
 	    
 	private func updateTitle() {
 		self.nameTextField.attributedStringValue = self.app?.highlightedName(for: self.filterQuery) ?? NSAttributedString()
+	}
+	
+	private func applyVersionTextAppearance() {
+		let pointSize: CGFloat
+		switch AppListSettings.shared.versionTextSize {
+		case .standard:
+			pointSize = NSFont.systemFontSize(for: .small)
+		case .large:
+			pointSize = NSFont.systemFontSize(for: .small) + 1
+		case .extraLarge:
+			pointSize = NSFont.systemFontSize(for: .small) + 2
+		}
+		
+		let font = NSFont.systemFont(ofSize: pointSize)
+		self.currentVersionTextField.font = font
+		self.newVersionTextField.font = font
 	}
 }
