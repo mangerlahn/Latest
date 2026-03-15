@@ -62,7 +62,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 	
 	override func execute() {
 		// Gather app and app bundle
-		guard let bundle = Bundle(identifier: self.app.bundleIdentifier) else {
+		guard let bundle = Bundle(url: self.app.fileURL) ?? Bundle(identifier: self.app.bundleIdentifier) else {
 			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}
