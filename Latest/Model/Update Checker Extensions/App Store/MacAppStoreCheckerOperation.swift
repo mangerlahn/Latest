@@ -89,6 +89,40 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 		let path = receiptPath(forAppAt: url)
 		return path?.contains("WrappedBundle") ?? false
 	}
+
+	/// Returns whether built-in MAS installs are affected by Apple's PackageKit change.
+	///
+	/// The affected releases were first reported on macOS 14.8.2, 15.7.2, and 26.1.
+	///
+	/// We treat those as lower bounds because Apple shipped a PackageKit security hardening
+	/// in that release batch, so later releases are expected to keep the same restriction.
+	static func requiresExternalUpdateWorkaround(for version: OperatingSystemVersion = ProcessInfo.processInfo.operatingSystemVersion) -> Bool {
+		if version.majorVersion > 26 {
+			return true
+		}
+		
+		if version.majorVersion == 26 {
+			return version.minorVersion >= 1
+		}
+		
+		if version.majorVersion == 15 {
+			if version.minorVersion > 7 {
+				return true
+			}
+			
+			return version.minorVersion == 7 && version.patchVersion >= 2
+		}
+		
+		if version.majorVersion == 14 {
+			if version.minorVersion > 8 {
+				return true
+			}
+			
+			return version.minorVersion == 8 && version.patchVersion >= 2
+		}
+		
+		return false
+	}
 	
 }
 
@@ -97,8 +131,8 @@ extension MacAppStoreUpdateCheckerOperation {
 	/// Returns a proper update object from the given app store entry.
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
-		let action: App.Update.Action = if Self.isIOSAppBundle(at: app.fileURL) {
-			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
+		let action: App.Update.Action = if Self.isIOSAppBundle(at: app.fileURL) || Self.requiresExternalUpdateWorkaround() {
+			// iOS apps and affected macOS versions must update in the App Store.
 			.external(label: NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store."), block: { app in
 				NSWorkspace.shared.open(entry.pageURL)
 			})
