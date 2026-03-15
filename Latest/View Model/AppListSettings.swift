@@ -12,6 +12,7 @@ private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
 
 private let IncludeUnsupportedAppsKey = "ShowUnsupportedUpdatesKey"
 private let IncludeAppsWithLimitedSupportKey = "IncludeAppsWithLimitedSupportKey"
+private let VersionTextSizeKey = "VersionTextSizeKey"
 
 /// Observable front end to app list preferences.
 struct AppListSettings: Observable {
@@ -35,11 +36,32 @@ struct AppListSettings: Observable {
 		}
 	}
 	
+	/// Font sizes available for the version labels in the update list.
+	enum VersionTextSize: Int, CaseIterable {
+		case standard = 0
+		case large = 1
+		case extraLarge = 2
+		
+		var displayName: String {
+			switch self {
+			case .standard:
+				NSLocalizedString("Standard", comment: "Standard version text size option.")
+			case .large:
+				NSLocalizedString("Large", comment: "Large version text size option.")
+			case .extraLarge:
+				NSLocalizedString("Extra Large", comment: "Extra-large version text size option.")
+			}
+		}
+	}
+	
 	var observers = [UUID : ObservationHandler]()
 
 	private init() {
 		// Show installed updates by default
-		UserDefaults.standard.register(defaults: [ShowInstalledUpdatesKey: true])
+		UserDefaults.standard.register(defaults: [
+			ShowInstalledUpdatesKey: true,
+			VersionTextSizeKey: VersionTextSize.standard.rawValue
+		])
 	}
 	
 	static var shared: AppListSettings = {
@@ -98,6 +120,17 @@ struct AppListSettings: Observable {
 		
 		get {
 			UserDefaults.standard.bool(forKey: IncludeAppsWithLimitedSupportKey)
+		}
+	}
+	
+	/// The font size used for version labels in the update list.
+	var versionTextSize: VersionTextSize {
+		set {
+			set(newValue.rawValue, forKey: VersionTextSizeKey)
+		}
+		
+		get {
+			VersionTextSize(rawValue: UserDefaults.standard.integer(forKey: VersionTextSizeKey)) ?? .standard
 		}
 	}
 	
