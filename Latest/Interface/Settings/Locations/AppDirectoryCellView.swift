@@ -11,7 +11,8 @@ import Cocoa
 /// Shared provider for counting tracked apps in a directory without rescanning the same URL on every table reload.
 final class AppDirectoryCountProvider {
 	
-	typealias BundleCounter = (URL) -> Int
+	typealias CountFailureHandler = (URL, Error) -> Void
+	typealias BundleCounter = (URL, CountFailureHandler?) -> Int
 	typealias CountHandler = (Int) -> Void
 	
 	private let collectionQueue: DispatchQueue
@@ -19,16 +20,19 @@ final class AppDirectoryCountProvider {
 	private let bundleCounter: BundleCounter
 	private var cachedCounts = [URL: Int]()
 	private var pendingHandlers = [URL: [CountHandler]]()
+	private var pendingFailureHandlers = [URL: [CountFailureHandler]]()
 	
 	init(
 		collectionQueue: DispatchQueue = DispatchQueue(label: "AppDirectoryCountProvider.collection", qos: .utility),
-		bundleCounter: @escaping BundleCounter = { BundleCollector.collectBundles(at: $0).count }
+		bundleCounter: @escaping BundleCounter = { url, failureHandler in
+			BundleCollector.collectBundles(at: url, errorHandler: failureHandler).count
+		}
 	) {
 		self.collectionQueue = collectionQueue
 		self.bundleCounter = bundleCounter
 	}
 	
-	func count(for url: URL, completion: @escaping CountHandler) {
+	func count(for url: URL, completion: @escaping CountHandler, onFailure: CountFailureHandler? = nil) {
 		if let cachedCount = stateQueue.sync(execute: { cachedCounts[url] }) {
 			completion(cachedCount)
 			return
@@ -37,21 +41,36 @@ final class AppDirectoryCountProvider {
 		let shouldStartCollection = stateQueue.sync { () -> Bool in
 			if pendingHandlers[url] != nil {
 				pendingHandlers[url]?.append(completion)
+				if let onFailure {
+					pendingFailureHandlers[url, default: []].append(onFailure)
+				}
 				return false
 			}
 			
 			pendingHandlers[url] = [completion]
+			if let onFailure {
+				pendingFailureHandlers[url] = [onFailure]
+			}
 			return true
 		}
 		
 		guard shouldStartCollection else { return }
 		
 		collectionQueue.async { [bundleCounter] in
-			let count = bundleCounter(url)
+			let count = bundleCounter(url) { failedURL, error in
+				let failureHandlers = self.stateQueue.sync { () -> [CountFailureHandler] in
+					self.pendingFailureHandlers[url] ?? []
+				}
+				
+				DispatchQueue.main.async {
+					failureHandlers.forEach { $0(failedURL, error) }
+				}
+			}
 			let handlers = self.stateQueue.sync { () -> [CountHandler] in
 				self.cachedCounts[url] = count
 				let handlers = self.pendingHandlers[url] ?? []
 				self.pendingHandlers[url] = nil
+				self.pendingFailureHandlers[url] = nil
 				return handlers
 			}
 			
@@ -62,8 +81,9 @@ final class AppDirectoryCountProvider {
 	}
 	
 	func invalidate(_ url: URL) {
-		_ = stateQueue.sync {
+		stateQueue.sync {
 			cachedCounts.removeValue(forKey: url)
+			pendingFailureHandlers.removeValue(forKey: url)
 		}
 	}
 }
@@ -99,6 +119,8 @@ class AppDirectoryCellView: NSTableCellView {
 		}
 	}
 	
+	var observationFailureHandler: AppDirectoryCountProvider.CountFailureHandler?
+	
 	var isReachable: Bool = false
 	
 	private func setUpView() {
@@ -125,13 +147,16 @@ class AppDirectoryCellView: NSTableCellView {
 			return
 		}
 		
-		countProvider.count(for: url) { [weak self] count in
+		countProvider.count(for: url, completion: { [weak self] count in
 			guard let self, self.url == url else { return }
 			
 			self.appCountLabel.isHidden = false
 			self.activityIndicator.stopAnimation(nil)
 			self.appCountLabel.stringValue = NumberFormatter.localizedString(from: NSNumber(value: count), number: .none)
-		}
+		}, onFailure: { [weak self] failedURL, error in
+			guard let self, self.url == url else { return }
+			self.observationFailureHandler?(failedURL, error)
+		})
 	}
 	
 	private var tintColor: NSColor {

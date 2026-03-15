@@ -13,11 +13,18 @@ import Cocoa
  */
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, Observer {
 	
+	private struct SnapshotUpdateRequest {
+		let apps: [App]
+		let configuration: AppListSnapshot.Configuration
+		let animated: Bool
+	}
+	
 	var id = UUID()
 	
 	/// Background queue used to prepare expensive snapshots without blocking the main thread.
 	private let snapshotQueue = DispatchQueue(label: "UpdateTableViewController.snapshot", qos: .userInitiated)
-	private var snapshotGeneration = 0
+	private var pendingSnapshotUpdate: SnapshotUpdateRequest?
+	private var snapshotUpdateInProgress = false
 	
     /// The array holding the apps that have an update available.
 	var snapshot: AppListSnapshot = AppListSnapshot(withApps: [], filterQuery: nil) {
@@ -253,19 +260,30 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	/// Whether a table view update is currently ongoing.
 	private var tableViewUpdateInProgress = false
 	
-	private func scheduleSnapshotUpdate(withApps apps: [App], filterQuery: String?, animated: Bool) {
-		snapshotGeneration += 1
-		let generation = snapshotGeneration
+	func scheduleSnapshotUpdate(withApps apps: [App], filterQuery: String?, animated: Bool) {
+		let request = SnapshotUpdateRequest(
+			apps: apps,
+			configuration: AppListSnapshot.Configuration(filterQuery: filterQuery),
+			animated: animated
+		)
+		pendingSnapshotUpdate = request
+		startNextSnapshotUpdateIfNeeded()
+	}
+	
+	private func startNextSnapshotUpdateIfNeeded() {
+		guard !snapshotUpdateInProgress, let request = pendingSnapshotUpdate else { return }
+		pendingSnapshotUpdate = nil
+		snapshotUpdateInProgress = true
 		
 		snapshotQueue.async {
-			let snapshot = AppListSnapshot(withApps: apps, filterQuery: filterQuery)
+			let snapshot = AppListSnapshot(withApps: request.apps, configuration: request.configuration)
 			
 			DispatchQueue.main.async {
-				guard generation == self.snapshotGeneration else { return }
-				
-				let shouldAnimate = animated && self.shouldAnimateTransition(from: self.snapshot, to: snapshot)
+				let shouldAnimate = request.animated && self.shouldAnimateTransition(from: self.snapshot, to: snapshot)
 				self.scheduleTableViewUpdate(with: snapshot, animated: shouldAnimate)
 				self.updateTitleAndBatch()
+				self.snapshotUpdateInProgress = false
+				self.startNextSnapshotUpdateIfNeeded()
 			}
 		}
 	}

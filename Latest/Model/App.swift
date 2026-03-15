@@ -152,6 +152,11 @@ extension App {
 		return self.update?.usesBuiltInUpdater ?? false
 	}
 	
+	/// Whether an available update can be triggered immediately.
+	var canPerformUpdate: Bool {
+		update?.canPerformAction ?? false
+	}
+	
 	/// The name of the external updater used to update this app.
 	///
 	/// Returns `nil` if `usesBuiltInUpdater` is `true`.
@@ -196,6 +201,11 @@ extension App {
 		}
 		
 		return attributedName
+	}
+	
+	/// Returns the last known update information, if any.
+	var cachedUpdate: Update? {
+		update
 	}
 
 }

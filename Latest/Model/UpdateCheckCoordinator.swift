@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- Protocol that defines some methods on reporting the progress of the update checking process.
+Protocol that defines some methods on reporting the progress of the update checking process.
  */
 protocol UpdateCheckProgressReporting : AnyObject {
     
@@ -40,6 +40,10 @@ protocol UpdateCheckProgressReporting : AnyObject {
 class UpdateCheckCoordinator {
     
     typealias UpdateCheckerCallback = (_ app: App.Bundle) -> Void
+	private struct ObservationFailure {
+		let url: URL
+		let error: Error
+	}
 	
 	/// The object holding the apps found by the checker.
 	var appProvider: AppProviding {
@@ -59,7 +63,12 @@ class UpdateCheckCoordinator {
 	private var waitForInitialCheck = true
 
 	/// The delegate for the progress of the entire update checking progress
-    weak var progressDelegate : UpdateCheckProgressReporting?
+    weak var progressDelegate : UpdateCheckProgressReporting? {
+		didSet {
+			DiagnosticsLog.trace(.updateCheckCoordinator, "progressDelegate set nil=\(progressDelegate == nil)")
+			flushPendingObservationFailures()
+		}
+	}
 	
 	/// The library containing all bundles loaded from disk.
 	private lazy var library: AppLibrary = {
@@ -70,15 +79,15 @@ class UpdateCheckCoordinator {
 				self.runUpdateCheck(on: newApps.map({ $0.bundle }))
 			},
 			observationFailureHandler: { url, error in
-				DispatchQueue.main.async {
-					self.progressDelegate?.updateChecker(self, didFailToObserveDirectoryAt: url, error: error)
-				}
+				self.reportObservationFailure(at: url, error: error)
 			}
 		)
 	}()
 	
 	/// The data store updated apps should be passed to
 	private let dataStore = AppDataStore()
+	private let observationFailureQueue = DispatchQueue(label: "UpdateCheckCoordinator.observationFailures")
+	private var pendingObservationFailures = [ObservationFailure]()
 	
 	/// The queue to run update checks on.
 	private let updateOperationQueue: OperationQueue = {
@@ -143,6 +152,30 @@ class UpdateCheckCoordinator {
 			self.progressDelegate?.updateChecker(self, didCheckApp: app)
 		}
     }
+
+	private func reportObservationFailure(at url: URL, error: Error) {
+		observationFailureQueue.async {
+			DiagnosticsLog.trace(.updateCheckCoordinator, "reportObservationFailure path=\(url.path) error=\(error.localizedDescription)")
+			self.pendingObservationFailures.append(ObservationFailure(url: url, error: error))
+			self.flushPendingObservationFailures()
+		}
+	}
+
+	private func flushPendingObservationFailures() {
+		observationFailureQueue.async {
+			DiagnosticsLog.trace(.updateCheckCoordinator, "flushPendingObservationFailures pending=\(self.pendingObservationFailures.count) delegateNil=\(self.progressDelegate == nil)")
+			guard let delegate = self.progressDelegate, !self.pendingObservationFailures.isEmpty else { return }
+			let failures = self.pendingObservationFailures
+			self.pendingObservationFailures.removeAll()
+			
+			DispatchQueue.main.async {
+				failures.forEach { failure in
+					DiagnosticsLog.trace(.updateCheckCoordinator, "deliverObservationFailure path=\(failure.url.path)")
+					delegate.updateChecker(self, didFailToObserveDirectoryAt: failure.url, error: failure.error)
+				}
+			}
+		}
+	}
 	
 }
 
@@ -162,6 +195,23 @@ extension UpdateCheckCoordinator {
 	/// Returns the update source for the app at the given url.
 	static func source(forAppAt url: URL) -> App.Source? {
 		return self.availableOperations.first { $0.canPerformUpdateCheck(forAppAt: url) }?.sourceType
+	}
+	
+	/// Returns the update source for the given app using an already loaded bundle.
+	static func source(forAppAt url: URL, bundle: Bundle) -> App.Source? {
+		if MacAppStoreUpdateCheckerOperation.canPerformUpdateCheck(forAppAt: url, bundle: bundle) {
+			return MacAppStoreUpdateCheckerOperation.sourceType
+		}
+		
+		if SparkleUpdateCheckerOperation.canPerformUpdateCheck(forAppAt: url, bundle: bundle) {
+			return SparkleUpdateCheckerOperation.sourceType
+		}
+		
+		if HomebrewCheckerOperation.canPerformUpdateCheck(forAppAt: url) {
+			return HomebrewCheckerOperation.sourceType
+		}
+		
+		return nil
 	}
 	
 	/// Returns the update check operation for the given app bundle.
