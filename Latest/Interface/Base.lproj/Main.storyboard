@@ -413,7 +413,11 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Latest" customModuleProvider="target">
+                    <connections>
+                        <outlet property="standardUpdaterController" destination="ZIQ-oE-e1U" id="g1s-Rq-LqN"/>
+                    </connections>
+                </customObject>
                 <customObject id="ZIQ-oE-e1U" customClass="SPUStandardUpdaterController"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

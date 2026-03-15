@@ -17,6 +17,7 @@ class AutomationSettingsViewController: SettingsTabItemViewController, Observer 
 	
 	private let checkSchedulePopUpButton = NSPopUpButton(frame: .zero, pullsDown: false)
 	private let updateSchedulePopUpButton = NSPopUpButton(frame: .zero, pullsDown: false)
+	private let selfUpdateCheckBox = NSButton(checkboxWithTitle: NSLocalizedString("Automatically check for Latest updates", comment: "Title for enabling Sparkle self-update checks for Latest."), target: nil, action: nil)
 	
 	override func loadView() {
 		self.view = NSView(frame: NSRect(origin: .zero, size: SettingsTabItemViewController.preferredSettingsContentSize))
@@ -46,6 +47,11 @@ class AutomationSettingsViewController: SettingsTabItemViewController, Observer 
 	@IBAction @objc private func changeAutomaticUpdateSchedule(_ sender: NSPopUpButton) {
 		let rawValue = sender.selectedTag()
 		UpdateCheckSettings.shared.automaticUpdateSchedule = UpdateCheckSettings.UpdateSchedule(rawValue: rawValue) ?? .never
+	}
+
+	@IBAction @objc private func changeSelfUpdatePreference(_ sender: NSButton) {
+		self.appDelegate?.automaticallyChecksForSelfUpdates = (sender.state == .on)
+		self.refreshControls()
 	}
 	
 	private func configureAutomaticCheckSchedulePopUp() {
@@ -89,6 +95,8 @@ class AutomationSettingsViewController: SettingsTabItemViewController, Observer 
 		
 		self.updateSchedulePopUpButton.target = self
 		self.updateSchedulePopUpButton.action = #selector(changeAutomaticUpdateSchedule(_:))
+		self.selfUpdateCheckBox.target = self
+		self.selfUpdateCheckBox.action = #selector(changeSelfUpdatePreference(_:))
 		
 		let automationSection = SettingsSectionView(
 			title: NSLocalizedString("Automation", comment: "Settings section title."),
@@ -108,6 +116,12 @@ class AutomationSettingsViewController: SettingsTabItemViewController, Observer 
 					tintColor: Style.automationColor,
 					popUpButton: self.updateSchedulePopUpButton,
 					helper: NSLocalizedString("Only updates that Latest can install itself are applied automatically.", comment: "Helper text for automatic updates.")
+				),
+				SettingsCheckboxItemView(
+					button: self.selfUpdateCheckBox,
+					symbolName: "sparkles",
+					tintColor: Style.automationColor,
+					helper: NSLocalizedString("Re-enable Latest's own Sparkle automatic update checks after dismissing the first-launch prompt.", comment: "Helper text for enabling Sparkle self-update checks in settings.")
 				)
 			]
 		)
@@ -122,5 +136,11 @@ class AutomationSettingsViewController: SettingsTabItemViewController, Observer 
 	private func refreshControls() {
 		self.checkSchedulePopUpButton.selectItem(withTag: UpdateCheckSettings.shared.automaticCheckSchedule.rawValue)
 		self.updateSchedulePopUpButton.selectItem(withTag: UpdateCheckSettings.shared.automaticUpdateSchedule.rawValue)
+		self.selfUpdateCheckBox.state = self.appDelegate?.automaticallyChecksForSelfUpdates == true ? .on : .off
+		self.selfUpdateCheckBox.isEnabled = (self.appDelegate != nil)
+	}
+
+	private var appDelegate: AppDelegate? {
+		NSApp.delegate as? AppDelegate
 	}
 }
