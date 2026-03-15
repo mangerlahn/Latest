@@ -54,23 +54,38 @@ class AppLibrary {
 	}
 		
 	private func setupDirectoryObservers() {
-		// Use a dispatch group for the initial setup to get contents for all directories before gathering apps
-		var dispatchGroup: DispatchGroup? = self.directories.isEmpty ? DispatchGroup() : nil
+		// Use a dispatch group for the initial setup to get contents for all directories before gathering apps.
+		// Each directory may emit multiple updates while it is being initialized, so only the first callback
+		// should fulfill the startup group.
+		let dispatchGroup = self.directories.isEmpty ? DispatchGroup() : nil
+		let existingDirectories = self.directories
 		
 		// Setup directories
 		directories = Dictionary(uniqueKeysWithValues: directoryStore.URLs.compactMap { url in
 			// Skip unreachable directories
 			guard directoryStore.isReachable(url) else { return nil }
 			
+			// Reuse existing directory observations if possible
+			if let existingDirectory = existingDirectories[url] {
+				return (url, existingDirectory)
+			}
+			
 			dispatchGroup?.enter()
 			
-			// Reuse existing directory observations if possible
-			return (url, directories[url] ?? AppDirectory(url: url) {
-				if let dispatchGroup {
-					// Initial mode, notify dispatch group
-					dispatchGroup.leave()
+			let initialLoadLock = NSLock()
+			var initialLoadCompleted = false
+			
+			return (url, AppDirectory(url: url) {
+				initialLoadLock.lock()
+				let isInitialLoad = !initialLoadCompleted
+				if isInitialLoad {
+					initialLoadCompleted = true
+				}
+				initialLoadLock.unlock()
+				
+				if isInitialLoad {
+					dispatchGroup?.leave()
 				} else {
-					// Schedule update
 					self.updateScheduler.add(data: 1)
 				}
 			})
@@ -79,7 +94,6 @@ class AppLibrary {
 		dispatchGroup?.notify(queue: .global()) {
 			// Call update immediately. Using the scheduler delays the update.
 			self.performUpdate()
-			dispatchGroup = nil
 		}
 	}
 	
