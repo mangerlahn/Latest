@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, Observer {
@@ -27,6 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, Observer {
 	
 	/// The status item keeping Latest accessible from the menu bar.
 	private var statusItem: NSStatusItem?
+
+	/// Sparkle controller responsible for updating Latest itself.
+	@IBOutlet private weak var standardUpdaterController: SPUStandardUpdaterController?
 	
 	/// The timer scheduling automatic update checks while the app is running.
 	private var automaticCheckTimer: Timer?
@@ -261,6 +265,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, Observer {
 
 	private var isMainWindowVisible: Bool {
 		self.mainWindowController?.window?.isVisible == true
+	}
+
+	var automaticallyChecksForSelfUpdates: Bool {
+		get {
+			self.standardUpdaterController?.updater.automaticallyChecksForUpdates ?? false
+		}
+		set {
+			self.standardUpdaterController?.updater.automaticallyChecksForUpdates = newValue
+		}
 	}
 	    
 }
