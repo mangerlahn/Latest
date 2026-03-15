@@ -36,8 +36,11 @@ extension App {
 		/// A handler performing the update action of the app.
 		let updateAction: Action
 		
+		/// Whether this update was restored from cache and still needs a fresh verification.
+		let isCached: Bool
+		
 		/// Initializes the update with the given parameters.
-		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, source: Source, date: Date?, releaseNotes: ReleaseNotes?, updateAction: Action) {
+		init(app: App.Bundle, remoteVersion: Version, minimumOSVersion: OperatingSystemVersion?, source: Source, date: Date?, releaseNotes: ReleaseNotes?, updateAction: Action, isCached: Bool = false) {
 			self.app = app
 			self.remoteVersion = remoteVersion
 			self.minimumOSVersion = minimumOSVersion
@@ -45,6 +48,7 @@ extension App {
 			self.date = date
 			self.releaseNotes = releaseNotes
 			self.updateAction = updateAction
+			self.isCached = isCached
 		}
 
 		/// Whether an update is available for the given app.
@@ -72,12 +76,21 @@ extension App {
 		var externalUpdaterName: String? {
 			if case .external(let label, _) = updateAction { label } else { nil }
 		}
+		
+		/// Whether the update action can safely be executed.
+		var canPerformAction: Bool {
+			!isCached
+		}
 
 		
 		// MARK: - Actions
 				
 		/// Updates the app.
 		final func perform(isBulkUpdate: Bool) {
+			guard !self.isCached else {
+				fatalError("Attempt to perform a cached update before it has been refreshed.")
+			}
+
 			guard !self.isUpdating else {
 				fatalError("Attempt to perform update on app that is already updating.")
 			}
@@ -103,7 +116,7 @@ extension App {
 			guard version != remoteVersion else { return self }
 			
 			// Modify just the remote version
-			return Update(app: app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: source, date: date, releaseNotes: releaseNotes, updateAction: updateAction)
+			return Update(app: app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: source, date: date, releaseNotes: releaseNotes, updateAction: updateAction, isCached: isCached)
 		}
 		
 		

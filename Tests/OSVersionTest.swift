@@ -144,7 +144,7 @@ final class AppDirectoryCountProviderTest: XCTestCase {
 		var invocationCount = 0
 		let provider = AppDirectoryCountProvider(
 			collectionQueue: DispatchQueue(label: "AppDirectoryCountProviderTest.collection"),
-			bundleCounter: { _ in
+			bundleCounter: { _, _ in
 				invocationCount += 1
 				startedCollection.fulfill()
 				semaphore.wait()
@@ -177,7 +177,7 @@ final class AppDirectoryCountProviderTest: XCTestCase {
 		var invocationCount = 0
 		let provider = AppDirectoryCountProvider(
 			collectionQueue: DispatchQueue(label: "AppDirectoryCountProviderTest.cached"),
-			bundleCounter: { _ in
+			bundleCounter: { _, _ in
 				invocationCount += 1
 				return 7
 			}

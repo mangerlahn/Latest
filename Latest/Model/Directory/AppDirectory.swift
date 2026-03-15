@@ -31,7 +31,7 @@ class AppDirectory {
 	let handler: UpdateHandler
 	
 	/// The queue on which updates to the collection are being performed.
-	private var collectionQueue = DispatchQueue(label: "DataStoreQueue")
+	private lazy var collectionQueue = DispatchQueue(label: "AppDirectory.collection.\(url.path)", qos: .utility)
 
 	private let descriptorProvider: DescriptorProvider
 	private let observationErrorHandler: ObservationErrorHandler?
@@ -64,11 +64,13 @@ class AppDirectory {
 	/// Resumes tracking if it is not already running
 	private func resumeTracking() {
 		guard canObserveDirectory() else {
+			DiagnosticsLog.trace(.appDirectory, "canObserveDirectory failed path=\(url.path)")
 			collectBundles()
 			return
 		}
 		
 		if let error = listener.start() {
+			DiagnosticsLog.trace(.appDirectory, "listener.start failed path=\(url.path) error=\(error.localizedDescription)")
 			observationErrorHandler?(url, error)
 		}
 		collectBundles()
@@ -76,13 +78,22 @@ class AppDirectory {
 	
 	/// Triggers an update run
 	private func collectBundles() {
-		bundles = BundleCollector.collectBundles(at: self.url)
+		collectionQueue.async {
+			DiagnosticsLog.trace(.appDirectory, "collectBundles start path=\(self.url.path)")
+			let bundles = BundleCollector.collectBundles(at: self.url) { failedURL, error in
+				DiagnosticsLog.trace(.appDirectory, "collectBundles error path=\(failedURL.path) error=\(error.localizedDescription)")
+				self.observationErrorHandler?(failedURL, error)
+			}
+			DiagnosticsLog.trace(.appDirectory, "collectBundles finished path=\(self.url.path) bundles=\(bundles.count)")
+			self.bundles = bundles
+		}
 	}
 
 	private func canObserveDirectory() -> Bool {
 		let result = descriptorProvider(url)
 		guard result.descriptor != -1 else {
 			if let error = result.error {
+				DiagnosticsLog.trace(.appDirectory, "openDescriptor failed path=\(url.path) error=\(error.localizedDescription)")
 				observationErrorHandler?(url, error)
 			}
 			return false

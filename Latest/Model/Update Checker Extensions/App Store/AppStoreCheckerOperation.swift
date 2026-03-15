@@ -21,10 +21,15 @@ class AppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation,
 	}
 	
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
+		guard let bundle = Bundle(path: url.path) else { return false }
+		return canPerformUpdateCheck(forAppAt: url, bundle: bundle)
+	}
+	
+	static func canPerformUpdateCheck(forAppAt url: URL, bundle: Bundle) -> Bool {
 		let fileManager = FileManager.default
 		
 		// Mac Apps contain a receipt, iOS apps are only available via the Mac App Store
-		guard let receiptPath = receiptPath(forAppAt: url), fileManager.fileExists(atPath: receiptPath) || isIOSAppBundle(at: url) else { return false }
+		guard let receiptPath = receiptPath(for: bundle), fileManager.fileExists(atPath: receiptPath) || isIOSAppBundle(withReceiptPath: receiptPath) else { return false }
 		
 		return true
 	}
@@ -81,14 +86,22 @@ class AppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation,
 	/// Returns the app store receipt path for the app at the given URL, if available.
 	static fileprivate func receiptPath(forAppAt url: URL) -> String? {
 		let bundle = Bundle(path: url.path)
-		return bundle?.appStoreReceiptURL?.path
+		return bundle.flatMap(receiptPath(for:))
+	}
+	
+	static fileprivate func receiptPath(for bundle: Bundle) -> String? {
+		return bundle.appStoreReceiptURL?.path
 	}
 	
 	/// Returns whether the app at the given URL is an iOS app wrapped to run on macOS.
 	static fileprivate func isIOSAppBundle(at url: URL) -> Bool {
 		// iOS apps are wrapped inside a macOS bundle
 		let path = receiptPath(forAppAt: url)
-		return path?.contains("WrappedBundle") ?? false
+		return isIOSAppBundle(withReceiptPath: path)
+	}
+	
+	static fileprivate func isIOSAppBundle(withReceiptPath path: String?) -> Bool {
+		path?.contains("WrappedBundle") ?? false
 	}
 	
 }

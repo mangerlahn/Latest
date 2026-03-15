@@ -124,7 +124,7 @@ class UpdateButton: NSButton {
 		switch state {
 		case .none:
 			if let app = self.app, self.showActionButton {
-				self.updateInterfaceVisibility(with: app.updateAvailable ? .update : .open)
+				self.updateInterfaceVisibility(with: app.updateAvailable ? (app.canPerformUpdate ? .update : .open) : .open)
 			} else {
 				self.updateInterfaceVisibility(with: .none)
 			}
