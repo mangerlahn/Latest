@@ -51,7 +51,7 @@ class SparkleUpdateOperation: UpdateOperation, @unchecked Sendable {
 		super.execute()
 		
 		// Gather app and app bundle
-		guard let bundle = Bundle(path: self.bundleURL.path) else {
+		guard let bundle = Bundle(url: self.bundleURL) ?? Bundle(path: self.bundleURL.path) else {
 			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}

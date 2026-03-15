@@ -97,6 +97,7 @@
 		50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */; };
 		50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */; };
 		50FEB8812B1D2402006FB75D /* ExcludedAppIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50FEB8802B1D2402006FB75D /* ExcludedAppIdentifiers.plist */; };
+		50FFAA022D7A454000ABCDEF /* SparkleFeedURLTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FFAA012D7A454000ABCDEF /* SparkleFeedURLTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,6 +401,7 @@
 		50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionTest.swift; sourceTree = "<group>"; };
 		50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionSanitizationTest.swift; sourceTree = "<group>"; };
 		50FEB8802B1D2402006FB75D /* ExcludedAppIdentifiers.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExcludedAppIdentifiers.plist; sourceTree = "<group>"; };
+		50FFAA012D7A454000ABCDEF /* SparkleFeedURLTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleFeedURLTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -774,6 +776,7 @@
 				50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */,
 				50C81D731FBADC9100324C2E /* VersionTest.swift */,
 				50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */,
+				50FFAA012D7A454000ABCDEF /* SparkleFeedURLTest.swift */,
 				50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */,
 			);
 			path = Tests;
@@ -1180,6 +1183,7 @@
 				50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */,
 				50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */,
 				50E4EB092B17DFCE00A70A7D /* VersionParserTest.swift in Sources */,
+				50FFAA022D7A454000ABCDEF /* SparkleFeedURLTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
