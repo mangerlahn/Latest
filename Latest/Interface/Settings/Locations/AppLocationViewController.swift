@@ -21,6 +21,8 @@ class AppDirectoryViewController: SettingsTabItemViewController, NSTableViewData
 		validateButtons()
 	}
 	
+	private let countProvider = AppDirectoryCountProvider()
+	
 	private lazy var directoryStore: AppDirectoryStore = {
 		AppDirectoryStore(updateHandler: { [weak self] in
 			self?.tableView.reloadData()
@@ -37,6 +39,7 @@ class AppDirectoryViewController: SettingsTabItemViewController, NSTableViewData
 
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		guard let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("directoryCellView"), owner: self) as? AppDirectoryCellView else { return nil }
+		view.countProvider = countProvider
 		view.url = directoryStore.URLs[row]
 		
 		return view
@@ -93,6 +96,7 @@ class AppDirectoryViewController: SettingsTabItemViewController, NSTableViewData
 		panel.beginSheetModal(for: self.view.window!) { response in
 			guard response == .OK else { return }
 			panel.urls.forEach { url in
+				self.countProvider.invalidate(url)
 				self.directoryStore.add(url)
 			}
 		}

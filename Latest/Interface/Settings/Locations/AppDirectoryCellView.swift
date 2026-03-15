@@ -8,6 +8,66 @@
 
 import Cocoa
 
+/// Shared provider for counting tracked apps in a directory without rescanning the same URL on every table reload.
+final class AppDirectoryCountProvider {
+	
+	typealias BundleCounter = (URL) -> Int
+	typealias CountHandler = (Int) -> Void
+	
+	private let collectionQueue: DispatchQueue
+	private let stateQueue = DispatchQueue(label: "AppDirectoryCountProvider.state")
+	private let bundleCounter: BundleCounter
+	private var cachedCounts = [URL: Int]()
+	private var pendingHandlers = [URL: [CountHandler]]()
+	
+	init(
+		collectionQueue: DispatchQueue = DispatchQueue(label: "AppDirectoryCountProvider.collection", qos: .utility),
+		bundleCounter: @escaping BundleCounter = { BundleCollector.collectBundles(at: $0).count }
+	) {
+		self.collectionQueue = collectionQueue
+		self.bundleCounter = bundleCounter
+	}
+	
+	func count(for url: URL, completion: @escaping CountHandler) {
+		if let cachedCount = stateQueue.sync(execute: { cachedCounts[url] }) {
+			completion(cachedCount)
+			return
+		}
+		
+		let shouldStartCollection = stateQueue.sync { () -> Bool in
+			if pendingHandlers[url] != nil {
+				pendingHandlers[url]?.append(completion)
+				return false
+			}
+			
+			pendingHandlers[url] = [completion]
+			return true
+		}
+		
+		guard shouldStartCollection else { return }
+		
+		collectionQueue.async { [bundleCounter] in
+			let count = bundleCounter(url)
+			let handlers = self.stateQueue.sync { () -> [CountHandler] in
+				self.cachedCounts[url] = count
+				let handlers = self.pendingHandlers[url] ?? []
+				self.pendingHandlers[url] = nil
+				return handlers
+			}
+			
+			DispatchQueue.main.async {
+				handlers.forEach { $0(count) }
+			}
+		}
+	}
+	
+	func invalidate(_ url: URL) {
+		_ = stateQueue.sync {
+			cachedCounts.removeValue(forKey: url)
+		}
+	}
+}
+
 /// View that holds a single location checked for updates.
 class AppDirectoryCellView: NSTableCellView {
 	
@@ -33,12 +93,19 @@ class AppDirectoryCellView: NSTableCellView {
 		}
 	}
 	
+	var countProvider: AppDirectoryCountProvider? {
+		didSet {
+			setUpView()
+		}
+	}
+	
 	var isReachable: Bool = false
 	
 	private func setUpView() {
 		guard let url else {
 			titleLabel.stringValue = ""
 			iconImageView.image = nil
+			activityIndicator.stopAnimation(nil)
 			appCountLabel.isHidden = true
 			return
 		}
@@ -53,13 +120,17 @@ class AppDirectoryCellView: NSTableCellView {
 		// App Count
 		activityIndicator.startAnimation(nil)
 		appCountLabel.isHidden = true
-		DispatchQueue.global().async {
-			let count = BundleCollector.collectBundles(at: url).count
-			DispatchQueue.main.async {
-				self.appCountLabel.isHidden = false
-				self.activityIndicator.stopAnimation(nil)
-				self.appCountLabel.stringValue = NumberFormatter.localizedString(from: NSNumber(value: count), number: .none)
-			}
+		guard let countProvider else {
+			activityIndicator.stopAnimation(nil)
+			return
+		}
+		
+		countProvider.count(for: url) { [weak self] count in
+			guard let self, self.url == url else { return }
+			
+			self.appCountLabel.isHidden = false
+			self.activityIndicator.stopAnimation(nil)
+			self.appCountLabel.stringValue = NumberFormatter.localizedString(from: NSNumber(value: count), number: .none)
 		}
 	}
 	
