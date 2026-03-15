@@ -131,3 +131,72 @@ final class AppDirectoryTest: XCTestCase {
 	}
 
 }
+
+final class AppDirectoryCountProviderTest: XCTestCase {
+
+	func testCountDeduplicatesInFlightRequests() {
+		let startedCollection = expectation(description: "collection starts once")
+		let firstResult = expectation(description: "first request receives result")
+		let secondResult = expectation(description: "second request receives result")
+		let semaphore = DispatchSemaphore(value: 0)
+		let url = URL(fileURLWithPath: "/tmp/Latest-AppDirectoryCountProviderTest", isDirectory: true)
+		
+		var invocationCount = 0
+		let provider = AppDirectoryCountProvider(
+			collectionQueue: DispatchQueue(label: "AppDirectoryCountProviderTest.collection"),
+			bundleCounter: { _ in
+				invocationCount += 1
+				startedCollection.fulfill()
+				semaphore.wait()
+				return 3
+			}
+		)
+		
+		provider.count(for: url) { count in
+			XCTAssertEqual(count, 3)
+			firstResult.fulfill()
+		}
+		provider.count(for: url) { count in
+			XCTAssertEqual(count, 3)
+			secondResult.fulfill()
+		}
+		
+		wait(for: [startedCollection], timeout: 1)
+		XCTAssertEqual(invocationCount, 1)
+		
+		semaphore.signal()
+		wait(for: [firstResult, secondResult], timeout: 1)
+		XCTAssertEqual(invocationCount, 1)
+	}
+	
+	func testCountUsesCachedResultAfterInitialScan() {
+		let firstResult = expectation(description: "first request receives result")
+		let secondResult = expectation(description: "second request receives cached result")
+		let url = URL(fileURLWithPath: "/tmp/Latest-AppDirectoryCountProviderTest-cached", isDirectory: true)
+		
+		var invocationCount = 0
+		let provider = AppDirectoryCountProvider(
+			collectionQueue: DispatchQueue(label: "AppDirectoryCountProviderTest.cached"),
+			bundleCounter: { _ in
+				invocationCount += 1
+				return 7
+			}
+		)
+		
+		provider.count(for: url) { count in
+			XCTAssertEqual(count, 7)
+			firstResult.fulfill()
+		}
+		
+		wait(for: [firstResult], timeout: 1)
+		XCTAssertEqual(invocationCount, 1)
+		
+		provider.count(for: url) { count in
+			XCTAssertEqual(count, 7)
+			secondResult.fulfill()
+		}
+		
+		wait(for: [secondResult], timeout: 1)
+		XCTAssertEqual(invocationCount, 1)
+	}
+}
