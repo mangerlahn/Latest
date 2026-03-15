@@ -28,6 +28,18 @@
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
 "DateSortOption" = "Date";
 
+/* Alert text shown when Latest cannot monitor a configured app scan directory. The first placeholder is the directory path, the second is the localized system error. */
+"DirectoryObservationFailedAlertMessage" = "Latest could not monitor this app folder for changes:\n%@\n\nReason: %@\n\nLatest will continue with a one-time scan, but changes in this folder may not be detected automatically.";
+
+/* Title of alert shown when Latest cannot monitor a configured app scan directory. */
+"DirectoryObservationFailedAlertTitle" = "Couldn’t Monitor App Folder";
+
+/* Error shown when Latest cannot start recursive monitoring for a configured app scan directory. */
+"DirectoryObservationUnavailableError" = "Latest could not start recursive monitoring for this folder.";
+
+/* Additional suggestion shown when the app likely lacks permission to observe a scan directory. */
+"DirectoryObservationFailedPermissionSuggestion" = "If this looks like a permissions problem, review macOS Privacy & Security settings and folder access for Latest.";
+
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
 "DownloadingUpdateStatus" = "Downloading %@ of %@";
 
@@ -87,6 +99,9 @@
 
 /* Action to open the app. */
 "OpenAction" = "Open";
+
+/* Default button for dismissing an informational alert. */
+"OKAction" = "OK";
 
 /* Short description of error that no release notes were found. */
 "ReleaseNotesUnavailableError" = "No Release Notes";

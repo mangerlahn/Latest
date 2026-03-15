@@ -13,7 +13,9 @@ class AppLibrary {
 	
 	/// The handler to be called when apps change locally.
 	typealias UpdateHandler = ([App.Bundle]) -> Void
+	typealias ObservationFailureHandler = (URL, Error) -> Void
 	let updateHandler: UpdateHandler
+	let observationFailureHandler: ObservationFailureHandler
 	
 	/// A list of all application bundles that are available locally.
 	var bundles: [App.Bundle] {
@@ -21,10 +23,12 @@ class AppLibrary {
 	}
 		
 	private var directories = [URL: AppDirectory]()
+	private var reportedObservationFailures = Set<URL>()
 	
 	/// Initializes the library with the given handler for updates.
-	init(handler: @escaping UpdateHandler) {
+	init(handler: @escaping UpdateHandler, observationFailureHandler: @escaping ObservationFailureHandler = { _, _ in }) {
 		self.updateHandler = handler
+		self.observationFailureHandler = observationFailureHandler
 	}
 	
 	private lazy var updateScheduler: DispatchSourceUserDataAdd = {
@@ -55,8 +59,8 @@ class AppLibrary {
 		
 	private func setupDirectoryObservers() {
 		// Use a dispatch group for the initial setup to get contents for all directories before gathering apps.
-		// Each directory may emit multiple updates while it is being initialized, so only the first callback
-		// should fulfill the startup group.
+		// New directory observers may emit more than once during startup, but the initial load must only
+		// satisfy the group a single time.
 		let dispatchGroup = self.directories.isEmpty ? DispatchGroup() : nil
 		let existingDirectories = self.directories
 		
@@ -71,24 +75,30 @@ class AppLibrary {
 			}
 			
 			dispatchGroup?.enter()
-			
 			let initialLoadLock = NSLock()
 			var initialLoadCompleted = false
 			
-			return (url, AppDirectory(url: url) {
-				initialLoadLock.lock()
-				let isInitialLoad = !initialLoadCompleted
-				if isInitialLoad {
-					initialLoadCompleted = true
+			return (url, AppDirectory(
+				url: url,
+				updateHandler: {
+					initialLoadLock.lock()
+					let isInitialLoad = !initialLoadCompleted
+					if isInitialLoad {
+						initialLoadCompleted = true
+					}
+					initialLoadLock.unlock()
+					
+					if isInitialLoad {
+						dispatchGroup?.leave()
+					} else {
+						// Schedule update
+						self.updateScheduler.add(data: 1)
+					}
+				},
+				observationErrorHandler: { url, error in
+					self.reportObservationFailure(for: url, error: error)
 				}
-				initialLoadLock.unlock()
-				
-				if isInitialLoad {
-					dispatchGroup?.leave()
-				} else {
-					self.updateScheduler.add(data: 1)
-				}
-			})
+			))
 		})
 		
 		dispatchGroup?.notify(queue: .global()) {
@@ -99,6 +109,11 @@ class AppLibrary {
 	
 	private func performUpdate() {
 		updateHandler(bundles)
+	}
+
+	private func reportObservationFailure(for url: URL, error: Error) {
+		guard reportedObservationFailures.insert(url).inserted else { return }
+		observationFailureHandler(url, error)
 	}
 
 	
