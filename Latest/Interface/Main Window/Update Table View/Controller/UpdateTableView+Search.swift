@@ -20,6 +20,8 @@ class UpdateSearchField: NSSearchField {
 extension UpdateTableViewController {
 
 	func configureSortOrderPopupButton() {
+		guard let sortOrderPopupButton else { return }
+
 		sortOrderPopupButton.removeAllItems()
 		sortOrderPopupButton.menu?.autoenablesItems = false
 
@@ -37,6 +39,8 @@ extension UpdateTableViewController {
 	}
 
 	func updateSortOrderPopupButtonSelection() {
+		guard let sortOrderPopupButton else { return }
+
 		let selectedSortOrder = AppListSettings.shared.sortOrder
 		guard let item = sortOrderPopupButton.itemArray.first(where: {
 			($0.representedObject as? AppListSettings.SortOptions) == selectedSortOrder

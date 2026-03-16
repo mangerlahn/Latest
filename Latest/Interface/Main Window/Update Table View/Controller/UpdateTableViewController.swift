@@ -51,7 +51,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     @IBOutlet weak var tableViewMenu: NSMenu!
     
 	/// Constraint controlling the top constraint of the table view.
-	@IBOutlet weak var topTableConstraint: NSLayoutConstraint!
+	@IBOutlet weak var topTableConstraint: NSLayoutConstraint?
 	
 	/// The currently selected app within the UI.
 	var selectedApp: App? {
@@ -95,7 +95,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		self.updatesLabel.isHidden = true
 		
 		if #available(macOS 26, *) {
-			self.topTableConstraint.constant = 0
+			self.topTableConstraint?.constant = 0
 			self.tableView.enclosingScrollView?.contentInsets = .init(top: 78, left: 0, bottom: 0, right: 0)
 			self.tableView.enclosingScrollView?.scrollerInsets = .init(top: 0, left: 0, bottom: 10, right: 0)
 		}
@@ -468,7 +468,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	@IBOutlet weak var searchField: NSSearchField!
 
 	/// The dropdown used for selecting the current sort mode.
-	@IBOutlet weak var sortOrderPopupButton: NSPopUpButton!
+	@IBOutlet weak var sortOrderPopupButton: NSPopUpButton?
 	
 	
 	// MARK: - Actions

@@ -41,14 +41,27 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         return secondItem
     }()
     
-    /// The progress indicator showing how many apps have been checked for updates
-	lazy var progressIndicator: NSProgressIndicator = {
+    /// Legacy storyboard outlet retained for compatibility with the older window controller nib wiring.
+	@IBOutlet weak var progressIndicator: NSProgressIndicator?
+
+	/// Legacy storyboard outlet retained for compatibility with the older unified title bar buttons.
+	@IBOutlet weak var reloadButton: NSButton?
+
+	/// Legacy storyboard outlet retained for compatibility with the older unified title bar buttons.
+	@IBOutlet weak var updateAllButton: NSButton?
+
+	/// The progress indicator showing how many apps have been checked for updates when no storyboard view is wired.
+	lazy var toolbarProgressIndicator: NSProgressIndicator = {
 		let progressIndicator = NSProgressIndicator()
 		progressIndicator.controlSize = .small
 		progressIndicator.style = .spinning
 		
 		return progressIndicator
 	}()
+
+	var activeProgressIndicator: NSProgressIndicator {
+		self.progressIndicator ?? self.toolbarProgressIndicator
+	}
     
     /// The button that triggers an reload/recheck for updates
     @IBOutlet weak var reloadTouchBarButton: NSButton!
@@ -194,8 +207,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		self.isRunningUpdateCheck = true
 		
 		// Setup indeterminate progress indicator
-		self.progressIndicator.isIndeterminate = true
-		self.progressIndicator.startAnimation(updateChecker)
+		self.activeProgressIndicator.isIndeterminate = true
+		self.activeProgressIndicator.startAnimation(updateChecker)
 
 		self.window?.toolbar?.validateVisibleItems()
 	}
@@ -203,14 +216,14 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     /// This implementation activates the progress indicator, sets its max value and disables the reload button
 	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didStartCheckingApps numberOfApps: Int) {
 		// Setup progress indicator
-		self.progressIndicator.isIndeterminate = false
-        self.progressIndicator.doubleValue = 0
-        self.progressIndicator.maxValue = Double(numberOfApps - 1)
+		self.activeProgressIndicator.isIndeterminate = false
+        self.activeProgressIndicator.doubleValue = 0
+        self.activeProgressIndicator.maxValue = Double(numberOfApps - 1)
 	}
     
     /// Update the progress indicator
 	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didCheckApp: App) {
-		self.progressIndicator.increment(by: 1)
+		self.activeProgressIndicator.increment(by: 1)
     }
 	
 	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateCheckCoordinator) {
@@ -260,7 +273,9 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	private var isRunningUpdateCheck: Bool = false {
 		didSet {
 			self.reloadTouchBarButton.isEnabled = !isRunningUpdateCheck
-			self.progressIndicator.isHidden = !isRunningUpdateCheck
+			self.activeProgressIndicator.isHidden = !isRunningUpdateCheck
+			self.reloadButton?.isEnabled = !isRunningUpdateCheck
+			self.updateAllButton?.isEnabled = hasUpdatesAvailable
 		}
 	}
 
