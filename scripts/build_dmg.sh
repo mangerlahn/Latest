@@ -238,6 +238,7 @@ xcodebuild \
   -derivedDataPath "${DERIVED_DATA_DIR}" \
   -destination "${XCODE_DESTINATION}" \
   CODE_SIGN_IDENTITY="" \
+  CODE_SIGNING_ALLOWED=NO \
   CODE_SIGNING_REQUIRED=NO \
   build
 
@@ -283,6 +284,16 @@ fi
 ARTIFACT_BASENAME="${APP_NAME}-${APP_VERSION}"
 
 if [[ -n "${APP_SIGN_IDENTITY}" ]]; then
+  UPDATE_INSTALLER_BINARY="${APP_DIR}/Contents/Resources/LatestUpdateInstaller"
+  if [[ -f "${UPDATE_INSTALLER_BINARY}" ]]; then
+    log "Signing bundled update installer helper"
+    HELPER_SIGN_ARGS=(--force --sign "${APP_SIGN_IDENTITY}")
+    if [[ "${APP_SIGN_IDENTITY}" != "-" ]]; then
+      HELPER_SIGN_ARGS+=(--timestamp --options runtime)
+    fi
+    codesign "${HELPER_SIGN_ARGS[@]}" "${UPDATE_INSTALLER_BINARY}"
+  fi
+
   log "Signing app bundle"
   SIGN_ARGS=(--force --deep --sign "${APP_SIGN_IDENTITY}")
   if [[ "${APP_SIGN_IDENTITY}" != "-" ]]; then
