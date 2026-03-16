@@ -229,8 +229,8 @@ extension UpdateCheckCoordinator {
 	
 	/// Returns the update source for the given app using an already loaded bundle.
 	static func source(forAppAt url: URL, bundle: Bundle) -> App.Source? {
-		if MacAppStoreUpdateCheckerOperation.canPerformUpdateCheck(forAppAt: url, bundle: bundle) {
-			return MacAppStoreUpdateCheckerOperation.sourceType
+		if AppStoreUpdateCheckerOperation.canPerformUpdateCheck(forAppAt: url, bundle: bundle) {
+			return AppStoreUpdateCheckerOperation.sourceType
 		}
 		
 		if SparkleUpdateCheckerOperation.canPerformUpdateCheck(forAppAt: url, bundle: bundle) {

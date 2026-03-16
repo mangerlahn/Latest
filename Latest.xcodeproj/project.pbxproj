@@ -28,6 +28,7 @@
 		5040D45C28DBB753009BF379 /* HomebrewCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040D45A28DBB753009BF379 /* HomebrewCheckerOperation.swift */; };
 		5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048573F22C81DCF00C52C48 /* CommerceKit.framework */; };
 		5048574222C81DF900C52C48 /* StoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048574122C81DF800C52C48 /* StoreFoundation.framework */; };
+		504FB4A92B76CA28009C73E9 /* UpdateCheckSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504FB4A82B76CA28009C73E9 /* UpdateCheckSettings.swift */; };
 		504FB4AC2B76CA77009C73E9 /* AppLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504FB4AB2B76CA77009C73E9 /* AppLocationViewController.swift */; };
 		505062232F0DBECC00998F84 /* UpdateInstallerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505062222F0DBECC00998F84 /* UpdateInstallerProtocol.swift */; };
 		505062242F0DBECC00998F84 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505062202F0DBECC00998F84 /* main.swift */; };
@@ -218,6 +219,7 @@
 		5040D45A28DBB753009BF379 /* HomebrewCheckerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomebrewCheckerOperation.swift; sourceTree = "<group>"; };
 		5048573F22C81DCF00C52C48 /* CommerceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommerceKit.framework; path = ../../../../../../System/Library/PrivateFrameworks/CommerceKit.framework; sourceTree = "<group>"; };
 		5048574122C81DF800C52C48 /* StoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreFoundation.framework; path = ../../../../../../System/Library/PrivateFrameworks/StoreFoundation.framework; sourceTree = "<group>"; };
+		504FB4A82B76CA28009C73E9 /* UpdateCheckSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateCheckSettings.swift; sourceTree = "<group>"; };
 		504FB4AB2B76CA77009C73E9 /* AppLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocationViewController.swift; sourceTree = "<group>"; };
 		505062112F0DBE5900998F84 /* LatestUpdateInstaller */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LatestUpdateInstaller; sourceTree = BUILT_PRODUCTS_DIR; };
 		5050621F2F0DBECC00998F84 /* com.max-langer.latest.UpdateInstaller.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "com.max-langer.latest.UpdateInstaller.plist"; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				501EF8EB2B9A661B00F0D759 /* Directory */,
 				509512111FF362A1003D2D7F /* Update.swift */,
 				509512251FF3631D003D2D7F /* UpdateCheckCoordinator.swift */,
+				504FB4A82B76CA28009C73E9 /* UpdateCheckSettings.swift */,
 				50C8573E2B25CF6100F5BF0B /* Update Repository */,
 				50366E5127DFD14100D4E247 /* Source.swift */,
 				50E4EB052B17DAB900A70A7D /* Version */,
@@ -1115,6 +1118,7 @@
 				50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */,
 				50E4EB072B17DACB00A70A7D /* VersionParser.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
+				504FB4A92B76CA28009C73E9 /* UpdateCheckSettings.swift in Sources */,
 				5039DE8D22CAA2790088B39B /* AppStoreUpdateOperation.swift in Sources */,
 				507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */,
 				501EF8ED2B9A665A00F0D759 /* BundleCollector.swift in Sources */,

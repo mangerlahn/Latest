@@ -247,7 +247,7 @@ class AppDataStore: AppProviding {
 			switch source {
 			case .sparkle:
 				return .builtIn(block: { app in
-					UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
+					UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleURL: app.fileURL, bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
 				})
 			case .appStore:
 				return .external(label: NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store."), block: { app in

@@ -11,7 +11,6 @@ import AppKit
 /// View displaying a list of directories to be checked for apps with updates.
 class AppDirectoryViewController: SettingsTabItemViewController, NSTableViewDataSource, NSTableViewDelegate {
 	private var presentedObservationFailures = Set<String>()
-	private var observationFailureSheetController: DirectoryObservationSheetController?
 	
 	private let tableView = NSTableView()
 	private let titleLabel = NSTextField(labelWithString: NSLocalizedString("Folders to scan", comment: "Settings label for app scan locations."))
@@ -152,14 +151,29 @@ class AppDirectoryViewController: SettingsTabItemViewController, NSTableViewData
 		guard presentedObservationFailures.insert(failureKey).inserted else { return }
 		NSApplication.shared.requestUserAttention(.informationalRequest)
 		NSApplication.shared.activate(ignoringOtherApps: true)
-		if let window = self.view.window {
-			let sheetController = DirectoryObservationSheetController(url: url, error: error)
-			observationFailureSheetController = sheetController
-			window.beginSheet(sheetController.window!) { [weak self] response in
-				self?.observationFailureSheetController = nil
-				DirectoryObservationAlertPresenter.handle(response: response, for: url, error: error)
-			}
+		guard let window = self.view.window else { return }
+
+		let alert = NSAlert()
+		alert.alertStyle = .warning
+		alert.messageText = NSLocalizedString("DirectoryObservationFailedAlertTitle", comment: "Title of alert shown when Latest cannot monitor a configured app scan directory.")
+		alert.informativeText = self.directoryObservationFailureMessage(for: url, error: error)
+		alert.addButton(withTitle: NSLocalizedString("OKAction", comment: "Default button for dismissing an informational alert."))
+		alert.beginSheetModal(for: window)
+	}
+
+	private func directoryObservationFailureMessage(for url: URL, error: Error) -> String {
+		let format = NSLocalizedString("DirectoryObservationFailedAlertMessage", comment: "Alert text shown when Latest cannot monitor a configured app scan directory. The first placeholder is the directory path, the second is the localized system error.")
+		var message = String.localizedStringWithFormat(format, url.path, error.localizedDescription)
+
+		let nsError = error as NSError
+		if nsError.domain == NSPOSIXErrorDomain,
+		   let code = POSIXErrorCode(rawValue: Int32(nsError.code)),
+		   code == .EACCES || code == .EPERM {
+			let recovery = NSLocalizedString("DirectoryObservationFailedPermissionSuggestion", comment: "Additional suggestion shown when the app likely lacks permission to observe a scan directory.")
+			message += "\n\n\(recovery)"
 		}
+
+		return message
 	}
 	
 	private func buildInterface() {
