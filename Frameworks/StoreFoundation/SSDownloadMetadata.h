@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (id _Nullable)localServerInfo;
 @property(readonly, nullable) NSString *iapContentVersion;
 @property(readonly, nullable) NSNumber *iapContentSize;
-@property(readonly, nullable) NSArray *assets;
+@property(readonly, nullable) NSArray<SSDownloadAsset *> *assets;
 
 @property BOOL animationExpected;
 

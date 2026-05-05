@@ -96,7 +96,7 @@
 "x6Q-gr-lO2.title" = "貼上並符合樣式";
 
 /* Class = "NSMenuItem"; title = "Find and Replace…"; ObjectID = "1Gu-Ep-ZWZ"; */
-"1Gu-Ep-ZWZ.title" = "尋找與取代…";
+"1Gu-Ep-ZWZ.title" = "尋找及取代…";
 
 /* Class = "NSMenuItem"; title = "Latest"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Latest";
@@ -325,3 +325,20 @@
 
 /* Class = "NSMenu"; title = "Sort By"; ObjectID = "1fA-1k-qER"; */
 "1fA-1k-qER.title" = "排序方式";
+"DfQ-ss-Qv2.title" = "設定";
+"3jr-8s-u5A.title" = "<dnl>";
+"ivV-VN-4CO.title" = "檢查應用程式來源：";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "打開";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "包含：";
+"HfB-8a-u7P.title" = "不支援的應用程式";
+"Mdn-MF-57Q.title" = "顯示沒有任何可用更新資訊的應用程式。";
+"MRG-cS-c2g.title" = "位置";
+"NC1-U2-waJ.title" = "<dnl>";
+"Ntm-I4-heJ.title" = "有限支援的應用程式";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "回報問題…";
+"rG3-x9-kec.title" = "列出有限支援的應用程式。更新資訊可能已過時或不正確，且無法在 Latest 中直接執行更新。\n";
+"JNL-bS-gzr.title" = "一般";

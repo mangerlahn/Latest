@@ -12,11 +12,15 @@ import Foundation
 class AppDirectoryStore {
 	
 	typealias UpdateHandler = () -> Void
-	private let observer: NSKeyValueObservation?
+	private let directoryPathsObserver: NSKeyValueObservation?
+	private let excludedDirectoryPathsObserver: NSKeyValueObservation?
 
 	/// Initializes the store with the given update handler.
 	init(updateHandler: @escaping UpdateHandler) {
-		observer = UserDefaults.standard.observe(\.directoryPaths, changeHandler: { _, _ in
+		directoryPathsObserver = UserDefaults.standard.observe(\.directoryPaths, changeHandler: { _, _ in
+			updateHandler()
+		})
+		excludedDirectoryPathsObserver = UserDefaults.standard.observe(\.excludedDirectoryPaths, changeHandler: { _, _ in
 			updateHandler()
 		})
 	}
@@ -26,7 +30,7 @@ class AppDirectoryStore {
 	
 	/// The URLs stored in this object.
 	var URLs: [URL] {
-		Self.defaultURLs + customURLs
+		self.visibleDefaultURLs + customURLs
 	}
 	
 	/// Set of URLs that will always be checked.
@@ -47,6 +51,21 @@ class AppDirectoryStore {
 			guard let paths = UserDefaults.standard.directoryPaths else { return [] }
 			
 			return paths.map { path in
+				URL(filePath: path, directoryHint: .isDirectory, relativeTo: nil)
+			}
+		}
+		
+		set {
+			UserDefaults.standard.directoryPaths = newValue.map { $0.relativePath }
+		}
+	}
+
+	/// User-hidden default URLs.
+	private var excludedDefaultURLs: [URL] {
+		get {
+			guard let paths = UserDefaults.standard.excludedDirectoryPaths else { return [] }
+			
+			return paths.map { path in
 				if #available(macOS 13.0, *) {
 					URL(filePath: path, directoryHint: .isDirectory, relativeTo: nil)
 				} else {
@@ -56,8 +75,13 @@ class AppDirectoryStore {
 		}
 		
 		set {
-			UserDefaults.standard.directoryPaths = newValue.map { $0.relativePath }
+			UserDefaults.standard.excludedDirectoryPaths = newValue.map(\.relativePath)
 		}
+	}
+	
+	private var visibleDefaultURLs: [URL] {
+		let excludedPaths = Set(self.excludedDefaultURLs.map(\.standardizedFileURL.path))
+		return Self.defaultURLs.filter { !excludedPaths.contains($0.standardizedFileURL.path) }
 	}
 			
 
@@ -67,19 +91,35 @@ class AppDirectoryStore {
 	///
 	/// This method does nothing if the URL already exists.
 	func add(_ url: URL) {
+		if isDefault(url) {
+			excludedDefaultURLs.removeAll(where: { $0.standardizedFileURL.path == url.standardizedFileURL.path })
+			return
+		}
+		
 		// Ignore adding the same URL multiple times
 		guard !URLs.contains(url) else { return }
 		customURLs.append(url)
 	}
 	
-	/// Removes the custom URL, if set.
+	/// Removes the URL from the visible scan locations.
 	func remove(_ url: URL) {
-		customURLs.removeAll(where: { $0 == url })
+		if isDefault(url) {
+			guard !excludedDefaultURLs.contains(where: { $0.standardizedFileURL.path == url.standardizedFileURL.path }) else { return }
+			excludedDefaultURLs.append(url)
+			return
+		}
+		
+		customURLs.removeAll(where: { $0.standardizedFileURL.path == url.standardizedFileURL.path })
 	}
 	
 	/// Whether the URL can be removed from the store.
 	func canRemove(_ url: URL) -> Bool {
-		customURLs.contains(url) && !Self.defaultURLs.contains(url)
+		URLs.contains(where: { $0.standardizedFileURL.path == url.standardizedFileURL.path })
+	}
+	
+	/// Whether the URL is one of the built-in scan locations.
+	func isDefault(_ url: URL) -> Bool {
+		Self.defaultURLs.contains(where: { $0.standardizedFileURL.path == url.standardizedFileURL.path })
 	}
 	
 	/// Whether the url currently reachable.
@@ -90,12 +130,23 @@ class AppDirectoryStore {
 
 extension UserDefaults {
 	private static let directoryPathsKey = "directoryPaths"
+	private static let excludedDirectoryPathsKey = "excludedDirectoryPaths"
+	
 	@objc dynamic var directoryPaths: [String]? {
 		get {
 			stringArray(forKey: Self.directoryPathsKey)
 		}
 		set {
 			setValue(newValue, forKey: Self.directoryPathsKey)
+		}
+	}
+	
+	@objc dynamic var excludedDirectoryPaths: [String]? {
+		get {
+			stringArray(forKey: Self.excludedDirectoryPathsKey)
+		}
+		set {
+			setValue(newValue, forKey: Self.excludedDirectoryPathsKey)
 		}
 	}
 }

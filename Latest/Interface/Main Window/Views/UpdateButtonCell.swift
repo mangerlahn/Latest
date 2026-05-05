@@ -49,13 +49,7 @@ class UpdateButtonCell: NSButtonCell {
 	}
 	
 	/// Convenience for accessing the tint of the button.
-	private static var tintColor: NSColor {
-		if #available(OSX 10.14, *) {
-			return .controlAccentColor
-		} else {
-			return .systemBlue
-		}
-	}
+	private static let tintColor: NSColor = .controlAccentColor
 	
 	/// The progress to be rendered when `.progress` is set as the content type. Animates the transition.
 	private var _oldUpdateProgress: Double = 0.0
@@ -162,15 +156,15 @@ class UpdateButtonCell: NSButtonCell {
 		
 		// Draw background circle
 		NSColor.tertiaryLabelColor.setStroke()
-		var alignedRect = controlView.backingAlignedRect(NSInsetRect(NSRect(origin: center, size: .zero), -radius, -radius), options: .alignAllEdgesOutward)
+		let alignedRect = controlView.backingAlignedRect(NSInsetRect(NSRect(origin: center, size: .zero), -radius, -radius), options: .alignAllEdgesOutward)
 		var path = NSBezierPath(ovalIn: alignedRect)
 		path.lineWidth = 2.5
 		path.stroke()
 		
-		// Draw pause block
+		// Draw pause blocks
 		self.indicatorColor(for: Self.tintColor).set()
-		alignedRect = controlView.backingAlignedRect(NSInsetRect(NSRect(origin: center, size: .zero), -3, -3), options: .alignAllEdgesOutward)
-		NSBezierPath(roundedRect: alignedRect, xRadius: 2, yRadius: 2).fill()
+		renderPauseBar(offset: -2, from: center, in: controlView)
+		renderPauseBar(offset: 2, from: center, in: controlView)
 		
 		var progress = self.updateProgress
 		if let animationProgress = self.displayLink?.progress {
@@ -197,11 +191,13 @@ class UpdateButtonCell: NSButtonCell {
 		
 	private func indicatorColor(for color: NSColor) -> NSColor {
 		let tintColor: NSColor = (self.backgroundStyle == .emphasized ? .alternateSelectedControlTextColor : color)
-		if #available(OSX 10.14, *) {
-			return (self.isHighlighted ? tintColor.withSystemEffect(.pressed) : tintColor)
-		} else {
-			return (self.isHighlighted ? tintColor.shadow(withLevel: 0.8)! : tintColor)
-		}
+		return (self.isHighlighted ? tintColor.withSystemEffect(.pressed) : tintColor)
+	}
+	
+	private func renderPauseBar(offset: CGFloat, from center: CGPoint, in controlView: NSView) {
+		let pauseBar = NSInsetRect(NSRect(origin: center, size: .zero), -1, -4)
+		let alignedRect = controlView.backingAlignedRect(pauseBar.offsetBy(dx: offset, dy: 0), options: .alignAllEdgesOutward)
+		NSBezierPath(roundedRect: alignedRect, xRadius: 1, yRadius: 1).fill()
 	}
 	
 }

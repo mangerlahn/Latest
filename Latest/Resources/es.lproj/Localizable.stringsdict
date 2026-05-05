@@ -14,6 +14,8 @@
 			<string>¡Al día!</string>
 			<key>one</key>
 			<string>%d actualización disponible</string>
+			<key>many</key>
+			<string>%d actualizaciones disponibles</string>
 			<key>other</key>
 			<string>%d actualizaciones disponibles</string>
 		</dict>

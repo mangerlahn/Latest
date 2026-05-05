@@ -14,60 +14,90 @@
 /// - A filtered list of apps based on a given filter string
 struct AppListSnapshot {
 	
-	/// The query after which apps can be filtered
-	let filterQuery: String?
+	struct Configuration {
+		
+		/// The query after which apps can be filtered
+		let filterQuery: String?
+		let showInstalledUpdates: Bool
+		let showIgnoredUpdates: Bool
+		let includeUnsupportedApps: Bool
+		let includeAppsWithLimitedSupport: Bool
+		let sortOrder: AppListSettings.SortOptions
+		
+		init(filterQuery: String?, settings: AppListSettings = .shared) {
+			self.filterQuery = filterQuery
+			self.showInstalledUpdates = settings.showInstalledUpdates
+			self.showIgnoredUpdates = settings.showIgnoredUpdates
+			self.includeUnsupportedApps = settings.includeUnsupportedApps
+			self.includeAppsWithLimitedSupport = settings.includeAppsWithLimitedSupport
+			self.sortOrder = settings.sortOrder
+		}
+	}
+	
+	/// The configuration used to generate the current snapshot.
+	let configuration: Configuration
+	
+	/// The query after which apps can be filtered.
+	var filterQuery: String? {
+		configuration.filterQuery
+	}
 	
 	/// The apps from which the content is created
 	let apps: [App]
 	
 	/// Initializes the snapshot with the given list of apps and filter query.
 	init(withApps apps: [App], filterQuery: String?) {
-		self.filterQuery = filterQuery
+		self.init(withApps: apps, configuration: Configuration(filterQuery: filterQuery))
+	}
+	
+	/// Initializes the snapshot with the given list of apps and configuration.
+	init(withApps apps: [App], configuration: Configuration) {
+		self.configuration = configuration
 		self.apps = apps
-		self.entries = Self.generateEntries(from: apps, filterQuery: filterQuery)
+		self.entries = Self.generateEntries(from: apps, configuration: configuration)
 	}
 	
 	/// Returns a new snapshot containing an updated filter query.
 	func updated(with filterQuery: String?) -> AppListSnapshot {
-		return AppListSnapshot(withApps: self.apps, filterQuery: filterQuery)
+		return AppListSnapshot(withApps: self.apps, configuration: Configuration(filterQuery: filterQuery))
 	}
 	
 	/// Returns an updated snapshot.
 	func updated() -> AppListSnapshot {
-		return AppListSnapshot(withApps: self.apps, filterQuery: self.filterQuery)
+		return AppListSnapshot(withApps: self.apps, configuration: Configuration(filterQuery: self.filterQuery))
 	}
 	
 	/// The user-facable, sorted and filtered list of apps and sections. Observers of the data store will be notified, when this list changes.
 	let entries: [Entry]
 	
 	/// Sorts and filters all available apps based on the given filter criteria.
-	private static func generateEntries(from apps: [App], filterQuery: String?) -> [Entry] {
+	private static func generateEntries(from apps: [App], configuration: Configuration) -> [Entry] {
 		// Mutable copy
 		var visibleApps = apps
 		
 		visibleApps = visibleApps.filter { app in
 			// Apply filter query
-			if let filterQuery = filterQuery, !app.name.localizedCaseInsensitiveContains(filterQuery) {
+			if let filterQuery = configuration.filterQuery, !app.name.localizedCaseInsensitiveContains(filterQuery) {
 				return false
 			}
 
 			// Filter installed updates
-			if !AppListSettings.shared.showInstalledUpdates && !(app.updateAvailable || app.isIgnored) {
+			if !configuration.showInstalledUpdates && !(app.updateAvailable || app.isIgnored) {
 				return false
 			}
 						
 			// Filter ignored apps
-			if !AppListSettings.shared.showIgnoredUpdates && app.isIgnored {
+			if !configuration.showIgnoredUpdates && app.isIgnored {
 				return false
 			}
 
 			// Filter unsupported apps
-			if !AppListSettings.shared.includeUnsupportedApps && !app.supported {
+			if !configuration.includeUnsupportedApps && !app.supported {
 				return false
 			}
 			
 			// Filter apps not using the builtin updater
-			if !AppListSettings.shared.includeAppsWithLimitedSupport && app.updateAvailable && !app.usesBuiltInUpdater {
+			if !configuration.includeAppsWithLimitedSupport && app.updateAvailable && !app.usesBuiltInUpdater {
 				return false
 			}
 			
@@ -76,11 +106,17 @@ struct AppListSnapshot {
 		
 		// Sort apps based on setting
 		let filteredApps = visibleApps.sorted(by: { (app1, app2) -> Bool in
-			switch AppListSettings.shared.sortOrder {
+			switch configuration.sortOrder {
 			case .updateDate:
 				return app1.updateDate > app2.updateDate
 			case .name:
 				return app1.name.lowercased() < app2.name.lowercased()
+			case .supportStatus:
+				if app1.supportState != app2.supportState {
+					return app1.supportState.sortPriority < app2.supportState.sortPriority
+				}
+
+				return app1.name.localizedCaseInsensitiveCompare(app2.name) == .orderedAscending
 			}
 		})
 		

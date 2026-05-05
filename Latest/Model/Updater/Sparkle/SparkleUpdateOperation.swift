@@ -12,6 +12,9 @@ import Sparkle
 /// The operation updating Sparkle apps.
 class SparkleUpdateOperation: UpdateOperation, @unchecked Sendable {
 	
+	/// The app bundle location discovered by Latest.
+	private let bundleURL: URL
+	
 	/// The updater used to update this app.
 	private var updater: SPUUpdater?
 	
@@ -22,7 +25,8 @@ class SparkleUpdateOperation: UpdateOperation, @unchecked Sendable {
 	private let progressScheduler: DispatchSourceUserDataAdd
 	
 	/// Initializes the operation with the given Sparkle app and handler
-	override init(bundleIdentifier: String, appIdentifier: App.Bundle.Identifier) {
+	init(bundleURL: URL, bundleIdentifier: String, appIdentifier: App.Bundle.Identifier) {
+		self.bundleURL = bundleURL
 		self.progressScheduler = DispatchSource.makeUserDataAddSource(queue: .global())
 		super.init(bundleIdentifier: bundleIdentifier, appIdentifier: appIdentifier)
 
@@ -47,7 +51,7 @@ class SparkleUpdateOperation: UpdateOperation, @unchecked Sendable {
 		super.execute()
 		
 		// Gather app and app bundle
-		guard let bundle = Bundle(identifier: self.bundleIdentifier) else {
+		guard let bundle = Bundle(url: self.bundleURL) ?? Bundle(path: self.bundleURL.path) else {
 			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}

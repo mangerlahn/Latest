@@ -804,7 +804,7 @@
                                 </textFieldCell>
                             </textField>
                             <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFN-sP-y2s" customClass="UpdateSearchField" customModule="Latest" customModuleProvider="target">
-                                <rect key="frame" x="20" y="201" width="360" height="30"/>
+                                <rect key="frame" x="20" y="201" width="233" height="30"/>
                                 <searchFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="8t3-jj-ywQ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -814,6 +814,21 @@
                                     <action selector="searchFieldTextDidChange:" target="4DM-RB-IVI" id="Yqb-GN-rQ9"/>
                                 </connections>
                             </searchField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-0R-A3x">
+                                <rect key="frame" x="261" y="201" width="119" height="26"/>
+                                <popUpButtonCell key="cell" type="popup" bezelStyle="rounded" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="vXp-UQ-4lI" id="gL9-3E-6P4">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" autoenablesItems="NO" id="A4r-WT-lWE">
+                                        <items>
+                                            <menuItem title="Sort" id="vXp-UQ-4lI"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="changeSortOrderFromPopup:" target="4DM-RB-IVI" id="ACc-DU-eMQ"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="top" secondItem="JKX-qd-RUY" secondAttribute="top" id="Ca2-sY-MWm"/>
@@ -824,17 +839,20 @@
                             <constraint firstAttribute="trailing" secondItem="yos-E7-CDu" secondAttribute="trailing" id="QOn-lW-jBV"/>
                             <constraint firstItem="zLf-Z1-wsn" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" id="VRY-sw-t9v"/>
                             <constraint firstItem="gUd-I6-M7r" firstAttribute="leading" secondItem="JKX-qd-RUY" secondAttribute="leading" constant="20" id="Z5d-wf-g7W"/>
+                            <constraint firstItem="oTq-0R-A3x" firstAttribute="centerY" secondItem="pFN-sP-y2s" secondAttribute="centerY" id="aPH-H1-K2G"/>
                             <constraint firstItem="pFN-sP-y2s" firstAttribute="top" secondItem="zLf-Z1-wsn" secondAttribute="bottom" constant="8" symbolic="YES" id="ayY-zN-ich"/>
+                            <constraint firstItem="oTq-0R-A3x" firstAttribute="leading" secondItem="pFN-sP-y2s" secondAttribute="trailing" constant="8" symbolic="YES" id="cq8-c2-hF9"/>
                             <constraint firstAttribute="trailing" secondItem="zLf-Z1-wsn" secondAttribute="trailing" id="gSz-1J-Go1"/>
                             <constraint firstItem="yos-E7-CDu" firstAttribute="top" secondItem="pFN-sP-y2s" secondAttribute="bottom" constant="8" symbolic="YES" id="mOK-h5-sYO"/>
                             <constraint firstAttribute="trailing" secondItem="gUd-I6-M7r" secondAttribute="trailing" constant="20" id="txJ-69-wQL"/>
                             <constraint firstAttribute="bottom" secondItem="yos-E7-CDu" secondAttribute="bottom" constant="-1" id="ue4-dZ-PoH"/>
-                            <constraint firstAttribute="trailing" secondItem="pFN-sP-y2s" secondAttribute="trailing" constant="20" symbolic="YES" id="zvh-EW-8CN"/>
+                            <constraint firstAttribute="trailing" secondItem="oTq-0R-A3x" secondAttribute="trailing" constant="20" symbolic="YES" id="zvh-EW-8CN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="placeholderLabel" destination="gUd-I6-M7r" id="NGo-VL-QyQ"/>
                         <outlet property="searchField" destination="pFN-sP-y2s" id="x6z-RR-xrS"/>
+                        <outlet property="sortOrderPopupButton" destination="oTq-0R-A3x" id="VDU-8r-yfl"/>
                         <outlet property="tableView" destination="Aue-8r-EWw" id="Kk8-bt-uhk"/>
                         <outlet property="tableViewMenu" destination="Ake-Tt-cX3" id="9e8-6Q-FyL"/>
                         <outlet property="updatesLabel" destination="C1U-Xt-po9" id="gYG-qf-IaS"/>

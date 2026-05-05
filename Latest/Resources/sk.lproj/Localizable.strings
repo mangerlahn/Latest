@@ -123,4 +123,4 @@
 "SingleCombinedVersionFormat" = "Version: %@";
 "LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
 "FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"CombinedVersionFormat" = "Verzia: %1$@ → %2$@";

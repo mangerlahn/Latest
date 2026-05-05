@@ -195,7 +195,7 @@
 "eIs-LJ-TQe.title" = "今すぐドキュメントを確認";
 
 /* Class = "NSMenuItem"; title = "Show in Finder"; ObjectID = "h9B-7u-6ru"; */
-"h9B-7u-6ru.title" = "ファインダーで表示";
+"h9B-7u-6ru.title" = "Finderで表示";
 
 /* Class = "NSMenu"; title = "Find"; ObjectID = "aCF-1x-0c1"; */
 "aCF-1x-0c1.title" = "探す";
@@ -304,3 +304,20 @@
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "pDo-aP-nIF"; */
 "pDo-aP-nIF.title" = "選択範囲にジャンプ";
+"3jr-8s-u5A.title" = "<dnl>";
+"DfQ-ss-Qv2.title" = "設定";
+"ivV-VN-4CO.title" = "チェックするアプリの場所:";
+"Pdj-YX-mnM.title" = "<dnl>";
+"Uax-et-NIt.title" = "開く";
+"V9u-cb-GDY.title" = "<dnl>";
+"9ux-Hr-SHb.title" = "<dnl>";
+"Aeb-LJ-TzL.title" = "含める:";
+"HfB-8a-u7P.title" = "非サポートのアプリ";
+"JNL-bS-gzr.title" = "一般";
+"Mdn-MF-57Q.title" = "利用可能な更新情報が一切ないアプリを表示します。";
+"MRG-cS-c2g.title" = "場所";
+"NC1-U2-waJ.title" = "<dnl>";
+"Ntm-I4-heJ.title" = "制限ありのアプリ";
+"NvM-TY-Zhn.title" = "<dnl>";
+"pNJ-Hl-Qxz.title" = "問題を報告…";
+"rG3-x9-kec.title" = "サポートが限定されているアプリの一覧です。アップデート情報は古くなっていたり不正確な場合があり、最新アプリでは直接更新を行うことができません。\n";

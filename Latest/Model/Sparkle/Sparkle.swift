@@ -17,7 +17,7 @@ struct Sparke {
 		}
 
 		if let urlString = information["SUFeedURL"] as? String, let feedURL = URL(string: urlString.unquoted)  {
-			return feedURL
+			return Self.adjustedFeedURL(feedURL, bundleIdentifier: identifier, executableArchitectures: bundle.executableArchitectures)
 		} else { // Maybe the app is built using DevMate
 			// Check for the DevMate framework
 			let frameworksURL = URL(fileURLWithPath: bundle.bundlePath, isDirectory: true).appendingPathComponent("Contents").appendingPathComponent("Frameworks")
@@ -39,6 +39,61 @@ struct Sparke {
 		}
 	}
 	
+	static func adjustedFeedURL(_ feedURL: URL, bundleIdentifier: String, executableArchitectures: [NSNumber]?) -> URL {
+		guard Self.usesWiresharkArchitectureSpecificFeed(feedURL, bundleIdentifier: bundleIdentifier),
+			  let architecture = Self.architecturePathComponent(from: executableArchitectures),
+			  var components = URLComponents(url: feedURL, resolvingAgainstBaseURL: false) else {
+			return feedURL
+		}
+
+		var pathComponents = components.path.split(separator: "/").map(String.init)
+		guard pathComponents.count >= 6 else {
+			return feedURL
+		}
+
+		pathComponents[5] = architecture
+		components.path = "/\(pathComponents.joined(separator: "/"))"
+
+		return components.url ?? feedURL
+	}
+
+	private static func usesWiresharkArchitectureSpecificFeed(_ feedURL: URL, bundleIdentifier: String) -> Bool {
+		guard ["org.wireshark.Wireshark", "org.wireshark.Stratoshark"].contains(bundleIdentifier),
+			  ["wireshark.org", "www.wireshark.org"].contains(feedURL.host ?? "") else {
+			return false
+		}
+
+		let pathComponents = feedURL.path.split(separator: "/").map(String.init)
+		guard pathComponents.count >= 8 else {
+			return false
+		}
+
+		return pathComponents[0] == "update"
+			&& pathComponents[1] == "0"
+			&& pathComponents[4] == "macOS"
+	}
+
+	private static func architecturePathComponent(from executableArchitectures: [NSNumber]?) -> String? {
+		guard let executableArchitectures else {
+			return nil
+		}
+
+		if #available(macOS 11.0, *),
+		   executableArchitectures.contains(where: { $0.intValue == NSBundleExecutableArchitectureARM64 }) {
+			return "arm64"
+		}
+
+		if executableArchitectures.contains(where: { $0.intValue == NSBundleExecutableArchitectureX86_64 }) {
+			return "x86-64"
+		}
+
+		if executableArchitectures.contains(where: { $0.intValue == NSBundleExecutableArchitectureI386 }) {
+			return "x86"
+		}
+
+		return nil
+	}
+
 }
 
 fileprivate extension String {

@@ -11,6 +11,7 @@ module StoreFoundation {
     header "ISStoreAccount.h"
     header "ISStoreClient.h"
     header "SSDownload.h"
+    header "SSDownloadAsset.h"
     header "SSDownloadMetadata.h"
     header "SSDownloadPhase.h"
     header "SSDownloadStatus.h"

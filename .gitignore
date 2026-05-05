@@ -6,6 +6,8 @@
 
 ## Build generated
 build/
+.build/
+dist/
 DerivedData/
 
 ## Various settings
@@ -69,3 +71,6 @@ iOSInjectionProject/
 *.xcbkptlist
 /Frameworks/Cartfile.resolved
 Frameworks/Carthage/Checkouts
+
+# JetBrains IDEs
+.idea/

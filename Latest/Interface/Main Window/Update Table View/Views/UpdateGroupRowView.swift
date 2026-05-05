@@ -11,5 +11,5 @@ import Cocoa
 /// The row view used by the group rows in the update tableView
 class UpdateGroupRowView: NSTableRowView {
 	// Prevent any row view drawing
-	override func draw(_ dirtyRect: NSRect) {}
+	override func drawBackground(in dirtyRect: NSRect) {}
 }

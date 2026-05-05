@@ -2,7 +2,7 @@
 
 [![Translation status][image-1]][1]
 
-This is Latest, a small utility app for the Mac. Latest is a free and open-source app for macOS that checks if all your apps are up to date. Get a quick overview of which apps changed and what changed and update them right away. Latest currently supports apps downloaded from the Mac App Store and apps that use Sparkle for updates, which covers most of the apps on the market.
+This is Latest, a small utility app for the Mac. Latest is a free and open-source app for macOS that checks if your apps are up to date. Get a quick overview of which apps changed and what changed and update them right away. Latest currently supports apps downloaded from the Mac App Store and those that use Sparkle for updates.
 
 Latest is developed in my free time, so occasional updates may happen. Take a look at the [Issues][2] section to see what's coming. If you have an idea for a new feature, or encounter any bugs, feel free to open a new issue.
 I am thankful for contributions. Check out the section below for more information.
@@ -31,6 +31,11 @@ After that, run `brew install --cask latest` to install the current version of L
 You can build Latest directly on your machine. To do that, you have to download the source code by cloning the repository: `git clone --recurse-submodules git@github.com:mangerlahn/Latest.git`.
 
 Then you can open the `Latest.xcodeproj` and hit *Build and Run*. Make sure that the `Latest` scheme is selected.
+
+### Build from IntelliJ IDEA
+
+If you prefer JetBrains tooling, this repository also includes shared run configurations for IntelliJ IDEA.
+Open the project in IntelliJ IDEA and use either `Latest (Build)` or `Latest (Run)`. Both configurations call the shell scripts in [`scripts/`](./scripts), which build the Xcode project through `xcodebuild`.
 
 ## Contribution
 

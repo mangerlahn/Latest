@@ -113,6 +113,11 @@ extension App {
 	var supported: Bool {
 		return self.source != .none
 	}
+
+	/// The support level of the app within Latest.
+	var supportState: Source.SupportState {
+		return self.source.supportState
+	}
 	
 	/// The date of the app when it was last updated.
 	var updateDate: Date {
@@ -152,6 +157,11 @@ extension App {
 		return self.update?.usesBuiltInUpdater ?? false
 	}
 	
+	/// Whether an available update can be triggered immediately.
+	var canPerformUpdate: Bool {
+		update?.canPerformAction ?? false
+	}
+	
 	/// The name of the external updater used to update this app.
 	///
 	/// Returns `nil` if `usesBuiltInUpdater` is `true`.
@@ -160,8 +170,8 @@ extension App {
 	}
 	
 	/// Updates the app. This is a sub-classing hook. The default implementation opens the app.
-	final func performUpdate() {
-		self.update?.perform()
+	final func performUpdate(isBulkUpdate: Bool = false) {
+		self.update?.perform(isBulkUpdate: isBulkUpdate)
 	}
 	
 	/// Cancels the ongoing app update.
@@ -196,6 +206,11 @@ extension App {
 		}
 		
 		return attributedName
+	}
+	
+	/// Returns the last known update information, if any.
+	var cachedUpdate: Update? {
+		update
 	}
 
 }

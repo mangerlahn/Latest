@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "%@ ile güncelle";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "Destek yok";
+"LimitedSupportLabel" = "Sınırlı destek";
+"NoSupportDescription" = "Güncelleme bilgisi mevcut değil. Güncellemeleri yönetmek için uygulamayı veya web sitesini kontrol edin.";
+"SupportedCompactLabel" = "Destekleniyor";
+"LimitedSupportCompactLabel" = "Sınırlı";
+"SupportedLabel" = "Destekleniyor";
+"UnsupportedCompactLabel" = "Desteklenmiyor";
+"SingleCombinedVersionFormat" = "Sürüm: %@";
+"LimitedSupportDescription" = "Güncelleme bilgileri genellikle mevcuttur ancak bazen eski veya hatalı olabilir. Güncellemeler doğrudan buradan gerçekleştirilemez.";
+"FullSupportDescription" = "Tam olarak destekleniyor. Güvenilir sürüm bilgileri mevcut ve güncellemeler uygulama üzerinden doğrudan yönetilebilir.\n\nGösterilen sürüm bilgisi yanlışsa, lütfen bir hata bildirimi yazmaktan çekinmeyin.";
+"CombinedVersionFormat" = "Sürüm: %1$@ → %2$@";

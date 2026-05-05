@@ -13,7 +13,18 @@ import Cocoa
  */
 class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate, Observer {
 	
+	private struct SnapshotUpdateRequest {
+		let apps: [App]
+		let configuration: AppListSnapshot.Configuration
+		let animated: Bool
+	}
+	
 	var id = UUID()
+	
+	/// Background queue used to prepare expensive snapshots without blocking the main thread.
+	private let snapshotQueue = DispatchQueue(label: "UpdateTableViewController.snapshot", qos: .userInitiated)
+	private var pendingSnapshotUpdate: SnapshotUpdateRequest?
+	private var snapshotUpdateInProgress = false
 	
     /// The array holding the apps that have an update available.
 	var snapshot: AppListSnapshot = AppListSnapshot(withApps: [], filterQuery: nil) {
@@ -39,6 +50,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     /// The menu displayed on secondary clicks on cells in the list
     @IBOutlet weak var tableViewMenu: NSMenu!
     
+	/// Constraint controlling the top constraint of the table view.
+	@IBOutlet weak var topTableConstraint: NSLayoutConstraint?
+	
 	/// The currently selected app within the UI.
 	var selectedApp: App? {
 		willSet {
@@ -66,6 +80,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MLMUpdateCellIdentifier"), owner: self) {
             self.tableView.rowHeight = cell.frame.height
         }
+
+		self.configureSortOrderPopupButton()
                         
         self.tableViewMenu.delegate = self
         self.tableView.menu = self.tableViewMenu
@@ -73,12 +89,15 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		AppListSettings.shared.add(self, handler: self.updateSnapshot)
         
 		UpdateCheckCoordinator.shared.appProvider.addObserver(self) { newValue in
-			self.scheduleTableViewUpdate(with: AppListSnapshot(withApps: newValue, filterQuery: self.snapshot.filterQuery), animated: true)
-			self.updateTitleAndBatch()
+			self.scheduleSnapshotUpdate(withApps: newValue, filterQuery: self.snapshot.filterQuery, animated: true)
 		}
 		
-		if #available(macOS 11, *) {
-			self.updatesLabel.isHidden = true
+		self.updatesLabel.isHidden = true
+		
+		if #available(macOS 26, *) {
+			self.topTableConstraint?.constant = 0
+			self.tableView.enclosingScrollView?.contentInsets = .init(top: 78, left: 0, bottom: 0, right: 0)
+			self.tableView.enclosingScrollView?.scrollerInsets = .init(top: 0, left: 0, bottom: 10, right: 0)
 		}
     }
     
@@ -87,9 +106,10 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 		
 		// Setup title
 		self.updateTitleAndBatch()
-		
-		// Setup search field
+
+		// Keep the search field below the titlebar controls in the unified window style.
         NSLayoutConstraint(item: self.searchField!, attribute: .top, relatedBy: .equal, toItem: self.view.window?.contentLayoutGuide, attribute: .top, multiplier: 1.0, constant: 1).isActive = true
+
 		self.view.window?.makeFirstResponder(nil)
 	}
 	
@@ -104,7 +124,8 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
     @IBOutlet weak var tableView: NSTableView!
     
 	func updateSnapshot() {
-		self.scheduleTableViewUpdate(with: self.snapshot.updated(), animated: true)
+		self.updateSortOrderPopupButtonSelection()
+		self.scheduleSnapshotUpdate(withApps: self.snapshot.apps, filterQuery: self.snapshot.filterQuery, animated: true)
 		self.updateTitleAndBatch()
 	}
 	
@@ -195,27 +216,25 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
                 self.updateApp(atIndex: row)
 				tableView.rowActionsVisible = false
             })
-            
-			// Teal on macOS 11 / below is the same as Cyan on macOS 12+
-			if #available(macOS 12.0, *) {
-				action.backgroundColor = .systemCyan
-			} else {
-				action.backgroundColor = .systemTeal
-			}
-            
+			
+			action.image = NSImage(systemSymbolName: "square.and.arrow.down", accessibilityDescription: nil)
+			action.backgroundColor = .systemCyan
+			
             return [action]
         } else if edge == .leading {
 			let open = NSTableViewRowAction(style: .regular, title: NSLocalizedString("OpenAction", comment: "Action to open a given app.")) { action, row in
 				self.openApp(at: row)
 				tableView.rowActionsVisible = false
 			}
+			open.image = NSImage(systemSymbolName: "arrow.up.forward.app", accessibilityDescription: nil)
 			
             let reveal = NSTableViewRowAction(style: .regular, title: NSLocalizedString("RevealAction", comment: "Revea in Finder Row action"), handler: { (action, row) in
                 self.showAppInFinder(at: row)
 				tableView.rowActionsVisible = false
             })
 			reveal.backgroundColor = .systemGray
-
+			reveal.image = NSImage(systemSymbolName: "finder", accessibilityDescription: nil)
+			
             return [open, reveal]
         }
         
@@ -250,6 +269,40 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	/// Whether a table view update is currently ongoing.
 	private var tableViewUpdateInProgress = false
+	
+	func scheduleSnapshotUpdate(withApps apps: [App], filterQuery: String?, animated: Bool) {
+		let request = SnapshotUpdateRequest(
+			apps: apps,
+			configuration: AppListSnapshot.Configuration(filterQuery: filterQuery),
+			animated: animated
+		)
+		pendingSnapshotUpdate = request
+		startNextSnapshotUpdateIfNeeded()
+	}
+	
+	private func startNextSnapshotUpdateIfNeeded() {
+		guard !snapshotUpdateInProgress, let request = pendingSnapshotUpdate else { return }
+		pendingSnapshotUpdate = nil
+		snapshotUpdateInProgress = true
+		
+		snapshotQueue.async {
+			let snapshot = AppListSnapshot(withApps: request.apps, configuration: request.configuration)
+			
+			DispatchQueue.main.async {
+				let shouldAnimate = request.animated && self.shouldAnimateTransition(from: self.snapshot, to: snapshot)
+				self.scheduleTableViewUpdate(with: snapshot, animated: shouldAnimate)
+				self.updateTitleAndBatch()
+				self.snapshotUpdateInProgress = false
+				self.startNextSnapshotUpdateIfNeeded()
+			}
+		}
+	}
+	
+	private func shouldAnimateTransition(from oldSnapshot: AppListSnapshot, to newSnapshot: AppListSnapshot) -> Bool {
+		let maxEntryCount = max(oldSnapshot.entries.count, newSnapshot.entries.count)
+		let delta = abs(oldSnapshot.entries.count - newSnapshot.entries.count)
+		return maxEntryCount <= 150 && delta <= 30
+	}
 	
 	/// Schedules a table view update with the given snapshot.
 	func scheduleTableViewUpdate(with snapshot: AppListSnapshot, animated: Bool) {
@@ -374,7 +427,7 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         guard let action = menuItem.action else {
             return true
         }
-        
+
 		let index = self.rowIndex(forMenuItem: menuItem)
 		guard index >= 0, let app = self.snapshot.app(at: index) else {
 			return false
@@ -413,6 +466,9 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
 	
 	/// The search field used for filtering apps
 	@IBOutlet weak var searchField: NSSearchField!
+
+	/// The dropdown used for selecting the current sort mode.
+	@IBOutlet weak var sortOrderPopupButton: NSPopUpButton?
 	
 	
 	// MARK: - Actions
@@ -469,26 +525,18 @@ class UpdateTableViewController: NSViewController, NSMenuItemValidation, NSTable
         }
     }
     
-    /// Updates the title in the toolbar ("No / n updates available") and the badge of the app icon
+    /// Updates the title in the toolbar ("No / n updates available")
     private func updateTitleAndBatch() {
 		let showExternalUpdates = AppListSettings.shared.includeAppsWithLimitedSupport
 		let count = UpdateCheckCoordinator.shared.appProvider.countOfAvailableUpdates(where: { showExternalUpdates || $0.usesBuiltInUpdater })
 		let statusText: String
 		
-		// Update dock badge
-		NSApplication.shared.dockTile.badgeLabel = count == 0 ? nil : NumberFormatter().string(from: count as NSNumber)
-		
 		let format = NSLocalizedString("NumberOfUpdatesAvailable", comment: "number of updates available")
 		statusText = String.localizedStringWithFormat(format, count)
         
 		self.scrubber?.reloadData()
-		
-		if #available(macOS 11, *) {
-			self.view.window?.subtitle = statusText
-		} else {
-			self.updatesLabel.stringValue = statusText
-		}
-    }
+		self.view.window?.subtitle = statusText
+	}
 	
 	private func ensureSelection() {
 		self.selectApp(at: self.selectedAppIndex)

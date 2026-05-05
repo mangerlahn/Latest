@@ -1,3 +1,8 @@
-"NSHumanReadableCopyright" = "Autoriõigused © 2025 Max Langer. Kõik õigused kaitstud.";
+/* The name of the app. Should only be translated if "Latest" feels "wrong" for a given language and if a better alternative exists. I.e. the app is not localized in German as english app names are common and no "good sounding" alternatives exist. */
 "CFBundleName" = "Latest";
+
+/* The name of the app. Should only be translated if "Latest" feels "wrong" for a given language and if a better alternative exists. I.e. the app is not localized in German as english app names are common and no "good sounding" alternatives exist. */
 "CFBundleDisplayName" = "Latest";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Autoriõigused © 2025 Max Langer. Kõik õigused kaitstud.";
