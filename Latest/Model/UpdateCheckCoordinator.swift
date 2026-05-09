@@ -12,7 +12,7 @@ import Foundation
  Protocol that defines some methods on reporting the progress of the update checking process.
  */
 protocol UpdateCheckProgressReporting : AnyObject {
-    
+
 	/// Indicates that the scan process has been started.
 	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateCheckCoordinator)
 
@@ -27,7 +27,7 @@ protocol UpdateCheckProgressReporting : AnyObject {
 
 	/// Called after the update checker finished checking for updates.
 	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateCheckCoordinator)
-	
+
 }
 
 /**
@@ -35,29 +35,47 @@ protocol UpdateCheckProgressReporting : AnyObject {
  Each new method of checking for updates should be implemented in its own extension and then included in the `updateMethods` array
  */
 class UpdateCheckCoordinator {
-    
+
     typealias UpdateCheckerCallback = (_ app: App.Bundle) -> Void
-	
+
 	/// The object holding the apps found by the checker.
 	var appProvider: AppProviding {
 		return self.dataStore
 	}
-        
-	
+
+
 	// MARK: - Initialization
-	
+
 	/// The shared instance of the update checker.
 	static let shared = UpdateCheckCoordinator()
-	
-	
+
+	private var updateCompletionObserver: NSObjectProtocol?
+
+	init() {
+		self.updateCompletionObserver = NotificationCenter.default.addObserver(
+			forName: .latestUpdateOperationDidFinish,
+			object: nil,
+			queue: nil
+		) { [weak self] notification in
+			self?.refreshUpdatedApp(from: notification)
+		}
+	}
+
+	deinit {
+		if let updateCompletionObserver {
+			NotificationCenter.default.removeObserver(updateCompletionObserver)
+		}
+	}
+
+
 	// MARK: - Update Checking
-	
+
 	/// Whether the checker is currently waiting for the initial update check.
 	private var waitForInitialCheck = true
 
 	/// The delegate for the progress of the entire update checking progress
     weak var progressDelegate : UpdateCheckProgressReporting?
-	
+
 	/// The library containing all bundles loaded from disk.
 	private lazy var library: AppLibrary = {
 		return AppLibrary { bundles in
@@ -66,20 +84,20 @@ class UpdateCheckCoordinator {
 			self.runUpdateCheck(on: newApps.map({ $0.bundle }))
 		}
 	}()
-	
+
 	/// The data store updated apps should be passed to
 	private let dataStore = AppDataStore()
-	
+
 	/// The queue to run update checks on.
 	private let updateOperationQueue: OperationQueue = {
 		let operationQueue = OperationQueue()
-		
+
 		// Allow 10 simultaneous updates
 		operationQueue.maxConcurrentOperationCount = 10
-		
+
 		return operationQueue
 	}()
-	
+
 	/// Initiate the update check, if not already running.
 	func run() {
 		self.progressDelegate?.updateCheckerDidStartScanningForApps(self)
@@ -92,7 +110,7 @@ class UpdateCheckCoordinator {
 
 		self.runUpdateCheck(on: self.library.bundles)
 	}
-	
+
 	/// Performs the update check on the given bundles.
 	private func runUpdateCheck(on bundles: [App.Bundle]) {
 		let repository = UpdateRepository.newRepository()
@@ -101,45 +119,60 @@ class UpdateCheckCoordinator {
 				self.didCheck(bundle, result)
 			}
 		}
-		
+
 		DispatchQueue.global().async {
 			self.performUpdateCheck(with: operations)
 		}
 	}
-	
+
 	/// Performs update checks for the given check operations.
 	private func performUpdateCheck(with operations: [UpdateCheckerOperation]) {
 		assert(!Thread.current.isMainThread, "Must not be called on main thread.")
-		
+
 		// Inform delegate of update check
 		DispatchQueue.main.async {
 			self.progressDelegate?.updateChecker(self, didStartCheckingApps: operations.count)
 		}
-		
+
 		// Start update check
 		self.updateOperationQueue.addOperations(operations, waitUntilFinished: true)
-			
+
 		DispatchQueue.main.async {
 			// Update Checks finished
 			self.progressDelegate?.updateCheckerDidFinishCheckingForUpdates(self)
 		}
 	}
-    
+
 	/// Callback to notify that an app has been updated.
 	private func didCheck(_ bundle: App.Bundle, _ update: Result<App.Update, Error>?) {
 		let app = self.dataStore.set(update, for: bundle)
-		
+
 		DispatchQueue.main.async {
 			self.progressDelegate?.updateChecker(self, didCheckApp: app)
 		}
     }
-	
+
+	private func refreshUpdatedApp(from notification: Notification) {
+		guard let appIdentifier = notification.userInfo?[UpdateOperation.appIdentifierUserInfoKey] as? App.Bundle.Identifier else {
+			return
+		}
+
+		DispatchQueue.global().asyncAfter(deadline: .now() + 0.3) { [weak self] in
+			guard let self, let bundle = BundleCollector.collectBundle(at: appIdentifier) else {
+				return
+			}
+
+			_ = self.dataStore.set(appBundle: bundle)
+			self.runUpdateCheck(on: [bundle])
+		}
+	}
+
 }
 
 // MARK: - Update Checking Operations
 
 extension UpdateCheckCoordinator {
-	
+
 	/// List of available update checking operations.
 	private static var availableOperations: [UpdateCheckerOperation.Type] {
 		return [
@@ -148,15 +181,15 @@ extension UpdateCheckCoordinator {
 			HomebrewCheckerOperation.self
 		]
 	}
-	
+
 	/// Returns the update source for the app at the given url.
 	static func source(forAppAt url: URL) -> App.Source? {
 		return self.availableOperations.first { $0.canPerformUpdateCheck(forAppAt: url) }?.sourceType
 	}
-	
+
 	/// Returns the update check operation for the given app bundle.
 	static func operation(forChecking bundle: App.Bundle, repository: UpdateRepository?, completion: @escaping UpdateCheckerOperation.UpdateCheckerCompletionBlock) -> UpdateCheckerOperation? {
 		return self.availableOperations.first { $0.sourceType == bundle.source }?.init(with: bundle, repository: repository, completionBlock: completion)
 	}
-	
+
 }
