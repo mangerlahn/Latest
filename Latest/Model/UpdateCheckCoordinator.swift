@@ -27,6 +27,9 @@ protocol UpdateCheckProgressReporting : AnyObject {
 
 	/// Called after the update checker finished checking for updates.
 	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateCheckCoordinator)
+
+	/// Called when an app scan directory cannot be monitored for filesystem changes.
+	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didFailToObserveDirectoryAt url: URL, error: Error)
 	
 }
 
@@ -60,11 +63,18 @@ class UpdateCheckCoordinator {
 	
 	/// The library containing all bundles loaded from disk.
 	private lazy var library: AppLibrary = {
-		return AppLibrary { bundles in
-			// Set new bundles and check for updates
-			let newApps = self.dataStore.set(appBundles: Set(bundles))
-			self.runUpdateCheck(on: newApps.map({ $0.bundle }))
-		}
+		return AppLibrary(
+			handler: { bundles in
+				// Set new bundles and check for updates
+				let newApps = self.dataStore.set(appBundles: Set(bundles))
+				self.runUpdateCheck(on: newApps.map({ $0.bundle }))
+			},
+			observationFailureHandler: { url, error in
+				DispatchQueue.main.async {
+					self.progressDelegate?.updateChecker(self, didFailToObserveDirectoryAt: url, error: error)
+				}
+			}
+		)
 	}()
 	
 	/// The data store updated apps should be passed to

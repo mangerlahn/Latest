@@ -50,6 +50,8 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// The button that triggers all available updates to be done
     @IBOutlet weak var updateAllButton: NSButton!
+
+	private var presentedObservationFailures = Set<String>()
         
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -196,6 +198,21 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		self.progressIndicator.isHidden = true
         self.updateAllButton.isEnabled = hasUpdatesAvailable
 	}
+
+	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didFailToObserveDirectoryAt url: URL, error: Error) {
+		let failureKey = "\(url.path)|\(error.localizedDescription)"
+		guard presentedObservationFailures.insert(failureKey).inserted else { return }
+		NSApplication.shared.requestUserAttention(.informationalRequest)
+		
+		guard let window = self.window else { return }
+		
+		let alert = NSAlert()
+		alert.alertStyle = .warning
+		alert.messageText = NSLocalizedString("DirectoryObservationFailedAlertTitle", comment: "Title of alert shown when Latest cannot monitor a configured app scan directory.")
+		alert.informativeText = self.directoryObservationFailureMessage(for: url, error: error)
+		alert.addButton(withTitle: NSLocalizedString("OKAction", comment: "Default button for dismissing an informational alert."))
+		alert.beginSheetModal(for: window)
+	}
     
 	
 	// MARK: - Actions
@@ -241,6 +258,21 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             self.listViewController.selectApp(at: nil)
         }
     }
+
+	private func directoryObservationFailureMessage(for url: URL, error: Error) -> String {
+		let format = NSLocalizedString("DirectoryObservationFailedAlertMessage", comment: "Alert text shown when Latest cannot monitor a configured app scan directory. The first placeholder is the directory path, the second is the localized system error.")
+		var message = String.localizedStringWithFormat(format, url.path, error.localizedDescription)
+		
+		let nsError = error as NSError
+		if nsError.domain == NSPOSIXErrorDomain,
+		   let code = POSIXErrorCode(rawValue: Int32(nsError.code)),
+		   code == .EACCES || code == .EPERM {
+			let recovery = NSLocalizedString("DirectoryObservationFailedPermissionSuggestion", comment: "Additional suggestion shown when the app likely lacks permission to observe a scan directory.")
+			message += "\n\n\(recovery)"
+		}
+		
+		return message
+	}
 	
 }
 
