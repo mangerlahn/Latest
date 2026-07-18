@@ -53,7 +53,7 @@ struct AppListSettings: Observable {
 		}
 		
 		get {
-			SortOptions(rawValue: UserDefaults.standard.integer(forKey: SortOptionsKey))!
+			SortOptions(rawValue: UserDefaults.standard.integer(forKey: SortOptionsKey)) ?? .updateDate
 		}
 	}
 	

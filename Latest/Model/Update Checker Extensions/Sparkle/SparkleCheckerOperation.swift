@@ -16,7 +16,13 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 	
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
 		// Can check for updates if a feed URL is available for the given app
-		return Self.feedURL(from: url) != nil
+		guard let bundle = Bundle(path: url.path) else { return false }
+		return canPerformUpdateCheck(forAppAt: url, bundle: bundle)
+	}
+	
+	static func canPerformUpdateCheck(forAppAt url: URL, bundle: Bundle) -> Bool {
+		// Can check for updates if a feed URL is available for the given app
+		return Self.feedURL(from: bundle) != nil
 	}
 
 	static var sourceType: App.Source {
@@ -42,7 +48,11 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 	/// Returns the Sparkle feed url for the app at the given URL, if available.
 	private static func feedURL(from appURL: URL) -> URL? {
 		guard let bundle = Bundle(path: appURL.path) else { return nil }
-		return Sparke.feedURL(from: bundle)
+		return feedURL(from: bundle)
+	}
+	
+	private static func feedURL(from bundle: Bundle) -> URL? {
+		Sparke.feedURL(from: bundle)
 	}
 
 	/// The bundle to be checked for updates.
