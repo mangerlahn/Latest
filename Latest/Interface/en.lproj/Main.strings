@@ -82,8 +82,6 @@
 /* Class = "NSTextFieldCell"; title = "No Updates Available"; ObjectID = "D2N-5U-W7Z"; */
 "D2N-5U-W7Z.title" = "No Updates Available";
 
-/* Class = "NSWindow"; title = "Settings"; ObjectID = "DfQ-ss-Qv2"; */
-"DfQ-ss-Qv2.title" = "Settings";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "File";
@@ -355,14 +353,10 @@
 /* Class = "NSButtonCell"; title = "Unsupported apps"; ObjectID = "HfB-8a-u7P"; */
 "HfB-8a-u7P.title" = "Unsupported apps";
 
-/* Class = "NSViewController"; title = "General"; ObjectID = "JNL-bS-gzr"; */
-"JNL-bS-gzr.title" = "General";
 
 /* Class = "NSTextFieldCell"; title = "Show apps without any available update information."; ObjectID = "Mdn-MF-57Q"; */
 "Mdn-MF-57Q.title" = "Show apps without any available update information.";
 
-/* Class = "NSViewController"; title = "Locations"; ObjectID = "MRG-cS-c2g"; */
-"MRG-cS-c2g.title" = "Locations";
 
 /* Class = "NSTextFieldCell"; title = "<dnl>"; ObjectID = "NC1-U2-waJ"; */
 "NC1-U2-waJ.title" = "<dnl>";
@@ -376,5 +370,5 @@
 /* Class = "NSButtonCell"; title = "Report Issue…"; ObjectID = "pNJ-Hl-Qxz"; */
 "pNJ-Hl-Qxz.title" = "Report Issue…";
 
-/* Class = "NSTextFieldCell"; title = "List apps with limited support. Update information may be outdated or inaccurate, and updates cannot be performed directly in Latest.\n"; ObjectID = "rG3-x9-kec"; */
-"rG3-x9-kec.title" = "List apps with limited support. Update information may be outdated or inaccurate, and updates cannot be performed directly in Latest.\n";
+/* Class = "NSTextFieldCell"; title = "List apps with limited support. Update information may be outdated and updates still need to be installed outside Latest.\n"; ObjectID = "rG3-x9-kec"; */
+"rG3-x9-kec.title" = "List apps with limited support. Update information may be outdated and updates still need to be installed outside Latest.\n";

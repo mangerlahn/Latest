@@ -36,11 +36,13 @@ class AppDataStore: AppProviding {
 	
 	/// The queue on which updates to the collection are being performed.
 	private var updateQueue = DispatchQueue(label: "DataStoreQueue")
+	private let persistenceQueue = DispatchQueue(label: "AppDataStore.persistence", qos: .utility)
 	
 	
 	init() {
 		self.updateScheduler = DispatchSource.makeUserDataAddSource(queue: .global())
 		self.setupScheduler()
+		self.apps = self.loadCachedApps()
 	}
 
 	
@@ -78,13 +80,14 @@ class AppDataStore: AppProviding {
 		didSet {
 			// Schedule an update for observers
 			self.scheduleFilterUpdate()
+			self.persist(apps: self.apps)
 		}
 	}
 	
 	/// A subset of apps that can be updated. Ignored apps are not part of this list.
 	var updatableApps: [App] {
 		updateQueue.sync {
-			return self.apps.filter({ $0.updateAvailable && $0.usesBuiltInUpdater && !$0.isIgnored })
+			return self.apps.filter({ $0.updateAvailable && $0.canPerformUpdate && $0.usesBuiltInUpdater && !$0.isIgnored })
 		}
 	}
 		
@@ -174,6 +177,152 @@ class AppDataStore: AppProviding {
 	
 	/// A mapping of observers associated with apps.
 	private var observers = [NSObject: ObserverHandler]()
+
+	private struct CachedBundle: Codable {
+		let versionNumber: String?
+		let buildNumber: String?
+		let name: String
+		let bundleIdentifier: String
+		let filePath: String
+		let source: String
+		
+		init(bundle: App.Bundle) {
+			self.versionNumber = bundle.version.versionNumber
+			self.buildNumber = bundle.version.buildNumber
+			self.name = bundle.name
+			self.bundleIdentifier = bundle.bundleIdentifier
+			self.filePath = bundle.fileURL.path
+			self.source = bundle.source.rawValue
+		}
+		
+		var bundle: App.Bundle? {
+			guard let source = App.Source(rawValue: source) else { return nil }
+			
+			return App.Bundle(
+				version: Version(versionNumber: versionNumber, buildNumber: buildNumber),
+				name: name,
+				bundleIdentifier: bundleIdentifier,
+				fileURL: URL(fileURLWithPath: filePath),
+				source: source
+			)
+		}
+	}
+	
+	private struct CachedUpdate: Codable {
+		let versionNumber: String?
+		let buildNumber: String?
+		let minimumOSVersion: String?
+		let source: String
+		let date: Date?
+		
+		init(update: App.Update) {
+			self.versionNumber = update.remoteVersion.versionNumber
+			self.buildNumber = update.remoteVersion.buildNumber
+			if let minimumOSVersion = update.minimumOSVersion {
+				self.minimumOSVersion = "\(minimumOSVersion.majorVersion).\(minimumOSVersion.minorVersion).\(minimumOSVersion.patchVersion)"
+			} else {
+				self.minimumOSVersion = nil
+			}
+			self.source = update.source.rawValue
+			self.date = update.date
+		}
+		
+		func update(for bundle: App.Bundle) -> App.Update? {
+			guard let source = App.Source(rawValue: source) else { return nil }
+			let minimumOSVersion = minimumOSVersion.flatMap { try? OperatingSystemVersion(string: $0) }
+			
+			return App.Update(
+				app: bundle,
+				remoteVersion: Version(versionNumber: versionNumber, buildNumber: buildNumber),
+				minimumOSVersion: minimumOSVersion,
+				source: source,
+				date: date,
+				releaseNotes: nil,
+				updateAction: Self.cachedAction(for: source, bundle: bundle),
+				isCached: true
+			)
+		}
+		
+		private static func cachedAction(for source: App.Source, bundle: App.Bundle) -> App.Update.Action {
+			switch source {
+			case .sparkle:
+				return .builtIn(block: { app in
+					UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleURL: app.fileURL, bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
+				})
+			case .appStore:
+				return .external(label: NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store."), block: { app in
+					app.open()
+				})
+			case .homebrew:
+				return .external(label: NSLocalizedString("HomebrewSource", comment: "The source name for apps checked via the Homebrew package manager."), block: { app in
+					app.open()
+				})
+			case .none:
+				return .external(label: bundle.name, block: { app in
+					app.open()
+				})
+			}
+		}
+	}
+	
+	private struct CachedApp: Codable {
+		let bundle: CachedBundle
+		let update: CachedUpdate?
+		let isIgnored: Bool
+		
+		init(app: App) {
+			self.bundle = CachedBundle(bundle: app.bundle)
+			self.update = app.cachedUpdate.map(CachedUpdate.init)
+			self.isIgnored = app.isIgnored
+		}
+		
+		var app: App? {
+			guard let bundle = bundle.bundle else { return nil }
+			let update = update?.update(for: bundle)
+			return App(bundle: bundle, update: update.map(Result.success), isIgnored: isIgnored)
+		}
+	}
+	
+	private static var cacheURL: URL? {
+		FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?
+			.appendingPathComponent(Bundle.main.bundleIdentifier ?? "Latest", isDirectory: true)
+			.appendingPathComponent("AppBundles.json")
+	}
+	
+	private func loadCachedApps() -> Set<App> {
+		guard let cacheURL = Self.cacheURL,
+			  let data = try? Data(contentsOf: cacheURL) else {
+			return []
+		}
+		
+		if let cachedApps = try? JSONDecoder().decode([CachedApp].self, from: data) {
+			return Set(cachedApps.compactMap(\.app))
+		}
+		
+		guard let cachedBundles = try? JSONDecoder().decode([CachedBundle].self, from: data) else {
+			return []
+		}
+		
+		return Set(cachedBundles.compactMap(\.bundle).map { bundle in
+			App(bundle: bundle, update: nil, isIgnored: self.isIdentifierIgnored(bundle.bundleIdentifier))
+		})
+	}
+	
+	private func persist(apps: Set<App>) {
+		let cachedApps = apps.map(CachedApp.init)
+		
+		persistenceQueue.async {
+			guard let cacheURL = Self.cacheURL else { return }
+			
+			do {
+				try FileManager.default.createDirectory(at: cacheURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+				let data = try JSONEncoder().encode(cachedApps)
+				try data.write(to: cacheURL, options: .atomic)
+			} catch {
+				()
+			}
+		}
+	}
 	
 	/// Adds the observer if it is not already registered.
 	func addObserver(_ observer: NSObject, handler: @escaping ObserverHandler) {

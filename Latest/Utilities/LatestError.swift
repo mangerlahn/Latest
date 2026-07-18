@@ -18,6 +18,9 @@ enum LatestError: LocalizedError {
 	/// An error raised by the App Store updater in case the user is not signed in.
 	case notSignedInToAppStore
 	
+	/// The communication with an install helper failed.
+	case installHelperCommunicationFailed
+	
 	case custom(title: String, description: String?)
 	
 	
@@ -34,6 +37,9 @@ enum LatestError: LocalizedError {
 				
 			case .notSignedInToAppStore:
 				return NSLocalizedString("AppStoreNotSignedInError", comment: "Short description of error when no update was found for a particular app.")
+			
+		case .installHelperCommunicationFailed:
+			return NSLocalizedString("InstallHelperCommunicationFailedError", comment: "Short description of an error when communicating with the apps install helper.")
 			
 			case .custom(let title, _):
 				return title
@@ -55,6 +61,9 @@ enum LatestError: LocalizedError {
 		case .notSignedInToAppStore:
 			return nil
 			
+		case .installHelperCommunicationFailed:
+			return nil
+			
 		case .custom(_ , let description):
 			return description
 		}
@@ -71,10 +80,11 @@ enum LatestError: LocalizedError {
 		case .notSignedInToAppStore:
 			return NSLocalizedString("AppStoreNotSignedInErrorRecoverySuggestion", comment: "Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account.")
 			
+		case .installHelperCommunicationFailed:
+			return NSLocalizedString("AppStoreNotSignedInErrorRecoverySuggestion", comment: "Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account.")
+			
 		case .custom(_ , _):
 			return nil
 		}
-
 	}
-	
 }

@@ -16,7 +16,7 @@
 "RemoteVersionFormat" = "새 버전: %@";
 
 /* Title of release notes empty state */
-"NoAppSelectedTitle" = "선택한 앱이 없습니다.";
+"NoAppSelectedTitle" = "선택된 앱이 없습니다";
 
 /* Title of alert stating that an error occurred during an app update. The placeholder %@ will be replaced with the name of the app. */
 "UpdateErrorAlertTitle" = "%@을(를) 업데이트하는 동안 오류가 발생했습니다.";
@@ -70,7 +70,7 @@
 "NoAppSelectedDescription" = "출시 정보를 읽으려면 목록에서 앱을 선택합니다.";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "소스: %@";
+"AppSource" = "출처: %@";
 
 /* Update String */
 "UpdateAction" = "업데이트";
@@ -88,7 +88,7 @@
 "LocalVersionFormat" = "사용자 버전: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInError" = "가입하지 않음";
+"AppStoreNotSignedInError" = "로그인되지 않음";
 
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "이름";
@@ -97,7 +97,7 @@
 "DateSortOption" = "날짜";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
-"AppStoreNotSignedInErrorRecoverySuggestion" = "이 앱을 업데이트하려면 Mac App Store에 로그인하십시오.";
+"AppStoreNotSignedInErrorRecoverySuggestion" = "이 앱을 업데이트하려면 Mac App Store에 로그인하세요.";
 
 /* Error message stating that update info could not be retrieved for a given app. */
 "UpdateInfoUnavailableErrorFailureReason" = "이 앱에 대한 업데이트 정보를 검색할 수 없습니다.";
@@ -109,18 +109,18 @@
 "HomebrewSource" = "Homebrew";
 
 /* An explanatory text indicating where the update will be performed. The placeholder will be filled with the name of the external updater (App Store, App Name). The text will appear below the Update button, so that it reads: "Update in XY" */
-"ExternalUpdateActionWithAppName" = "in %@";
+"ExternalUpdateActionWithAppName" = "%@ 에서";
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
-"ExternalUpdateAction" = "Update in %@";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
+"ExternalUpdateAction" = "%@ 에서 업데이트";
+"UnsupportedLabel" = "지원되지 않음";
+"LimitedSupportLabel" = "제한된 지원";
+"NoSupportDescription" = "업데이트 정보를 사용할 수 없습니다. 업데이트를 관리하려면 앱이나 웹사이트를 확인하세요.";
+"SupportedCompactLabel" = "지원됨";
+"LimitedSupportCompactLabel" = "제한됨";
+"SupportedLabel" = "지원됨";
+"UnsupportedCompactLabel" = "지원되지 않음";
+"SingleCombinedVersionFormat" = "버전: %@";
+"LimitedSupportDescription" = "업데이트 정보는 일반적으로 제공되지만, 경우에 따라 오래되었거나 부정확할 수 있습니다. 여기에서 직접 업데이트할 수는 없습니다.";
+"FullSupportDescription" = "완전히 지원됩니다. 신뢰할 수 있는 버전 정보를 제공하며, 앱 내에서 직접 업데이트를 관리할 수 있습니다.\n\n표시된 버전 정보가 정확하지 않은 경우, 문제 보고서를 작성해 주세요.";
 "CombinedVersionFormat" = "Version: %1$@ → %2$@";

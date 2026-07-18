@@ -41,28 +41,42 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         return secondItem
     }()
     
-    /// The progress indicator showing how many apps have been checked for updates
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    /// Legacy storyboard outlet retained for compatibility with the older window controller nib wiring.
+	@IBOutlet weak var progressIndicator: NSProgressIndicator?
+
+	/// Legacy storyboard outlet retained for compatibility with the older unified title bar buttons.
+	@IBOutlet weak var reloadButton: NSButton?
+
+	/// Legacy storyboard outlet retained for compatibility with the older unified title bar buttons.
+	@IBOutlet weak var updateAllButton: NSButton?
+
+	/// The progress indicator showing how many apps have been checked for updates when no storyboard view is wired.
+	lazy var toolbarProgressIndicator: NSProgressIndicator = {
+		let progressIndicator = NSProgressIndicator()
+		progressIndicator.controlSize = .small
+		progressIndicator.style = .spinning
+		
+		return progressIndicator
+	}()
+
+	var activeProgressIndicator: NSProgressIndicator {
+		self.progressIndicator ?? self.toolbarProgressIndicator
+	}
     
     /// The button that triggers an reload/recheck for updates
-    @IBOutlet weak var reloadButton: NSButton!
     @IBOutlet weak var reloadTouchBarButton: NSButton!
+
+	private var presentedObservationFailures = Set<String>()
     
-    /// The button that triggers all available updates to be done
-    @IBOutlet weak var updateAllButton: NSButton!
-        
     override func windowDidLoad() {
         super.windowDidLoad()
+		
+		(NSApp.delegate as? AppDelegate)?.register(mainWindowController: self)
     
 		self.window?.titlebarAppearsTransparent = true
 		self.window?.title = Bundle.main.localizedInfoDictionary?[kCFBundleNameKey as String] as! String
-
-		if #available(macOS 11.0, *) {
-			self.window?.toolbarStyle = .unified
-		} else {
-			self.window?.titleVisibility = .hidden
-		}
-        
+		self.window?.toolbarStyle = .unified
+		
 		// Set ourselves as the view menu delegate
 		NSApplication.shared.mainMenu?.item(at: MainMenuItem.view.rawValue)?.submenu?.delegate = self
 		
@@ -92,10 +106,26 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     
     /// Open all apps that have an update available. If apps from the Mac App Store are there as well, open the Mac App Store
     @IBAction func updateAll(_ sender: Any?) {
+		let apps = UpdateCheckCoordinator.shared.appProvider.updatableApps
+		
+		// Check if there are app store updates
+		if apps.contains(where: { $0.bundle.source == .appStore }) {
+			do {
+				try AppStoreUpdateOperation.prepareForUpdates()
+			} catch {
+				let updatesPage = URL(string: "macappstore://apps.apple.com/updates")!
+				if !AppStoreUpdateSettings.alwaysPerformManualUpdates.active {
+					UpdateInstallHelperAlert.present(with: error, fallbackURL: updatesPage)
+				} else {
+					NSWorkspace.shared.open(updatesPage)
+				}
+			}
+		}
+		
 		// Iterate all updatable apps and perform update
-		UpdateCheckCoordinator.shared.appProvider.updatableApps.forEach({ app in
+		apps.forEach({ app in
 			if !app.isUpdating {
-				app.performUpdate()
+				app.performUpdate(isBulkUpdate: true)
 			}
 		})
     }
@@ -112,6 +142,17 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 		NSWorkspace.shared.open(URL(string: "https://max.codes/latest/donate/")!)
 	}
     
+	fileprivate func validate(_ selector: Selector) -> Bool {
+		switch selector {
+		case #selector(updateAll(_:)):
+			hasUpdatesAvailable
+		case #selector(reload(_:)):
+			!isRunningUpdateCheck
+		default:
+			true
+		}
+	}
+	
     
     // MARK: Menu Item
 
@@ -121,15 +162,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
         }
         
         switch action {
-        case #selector(updateAll(_:)):
-			return hasUpdatesAvailable
-        case #selector(reload(_:)):
-            return self.reloadButton.isEnabled
+		// Only allow the find item
 		case #selector(performFindPanelAction(_:)):
-			// Only allow the find item
 			return menuItem.tag == 1
         default:
-            return true
+            return validate(action)
         }
     }
     
@@ -155,11 +192,11 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	
 	private var sortByMenuItems: [NSMenuItem] {
 		AppListSettings.SortOptions.allCases.map { order in
-			let item = NSMenuItem(title: order.displayName, action: #selector(changeSortOrder), keyEquivalent: "")
-			item.representedObject = order
-			item.state = AppListSettings.shared.sortOrder == order ? .on : .off
-			
-			return item
+			order.menuItem(
+				target: self,
+				action: #selector(changeSortOrder),
+				isSelected: AppListSettings.shared.sortOrder == order
+			)
 		}
 	}
     
@@ -167,34 +204,46 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
     // MARK: - Update Checker Progress Delegate
 	
 	func updateCheckerDidStartScanningForApps(_ updateChecker: UpdateCheckCoordinator) {
-		// Disable UI
-        self.reloadButton.isEnabled = false
-        self.reloadTouchBarButton.isEnabled = false
+		self.isRunningUpdateCheck = true
 		
 		// Setup indeterminate progress indicator
-		self.progressIndicator.isIndeterminate = true
-        self.progressIndicator.isHidden = false
-		self.progressIndicator.startAnimation(updateChecker)
+		self.activeProgressIndicator.isIndeterminate = true
+		self.activeProgressIndicator.startAnimation(updateChecker)
+
+		self.window?.toolbar?.validateVisibleItems()
 	}
     
     /// This implementation activates the progress indicator, sets its max value and disables the reload button
 	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didStartCheckingApps numberOfApps: Int) {
 		// Setup progress indicator
-		self.progressIndicator.isIndeterminate = false
-        self.progressIndicator.doubleValue = 0
-        self.progressIndicator.maxValue = Double(numberOfApps - 1)
+		self.activeProgressIndicator.isIndeterminate = false
+        self.activeProgressIndicator.doubleValue = 0
+        self.activeProgressIndicator.maxValue = Double(numberOfApps - 1)
 	}
     
     /// Update the progress indicator
 	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didCheckApp: App) {
-		self.progressIndicator.increment(by: 1)
+		self.activeProgressIndicator.increment(by: 1)
     }
 	
 	func updateCheckerDidFinishCheckingForUpdates(_ updateChecker: UpdateCheckCoordinator) {
-		self.reloadButton.isEnabled = true
-		self.reloadTouchBarButton.isEnabled = true
-		self.progressIndicator.isHidden = true
-        self.updateAllButton.isEnabled = hasUpdatesAvailable
+		self.isRunningUpdateCheck = false
+		self.window?.toolbar?.validateVisibleItems()
+	}
+
+	func updateChecker(_ updateChecker: UpdateCheckCoordinator, didFailToObserveDirectoryAt url: URL, error: Error) {
+		let failureKey = "\(url.path)|\(error.localizedDescription)"
+		guard presentedObservationFailures.insert(failureKey).inserted else { return }
+		NSApplication.shared.requestUserAttention(.informationalRequest)
+
+		guard let window = self.window else { return }
+
+		let alert = NSAlert()
+		alert.alertStyle = .warning
+		alert.messageText = NSLocalizedString("DirectoryObservationFailedAlertTitle", comment: "Title of alert shown when Latest cannot monitor a configured app scan directory.")
+		alert.informativeText = self.directoryObservationFailureMessage(for: url, error: error)
+		alert.addButton(withTitle: NSLocalizedString("OKAction", comment: "Default button for dismissing an informational alert."))
+		alert.beginSheetModal(for: window)
 	}
     
 	
@@ -219,6 +268,16 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
 	private var hasUpdatesAvailable: Bool {
 		!UpdateCheckCoordinator.shared.appProvider.updatableApps.isEmpty
 	}
+	
+	/// Whether an update check is currently running
+	private var isRunningUpdateCheck: Bool = false {
+		didSet {
+			self.reloadTouchBarButton.isEnabled = !isRunningUpdateCheck
+			self.activeProgressIndicator.isHidden = !isRunningUpdateCheck
+			self.reloadButton?.isEnabled = !isRunningUpdateCheck
+			self.updateAllButton?.isEnabled = hasUpdatesAvailable
+		}
+	}
 
     
     // MARK: - Private Methods
@@ -241,10 +300,35 @@ class MainWindowController: NSWindowController, NSMenuItemValidation, NSMenuDele
             self.listViewController.selectApp(at: nil)
         }
     }
+
+	private func directoryObservationFailureMessage(for url: URL, error: Error) -> String {
+		let format = NSLocalizedString("DirectoryObservationFailedAlertMessage", comment: "Alert text shown when Latest cannot monitor a configured app scan directory. The first placeholder is the directory path, the second is the localized system error.")
+		var message = String.localizedStringWithFormat(format, url.path, error.localizedDescription)
+
+		let nsError = error as NSError
+		if nsError.domain == NSPOSIXErrorDomain,
+		   let code = POSIXErrorCode(rawValue: Int32(nsError.code)),
+		   code == .EACCES || code == .EPERM {
+			let recovery = NSLocalizedString("DirectoryObservationFailedPermissionSuggestion", comment: "Additional suggestion shown when the app likely lacks permission to observe a scan directory.")
+			message += "\n\n\(recovery)"
+		}
+
+		return message
+	}
 	
 }
 
 extension MainWindowController: NSWindowDelegate {
+	
+		func windowShouldClose(_ sender: NSWindow) -> Bool {
+			guard UpdateCheckSettings.shared.keepInMenuBar else {
+				return true
+			}
+			
+			sender.orderOut(nil)
+			(NSApp.delegate as? AppDelegate)?.enterBackgroundMode()
+			return false
+		}
 	
 	@available(macOS, deprecated: 11.0)
 	func window(_ window: NSWindow, willPositionSheet sheet: NSWindow, using rect: NSRect) -> NSRect {
@@ -252,4 +336,11 @@ extension MainWindowController: NSWindowDelegate {
 		return NSRect(x: rect.minX, y: window.frame.height, width: rect.width, height: rect.height)
 	}
     
+}
+
+extension MainWindowController: NSToolbarItemValidation {
+	func validateToolbarItem(_ item: NSToolbarItem) -> Bool {
+		guard let action = item.action else { return true }
+		return validate(action)
+	}
 }

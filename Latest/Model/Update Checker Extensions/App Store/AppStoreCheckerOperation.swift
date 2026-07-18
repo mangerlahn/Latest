@@ -1,5 +1,5 @@
 //
-//  MacAppStoreUpdateCheckerOperation.swift
+//  AppStoreUpdateCheckerOperation.swift
 //  Latest
 //
 //  Created by Max Langer on 03.10.19.
@@ -7,11 +7,12 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 let MalformedURLError = NSError(domain: NSURLErrorDomain, code: NSURLErrorUnsupportedURL, userInfo: nil)
 
 /// The operation for checking for updates for a Mac App Store app.
-class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, @unchecked Sendable {
+class AppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, @unchecked Sendable {
 	
 	// MARK: - Update Check
 	
@@ -20,10 +21,15 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 	}
 	
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
+		guard let bundle = Bundle(path: url.path) else { return false }
+		return canPerformUpdateCheck(forAppAt: url, bundle: bundle)
+	}
+	
+	static func canPerformUpdateCheck(forAppAt url: URL, bundle: Bundle) -> Bool {
 		let fileManager = FileManager.default
 		
 		// Mac Apps contain a receipt, iOS apps are only available via the Mac App Store
-		guard let receiptPath = receiptPath(forAppAt: url), fileManager.fileExists(atPath: receiptPath) || isIOSAppBundle(at: url) else { return false }
+		guard let receiptPath = receiptPath(for: bundle), fileManager.fileExists(atPath: receiptPath) || isIOSAppBundle(withReceiptPath: receiptPath) else { return false }
 		
 		return true
 	}
@@ -80,37 +86,92 @@ class MacAppStoreUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperati
 	/// Returns the app store receipt path for the app at the given URL, if available.
 	static fileprivate func receiptPath(forAppAt url: URL) -> String? {
 		let bundle = Bundle(path: url.path)
-		return bundle?.appStoreReceiptURL?.path
+		return bundle.flatMap(receiptPath(for:))
+	}
+	
+	static fileprivate func receiptPath(for bundle: Bundle) -> String? {
+		return bundle.appStoreReceiptURL?.path
 	}
 	
 	/// Returns whether the app at the given URL is an iOS app wrapped to run on macOS.
 	static fileprivate func isIOSAppBundle(at url: URL) -> Bool {
 		// iOS apps are wrapped inside a macOS bundle
 		let path = receiptPath(forAppAt: url)
-		return path?.contains("WrappedBundle") ?? false
+		return isIOSAppBundle(withReceiptPath: path)
+	}
+	
+	static fileprivate func isIOSAppBundle(withReceiptPath path: String?) -> Bool {
+		path?.contains("WrappedBundle") ?? false
+	}
+
+	/// Returns whether built-in MAS installs are affected by Apple's PackageKit change.
+	///
+	/// The affected releases were first reported on macOS 14.8.2, 15.7.2, and 26.1.
+	///
+	/// We treat those as lower bounds because Apple shipped a PackageKit security hardening
+	/// in that release batch, so later releases are expected to keep the same restriction.
+	static func requiresExternalUpdateWorkaround(for version: OperatingSystemVersion = ProcessInfo.processInfo.operatingSystemVersion) -> Bool {
+		if version.majorVersion > 26 {
+			return true
+		}
+		
+		if version.majorVersion == 26 {
+			return version.minorVersion >= 1
+		}
+		
+		if version.majorVersion == 15 {
+			if version.minorVersion > 7 {
+				return true
+			}
+			
+			return version.minorVersion == 7 && version.patchVersion >= 2
+		}
+		
+		if version.majorVersion == 14 {
+			if version.minorVersion > 8 {
+				return true
+			}
+			
+			return version.minorVersion == 8 && version.patchVersion >= 2
+		}
+		
+		return false
 	}
 	
 }
 
-extension MacAppStoreUpdateCheckerOperation {
+extension AppStoreUpdateCheckerOperation {
 	
 	/// Returns a proper update object from the given app store entry.
 	private func update(from entry: AppStoreEntry) -> App.Update {
 		let version = Version(versionNumber: entry.versionNumber, buildNumber: nil)
-		let action: App.Update.Action = if Self.isIOSAppBundle(at: app.fileURL) {
-			// iOS Apps: Open App Store page where the user can update manually. The update operation does not work for them.
+		let action: App.Update.Action = if Self.isIOSAppBundle(at: app.fileURL) || AppStoreUpdateSettings.alwaysPerformManualUpdates.active || Self.requiresExternalUpdateWorkaround() {
+			// iOS apps and affected macOS versions must update in the App Store.
 			.external(label: NSLocalizedString("AppStoreSource", comment: "The source name of apps loaded from the App Store."), block: { app in
-				NSWorkspace.shared.open(entry.pageURL)
+				Self.openAppStorePage(for: entry)
 			})
 		} else {
 			// Perform the update in-app
 			.builtIn(block: { app in
-				UpdateQueue.shared.addOperation(MacAppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
+				Self.updateApp(app, entry: entry)
 			})
 
 		}
 		
 		return App.Update(app: self.app, remoteVersion: version, minimumOSVersion: entry.minimumOSVersion, source: .appStore, date: entry.date, releaseNotes: entry.releaseNotes, updateAction: action)
+	}
+	
+	private static func updateApp(_ app: App.Bundle, entry: AppStoreEntry) {
+		do {
+			try AppStoreUpdateOperation.prepareForUpdates()
+			UpdateQueue.shared.addOperation(AppStoreUpdateOperation(bundleIdentifier: app.bundleIdentifier, installURL: app.fileURL, appIdentifier: app.identifier, appStoreIdentifier: entry.appStoreIdentifier))
+		} catch {
+			UpdateInstallHelperAlert.present(with: error, fallbackURL: entry.pageURL)
+		}
+	}
+	
+	private static func openAppStorePage(for entry: AppStoreEntry) {
+		NSWorkspace.shared.open(entry.pageURL)
 	}
 	
 	/// Fetches update info and returns the result in the given completion handler.
@@ -140,7 +201,7 @@ extension MacAppStoreUpdateCheckerOperation {
 		}
 
 		// Add parameters
-		let languageCode = Locale.current.regionCode ?? "US"
+		let languageCode = Locale.current.region?.identifier ?? "US"
 		var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false)
 		components?.queryItems = [
 			URLQueryItem(name: "limit", value: "1"),
@@ -148,6 +209,9 @@ extension MacAppStoreUpdateCheckerOperation {
 			URLQueryItem(name: "country", value: languageCode),
 			URLQueryItem(name: "bundleId", value: self.app.bundleIdentifier)
 		]
+		if let storefrontLanguage = Self.storefrontLanguageIdentifier() {
+			components?.queryItems?.append(URLQueryItem(name: "lang", value: storefrontLanguage))
+		}
 		guard let url = components?.url else {
 			completion(.failure(MalformedURLError))
 			return
@@ -176,6 +240,25 @@ extension MacAppStoreUpdateCheckerOperation {
 		}
 		
 		dataTask.resume()
+	}
+
+	/// Returns the App Store Search API language override for the user's preferred language, if supported.
+	///
+	/// The Search API documents `en_us` and `ja_jp` as supported explicit language values.
+	static func storefrontLanguageIdentifier(preferredLanguages: [String] = Locale.preferredLanguages) -> String? {
+		guard let preferredLanguage = preferredLanguages.first else {
+			return nil
+		}
+
+		let components = Locale.components(fromIdentifier: preferredLanguage)
+		switch components[NSLocale.Key.languageCode.rawValue]?.lowercased() {
+		case "en":
+			return "en_us"
+		case "ja":
+			return "ja_jp"
+		default:
+			return nil
+		}
 	}
 		
 }

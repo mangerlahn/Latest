@@ -28,6 +28,51 @@
 /* Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date' */
 "DateSortOption" = "Date";
 
+/* Title of alert shown when Latest cannot monitor a configured app scan directory. */
+"DirectoryObservationFailedAlertTitle" = "Couldn’t Access App Folder";
+
+/* Title shown when the user selects a very broad folder to scan for apps. */
+"BroadAppDirectoryAlertTitle" = "Large Folder Selected";
+
+/* Warning shown when the user selects a very broad folder to scan for apps. The placeholder is the chosen path. */
+"BroadAppDirectoryAlertMessage" = "Scanning a whole disk or another very broad folder can take a long time before Latest finds the actual apps you care about.\n\nSelected folder:\n%@\n\nIf possible, choose a narrower folder that directly contains your apps instead.";
+
+/* Confirmation action for keeping a broad app scan folder. */
+"AddAnywayAction" = "Add Anyway";
+
+/* Action for cancelling a broad app scan folder selection. */
+"ChooseDifferentFolderAction" = "Choose Different Folder";
+
+/* Short summary shown when Latest cannot access a configured app folder. */
+"DirectoryObservationFailedSummary" = "Latest could not fully access this app folder. It will keep scanning as well as it can, but apps in this location may load slowly or stop refreshing automatically.";
+
+/* Short summary shown when Latest cannot access a configured app folder because of missing macOS privacy permissions. */
+"DirectoryObservationFailedPermissionSummary" = "Latest does not currently have permission to fully access this app folder. Until that is fixed, apps in this location may load slowly or stop refreshing automatically.";
+
+/* Caption shown above the inaccessible folder path. */
+"DirectoryObservationFailedFolderLabel" = "Folder";
+
+/* Caption shown above the system-provided failure reason. */
+"DirectoryObservationFailedReasonLabel" = "Reason";
+
+/* Error shown when Latest cannot start recursive monitoring for a configured app scan directory. */
+"DirectoryObservationUnavailableError" = "Latest could not start recursive monitoring for this folder.";
+
+/* Additional suggestion shown when the app likely lacks permission to observe a scan directory. */
+"DirectoryObservationFailedPermissionSuggestion" = "Open Privacy & Security, review the permissions for Latest, and allow access to this location if it is listed there.";
+
+/* Additional suggestion shown when the inaccessible scan directory is on an external or removable volume. */
+"DirectoryObservationFailedRemovableVolumeSuggestion" = "For external disks, check Files and Folders for Removable Volumes access first. If that still does not help, add Latest to Full Disk Access and try again.";
+
+/* Note clarifying that Latest cannot grant macOS privacy permissions on the user's behalf. */
+"DirectoryObservationFailedPermissionControlNote" = "Latest can open the relevant System Settings page for you, but macOS requires you to grant the permission yourself.";
+
+/* Action to open the most relevant Privacy & Security settings pane for a directory access failure. */
+"OpenPrivacySettingsAction" = "Open Privacy Settings";
+
+/* Action to open the Full Disk Access privacy settings pane. */
+"OpenFullDiskAccessAction" = "Open Full Disk Access";
+
 /* Update progress state of downloading an update. The first %@ stands for the already downloaded bytes, the second one for the total amount of bytes. One expected output would be 'Downloading 3 MB of 21 MB' */
 "DownloadingUpdateStatus" = "Downloading %@ of %@";
 
@@ -76,6 +121,9 @@
 /* Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name' */
 "NameSortOption" = "Name";
 
+/* Sorting option to group apps by support level. Displayed in menu with title: 'Sort By' -> 'Support' */
+"SupportStatusSortOption" = "Support";
+
 /* Description of release notes empty state */
 "NoAppSelectedDescription" = "Select an app from the list to read its release notes.";
 
@@ -87,6 +135,9 @@
 
 /* Action to open the app. */
 "OpenAction" = "Open";
+
+/* Default button for dismissing an informational alert. */
+"OKAction" = "OK";
 
 /* Short description of error that no release notes were found. */
 "ReleaseNotesUnavailableError" = "No Release Notes";
@@ -144,3 +195,36 @@
 
 /* A label used for apps which are not supported by Latest. */
 "UnsupportedLabel" = "No support";
+
+/* Tool tip of a toolbar button that checks for updates */
+"CheckForUpdatesToolbarItemToolTip" = "Check for Updates";
+
+/* Tool tip of a toolbar button that performs updates for all apps with update available */
+"UpdateAllToolbarItemToolTip" = "Update all Apps";
+
+/* Shown when the update helper is not installed. */
+"InstallHelperNotFoundErrorDescription" = "To install App Store updates within Latest, a helper must be installed. If you don't want to install the helper, you can update apps via the App Store manually.";
+
+/* Shown when the update helper is installed but disabled, requiring approval. */
+"InstallHelperRequiresApprovalErrorDescription" = "Enable the update helper in Settings to install updates within Latest.";
+
+/* Title of the alert prompting to install or enable the update helper */
+"UpdateInstallHelperAlert.Title" = "Update Helper Required";
+
+/* Checkbox title to always open the App Store instead of using the helper */
+"UpdateInstallHelperAlert.SuppressionTitle" = "Always open App Store";
+
+/* Primary button to install the update helper */
+"UpdateInstallHelperAlert.Primary.InstallHelper" = "Install Helper";
+
+/* Primary button to open Settings to enable the update helper */
+"UpdateInstallHelperAlert.Primary.OpenSettings" = "Open Settings";
+
+/* Button to update the app in the App Store */
+"UpdateInstallHelperAlert.Secondary.AppStore" = "Update In App Store";
+
+/* Cancel button in the helper alert */
+"UpdateInstallHelperAlert.Cancel" = "Cancel";
+
+/* Short description of an error when communicating with the apps install helper. */
+"InstallHelperCommunicationFailedError" = "Latest failed to update this app because a problem with the helper application.";

@@ -1,5 +1,5 @@
 //
-//  MacAppStoreUpdateCheckerOperation.swift
+//  SparkleUpdateCheckerOperation.swift
 //  Latest
 //
 //  Created by Max Langer on 03.10.19.
@@ -16,7 +16,13 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 	
 	static func canPerformUpdateCheck(forAppAt url: URL) -> Bool {
 		// Can check for updates if a feed URL is available for the given app
-		return Self.feedURL(from: url) != nil
+		guard let bundle = Bundle(path: url.path) else { return false }
+		return canPerformUpdateCheck(forAppAt: url, bundle: bundle)
+	}
+	
+	static func canPerformUpdateCheck(forAppAt url: URL, bundle: Bundle) -> Bool {
+		// Can check for updates if a feed URL is available for the given app
+		return Self.feedURL(from: bundle) != nil
 	}
 
 	static var sourceType: App.Source {
@@ -42,7 +48,11 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 	/// Returns the Sparkle feed url for the app at the given URL, if available.
 	private static func feedURL(from appURL: URL) -> URL? {
 		guard let bundle = Bundle(path: appURL.path) else { return nil }
-		return Sparke.feedURL(from: bundle)
+		return feedURL(from: bundle)
+	}
+	
+	private static func feedURL(from bundle: Bundle) -> URL? {
+		Sparke.feedURL(from: bundle)
 	}
 
 	/// The bundle to be checked for updates.
@@ -62,7 +72,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 	
 	override func execute() {
 		// Gather app and app bundle
-		guard let bundle = Bundle(identifier: self.app.bundleIdentifier) else {
+		guard let bundle = Bundle(url: self.app.fileURL) ?? Bundle(path: self.app.fileURL.path) else {
 			self.finish(with: LatestError.updateInfoUnavailable)
 			return
 		}
@@ -102,7 +112,7 @@ class SparkleUpdateCheckerOperation: StatefulOperation, UpdateCheckerOperation, 
 		
 		// Build update
 		self.update = App.Update(app: self.app, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .sparkle, date: appcastItem.date, releaseNotes: releaseNotes, updateAction: .builtIn(block: { app in
-			UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
+			UpdateQueue.shared.addOperation(SparkleUpdateOperation(bundleURL: app.fileURL, bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier))
 		}))
 
 		DispatchQueue.main.async(execute: {

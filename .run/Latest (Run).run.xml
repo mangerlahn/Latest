@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Latest (Run)" type="ShConfigurationType">
+    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/intellij-run.sh" />
+    <option name="SCRIPT_OPTIONS" value="" />
+    <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="INTERPRETER_PATH" value="" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="EXECUTE_IN_TERMINAL" value="true" />
+    <option name="EXECUTE_SCRIPT_FILE" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

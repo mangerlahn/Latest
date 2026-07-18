@@ -81,7 +81,7 @@ extension UpdateRepository {
 			bundleIdentifiers = Set(artifacts.identifiers)
 
 			// OS Version
-			if let osVersion = try container.decode(MinimumOS.self, forKey: .minimumOSVersion).macos?.version?.first {
+			if let osVersion = try container.decode(MinimumOS.self, forKey: .minimumOSVersion).macos?.version?.first, !osVersion.isEmpty {
 				minimumOSVersion = try OperatingSystemVersion(string: osVersion)
 			} else {
 				minimumOSVersion = nil

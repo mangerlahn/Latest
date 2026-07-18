@@ -16,7 +16,7 @@
 			<string>Tutto aggiornato!</string>
 			<key>one</key>
 			<string>%d aggiornamento disponibile</string>
-			<key>other</key>
+			<key>many</key>
 			<string>%d aggiornamenti disponibili</string>
 		</dict>
 	</dict>

@@ -52,6 +52,8 @@ class UpdateCell: NSTableCellView {
 			self.leadingConstraint.constant = 20;
 			self.trailingConstraint.constant = 20;
 		}
+		
+		self.applyVersionTextAppearance()
 	}
 	
 	
@@ -109,6 +111,7 @@ class UpdateCell: NSTableCellView {
         self.currentVersionTextField.stringValue = versionInformation.current
 		self.newVersionTextField.stringValue = versionInformation.new ?? ""
         self.newVersionTextField.isHidden = !app.updateAvailable
+		self.applyVersionTextAppearance()
 		self.dateTextField.stringValue = dateFormatter.string(from: app.updateDate)
 		
 		// Support state
@@ -133,5 +136,21 @@ class UpdateCell: NSTableCellView {
 	    
 	private func updateTitle() {
 		self.nameTextField.attributedStringValue = self.app?.highlightedName(for: self.filterQuery) ?? NSAttributedString()
+	}
+	
+	private func applyVersionTextAppearance() {
+		let pointSize: CGFloat
+		switch AppListSettings.shared.versionTextSize {
+		case .standard:
+			pointSize = NSFont.systemFontSize(for: .small)
+		case .large:
+			pointSize = NSFont.systemFontSize(for: .small) + 1
+		case .extraLarge:
+			pointSize = NSFont.systemFontSize(for: .small) + 2
+		}
+		
+		let font = NSFont.systemFont(ofSize: pointSize)
+		self.currentVersionTextField.font = font
+		self.newVersionTextField.font = font
 	}
 }

@@ -11,6 +11,7 @@ import UniformTypeIdentifiers
 
 /// Gathers apps at a given URL.
 enum BundleCollector {
+	typealias ErrorHandler = (URL, Error) -> Void
 	
 	/// Excluded subfolders that won't be checked.
 	private static let excludedSubfolders = Set(["Setapp"])
@@ -25,10 +26,23 @@ enum BundleCollector {
 	private static let appExtension = UTType.applicationBundle.preferredFilenameExtension
 	
 	/// Returns a list of application bundles at the given URL.
-	static func collectBundles(at url: URL) -> [App.Bundle] {
-		let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsPackageDescendants])
+	static func collectBundles(at url: URL, errorHandler: ErrorHandler? = nil) -> [App.Bundle] {
+		let totalStart = CFAbsoluteTimeGetCurrent()
+		let enumerationStart = CFAbsoluteTimeGetCurrent()
+		var reportedAccessFailure = false
+		let enumerator = FileManager.default.enumerator(
+			at: url,
+			includingPropertiesForKeys: nil,
+			options: [.skipsHiddenFiles, .skipsPackageDescendants],
+			errorHandler: { failedURL, error in
+				guard !reportedAccessFailure else { return true }
+				reportedAccessFailure = true
+				errorHandler?(failedURL, error)
+				return true
+			}
+		)
 		
-		var bundles = [App.Bundle]()
+		var appURLs = [URL]()
 		while let bundleURL = enumerator?.nextObject() as? URL {
 			guard !excludedSubfolders.contains(where: { bundleURL.path.contains($0) }) else {
 				enumerator?.skipDescendants()
@@ -36,10 +50,39 @@ enum BundleCollector {
 			}
 			
 			let expectedExtension = if #available(macOS 11.0, *) { appExtension } else { "app" }
-			if bundleURL.pathExtension == expectedExtension, let bundle = bundle(forAppAt: bundleURL) {
-				bundles.append(bundle)
+			if bundleURL.pathExtension == expectedExtension {
+				appURLs.append(bundleURL)
 			}
 		}
+		
+		let enumerationDuration = CFAbsoluteTimeGetCurrent() - enumerationStart
+		let processingStart = CFAbsoluteTimeGetCurrent()
+		var bundles = [App.Bundle]()
+		let lock = NSLock()
+		
+		if appURLs.count < 8 {
+			for appURL in appURLs {
+				if let bundle = bundle(forAppAt: appURL) {
+					bundles.append(bundle)
+				}
+			}
+		} else {
+			DispatchQueue.concurrentPerform(iterations: appURLs.count) { index in
+				autoreleasepool {
+					guard let bundle = bundle(forAppAt: appURLs[index]) else { return }
+					lock.lock()
+					bundles.append(bundle)
+					lock.unlock()
+				}
+			}
+		}
+		
+		let processingDuration = CFAbsoluteTimeGetCurrent() - processingStart
+		let totalDuration = CFAbsoluteTimeGetCurrent() - totalStart
+		DiagnosticsLog.trace(
+			.appDirectory,
+			"collectBundles stats path=\(url.path) candidates=\(appURLs.count) bundles=\(bundles.count) enumerate=\(String(format: "%.3f", enumerationDuration))s process=\(String(format: "%.3f", processingDuration))s total=\(String(format: "%.3f", totalDuration))s"
+		)
 
 		return bundles
 	}
@@ -58,7 +101,7 @@ enum BundleCollector {
 		}
 		
 		// Find update source
-		guard let source = UpdateCheckCoordinator.source(forAppAt: url) else {
+		guard let source = UpdateCheckCoordinator.source(forAppAt: url, bundle: appBundle) else {
 			return nil
 		}
 		

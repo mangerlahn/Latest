@@ -93,9 +93,7 @@ class UpdateButton: NSButton {
 		self.action = #selector(performAction(_:))
 		
 		self.isBordered = false
-		if #available(OSX 10.14, *) {
-			self.contentTintColor = .controlAccentColor
-		}
+		self.contentTintColor = .controlAccentColor
 	}
 	
 	deinit {
@@ -109,12 +107,12 @@ class UpdateButton: NSButton {
 	
 	override var intrinsicContentSize: NSSize {
 		var size = super.intrinsicContentSize
-		size.height = 21
 		
 		if (self.title.count > 0) {
+			size.height = 21
 			size.width += 12
 		} else {
-			size.height += 4
+			size.height = 31
 			size.width = size.height
 		}
 		
@@ -126,7 +124,7 @@ class UpdateButton: NSButton {
 		switch state {
 		case .none:
 			if let app = self.app, self.showActionButton {
-				self.updateInterfaceVisibility(with: app.updateAvailable ? .update : .open)
+				self.updateInterfaceVisibility(with: app.updateAvailable ? (app.canPerformUpdate ? .update : .open) : .open)
 			} else {
 				self.updateInterfaceVisibility(with: .none)
 			}
@@ -193,11 +191,7 @@ class UpdateButton: NSButton {
 		case .open:
 			title = NSLocalizedString("OpenAction", comment: "Action to open a given app.")
 		case .error:
-			if #available(OSX 11.0, *) {
-				image = NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: NSLocalizedString("ErrorButtonAccessibilityTitle", comment: "Description of button that opens an error dialogue."))
-			} else {
-				image = NSImage(named: "warning")!
-			}
+			image = NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: NSLocalizedString("ErrorButtonAccessibilityTitle", comment: "Description of button that opens an error dialogue."))
 		default:
 			()
 		}

@@ -11,7 +11,7 @@
 "RetryAction" = "リトライ";
 
 /* The description of the app's source. e.g. 'Source: Mac App Store' */
-"AppSource" = "出典：％＠";
+"AppSource" = "ソース: %@";
 
 /* Update String */
 "UpdateAction" = "更新";
@@ -79,7 +79,7 @@
 "WebSource" = "ウェブ";
 
 /* Current Version String */
-"LocalVersionFormat" = "あなたのバージョン： %@";
+"LocalVersionFormat" = "あなたのバージョン: %@";
 
 /* Error description when the attempt to update an app from the App Store failed because the user is not signed in with their App Store account. */
 "AppStoreNotSignedInError" = "サインインしていません";
@@ -113,14 +113,14 @@
 
 /* Action to update a given app outside of Latest. The placeholder is filled with the name of the external updater. (App Store, App Name) */
 "ExternalUpdateAction" = "%@に更新";
-"UnsupportedLabel" = "No support";
-"LimitedSupportLabel" = "Limited support";
-"NoSupportDescription" = "Update information is unavailable. Check the app or its website to manage updates.";
-"SupportedCompactLabel" = "Supported";
-"LimitedSupportCompactLabel" = "Limited";
-"SupportedLabel" = "Supported";
-"UnsupportedCompactLabel" = "Unsupported";
-"SingleCombinedVersionFormat" = "Version: %@";
-"LimitedSupportDescription" = "Update information is generally available but may sometimes be outdated or inaccurate. Updates cannot be performed directly here.";
-"FullSupportDescription" = "Fully supported. Reliable version information is available, and updates can be managed directly within the app.\n\nIf the shown version information is inaccurate, feel free to write an issue report.";
-"CombinedVersionFormat" = "Version: %1$@ → %2$@";
+"UnsupportedLabel" = "非サポート";
+"LimitedSupportLabel" = "制限ありのサポート";
+"NoSupportDescription" = "アップデート情報は利用できません。アップデートの管理については、アプリまたはそのウェブサイトをご確認ください。";
+"SupportedCompactLabel" = "サポートされています";
+"LimitedSupportCompactLabel" = "制限あり";
+"SupportedLabel" = "サポートされています";
+"UnsupportedCompactLabel" = "非サポート";
+"SingleCombinedVersionFormat" = "バージョン: %@";
+"LimitedSupportDescription" = "アップデート情報は通常入手可能ですが、場合によっては古くなっていたり不正確な場合があります。ここで更新を直接行うことはできません。";
+"FullSupportDescription" = "完全に対応しています。信頼性の高いバージョン情報が利用可能で、更新はアプリ内で直接管理できます。\n\n表示されているバージョン情報が不正確な場合は、お気軽に問題を提出してください。";
+"CombinedVersionFormat" = "バージョン: %1$@ → %2$@";

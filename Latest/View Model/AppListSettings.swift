@@ -6,12 +6,15 @@
 //  Copyright © 2022 Max Langer. All rights reserved.
 //
 
+import AppKit
+
 private let SortOptionsKey = "SortOptionsKey"
 private let ShowInstalledUpdatesKey = "ShowInstalledUpdatesKey"
 private let ShowIgnoredUpdatesKey = "ShowIgnoredUpdatesKey"
 
 private let IncludeUnsupportedAppsKey = "ShowUnsupportedUpdatesKey"
 private let IncludeAppsWithLimitedSupportKey = "IncludeAppsWithLimitedSupportKey"
+private let VersionTextSizeKey = "VersionTextSizeKey"
 
 /// Observable front end to app list preferences.
 struct AppListSettings: Observable {
@@ -23,6 +26,9 @@ struct AppListSettings: Observable {
 		
 		/// Sort alphabetically by app name.
 		case name = 1
+
+		/// Sort by whether an app is fully supported, has limited support, or is unsupported.
+		case supportStatus = 2
 		
 		/// A user-displayable text of the given sort option.
 		var displayName: String {
@@ -31,6 +37,26 @@ struct AppListSettings: Observable {
 				return NSLocalizedString("DateSortOption", comment: "Update date sorting option. Displayed in menu with title: 'Sort By' -> 'Date'")
 			case .name:
 				return NSLocalizedString("NameSortOption", comment: "Sorting option to list by app names alphabetically. Displayed in menu with title: 'Sort By' -> 'Name'")
+			case .supportStatus:
+				return NSLocalizedString("SupportStatusSortOption", comment: "Sorting option to group apps by support level. Displayed in menu with title: 'Sort By' -> 'Support'")
+			}
+		}
+	}
+	
+	/// Font sizes available for the version labels in the update list.
+	enum VersionTextSize: Int, CaseIterable {
+		case standard = 0
+		case large = 1
+		case extraLarge = 2
+		
+		var displayName: String {
+			switch self {
+			case .standard:
+				NSLocalizedString("Standard", comment: "Standard version text size option.")
+			case .large:
+				NSLocalizedString("Large", comment: "Large version text size option.")
+			case .extraLarge:
+				NSLocalizedString("Extra Large", comment: "Extra-large version text size option.")
 			}
 		}
 	}
@@ -39,7 +65,10 @@ struct AppListSettings: Observable {
 
 	private init() {
 		// Show installed updates by default
-		UserDefaults.standard.register(defaults: [ShowInstalledUpdatesKey: true])
+		UserDefaults.standard.register(defaults: [
+			ShowInstalledUpdatesKey: true,
+			VersionTextSizeKey: VersionTextSize.standard.rawValue
+		])
 	}
 	
 	static var shared: AppListSettings = {
@@ -53,7 +82,7 @@ struct AppListSettings: Observable {
 		}
 		
 		get {
-			SortOptions(rawValue: UserDefaults.standard.integer(forKey: SortOptionsKey))!
+			SortOptions(rawValue: UserDefaults.standard.integer(forKey: SortOptionsKey)) ?? .updateDate
 		}
 	}
 	
@@ -101,6 +130,17 @@ struct AppListSettings: Observable {
 		}
 	}
 	
+	/// The font size used for version labels in the update list.
+	var versionTextSize: VersionTextSize {
+		set {
+			set(newValue.rawValue, forKey: VersionTextSizeKey)
+		}
+		
+		get {
+			VersionTextSize(rawValue: UserDefaults.standard.integer(forKey: VersionTextSizeKey)) ?? .standard
+		}
+	}
+	
 	
 	// MARK: - Utilities
 	
@@ -112,4 +152,15 @@ struct AppListSettings: Observable {
 		}
 	}
 	
+}
+
+extension AppListSettings.SortOptions {
+	/// Returns a menu item representing the sort option.
+	func menuItem(target: AnyObject?, action: Selector?, isSelected: Bool = false) -> NSMenuItem {
+		let item = NSMenuItem(title: self.displayName, action: action, keyEquivalent: "")
+		item.target = target
+		item.representedObject = self
+		item.state = isSelected ? .on : .off
+		return item
+	}
 }

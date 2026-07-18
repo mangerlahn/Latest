@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SpawnConstraint</key>
+	<dict>
+		<key>team-identifier</key>
+		<string>VFABJ5RE5Q</string>
+		<key>signing-identifier</key>
+		<string>com.max-langer.latest.UpdateInstaller</string>
+	</dict>
+	<key>BundleProgram</key>
+	<string>Contents/Resources/LatestUpdateInstaller</string>
+	<key>Label</key>
+	<string>com.max-langer.latest.UpdateInstaller</string>
+	<key>MachServices</key>
+	<dict>
+		<key>com.max-langer.latest.UpdateInstaller</key>
+		<true/>
+	</dict>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>
