@@ -55,18 +55,31 @@ class AppLibrary {
 		
 	private func setupDirectoryObservers() {
 		// Use a dispatch group for the initial setup to get contents for all directories before gathering apps
-		var dispatchGroup: DispatchGroup? = self.directories.isEmpty ? DispatchGroup() : nil
-		
+		let dispatchGroup: DispatchGroup? = self.directories.isEmpty ? DispatchGroup() : nil
+
 		// Setup directories
 		directories = Dictionary(uniqueKeysWithValues: directoryStore.URLs.compactMap { url in
 			// Skip unreachable directories
 			guard directoryStore.isReachable(url) else { return nil }
-			
+
 			dispatchGroup?.enter()
-			
+
+			// The callback fires again for every later content change, but the
+			// group must be left exactly once per directory — a directory that
+			// changes again while another one is still listing its initial
+			// contents would otherwise unbalance the group and crash.
+			let initialContentsLock = NSLock()
+			var initialContentsListed = false
+
 			// Reuse existing directory observations if possible
 			return (url, directories[url] ?? AppDirectory(url: url) {
-				if let dispatchGroup {
+				let isInitialContents = initialContentsLock.withCriticalScope { () -> Bool in
+					guard !initialContentsListed else { return false }
+					initialContentsListed = true
+					return true
+				}
+
+				if isInitialContents, let dispatchGroup {
 					// Initial mode, notify dispatch group
 					dispatchGroup.leave()
 				} else {
@@ -75,11 +88,10 @@ class AppLibrary {
 				}
 			})
 		})
-		
+
 		dispatchGroup?.notify(queue: .global()) {
 			// Call update immediately. Using the scheduler delays the update.
 			self.performUpdate()
-			dispatchGroup = nil
 		}
 	}
 	
