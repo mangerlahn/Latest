@@ -1594,6 +1594,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/System/Library/PrivateFrameworks,
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1603,6 +1608,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/CommerceKit $(SRCROOT)/Frameworks/StoreFoundation";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Latest";
 			};
@@ -1619,6 +1625,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/System/Library/PrivateFrameworks,
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1628,6 +1639,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.max-langer.Latest-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(SRCROOT)/Frameworks/CommerceKit $(SRCROOT)/Frameworks/StoreFoundation";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Latest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Latest";
 			};
