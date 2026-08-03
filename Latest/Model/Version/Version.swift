@@ -50,8 +50,10 @@ struct Version : Hashable, Comparable {
 	// MARK: - Hashing
 	
 	func hash(into hasher: inout Hasher) {
-		hasher.combine(versionNumber)
-		hasher.combine(buildNumber)
+		// Comparison ignores semver build metadata, so hashing must as well —
+		// equal values are required to produce equal hashes.
+		hasher.combine(versionNumber?.strippingBuildMetadata)
+		hasher.combine(buildNumber?.strippingBuildMetadata)
 	}
 	
 	
@@ -76,9 +78,17 @@ struct Version : Hashable, Comparable {
 			v1 = lhs.versionNumber
 			v2 = rhs.versionNumber
 		}
-		
+
+		// Semantic-versioning build metadata (a trailing "+…" suffix) carries no
+		// precedence: "3.6.1000+next.05e2e51d52" is the same version as "3.6.1000".
+		// Comparing it produces phantom updates for apps whose feeds annotate
+		// versions with build hashes, so it is ignored on both sides.
+		v1 = v1?.strippingBuildMetadata
+		v2 = v2?.strippingBuildMetadata
+
 		guard let c1 = v1?.components(), let c2 = v2?.components() else {
-			return .undefined
+			// Two versions without any comparable content are equal to each other.
+			return (v1 == nil && v2 == nil) ? .equal : .undefined
 		}
 		
 		let count1 = c1.count
@@ -365,3 +375,19 @@ extension OperatingSystemVersion {
 	
 }
 
+
+// MARK: - Semantic Versioning
+
+private extension String {
+
+	/// The version string with any semantic-versioning build metadata removed.
+	///
+	/// Build metadata is the part after a "+" ("3.6.1000+next.05e2e51d52"). Per
+	/// the semantic-versioning specification it must be ignored when determining
+	/// version precedence.
+	var strippingBuildMetadata: String {
+		guard let index = self.firstIndex(of: "+") else { return self }
+		return String(self[..<index])
+	}
+
+}

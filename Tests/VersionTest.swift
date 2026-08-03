@@ -166,6 +166,35 @@ class VersionTest: XCTestCase {
         self.newer(v1, v2)
     }
 	
+	func testBuildMetadataIgnored() {
+		// Semver build metadata ("+…") does not affect precedence. An installed
+		// "3.6.1000" is the same version as a feed's "3.6.1000+next.05e2e51d52".
+		var v1 = Version(versionNumber: "3.6.1000", buildNumber: nil)
+		var v2 = Version(versionNumber: "3.6.1000+next.05e2e51d52", buildNumber: nil)
+		self.equal(v1, v2)
+
+		v1 = Version(versionNumber: "0.4.20+1", buildNumber: nil)
+		v2 = Version(versionNumber: "0.4.20", buildNumber: "1")
+		self.equal(v1, v2)
+
+		// A real version bump still wins over any metadata.
+		v1 = Version(versionNumber: "0.4.19+2", buildNumber: nil)
+		v2 = Version(versionNumber: "0.4.20", buildNumber: nil)
+		self.older(v1, v2)
+
+		// Metadata on build numbers is ignored as well.
+		v1 = Version(versionNumber: "2.1.5", buildNumber: "215+abc")
+		v2 = Version(versionNumber: "2.1.5", buildNumber: "215")
+		self.equal(v1, v2)
+
+		// The Hashable contract: values comparing equal because metadata is
+		// ignored must also hash equally.
+		v1 = Version(versionNumber: "3.6.1000", buildNumber: nil)
+		v2 = Version(versionNumber: "3.6.1000+next.05e2e51d52", buildNumber: nil)
+		XCTAssertEqual(v1.hashValue, v2.hashValue)
+		XCTAssertEqual(Set([v1, v2]).count, 1)
+	}
+
 	func testNumeralSystems() {
 		// Western arabic numerals
 		var v1 = Version(versionNumber: "3.1.5", buildNumber: nil)
