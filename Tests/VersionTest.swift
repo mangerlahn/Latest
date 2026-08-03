@@ -182,6 +182,27 @@ class VersionTest: XCTestCase {
 		v2 = Version(versionNumber: "२.१.६", buildNumber: nil)
 		self.newer(v1, v2)
 	}
+
+	func testHostileVersionStrings() {
+		// Version strings with characters the scanner cannot classify must
+		// never crash the comparison (the parser used to call fatalError).
+		// Identical hostile strings compare equal…
+		self.equal(Version(versionNumber: "1.2🚀", buildNumber: nil),
+				   Version(versionNumber: "1.2🚀", buildNumber: nil))
+		self.equal(Version(versionNumber: "１.２.３", buildNumber: nil),
+				   Version(versionNumber: "１.２.３", buildNumber: nil))
+
+		// …and comparisons around them stay sane where a numeric prefix exists.
+		self.newer(Version(versionNumber: "3.0", buildNumber: nil),
+				   Version(versionNumber: "2.0\u{01}beta", buildNumber: nil))
+		self.older(Version(versionNumber: "1.9", buildNumber: nil),
+				   Version(versionNumber: "2.0-🚀.5", buildNumber: nil))
+
+		// Mixed scripts, control characters, and replacement characters parse
+		// without trapping regardless of how the atoms are classified.
+		_ = Version(versionNumber: "٣.١🚀.٥", buildNumber: "\u{FFFD}\u{0007}")
+			== Version(versionNumber: "2.2.6", buildNumber: "٢١٧")
+	}
 	
 	
     // MARK: - Helper Methods
