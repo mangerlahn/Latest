@@ -19,6 +19,7 @@ extension UpdateRepository {
 		enum CodingKeys: String, CodingKey {
 			case artifacts
 			case token
+			case displayNames = "name"
 			case rawVersion = "version"
 			case minimumOSVersion = "depends_on"
 		}
@@ -48,6 +49,9 @@ extension UpdateRepository {
 		/// Used for matching app bundles with repository entries.
 		let bundleIdentifiers: Set<String>
 		
+		/// Human readable names of the cask (e.g. "Microsoft Word"). Used as a matching hint.
+		let displayNames: [String]
+		
 		/// The raw version string of the app.
 		private let rawVersion: String
 		
@@ -63,6 +67,7 @@ extension UpdateRepository {
 			// Trivial keys
 			rawVersion = try container.decode(String.self, forKey: .rawVersion)
 			token = try container.decode(String.self, forKey: .token)
+			displayNames = (try? container.decode([String].self, forKey: .displayNames)) ?? []
 			
 			// Artifacts: Contains application names and bundle identifiers.
 			let artifacts = try container.decode([FailableDecodable<Artifact>].self, forKey: .artifacts)

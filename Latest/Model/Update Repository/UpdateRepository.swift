@@ -33,6 +33,14 @@ class UpdateRepository {
 		}
 	}
 	
+	/// Creates a repository from the given entries without fetching anything. Used for testing.
+	init(entries: [Entry]) {
+		self.entries = entries
+		self.entriesByIdentifier = Self.index(entries)
+		self.unsupportedBundleIdentifiers = []
+		self.pendingRequests = nil
+	}
+	
 	/// Returns a new repository with up to date update information.
 	static func newRepository() -> UpdateRepository {
 		let repository = UpdateRepository()
@@ -69,7 +77,22 @@ class UpdateRepository {
 	}
 	
 	/// List of entries stored within the repository.
-	private var entries = [Entry]()
+	private var entries = [Entry]() {
+		didSet { entriesByIdentifier = Self.index(entries) }
+	}
+	
+	/// The entries by lowercased bundle identifier, so matching by identifier does not scan every cask for every app.
+	private var entriesByIdentifier = [String: [Entry]]()
+	
+	private static func index(_ entries: [Entry]) -> [String: [Entry]] {
+		var index = [String: [Entry]]()
+		for entry in entries {
+			for identifier in entry.bundleIdentifiers {
+				index[identifier.lowercased(), default: []].append(entry)
+			}
+		}
+		return index
+	}
 	
 	/// A list of requests being performed while the repository was still fetching data.
 	///
@@ -98,7 +121,7 @@ class UpdateRepository {
 	}
 	
 	/// Returns a repository entry for the given name, if available.
-	private func entry(for bundle: App.Bundle) -> Entry? {
+	func entry(for bundle: App.Bundle) -> Entry? {
 		// Don't return an entry for unsupported apps
 		guard !unsupportedBundleIdentifiers.contains(bundle.bundleIdentifier) else { return nil }
 		
@@ -115,9 +138,9 @@ class UpdateRepository {
 			}
 		}
 		
-		guard !possibleEntries.isEmpty else { return nil }
+		guard !possibleEntries.isEmpty else { return fallbackEntry(for: bundle) }
 		if possibleEntries.count == 1 {
-			return possibleEntries.first
+			return possibleEntries.first.flatMap { isPlausible($0, for: bundle) ? $0 : fallbackEntry(for: bundle) }
 		}
 		
 		// Match bundle identifier
@@ -126,7 +149,64 @@ class UpdateRepository {
 		}
 		
 		// Only return an entry if we fixed the disambiguation
-		return (possibleEntries.count == 1 ? possibleEntries.first : nil)
+		return (possibleEntries.count == 1 ? possibleEntries.first : fallbackEntry(for: bundle))
+	}
+	
+	/// Whether a cask that matched by app name is plausibly the same product as the bundle.
+	///
+	/// Generic file names ("Studio.app") exist in many unrelated casks. A match is rejected if the cask lists bundle identifiers that share neither the exact identifier nor the vendor with the app, unless the cask's token or display name equals the app's name.
+	private func isPlausible(_ entry: Entry, for bundle: App.Bundle) -> Bool {
+		let identifier = bundle.bundleIdentifier.lowercased()
+		let known = entry.bundleIdentifiers.map { $0.lowercased() }
+		guard !identifier.isEmpty, !known.isEmpty, !known.contains(identifier) else { return true }
+		
+		let vendor = identifier.split(separator: ".").prefix(2).joined(separator: ".")
+		if known.contains(where: { $0.split(separator: ".").prefix(2).joined(separator: ".") == vendor }) {
+			return true
+		}
+		
+		let appName = Self.normalize(bundle.fileURL.lastPathComponent)
+		return Self.normalize(entry.token) == appName || entry.displayNames.contains { Self.normalize($0) == appName }
+	}
+	
+	/// Lowercased alphanumeric form of a name, used to compare names loosely.
+	private static func normalize(_ name: String) -> String {
+		var name = name.lowercased()
+		if name.hasSuffix(".app") { name.removeLast(4) }
+		return String(name.unicodeScalars.filter { CharacterSet.alphanumerics.contains($0) })
+	}
+	
+	/// Finds an entry for apps whose file name does not appear in the cask data.
+	///
+	/// A cask is only accepted if its cleanup metadata lists the app's bundle identifier *and* its token or display name resembles the app's name. Either signal alone produces false positives (identifiers are shared between suites, names between unrelated apps), and a wrong match would update the wrong app.
+	private func fallbackEntry(for bundle: App.Bundle) -> Entry? {
+		let identifier = bundle.bundleIdentifier.lowercased()
+		guard !identifier.isEmpty, !identifier.hasPrefix("com.apple.") else { return nil }
+		
+		let appName = Self.normalize(bundle.fileURL.lastPathComponent)
+		guard appName.count >= 4 else { return nil }
+		
+		func resembles(_ candidate: String) -> Bool {
+			let candidate = Self.normalize(candidate)
+			guard candidate.count >= 4 else { return false }
+			return appName.contains(candidate) || candidate.contains(appName)
+		}
+		
+		let candidates = (entriesByIdentifier[identifier] ?? []).filter { entry in
+			resembles(entry.token) || entry.displayNames.contains(where: resembles)
+		}
+		guard candidates.count > 1 else { return candidates.first }
+		
+		// Prefer an exact name match.
+		let exact = candidates.filter { entry in
+			Self.normalize(entry.token) == appName || entry.displayNames.contains { Self.normalize($0) == appName }
+		}
+		if exact.count == 1 { return exact.first }
+		
+		// Otherwise prefer the base cask over its variants ("zoom" over "zoom-for-it-admins").
+		guard let base = candidates.min(by: { $0.token.count < $1.token.count }) else { return nil }
+		let isBase = candidates.allSatisfy { $0.token == base.token || $0.token.hasPrefix(base.token + "-") }
+		return isBase ? base : nil
 	}
 	
 	
