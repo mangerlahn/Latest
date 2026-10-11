@@ -46,14 +46,14 @@ class UpdateRepository {
 	// MARK: - Accessors
 	
 	/// Returns update information for the given bundle.
-	func updateInfo(for bundle: App.Bundle, handler: @escaping (_ bundle: App.Bundle, _ version: Version?, _ minimumOSVersion: OperatingSystemVersion?) -> Void) {
+	func updateInfo(for bundle: App.Bundle, handler: @escaping (_ bundle: App.Bundle, _ version: Version?, _ minimumOSVersion: OperatingSystemVersion?, _ token: String?) -> Void) {
 		let checkApp = {
 			guard let entry = self.entry(for: bundle) else {
-				handler(bundle, nil, nil)
+				handler(bundle, nil, nil, nil)
 				return
 			}
 			
-			return handler(bundle, entry.version, entry.minimumOSVersion)
+			return handler(bundle, entry.version, entry.minimumOSVersion, entry.token)
 		}
 		
 		/// Entries are still being fetched, add the request to the queue.

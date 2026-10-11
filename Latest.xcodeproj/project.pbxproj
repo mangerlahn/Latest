@@ -23,6 +23,7 @@
 		5039DE8522CA396F0088B39B /* UpdateQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8422CA396F0088B39B /* UpdateQueue.swift */; };
 		5039DE8722CA39C60088B39B /* UpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8622CA39C60088B39B /* UpdateOperation.swift */; };
 		5039DE8B22CA39ED0088B39B /* StatefulOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */; };
+		F3B2C3D4E5F60718293A4B5C /* HomebrewUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B2C3D4E5F60718293A4B5D /* HomebrewUpdateOperation.swift */; };
 		5039DE8D22CAA2790088B39B /* MacAppStoreUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */; };
 		5040D45C28DBB753009BF379 /* HomebrewCheckerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040D45A28DBB753009BF379 /* HomebrewCheckerOperation.swift */; };
 		5048574022C81DD000C52C48 /* CommerceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5048573F22C81DCF00C52C48 /* CommerceKit.framework */; };
@@ -79,6 +80,7 @@
 		50E4EB092B17DFCE00A70A7D /* VersionParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */; };
 		50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */; };
 		50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */; };
+		F4B2C3D4E5F60718293A4B5C /* HomebrewUpdateOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2C3D4E5F60718293A4B5D /* HomebrewUpdateOperationTest.swift */; };
 		50FEB8812B1D2402006FB75D /* ExcludedAppIdentifiers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50FEB8802B1D2402006FB75D /* ExcludedAppIdentifiers.plist */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +168,7 @@
 		5039DE8422CA396F0088B39B /* UpdateQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateQueue.swift; sourceTree = "<group>"; };
 		5039DE8622CA39C60088B39B /* UpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOperation.swift; sourceTree = "<group>"; };
 		5039DE8A22CA39ED0088B39B /* StatefulOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulOperation.swift; sourceTree = "<group>"; };
+		F3B2C3D4E5F60718293A4B5D /* HomebrewUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomebrewUpdateOperation.swift; sourceTree = "<group>"; };
 		5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppStoreUpdateOperation.swift; sourceTree = "<group>"; };
 		5040D45A28DBB753009BF379 /* HomebrewCheckerOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomebrewCheckerOperation.swift; sourceTree = "<group>"; };
 		5048573F22C81DCF00C52C48 /* CommerceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommerceKit.framework; path = ../../../../../../System/Library/PrivateFrameworks/CommerceKit.framework; sourceTree = "<group>"; };
@@ -332,6 +335,7 @@
 		50F542FC22D9C41D004B3F8D /* ISStoreClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStoreClient.h; sourceTree = "<group>"; };
 		50FEB87C2B1BE630006FB75D /* OSVersionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSVersionTest.swift; sourceTree = "<group>"; };
 		50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionSanitizationTest.swift; sourceTree = "<group>"; };
+		F4B2C3D4E5F60718293A4B5D /* HomebrewUpdateOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomebrewUpdateOperationTest.swift; sourceTree = "<group>"; };
 		50FEB8802B1D2402006FB75D /* ExcludedAppIdentifiers.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExcludedAppIdentifiers.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -417,6 +421,7 @@
 				5039DE8422CA396F0088B39B /* UpdateQueue.swift */,
 				5039DE8622CA39C60088B39B /* UpdateOperation.swift */,
 				5087CD2C22F6E06B0013354C /* SparkleUpdateOperation.swift */,
+				F3B2C3D4E5F60718293A4B5D /* HomebrewUpdateOperation.swift */,
 				5039DE8C22CAA2790088B39B /* MacAppStoreUpdateOperation.swift */,
 			);
 			path = Updater;
@@ -645,6 +650,7 @@
 				50C81D731FBADC9100324C2E /* VersionTest.swift */,
 				50E4EB082B17DFCE00A70A7D /* VersionParserTest.swift */,
 				50FEB87E2B1BE67E006FB75D /* VersionSanitizationTest.swift */,
+				F4B2C3D4E5F60718293A4B5D /* HomebrewUpdateOperationTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -951,6 +957,7 @@
 				50C9F10C234641E000FD1802 /* SparkleCheckerOperation.swift in Sources */,
 				50E4EB072B17DACB00A70A7D /* VersionParser.swift in Sources */,
 				50290E751E53EB6A00133E3D /* AppDelegate.swift in Sources */,
+				F3B2C3D4E5F60718293A4B5C /* HomebrewUpdateOperation.swift in Sources */,
 				5039DE8D22CAA2790088B39B /* MacAppStoreUpdateOperation.swift in Sources */,
 				507375572789AB0300F371D8 /* AppListSnapshot.swift in Sources */,
 				501EF8ED2B9A665A00F0D759 /* BundleCollector.swift in Sources */,
@@ -998,6 +1005,7 @@
 				50C81D741FBADC9100324C2E /* VersionTest.swift in Sources */,
 				50FEB87D2B1BE630006FB75D /* OSVersionTest.swift in Sources */,
 				50FEB87F2B1BE67F006FB75D /* VersionSanitizationTest.swift in Sources */,
+				F4B2C3D4E5F60718293A4B5C /* HomebrewUpdateOperationTest.swift in Sources */,
 				50E4EB092B17DFCE00A70A7D /* VersionParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

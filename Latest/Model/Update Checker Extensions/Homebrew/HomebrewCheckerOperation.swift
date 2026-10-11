@@ -51,12 +51,23 @@ class HomebrewCheckerOperation: StatefulOperation, UpdateCheckerOperation, @unch
 			return
 		}
 		
-		repository.updateInfo(for: bundle) { bundle, version, minimumOSVersion in
+		repository.updateInfo(for: bundle) { bundle, version, minimumOSVersion, token in
 			defer { self.finish() }
 			guard let version else { return }
-			self.update = App.Update(app: bundle, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .homebrew, date: nil, releaseNotes: nil, updateAction: .external(label: bundle.name, block: { app in
-				app.open()
-			}))
+			
+			// Update through Homebrew if it manages the cask. Otherwise just open the app, as before.
+			let action: App.Update.Action
+			if let token, HomebrewUpdateOperation.canUpdate(caskToken: token) {
+				action = .builtIn(block: { app in
+					UpdateQueue.shared.addOperation(HomebrewUpdateOperation(bundleIdentifier: app.bundleIdentifier, appIdentifier: app.identifier, caskToken: token))
+				})
+			} else {
+				action = .external(label: bundle.name, block: { app in
+					app.open()
+				})
+			}
+			
+			self.update = App.Update(app: bundle, remoteVersion: version, minimumOSVersion: minimumOSVersion, source: .homebrew, date: nil, releaseNotes: nil, updateAction: action)
 		}
 	}
 	
